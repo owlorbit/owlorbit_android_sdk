@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B81FC82B1BAE2D8E006B2982 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81FC82A1BAE2D8E006B2982 /* AppDelegate.swift */; };
+		B81FC82D1BAE2D8E006B2982 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81FC82C1BAE2D8E006B2982 /* ViewController.swift */; };
+		B81FC8301BAE2D8E006B2982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B81FC82E1BAE2D8E006B2982 /* Main.storyboard */; };
+		B81FC8331BAE2D8E006B2982 /* MolePeopleBrowser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B81FC8311BAE2D8E006B2982 /* MolePeopleBrowser.xcdatamodeld */; };
+		B81FC8351BAE2D8E006B2982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B81FC8341BAE2D8E006B2982 /* Assets.xcassets */; };
+		B81FC8381BAE2D8E006B2982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B81FC8361BAE2D8E006B2982 /* LaunchScreen.storyboard */; };
+		B81FC8431BAE2D8E006B2982 /* MolePeopleBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81FC8421BAE2D8E006B2982 /* MolePeopleBrowserTests.swift */; };
+		B81FC84E1BAE2D8E006B2982 /* MolePeopleBrowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81FC84D1BAE2D8E006B2982 /* MolePeopleBrowserUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B81FC83F1BAE2D8E006B2982 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B81FC81F1BAE2D8D006B2982 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B81FC8261BAE2D8E006B2982;
+			remoteInfo = MolePeopleBrowser;
+		};
+		B81FC84A1BAE2D8E006B2982 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B81FC81F1BAE2D8D006B2982 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B81FC8261BAE2D8E006B2982;
+			remoteInfo = MolePeopleBrowser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B81FC8271BAE2D8E006B2982 /* MolePeopleBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MolePeopleBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B81FC82A1BAE2D8E006B2982 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B81FC82C1BAE2D8E006B2982 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B81FC82F1BAE2D8E006B2982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B81FC8321BAE2D8E006B2982 /* MolePeopleBrowser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MolePeopleBrowser.xcdatamodel; sourceTree = "<group>"; };
+		B81FC8341BAE2D8E006B2982 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B81FC8371BAE2D8E006B2982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B81FC8391BAE2D8E006B2982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B81FC83E1BAE2D8E006B2982 /* MolePeopleBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MolePeopleBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B81FC8421BAE2D8E006B2982 /* MolePeopleBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MolePeopleBrowserTests.swift; sourceTree = "<group>"; };
+		B81FC8441BAE2D8E006B2982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B81FC8491BAE2D8E006B2982 /* MolePeopleBrowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MolePeopleBrowserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B81FC84D1BAE2D8E006B2982 /* MolePeopleBrowserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MolePeopleBrowserUITests.swift; sourceTree = "<group>"; };
+		B81FC84F1BAE2D8E006B2982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B81FC8241BAE2D8E006B2982 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B81FC83B1BAE2D8E006B2982 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B81FC8461BAE2D8E006B2982 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B81FC81E1BAE2D8D006B2982 = {
+			isa = PBXGroup;
+			children = (
+				B81FC8291BAE2D8E006B2982 /* MolePeopleBrowser */,
+				B81FC8411BAE2D8E006B2982 /* MolePeopleBrowserTests */,
+				B81FC84C1BAE2D8E006B2982 /* MolePeopleBrowserUITests */,
+				B81FC8281BAE2D8E006B2982 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B81FC8281BAE2D8E006B2982 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B81FC8271BAE2D8E006B2982 /* MolePeopleBrowser.app */,
+				B81FC83E1BAE2D8E006B2982 /* MolePeopleBrowserTests.xctest */,
+				B81FC8491BAE2D8E006B2982 /* MolePeopleBrowserUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B81FC8291BAE2D8E006B2982 /* MolePeopleBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				B81FC82A1BAE2D8E006B2982 /* AppDelegate.swift */,
+				B81FC82C1BAE2D8E006B2982 /* ViewController.swift */,
+				B81FC82E1BAE2D8E006B2982 /* Main.storyboard */,
+				B81FC8341BAE2D8E006B2982 /* Assets.xcassets */,
+				B81FC8361BAE2D8E006B2982 /* LaunchScreen.storyboard */,
+				B81FC8391BAE2D8E006B2982 /* Info.plist */,
+				B81FC8311BAE2D8E006B2982 /* MolePeopleBrowser.xcdatamodeld */,
+			);
+			path = MolePeopleBrowser;
+			sourceTree = "<group>";
+		};
+		B81FC8411BAE2D8E006B2982 /* MolePeopleBrowserTests */ = {
+			isa = PBXGroup;
+			children = (
+				B81FC8421BAE2D8E006B2982 /* MolePeopleBrowserTests.swift */,
+				B81FC8441BAE2D8E006B2982 /* Info.plist */,
+			);
+			path = MolePeopleBrowserTests;
+			sourceTree = "<group>";
+		};
+		B81FC84C1BAE2D8E006B2982 /* MolePeopleBrowserUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B81FC84D1BAE2D8E006B2982 /* MolePeopleBrowserUITests.swift */,
+				B81FC84F1BAE2D8E006B2982 /* Info.plist */,
+			);
+			path = MolePeopleBrowserUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B81FC8261BAE2D8E006B2982 /* MolePeopleBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B81FC8521BAE2D8E006B2982 /* Build configuration list for PBXNativeTarget "MolePeopleBrowser" */;
+			buildPhases = (
+				B81FC8231BAE2D8E006B2982 /* Sources */,
+				B81FC8241BAE2D8E006B2982 /* Frameworks */,
+				B81FC8251BAE2D8E006B2982 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MolePeopleBrowser;
+			productName = MolePeopleBrowser;
+			productReference = B81FC8271BAE2D8E006B2982 /* MolePeopleBrowser.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B81FC83D1BAE2D8E006B2982 /* MolePeopleBrowserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B81FC8551BAE2D8E006B2982 /* Build configuration list for PBXNativeTarget "MolePeopleBrowserTests" */;
+			buildPhases = (
+				B81FC83A1BAE2D8E006B2982 /* Sources */,
+				B81FC83B1BAE2D8E006B2982 /* Frameworks */,
+				B81FC83C1BAE2D8E006B2982 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B81FC8401BAE2D8E006B2982 /* PBXTargetDependency */,
+			);
+			name = MolePeopleBrowserTests;
+			productName = MolePeopleBrowserTests;
+			productReference = B81FC83E1BAE2D8E006B2982 /* MolePeopleBrowserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B81FC8481BAE2D8E006B2982 /* MolePeopleBrowserUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B81FC8581BAE2D8E006B2982 /* Build configuration list for PBXNativeTarget "MolePeopleBrowserUITests" */;
+			buildPhases = (
+				B81FC8451BAE2D8E006B2982 /* Sources */,
+				B81FC8461BAE2D8E006B2982 /* Frameworks */,
+				B81FC8471BAE2D8E006B2982 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B81FC84B1BAE2D8E006B2982 /* PBXTargetDependency */,
+			);
+			name = MolePeopleBrowserUITests;
+			productName = MolePeopleBrowserUITests;
+			productReference = B81FC8491BAE2D8E006B2982 /* MolePeopleBrowserUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B81FC81F1BAE2D8D006B2982 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Tim Nuwin";
+				TargetAttributes = {
+					B81FC8261BAE2D8E006B2982 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					B81FC83D1BAE2D8E006B2982 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = B81FC8261BAE2D8E006B2982;
+					};
+					B81FC8481BAE2D8E006B2982 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = B81FC8261BAE2D8E006B2982;
+					};
+				};
+			};
+			buildConfigurationList = B81FC8221BAE2D8D006B2982 /* Build configuration list for PBXProject "MolePeopleBrowser" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B81FC81E1BAE2D8D006B2982;
+			productRefGroup = B81FC8281BAE2D8E006B2982 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B81FC8261BAE2D8E006B2982 /* MolePeopleBrowser */,
+				B81FC83D1BAE2D8E006B2982 /* MolePeopleBrowserTests */,
+				B81FC8481BAE2D8E006B2982 /* MolePeopleBrowserUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B81FC8251BAE2D8E006B2982 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B81FC8381BAE2D8E006B2982 /* LaunchScreen.storyboard in Resources */,
+				B81FC8351BAE2D8E006B2982 /* Assets.xcassets in Resources */,
+				B81FC8301BAE2D8E006B2982 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B81FC83C1BAE2D8E006B2982 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B81FC8471BAE2D8E006B2982 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B81FC8231BAE2D8E006B2982 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B81FC8331BAE2D8E006B2982 /* MolePeopleBrowser.xcdatamodeld in Sources */,
+				B81FC82D1BAE2D8E006B2982 /* ViewController.swift in Sources */,
+				B81FC82B1BAE2D8E006B2982 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B81FC83A1BAE2D8E006B2982 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B81FC8431BAE2D8E006B2982 /* MolePeopleBrowserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B81FC8451BAE2D8E006B2982 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B81FC84E1BAE2D8E006B2982 /* MolePeopleBrowserUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B81FC8401BAE2D8E006B2982 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B81FC8261BAE2D8E006B2982 /* MolePeopleBrowser */;
+			targetProxy = B81FC83F1BAE2D8E006B2982 /* PBXContainerItemProxy */;
+		};
+		B81FC84B1BAE2D8E006B2982 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B81FC8261BAE2D8E006B2982 /* MolePeopleBrowser */;
+			targetProxy = B81FC84A1BAE2D8E006B2982 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B81FC82E1BAE2D8E006B2982 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B81FC82F1BAE2D8E006B2982 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B81FC8361BAE2D8E006B2982 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B81FC8371BAE2D8E006B2982 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B81FC8501BAE2D8E006B2982 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B81FC8511BAE2D8E006B2982 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B81FC8531BAE2D8E006B2982 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MolePeopleBrowser/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.MolePeopleBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B81FC8541BAE2D8E006B2982 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MolePeopleBrowser/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.MolePeopleBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B81FC8561BAE2D8E006B2982 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MolePeopleBrowserTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.MolePeopleBrowserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MolePeopleBrowser.app/MolePeopleBrowser";
+			};
+			name = Debug;
+		};
+		B81FC8571BAE2D8E006B2982 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MolePeopleBrowserTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.MolePeopleBrowserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MolePeopleBrowser.app/MolePeopleBrowser";
+			};
+			name = Release;
+		};
+		B81FC8591BAE2D8E006B2982 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MolePeopleBrowserUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.MolePeopleBrowserUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MolePeopleBrowser;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		B81FC85A1BAE2D8E006B2982 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MolePeopleBrowserUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.MolePeopleBrowserUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MolePeopleBrowser;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B81FC8221BAE2D8D006B2982 /* Build configuration list for PBXProject "MolePeopleBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B81FC8501BAE2D8E006B2982 /* Debug */,
+				B81FC8511BAE2D8E006B2982 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B81FC8521BAE2D8E006B2982 /* Build configuration list for PBXNativeTarget "MolePeopleBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B81FC8531BAE2D8E006B2982 /* Debug */,
+				B81FC8541BAE2D8E006B2982 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B81FC8551BAE2D8E006B2982 /* Build configuration list for PBXNativeTarget "MolePeopleBrowserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B81FC8561BAE2D8E006B2982 /* Debug */,
+				B81FC8571BAE2D8E006B2982 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B81FC8581BAE2D8E006B2982 /* Build configuration list for PBXNativeTarget "MolePeopleBrowserUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B81FC8591BAE2D8E006B2982 /* Debug */,
+				B81FC85A1BAE2D8E006B2982 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B81FC8311BAE2D8E006B2982 /* MolePeopleBrowser.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B81FC8321BAE2D8E006B2982 /* MolePeopleBrowser.xcdatamodel */,
+			);
+			currentVersion = B81FC8321BAE2D8E006B2982 /* MolePeopleBrowser.xcdatamodel */;
+			path = MolePeopleBrowser.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B81FC81F1BAE2D8D006B2982 /* Project object */;
+}
