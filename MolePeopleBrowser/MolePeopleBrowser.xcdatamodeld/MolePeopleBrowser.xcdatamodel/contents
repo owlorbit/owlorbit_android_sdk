@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="CommentPageModel" representedClassName="CommentPageModel" syncable="YES">
+        <attribute name="created" attributeType="Date" syncable="YES"/>
+        <attribute name="html" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="GenericPageModel" representedClassName="GenericPageModel" syncable="YES">
+        <attribute name="created" attributeType="Date" syncable="YES"/>
+        <attribute name="html" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ParentPageModel" representedClassName="ParentPageModel" syncable="YES">
+        <attribute name="created" attributeType="Date" syncable="YES"/>
+        <attribute name="html" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
+        <relationship name="commentPages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CommentPageModel" syncable="YES"/>
+        <relationship name="genericPages" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GenericPageModel" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CommentPageModel" positionX="-54" positionY="18" width="128" height="90"/>
+        <element name="GenericPageModel" positionX="-36" positionY="54" width="128" height="90"/>
+        <element name="ParentPageModel" positionX="-63" positionY="-18" width="128" height="120"/>
+    </elements>
 </model>
