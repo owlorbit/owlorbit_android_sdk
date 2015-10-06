@@ -26,6 +26,7 @@
 		B81FC8711BAE2E19006B2982 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81FC8701BAE2E19006B2982 /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B850D75A1BB21BDA00D016EB /* SiteScraperHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B850D7591BB21BDA00D016EB /* SiteScraperHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		B850D75C1BB37A9900D016EB /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B850D75B1BB37A9900D016EB /* ProjectConstants.swift */; settings = {ASSET_TAGS = (); }; };
+		B882F71D1BC351900096338C /* CancelAddSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882F71C1BC351900096338C /* CancelAddSiteViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B8B451E81BB104400002EB0C /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B451E71BB104400002EB0C /* NSDate+NVTimeAgo.m */; settings = {ASSET_TAGS = (); }; };
 		B8EBD3921BAE346800E06369 /* SiteDownloaderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EBD3911BAE346800E06369 /* SiteDownloaderHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		B8EBD3941BAE3D0F00E06369 /* ViewSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EBD3931BAE3D0F00E06369 /* ViewSiteViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -81,6 +82,7 @@
 		B81FC8701BAE2E19006B2982 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B850D7591BB21BDA00D016EB /* SiteScraperHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteScraperHelper.swift; sourceTree = "<group>"; };
 		B850D75B1BB37A9900D016EB /* ProjectConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectConstants.swift; sourceTree = "<group>"; };
+		B882F71C1BC351900096338C /* CancelAddSiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelAddSiteViewController.swift; sourceTree = "<group>"; };
 		B8B451E51BB1043F0002EB0C /* MolePeopleBrowser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MolePeopleBrowser-Bridging-Header.h"; sourceTree = "<group>"; };
 		B8B451E61BB104400002EB0C /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		B8B451E71BB104400002EB0C /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			children = (
 				B81FC8701BAE2E19006B2982 /* ViewController.swift */,
 				B8EBD3931BAE3D0F00E06369 /* ViewSiteViewController.swift */,
+				B882F71C1BC351900096338C /* CancelAddSiteViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				B8EBD3A11BAF1E7B00E06369 /* ParentPageHelper.swift in Sources */,
 				B8EBD39C1BAF14CB00E06369 /* CommentPageModel.swift in Sources */,
 				B8EBD39A1BAF11C400E06369 /* ParentPageModel.swift in Sources */,
+				B882F71D1BC351900096338C /* CancelAddSiteViewController.swift in Sources */,
 				B8EBD3941BAE3D0F00E06369 /* ViewSiteViewController.swift in Sources */,
 				B850D75A1BB21BDA00D016EB /* SiteScraperHelper.swift in Sources */,
 			);
