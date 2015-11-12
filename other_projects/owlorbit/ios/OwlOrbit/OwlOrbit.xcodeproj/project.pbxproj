@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B830E2041BE9941400376E77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830E2031BE9941400376E77 /* AppDelegate.swift */; };
+		B830E2061BE9941400376E77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830E2051BE9941400376E77 /* ViewController.swift */; };
+		B830E2091BE9941400376E77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B830E2071BE9941400376E77 /* Main.storyboard */; };
+		B830E20C1BE9941400376E77 /* OwlOrbit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B830E20A1BE9941400376E77 /* OwlOrbit.xcdatamodeld */; };
+		B830E20E1BE9941400376E77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B830E20D1BE9941400376E77 /* Assets.xcassets */; };
+		B830E2111BE9941400376E77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B830E20F1BE9941400376E77 /* LaunchScreen.storyboard */; };
+		B830E21C1BE9941400376E77 /* OwlOrbitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830E21B1BE9941400376E77 /* OwlOrbitTests.swift */; };
+		B830E2271BE9941400376E77 /* OwlOrbitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830E2261BE9941400376E77 /* OwlOrbitUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B830E2181BE9941400376E77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B830E1F81BE9941400376E77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B830E1FF1BE9941400376E77;
+			remoteInfo = OwlOrbit;
+		};
+		B830E2231BE9941400376E77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B830E1F81BE9941400376E77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B830E1FF1BE9941400376E77;
+			remoteInfo = OwlOrbit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B830E2001BE9941400376E77 /* OwlOrbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwlOrbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B830E2031BE9941400376E77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B830E2051BE9941400376E77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B830E2081BE9941400376E77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B830E20B1BE9941400376E77 /* OwlOrbit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OwlOrbit.xcdatamodel; sourceTree = "<group>"; };
+		B830E20D1BE9941400376E77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B830E2101BE9941400376E77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B830E2121BE9941400376E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B830E2171BE9941400376E77 /* OwlOrbitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OwlOrbitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B830E21B1BE9941400376E77 /* OwlOrbitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwlOrbitTests.swift; sourceTree = "<group>"; };
+		B830E21D1BE9941400376E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B830E2221BE9941400376E77 /* OwlOrbitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OwlOrbitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B830E2261BE9941400376E77 /* OwlOrbitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwlOrbitUITests.swift; sourceTree = "<group>"; };
+		B830E2281BE9941400376E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B830E1FD1BE9941400376E77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830E2141BE9941400376E77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830E21F1BE9941400376E77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B830E1F71BE9941400376E77 = {
+			isa = PBXGroup;
+			children = (
+				B830E2021BE9941400376E77 /* OwlOrbit */,
+				B830E21A1BE9941400376E77 /* OwlOrbitTests */,
+				B830E2251BE9941400376E77 /* OwlOrbitUITests */,
+				B830E2011BE9941400376E77 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B830E2011BE9941400376E77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B830E2001BE9941400376E77 /* OwlOrbit.app */,
+				B830E2171BE9941400376E77 /* OwlOrbitTests.xctest */,
+				B830E2221BE9941400376E77 /* OwlOrbitUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B830E2021BE9941400376E77 /* OwlOrbit */ = {
+			isa = PBXGroup;
+			children = (
+				B830E2031BE9941400376E77 /* AppDelegate.swift */,
+				B830E2051BE9941400376E77 /* ViewController.swift */,
+				B830E2071BE9941400376E77 /* Main.storyboard */,
+				B830E20D1BE9941400376E77 /* Assets.xcassets */,
+				B830E20F1BE9941400376E77 /* LaunchScreen.storyboard */,
+				B830E2121BE9941400376E77 /* Info.plist */,
+				B830E20A1BE9941400376E77 /* OwlOrbit.xcdatamodeld */,
+			);
+			path = OwlOrbit;
+			sourceTree = "<group>";
+		};
+		B830E21A1BE9941400376E77 /* OwlOrbitTests */ = {
+			isa = PBXGroup;
+			children = (
+				B830E21B1BE9941400376E77 /* OwlOrbitTests.swift */,
+				B830E21D1BE9941400376E77 /* Info.plist */,
+			);
+			path = OwlOrbitTests;
+			sourceTree = "<group>";
+		};
+		B830E2251BE9941400376E77 /* OwlOrbitUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B830E2261BE9941400376E77 /* OwlOrbitUITests.swift */,
+				B830E2281BE9941400376E77 /* Info.plist */,
+			);
+			path = OwlOrbitUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B830E1FF1BE9941400376E77 /* OwlOrbit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B830E22B1BE9941400376E77 /* Build configuration list for PBXNativeTarget "OwlOrbit" */;
+			buildPhases = (
+				B830E1FC1BE9941400376E77 /* Sources */,
+				B830E1FD1BE9941400376E77 /* Frameworks */,
+				B830E1FE1BE9941400376E77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OwlOrbit;
+			productName = OwlOrbit;
+			productReference = B830E2001BE9941400376E77 /* OwlOrbit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B830E2161BE9941400376E77 /* OwlOrbitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B830E22E1BE9941400376E77 /* Build configuration list for PBXNativeTarget "OwlOrbitTests" */;
+			buildPhases = (
+				B830E2131BE9941400376E77 /* Sources */,
+				B830E2141BE9941400376E77 /* Frameworks */,
+				B830E2151BE9941400376E77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B830E2191BE9941400376E77 /* PBXTargetDependency */,
+			);
+			name = OwlOrbitTests;
+			productName = OwlOrbitTests;
+			productReference = B830E2171BE9941400376E77 /* OwlOrbitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B830E2211BE9941400376E77 /* OwlOrbitUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B830E2311BE9941400376E77 /* Build configuration list for PBXNativeTarget "OwlOrbitUITests" */;
+			buildPhases = (
+				B830E21E1BE9941400376E77 /* Sources */,
+				B830E21F1BE9941400376E77 /* Frameworks */,
+				B830E2201BE9941400376E77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B830E2241BE9941400376E77 /* PBXTargetDependency */,
+			);
+			name = OwlOrbitUITests;
+			productName = OwlOrbitUITests;
+			productReference = B830E2221BE9941400376E77 /* OwlOrbitUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B830E1F81BE9941400376E77 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Tim Nuwin";
+				TargetAttributes = {
+					B830E1FF1BE9941400376E77 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					B830E2161BE9941400376E77 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = B830E1FF1BE9941400376E77;
+					};
+					B830E2211BE9941400376E77 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = B830E1FF1BE9941400376E77;
+					};
+				};
+			};
+			buildConfigurationList = B830E1FB1BE9941400376E77 /* Build configuration list for PBXProject "OwlOrbit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B830E1F71BE9941400376E77;
+			productRefGroup = B830E2011BE9941400376E77 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B830E1FF1BE9941400376E77 /* OwlOrbit */,
+				B830E2161BE9941400376E77 /* OwlOrbitTests */,
+				B830E2211BE9941400376E77 /* OwlOrbitUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B830E1FE1BE9941400376E77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830E2111BE9941400376E77 /* LaunchScreen.storyboard in Resources */,
+				B830E20E1BE9941400376E77 /* Assets.xcassets in Resources */,
+				B830E2091BE9941400376E77 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830E2151BE9941400376E77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830E2201BE9941400376E77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B830E1FC1BE9941400376E77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830E20C1BE9941400376E77 /* OwlOrbit.xcdatamodeld in Sources */,
+				B830E2061BE9941400376E77 /* ViewController.swift in Sources */,
+				B830E2041BE9941400376E77 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830E2131BE9941400376E77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830E21C1BE9941400376E77 /* OwlOrbitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830E21E1BE9941400376E77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830E2271BE9941400376E77 /* OwlOrbitUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B830E2191BE9941400376E77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B830E1FF1BE9941400376E77 /* OwlOrbit */;
+			targetProxy = B830E2181BE9941400376E77 /* PBXContainerItemProxy */;
+		};
+		B830E2241BE9941400376E77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B830E1FF1BE9941400376E77 /* OwlOrbit */;
+			targetProxy = B830E2231BE9941400376E77 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B830E2071BE9941400376E77 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B830E2081BE9941400376E77 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B830E20F1BE9941400376E77 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B830E2101BE9941400376E77 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B830E2291BE9941400376E77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B830E22A1BE9941400376E77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B830E22C1BE9941400376E77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OwlOrbit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B830E22D1BE9941400376E77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OwlOrbit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B830E22F1BE9941400376E77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OwlOrbitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OwlOrbit.app/OwlOrbit";
+			};
+			name = Debug;
+		};
+		B830E2301BE9941400376E77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OwlOrbitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OwlOrbit.app/OwlOrbit";
+			};
+			name = Release;
+		};
+		B830E2321BE9941400376E77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OwlOrbitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OwlOrbit;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		B830E2331BE9941400376E77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OwlOrbitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OwlOrbit;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B830E1FB1BE9941400376E77 /* Build configuration list for PBXProject "OwlOrbit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B830E2291BE9941400376E77 /* Debug */,
+				B830E22A1BE9941400376E77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B830E22B1BE9941400376E77 /* Build configuration list for PBXNativeTarget "OwlOrbit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B830E22C1BE9941400376E77 /* Debug */,
+				B830E22D1BE9941400376E77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B830E22E1BE9941400376E77 /* Build configuration list for PBXNativeTarget "OwlOrbitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B830E22F1BE9941400376E77 /* Debug */,
+				B830E2301BE9941400376E77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B830E2311BE9941400376E77 /* Build configuration list for PBXNativeTarget "OwlOrbitUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B830E2321BE9941400376E77 /* Debug */,
+				B830E2331BE9941400376E77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B830E20A1BE9941400376E77 /* OwlOrbit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B830E20B1BE9941400376E77 /* OwlOrbit.xcdatamodel */,
+			);
+			currentVersion = B830E20B1BE9941400376E77 /* OwlOrbit.xcdatamodel */;
+			path = OwlOrbit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B830E1F81BE9941400376E77 /* Project object */;
+}
