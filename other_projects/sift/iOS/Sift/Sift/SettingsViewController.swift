@@ -1,26 +1,20 @@
 //
-//  ChatThreadViewController.swift
+//  SettingsViewController.swift
 //  Sift
 //
-//  Created by Timmy Nguyen on 11/9/15.
+//  Created by Timmy Nguyen on 11/11/15.
 //  Copyright © 2015 Tim Nuwin. All rights reserved.
 //
 
 import UIKit
-import MapKit
-import CoreLocation
 
-class ChatThreadViewController: UIViewController {
+class SettingsViewController: UITabBarController {
 
-    @IBOutlet weak var mapView: MKMapView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Tim's Chat Room"
 
-        var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "")
-        self.navigationItem.rightBarButtonItem = switchContextBtn
         // Do any additional setup after loading the view.
+        print("settings loaded...")
     }
 
     override func didReceiveMemoryWarning() {

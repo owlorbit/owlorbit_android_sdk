@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UICustomTabBarController: UITabBarController {
+class UICustomTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     
     required init(coder aDecoder: NSCoder!) {
@@ -16,14 +16,36 @@ class UICustomTabBarController: UITabBarController {
     }
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)        
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        let homeViewController = DashboardViewController()
+        let homeIcon : UIImage = UIImage(named:"home")!
+        var homeNavController = UINavigationController(rootViewController: homeViewController)
+        homeNavController.tabBarItem = UITabBarItem(
+            title: "Home",
+            image: homeIcon,
+            tag: 1);
+
+        let settingsViewController = SettingsViewController()
+        var settingsIcon : UIImage = UIImage(named:"settings")!
+        var settingsNavController = UINavigationController(rootViewController: settingsViewController)
+        settingsNavController.tabBarItem = UITabBarItem(
+            title: "Settings",
+            image: settingsIcon,
+            tag: 2);
+        
+        
+        
+        let controllers = [homeNavController, settingsNavController]
+        self.viewControllers = controllers
+        
+        self.delegate = self;
     }
 
     override func didReceiveMemoryWarning() {

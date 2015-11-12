@@ -39,19 +39,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let window = window {
 
             let tabBarController = UICustomTabBarController()
-
+            
+            
+            ////
+            /*
             let myVC1 = DashboardViewController()
             myVC1.tabBarItem = UITabBarItem(
-            title: "Home",
-            image: nil,
-            tag: 1)
+                title: "Home",
+                image: nil,
+                tag: 1)
             var navController = UINavigationController(rootViewController: myVC1)
-            
+
             let controllers = [navController]
             tabBarController.viewControllers = controllers
-
+*/
+            ///
+            window.backgroundColor = UIColor.whiteColor()
             window.rootViewController = tabBarController
-            window.makeKeyAndVisible()            
+            
+            UIView.transitionWithView(window, duration: 0.2,
+                options:.TransitionCrossDissolve, animations: {
+                    //...animations
+                    window.makeKeyAndVisible()
+                }, completion: nil)
+            
+            
+            //window.makeKeyAndVisible()
         }
     }
 

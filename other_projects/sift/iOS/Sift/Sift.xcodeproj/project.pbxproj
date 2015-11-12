@@ -18,6 +18,8 @@
 		B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
 		B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
 		B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
+		B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80F021BF452A500CF4BB3 /* SettingsViewController.swift */; };
+		B8B80F051BF452A500CF4BB3 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */; };
 		B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2551BF1794A00DC7F60 /* LoginViewController.swift */; };
 		B8BAD2581BF1794A00DC7F60 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD2561BF1794A00DC7F60 /* LoginViewController.xib */; };
 		B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */; };
@@ -63,6 +65,8 @@
 		B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomTabBarController.xib; sourceTree = "<group>"; };
 		B8B80EFD1BF414FC00CF4BB3 /* Sift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sift-Bridging-Header.h"; sourceTree = "<group>"; };
 		B8B80F001BF4182C00CF4BB3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B8B80F021BF452A500CF4BB3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		B8BAD2551BF1794A00DC7F60 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8BAD2561BF1794A00DC7F60 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatThreadViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */,
 				B8BAD2671BF1869C00DC7F60 /* DashboardViewController.swift */,
 				B8BAD2681BF1869C00DC7F60 /* DashboardViewController.xib */,
+				B8B80F021BF452A500CF4BB3 /* SettingsViewController.swift */,
+				B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */,
 			);
 			name = DashboardViewController;
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 				B8BAD2581BF1794A00DC7F60 /* LoginViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
 				B8792A341BEB15CE00BE05ED /* Assets.xcassets in Resources */,
+				B8B80F051BF452A500CF4BB3 /* SettingsViewController.xib in Resources */,
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +435,7 @@
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,
 				B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
+				B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
