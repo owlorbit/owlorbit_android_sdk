@@ -21,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         if let window = window {
             window.backgroundColor = UIColor.whiteColor()
-            window.rootViewController = LoginViewController()
+            
+            var viewController = UINavigationController(rootViewController: LoginViewController())
+            
+            //window.rootViewController = LoginViewController()
+            window.rootViewController = viewController
             window.makeKeyAndVisible()
         }
         
@@ -35,37 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupLoggedInViewController(){
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        if let window = window {
+        
+        let tabBarController = UICustomTabBarController()
+        self.window!.rootViewController = tabBarController
 
-            let tabBarController = UICustomTabBarController()
-            
-            
-            ////
-            /*
-            let myVC1 = DashboardViewController()
-            myVC1.tabBarItem = UITabBarItem(
-                title: "Home",
-                image: nil,
-                tag: 1)
-            var navController = UINavigationController(rootViewController: myVC1)
+        UIView.transitionWithView(self.window!, duration: 0.2,
+            options:.TransitionCrossDissolve, animations: {
+                self.window!.makeKeyAndVisible()
+            }, completion: nil)
 
-            let controllers = [navController]
-            tabBarController.viewControllers = controllers
-*/
-            ///
-            window.backgroundColor = UIColor.whiteColor()
-            window.rootViewController = tabBarController
-            
-            UIView.transitionWithView(window, duration: 0.2,
-                options:.TransitionCrossDissolve, animations: {
-                    //...animations
-                    window.makeKeyAndVisible()
-                }, completion: nil)
-            
-            
-            //window.makeKeyAndVisible()
-        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

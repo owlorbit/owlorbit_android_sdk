@@ -31,8 +31,8 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="WPD-Ca-lAy"/>
                                         <exclude reference="34A-Wx-krv"/>
+                                        <exclude reference="WPD-Ca-lAy"/>
                                     </mask>
                                 </variation>
                             </label>

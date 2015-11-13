@@ -32,6 +32,7 @@ class UICustomTabBarController: UITabBarController, UITabBarControllerDelegate {
             image: homeIcon,
             tag: 1);
 
+        
         let settingsViewController = SettingsViewController()
         var settingsIcon : UIImage = UIImage(named:"settings")!
         var settingsNavController = UINavigationController(rootViewController: settingsViewController)
@@ -39,9 +40,7 @@ class UICustomTabBarController: UITabBarController, UITabBarControllerDelegate {
             title: "Settings",
             image: settingsIcon,
             tag: 2);
-        
-        
-        
+
         let controllers = [homeNavController, settingsNavController]
         self.viewControllers = controllers
         

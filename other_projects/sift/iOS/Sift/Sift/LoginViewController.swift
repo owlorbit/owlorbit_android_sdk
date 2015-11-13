@@ -12,8 +12,15 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.setNavigationBarHidden(true, animated: false);
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,14 +28,16 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnRegisterTouchUp(sender: AnyObject) {
+        var viewController : ResetPasswordViewController = ResetPasswordViewController();
+        self.navigationController!.pushViewController(viewController, animated: true) 
+    }
 
-    @IBAction func btnLoginTouchUpInside(sender: AnyObject) {
-        print("btn login touch...")
-
+    @IBAction func btnSignInTouchUp(sender: AnyObject) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.setupLoggedInViewController()
-        //setupLoggedInViewController
     }
+    
     /*
     // MARK: - Navigation
 

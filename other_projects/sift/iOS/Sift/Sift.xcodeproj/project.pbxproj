@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
+		B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */; };
+		B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */; };
+		B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEC01BF5755800F47929 /* RegisterViewController.swift */; };
+		B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEC11BF5755800F47929 /* RegisterViewController.xib */; };
 		B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A291BEB15CE00BE05ED /* AppDelegate.swift */; };
 		B8792A2C1BEB15CE00BE05ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A2B1BEB15CE00BE05ED /* ViewController.swift */; };
 		B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */; };
@@ -48,6 +52,10 @@
 /* Begin PBXFileReference section */
 		91601974A0D837B391AABADD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
+		B870CEC01BF5755800F47929 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B870CEC11BF5755800F47929 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		B8792A261BEB15CE00BE05ED /* Sift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A291BEB15CE00BE05ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8792A2B1BEB15CE00BE05ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +120,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B870CEBB1BF5741B00F47929 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		B8792A1D1BEB15CD00BE05ED = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +152,7 @@
 		B8792A281BEB15CE00BE05ED /* Sift */ = {
 			isa = PBXGroup;
 			children = (
+				B870CEBB1BF5741B00F47929 /* Views */,
 				B8B80EFA1BF4146300CF4BB3 /* Resources */,
 				B8BAD25D1BF180C500DC7F60 /* Models */,
 				B8BAD2501BF178A500DC7F60 /* ViewControllers */,
@@ -199,6 +215,10 @@
 			children = (
 				B8BAD2551BF1794A00DC7F60 /* LoginViewController.swift */,
 				B8BAD2561BF1794A00DC7F60 /* LoginViewController.xib */,
+				B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */,
+				B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */,
+				B870CEC01BF5755800F47929 /* RegisterViewController.swift */,
+				B870CEC11BF5755800F47929 /* RegisterViewController.xib */,
 			);
 			name = LoginViewController;
 			sourceTree = "<group>";
@@ -354,6 +374,8 @@
 				B8BAD2581BF1794A00DC7F60 /* LoginViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
 				B8792A341BEB15CE00BE05ED /* Assets.xcassets in Resources */,
+				B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */,
+				B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */,
 				B8B80F051BF452A500CF4BB3 /* SettingsViewController.xib in Resources */,
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
 			);
@@ -428,6 +450,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */,
+				B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */,
 				B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */,
 				B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,
