@@ -12,6 +12,8 @@
 		B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */; };
 		B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEC01BF5755800F47929 /* RegisterViewController.swift */; };
 		B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEC11BF5755800F47929 /* RegisterViewController.xib */; };
+		B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEC41BF5AF3800F47929 /* RegisterBasicInfoViewController.swift */; };
+		B870CEC71BF5AF3800F47929 /* RegisterBasicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEC51BF5AF3800F47929 /* RegisterBasicInfoViewController.xib */; };
 		B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A291BEB15CE00BE05ED /* AppDelegate.swift */; };
 		B8792A2C1BEB15CE00BE05ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A2B1BEB15CE00BE05ED /* ViewController.swift */; };
 		B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */; };
@@ -56,6 +58,8 @@
 		B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		B870CEC01BF5755800F47929 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B870CEC11BF5755800F47929 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		B870CEC41BF5AF3800F47929 /* RegisterBasicInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterBasicInfoViewController.swift; sourceTree = "<group>"; };
+		B870CEC51BF5AF3800F47929 /* RegisterBasicInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterBasicInfoViewController.xib; sourceTree = "<group>"; };
 		B8792A261BEB15CE00BE05ED /* Sift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A291BEB15CE00BE05ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8792A2B1BEB15CE00BE05ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */,
 				B870CEC01BF5755800F47929 /* RegisterViewController.swift */,
 				B870CEC11BF5755800F47929 /* RegisterViewController.xib */,
+				B870CEC41BF5AF3800F47929 /* RegisterBasicInfoViewController.swift */,
+				B870CEC51BF5AF3800F47929 /* RegisterBasicInfoViewController.xib */,
 			);
 			name = LoginViewController;
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 			files = (
 				B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */,
 				B8BAD25C1BF17F6C00DC7F60 /* ChatThreadViewController.xib in Resources */,
+				B870CEC71BF5AF3800F47929 /* RegisterBasicInfoViewController.xib in Resources */,
 				B8BAD2581BF1794A00DC7F60 /* LoginViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
 				B8792A341BEB15CE00BE05ED /* Assets.xcassets in Resources */,
@@ -459,6 +466,7 @@
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,
 				B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
+				B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */,
 				B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func btnRegisterTouchUp(sender: AnyObject) {
-        var viewController : ResetPasswordViewController = ResetPasswordViewController();
+        var viewController : RegisterViewController = RegisterViewController();
         self.navigationController!.pushViewController(viewController, animated: true) 
     }
 

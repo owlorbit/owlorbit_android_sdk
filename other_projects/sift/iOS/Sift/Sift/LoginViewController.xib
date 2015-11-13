@@ -19,6 +19,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                     <animations/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnI-GO-DeZ">
+                    <rect key="frame" x="14" y="403" width="59" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="59" id="AgQ-lj-2NX"/>
+                        <constraint firstAttribute="height" constant="30" id="QKg-Hr-c8r"/>
+                    </constraints>
+                    <state key="normal" title="Register">
+                        <color key="titleColor" red="0.28235294119999998" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="btnRegisterTouchUp:" destination="-1" eventType="touchUpInside" id="I2i-ZW-goe"/>
+                    </connections>
+                </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="************" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="91G-1H-bXL">
                     <rect key="frame" x="52" y="368" width="248" height="30"/>
                     <animations/>
@@ -53,6 +67,14 @@
                         </mask>
                     </variation>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25c-5o-y5J">
+                    <rect key="frame" x="14" y="400" width="292" height="1"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.28235294119999998" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="z0m-1P-pWv"/>
+                    </constraints>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_icon" translatesAutoresizingMaskIntoConstraints="NO" id="5hV-y8-Z33">
                     <rect key="frame" x="17" y="352" width="24" height="32"/>
                     <animations/>
@@ -136,14 +158,6 @@
                         <constraint firstAttribute="height" constant="1" id="vZX-s8-kBY"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25c-5o-y5J">
-                    <rect key="frame" x="14" y="400" width="292" height="1"/>
-                    <animations/>
-                    <color key="backgroundColor" red="0.28235294119999998" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="z0m-1P-pWv"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyT-Qm-sCO">
                     <rect key="frame" x="253" y="403" width="59" height="30"/>
                     <animations/>
@@ -156,20 +170,6 @@
                     </state>
                     <connections>
                         <action selector="btnSignInTouchUp:" destination="-1" eventType="touchUpInside" id="wIG-et-ROP"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnI-GO-DeZ">
-                    <rect key="frame" x="14" y="403" width="59" height="30"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="59" id="AgQ-lj-2NX"/>
-                        <constraint firstAttribute="height" constant="30" id="QKg-Hr-c8r"/>
-                    </constraints>
-                    <state key="normal" title="Register">
-                        <color key="titleColor" red="0.28235294119999998" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="btnRegisterTouchUp:" destination="-1" eventType="touchUpInside" id="I2i-ZW-goe"/>
                     </connections>
                 </button>
             </subviews>
