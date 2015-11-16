@@ -7,115 +7,169 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		018FB67C39D069E265F41725BE420325 /* TPKeyboardAvoidingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = BBE441CC741A379F4A1761DB8FE11E4E /* TPKeyboardAvoidingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03941B0BF06C863B8F8FACE5944E147A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E093D627869B650AB8D6411D2DE6B7A /* Foundation.framework */; };
-		0EFD1FF643346FF85C83679F659672CA /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C86BF7532259688D592A61B48BB594 /* Stream.swift */; };
-		0F6FCF15CC1F4F05C46539443FDA2AAB /* MBProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C395B28720BD3D16663C6AE6DCA3E0 /* MBProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1E7623B9420C3E71FAE3287C0CECA040 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = E3584841F9179D655780022DA738C1AD /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		30A8F35FCAB29F5FBFC9F3F7E25A3B6B /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9032AD46E8A08B16B6D3C75C6C0A0 /* ServerTrustPolicy.swift */; };
-		379A6B78DA6F2D0074F689D0BA6B6BB1 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
-		3E9392CB5BD9C0CC47B04EDB40639558 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163EEFB3AAC34470044247650F67F612 /* Validation.swift */; };
+		0D864929261413E9B1A319C523E1F6D0 /* IHKeyboardAvoiding-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B2BCECB68BC0C4BA7B907B143E3F70 /* IHKeyboardAvoiding-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EFD1FF643346FF85C83679F659672CA /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4009C8BFC3F120236B35BC988193DB1B /* Stream.swift */; };
+		0F6FCF15CC1F4F05C46539443FDA2AAB /* MBProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F841D9DBDE9CA01B5D20384C5D88719 /* MBProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1455FA6CBD2053394A7ED31A7370D154 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E093D627869B650AB8D6411D2DE6B7A /* Foundation.framework */; };
+		1E7623B9420C3E71FAE3287C0CECA040 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = E55996CDED8A94EB1B43AA3AB3994546 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30A8F35FCAB29F5FBFC9F3F7E25A3B6B /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A22C966D12B575E6E3851BFBC908FDA /* ServerTrustPolicy.swift */; };
+		33E5A11AA9BE564888FCA3AABC00CBD2 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDAF8B731E646FFD8A452772299A5E7 /* TPKeyboardAvoidingScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38D18D4ED0732AD1F1E55562F5041B5B /* UIScrollView+TPKeyboardAvoidingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BC6A2D0E91731B27A3829CBEA16ABF /* UIScrollView+TPKeyboardAvoidingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E9392CB5BD9C0CC47B04EDB40639558 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491D4E3852390649577FE75F9A97211 /* Validation.swift */; };
 		40C42F3F5DD94F29414FB7BF431221AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1264325C4220C1BDC3C73E5D496129FD /* CoreGraphics.framework */; };
-		4192D3F25D17B0968310940CC63A7D1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E093D627869B650AB8D6411D2DE6B7A /* Foundation.framework */; };
-		48F290C27AB793739318C17F2255FD1C /* IHKeyboardDismissing-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C4BD9447CA34A094DABD4C241A72222 /* IHKeyboardDismissing-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4496E8C150CF240D3D5266DA96FB374F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E093D627869B650AB8D6411D2DE6B7A /* Foundation.framework */; };
+		48F290C27AB793739318C17F2255FD1C /* IHKeyboardDismissing-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 78AED3CEC11B110CA0D390E5079943FC /* IHKeyboardDismissing-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5281014E7BC9B01A6ACAC8FCC1AF0AA7 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2AF9A560E40F9B0F620788997EB59F /* TPKeyboardAvoidingCollectionView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		61137E758A762DBADEAAE6454CB06EA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E093D627869B650AB8D6411D2DE6B7A /* Foundation.framework */; };
-		69A447D12E60E5C3451DA30C6BB4BF7F /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE19796600319682A458E9662566FE /* Manager.swift */; };
+		69A447D12E60E5C3451DA30C6BB4BF7F /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8AB4C3CAAEB70701BB2D52EB3CD270 /* Manager.swift */; };
+		69EC7F8BEA932A95636699040F547915 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7007F3A0053B4F6822F55B8802643FA7 /* TPKeyboardAvoidingTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7223F2D78A55A3B6DF2F4C9373E140BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E093D627869B650AB8D6411D2DE6B7A /* Foundation.framework */; };
-		848CEFBFC69DEBAF0E18885F3269F439 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80636A9ACE18E691E3C90C5E16D5E64A /* ResponseSerialization.swift */; };
-		8C9E7479A6AA2DA35CFAC40613690A98 /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9077ECA2FA7B9C5D73365490A3D8898F /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA97364205C9AE05451A8E0688487F4 /* Download.swift */; };
-		9E17CC11959A1FE5566CE528047ACDC0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F65BFE0154FE2C80745FAE411B6A06 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		A215FAB60CB15B6E5FA3A15E9E350D7D /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A8570CD9F17DB091541C729ABE34C0C /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A4125549178A6F6944B0418BAD5308E7 /* IHKeyboardDismissing.m in Sources */ = {isa = PBXBuildFile; fileRef = 689BA41C2438B9F86619C5F307633A27 /* IHKeyboardDismissing.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		A51D73FC21266CDD72EDD779F0A14A56 /* IHKeyboardDismissing-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 667E02474320711FBFABEE3785D08A8E /* IHKeyboardDismissing-dummy.m */; };
-		A8B5EDB7371475F62767B297B1A10CDE /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3DD397B8A9F9504E8EA2077D691D /* ParameterEncoding.swift */; };
-		BB010EE04BA829E196554A00A951AA7C /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A94EA633342EF475BA100B069C6A975 /* MBProgressHUD-dummy.m */; };
-		C59EBB08FC0579FF50BC7F82BEB140DF /* IHKeyboardDismissing.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0AD20F58BCE286E5F7B20D6F7748D4 /* IHKeyboardDismissing.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D39B20327B1DAF6D8753ED5685DDE6DC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061391F08FB8A19797B2243EC7D2F4 /* MultipartFormData.swift */; };
-		D8136D3B59D4753690000387A8082B54 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D90AD12E7C14614C2A7D0331E59C696 /* Alamofire-dummy.m */; };
-		E6D041ABFBB48D9F1D8AA96E7D4C6C34 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF59ED630A006DF71F03947B2959BB /* Result.swift */; };
-		E7B226D8BB16471AD63665A794036E44 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25315F2D137762E66784DB273275102A /* Upload.swift */; };
-		E816509B4E3564E1A117CBDC0D845D69 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43844FB5BDA4128380D6C47E10872628 /* Alamofire.swift */; };
-		F16FEF1CB9703FE1887C8A618B84B7C6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5A6E0DF7BAC20A2C4E8828AF68AFB /* Request.swift */; };
-		FE1F95F519342B9266EB69B23B4336CF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE36C300865D9390217778297DFF495 /* Error.swift */; };
+		7292C1A91D0E0FC62D2B4945E181BE37 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
+		75A30EA3F8FD8A90E849AA130B14605D /* TPKeyboardAvoidingTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = E8E8CD0E7E143E1006B4EEC960D73A56 /* TPKeyboardAvoidingTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		848CEFBFC69DEBAF0E18885F3269F439 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E094A5D8D6E3E02C905B0C876D4EDB /* ResponseSerialization.swift */; };
+		9077ECA2FA7B9C5D73365490A3D8898F /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A90B2BDD4CFA7D2F10CC22C8F2EEABC /* Download.swift */; };
+		91306B8883C77F8DD20BB56C6A6DB6CC /* TPKeyboardAvoiding-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 99088FC4C7E0A8483D2E689EA4757719 /* TPKeyboardAvoiding-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		957AD0F3A0CAFE3A715A5145EDE60E02 /* IHKeyboardAvoiding.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9CC8466C538CDADBA4575B8359BD36 /* IHKeyboardAvoiding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E17CC11959A1FE5566CE528047ACDC0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B9AB544EDAA1B578F202590C3ADE1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A215FAB60CB15B6E5FA3A15E9E350D7D /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 90FE5153365C2012EAE8B77A96965A92 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A4125549178A6F6944B0418BAD5308E7 /* IHKeyboardDismissing.m in Sources */ = {isa = PBXBuildFile; fileRef = 81930BB980D790291FF30D8B6A8049FB /* IHKeyboardDismissing.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A51D73FC21266CDD72EDD779F0A14A56 /* IHKeyboardDismissing-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B131EFEC2250F4C8263068100065881D /* IHKeyboardDismissing-dummy.m */; };
+		A570CAE6C8D04D50626854673329D299 /* TPKeyboardAvoidingCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 728D38120E94F012BA2D5B53F5679CC3 /* TPKeyboardAvoidingCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A89105000E9E8F345BB57D014DAD8E0F /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A8B5EDB7371475F62767B297B1A10CDE /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9D6AB4735FF8888F30246664C6A1BD /* ParameterEncoding.swift */; };
+		AA5478BF19EA26B6711607463AE1A436 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A63FCA8E916404FBEA4CF7CB545A24F0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB010EE04BA829E196554A00A951AA7C /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C71A1A0F567567F084AFD96567A42F /* MBProgressHUD-dummy.m */; };
+		BC712F44B8FB62B0EAB70572B2D0D9BD /* TPKeyboardAvoiding-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85E2C8B7132B8541AB638F7E271F75F2 /* TPKeyboardAvoiding-dummy.m */; };
+		C59EBB08FC0579FF50BC7F82BEB140DF /* IHKeyboardDismissing.h in Headers */ = {isa = PBXBuildFile; fileRef = C46BBF14D99049800E7994C4CEC11E9B /* IHKeyboardDismissing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D39B20327B1DAF6D8753ED5685DDE6DC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DFBE1E1721657E7B59C37B2F2DFBC2 /* MultipartFormData.swift */; };
+		D8136D3B59D4753690000387A8082B54 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F5234CDDBA9EBACD811C8880DA1812 /* Alamofire-dummy.m */; };
+		D93F07A18882C5D4027393701821C6AD /* IHKeyboardAvoiding.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC86845D5155A646778A98985430A45 /* IHKeyboardAvoiding.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E6D041ABFBB48D9F1D8AA96E7D4C6C34 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A94BD26F327C0D2A56B395BD806B93 /* Result.swift */; };
+		E7B226D8BB16471AD63665A794036E44 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BA12FCBE9A15104E018DE0C72E27C5 /* Upload.swift */; };
+		E816509B4E3564E1A117CBDC0D845D69 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0DD4F89A9A3FFAC73F981508E222C /* Alamofire.swift */; };
+		E952CDEB8BADD135CC4F33F9252B3992 /* IHKeyboardAvoiding-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C915A072C90D6670425F65CAA7F3D2 /* IHKeyboardAvoiding-dummy.m */; };
+		E96FC28AE44923D1FC9B87876C973718 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E093D627869B650AB8D6411D2DE6B7A /* Foundation.framework */; };
+		F16FEF1CB9703FE1887C8A618B84B7C6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11D5A88C48A10A3D94E467E11404EF0 /* Request.swift */; };
+		FE1F95F519342B9266EB69B23B4336CF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506E1E69449F46BD5C60CB1F20A37A3 /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1D5AF06D0F27870D3BA0BCBEBD0B4238 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E61CE3B6DFA1FE6B3E296965C76C0E10;
-			remoteInfo = MBProgressHUD;
-		};
-		A605C255DC5B5FD2DBF08F81F40320D9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4B2F30D90D85A544E9EFE2A49D392C25;
-			remoteInfo = Alamofire;
-		};
-		C34EC2A72B37E4CDBD95E65DA3CE1FC7 /* PBXContainerItemProxy */ = {
+		A8D38BB98C76CC4D132757BEC6B134D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F9ED1367709F161D35823376BC9617CA;
 			remoteInfo = IHKeyboardDismissing;
 		};
+		C7FD29F22519F95FFCFA86E28DE034CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2189A727627A385231CCBFC87D36327A;
+			remoteInfo = IHKeyboardAvoiding;
+		};
+		CDAEF4385C3A6FADC4A84530FE332CE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E61CE3B6DFA1FE6B3E296965C76C0E10;
+			remoteInfo = MBProgressHUD;
+		};
+		D5BC4D8ABC02E0AC01E1DBB5B4CBD4FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07B44F3D4FE37F5975B0F241449F01D4;
+			remoteInfo = TPKeyboardAvoiding;
+		};
+		E9DCB28219BBDED5B13ECBB978E40A3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B2F30D90D85A544E9EFE2A49D392C25;
+			remoteInfo = Alamofire;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BA97364205C9AE05451A8E0688487F4 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
-		0C882D99F24BF8B3671F65D683D4D198 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11061391F08FB8A19797B2243EC7D2F4 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		0470671F8055D179619EE9C5E899137A /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
+		05036BD362D202F37AE27057F924B872 /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		0A22C966D12B575E6E3851BFBC908FDA /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		0A9CC8466C538CDADBA4575B8359BD36 /* IHKeyboardAvoiding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IHKeyboardAvoiding.h; path = Classes/IHKeyboardAvoiding.h; sourceTree = "<group>"; };
+		0EDAF8B731E646FFD8A452772299A5E7 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingScrollView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		112B9AB544EDAA1B578F202590C3ADE1 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		1264325C4220C1BDC3C73E5D496129FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		163EEFB3AAC34470044247650F67F612 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
-		1DE9032AD46E8A08B16B6D3C75C6C0A0 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		1E3ABD8BA1CA117F46EEBCA3AF458ECC /* IHKeyboardDismissing.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = IHKeyboardDismissing.modulemap; sourceTree = "<group>"; };
-		25315F2D137762E66784DB273275102A /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
-		2A8570CD9F17DB091541C729ABE34C0C /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		183033AA1517A962DF7AB31191B0148A /* IHKeyboardAvoiding-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IHKeyboardAvoiding-prefix.pch"; sourceTree = "<group>"; };
+		1C9D6AB4735FF8888F30246664C6A1BD /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		1CCB59EA3BC583E7658B12E1AD240026 /* IHKeyboardDismissing-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IHKeyboardDismissing-prefix.pch"; sourceTree = "<group>"; };
+		1F841D9DBDE9CA01B5D20384C5D88719 /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		1FE962CE3C4C762247F273E042252CA3 /* IHKeyboardAvoiding.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IHKeyboardAvoiding.xcconfig; sourceTree = "<group>"; };
+		26C915A072C90D6670425F65CAA7F3D2 /* IHKeyboardAvoiding-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IHKeyboardAvoiding-dummy.m"; sourceTree = "<group>"; };
+		27BC6A2D0E91731B27A3829CBEA16ABF /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TPKeyboardAvoidingAdditions.h"; path = "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		2A031E7F4E8E717C2B43AEBD7E1E04A9 /* IHKeyboardDismissing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IHKeyboardDismissing.xcconfig; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
-		2EB8F6F4AB8E86C979CDE8E0DBDBA034 /* IHKeyboardDismissing-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IHKeyboardDismissing-prefix.pch"; sourceTree = "<group>"; };
-		3A0381AE72A78375B902F0B35A329FFF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AE36C300865D9390217778297DFF495 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
-		43844FB5BDA4128380D6C47E10872628 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		4A94EA633342EF475BA100B069C6A975 /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
-		4B0AD20F58BCE286E5F7B20D6F7748D4 /* IHKeyboardDismissing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IHKeyboardDismissing.h; path = Classes/IHKeyboardDismissing.h; sourceTree = "<group>"; };
-		52C6D6F862A3CC49B2A3CCE92BE9A246 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D90AD12E7C14614C2A7D0331E59C696 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		5FCE19796600319682A458E9662566FE /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
-		667E02474320711FBFABEE3785D08A8E /* IHKeyboardDismissing-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IHKeyboardDismissing-dummy.m"; sourceTree = "<group>"; };
-		689BA41C2438B9F86619C5F307633A27 /* IHKeyboardDismissing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IHKeyboardDismissing.m; path = Classes/IHKeyboardDismissing.m; sourceTree = "<group>"; };
+		30B8C235B5FCF022AE15DCB299353810 /* IHKeyboardAvoiding.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = IHKeyboardAvoiding.modulemap; sourceTree = "<group>"; };
+		4009C8BFC3F120236B35BC988193DB1B /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
+		46EEBDC9A564BC2F911E13C58422D227 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A90B2BDD4CFA7D2F10CC22C8F2EEABC /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
+		52B2BCECB68BC0C4BA7B907B143E3F70 /* IHKeyboardAvoiding-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IHKeyboardAvoiding-umbrella.h"; sourceTree = "<group>"; };
+		58BA12FCBE9A15104E018DE0C72E27C5 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
+		6506E1E69449F46BD5C60CB1F20A37A3 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
 		6E093D627869B650AB8D6411D2DE6B7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		77F65BFE0154FE2C80745FAE411B6A06 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		78C395B28720BD3D16663C6AE6DCA3E0 /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		6E8322F8B9EEB9B152B7DFB197C6865E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7007F3A0053B4F6822F55B8802643FA7 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		728D38120E94F012BA2D5B53F5679CC3 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingCollectionView.h; path = TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		73199E0596829488C101616BF168A959 /* IHKeyboardAvoiding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IHKeyboardAvoiding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78AED3CEC11B110CA0D390E5079943FC /* IHKeyboardDismissing-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IHKeyboardDismissing-umbrella.h"; sourceTree = "<group>"; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
-		80636A9ACE18E691E3C90C5E16D5E64A /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		7BD72CF36F54AD8C1AD7F43749A4AC97 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81930BB980D790291FF30D8B6A8049FB /* IHKeyboardDismissing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IHKeyboardDismissing.m; path = Classes/IHKeyboardDismissing.m; sourceTree = "<group>"; };
+		834C8FADDF49E7FD1DC69A7AA25967D8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85D4C0260B44E37B53046ADA860AD061 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		85E2C8B7132B8541AB638F7E271F75F2 /* TPKeyboardAvoiding-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TPKeyboardAvoiding-dummy.m"; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		8C4BD9447CA34A094DABD4C241A72222 /* IHKeyboardDismissing-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IHKeyboardDismissing-umbrella.h"; sourceTree = "<group>"; };
-		8E9C18E8BFAF7F6BC210F702FE622132 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		94012415C98B211669B5E6123D0C933A /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		90FE5153365C2012EAE8B77A96965A92 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		92A94BD26F327C0D2A56B395BD806B93 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		B10CC2361830780CCFC301D9BADFE9A7 /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
-		B64BD8DAEBADA502BFB3B9983F3B4225 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6A5A6E0DF7BAC20A2C4E8828AF68AFB /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
-		B970EB708535FECC7CFA0D8F3157568E /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99088FC4C7E0A8483D2E689EA4757719 /* TPKeyboardAvoiding-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TPKeyboardAvoiding-umbrella.h"; sourceTree = "<group>"; };
+		9D2AF9A560E40F9B0F620788997EB59F /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingCollectionView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		A09CD6E962F85FAFD34C250BEDD850FB /* TPKeyboardAvoiding-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TPKeyboardAvoiding-prefix.pch"; sourceTree = "<group>"; };
+		A3C71A1A0F567567F084AFD96567A42F /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		A3ED359C77591555C4395F6CF90AF558 /* TPKeyboardAvoiding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPKeyboardAvoiding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A491D4E3852390649577FE75F9A97211 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		A5821B4AD868F404CF70A8820B9BB830 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		A63FCA8E916404FBEA4CF7CB545A24F0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+TPKeyboardAvoidingAdditions.m"; path = "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		A9DFBE1E1721657E7B59C37B2F2DFBC2 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		B11D5A88C48A10A3D94E467E11404EF0 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		B131EFEC2250F4C8263068100065881D /* IHKeyboardDismissing-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IHKeyboardDismissing-dummy.m"; sourceTree = "<group>"; };
+		B5A29B063121ABDF91CA810614745159 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BC0F02AC1A52FA86AA758505C75C555D /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		BAC78ABBF4A3C655F66CE8B927CA05F1 /* TPKeyboardAvoiding.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TPKeyboardAvoiding.modulemap; sourceTree = "<group>"; };
+		BBE441CC741A379F4A1761DB8FE11E4E /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingScrollView.h; path = TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		C1E094A5D8D6E3E02C905B0C876D4EDB /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		C3F5234CDDBA9EBACD811C8880DA1812 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		C46BBF14D99049800E7994C4CEC11E9B /* IHKeyboardDismissing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IHKeyboardDismissing.h; path = Classes/IHKeyboardDismissing.h; sourceTree = "<group>"; };
+		C4E0DD4F89A9A3FFAC73F981508E222C /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		C84029BEE7D9DD7115A099D7E0030046 /* IHKeyboardDismissing.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = IHKeyboardDismissing.modulemap; sourceTree = "<group>"; };
+		C8AA9A3B01F33CF1FBC07B0D4F18DF80 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D108019EAC4C0769E475C432EE59CB4E /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
-		D2E18FCAFE3F0C8A575854C8150A83BE /* IHKeyboardDismissing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IHKeyboardDismissing.xcconfig; sourceTree = "<group>"; };
+		D4EB574E62A73C969EFB6852B0E95E1F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0829C142C0E385E123CAB92C18EBB4 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		E0C86BF7532259688D592A61B48BB594 /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
-		E3584841F9179D655780022DA738C1AD /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		E39378491477627818D7B315693AC800 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		E41C3DD397B8A9F9504E8EA2077D691D /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		DA862B8169C68640D8532F4FB20A534C /* TPKeyboardAvoiding.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TPKeyboardAvoiding.xcconfig; sourceTree = "<group>"; };
+		E55996CDED8A94EB1B43AA3AB3994546 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB921CD74530932C139E8000C85F906B /* IHKeyboardDismissing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IHKeyboardDismissing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC54AFDBC7D3348902673621E599C3D1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDFF59ED630A006DF71F03947B2959BB /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		E8E8CD0E7E143E1006B4EEC960D73A56 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingTableView.h; path = TPKeyboardAvoiding/TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		EC812B882DFA34F731359EED95AA025F /* IHKeyboardDismissing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IHKeyboardDismissing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECDD2A54F38F945E3349618419C6CF55 /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
+		FAF2528FE70B5A8B29E1A93BAD1686A0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBC86845D5155A646778A98985430A45 /* IHKeyboardAvoiding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IHKeyboardAvoiding.m; path = Classes/IHKeyboardAvoiding.m; sourceTree = "<group>"; };
+		FE8AB4C3CAAEB70701BB2D52EB3CD270 /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +178,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				61137E758A762DBADEAAE6454CB06EA7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		337170F666502C5C243995235862ED57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1455FA6CBD2053394A7ED31A7370D154 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,29 +206,94 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DDE734427157B92823B0880788F2C705 /* Frameworks */ = {
+		EB2A73E1106128228ECDB2ABD4B3B63D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4192D3F25D17B0968310940CC63A7D1F /* Foundation.framework in Frameworks */,
+				4496E8C150CF240D3D5266DA96FB374F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE2A30466E8EC1126CAF2EB2395C3ACC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E96FC28AE44923D1FC9B87876C973718 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22692D5462CE9DD1646E3BF46FB00707 /* Support Files */ = {
+		08F0283A33596779DCFB6901AA79922C /* IHKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
-				1E3ABD8BA1CA117F46EEBCA3AF458ECC /* IHKeyboardDismissing.modulemap */,
-				D2E18FCAFE3F0C8A575854C8150A83BE /* IHKeyboardDismissing.xcconfig */,
-				667E02474320711FBFABEE3785D08A8E /* IHKeyboardDismissing-dummy.m */,
-				2EB8F6F4AB8E86C979CDE8E0DBDBA034 /* IHKeyboardDismissing-prefix.pch */,
-				8C4BD9447CA34A094DABD4C241A72222 /* IHKeyboardDismissing-umbrella.h */,
-				0C882D99F24BF8B3671F65D683D4D198 /* Info.plist */,
+				0A9CC8466C538CDADBA4575B8359BD36 /* IHKeyboardAvoiding.h */,
+				FBC86845D5155A646778A98985430A45 /* IHKeyboardAvoiding.m */,
+				D327AD4A6EC1E7EFD0B2378E1853B904 /* Support Files */,
+			);
+			path = IHKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		14E413E5DC4EEAE23BE87A1B4908A295 /* IHKeyboardDismissing */ = {
+			isa = PBXGroup;
+			children = (
+				C46BBF14D99049800E7994C4CEC11E9B /* IHKeyboardDismissing.h */,
+				81930BB980D790291FF30D8B6A8049FB /* IHKeyboardDismissing.m */,
+				421C8CFAC05405A1462DA91A10748639 /* Support Files */,
+			);
+			path = IHKeyboardDismissing;
+			sourceTree = "<group>";
+		};
+		152CC08DFCA8E8843D69558D35EEDB5C /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				C4E0DD4F89A9A3FFAC73F981508E222C /* Alamofire.swift */,
+				4A90B2BDD4CFA7D2F10CC22C8F2EEABC /* Download.swift */,
+				6506E1E69449F46BD5C60CB1F20A37A3 /* Error.swift */,
+				FE8AB4C3CAAEB70701BB2D52EB3CD270 /* Manager.swift */,
+				A9DFBE1E1721657E7B59C37B2F2DFBC2 /* MultipartFormData.swift */,
+				1C9D6AB4735FF8888F30246664C6A1BD /* ParameterEncoding.swift */,
+				B11D5A88C48A10A3D94E467E11404EF0 /* Request.swift */,
+				C1E094A5D8D6E3E02C905B0C876D4EDB /* ResponseSerialization.swift */,
+				92A94BD26F327C0D2A56B395BD806B93 /* Result.swift */,
+				0A22C966D12B575E6E3851BFBC908FDA /* ServerTrustPolicy.swift */,
+				4009C8BFC3F120236B35BC988193DB1B /* Stream.swift */,
+				58BA12FCBE9A15104E018DE0C72E27C5 /* Upload.swift */,
+				A491D4E3852390649577FE75F9A97211 /* Validation.swift */,
+				15E2F7737B684A2BF1A143BAEDBC672C /* Support Files */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		15E2F7737B684A2BF1A143BAEDBC672C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				85D4C0260B44E37B53046ADA860AD061 /* Alamofire.modulemap */,
+				DA0829C142C0E385E123CAB92C18EBB4 /* Alamofire.xcconfig */,
+				C3F5234CDDBA9EBACD811C8880DA1812 /* Alamofire-dummy.m */,
+				A5821B4AD868F404CF70A8820B9BB830 /* Alamofire-prefix.pch */,
+				90FE5153365C2012EAE8B77A96965A92 /* Alamofire-umbrella.h */,
+				FAF2528FE70B5A8B29E1A93BAD1686A0 /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/IHKeyboardDismissing";
+			path = "../Target Support Files/Alamofire";
+			sourceTree = "<group>";
+		};
+		256079850122C59F48397F1CE128DB9C /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				728D38120E94F012BA2D5B53F5679CC3 /* TPKeyboardAvoidingCollectionView.h */,
+				9D2AF9A560E40F9B0F620788997EB59F /* TPKeyboardAvoidingCollectionView.m */,
+				BBE441CC741A379F4A1761DB8FE11E4E /* TPKeyboardAvoidingScrollView.h */,
+				0EDAF8B731E646FFD8A452772299A5E7 /* TPKeyboardAvoidingScrollView.m */,
+				E8E8CD0E7E143E1006B4EEC960D73A56 /* TPKeyboardAvoidingTableView.h */,
+				7007F3A0053B4F6822F55B8802643FA7 /* TPKeyboardAvoidingTableView.m */,
+				27BC6A2D0E91731B27A3829CBEA16ABF /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				A63FCA8E916404FBEA4CF7CB545A24F0 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+				8056D9945F969B180E277FCAA16FFFE9 /* Support Files */,
+			);
+			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
 		36C06A02A00144C64CD7282BA31846BD /* iOS */ = {
@@ -178,6 +305,20 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		421C8CFAC05405A1462DA91A10748639 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C84029BEE7D9DD7115A099D7E0030046 /* IHKeyboardDismissing.modulemap */,
+				2A031E7F4E8E717C2B43AEBD7E1E04A9 /* IHKeyboardDismissing.xcconfig */,
+				B131EFEC2250F4C8263068100065881D /* IHKeyboardDismissing-dummy.m */,
+				1CCB59EA3BC583E7658B12E1AD240026 /* IHKeyboardDismissing-prefix.pch */,
+				78AED3CEC11B110CA0D390E5079943FC /* IHKeyboardDismissing-umbrella.h */,
+				6E8322F8B9EEB9B152B7DFB197C6865E /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IHKeyboardDismissing";
+			sourceTree = "<group>";
+		};
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,29 +327,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4EF037E155721A38B43E7FAEC0E9C248 /* Products */ = {
+		72874F8AA2DAFC4E93EB0CE5ACA2ED39 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B970EB708535FECC7CFA0D8F3157568E /* Alamofire.framework */,
-				EB921CD74530932C139E8000C85F906B /* IHKeyboardDismissing.framework */,
-				52C6D6F862A3CC49B2A3CCE92BE9A246 /* MBProgressHUD.framework */,
-				B64BD8DAEBADA502BFB3B9983F3B4225 /* Pods.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		629794D0AE19749A05691F526E5DB784 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				BC0F02AC1A52FA86AA758505C75C555D /* Alamofire.modulemap */,
-				E39378491477627818D7B315693AC800 /* Alamofire.xcconfig */,
-				5D90AD12E7C14614C2A7D0331E59C696 /* Alamofire-dummy.m */,
-				8E9C18E8BFAF7F6BC210F702FE622132 /* Alamofire-prefix.pch */,
-				2A8570CD9F17DB091541C729ABE34C0C /* Alamofire-umbrella.h */,
-				EC54AFDBC7D3348902673621E599C3D1 /* Info.plist */,
+				46EEBDC9A564BC2F911E13C58422D227 /* Info.plist */,
+				0470671F8055D179619EE9C5E899137A /* MBProgressHUD.modulemap */,
+				ECDD2A54F38F945E3349618419C6CF55 /* MBProgressHUD.xcconfig */,
+				A3C71A1A0F567567F084AFD96567A42F /* MBProgressHUD-dummy.m */,
+				05036BD362D202F37AE27057F924B872 /* MBProgressHUD-prefix.pch */,
+				1F841D9DBDE9CA01B5D20384C5D88719 /* MBProgressHUD-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
+			path = "../Target Support Files/MBProgressHUD";
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -234,40 +364,24 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				7DE855BD74E2C456FA50E093AB9604D3 /* Pods */,
-				4EF037E155721A38B43E7FAEC0E9C248 /* Products */,
+				C0A27FED95F60FEC91FAD1951303F728 /* Pods */,
+				EE8DD1C51D8F8FC44464B152ACCC560F /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		7DE855BD74E2C456FA50E093AB9604D3 /* Pods */ = {
+		8056D9945F969B180E277FCAA16FFFE9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EA4D2C14ECC12E421FD5B1B295C5FF57 /* Alamofire */,
-				B3AF67961716301A5917162E8D6A0926 /* IHKeyboardDismissing */,
-				9AC8F92BE335716AC84F5A9E744C57C6 /* MBProgressHUD */,
+				7BD72CF36F54AD8C1AD7F43749A4AC97 /* Info.plist */,
+				BAC78ABBF4A3C655F66CE8B927CA05F1 /* TPKeyboardAvoiding.modulemap */,
+				DA862B8169C68640D8532F4FB20A534C /* TPKeyboardAvoiding.xcconfig */,
+				85E2C8B7132B8541AB638F7E271F75F2 /* TPKeyboardAvoiding-dummy.m */,
+				A09CD6E962F85FAFD34C250BEDD850FB /* TPKeyboardAvoiding-prefix.pch */,
+				99088FC4C7E0A8483D2E689EA4757719 /* TPKeyboardAvoiding-umbrella.h */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		9AC8F92BE335716AC84F5A9E744C57C6 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				E3584841F9179D655780022DA738C1AD /* MBProgressHUD.h */,
-				77F65BFE0154FE2C80745FAE411B6A06 /* MBProgressHUD.m */,
-				FF7FBE33E153FCDB8A5DB55C280EEEB7 /* Support Files */,
-			);
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		B3AF67961716301A5917162E8D6A0926 /* IHKeyboardDismissing */ = {
-			isa = PBXGroup;
-			children = (
-				4B0AD20F58BCE286E5F7B20D6F7748D4 /* IHKeyboardDismissing.h */,
-				689BA41C2438B9F86619C5F307633A27 /* IHKeyboardDismissing.m */,
-				22692D5462CE9DD1646E3BF46FB00707 /* Support Files */,
-			);
-			path = IHKeyboardDismissing;
+			name = "Support Files";
+			path = "../Target Support Files/TPKeyboardAvoiding";
 			sourceTree = "<group>";
 		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
@@ -278,39 +392,53 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		EA4D2C14ECC12E421FD5B1B295C5FF57 /* Alamofire */ = {
+		C0A27FED95F60FEC91FAD1951303F728 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				43844FB5BDA4128380D6C47E10872628 /* Alamofire.swift */,
-				0BA97364205C9AE05451A8E0688487F4 /* Download.swift */,
-				3AE36C300865D9390217778297DFF495 /* Error.swift */,
-				5FCE19796600319682A458E9662566FE /* Manager.swift */,
-				11061391F08FB8A19797B2243EC7D2F4 /* MultipartFormData.swift */,
-				E41C3DD397B8A9F9504E8EA2077D691D /* ParameterEncoding.swift */,
-				B6A5A6E0DF7BAC20A2C4E8828AF68AFB /* Request.swift */,
-				80636A9ACE18E691E3C90C5E16D5E64A /* ResponseSerialization.swift */,
-				EDFF59ED630A006DF71F03947B2959BB /* Result.swift */,
-				1DE9032AD46E8A08B16B6D3C75C6C0A0 /* ServerTrustPolicy.swift */,
-				E0C86BF7532259688D592A61B48BB594 /* Stream.swift */,
-				25315F2D137762E66784DB273275102A /* Upload.swift */,
-				163EEFB3AAC34470044247650F67F612 /* Validation.swift */,
-				629794D0AE19749A05691F526E5DB784 /* Support Files */,
+				152CC08DFCA8E8843D69558D35EEDB5C /* Alamofire */,
+				08F0283A33596779DCFB6901AA79922C /* IHKeyboardAvoiding */,
+				14E413E5DC4EEAE23BE87A1B4908A295 /* IHKeyboardDismissing */,
+				F3618169E086031402458B5A1FB2BF87 /* MBProgressHUD */,
+				256079850122C59F48397F1CE128DB9C /* TPKeyboardAvoiding */,
 			);
-			path = Alamofire;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		FF7FBE33E153FCDB8A5DB55C280EEEB7 /* Support Files */ = {
+		D327AD4A6EC1E7EFD0B2378E1853B904 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A0381AE72A78375B902F0B35A329FFF /* Info.plist */,
-				D108019EAC4C0769E475C432EE59CB4E /* MBProgressHUD.modulemap */,
-				B10CC2361830780CCFC301D9BADFE9A7 /* MBProgressHUD.xcconfig */,
-				4A94EA633342EF475BA100B069C6A975 /* MBProgressHUD-dummy.m */,
-				94012415C98B211669B5E6123D0C933A /* MBProgressHUD-prefix.pch */,
-				78C395B28720BD3D16663C6AE6DCA3E0 /* MBProgressHUD-umbrella.h */,
+				30B8C235B5FCF022AE15DCB299353810 /* IHKeyboardAvoiding.modulemap */,
+				1FE962CE3C4C762247F273E042252CA3 /* IHKeyboardAvoiding.xcconfig */,
+				26C915A072C90D6670425F65CAA7F3D2 /* IHKeyboardAvoiding-dummy.m */,
+				183033AA1517A962DF7AB31191B0148A /* IHKeyboardAvoiding-prefix.pch */,
+				52B2BCECB68BC0C4BA7B907B143E3F70 /* IHKeyboardAvoiding-umbrella.h */,
+				C8AA9A3B01F33CF1FBC07B0D4F18DF80 /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/MBProgressHUD";
+			path = "../Target Support Files/IHKeyboardAvoiding";
+			sourceTree = "<group>";
+		};
+		EE8DD1C51D8F8FC44464B152ACCC560F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4EB574E62A73C969EFB6852B0E95E1F /* Alamofire.framework */,
+				73199E0596829488C101616BF168A959 /* IHKeyboardAvoiding.framework */,
+				EC812B882DFA34F731359EED95AA025F /* IHKeyboardDismissing.framework */,
+				B5A29B063121ABDF91CA810614745159 /* MBProgressHUD.framework */,
+				834C8FADDF49E7FD1DC69A7AA25967D8 /* Pods.framework */,
+				A3ED359C77591555C4395F6CF90AF558 /* TPKeyboardAvoiding.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F3618169E086031402458B5A1FB2BF87 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E55996CDED8A94EB1B43AA3AB3994546 /* MBProgressHUD.h */,
+				112B9AB544EDAA1B578F202590C3ADE1 /* MBProgressHUD.m */,
+				72874F8AA2DAFC4E93EB0CE5ACA2ED39 /* Support Files */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +453,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72127855DEF0650E71FB4D4D14D3C139 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D864929261413E9B1A319C523E1F6D0 /* IHKeyboardAvoiding-umbrella.h in Headers */,
+				957AD0F3A0CAFE3A715A5145EDE60E02 /* IHKeyboardAvoiding.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9ECCB5570B7FBF8D348655FFA0FE9C90 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,11 +471,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9A06241B5EEE95EEACFC5E89CE2EDA5 /* Headers */ = {
+		BE761F2C48BD3F7705D3F11B2BEF1E88 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C9E7479A6AA2DA35CFAC40613690A98 /* Pods-umbrella.h in Headers */,
+				91306B8883C77F8DD20BB56C6A6DB6CC /* TPKeyboardAvoiding-umbrella.h in Headers */,
+				A570CAE6C8D04D50626854673329D299 /* TPKeyboardAvoidingCollectionView.h in Headers */,
+				018FB67C39D069E265F41725BE420325 /* TPKeyboardAvoidingScrollView.h in Headers */,
+				75A30EA3F8FD8A90E849AA130B14605D /* TPKeyboardAvoidingTableView.h in Headers */,
+				38D18D4ED0732AD1F1E55562F5041B5B /* UIScrollView+TPKeyboardAvoidingAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDB1FA23F69B6ECADB4C969DA66BF250 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A89105000E9E8F345BB57D014DAD8E0F /* Pods-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,24 +502,60 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		038992707B616EAE34CD4B70E57425CE /* Pods */ = {
+		07B44F3D4FE37F5975B0F241449F01D4 /* TPKeyboardAvoiding */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5EE59059F0BD0AB039AA833163B6E14D /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = C320D1DEF5A19945F2E8C042B0A754B9 /* Build configuration list for PBXNativeTarget "TPKeyboardAvoiding" */;
 			buildPhases = (
-				53A1157C686E5C9B645D0EC5138B70A4 /* Sources */,
-				DDE734427157B92823B0880788F2C705 /* Frameworks */,
-				C9A06241B5EEE95EEACFC5E89CE2EDA5 /* Headers */,
+				2710FA8295768D0C3ABEB7F27895F719 /* Sources */,
+				EE2A30466E8EC1126CAF2EB2395C3ACC /* Frameworks */,
+				BE761F2C48BD3F7705D3F11B2BEF1E88 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1AE3764785AE16B964B53F7C9C486F02 /* PBXTargetDependency */,
-				0D683312328ACFB3409BAF05379523E0 /* PBXTargetDependency */,
-				C60DDE2470324A2FABBE03E8AE6B404F /* PBXTargetDependency */,
+			);
+			name = TPKeyboardAvoiding;
+			productName = TPKeyboardAvoiding;
+			productReference = A3ED359C77591555C4395F6CF90AF558 /* TPKeyboardAvoiding.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		10661085A46BFC336F45F0646BABB92E /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A6D8EAB845F6DD8A553A32DE368B334 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				412246135474AC9FC5FE9F9AF4037370 /* Sources */,
+				EB2A73E1106128228ECDB2ABD4B3B63D /* Frameworks */,
+				EDB1FA23F69B6ECADB4C969DA66BF250 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4AE70664620D200ED7B393910E4A6D77 /* PBXTargetDependency */,
+				87B6E3A285C75F692FC7489A4E3F67C6 /* PBXTargetDependency */,
+				95631B88EA66C22B329A935A0C1E63FD /* PBXTargetDependency */,
+				55D50F504B6CAD0C17594299C9FC799A /* PBXTargetDependency */,
+				17E259B313FB5F7CA9CF6EB9BE7957B0 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = B64BD8DAEBADA502BFB3B9983F3B4225 /* Pods.framework */;
+			productReference = 834C8FADDF49E7FD1DC69A7AA25967D8 /* Pods.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2189A727627A385231CCBFC87D36327A /* IHKeyboardAvoiding */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB32C197C6006011AFC08A832C209676 /* Build configuration list for PBXNativeTarget "IHKeyboardAvoiding" */;
+			buildPhases = (
+				417BB8D0BE45CE2941A64558B8EA3259 /* Sources */,
+				337170F666502C5C243995235862ED57 /* Frameworks */,
+				72127855DEF0650E71FB4D4D14D3C139 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IHKeyboardAvoiding;
+			productName = IHKeyboardAvoiding;
+			productReference = 73199E0596829488C101616BF168A959 /* IHKeyboardAvoiding.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4B2F30D90D85A544E9EFE2A49D392C25 /* Alamofire */ = {
@@ -387,7 +572,7 @@
 			);
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = B970EB708535FECC7CFA0D8F3157568E /* Alamofire.framework */;
+			productReference = D4EB574E62A73C969EFB6852B0E95E1F /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E61CE3B6DFA1FE6B3E296965C76C0E10 /* MBProgressHUD */ = {
@@ -404,7 +589,7 @@
 			);
 			name = MBProgressHUD;
 			productName = MBProgressHUD;
-			productReference = 52C6D6F862A3CC49B2A3CCE92BE9A246 /* MBProgressHUD.framework */;
+			productReference = B5A29B063121ABDF91CA810614745159 /* MBProgressHUD.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F9ED1367709F161D35823376BC9617CA /* IHKeyboardDismissing */ = {
@@ -421,7 +606,7 @@
 			);
 			name = IHKeyboardDismissing;
 			productName = IHKeyboardDismissing;
-			productReference = EB921CD74530932C139E8000C85F906B /* IHKeyboardDismissing.framework */;
+			productReference = EC812B882DFA34F731359EED95AA025F /* IHKeyboardDismissing.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -441,14 +626,16 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 4EF037E155721A38B43E7FAEC0E9C248 /* Products */;
+			productRefGroup = EE8DD1C51D8F8FC44464B152ACCC560F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				4B2F30D90D85A544E9EFE2A49D392C25 /* Alamofire */,
+				2189A727627A385231CCBFC87D36327A /* IHKeyboardAvoiding */,
 				F9ED1367709F161D35823376BC9617CA /* IHKeyboardDismissing */,
 				E61CE3B6DFA1FE6B3E296965C76C0E10 /* MBProgressHUD */,
-				038992707B616EAE34CD4B70E57425CE /* Pods */,
+				10661085A46BFC336F45F0646BABB92E /* Pods */,
+				07B44F3D4FE37F5975B0F241449F01D4 /* TPKeyboardAvoiding */,
 			);
 		};
 /* End PBXProject section */
@@ -463,6 +650,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2710FA8295768D0C3ABEB7F27895F719 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC712F44B8FB62B0EAB70572B2D0D9BD /* TPKeyboardAvoiding-dummy.m in Sources */,
+				5281014E7BC9B01A6ACAC8FCC1AF0AA7 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				33E5A11AA9BE564888FCA3AABC00CBD2 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				69EC7F8BEA932A95636699040F547915 /* TPKeyboardAvoidingTableView.m in Sources */,
+				AA5478BF19EA26B6711607463AE1A436 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2DAFB06DF9D4B76E7F94DA2B8A63DD59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -472,11 +671,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53A1157C686E5C9B645D0EC5138B70A4 /* Sources */ = {
+		412246135474AC9FC5FE9F9AF4037370 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				379A6B78DA6F2D0074F689D0BA6B6BB1 /* Pods-dummy.m in Sources */,
+				7292C1A91D0E0FC62D2B4945E181BE37 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		417BB8D0BE45CE2941A64558B8EA3259 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E952CDEB8BADD135CC4F33F9252B3992 /* IHKeyboardAvoiding-dummy.m in Sources */,
+				D93F07A18882C5D4027393701821C6AD /* IHKeyboardAvoiding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,30 +712,42 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0D683312328ACFB3409BAF05379523E0 /* PBXTargetDependency */ = {
+		17E259B313FB5F7CA9CF6EB9BE7957B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = IHKeyboardDismissing;
-			target = F9ED1367709F161D35823376BC9617CA /* IHKeyboardDismissing */;
-			targetProxy = C34EC2A72B37E4CDBD95E65DA3CE1FC7 /* PBXContainerItemProxy */;
+			name = TPKeyboardAvoiding;
+			target = 07B44F3D4FE37F5975B0F241449F01D4 /* TPKeyboardAvoiding */;
+			targetProxy = D5BC4D8ABC02E0AC01E1DBB5B4CBD4FD /* PBXContainerItemProxy */;
 		};
-		1AE3764785AE16B964B53F7C9C486F02 /* PBXTargetDependency */ = {
+		4AE70664620D200ED7B393910E4A6D77 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = 4B2F30D90D85A544E9EFE2A49D392C25 /* Alamofire */;
-			targetProxy = A605C255DC5B5FD2DBF08F81F40320D9 /* PBXContainerItemProxy */;
+			targetProxy = E9DCB28219BBDED5B13ECBB978E40A3A /* PBXContainerItemProxy */;
 		};
-		C60DDE2470324A2FABBE03E8AE6B404F /* PBXTargetDependency */ = {
+		55D50F504B6CAD0C17594299C9FC799A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MBProgressHUD;
 			target = E61CE3B6DFA1FE6B3E296965C76C0E10 /* MBProgressHUD */;
-			targetProxy = 1D5AF06D0F27870D3BA0BCBEBD0B4238 /* PBXContainerItemProxy */;
+			targetProxy = CDAEF4385C3A6FADC4A84530FE332CE2 /* PBXContainerItemProxy */;
+		};
+		87B6E3A285C75F692FC7489A4E3F67C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IHKeyboardAvoiding;
+			target = 2189A727627A385231CCBFC87D36327A /* IHKeyboardAvoiding */;
+			targetProxy = C7FD29F22519F95FFCFA86E28DE034CA /* PBXContainerItemProxy */;
+		};
+		95631B88EA66C22B329A935A0C1E63FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IHKeyboardDismissing;
+			target = F9ED1367709F161D35823376BC9617CA /* IHKeyboardDismissing */;
+			targetProxy = A8D38BB98C76CC4D132757BEC6B134D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0967A15B13E7B7A12C7016A136E81A68 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2E18FCAFE3F0C8A575854C8150A83BE /* IHKeyboardDismissing.xcconfig */;
+			baseConfigurationReference = 2A031E7F4E8E717C2B43AEBD7E1E04A9 /* IHKeyboardDismissing.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -554,7 +774,7 @@
 		};
 		141E9F1626FE34EE75CDC2B7581B19F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B10CC2361830780CCFC301D9BADFE9A7 /* MBProgressHUD.xcconfig */;
+			baseConfigurationReference = ECDD2A54F38F945E3349618419C6CF55 /* MBProgressHUD.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -579,34 +799,7 @@
 			};
 			name = Debug;
 		};
-		35E051F38F6CD6F0DA162AD2E305F671 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2E18FCAFE3F0C8A575854C8150A83BE /* IHKeyboardDismissing.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/IHKeyboardDismissing/IHKeyboardDismissing-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/IHKeyboardDismissing/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/IHKeyboardDismissing/IHKeyboardDismissing.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = IHKeyboardDismissing;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		60EF3EE6C607113317CB871D625425A8 /* Debug */ = {
+		143F8C98894BF2A88C5C602C2F65530E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */;
 			buildSettings = {
@@ -637,9 +830,9 @@
 			};
 			name = Debug;
 		};
-		69E61E992B82B6BFFAC115A28D93C6CF /* Release */ = {
+		15EF3BF6155EF0F8EC7CC1AC43BAFD63 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
+			baseConfigurationReference = DA862B8169C68640D8532F4FB20A534C /* TPKeyboardAvoiding.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -648,28 +841,79 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/TPKeyboardAvoiding/TPKeyboardAvoiding-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TPKeyboardAvoiding/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods;
+				MODULEMAP_FILE = "Target Support Files/TPKeyboardAvoiding/TPKeyboardAvoiding.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TPKeyboardAvoiding;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
+		};
+		35E051F38F6CD6F0DA162AD2E305F671 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A031E7F4E8E717C2B43AEBD7E1E04A9 /* IHKeyboardDismissing.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IHKeyboardDismissing/IHKeyboardDismissing-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IHKeyboardDismissing/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IHKeyboardDismissing/IHKeyboardDismissing.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = IHKeyboardDismissing;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		664CA2A2F9728EE419493FD1861250D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FE962CE3C4C762247F273E042252CA3 /* IHKeyboardAvoiding.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IHKeyboardAvoiding/IHKeyboardAvoiding-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IHKeyboardAvoiding/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IHKeyboardAvoiding/IHKeyboardAvoiding.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = IHKeyboardAvoiding;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		70B7F0C6A67FFEB0231B9578604C1F3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E39378491477627818D7B315693AC800 /* Alamofire.xcconfig */;
+			baseConfigurationReference = DA0829C142C0E385E123CAB92C18EBB4 /* Alamofire.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -696,7 +940,7 @@
 		};
 		9C65AA379D5885662980724FA4C9CFDD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E39378491477627818D7B315693AC800 /* Alamofire.xcconfig */;
+			baseConfigurationReference = DA0829C142C0E385E123CAB92C18EBB4 /* Alamofire.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -761,9 +1005,93 @@
 			};
 			name = Debug;
 		};
+		A7964F4910E974DBC59B8DB253D1EBC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA862B8169C68640D8532F4FB20A534C /* TPKeyboardAvoiding.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TPKeyboardAvoiding/TPKeyboardAvoiding-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TPKeyboardAvoiding/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TPKeyboardAvoiding/TPKeyboardAvoiding.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TPKeyboardAvoiding;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BE72039207181EA5AD11B46E611C4EB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FE962CE3C4C762247F273E042252CA3 /* IHKeyboardAvoiding.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IHKeyboardAvoiding/IHKeyboardAvoiding-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IHKeyboardAvoiding/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IHKeyboardAvoiding/IHKeyboardAvoiding.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = IHKeyboardAvoiding;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D8F814092C6B71FAB2ADC06D5F0DC1EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		EF9333AF1E81B83A4C56BE7DC73ABC82 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B10CC2361830780CCFC301D9BADFE9A7 /* MBProgressHUD.xcconfig */;
+			baseConfigurationReference = ECDD2A54F38F945E3349618419C6CF55 /* MBProgressHUD.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -843,20 +1171,38 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5EE59059F0BD0AB039AA833163B6E14D /* Build configuration list for PBXNativeTarget "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				60EF3EE6C607113317CB871D625425A8 /* Debug */,
-				69E61E992B82B6BFFAC115A28D93C6CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		70DA65F1729D88E78F64BE8BACBAD6AC /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C65AA379D5885662980724FA4C9CFDD /* Debug */,
 				70B7F0C6A67FFEB0231B9578604C1F3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A6D8EAB845F6DD8A553A32DE368B334 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				143F8C98894BF2A88C5C602C2F65530E /* Debug */,
+				D8F814092C6B71FAB2ADC06D5F0DC1EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C320D1DEF5A19945F2E8C042B0A754B9 /* Build configuration list for PBXNativeTarget "TPKeyboardAvoiding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15EF3BF6155EF0F8EC7CC1AC43BAFD63 /* Debug */,
+				A7964F4910E974DBC59B8DB253D1EBC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB32C197C6006011AFC08A832C209676 /* Build configuration list for PBXNativeTarget "IHKeyboardAvoiding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				664CA2A2F9728EE419493FD1861250D5 /* Debug */,
+				BE72039207181EA5AD11B46E611C4EB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

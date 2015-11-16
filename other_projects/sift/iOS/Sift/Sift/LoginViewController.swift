@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import IHKeyboardAvoiding
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet var mainVIew: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false);
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
+
+        IHKeyboardAvoiding.setAvoidingView(self.view, withTriggerView: self.view);
     }
     
     func dismissKeyboard() {

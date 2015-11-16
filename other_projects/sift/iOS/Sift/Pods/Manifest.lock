@@ -1,16 +1,22 @@
 PODS:
   - Alamofire (2.0.2)
+  - IHKeyboardAvoiding (2.5)
   - IHKeyboardDismissing (1.1)
   - MBProgressHUD (0.9.1)
+  - TPKeyboardAvoiding (1.2.10)
 
 DEPENDENCIES:
   - Alamofire (~> 2.0)
+  - IHKeyboardAvoiding
   - IHKeyboardDismissing
   - MBProgressHUD
+  - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  IHKeyboardAvoiding: 8f14fed93405dd2c44ce070a26f780d9e477538c
   IHKeyboardDismissing: 7c23d41da51ca22f6a1091b3cf852821a2461ac9
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  TPKeyboardAvoiding: 614ebec846ec28b83d548769297fa5fb56468904
 
 COCOAPODS: 0.39.0

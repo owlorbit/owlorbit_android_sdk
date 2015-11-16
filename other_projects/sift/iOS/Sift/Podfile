@@ -5,3 +5,5 @@ use_frameworks!
 pod 'Alamofire', '~> 2.0'
 pod 'MBProgressHUD'
 pod 'IHKeyboardDismissing'
+pod 'IHKeyboardAvoiding'
+pod 'TPKeyboardAvoiding'
