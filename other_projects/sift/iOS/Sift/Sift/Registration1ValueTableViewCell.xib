@@ -298,6 +298,10 @@
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="lblEmail" destination="gYu-hh-GTa" id="wn3-eQ-tAE"/>
+                <outlet property="lblPassword" destination="2YI-pQ-Fqm" id="hTF-2L-tyw"/>
+                <outlet property="lblPhoneNumber" destination="65r-ap-Zdd" id="zY7-BE-clQ"/>
+                <outlet property="lblRetypePassword" destination="GNs-RA-uMV" id="kY6-bf-ZL3"/>
                 <outlet property="txtEmail" destination="f7w-cN-9kM" id="fad-5o-wkZ"/>
                 <outlet property="txtPassword" destination="hew-iZ-AQJ" id="iVg-Sc-neQ"/>
                 <outlet property="txtPhoneNumber" destination="XDB-ys-2iS" id="aOf-tW-mtb"/>

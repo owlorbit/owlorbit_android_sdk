@@ -7,18 +7,21 @@
 //
 
 import UIKit
-import IHKeyboardAvoiding
 
-class LoginViewController: UIViewController {
 
-    @IBOutlet var mainVIew: UIView!
+class LoginViewController: UIViewController, LoginDelegate {
+
+    var data:NSMutableArray = [1];
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false);
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
 
-        IHKeyboardAvoiding.setAvoidingView(self.view, withTriggerView: self.view);
+        
+        self.tableView.registerNib(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: "LoginTableViewCell")
+        self.tableView.backgroundColor = UIColor.clearColor();
     }
     
     func dismissKeyboard() {
@@ -31,9 +34,33 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func btnRegisterTouchUp(sender: AnyObject) {
+    
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return LoginTableViewCell.cellHeight()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("LoginTableViewCell") as! LoginTableViewCell
+
+        cell.delegate = self;
+        cell.populate()
+        return cell
+    }
+    
+    func startRegistration(){
         var viewController : RegisterViewController = RegisterViewController();
-        self.navigationController!.pushViewController(viewController, animated: true) 
+        self.navigationController!.pushViewController(viewController, animated: true)        
+    }
+    
+    func signIn(username: String, password: String){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.setupLoggedInViewController()
     }
 
     @IBAction func btnSignInTouchUp(sender: AnyObject) {

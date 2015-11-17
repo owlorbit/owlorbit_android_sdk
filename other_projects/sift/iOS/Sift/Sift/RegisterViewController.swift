@@ -9,8 +9,11 @@
 import UIKit
 import IHKeyboardAvoiding
 
+
 class RegisterViewController: UIViewController, Registration1Delegate {
 
+    
+    
     @IBOutlet weak var btnBack: UIImageView!
     
     var data:NSMutableArray = [1];
@@ -59,11 +62,12 @@ class RegisterViewController: UIViewController, Registration1Delegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Registration1ValueTableViewCell") as! Registration1ValueTableViewCell
         cell.delegate = self
+        cell.populate()
         return cell
     }
     

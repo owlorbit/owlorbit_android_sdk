@@ -172,6 +172,10 @@
             </tableViewCellContentView>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="txtFirstName" destination="f7w-cN-9kM" id="Bgm-CR-I4i"/>
+                <outlet property="txtLastName" destination="XDB-ys-2iS" id="veo-kB-2Yg"/>
+            </connections>
             <point key="canvasLocation" x="318" y="242.5"/>
         </tableViewCell>
     </objects>

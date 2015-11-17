@@ -18,6 +18,11 @@
 		B870CECD1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CECB1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib */; };
 		B870CED01BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CECE1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift */; };
 		B870CED11BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CECF1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib */; };
+		B870CED51BFA9D2700F47929 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CED31BFA9D2700F47929 /* LoginTableViewCell.swift */; };
+		B870CED61BFA9D2700F47929 /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CED41BFA9D2700F47929 /* LoginTableViewCell.xib */; };
+		B870CED81BFA9E4100F47929 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CED71BFA9E4100F47929 /* LoginViewController.xib */; };
+		B870CEE31BFAF47800F47929 /* RegistrationNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEE21BFAF47800F47929 /* RegistrationNextView.swift */; };
+		B870CEE51BFAF48100F47929 /* RegistrationNextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */; };
 		B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A291BEB15CE00BE05ED /* AppDelegate.swift */; };
 		B8792A2C1BEB15CE00BE05ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A2B1BEB15CE00BE05ED /* ViewController.swift */; };
 		B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */; };
@@ -31,7 +36,6 @@
 		B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80F021BF452A500CF4BB3 /* SettingsViewController.swift */; };
 		B8B80F051BF452A500CF4BB3 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */; };
 		B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2551BF1794A00DC7F60 /* LoginViewController.swift */; };
-		B8BAD2581BF1794A00DC7F60 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD2561BF1794A00DC7F60 /* LoginViewController.xib */; };
 		B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */; };
 		B8BAD25C1BF17F6C00DC7F60 /* ChatThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */; };
 		B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2671BF1869C00DC7F60 /* DashboardViewController.swift */; };
@@ -68,6 +72,11 @@
 		B870CECB1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Registration1ValueTableViewCell.xib; sourceTree = "<group>"; };
 		B870CECE1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationBasicInfoValueTableViewCell.swift; sourceTree = "<group>"; };
 		B870CECF1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationBasicInfoValueTableViewCell.xib; sourceTree = "<group>"; };
+		B870CED31BFA9D2700F47929 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
+		B870CED41BFA9D2700F47929 /* LoginTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginTableViewCell.xib; sourceTree = "<group>"; };
+		B870CED71BFA9E4100F47929 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		B870CEE21BFAF47800F47929 /* RegistrationNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationNextView.swift; sourceTree = "<group>"; };
+		B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationNextView.xib; sourceTree = "<group>"; };
 		B8792A261BEB15CE00BE05ED /* Sift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A291BEB15CE00BE05ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8792A2B1BEB15CE00BE05ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +97,6 @@
 		B8B80F021BF452A500CF4BB3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		B8BAD2551BF1794A00DC7F60 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B8BAD2561BF1794A00DC7F60 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatThreadViewController.swift; sourceTree = "<group>"; };
 		B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatThreadViewController.xib; sourceTree = "<group>"; };
 		B8BAD2671BF1869C00DC7F60 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +143,7 @@
 		B870CEBB1BF5741B00F47929 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B870CED91BFAA91000F47929 /* Keyboards */,
 				B870CEC81BF96E9900F47929 /* Cells */,
 			);
 			name = Views;
@@ -143,6 +152,7 @@
 		B870CEC81BF96E9900F47929 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B870CED21BFA9D1200F47929 /* Login */,
 				B870CEC91BF96E9E00F47929 /* Registration */,
 			);
 			name = Cells;
@@ -155,6 +165,32 @@
 				B870CECF1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib */,
 				B870CECA1BF96ECF00F47929 /* Registration1ValueTableViewCell.swift */,
 				B870CECB1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
+		B870CED21BFA9D1200F47929 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B870CED31BFA9D2700F47929 /* LoginTableViewCell.swift */,
+				B870CED41BFA9D2700F47929 /* LoginTableViewCell.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		B870CED91BFAA91000F47929 /* Keyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B870CEDA1BFAA91700F47929 /* Registration */,
+			);
+			name = Keyboards;
+			sourceTree = "<group>";
+		};
+		B870CEDA1BFAA91700F47929 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				B870CEE21BFAF47800F47929 /* RegistrationNextView.swift */,
+				B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */,
 			);
 			name = Registration;
 			sourceTree = "<group>";
@@ -246,7 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				B8BAD2551BF1794A00DC7F60 /* LoginViewController.swift */,
-				B8BAD2561BF1794A00DC7F60 /* LoginViewController.xib */,
+				B870CED71BFA9E4100F47929 /* LoginViewController.xib */,
 				B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */,
 				B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */,
 				B870CEC01BF5755800F47929 /* RegisterViewController.swift */,
@@ -405,14 +441,16 @@
 			files = (
 				B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */,
 				B8BAD25C1BF17F6C00DC7F60 /* ChatThreadViewController.xib in Resources */,
+				B870CEE51BFAF48100F47929 /* RegistrationNextView.xib in Resources */,
 				B870CEC71BF5AF3800F47929 /* RegisterBasicInfoViewController.xib in Resources */,
-				B8BAD2581BF1794A00DC7F60 /* LoginViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
 				B8792A341BEB15CE00BE05ED /* Assets.xcassets in Resources */,
 				B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */,
 				B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */,
 				B8B80F051BF452A500CF4BB3 /* SettingsViewController.xib in Resources */,
 				B870CED11BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib in Resources */,
+				B870CED81BFA9E4100F47929 /* LoginViewController.xib in Resources */,
+				B870CED61BFA9D2700F47929 /* LoginTableViewCell.xib in Resources */,
 				B870CECD1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib in Resources */,
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
 			);
@@ -490,12 +528,14 @@
 				B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */,
 				B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */,
 				B870CECC1BF96ECF00F47929 /* Registration1ValueTableViewCell.swift in Sources */,
+				B870CEE31BFAF47800F47929 /* RegistrationNextView.swift in Sources */,
 				B870CED01BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
 				B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */,
 				B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,
 				B8792A2C1BEB15CE00BE05ED /* ViewController.swift in Sources */,
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,
+				B870CED51BFA9D2700F47929 /* LoginTableViewCell.swift in Sources */,
 				B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
 				B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */,

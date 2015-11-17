@@ -16,6 +16,10 @@ class Registration1ValueTableViewCell: UITableViewCell {
     
     
 
+    @IBOutlet weak var lblRetypePassword: UILabel!
+    @IBOutlet weak var lblPassword: UILabel!
+    @IBOutlet weak var lblPhoneNumber: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var txtRePassword: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtPhoneNumber: UITextField!
@@ -34,6 +38,43 @@ class Registration1ValueTableViewCell: UITableViewCell {
     }
     
     func populate(){
+        
+        let tapEmailLbl: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "giveEmailFocus")
+        tapEmailLbl.numberOfTapsRequired = 1;
+        lblEmail.userInteractionEnabled = true;
+        lblEmail.addGestureRecognizer(tapEmailLbl)
+        
+        let tapPhoneNumberLbl: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "givePhoneNumberFocus")
+        tapPhoneNumberLbl.numberOfTapsRequired = 1;
+        lblPhoneNumber.userInteractionEnabled = true;
+        lblPhoneNumber.addGestureRecognizer(tapPhoneNumberLbl)
+
+        let tapPasswordLbl: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "givePasswordFocus")
+        tapPasswordLbl.numberOfTapsRequired = 1;
+        lblPassword.userInteractionEnabled = true;
+        lblPassword.addGestureRecognizer(tapPasswordLbl)
+
+        let tapRePasswordLbl: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "giveRePasswordFocus")
+        tapRePasswordLbl.numberOfTapsRequired = 1;
+        lblRetypePassword.userInteractionEnabled = true;
+        lblRetypePassword.addGestureRecognizer(tapRePasswordLbl)
+        
+    }
+    
+    func giveRePasswordFocus(){
+        txtRePassword.becomeFirstResponder()
+    }
+    
+    func givePasswordFocus(){
+        txtPassword.becomeFirstResponder()
+    }
+    
+    func givePhoneNumberFocus(){
+        txtPhoneNumber.becomeFirstResponder()
+    }
+    
+    func giveEmailFocus(){
+        txtEmail.becomeFirstResponder()
     }
     
     @IBAction func btnNextTouchUp(sender: AnyObject) {

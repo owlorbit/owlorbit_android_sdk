@@ -11,9 +11,14 @@ import UIKit
 class RegisterBasicInfoViewController: UIViewController {
 
     @IBOutlet weak var btnBack: UIImageView!
-    
     @IBOutlet weak var tableView: UITableView!
     var data:NSMutableArray = [1];
+    
+    var email:String = "";
+    var password:String = "";
+    var phoneNumber:String = "";
+    var firstName:String = "";
+    var lastName:String = "";
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +51,8 @@ class RegisterBasicInfoViewController: UIViewController {
         return data.count
     }
     
-    @IBAction func btnNextTouchUp(sender: AnyObject) {
-        var viewController : RegisterBasicInfoViewController = RegisterBasicInfoViewController();
-        self.navigationController!.pushViewController(viewController, animated: true)
-    }
-    
     func backToHome(){
-        self.navigationController?.popToRootViewControllerAnimated(true);
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,6 +64,7 @@ class RegisterBasicInfoViewController: UIViewController {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("RegistrationBasicInfoValueTableViewCell") as! RegistrationBasicInfoValueTableViewCell
         //cell.delegate = self
+        cell.populate()
         return cell
     }
 
