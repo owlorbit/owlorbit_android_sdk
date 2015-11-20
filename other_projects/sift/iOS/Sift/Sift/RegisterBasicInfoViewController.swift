@@ -8,17 +8,15 @@
 
 import UIKit
 
-class RegisterBasicInfoViewController: UIViewController {
+class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDelegate {
 
     @IBOutlet weak var btnBack: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     var data:NSMutableArray = [1];
     
-    var email:String = "";
-    var password:String = "";
-    var phoneNumber:String = "";
     var firstName:String = "";
     var lastName:String = "";
+    var registrationUser:RegistrationUser=RegistrationUser();
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +53,19 @@ class RegisterBasicInfoViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    func submitRegistration(firstName:String, lastName:String){
+
+        registrationUser.firstName = firstName;
+        registrationUser.lastName = lastName;
+        
+        UserApiHelper.createUser(registrationUser, resultJSON: {
+            (JSON) in
+            
+            UserModel.insertFromRegistration(self.registrationUser)
+            print("Done!")
+        });
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,7 +74,7 @@ class RegisterBasicInfoViewController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("RegistrationBasicInfoValueTableViewCell") as! RegistrationBasicInfoValueTableViewCell
-        //cell.delegate = self
+        cell.delegate = self
         cell.populate()
         return cell
     }

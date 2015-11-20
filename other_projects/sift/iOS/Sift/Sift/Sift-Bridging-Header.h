@@ -9,3 +9,5 @@
 
 #import <TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.h>
 
+
+#import <ASImageResize/UIImage+Resize.h>

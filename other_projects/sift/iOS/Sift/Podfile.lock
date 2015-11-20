@@ -1,22 +1,40 @@
 PODS:
-  - Alamofire (2.0.2)
+  - Alamofire (3.1.2)
+  - ASImageResize (1.0.3)
   - IHKeyboardAvoiding (2.5)
   - IHKeyboardDismissing (1.1)
   - MBProgressHUD (0.9.1)
+  - SwiftyJSON (2.3.1)
   - TPKeyboardAvoiding (1.2.10)
+  - ZSWRoundedImage (1.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 2.0)
+  - Alamofire (~> 3.1)
+  - ASImageResize
   - IHKeyboardAvoiding
   - IHKeyboardDismissing
   - MBProgressHUD
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - TPKeyboardAvoiding
+  - ZSWRoundedImage
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 10f67900bdf2fb0faba3371249a6fefdcaa880c5
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
+  ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
   IHKeyboardAvoiding: 8f14fed93405dd2c44ce070a26f780d9e477538c
   IHKeyboardDismissing: 7c23d41da51ca22f6a1091b3cf852821a2461ac9
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   TPKeyboardAvoiding: 614ebec846ec28b83d548769297fa5fb56468904
+  ZSWRoundedImage: 59341577264cd3c421fdc456bba3552e802f2fb1
 
 COCOAPODS: 0.39.0

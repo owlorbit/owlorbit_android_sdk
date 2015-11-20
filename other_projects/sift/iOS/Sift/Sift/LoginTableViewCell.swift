@@ -40,6 +40,13 @@ class LoginTableViewCell: UITableViewCell {
     
     func populate(){
         txtEmail.becomeFirstResponder()
+        
+        if(UserModel.get().count > 0){
+            var user:UserModel = UserModel.get()[0] as UserModel;
+            //print(user.firstName)
+            txtEmail.text = user.email
+            txtPassword.text = user.password
+        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

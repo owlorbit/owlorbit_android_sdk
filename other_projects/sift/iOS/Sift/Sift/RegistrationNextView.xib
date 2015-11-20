@@ -5,24 +5,29 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegistrationNextView" customModule="Sift" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="RegistrationNextView" id="iN0-l3-epB" customClass="RegistrationNextView">
+        <view contentMode="scaleToFill" restorationIdentifier="RegistrationNextView" id="iN0-l3-epB" customClass="RegistrationNextView" customModule="Sift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2g-mq-KQG">
-                    <rect key="frame" x="280" y="9" width="32" height="30"/>
+                    <rect key="frame" x="272" y="9" width="32" height="30"/>
                     <animations/>
-                    <state key="normal" title="Next"/>
+                    <state key="normal" title="Next">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="btnNextTouchUp:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rva-w4-lpf"/>
+                    </connections>
                 </button>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.51372549020000002" green="0.52549019610000003" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
             <accessibility key="accessibilityConfiguration" identifier="RegistrationNextView"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="w2g-mq-KQG" secondAttribute="bottom" constant="9" id="O4H-kl-X48"/>
-                <constraint firstAttribute="trailing" secondItem="w2g-mq-KQG" secondAttribute="trailing" constant="8" id="lBu-sj-eo2"/>
+                <constraint firstAttribute="trailing" secondItem="w2g-mq-KQG" secondAttribute="trailing" constant="16" id="lBu-sj-eo2"/>
                 <constraint firstItem="w2g-mq-KQG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="z4b-OZ-jx0"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

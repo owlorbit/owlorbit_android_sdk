@@ -71,8 +71,9 @@ class RegisterViewController: UIViewController, Registration1Delegate {
         return cell
     }
     
-    func nextRegistration(){
+    func nextRegistration(registrationUser:RegistrationUser){
         var viewController : RegisterBasicInfoViewController = RegisterBasicInfoViewController();
+        viewController.registrationUser = registrationUser;
         self.navigationController!.pushViewController(viewController, animated: true)
     }
     

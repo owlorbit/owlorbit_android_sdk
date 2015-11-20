@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ASImageResize.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,7 +29,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Sift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,25 +49,50 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ZSWRoundedImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07B44F3D4FE37F5975B0F241449F01D4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>10661085A46BFC336F45F0646BABB92E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2189A727627A385231CCBFC87D36327A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B2F30D90D85A544E9EFE2A49D392C25</key>
+		<key>307148BDF639621FDD8055F6DD29206D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3E47B24517F38CB89221212FDE116AFE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>432ECC54282C84882B482CCB4CF227FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4EFCB2A1C2BB2152F1BBA18BB8BB2732</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7650228B37C1A921478FFE545E76CBFD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B6AAD523D80658059E6524ADE5259202</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D8453EF8F6F4B107F6FA2E779BA18BE9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -19,29 +19,52 @@ class User extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function __construct(){
-		parent::__construct();		
+		parent::__construct();	
+		$this->output->set_header('Content-Type: application/json; charset=utf-8');	
 		$this->load->helper('json_encode_helper');
 		$this->load->model('user_model');
 	}
 
 	public function index(){
-		echo "test...";	
+
+		$response = array(
+		    'message' => 'User added!'
+		);
+
+		$this->output->set_output(json_encode_helper($response));		
 	}
 
-	public function add(){
+	public function add(){		
 		$response = array();
 		try{
+		    if($this->add_validate()){
+		    	$this->user_model->insert_entry();
+		    }
 			$response = array(
-		    	'message' => 'User added!'		    	
-		    );
-		    $this->user_model->insert_entry();
+		    	'message' => 'User added!'
+		    );		    
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
 				'successful'=> false);
 		}
-		echo json_encode_helper($response);
+
+		$this->output->set_output(json_encode_helper($response));
 	}
 
 	public function get(){
 	}
+
+	private function add_validate(){
+
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|max_length[255]');
+        $this->form_validation->set_rules('first_name', 'First Name', 'required|trim|max_length[255]');
+        $this->form_validation->set_rules('last_name', 'Last Name', 'required|trim|max_length[255]');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|max_length[255]');
+    
+        if($this->form_validation->run()){
+            return true;
+        }
+        
+        throw new Exception(validation_errors());
+    }	
 }

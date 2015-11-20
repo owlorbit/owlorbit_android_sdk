@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
+		3280A1EF51479CC44672D072 /* Pods_Sift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35946F21B48C1DE6863F53BD /* Pods_Sift.framework */; };
 		B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */; };
 		B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */; };
 		B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEC01BF5755800F47929 /* RegisterViewController.swift */; };
@@ -23,6 +24,8 @@
 		B870CED81BFA9E4100F47929 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CED71BFA9E4100F47929 /* LoginViewController.xib */; };
 		B870CEE31BFAF47800F47929 /* RegistrationNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEE21BFAF47800F47929 /* RegistrationNextView.swift */; };
 		B870CEE51BFAF48100F47929 /* RegistrationNextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */; };
+		B870CEEA1BFC00D800F47929 /* UIImage+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEE91BFC00D800F47929 /* UIImage+Round.swift */; };
+		B870CEF11BFC093000F47929 /* CustomMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEF01BFC093000F47929 /* CustomMapPin.swift */; };
 		B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A291BEB15CE00BE05ED /* AppDelegate.swift */; };
 		B8792A2C1BEB15CE00BE05ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A2B1BEB15CE00BE05ED /* ViewController.swift */; };
 		B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */; };
@@ -40,6 +43,18 @@
 		B8BAD25C1BF17F6C00DC7F60 /* ChatThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */; };
 		B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2671BF1869C00DC7F60 /* DashboardViewController.swift */; };
 		B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD2681BF1869C00DC7F60 /* DashboardViewController.xib */; };
+		B8E4E7D11BFC40E600995964 /* ReadMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */; };
+		B8E4E7D21BFC40E600995964 /* ReadMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E4E7D01BFC40E600995964 /* ReadMessageTableViewCell.xib */; };
+		B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D41BFD488700995964 /* UserApiHelper.swift */; };
+		B8E4E7D71BFD4AE200995964 /* RegistrationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D61BFD4AE200995964 /* RegistrationUser.swift */; };
+		B8E4E7D91BFD4CEC00995964 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D81BFD4CEC00995964 /* AlertHelper.swift */; };
+		B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7DA1BFD4F5F00995964 /* FormValidateHelper.swift */; };
+		B8E4E7DD1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7DC1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift */; };
+		B8E4E7DF1BFD520200995964 /* RegistrationSubmitKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E4E7DE1BFD520200995964 /* RegistrationSubmitKeyboardView.xib */; };
+		B8E4E7E11BFD80CE00995964 /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */; };
+		B8E4E7E31BFEB92000995964 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E21BFEB92000995964 /* UserModel.swift */; };
+		B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */; };
+		B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35946F21B48C1DE6863F53BD /* Pods_Sift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91601974A0D837B391AABADD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +93,8 @@
 		B870CED71BFA9E4100F47929 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B870CEE21BFAF47800F47929 /* RegistrationNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationNextView.swift; sourceTree = "<group>"; };
 		B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationNextView.xib; sourceTree = "<group>"; };
+		B870CEE91BFC00D800F47929 /* UIImage+Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Round.swift"; sourceTree = "<group>"; };
+		B870CEF01BFC093000F47929 /* CustomMapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMapPin.swift; sourceTree = "<group>"; };
 		B8792A261BEB15CE00BE05ED /* Sift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A291BEB15CE00BE05ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8792A2B1BEB15CE00BE05ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +119,18 @@
 		B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatThreadViewController.xib; sourceTree = "<group>"; };
 		B8BAD2671BF1869C00DC7F60 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		B8BAD2681BF1869C00DC7F60 /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMessageTableViewCell.swift; sourceTree = "<group>"; };
+		B8E4E7D01BFC40E600995964 /* ReadMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadMessageTableViewCell.xib; sourceTree = "<group>"; };
+		B8E4E7D41BFD488700995964 /* UserApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApiHelper.swift; sourceTree = "<group>"; };
+		B8E4E7D61BFD4AE200995964 /* RegistrationUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationUser.swift; sourceTree = "<group>"; };
+		B8E4E7D81BFD4CEC00995964 /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		B8E4E7DA1BFD4F5F00995964 /* FormValidateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidateHelper.swift; sourceTree = "<group>"; };
+		B8E4E7DC1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationSubmitKeyboardView.swift; sourceTree = "<group>"; };
+		B8E4E7DE1BFD520200995964 /* RegistrationSubmitKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationSubmitKeyboardView.xib; sourceTree = "<group>"; };
+		B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectConstants.swift; sourceTree = "<group>"; };
+		B8E4E7E21BFEB92000995964 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +141,7 @@
 			files = (
 				B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */,
 				21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */,
+				3280A1EF51479CC44672D072 /* Pods_Sift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +167,7 @@
 			children = (
 				B8B80F001BF4182C00CF4BB3 /* MapKit.framework */,
 				ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */,
+				35946F21B48C1DE6863F53BD /* Pods_Sift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,6 +175,7 @@
 		B870CEBB1BF5741B00F47929 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B870CEE61BFBF30700F47929 /* Map */,
 				B870CED91BFAA91000F47929 /* Keyboards */,
 				B870CEC81BF96E9900F47929 /* Cells */,
 			);
@@ -152,6 +185,7 @@
 		B870CEC81BF96E9900F47929 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B8E4E7CE1BFC40A800995964 /* Dashboard */,
 				B870CED21BFA9D1200F47929 /* Login */,
 				B870CEC91BF96E9E00F47929 /* Registration */,
 			);
@@ -191,8 +225,38 @@
 			children = (
 				B870CEE21BFAF47800F47929 /* RegistrationNextView.swift */,
 				B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */,
+				B8E4E7DC1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift */,
+				B8E4E7DE1BFD520200995964 /* RegistrationSubmitKeyboardView.xib */,
 			);
 			name = Registration;
+			sourceTree = "<group>";
+		};
+		B870CEE61BFBF30700F47929 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				B870CEE71BFBF31000F47929 /* Annotation */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		B870CEE71BFBF31000F47929 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Annotation;
+			sourceTree = "<group>";
+		};
+		B870CEE81BFC008F00F47929 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B870CEE91BFC00D800F47929 /* UIImage+Round.swift */,
+				B8E4E7D81BFD4CEC00995964 /* AlertHelper.swift */,
+				B8E4E7DA1BFD4F5F00995964 /* FormValidateHelper.swift */,
+				B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */,
+				B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */,
+				B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		B8792A1D1BEB15CD00BE05ED = {
@@ -220,6 +284,8 @@
 		B8792A281BEB15CE00BE05ED /* Sift */ = {
 			isa = PBXGroup;
 			children = (
+				B8E4E7D31BFD487200995964 /* API */,
+				B870CEE81BFC008F00F47929 /* Helpers */,
 				B870CEBB1BF5741B00F47929 /* Views */,
 				B8B80EFA1BF4146300CF4BB3 /* Resources */,
 				B8BAD25D1BF180C500DC7F60 /* Models */,
@@ -297,6 +363,9 @@
 			isa = PBXGroup;
 			children = (
 				B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */,
+				B870CEF01BFC093000F47929 /* CustomMapPin.swift */,
+				B8E4E7D61BFD4AE200995964 /* RegistrationUser.swift */,
+				B8E4E7E21BFEB92000995964 /* UserModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -312,6 +381,23 @@
 				B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */,
 			);
 			name = DashboardViewController;
+			sourceTree = "<group>";
+		};
+		B8E4E7CE1BFC40A800995964 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */,
+				B8E4E7D01BFC40E600995964 /* ReadMessageTableViewCell.xib */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		B8E4E7D31BFD487200995964 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B8E4E7D41BFD488700995964 /* UserApiHelper.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		CEFA435EA322FF036A6DBA3E /* Pods */ = {
@@ -445,8 +531,10 @@
 				B870CEC71BF5AF3800F47929 /* RegisterBasicInfoViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
 				B8792A341BEB15CE00BE05ED /* Assets.xcassets in Resources */,
+				B8E4E7DF1BFD520200995964 /* RegistrationSubmitKeyboardView.xib in Resources */,
 				B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */,
 				B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */,
+				B8E4E7D21BFC40E600995964 /* ReadMessageTableViewCell.xib in Resources */,
 				B8B80F051BF452A500CF4BB3 /* SettingsViewController.xib in Resources */,
 				B870CED11BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib in Resources */,
 				B870CED81BFA9E4100F47929 /* LoginViewController.xib in Resources */,
@@ -500,7 +588,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sift/Pods-Sift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A8165F553BEF927171B1B40D /* Copy Pods Resources */ = {
@@ -515,7 +603,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sift/Pods-Sift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -525,19 +613,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */,
 				B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */,
 				B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */,
+				B870CEEA1BFC00D800F47929 /* UIImage+Round.swift in Sources */,
+				B8E4E7D71BFD4AE200995964 /* RegistrationUser.swift in Sources */,
 				B870CECC1BF96ECF00F47929 /* Registration1ValueTableViewCell.swift in Sources */,
 				B870CEE31BFAF47800F47929 /* RegistrationNextView.swift in Sources */,
 				B870CED01BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
+				B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */,
+				B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */,
+				B8E4E7E31BFEB92000995964 /* UserModel.swift in Sources */,
 				B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */,
 				B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */,
+				B870CEF11BFC093000F47929 /* CustomMapPin.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,
 				B8792A2C1BEB15CE00BE05ED /* ViewController.swift in Sources */,
+				B8E4E7D11BFC40E600995964 /* ReadMessageTableViewCell.swift in Sources */,
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,
+				B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */,
 				B870CED51BFA9D2700F47929 /* LoginTableViewCell.swift in Sources */,
 				B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
+				B8E4E7D91BFD4CEC00995964 /* AlertHelper.swift in Sources */,
+				B8E4E7DD1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift in Sources */,
+				B8E4E7E11BFD80CE00995964 /* ProjectConstants.swift in Sources */,
 				B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */,
 				B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */,
 			);

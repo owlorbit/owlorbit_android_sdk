@@ -9,12 +9,10 @@
 import UIKit
 
 protocol Registration1Delegate {
-    func nextRegistration()
+    func nextRegistration(registrationUser:RegistrationUser)
 }
 
-class Registration1ValueTableViewCell: UITableViewCell {
-    
-    
+class Registration1ValueTableViewCell: UITableViewCell, RegistrationNextDelegate, RegistrationSubmitKeyboardViewDelegate {
 
     @IBOutlet weak var lblRetypePassword: UILabel!
     @IBOutlet weak var lblPassword: UILabel!
@@ -24,7 +22,10 @@ class Registration1ValueTableViewCell: UITableViewCell {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
+    var keyboardNextView:RegistrationNextView?;
+    var registrationSubmitKeyboardView:RegistrationSubmitKeyboardView?;
     var delegate:Registration1Delegate?;
+    var registrationUser:RegistrationUser?;
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +39,7 @@ class Registration1ValueTableViewCell: UITableViewCell {
     }
     
     func populate(){
-        
+        registrationUser = RegistrationUser()
         let tapEmailLbl: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "giveEmailFocus")
         tapEmailLbl.numberOfTapsRequired = 1;
         lblEmail.userInteractionEnabled = true;
@@ -58,8 +59,57 @@ class Registration1ValueTableViewCell: UITableViewCell {
         tapRePasswordLbl.numberOfTapsRequired = 1;
         lblRetypePassword.userInteractionEnabled = true;
         lblRetypePassword.addGestureRecognizer(tapRePasswordLbl)
+
+        keyboardNextView = NSBundle.mainBundle().loadNibNamed("RegistrationNextView", owner: self, options:nil)[0] as! RegistrationNextView
+        keyboardNextView?.delegate = self
+
+        registrationSubmitKeyboardView = NSBundle.mainBundle().loadNibNamed("RegistrationSubmitKeyboardView", owner: self, options:nil)[0] as! RegistrationSubmitKeyboardView
+        registrationSubmitKeyboardView?.delegate = self
+
+        txtEmail.inputAccessoryView = keyboardNextView
+        txtPhoneNumber.inputAccessoryView = keyboardNextView
+        txtPassword.inputAccessoryView = keyboardNextView
+        txtRePassword.inputAccessoryView = registrationSubmitKeyboardView
         
+        txtEmail.becomeFirstResponder()
     }
+    
+    func submitFields(){
+        if(!FormValidateHelper.isValidEmail(txtEmail.text!)){
+            AlertHelper.createPopupMessage("Email is not valid!", title: "Error")
+            return
+        }
+        
+        if(txtPassword.text != txtRePassword.text){
+            AlertHelper.createPopupMessage("Passwords do not match!", title: "Error")
+            return
+        }
+        
+        if txtPassword.text!.isEmpty{
+            AlertHelper.createPopupMessage("Password is empty!", title: "Error")
+            return
+        }
+        
+        registrationUser?.email = txtEmail.text!
+        registrationUser?.phoneNumber = txtPhoneNumber.text!
+        registrationUser?.password = txtPassword.text!
+        
+        
+        print("hello>> \(registrationUser)")
+        delegate?.nextRegistration(registrationUser!)
+    }
+
+    func nextField() {
+
+        if(txtEmail.isFirstResponder()){
+            txtPhoneNumber.becomeFirstResponder()
+        }else if(txtPhoneNumber.isFirstResponder()){
+            txtPassword.becomeFirstResponder()
+        }else if(txtPassword.isFirstResponder()){
+            txtRePassword.becomeFirstResponder()
+        }
+    }
+        
     
     func giveRePasswordFocus(){
         txtRePassword.becomeFirstResponder()
@@ -75,12 +125,6 @@ class Registration1ValueTableViewCell: UITableViewCell {
     
     func giveEmailFocus(){
         txtEmail.becomeFirstResponder()
-    }
-    
-    @IBAction func btnNextTouchUp(sender: AnyObject) {
-        if let delegate = self.delegate {
-            delegate.nextRegistration()
-        }
     }
     
     class func cellHeight()->CGFloat{

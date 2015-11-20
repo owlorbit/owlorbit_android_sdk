@@ -7,51 +7,70 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="Sift" customModuleProvider="target">
             <connections>
+                <outlet property="img" destination="nah-bn-Sd8" id="VJZ-ef-c0G"/>
                 <outlet property="lbl" destination="lKW-SJ-ggX" id="mel-fH-o4H"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKW-SJ-ggX">
-                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                    <rect key="frame" x="8" y="8" width="42" height="20.5"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrN-qn-Jmy">
-                    <rect key="frame" x="6" y="165" width="46" height="30"/>
+                    <rect key="frame" x="6" y="164.5" width="46" height="30"/>
                     <animations/>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="btnTest:" destination="-1" eventType="touchUpInside" id="i1n-pU-AWu"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="nah-bn-Sd8">
+                    <rect key="frame" x="8" y="234" width="64" height="64"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="XsY-N8-6Av"/>
+                        <constraint firstAttribute="width" constant="64" id="cVC-Cq-5o1"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="nah-bn-Sd8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="6Zb-xb-y95"/>
+                <constraint firstItem="nah-bn-Sd8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="6" id="6jC-4B-Ty0"/>
                 <constraint firstItem="lKW-SJ-ggX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="MPH-7v-Eb0"/>
                 <constraint firstItem="UrN-qn-Jmy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="6" id="Pk2-Qg-M2u"/>
                 <constraint firstAttribute="bottom" secondItem="lKW-SJ-ggX" secondAttribute="bottom" constant="8" id="RPI-id-wrX"/>
                 <constraint firstItem="UrN-qn-Jmy" firstAttribute="top" secondItem="lKW-SJ-ggX" secondAttribute="bottom" constant="136" id="Sup-DC-yKk"/>
+                <constraint firstItem="nah-bn-Sd8" firstAttribute="top" secondItem="UrN-qn-Jmy" secondAttribute="bottom" constant="39.5" id="ccR-xI-XFM"/>
+                <constraint firstItem="nah-bn-Sd8" firstAttribute="top" secondItem="UrN-qn-Jmy" secondAttribute="bottom" constant="31" id="ceL-06-WZZ"/>
                 <constraint firstItem="lKW-SJ-ggX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="feS-MI-npv"/>
                 <constraint firstItem="lKW-SJ-ggX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="ieG-ns-TBy"/>
                 <constraint firstItem="UrN-qn-Jmy" firstAttribute="top" secondItem="lKW-SJ-ggX" secondAttribute="bottom" constant="8" id="tln-cM-b3l"/>
             </constraints>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="RPI-id-wrX"/>
                     <exclude reference="feS-MI-npv"/>
                     <exclude reference="tln-cM-b3l"/>
+                    <exclude reference="6jC-4B-Ty0"/>
+                    <exclude reference="ceL-06-WZZ"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="319" y="307"/>
         </view>
     </objects>
+    <resources>
+        <image name="test" width="500" height="500"/>
+    </resources>
 </document>

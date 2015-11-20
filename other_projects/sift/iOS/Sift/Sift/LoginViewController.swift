@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class LoginViewController: UIViewController, LoginDelegate {
@@ -19,9 +20,23 @@ class LoginViewController: UIViewController, LoginDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
 
-        
         self.tableView.registerNib(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: "LoginTableViewCell")
         self.tableView.backgroundColor = UIColor.clearColor();
+
+        
+        test()
+    }
+    
+    func test(){
+
+        
+        //UserModel.insert(newUser)
+        
+        /*
+        UserApiHelper.test({
+        (JSON) in
+        print("111 Done!")
+        });*/
     }
     
     func dismissKeyboard() {

@@ -11,11 +11,12 @@ import UIKit
 class DashboardViewController: UIViewController {
 
     @IBOutlet weak var lbl: UILabel!
+    @IBOutlet weak var img: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("fucking a")
-        
+
         //let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
         //navigationController?.pushViewController(vc, animated: true )
     }

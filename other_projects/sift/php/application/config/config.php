@@ -25,6 +25,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = '';
 
+$config['salt'] = 'SPECIAL_SALT123812';
+$config['session_salt'] = 'A109RG_I_DONT_KNO_security*($&(!!';
+$config['private_salt'] = 'Aoijfewoi*(129478a';
+$config['public_salt']  = 'a(*&9ahhzowi*7776//';
+
 /*
 |--------------------------------------------------------------------------
 | Index File

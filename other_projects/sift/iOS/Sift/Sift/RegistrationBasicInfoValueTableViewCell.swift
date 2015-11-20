@@ -9,17 +9,17 @@
 import UIKit
 
 protocol RegistrationBasicInfoDelegate {
-    func submitRegistration()
+    func submitRegistration(firstName:String, lastName:String)
 }
 
-class RegistrationBasicInfoValueTableViewCell: UITableViewCell {
+class RegistrationBasicInfoValueTableViewCell: UITableViewCell, RegistrationNextDelegate, RegistrationSubmitKeyboardViewDelegate {
 
     @IBOutlet weak var txtFirstName: UITextField!
-
     @IBOutlet weak var txtLastName: UITextField!
     
-    
     var delegate:RegistrationBasicInfoDelegate?;
+    var keyboardNextView:RegistrationNextView?;
+    var registrationSubmitKeyboardView:RegistrationSubmitKeyboardView?;
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,28 +32,21 @@ class RegistrationBasicInfoValueTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func nextField() {
+        txtLastName.becomeFirstResponder()
+    }
+    
     func populate(){
-        
-        /*let button = UIButton(type: .Custom)
-        button.setTitle("Next", forState: .Normal)
-        button.addTarget(self, action: "buttonAction:", forControlEvents: .TouchUpInside)
-        button.frame = CGRect(x: 0, y: 5, width: self.bounds.size.width, height: 30)
-        button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
 
-        let view = UIView(frame: CGRectMake(0, 0, self.bounds.size.width, 40))
-        view.backgroundColor = UIColor(red: 198.0/255.0, green: 190.0/255.0, blue: 218.0/255.0, alpha: 1.0)
-        view.addSubview(button)
-
-        txtFirstName.inputAccessoryView = view*/
+        keyboardNextView = NSBundle.mainBundle().loadNibNamed("RegistrationNextView", owner: self, options:nil)[0] as! RegistrationNextView
+        keyboardNextView?.delegate = self
         
-        //let registrationView:RegistrationNextView = RegistrationNextView()
-
+        registrationSubmitKeyboardView = NSBundle.mainBundle().loadNibNamed("RegistrationSubmitKeyboardView", owner: self, options:nil)[0] as! RegistrationSubmitKeyboardView
+        registrationSubmitKeyboardView?.delegate = self
         
-        //SetupKeyboardAccessoryView *accessoryView = [[[NSBundle mainBundle] loadNibNamed:@"SetupKeyboardAccessoryView" owner:nil options:nil] firstObject]
-        
-
-        
-        txtFirstName.inputAccessoryView = NSBundle.mainBundle().loadNibNamed("RegistrationNextView", owner: self, options:nil)[0] as! UIView
+        txtFirstName.inputAccessoryView = keyboardNextView
+        txtLastName.inputAccessoryView = registrationSubmitKeyboardView
+        txtFirstName.becomeFirstResponder()
     }
     
     func loginClick(){
@@ -64,9 +57,23 @@ class RegistrationBasicInfoValueTableViewCell: UITableViewCell {
         print("yoloo")
     }
     
-    @IBAction func btnSubmitTouchUp(sender: AnyObject) {
+    func submitFields(){
+        
+
+        if txtFirstName.text!.isEmpty{
+            AlertHelper.createPopupMessage("Password is empty!", title: "Error")
+            return
+        }
+        
+        if txtLastName.text!.isEmpty{
+            AlertHelper.createPopupMessage("Password is empty!", title: "Error")
+            return
+        }
+        
+        delegate?.submitRegistration(txtFirstName.text!, lastName: txtLastName.text!)
         
     }
+
     
     /*
     @IBAction func btnNextTouchUp(sender: AnyObject) {

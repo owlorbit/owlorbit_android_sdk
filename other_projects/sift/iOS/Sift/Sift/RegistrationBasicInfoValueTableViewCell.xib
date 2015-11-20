@@ -40,7 +40,7 @@
                             <constraint firstAttribute="width" constant="257" id="rAK-pK-ugB"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                        <textInputTraits key="textInputTraits"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="DPv-E4-fSP"/>
@@ -95,27 +95,6 @@
                             <constraint firstAttribute="height" constant="32" id="EMP-oB-a73"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXx-f4-l76">
-                        <rect key="frame" x="257" y="136" width="49" height="30"/>
-                        <animations/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="59" id="NuX-c7-iL4"/>
-                            <constraint firstAttribute="width" constant="38" id="QEJ-hx-qoB"/>
-                            <constraint firstAttribute="height" constant="30" id="pJ9-OS-8Pg"/>
-                        </constraints>
-                        <state key="normal" title="Submit">
-                            <color key="titleColor" red="0.28235294119999998" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="NuX-c7-iL4"/>
-                                <exclude reference="QEJ-hx-qoB"/>
-                            </mask>
-                        </variation>
-                        <connections>
-                            <action selector="btnSubmitTouchUp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZKX-tO-PST"/>
-                        </connections>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_icon" translatesAutoresizingMaskIntoConstraints="NO" id="FDh-ja-dCZ">
                         <rect key="frame" x="14" y="80" width="30" height="32"/>
                         <animations/>
@@ -146,29 +125,19 @@
                     <constraint firstItem="pmL-Ho-tIa" firstAttribute="leading" secondItem="jqE-Hy-3WA" secondAttribute="leading" id="KfL-kl-bYf"/>
                     <constraint firstItem="jqE-Hy-3WA" firstAttribute="top" secondItem="XDB-ys-2iS" secondAttribute="bottom" constant="8" id="L49-Uu-CAW"/>
                     <constraint firstItem="pmL-Ho-tIa" firstAttribute="top" secondItem="f7w-cN-9kM" secondAttribute="bottom" constant="8" id="SYt-NT-cpV"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="fXx-f4-l76" secondAttribute="bottom" constant="-3.5" id="UhE-iM-bEe"/>
                     <constraint firstItem="l1V-fo-SoH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="bPl-Tf-ogN"/>
                     <constraint firstAttribute="trailingMargin" secondItem="65r-ap-Zdd" secondAttribute="trailing" constant="6" id="dTd-iN-bDX"/>
                     <constraint firstItem="FDh-ja-dCZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="ebH-4k-aZw"/>
                     <constraint firstAttribute="trailingMargin" secondItem="gYu-hh-GTa" secondAttribute="trailing" constant="6" id="idu-VH-LHe"/>
                     <constraint firstItem="gYu-hh-GTa" firstAttribute="leading" secondItem="l1V-fo-SoH" secondAttribute="trailing" constant="8" id="ilf-Nq-orW"/>
-                    <constraint firstItem="fXx-f4-l76" firstAttribute="top" secondItem="jqE-Hy-3WA" secondAttribute="bottom" id="lEy-33-T1F"/>
                     <constraint firstItem="XDB-ys-2iS" firstAttribute="leading" secondItem="FDh-ja-dCZ" secondAttribute="trailing" constant="8" id="m2k-zj-X7D"/>
                     <constraint firstItem="pmL-Ho-tIa" firstAttribute="trailing" secondItem="jqE-Hy-3WA" secondAttribute="trailing" id="pAv-SA-rCk"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="fXx-f4-l76" secondAttribute="trailing" constant="6" id="rXr-hk-bKZ"/>
                     <constraint firstItem="FDh-ja-dCZ" firstAttribute="top" secondItem="pmL-Ho-tIa" secondAttribute="bottom" constant="11" id="sP6-gN-WnZ"/>
                     <constraint firstItem="f7w-cN-9kM" firstAttribute="leading" secondItem="l1V-fo-SoH" secondAttribute="trailing" constant="8" id="sdY-W6-qT3"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="fXx-f4-l76" secondAttribute="trailing" constant="6" id="ttA-8k-1gO"/>
                     <constraint firstItem="65r-ap-Zdd" firstAttribute="top" secondItem="pmL-Ho-tIa" secondAttribute="bottom" constant="6" id="uFP-a0-xhq"/>
                     <constraint firstItem="f7w-cN-9kM" firstAttribute="top" secondItem="gYu-hh-GTa" secondAttribute="bottom" constant="-6" id="uSc-gc-byH"/>
                     <constraint firstItem="pmL-Ho-tIa" firstAttribute="leading" secondItem="l1V-fo-SoH" secondAttribute="leading" id="ylM-bZ-ey7"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="UhE-iM-bEe"/>
-                        <exclude reference="rXr-hk-bKZ"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

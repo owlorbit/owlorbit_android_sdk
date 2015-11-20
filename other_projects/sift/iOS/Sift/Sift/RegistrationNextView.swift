@@ -8,8 +8,15 @@
 
 import UIKit
 
+
+protocol RegistrationNextDelegate {
+    func nextField()
+}
+
+
 class RegistrationNextView: UIView {
     
+    var delegate:RegistrationNextDelegate?;
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,13 +28,10 @@ class RegistrationNextView: UIView {
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)!
     }
-    
-    func setup(){
-        //self.frame  = self.bounds;
-        //[self addSubview:self.view];
-        //self.addSubview(self)
+
+    @IBAction func btnNextTouchUp(sender: AnyObject) {
+        delegate?.nextField()
     }
-    
     
     /*
     // Only override drawRect: if you perform custom drawing.

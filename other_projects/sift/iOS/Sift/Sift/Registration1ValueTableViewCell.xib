@@ -183,9 +183,9 @@
                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="vxY-9F-jbp"/>
-                                <exclude reference="dQ5-C3-DZw"/>
                                 <exclude reference="226-6T-5hQ"/>
+                                <exclude reference="dQ5-C3-DZw"/>
+                                <exclude reference="vxY-9F-jbp"/>
                             </mask>
                         </variation>
                     </textField>
@@ -216,31 +216,11 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="tcW-TM-8DT"/>
                                 <exclude reference="MmU-zx-Vvc"/>
+                                <exclude reference="tcW-TM-8DT"/>
                             </mask>
                         </variation>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXx-f4-l76">
-                        <rect key="frame" x="268" y="258" width="38" height="30"/>
-                        <animations/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="59" id="NuX-c7-iL4"/>
-                            <constraint firstAttribute="width" constant="38" id="QEJ-hx-qoB"/>
-                            <constraint firstAttribute="height" constant="30" id="pJ9-OS-8Pg"/>
-                        </constraints>
-                        <state key="normal" title="Next">
-                            <color key="titleColor" red="0.28235294119999998" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="NuX-c7-iL4"/>
-                            </mask>
-                        </variation>
-                        <connections>
-                            <action selector="btnNextTouchUp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bcX-yV-A5r"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -262,7 +242,6 @@
                     <constraint firstAttribute="trailingMargin" secondItem="GNs-RA-uMV" secondAttribute="trailing" constant="6" id="IgT-ob-CX3"/>
                     <constraint firstItem="pmL-Ho-tIa" firstAttribute="leading" secondItem="jqE-Hy-3WA" secondAttribute="leading" id="KfL-kl-bYf"/>
                     <constraint firstItem="jqE-Hy-3WA" firstAttribute="top" secondItem="XDB-ys-2iS" secondAttribute="bottom" constant="8" id="L49-Uu-CAW"/>
-                    <constraint firstItem="fXx-f4-l76" firstAttribute="top" secondItem="88o-0T-uh2" secondAttribute="bottom" id="Ms0-58-kIu"/>
                     <constraint firstAttribute="trailingMargin" secondItem="QUQ-p7-cm8" secondAttribute="trailing" constant="6" id="NBz-w8-uBO"/>
                     <constraint firstAttribute="trailingMargin" secondItem="88o-0T-uh2" secondAttribute="trailing" constant="6" id="NE3-wp-hUj"/>
                     <constraint firstAttribute="trailingMargin" secondItem="hew-iZ-AQJ" secondAttribute="trailing" constant="6" id="Ocm-4T-KkT"/>
@@ -270,7 +249,6 @@
                     <constraint firstItem="65r-ap-Zdd" firstAttribute="leading" secondItem="dNh-Jf-MQm" secondAttribute="trailing" constant="11" id="Qlu-Vy-J2v"/>
                     <constraint firstItem="hew-iZ-AQJ" firstAttribute="top" secondItem="2YI-pQ-Fqm" secondAttribute="bottom" constant="-3" id="S1g-Om-04R"/>
                     <constraint firstItem="pmL-Ho-tIa" firstAttribute="top" secondItem="f7w-cN-9kM" secondAttribute="bottom" constant="8" id="SYt-NT-cpV"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="fXx-f4-l76" secondAttribute="bottom" constant="-3.5" id="UhE-iM-bEe"/>
                     <constraint firstItem="hew-iZ-AQJ" firstAttribute="leading" secondItem="tUM-yk-x8A" secondAttribute="trailing" constant="11" id="WYZ-47-bCS"/>
                     <constraint firstItem="88o-0T-uh2" firstAttribute="top" secondItem="2zI-Bd-r92" secondAttribute="bottom" constant="16" id="YpZ-LB-Re2"/>
                     <constraint firstItem="l1V-fo-SoH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="bPl-Tf-ogN"/>
@@ -284,7 +262,7 @@
                     <constraint firstItem="2zI-Bd-r92" firstAttribute="top" secondItem="QUQ-p7-cm8" secondAttribute="bottom" constant="12" id="ju1-cV-rfj"/>
                     <constraint firstItem="GNs-RA-uMV" firstAttribute="top" secondItem="QUQ-p7-cm8" secondAttribute="bottom" constant="8" id="lR1-7p-Zsi"/>
                     <constraint firstItem="pmL-Ho-tIa" firstAttribute="trailing" secondItem="jqE-Hy-3WA" secondAttribute="trailing" id="pAv-SA-rCk"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="fXx-f4-l76" secondAttribute="trailing" constant="6" id="rXr-hk-bKZ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="88o-0T-uh2" secondAttribute="bottom" constant="26.5" id="rFW-Nm-AiM"/>
                     <constraint firstItem="f7w-cN-9kM" firstAttribute="leading" secondItem="l1V-fo-SoH" secondAttribute="trailing" constant="8" id="sdY-W6-qT3"/>
                     <constraint firstItem="65r-ap-Zdd" firstAttribute="top" secondItem="pmL-Ho-tIa" secondAttribute="bottom" constant="6" id="uFP-a0-xhq"/>
                     <constraint firstItem="f7w-cN-9kM" firstAttribute="top" secondItem="gYu-hh-GTa" secondAttribute="bottom" constant="-6" id="uSc-gc-byH"/>
