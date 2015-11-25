@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
 		3280A1EF51479CC44672D072 /* Pods_Sift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35946F21B48C1DE6863F53BD /* Pods_Sift.framework */; };
+		B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */; };
 		B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */; };
 		B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */; };
 		B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEC01BF5755800F47929 /* RegisterViewController.swift */; };
@@ -26,6 +27,8 @@
 		B870CEE51BFAF48100F47929 /* RegistrationNextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */; };
 		B870CEEA1BFC00D800F47929 /* UIImage+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEE91BFC00D800F47929 /* UIImage+Round.swift */; };
 		B870CEF11BFC093000F47929 /* CustomMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEF01BFC093000F47929 /* CustomMapPin.swift */; };
+		B87654631C03F53F00190B9B /* WriteMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87654611C03F53F00190B9B /* WriteMessageViewController.swift */; };
+		B87654641C03F53F00190B9B /* WriteMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87654621C03F53F00190B9B /* WriteMessageViewController.xib */; };
 		B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A291BEB15CE00BE05ED /* AppDelegate.swift */; };
 		B8792A2C1BEB15CE00BE05ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A2B1BEB15CE00BE05ED /* ViewController.swift */; };
 		B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */; };
@@ -52,9 +55,10 @@
 		B8E4E7DD1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7DC1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift */; };
 		B8E4E7DF1BFD520200995964 /* RegistrationSubmitKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E4E7DE1BFD520200995964 /* RegistrationSubmitKeyboardView.xib */; };
 		B8E4E7E11BFD80CE00995964 /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */; };
-		B8E4E7E31BFEB92000995964 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E21BFEB92000995964 /* UserModel.swift */; };
+		B8E4E7E31BFEB92000995964 /* PersonalUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E21BFEB92000995964 /* PersonalUserModel.swift */; };
 		B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */; };
 		B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */; };
+		B8E4E7EC1C02B6CF00995964 /* EncryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +82,7 @@
 		35946F21B48C1DE6863F53BD /* Pods_Sift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91601974A0D837B391AABADD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserModel.swift; sourceTree = "<group>"; };
 		B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		B870CEC01BF5755800F47929 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +100,8 @@
 		B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationNextView.xib; sourceTree = "<group>"; };
 		B870CEE91BFC00D800F47929 /* UIImage+Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Round.swift"; sourceTree = "<group>"; };
 		B870CEF01BFC093000F47929 /* CustomMapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMapPin.swift; sourceTree = "<group>"; };
+		B87654611C03F53F00190B9B /* WriteMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteMessageViewController.swift; sourceTree = "<group>"; };
+		B87654621C03F53F00190B9B /* WriteMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteMessageViewController.xib; sourceTree = "<group>"; };
 		B8792A261BEB15CE00BE05ED /* Sift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A291BEB15CE00BE05ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8792A2B1BEB15CE00BE05ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,9 +135,10 @@
 		B8E4E7DC1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationSubmitKeyboardView.swift; sourceTree = "<group>"; };
 		B8E4E7DE1BFD520200995964 /* RegistrationSubmitKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationSubmitKeyboardView.xib; sourceTree = "<group>"; };
 		B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectConstants.swift; sourceTree = "<group>"; };
-		B8E4E7E21BFEB92000995964 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B8E4E7E21BFEB92000995964 /* PersonalUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalUserModel.swift; sourceTree = "<group>"; };
 		B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
+		B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptUtil.swift; sourceTree = "<group>"; };
 		CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -255,6 +263,7 @@
 				B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */,
 				B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */,
 				B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */,
+				B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -365,7 +374,8 @@
 				B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */,
 				B870CEF01BFC093000F47929 /* CustomMapPin.swift */,
 				B8E4E7D61BFD4AE200995964 /* RegistrationUser.swift */,
-				B8E4E7E21BFEB92000995964 /* UserModel.swift */,
+				B8E4E7E21BFEB92000995964 /* PersonalUserModel.swift */,
+				B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -379,6 +389,8 @@
 				B8BAD2681BF1869C00DC7F60 /* DashboardViewController.xib */,
 				B8B80F021BF452A500CF4BB3 /* SettingsViewController.swift */,
 				B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */,
+				B87654611C03F53F00190B9B /* WriteMessageViewController.swift */,
+				B87654621C03F53F00190B9B /* WriteMessageViewController.xib */,
 			);
 			name = DashboardViewController;
 			sourceTree = "<group>";
@@ -541,6 +553,7 @@
 				B870CED61BFA9D2700F47929 /* LoginTableViewCell.xib in Resources */,
 				B870CECD1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib in Resources */,
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
+				B87654641C03F53F00190B9B /* WriteMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,13 +634,16 @@
 				B870CECC1BF96ECF00F47929 /* Registration1ValueTableViewCell.swift in Sources */,
 				B870CEE31BFAF47800F47929 /* RegistrationNextView.swift in Sources */,
 				B870CED01BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
+				B87654631C03F53F00190B9B /* WriteMessageViewController.swift in Sources */,
 				B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */,
 				B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */,
-				B8E4E7E31BFEB92000995964 /* UserModel.swift in Sources */,
+				B8E4E7E31BFEB92000995964 /* PersonalUserModel.swift in Sources */,
+				B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */,
 				B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */,
 				B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */,
 				B870CEF11BFC093000F47929 /* CustomMapPin.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,
+				B8E4E7EC1C02B6CF00995964 /* EncryptUtil.swift in Sources */,
 				B8792A2C1BEB15CE00BE05ED /* ViewController.swift in Sources */,
 				B8E4E7D11BFC40E600995964 /* ReadMessageTableViewCell.swift in Sources */,
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,

@@ -83,10 +83,9 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate {
     func zoomToCurrentLocation() {
 
         do{
-            
+            if(locationManager.location == nil){return}
             //if not connected reject..
             var region:MKCoordinateRegion = MKCoordinateRegion();
-
             region.center.latitude = locationManager.location!.coordinate.latitude;
             region.center.longitude = locationManager.location!.coordinate.longitude;
             region.span.latitudeDelta = spanX;

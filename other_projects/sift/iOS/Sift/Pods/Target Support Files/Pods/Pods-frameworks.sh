@@ -85,17 +85,21 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/ASImageResize.framework"
+  install_framework "Pods/DZNEmptyDataSet.framework"
   install_framework "Pods/IHKeyboardAvoiding.framework"
   install_framework "Pods/IHKeyboardDismissing.framework"
   install_framework "Pods/MBProgressHUD.framework"
+  install_framework "Pods/RNCryptor.framework"
   install_framework "Pods/TPKeyboardAvoiding.framework"
   install_framework "Pods/ZSWRoundedImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/ASImageResize.framework"
+  install_framework "Pods/DZNEmptyDataSet.framework"
   install_framework "Pods/IHKeyboardAvoiding.framework"
   install_framework "Pods/IHKeyboardDismissing.framework"
   install_framework "Pods/MBProgressHUD.framework"
+  install_framework "Pods/RNCryptor.framework"
   install_framework "Pods/TPKeyboardAvoiding.framework"
   install_framework "Pods/ZSWRoundedImage.framework"
 fi

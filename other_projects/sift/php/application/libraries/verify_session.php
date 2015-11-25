@@ -17,7 +17,7 @@ class Verify_Session{
 	  $ci->load->model('core/user_token_model');
 	  $ci->load->model('core/user_session_model');
 
-	  $userToken = $ci->user_token_model->get(array('publicKey' => $publicKey));
+	  $userToken = $ci->user_token_model->get(array('public_key' => $publicKey));
 
       if($userToken->num_rows() > 0){
 		$userToken = $userToken->row(0);
@@ -25,13 +25,15 @@ class Verify_Session{
 		return -1;
 	  }
 
-	  $sessionToken = $ci->encryption_lib->decrypt($ci->encryption_lib->decrypt($encryptedSession, $userToken->privateKey), $publicKey);
-
-      if(hash('sha256', $sessionToken) != $sessionHash){
-		return -2;
-	  }
+	  $sessionToken = $ci->encryption_lib->decrypt($ci->encryption_lib->decrypt($encryptedSession, $userToken->private_key), $publicKey);
+	  
+	  return $sessionToken;
+	  //return hash('sha256', $sessionToken);
+      //if(hash('sha256', $sessionToken) != $sessionHash){
+	  //	return -2;
+	  //}
 
 	  //if it passes those checks that means it's valid..
-	  return $sessionToken;	 
+	  //return $sessionToken;	 
 	}		
 }

@@ -43,7 +43,7 @@ class User_Token_Model extends CI_Model{
 	}	
 
 	function isPublicTokenActive($userId){
-		$query = "select * from user_tokens where userId = ? and active = 1;";
+		$query = "select * from user_tokens where user_id = ? and active = 1;";
 		$result = $this->db->query($query, array($userId));
 
 		if($result->num_rows() > 0){

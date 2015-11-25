@@ -2,14 +2,16 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-
 target 'Sift' do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
     pod 'Alamofire', '~> 3.1'
 end
+
+pod 'RNCryptor'
 pod 'MBProgressHUD'
 pod 'IHKeyboardDismissing'
 pod 'IHKeyboardAvoiding'
 pod 'TPKeyboardAvoiding'
 pod 'ASImageResize'
 pod 'ZSWRoundedImage'
+pod 'DZNEmptyDataSet'

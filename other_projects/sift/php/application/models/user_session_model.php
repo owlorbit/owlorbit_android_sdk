@@ -26,10 +26,10 @@ class User_Session_Model extends CI_Model{
 	}
 
 	function getUserId($sessionToken){
-		$query = "select userId from ".$this->TABLE." where sessionToken = ? and active = 1;";
+		$query = "select user_id from ".$this->TABLE." where session_token = ? and active = 1;";
 		$result = $this->db->query($query, array($sessionToken));
 		if($result->num_rows() > 0){
-			return $result->row(0)->userId;
+			return $result->row(0)->user_id;
 		}else{		
 			return -1;
 		}		

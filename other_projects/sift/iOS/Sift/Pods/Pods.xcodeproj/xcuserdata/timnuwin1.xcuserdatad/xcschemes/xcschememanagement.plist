@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IHKeyboardAvoiding.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RNCryptor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,17 +67,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2189A727627A385231CCBFC87D36327A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>307148BDF639621FDD8055F6DD29206D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3E47B24517F38CB89221212FDE116AFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,27 +82,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4C82C5E8BA496CC340A22584EA38BD4D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4EFCB2A1C2BB2152F1BBA18BB8BB2732</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7650228B37C1A921478FFE545E76CBFD</key>
+		<key>DBA9F7A373F8B623DF94667C0EDF631E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6AAD523D80658059E6524ADE5259202</key>
+		<key>E02D9988E85358C534809F6586C5F2CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D8453EF8F6F4B107F6FA2E779BA18BE9</key>
+		<key>E19A04249153AA0B85D9F3783C6362CF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E3247519078975EEE3350B07FDC24B9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F7531B49C28F64EBD3AD2676B95F182F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

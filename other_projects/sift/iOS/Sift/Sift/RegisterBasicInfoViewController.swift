@@ -57,12 +57,15 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
 
         registrationUser.firstName = firstName;
         registrationUser.lastName = lastName;
-        
         UserApiHelper.createUser(registrationUser, resultJSON: {
             (JSON) in
             
-            UserModel.insertFromRegistration(self.registrationUser)
-            print("Done!")
+            PersonalUserModel.insertFromRegistration(self.registrationUser, serverReturnedData: JSON)
+            self.navigationController!.popToRootViewControllerAnimated(true)
+            
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.setupLoggedInViewController()
         });
     }
     
@@ -70,13 +73,11 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = self.tableView.dequeueReusableCellWithIdentifier("RegistrationBasicInfoValueTableViewCell") as! RegistrationBasicInfoValueTableViewCell
         cell.delegate = self
         cell.populate()
         return cell
     }
-
 }

@@ -22,23 +22,22 @@ class LoginViewController: UIViewController, LoginDelegate {
 
         self.tableView.registerNib(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: "LoginTableViewCell")
         self.tableView.backgroundColor = UIColor.clearColor();
-
-        
         test()
     }
-    
-    func test(){
 
+    func test(){
         
-        //UserModel.insert(newUser)
-        
+        //var publicKey = "dc3db1715337d4451943f43cf9bf073164a17609c97006ec04970117037f121d"
+        //var privateKey = "b2c3db857382d728387c505b97616584b29ecf85f911fd4408e55c94aca9169f"
+        EncryptUtil.test()        
+
         /*
         UserApiHelper.test({
         (JSON) in
         print("111 Done!")
         });*/
     }
-    
+
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -48,13 +47,11 @@ class LoginViewController: UIViewController, LoginDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return LoginTableViewCell.cellHeight()
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -67,15 +64,22 @@ class LoginViewController: UIViewController, LoginDelegate {
         cell.populate()
         return cell
     }
-    
+
     func startRegistration(){
         var viewController : RegisterViewController = RegisterViewController();
         self.navigationController!.pushViewController(viewController, animated: true)        
     }
-    
+
     func signIn(username: String, password: String){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.setupLoggedInViewController()
+
+        UserApiHelper.loginUser(username, password: password, resultJSON: {
+            (JSON) in
+
+            PersonalUserModel.updateUserFromLogin(username, password: password, serverReturnedData: JSON)
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.setupLoggedInViewController()
+        });
+        
     }
 
     @IBAction func btnSignInTouchUp(sender: AnyObject) {
