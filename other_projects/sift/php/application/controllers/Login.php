@@ -91,6 +91,7 @@ class Login extends CI_Controller {
 				'sessionToken' => $sessionToken,
 				'firstName' => $user->first_name,
 				'lastName' => $user->last_name,
+				'avatar_original' => $user->avatar_original,
 				'phoneNumber' => $user->phone_number
 		    );			
 		} catch(Exception $e){

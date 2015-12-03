@@ -19,8 +19,9 @@ class ReadMessageTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func populate(){
-        print("populate called!")
+    func populate(roomCellModel:RoomCellModel){
+        self.lblRoomTitle.text = roomCellModel.name
+        self.lblLastMsg.text = roomCellModel.lastMessageBy + ": " + roomCellModel.lastMessage
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

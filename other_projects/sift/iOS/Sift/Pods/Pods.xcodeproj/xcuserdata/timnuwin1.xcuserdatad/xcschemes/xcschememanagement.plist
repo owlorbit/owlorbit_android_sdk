@@ -14,6 +14,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CTAssetsPickerController-CTAssetsPickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CTAssetsPickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,6 +40,11 @@
 			<false/>
 		</dict>
 		<key>IHKeyboardDismissing.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ImagePickerSheetController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -44,6 +64,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PureLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RNCryptor.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -59,6 +84,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UITextView+Placeholder.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ZSWRoundedImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,6 +97,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0E21FFB58F01F83BDE639971AA38CD94</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
 		<dict>
 			<key>primary</key>
@@ -77,12 +112,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2A8D3ADF24AE50A4F7F5822B6EEAB340</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2AAAB9973850C35994DC04473435E1A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C82C5E8BA496CC340A22584EA38BD4D</key>
+		<key>4B3C715036EB1FCA872A48555744C55B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,22 +137,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DBA9F7A373F8B623DF94667C0EDF631E</key>
+		<key>564E393BF51836B43368DC5BA44CC768</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E02D9988E85358C534809F6586C5F2CA</key>
+		<key>6020C6075E89F9F06D6986589897156C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E19A04249153AA0B85D9F3783C6362CF</key>
+		<key>9293BDAD24D4423350AB71A893BD22CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3247519078975EEE3350B07FDC24B9F</key>
+		<key>A1BF58736B6CCECB5DB30E2108366143</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC2574B58AF0FBD9319BAA72BED673F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E1F0C09D62EC1FB1E07560293F2E60CE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F7531B49C28F64EBD3AD2676B95F182F</key>
+		<key>F9ED1367709F161D35823376BC9617CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F9ED1367709F161D35823376BC9617CA</key>
+		<key>FB4FA5240645A79AE809B5F06EB34A27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC03B1C71CDFE8D1E8279B1025EA4A88</key>
 		<dict>
 			<key>primary</key>
 			<true/>

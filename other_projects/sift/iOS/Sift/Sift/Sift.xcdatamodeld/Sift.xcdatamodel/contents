@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
     <entity name="PersonalUserModel" representedClassName="PersonalUserModel" syncable="YES">
+        <attribute name="avatarOriginal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="deviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="encryptedSession" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,6 +16,6 @@
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PersonalUserModel" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="PersonalUserModel" positionX="-63" positionY="-18" width="128" height="240"/>
     </elements>
 </model>

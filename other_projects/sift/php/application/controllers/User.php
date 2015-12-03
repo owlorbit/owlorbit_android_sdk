@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -22,6 +23,7 @@ class User extends CI_Controller {
 		parent::__construct();	
 		$this->output->set_header('Content-Type: application/json; charset=utf-8');	
 		$this->load->helper('json_encode_helper');
+		$this->load->library('verify_session');
 		$this->load->model('user_model');
 		$this->load->model('user_token_model');
 		$this->load->model('user_session_model');
@@ -56,7 +58,44 @@ class User extends CI_Controller {
 	}
 
 	public function upload_profile_img(){
+		$response = array();
+		try{
 
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+		
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$userId = $this->user_session_model->getUserId($sessionToken);
+			if($userId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}
+
+			$urlPath = '/uploads/profile_imgs/'.$userId.'.png';
+			$targetPath = $_SERVER['DOCUMENT_ROOT'].$urlPath;
+			move_uploaded_file($_FILES["file"]["tmp_name"], $targetPath );
+			$this->user_model->update_avatar($userId, $urlPath);
+
+			$response = array('message'=>'img uploaded..',
+				'original_avatar' => $urlPath);
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'hasFailed'=> true);
+		}
+
+		
+		
+
+		$this->output->set_output(json_encode_helper($response));
 	}
 
 	public function add(){		
@@ -82,7 +121,6 @@ class User extends CI_Controller {
 				$publicKey = hash('sha256', $email.$this->config->item('public_salt').$timestamp);
 				$privateKey = hash('sha256', $publicKey.$this->config->item('private_salt').$timestamp);
 				$expires = date('Y-m-d 23:59:59', strtotime('+30 days', time()));
-
 				$userTokenData = array(
 						'expires' => $expires,
 						'public_key' => $publicKey,

@@ -47,11 +47,11 @@
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="5NM-9s-A2l"/>
+                            <exclude reference="Asb-ZS-0av"/>
+                            <exclude reference="DgA-bg-QVT"/>
                             <exclude reference="Ykh-6A-0ue"/>
                             <exclude reference="kf2-1m-4Oh"/>
-                            <exclude reference="5NM-9s-A2l"/>
-                            <exclude reference="DgA-bg-QVT"/>
-                            <exclude reference="Asb-ZS-0av"/>
                             <exclude reference="vRX-9N-rWf"/>
                         </mask>
                     </variation>

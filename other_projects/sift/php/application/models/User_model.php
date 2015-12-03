@@ -51,7 +51,7 @@ class User_model extends CI_Model {
     function find($value, $pageIndex){
         $ITEMS_PER_PAGE = 25;
         $valueLike = '%'.$value.'%';
-        $query = "select * from users where (email like ? or first_name like ? or last_name like ?) 
+        $query = "select id, first_name, last_name, email, phone_number, account_type, avatar_original from users where (email like ? or first_name like ? or last_name like ?) 
         or (phone_number = ?) or (CONCAT_WS(' ', first_name, last_name) like ?) 
         or (CONCAT_WS(', ', last_name, first_name) like ?) 
         limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).";";
@@ -83,6 +83,13 @@ class User_model extends CI_Model {
         }
         throw new Exception("Wrong Password!");
     }    
+
+    function update_avatar($userId, $targetPath){
+        $query = "update users set avatar_original = ? where id = ?;";
+        $result = $this->db->query($query, array($targetPath, $userId));
+
+        error_log($this->db->last_query());
+    }
 
     function email_exists($email){
         $query = "select * from users where email = ?;";

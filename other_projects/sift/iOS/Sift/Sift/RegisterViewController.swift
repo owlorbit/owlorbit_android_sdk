@@ -11,8 +11,6 @@ import IHKeyboardAvoiding
 
 
 class RegisterViewController: UIViewController, Registration1Delegate {
-
-    
     
     @IBOutlet weak var btnBack: UIImageView!
     

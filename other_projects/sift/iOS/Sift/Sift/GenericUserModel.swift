@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class GenericUserModel: NSObject {
     
@@ -14,6 +15,22 @@ class GenericUserModel: NSObject {
     var firstName:String = ""
     var lastName:String = ""
     var email:String = ""
+    var phoneNumber:String = ""
+    var accountType:String = ""
+    var avatarOriginal:String = ""
+    
+    
+    //id, first_name, last_name, email, phone_number, account_type, avatar_original
+    
+    init(json:JSON){
+        self.userId = json["id"].string!
+        self.firstName = json["first_name"].string!
+        self.lastName = json["last_name"].string!
+        self.email = json["email"].string!
+        self.phoneNumber = json["phone_number"].string!
+        self.accountType = json["account_type"].string!
+        self.avatarOriginal = (json["avatar_original"].error == nil) ? json["avatar_original"].string! : ""
+    }
     
     /*init() {
         

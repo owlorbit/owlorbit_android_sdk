@@ -91,8 +91,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Sift/MBProgressHUD.framework"
   install_framework "Pods-Sift/RNCryptor.framework"
   install_framework "Pods-Sift/TPKeyboardAvoiding.framework"
+  install_framework "Pods-Sift/UITextView_Placeholder.framework"
   install_framework "Pods-Sift/ZSWRoundedImage.framework"
   install_framework "Pods-Sift/Alamofire.framework"
+  install_framework "Pods-Sift/AlamofireImage.framework"
+  install_framework "Pods-Sift/CTAssetsPickerController.framework"
+  install_framework "Pods-Sift/ImagePickerSheetController.framework"
+  install_framework "Pods-Sift/PureLayout.framework"
   install_framework "Pods-Sift/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -103,7 +108,12 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Sift/MBProgressHUD.framework"
   install_framework "Pods-Sift/RNCryptor.framework"
   install_framework "Pods-Sift/TPKeyboardAvoiding.framework"
+  install_framework "Pods-Sift/UITextView_Placeholder.framework"
   install_framework "Pods-Sift/ZSWRoundedImage.framework"
   install_framework "Pods-Sift/Alamofire.framework"
+  install_framework "Pods-Sift/AlamofireImage.framework"
+  install_framework "Pods-Sift/CTAssetsPickerController.framework"
+  install_framework "Pods-Sift/ImagePickerSheetController.framework"
+  install_framework "Pods-Sift/PureLayout.framework"
   install_framework "Pods-Sift/SwiftyJSON.framework"
 fi

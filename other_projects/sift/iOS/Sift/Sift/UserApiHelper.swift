@@ -9,11 +9,13 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import Photos
+import AlamofireImage.Swift
 
 class UserApiHelper{
 
     class func createUser(user:RegistrationUser, resultJSON:(JSON) -> Void) -> Void {
-        
+
         var url:String = ProjectConstants.ApiBaseUrl.value + "/user/add"
         let data = ["email": user.email, "first_name" : user.firstName, "last_name" : user.lastName, "phone_number":user.phoneNumber, "password" : user.password]
 
@@ -35,6 +37,66 @@ class UserApiHelper{
             }
         
         }
+    }
+    
+    class func downloadProfileImage(){
+        //request(.GET, "https://httpbin.org/image/png")
+      
+        let downloader = ImageDownloader()
+        let URLRequest = NSURLRequest(URL: NSURL(string: "http://192.168.99.100:8080/uploads/profile_imgs/50.png")!)
+        let filter = AspectScaledToFillSizeCircleFilter(size: CGSize(width: 100.0, height: 100.0))
+        print("start download...")
+        downloader.downloadImage(URLRequest: URLRequest, filter: filter) { response in
+
+            print("come onnnn")
+            print(response.request)
+            print(response.response)
+            debugPrint(response.result)
+            
+            if let image = response.result.value {
+                print(image)
+            }
+        }
+    }
+    
+    class func uploadProfileImage(imageAsset:PHAsset, resultJSON:(JSON) -> Void) -> Void {
+
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/user/upload_profile_img"
+        let data = ["device_id": ApplicationManager.deviceId, "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+
+        //let image = UIImage(named: "image.png")
+        let image = ImageHelper.getAssetThumbnail(imageAsset, widthHeight: 200.0)
+        Alamofire.upload(.POST, url, multipartFormData: {
+            multipartFormData in
+            
+            if let _image:UIImage = image {
+                if let imageData = UIImageJPEGRepresentation(_image, 0.5) {
+                    multipartFormData.appendBodyPart(data: imageData, name: "file", fileName: "file.png", mimeType: "image/png")
+                }
+            }
+
+            for (key, value) in data {
+                multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
+            }
+            
+            }, encodingCompletion: {
+                encodingResult in
+
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON{ response in
+                        if let value: AnyObject = response.result.value {
+                            let post = JSON(value)
+                            user.avatarOriginal = (post["original_avatar"]) ? post["original_avatar"].string! : ""
+                            PersonalUserModel.save()
+                            //post["original_avatar"]
+                        }
+                    }
+                case .Failure(let encodingError):
+                    print(encodingError)
+                }
+        })
     }
     
     class func loginUser(email:String, password:String, resultJSON:(JSON) -> Void) -> Void {
@@ -87,8 +149,139 @@ class UserApiHelper{
                     }
                 }
         }
-    }    
+    }
     
+    class func acceptFriendRequest(userId:String, resultJSON:(JSON) -> Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/friend/accept_friend_request"
+        let data = ["userId": userId,"publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+        
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on \(response.result)")
+                    print(response.result.error!)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
+    
+    class func friendsRequestedByYou(resultJSON:(JSON) -> Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/friend/pending_friends_you_sent"
+        let data = ["publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on \(response.result)")
+                    print(response.result.error!)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
+
+    class func acceptedFriends(resultJSON:(JSON) -> Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/friend/all"
+        let data = ["publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+        
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on \(response.result)")
+                    print(response.result.error!)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
+    
+    
+    
+    class func friendsRequestedByThem(resultJSON:(JSON) -> Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/friend/pending_friends_they_sent"
+        let data = ["publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+        
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on \(response.result)")
+                    print(response.result.error!)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
+
+    class func addFriend(friendUserId:String, resultJSON:(JSON) -> Void) -> Void {
+
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/friend/add"
+        let data = ["friendUserId": friendUserId, "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on \(response.result)")
+                    print(response.result.error!)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
     
     class func test(resultJSON:(JSON) -> Void) -> Void {
         
@@ -120,10 +313,6 @@ class UserApiHelper{
                     }*/
                 }
         }
-
-        
-        
-        
         
     }
     

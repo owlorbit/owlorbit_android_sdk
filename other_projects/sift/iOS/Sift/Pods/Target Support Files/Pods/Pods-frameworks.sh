@@ -91,6 +91,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/MBProgressHUD.framework"
   install_framework "Pods/RNCryptor.framework"
   install_framework "Pods/TPKeyboardAvoiding.framework"
+  install_framework "Pods/UITextView_Placeholder.framework"
   install_framework "Pods/ZSWRoundedImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -101,5 +102,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/MBProgressHUD.framework"
   install_framework "Pods/RNCryptor.framework"
   install_framework "Pods/TPKeyboardAvoiding.framework"
+  install_framework "Pods/UITextView_Placeholder.framework"
   install_framework "Pods/ZSWRoundedImage.framework"
 fi

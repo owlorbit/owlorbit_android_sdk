@@ -3,9 +3,10 @@
 class Location_model extends CI_Model {
 
     var $id   = '';
-    var $user_id   = -1;
-    var $longitude = 0.0;
-    var $latitude = 0.0;
+    var $user_id   = '';
+    var $device_id   = '';
+    var $longitude = '';
+    var $latitude = '';
 
 
     function __construct(){        
@@ -25,22 +26,16 @@ class Location_model extends CI_Model {
     }
 
     //post entry
-    function insert_entry(){
-        $this->user_id   = $this->security->xss_clean(strip_tags($_POST['user_id']));
+    function insert_entry($userId){
+        $this->user_id   = $userId;
+        $this->device_id   = $this->security->xss_clean(strip_tags($_POST['device_id']));
         $this->longitude    = $this->security->xss_clean(strip_tags($_POST['longitude']));
         $this->latitude  = $this->security->xss_clean(strip_tags($_POST['latitude']));
 
         unset($this->id);
-        $this->db->insert('users', $this);
+        $this->db->insert('locations', $this);
     }
-
-    function update_entry(){
-        $this->title   = $_POST['title'];
-        $this->content = $_POST['content'];
-
-        unset($this->id);
-        $this->db->update('entries', $this, array('id' => $_POST['id']));
-    }
+    
 
 }
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChatMapKeyboardView" customModule="Sift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDn-7K-22u">
+                    <rect key="frame" x="276" y="0.0" width="36" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Send"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gps_icon" translatesAutoresizingMaskIntoConstraints="NO" id="aw2-0T-7pw">
+                    <rect key="frame" x="8" y="3" width="24" height="24"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="Dow-Uz-jMG"/>
+                        <constraint firstAttribute="width" constant="24" id="wVr-Yc-iIQ"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <accessibility key="accessibilityConfiguration" identifier="ChatMapKeyboardView"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="GDn-7K-22u" secondAttribute="bottom" id="4YF-rS-jVZ"/>
+                <constraint firstItem="GDn-7K-22u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DKq-11-Szi"/>
+                <constraint firstItem="aw2-0T-7pw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="gUQ-WU-rgv"/>
+                <constraint firstAttribute="trailing" secondItem="GDn-7K-22u" secondAttribute="trailing" constant="8" id="iJc-Hp-cxt"/>
+                <constraint firstAttribute="bottom" secondItem="aw2-0T-7pw" secondAttribute="bottom" constant="3" id="mHE-Wo-a4q"/>
+                <constraint firstItem="aw2-0T-7pw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="r88-gb-EAr"/>
+                <constraint firstItem="aw2-0T-7pw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="s2e-A3-Bvy"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="mHE-Wo-a4q"/>
+                    <exclude reference="s2e-A3-Bvy"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="gps_icon" width="24" height="24"/>
+    </resources>
+</document>

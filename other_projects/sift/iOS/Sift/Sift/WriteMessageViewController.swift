@@ -8,16 +8,23 @@
 
 import UIKit
 import DZNEmptyDataSet
+import SwiftyJSON
 
-class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
 
     @IBOutlet weak var viewSearchContainer: UIView!
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    
+    var userArrayList:NSMutableArray = [];
+    var pendingFriendArrayListOthersSent:NSMutableArray = [];
+    var pendingFriendArrayListYouSent:NSMutableArray = [];
 
+    var initialUserArrayList:NSMutableArray = [];
+    var sections:NSMutableArray = ["Friend or Foe?", "Requests (By You)", "Friends"];
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.viewSearchContainer.layer.cornerRadius = 4
         self.viewSearchContainer.layer.masksToBounds = true
 
@@ -30,12 +37,62 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         self.tableView.emptyDataSetDelegate = self
 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+
+        tap.cancelsTouchesInView = false;
         view.addGestureRecognizer(tap)
+        
+        //UserSearchTableViewCell
+        self.tableView.registerNib(UINib(nibName: "UserSearchTableViewCell", bundle:nil), forCellReuseIdentifier: "UserSearchTableViewCell")
+
+        self.tableView.registerNib(UINib(nibName: "UserSearchPendingHeaderView", bundle:nil), forHeaderFooterViewReuseIdentifier: "UserSearchPendingHeaderView")
+        
+
+        loadLists()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadLists(){
+        //friendsRequestedByYou
+
+        UserApiHelper.friendsRequestedByYou({
+            (JSON) in
+
+            self.pendingFriendArrayListYouSent = self.defaultFriendRequestedByYouList();
+            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
+                var genericUser:GenericUserModel = GenericUserModel(json: subJson);
+                self.pendingFriendArrayListYouSent.addObject(genericUser)
+            }
+            self.tableView.reloadData()
+        });
+        
+        UserApiHelper.friendsRequestedByThem({
+            (JSON) in
+
+            self.pendingFriendArrayListOthersSent = self.defaultFriendRequestedByThemList();
+            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
+                var genericUser:GenericUserModel = GenericUserModel(json: subJson);
+                self.pendingFriendArrayListOthersSent.addObject(genericUser)
+            }
+            self.tableView.reloadData()
+        });
+        
+        UserApiHelper.acceptedFriends({
+            (JSON) in
+
+            self.userArrayList = self.defaultFriendList();
+            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
+                var genericUser:GenericUserModel = GenericUserModel(json: subJson);
+                self.userArrayList.addObject(genericUser)
+            }
+
+            self.tableView.reloadData()
+            
+        });
+        
     }
 
     func dismissKeyboard() {
@@ -46,11 +103,45 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     @IBAction func txtSearchOnChange(sender: AnyObject) {
         //print(self.txtSearch.text);
         
+        if(self.txtSearch.text == ""){
+            self.userArrayList = self.defaultFriendList();
+            self.tableView.reloadData()
+            return
+        }
+        
         UserApiHelper.findUser(self.txtSearch.text!, resultJSON:{
             (JSON) in
-            print("woohoo")
-            print(JSON)
+            self.userArrayList = self.defaultFriendList();
+            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
+                var genericUser:GenericUserModel = GenericUserModel(json: subJson);
+                self.userArrayList.addObject(genericUser)
+            }
+            self.tableView.reloadData()
         });
+    }
+    
+    func defaultFriendRequestedByThemList()->NSMutableArray{
+        return [];
+    }
+    
+    func defaultFriendRequestedByYouList()->NSMutableArray{
+        return [];
+    }
+    
+    func defaultFriendList() ->NSMutableArray{
+        return self.initialUserArrayList;
+    }
+
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        var view:UserSearchPendingHeaderView? = tableView.dequeueReusableHeaderFooterViewWithIdentifier("UserSearchPendingHeaderView")! as! UserSearchPendingHeaderView
+        view!.txtHeaderLabel.text = self.sections[section] as! String;
+
+        return view;
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
@@ -68,11 +159,119 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool{
         return true
     }
-
-    func offsetForEmptyDataSet(scrollView: UIScrollView!) -> CGPoint{
-        return CGPointMake(0, 400.0);
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if(section == 0){
+            return self.pendingFriendArrayListOthersSent.count
+        }else if(section == 1){
+            return self.pendingFriendArrayListYouSent.count;
+        }else{
+            return userArrayList.count
+        }
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UserSearchTableViewCell.cellHeight();
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UserSearchTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserSearchTableViewCell")! as! UserSearchTableViewCell
+
+        var genericUser:GenericUserModel;
+        if(indexPath.section == 0){
+            genericUser = self.pendingFriendArrayListOthersSent[indexPath.row] as! GenericUserModel            
+        }else if(indexPath.section == 1){
+            genericUser = self.pendingFriendArrayListYouSent[indexPath.row] as! GenericUserModel
+        }else{
+            genericUser = self.userArrayList[indexPath.row] as! GenericUserModel
+        }
+
+        cell?.populate(genericUser)
+        return cell!
+    }
+
+    func numberOfSectionsInTableView(tableView: UITableView?) -> Int {
+        return self.sections.count
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if touch.view != nil && touch.view!.isDescendantOfView(self.tableView) {
+            return false
+        }
+        return true
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
+        //if not a friend, send a friend request if friend request not sent....
+        //if a friend, start a message.
+        //var genericUser:GenericUserModel = self.userArrayList[indexPath.row] as! GenericUserModel
+        var genericUser:GenericUserModel;
+        
+        if(indexPath.section == 0){
+            genericUser = self.pendingFriendArrayListOthersSent[indexPath.row] as! GenericUserModel
+            print("ask if they accept or decline")
+            
+            let name:String = genericUser.firstName + " " + genericUser.lastName
+            // Create the alert controller
+            var alertController = UIAlertController(title: "Friendship Request", message: "Accept friendship from \(name)", preferredStyle: .Alert)
+            
+            // Create the actions
+            var okAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.Default) {
+                UIAlertAction in
+                NSLog("Accept")
+                UserApiHelper.acceptFriendRequest(genericUser.userId, resultJSON:{
+                    (JSON) in
+                    print(JSON)
+                    self.tableView.reloadData()
+                });
+                
+            }
+
+            var cancelAction = UIAlertAction(title: "Decline", style: UIAlertActionStyle.Destructive) {
+                UIAlertAction in
+                NSLog("Decline")
+            }
+            
+            // Add the actions
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+
+            // Present the controller
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }else if(indexPath.section == 1){
+            print("dont do anything...")
+            AlertHelper.createPopupMessage("Still waiting for a response.", title: "Friend Request")
+        }else{
+            genericUser = self.userArrayList[indexPath.row] as! GenericUserModel
+            
+            //initChatMessage
+            var userIds:NSMutableArray = NSMutableArray()
+            var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+            userIds.addObject(genericUser.userId)
+            userIds.addObject(user.userId)
+
+            ChatApiHelper.initChatMessage("Init Message", userIds: userIds, resultJSON:{
+                (JSON) in
+                print(JSON)
+            });
+            
+            var vc:ChatThreadViewController = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+            vc.hidesBottomBarWhenPushed = true;
+            vc.chatUsers.addObject(genericUser)
+
+            navigationController?.pushViewController(vc, animated: true )
+            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+            /*UserApiHelper.addFriend(genericUser.userId, resultJSON:{
+                (JSON) in
+                print("----- \(JSON)")
+            });*/
+        }
+        
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.tableView.reloadData()
+    }
 
     /*
     // MARK: - Navigation

@@ -26,7 +26,7 @@ class LoginViewController: UIViewController, LoginDelegate {
     }
 
     func test(){
-        
+
         //var publicKey = "dc3db1715337d4451943f43cf9bf073164a17609c97006ec04970117037f121d"
         //var privateKey = "b2c3db857382d728387c505b97616584b29ecf85f911fd4408e55c94aca9169f"
         EncryptUtil.test()        
@@ -36,6 +36,8 @@ class LoginViewController: UIViewController, LoginDelegate {
         (JSON) in
         print("111 Done!")
         });*/
+        
+        print(ApplicationManager.deviceId)
     }
 
     func dismissKeyboard() {
@@ -74,7 +76,7 @@ class LoginViewController: UIViewController, LoginDelegate {
 
         UserApiHelper.loginUser(username, password: password, resultJSON: {
             (JSON) in
-
+            
             PersonalUserModel.updateUserFromLogin(username, password: password, serverReturnedData: JSON)
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.setupLoggedInViewController()

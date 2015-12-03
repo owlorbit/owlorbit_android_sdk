@@ -73,8 +73,8 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="JmA-2o-BTz"/>
-                                <exclude reference="goL-P0-PPy"/>
                                 <exclude reference="Ohy-GE-O7P"/>
+                                <exclude reference="goL-P0-PPy"/>
                             </mask>
                         </variation>
                     </textField>

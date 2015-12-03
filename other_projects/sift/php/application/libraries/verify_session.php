@@ -27,13 +27,13 @@ class Verify_Session{
 
 	  $sessionToken = $ci->encryption_lib->decrypt($ci->encryption_lib->decrypt($encryptedSession, $userToken->private_key), $publicKey);
 	  
-	  return $sessionToken;
+	  //return $sessionToken;
 	  //return hash('sha256', $sessionToken);
-      //if(hash('sha256', $sessionToken) != $sessionHash){
-	  //	return -2;
-	  //}
+      if(hash('sha256', $sessionToken) != $sessionHash){
+	  	return -2;
+	  }
 
 	  //if it passes those checks that means it's valid..
-	  //return $sessionToken;	 
+	  return $sessionToken;	 
 	}		
 }

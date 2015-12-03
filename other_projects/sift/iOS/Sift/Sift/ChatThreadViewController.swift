@@ -11,34 +11,63 @@ import MapKit
 import CoreLocation
 import QuartzCore
 import ZSWRoundedImage
+import SwiftyJSON
+import Alamofire
+import AlamofireImage.Swift
+//import AUIAutoGrowingTextView
+
+import UITextView_Placeholder
 
 
 
 class ChatThreadViewController: UIViewController, CLLocationManagerDelegate {
 
+    @IBOutlet weak var bottomConstraintTextField: NSLayoutConstraint!
+    @IBOutlet weak var chatKeyboardView: UIView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var chatContainerView: UIView!
+
+    @IBOutlet weak var txtChatView: AUIAutoGrowingTextView!
+
+    var chatRoomTitle:String = "";
+    var hasChatStarted:Bool = false;
+    var roomId:String = ""
+    var chatUsers:NSMutableArray = []
+    var userIds:NSMutableArray = []
+    let downloader = ImageDownloader()
+    
+    var profileImg:UIImage = UIImage()
 
     //will be removed / cleaned up/////
     let spanX:Double = 0.00725;
     let spanY:Double = 0.00725;
     var locationManager:CLLocationManager = CLLocationManager();
     var annotations:NSMutableArray = NSMutableArray();
+    
+    var messageRecentlySent:Bool = false;
 
     //person
 
     var profileImage:UIImage = UIImage()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //if(self.title.cou != ""){
-            self.title = "Tim's Chat Room"
-        //}
+        if(self.chatRoomTitle == ""){
+            for item in self.chatUsers {
+                let chatUser:GenericUserModel = item as! GenericUserModel
+                self.chatRoomTitle += (chatUser.firstName + ", ")
+            }
+            
+            if(self.chatUsers.count > 0){
+                self.chatRoomTitle.removeRange(self.chatRoomTitle.endIndex.advancedBy(-2)..<self.chatRoomTitle.endIndex)
+            }
+        }
 
-        var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "")
+        self.title = self.chatRoomTitle
+        var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "btnTextClick:")
         self.navigationItem.rightBarButtonItem = switchContextBtn
-        // Do any additional setup after loading the view.
+        //Do any additional setup after loading the view.
 
         locationManager.requestWhenInUseAuthorization();
         locationManager.requestAlwaysAuthorization();
@@ -47,10 +76,92 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate {
 
         mapView.zoomEnabled = true;
 
-        profileImage = UIImage(named:"test")!.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
-        profileImage = profileImage.roundImage()
+        //profileImage = UIImage(named:"owl_orbit")!.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
+        self.chatContainerView.hidden = true;
+        
+        //self.mapView.hidden = true;
+        
+        /*
+        LocationApiHelper.sendLocation("-40.123123", latitude: "123.04123", resultJSON:{
+            (JSON) in
+            print(JSON)
+        });*/
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        
+        
+        var chatMapKeyboard:ChatMapKeyboardView = NSBundle.mainBundle().loadNibNamed("ChatMapKeyboardView", owner: self, options:nil)[0] as! ChatMapKeyboardView
+        //keyboardNextView.delegate = self
+        
+        self.txtChatView.inputAccessoryView = chatMapKeyboard
+        
+        self.txtChatView.placeholder = "Enter text..."
+        self.txtChatView.placeholderColor = UIColor.lightGrayColor()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
+        //UserApiHelper.downloadProfileImage()
+
+        let URLRequest = NSURLRequest(URL: NSURL(string: "http://192.168.99.100:8080/uploads/profile_imgs/50.png")!)
+        //let URLRequest = NSURLRequest(URL: NSURL(string: "http://api.owlorbit.com/uploads/profile_imgs/50.png")!)
+        
+        downloader.downloadImage(URLRequest: URLRequest) { response in
+            print(response.request)
+            print(response.response)
+            debugPrint(response.result)
+            
+            if let image = response.result.value {
+                //print(image)
+                self.profileImg = image
+                
+                self.profileImage = self.profileImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
+                self.profileImage = self.profileImage.roundImage()
+
+            }
+        }
     }
     
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.bottomConstraintTextField.constant = 0
+        })
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        var info = notification.userInfo!
+        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.bottomConstraintTextField.constant = keyboardFrame.size.height
+        })
+    }
+    
+    func btnTextClick(sender: AnyObject){
+        
+        var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Map", style: UIBarButtonItemStyle.Plain, target: self, action: "btnMapClick:")
+        self.navigationItem.rightBarButtonItem = switchContextBtn
+        print("btn text click..")
+        self.mapView.hidden = true;
+        self.chatContainerView.hidden = false;
+    }
+
+    func btnMapClick(sender: AnyObject){
+        var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "btnTextClick:")
+        self.navigationItem.rightBarButtonItem = switchContextBtn
+        self.mapView.hidden = false;
+        self.chatContainerView.hidden = true;
+    }
+
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
             case .NotDetermined:
@@ -74,10 +185,37 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-        print("latitude: \(userLocation.location?.coordinate.latitude) \nlongitude:  \(userLocation.location?.coordinate.longitude)")
+        
+        
+        var latitude:String = (userLocation.location?.coordinate.latitude.description)!
+        var longitude:String = (userLocation.location?.coordinate.longitude.description)!
+        
 
         //TODO 
-        //send API based off logged in ID
+        //send location
+        //but dont spam..
+
+        /*
+        //if sent within the past 5 seconds, don't send
+        //
+        */
+        
+        if(!messageRecentlySent){
+            print("latitude: \(latitude) \nlongitude:  \(longitude)")
+            messageRecentlySent = true
+            
+            LocationApiHelper.sendLocation(longitude, latitude: latitude, resultJSON:{
+                (JSON) in
+                print(JSON)
+                var messageRecentTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "updateMessageTimer:", userInfo: nil, repeats: false)
+            });
+        }
+    }
+    
+    func updateMessageTimer(timer: NSTimer) {
+    
+        messageRecentlySent = false
+        timer.invalidate()
     }
 
     func zoomToCurrentLocation() {
