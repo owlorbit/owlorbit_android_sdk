@@ -18,21 +18,22 @@ class RoomModel: NSObject {
     var roomName:String = ""
     
     var lastMessage:String = ""
-    var lastMessageBy:String = ""
+    var avatarOriginal:String = ""
+    var timestamp:String = ""
     //var lastMessageTimestamp:NSDate = NSDate()
 
     init(json:JSON){
+        print("json:: \(json)")
         self.userId = json["user_id"].string!
         self.firstName = json["first_name"].string!
         self.lastName = json["last_name"].string!
         self.roomId = json["room_id"].string!
         self.roomName = (json["room_name"]) ? json["room_name"].string! : ""
-        
-        
-        self.lastMessage = (json["last_message"].error == nil) ? json["last_message"].string! : ""
-        self.lastMessageBy = (json["last_message_by"].error == nil) ? json["last_message_by"].string! : ""
+        self.lastMessage = (json["message"].error == nil) ? json["message"].string! : ""
+        self.avatarOriginal = (json["avatar_original"].error == nil) ? json["avatar_original"].string! : ""
+        self.timestamp = (json["created"].error == nil) ? json["created"].string! : ""
 
-        print("fuck \(json["room_id"].string)")
+        //self.lastMessageBy = (json["last_message_by"].error == nil) ? json["last_message_by"].string! : ""
         //self.lastMessageTimestamp = json["last_message_timestamp"].string
     }
     

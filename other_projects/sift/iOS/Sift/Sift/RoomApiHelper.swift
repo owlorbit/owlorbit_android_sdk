@@ -11,8 +11,7 @@ import SwiftyJSON
 import Alamofire
 
 class RoomApiHelper{
-    
-    
+
     class func getRooms(pageIndex:Int, resultJSON:(JSON) -> Void) -> Void {
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;

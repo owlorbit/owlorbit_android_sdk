@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
 		3280A1EF51479CC44672D072 /* Pods_Sift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35946F21B48C1DE6863F53BD /* Pods_Sift.framework */; };
+		B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */; };
 		B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */; };
 		B866DFB11C061CA000BF8A79 /* UserSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */; };
 		B866DFB21C061CA000BF8A79 /* UserSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */; };
@@ -61,6 +62,9 @@
 		B8BAD25C1BF17F6C00DC7F60 /* ChatThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */; };
 		B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2671BF1869C00DC7F60 /* DashboardViewController.swift */; };
 		B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD2681BF1869C00DC7F60 /* DashboardViewController.xib */; };
+		B8CAA48E1C11096B00EC2752 /* DynamicPersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA48D1C11096B00EC2752 /* DynamicPersonalData.swift */; };
+		B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA48F1C11343100EC2752 /* MessageModel.swift */; };
+		B8CAA4921C1134F900EC2752 /* MessageCoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */; };
 		B8E4E7D11BFC40E600995964 /* ReadMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */; };
 		B8E4E7D21BFC40E600995964 /* ReadMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E4E7D01BFC40E600995964 /* ReadMessageTableViewCell.xib */; };
 		B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D41BFD488700995964 /* UserApiHelper.swift */; };
@@ -97,6 +101,8 @@
 		35946F21B48C1DE6863F53BD /* Pods_Sift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91601974A0D837B391AABADD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B804C6CC1C16A4920076F81B /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
+		B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
 		B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserModel.swift; sourceTree = "<group>"; };
 		B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewCell.swift; sourceTree = "<group>"; };
 		B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -157,6 +163,9 @@
 		B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatThreadViewController.xib; sourceTree = "<group>"; };
 		B8BAD2671BF1869C00DC7F60 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		B8BAD2681BF1869C00DC7F60 /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		B8CAA48D1C11096B00EC2752 /* DynamicPersonalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicPersonalData.swift; sourceTree = "<group>"; };
+		B8CAA48F1C11343100EC2752 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCoreModel.swift; sourceTree = "<group>"; };
 		B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMessageTableViewCell.swift; sourceTree = "<group>"; };
 		B8E4E7D01BFC40E600995964 /* ReadMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadMessageTableViewCell.xib; sourceTree = "<group>"; };
 		B8E4E7D41BFD488700995964 /* UserApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApiHelper.swift; sourceTree = "<group>"; };
@@ -321,6 +330,8 @@
 			children = (
 				B866DFC91C0E733300BF8A79 /* AUIAutoGrowingTextView.h */,
 				B866DFCA1C0E733300BF8A79 /* AUIAutoGrowingTextView.m */,
+				B804C6CC1C16A4920076F81B /* NSDate+NVTimeAgo.h */,
+				B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */,
 				B870CEE91BFC00D800F47929 /* UIImage+Round.swift */,
 				B8E4E7D81BFD4CEC00995964 /* AlertHelper.swift */,
 				B8E4E7DA1BFD4F5F00995964 /* FormValidateHelper.swift */,
@@ -444,6 +455,9 @@
 				B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */,
 				B866DFC51C0D266300BF8A79 /* RoomModel.swift */,
 				B866DFC71C0D2EDF00BF8A79 /* RoomCellModel.swift */,
+				B8CAA48D1C11096B00EC2752 /* DynamicPersonalData.swift */,
+				B8CAA48F1C11343100EC2752 /* MessageModel.swift */,
+				B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -714,6 +728,7 @@
 				B87654631C03F53F00190B9B /* WriteMessageViewController.swift in Sources */,
 				B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */,
 				B866DFC81C0D2EDF00BF8A79 /* RoomCellModel.swift in Sources */,
+				B8CAA48E1C11096B00EC2752 /* DynamicPersonalData.swift in Sources */,
 				B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */,
 				B8E4E7E31BFEB92000995964 /* PersonalUserModel.swift in Sources */,
 				B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */,
@@ -737,11 +752,14 @@
 				B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */,
 				B866DFCE1C0E811C00BF8A79 /* ChatMapKeyboardView.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
+				B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */,
 				B8E4E7D91BFD4CEC00995964 /* AlertHelper.swift in Sources */,
 				B8E4E7DD1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift in Sources */,
 				B8E4E7E11BFD80CE00995964 /* ProjectConstants.swift in Sources */,
+				B8CAA4921C1134F900EC2752 /* MessageCoreModel.swift in Sources */,
 				B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */,
 				B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */,
+				B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0EC4B838F29CB0BC2E66B4BE'
+               BlueprintIdentifier = 'DF49C871746E35FCC5A733E5'
                BlueprintName = 'ASImageResize'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ASImageResize.framework'>

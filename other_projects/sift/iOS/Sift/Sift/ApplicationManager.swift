@@ -11,4 +11,5 @@ import UIKit
 class ApplicationManager: NSObject {
     static let shareCoreDataInstance = CoreDataHelper()
     static let deviceId = UIDevice.currentDevice().identifierForVendor!.UUIDString
+    static let userData = DynamicPersonData()
 }

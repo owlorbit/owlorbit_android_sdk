@@ -20,7 +20,7 @@ import UITextView_Placeholder
 
 
 
-class ChatThreadViewController: UIViewController, CLLocationManagerDelegate {
+class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate {
 
     @IBOutlet weak var bottomConstraintTextField: NSLayoutConstraint!
     @IBOutlet weak var chatKeyboardView: UIView!
@@ -52,13 +52,13 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if(self.chatRoomTitle == ""){
             for item in self.chatUsers {
                 let chatUser:GenericUserModel = item as! GenericUserModel
                 self.chatRoomTitle += (chatUser.firstName + ", ")
             }
-            
+
             if(self.chatUsers.count > 0){
                 self.chatRoomTitle.removeRange(self.chatRoomTitle.endIndex.advancedBy(-2)..<self.chatRoomTitle.endIndex)
             }
@@ -81,13 +81,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate {
         
         //self.mapView.hidden = true;
         
-        /*
-        LocationApiHelper.sendLocation("-40.123123", latitude: "123.04123", resultJSON:{
-            (JSON) in
-            print(JSON)
-        });*/
-        
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
@@ -98,37 +91,33 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate {
         var chatMapKeyboard:ChatMapKeyboardView = NSBundle.mainBundle().loadNibNamed("ChatMapKeyboardView", owner: self, options:nil)[0] as! ChatMapKeyboardView
         //keyboardNextView.delegate = self
         
+        chatMapKeyboard.delegate = self
         self.txtChatView.inputAccessoryView = chatMapKeyboard
         
         self.txtChatView.placeholder = "Enter text..."
         self.txtChatView.placeholderColor = UIColor.lightGrayColor()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-        
-        //UserApiHelper.downloadProfileImage()
 
-        let URLRequest = NSURLRequest(URL: NSURL(string: "http://192.168.99.100:8080/uploads/profile_imgs/50.png")!)
-        //let URLRequest = NSURLRequest(URL: NSURL(string: "http://api.owlorbit.com/uploads/profile_imgs/50.png")!)
-        
-        downloader.downloadImage(URLRequest: URLRequest) { response in
-            print(response.request)
-            print(response.response)
-            debugPrint(response.result)
-            
-            if let image = response.result.value {
-                //print(image)
-                self.profileImg = image
-                
-                self.profileImage = self.profileImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
-                self.profileImage = self.profileImage.roundImage()
-
-            }
+        if ApplicationManager.userData.profileImage != nil{
+            self.profileImg = ApplicationManager.userData.profileImage!
+            self.profileImage = self.profileImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
+            self.profileImage = self.profileImage.roundImage()
         }
+        
     }
     
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+    func submitChat() {
+        ChatApiHelper.sendMessage(self.txtChatView.text, roomId: roomId, resultJSON: {
+            (JSON) in            
+            self.txtChatView.text = ""
+            print(JSON)
+        })
     }
     
     func keyboardWillHide(notification: NSNotification) {

@@ -40,12 +40,10 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
 
         tap.cancelsTouchesInView = false;
         view.addGestureRecognizer(tap)
-        
-        //UserSearchTableViewCell
+
         self.tableView.registerNib(UINib(nibName: "UserSearchTableViewCell", bundle:nil), forCellReuseIdentifier: "UserSearchTableViewCell")
 
         self.tableView.registerNib(UINib(nibName: "UserSearchPendingHeaderView", bundle:nil), forHeaderFooterViewReuseIdentifier: "UserSearchPendingHeaderView")
-        
 
         loadLists()
     }
@@ -253,6 +251,7 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
 
             ChatApiHelper.initChatMessage("Init Message", userIds: userIds, resultJSON:{
                 (JSON) in
+                print("init this shit")
                 print(JSON)
             });
             

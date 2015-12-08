@@ -8,9 +8,14 @@
 
 import Foundation
 
+protocol ChatSubmitDelegate {
+    func submitChat()
+}
+
 
 class ChatMapKeyboardView: UIView {
     
+    var delegate:ChatSubmitDelegate?;
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,6 +24,11 @@ class ChatMapKeyboardView: UIView {
         
     }
     
+    @IBAction func btnSendClick(sender: AnyObject) {
+        print("click..")
+        delegate?.submitChat()
+    }
+
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)!
     }

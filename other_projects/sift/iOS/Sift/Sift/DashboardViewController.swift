@@ -10,6 +10,9 @@ import UIKit
 import DZNEmptyDataSet
 import SwiftyJSON
 import CoreData
+import Alamofire
+import AlamofireImage.Swift
+
 
 class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
@@ -18,6 +21,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
     //var userArrayList:NSMutableArray = [];
     var rooms = Dictionary<String, NSMutableArray>();
+    let downloader = ImageDownloader()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +39,25 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         self.navigationController!.navigationBar.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
 
         initRooms();
+        initProfile();
         if(!hasProfileImage()){
             let vc = ProfileImageUploadViewController(nibName: "ProfileImageUploadViewController", bundle: nil)
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true )
+        }
+    }
+    
+    func initProfile(){
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
+        var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+        URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+
+        downloader.downloadImage(URLRequest: URLRequest) { response in
+            if let image = response.result.value {
+                ApplicationManager.userData.profileImage = image
+            }
         }
     }
     
@@ -55,23 +74,21 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         RoomApiHelper.getRooms(1, resultJSON:{
             (JSON) in
 
-            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
-                var roomModel:RoomModel = RoomModel(json: subJson);
-
-                if(self.rooms[roomModel.roomId] == nil){
-                    //print("adding: \(roomModel.roomId)")
-                    self.rooms[roomModel.roomId] = NSMutableArray();
+            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["room_attributes"] {
+                
+                let roomId:String = subJson["room_id"].string!
+                if(self.rooms[roomId] == nil){
+                    self.rooms[roomId] = NSMutableArray();
                 }
 
-                self.rooms[roomModel.roomId]?.addObject(roomModel)
+                //self.rooms[roomId]?.addObject()
             }
 
-            for (key, roomArr) in self.rooms {
-                var roomId:String = key as! String
-                var roomCell:RoomCellModel = RoomCellModel(data: roomArr, roomId: roomId)
-                self.data.addObject(roomCell)
+            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
+                var roomModel:RoomModel = RoomModel(json: subJson);
+                self.data.addObject(roomModel)
             }
-            
+
             self.tableView.emptyDataSetSource = self
             self.tableView.emptyDataSetDelegate = self
             self.tableView.reloadData()
@@ -128,24 +145,24 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         var cell:ReadMessageTableViewCell? = tableView.dequeueReusableCellWithIdentifier("ReadMessageTableViewCell")! as! ReadMessageTableViewCell
-        var roomCellModel:RoomCellModel = data[indexPath.row] as! RoomCellModel
+        var roomData:RoomModel = data[indexPath.row] as! RoomModel
 
-        cell?.populate(roomCellModel)
-        //cell.populate(data[indexPath.row])
-        //cell.textLabel?.text = self.data[indexPath.row] as? String
+        cell?.populate(roomData)
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var roomCellModel:RoomCellModel = data[indexPath.row] as! RoomCellModel
+        //get all user ids..?
+        var roomData:RoomModel = data[indexPath.row] as! RoomModel
         let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
-        vc.chatRoomTitle = roomCellModel.name
-        vc.userIds = roomCellModel.userIds
+        vc.chatRoomTitle = roomData.roomName
+        vc.roomId = roomData.roomId
+        //vc.userIds = roomCellModel.userIds
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true )
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
+
     /*
     // MARK: - Navigation
 

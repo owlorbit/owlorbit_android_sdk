@@ -59,18 +59,16 @@ class UserApiHelper{
         }
     }
     
-    class func uploadProfileImage(imageAsset:PHAsset, resultJSON:(JSON) -> Void) -> Void {
+    class func uploadProfileImage(img:UIImage, resultJSON:(JSON) -> Void) -> Void {
 
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         var url:String = ProjectConstants.ApiBaseUrl.value + "/user/upload_profile_img"
         let data = ["device_id": ApplicationManager.deviceId, "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
 
-        //let image = UIImage(named: "image.png")
-        let image = ImageHelper.getAssetThumbnail(imageAsset, widthHeight: 200.0)
         Alamofire.upload(.POST, url, multipartFormData: {
             multipartFormData in
             
-            if let _image:UIImage = image {
+            if let _image:UIImage = img {
                 if let imageData = UIImageJPEGRepresentation(_image, 0.5) {
                     multipartFormData.appendBodyPart(data: imageData, name: "file", fileName: "file.png", mimeType: "image/png")
                 }
@@ -90,6 +88,8 @@ class UserApiHelper{
                             let post = JSON(value)
                             user.avatarOriginal = (post["original_avatar"]) ? post["original_avatar"].string! : ""
                             PersonalUserModel.save()
+                            
+                            resultJSON(post)
                             //post["original_avatar"]
                         }
                     }

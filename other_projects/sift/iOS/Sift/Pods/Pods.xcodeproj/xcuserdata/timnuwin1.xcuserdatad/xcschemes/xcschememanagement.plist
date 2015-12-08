@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ALThreeCircleSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ASImageResize.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -40,6 +45,11 @@
 			<false/>
 		</dict>
 		<key>IHKeyboardDismissing.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ImageCropView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -117,7 +127,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2A91F94F2DD7830B5E4C0D9810AB069B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2AAAB9973850C35994DC04473435E1A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>34BDD1971109A5EC20E8C474BF60B615</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,17 +162,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6020C6075E89F9F06D6986589897156C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>9293BDAD24D4423350AB71A893BD22CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>A1BF58736B6CCECB5DB30E2108366143</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AE73CD2333CD5C2B1A361C2CE2FA67DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -177,12 +197,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB4FA5240645A79AE809B5F06EB34A27</key>
+		<key>FAF7A198F28D0D1650946E5A2CD2F7C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FC03B1C71CDFE8D1E8279B1025EA4A88</key>
+		<key>FB4FA5240645A79AE809B5F06EB34A27</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -65,10 +65,12 @@ class Room extends CI_Controller {
 				throw new Exception("Session is invalid.");	
 			}
 
-		    $rooms = $this->room_model->all($userId, $pageIndex);
+		    $lastMessageOfRooms = $this->message_model->recent_messages($userId, $pageIndex);
+		    $roomAttributes = $this->message_model->recent_message_attributes($userId);
 			$response = array(
 		    	'message' => 'room initiated added!',
-		    	'rooms' => $rooms
+		    	'rooms' => $lastMessageOfRooms,
+		    	'room_attributes' => $roomAttributes
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),

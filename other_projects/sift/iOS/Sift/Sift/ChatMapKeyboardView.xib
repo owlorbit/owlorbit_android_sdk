@@ -15,6 +15,9 @@
                     <rect key="frame" x="276" y="0.0" width="36" height="30"/>
                     <animations/>
                     <state key="normal" title="Send"/>
+                    <connections>
+                        <action selector="btnSendClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="tMx-Bx-PkO"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gps_icon" translatesAutoresizingMaskIntoConstraints="NO" id="aw2-0T-7pw">
                     <rect key="frame" x="8" y="3" width="24" height="24"/>

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="MessageCoreModel" representedClassName="MessageCoreModel" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="room_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="PersonalUserModel" representedClassName="PersonalUserModel" syncable="YES">
         <attribute name="avatarOriginal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="deviceId" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,5 +27,6 @@
     </entity>
     <elements>
         <element name="PersonalUserModel" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="MessageCoreModel" positionX="-63" positionY="81" width="128" height="165"/>
     </elements>
 </model>

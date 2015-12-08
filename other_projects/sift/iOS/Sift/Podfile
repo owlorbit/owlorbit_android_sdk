@@ -8,6 +8,8 @@ target 'Sift' do
     pod 'AlamofireImage', '~> 2.0'
     pod 'CTAssetsPickerController',  '~> 3.2.0'
     pod 'ImagePickerSheetController'
+    pod 'ALThreeCircleSpinner'
+    pod 'ImageCropView', '~> 1.0'
 end
 
 pod 'UITextView+Placeholder'

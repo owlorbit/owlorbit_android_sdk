@@ -3,11 +3,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileImageUploadViewController" customModule="Sift" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="5dl-Qn-nFq" id="ZJ3-2s-FRx"/>
+                <outlet property="imgCropView" destination="BLV-DM-d3f" id="yKy-E9-Mdr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,25 +17,45 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5dl-Qn-nFq">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLV-DM-d3f" customClass="ImageCropView" customModule="ImageCropView">
+                    <rect key="frame" x="0.0" y="124" width="320" height="320"/>
                     <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="gzd-SQ-ehF"/>
-                        <outlet property="delegate" destination="-1" id="neD-QK-7Vb"/>
-                    </connections>
-                </tableView>
+                    <color key="backgroundColor" red="0.42390703914141403" green="0.42390703914141403" blue="0.42390703914141403" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="BLV-DM-d3f" secondAttribute="height" multiplier="1:1" id="4kj-T7-bVP"/>
+                        <constraint firstAttribute="height" constant="320" id="bEe-y9-xki"/>
+                        <constraint firstAttribute="width" constant="320" id="hRL-fg-PcY"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="5dl-Qn-nFq" secondAttribute="bottom" id="CIe-YG-j6f"/>
-                <constraint firstItem="5dl-Qn-nFq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="J57-Sl-TAB"/>
-                <constraint firstAttribute="trailing" secondItem="5dl-Qn-nFq" secondAttribute="trailing" id="ddZ-a7-LGj"/>
-                <constraint firstItem="5dl-Qn-nFq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yxz-Sd-pVi"/>
+                <constraint firstAttribute="trailing" secondItem="BLV-DM-d3f" secondAttribute="trailing" id="4Id-Gv-2tF"/>
+                <constraint firstItem="BLV-DM-d3f" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9n5-Rg-ST7"/>
+                <constraint firstItem="BLV-DM-d3f" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="BOQ-5a-blW"/>
+                <constraint firstItem="BLV-DM-d3f" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MEA-wJ-RJy"/>
+                <constraint firstItem="BLV-DM-d3f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TE7-Ud-bCs"/>
+                <constraint firstAttribute="bottom" secondItem="BLV-DM-d3f" secondAttribute="bottom" constant="60" id="TFq-ac-l8Z"/>
+                <constraint firstItem="BLV-DM-d3f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="124" id="dJW-8n-yrX"/>
+                <constraint firstItem="BLV-DM-d3f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="124" id="efI-tN-3a1"/>
+                <constraint firstItem="BLV-DM-d3f" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="32" id="ooN-AK-YV1"/>
+                <constraint firstItem="BLV-DM-d3f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="otc-Ct-pnV"/>
+                <constraint firstItem="BLV-DM-d3f" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="rnk-IL-wK0"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="9n5-Rg-ST7"/>
+                    <exclude reference="BOQ-5a-blW"/>
+                    <exclude reference="TFq-ac-l8Z"/>
+                    <exclude reference="dJW-8n-yrX"/>
+                    <exclude reference="efI-tN-3a1"/>
+                    <exclude reference="otc-Ct-pnV"/>
+                    <exclude reference="rnk-IL-wK0"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

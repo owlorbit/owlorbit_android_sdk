@@ -11,6 +11,7 @@
 
 #import <TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.h>
 #import <ASImageResize/UIImage+Resize.h>
+#import "NSDate+NVTimeAgo.h"
 
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 

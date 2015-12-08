@@ -2,12 +2,14 @@ PODS:
   - Alamofire (3.1.2)
   - AlamofireImage (2.1.1):
     - Alamofire (~> 3.1)
+  - ALThreeCircleSpinner (1.0.2)
   - ASImageResize (1.0.3)
   - CTAssetsPickerController (3.2.1):
     - PureLayout (~> 3.0.0)
   - DZNEmptyDataSet (1.7.2)
   - IHKeyboardAvoiding (2.5)
   - IHKeyboardDismissing (1.1)
+  - ImageCropView (1.0.1)
   - ImagePickerSheetController (0.9.1)
   - MBProgressHUD (0.9.1)
   - PureLayout (3.0.1)
@@ -20,11 +22,13 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.1)
   - AlamofireImage (~> 2.0)
+  - ALThreeCircleSpinner
   - ASImageResize
   - CTAssetsPickerController (~> 3.2.0)
   - DZNEmptyDataSet
   - IHKeyboardAvoiding
   - IHKeyboardDismissing
+  - ImageCropView (~> 1.0)
   - ImagePickerSheetController
   - MBProgressHUD
   - RNCryptor
@@ -45,11 +49,13 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   AlamofireImage: 31f7c4e9f516183e0ef2d2da18318de28a4628b8
+  ALThreeCircleSpinner: 8bdd4e0d3d8a715b6fec50022911189bb63323af
   ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
   CTAssetsPickerController: 629e3c452efe92627b6386f572fc4e2f31533880
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   IHKeyboardAvoiding: 8f14fed93405dd2c44ce070a26f780d9e477538c
   IHKeyboardDismissing: 7c23d41da51ca22f6a1091b3cf852821a2461ac9
+  ImageCropView: cbe42a5c4c31677e3d7167f7fd00c63c30d20acf
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb

@@ -25,7 +25,7 @@ class RoomCellModel: NSObject {
             var roomModel:RoomModel = roomData as! RoomModel
 
             self.lastMessage = roomModel.lastMessage
-            self.lastMessageBy = roomModel.lastMessageBy
+            //self.lastMessageBy = roomModel
             userIds.addObject(roomModel.userId)
             if(user.userId != roomModel.userId){
                 self.name += roomModel.firstName + ", "

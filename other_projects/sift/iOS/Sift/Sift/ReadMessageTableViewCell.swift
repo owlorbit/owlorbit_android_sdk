@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage.Swift
 
 class ReadMessageTableViewCell: UITableViewCell {
 
@@ -14,14 +16,30 @@ class ReadMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var lblLastMsg: UILabel!
     @IBOutlet weak var lblRoomTitle: UILabel!
     @IBOutlet weak var imgAvatar: UIImageView!
+    
+    let downloader = ImageDownloader()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    func populate(roomCellModel:RoomCellModel){
-        self.lblRoomTitle.text = roomCellModel.name
-        self.lblLastMsg.text = roomCellModel.lastMessageBy + ": " + roomCellModel.lastMessage
+    func populate(roomData:RoomModel){
+        self.lblRoomTitle.text = roomData.roomName
+        self.lblLastMsg.text = roomData.firstName + ": " + roomData.lastMessage
+
+        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + roomData.avatarOriginal
+        var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+        URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.timestamp)
+        //mysqlDatetimeFormattedAsTimeAgo
+        
+        downloader.downloadImage(URLRequest: URLRequest) { response in
+            if let image = response.result.value {
+                self.imgAvatar.image = image.roundImage()
+            }
+        }
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
