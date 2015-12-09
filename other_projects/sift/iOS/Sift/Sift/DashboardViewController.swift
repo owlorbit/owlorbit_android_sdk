@@ -74,19 +74,22 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         RoomApiHelper.getRooms(1, resultJSON:{
             (JSON) in
 
-            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["room_attributes"] {
-                
-                let roomId:String = subJson["room_id"].string!
-                if(self.rooms[roomId] == nil){
-                    self.rooms[roomId] = NSMutableArray();
-                }
-
-                //self.rooms[roomId]?.addObject()
-            }
-
             for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
                 var roomModel:RoomModel = RoomModel(json: subJson);
-                self.data.addObject(roomModel)
+                
+                
+                RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
+                    (JSON2) in
+
+                    var roomAttribute:RoomAttributeModel = RoomAttributeModel(json: JSON2)
+                    roomModel.attributes = roomAttribute
+                    if(roomModel.attributes.users.count > 0){
+                        roomModel.avatarOriginal = (roomModel.attributes.users[0] as! GenericUserModel).avatarOriginal
+                    }
+                    self.data.addObject(roomModel)
+                    self.tableView.reloadData()
+                });
+                
             }
 
             self.tableView.emptyDataSetSource = self
@@ -96,8 +99,6 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     func createNewBtnClick(sender: AnyObject){
-        //WriteMessageViewController
-
         let vc = WriteMessageViewController(nibName: "WriteMessageViewController", bundle: nil)
         vc.hidesBottomBarWhenPushed = true;
         navigationController?.pushViewController(vc, animated: true )
@@ -109,12 +110,9 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     @IBAction func btnTest(sender: AnyObject) {
-        
-        //print("why no push..?")
         let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
         vc.hidesBottomBarWhenPushed = true;
         navigationController?.pushViewController(vc, animated: true )
-
     }
 
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
@@ -155,9 +153,9 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         //get all user ids..?
         var roomData:RoomModel = data[indexPath.row] as! RoomModel
         let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
-        vc.chatRoomTitle = roomData.roomName
+        vc.chatRoomTitle = roomData.attributes.name
         vc.roomId = roomData.roomId
-        //vc.userIds = roomCellModel.userIds
+        vc.roomData = roomData
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true )
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)

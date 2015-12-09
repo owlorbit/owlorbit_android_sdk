@@ -14,28 +14,20 @@ import ZSWRoundedImage
 import SwiftyJSON
 import Alamofire
 import AlamofireImage.Swift
-//import AUIAutoGrowingTextView
-
 import UITextView_Placeholder
 
-
-
-class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate {
+class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var bottomConstraintTextField: NSLayoutConstraint!
     @IBOutlet weak var chatKeyboardView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var chatContainerView: UIView!
-
     @IBOutlet weak var txtChatView: AUIAutoGrowingTextView!
 
     var chatRoomTitle:String = "";
-    var hasChatStarted:Bool = false;
     var roomId:String = ""
-    var chatUsers:NSMutableArray = []
-    var userIds:NSMutableArray = []
+    var roomData:RoomModel = RoomModel(json: nil)
     let downloader = ImageDownloader()
-    
     var profileImg:UIImage = UIImage()
 
     //will be removed / cleaned up/////
@@ -45,24 +37,12 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     var annotations:NSMutableArray = NSMutableArray();
     
     var messageRecentlySent:Bool = false;
-
-    //person
-
     var profileImage:UIImage = UIImage()
+    
+    var locationDict = [String:UserPointAnnotation]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if(self.chatRoomTitle == ""){
-            for item in self.chatUsers {
-                let chatUser:GenericUserModel = item as! GenericUserModel
-                self.chatRoomTitle += (chatUser.firstName + ", ")
-            }
-
-            if(self.chatUsers.count > 0){
-                self.chatRoomTitle.removeRange(self.chatRoomTitle.endIndex.advancedBy(-2)..<self.chatRoomTitle.endIndex)
-            }
-        }
 
         self.title = self.chatRoomTitle
         var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "btnTextClick:")
@@ -73,10 +53,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         locationManager.requestAlwaysAuthorization();
         mapView.showsUserLocation = true;
         locationManager.delegate = self;
-
         mapView.zoomEnabled = true;
-
-        //profileImage = UIImage(named:"owl_orbit")!.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
         self.chatContainerView.hidden = true;
         
         //self.mapView.hidden = true;
@@ -92,6 +69,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         //keyboardNextView.delegate = self
         
         chatMapKeyboard.delegate = self
+
+        self.mapView.delegate = self;
         self.txtChatView.inputAccessoryView = chatMapKeyboard
         
         self.txtChatView.placeholder = "Enter text..."
@@ -104,7 +83,50 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.profileImage = self.profileImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
             self.profileImage = self.profileImage.roundImage()
         }
+
+        loadProfileImg()
+        initLocations()
+    }
+
+    func loadProfileImg(){
+
+        //GenericUserModel
+        for obj in roomData.attributes.users {
+            var userData:GenericUserModel = obj as! GenericUserModel
+            
+            if(userData.avatarOriginal != ""){
+                var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userData.avatarOriginal
+                var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+                URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+                downloader.downloadImage(URLRequest: URLRequest) { response in
+                    if let image = response.result.value {
+                        userData.avatarImg = image
+                        userData.avatarImg = userData.avatarImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
+                        userData.avatarImg = userData.avatarImg.roundImage()
+                        self.addUser(userData)
+                    }
+                }
+            }
+        }
+    }
+
+    func initLocations(){
+        LocationApiHelper.getRoomLocations(self.roomId,resultJSON:{
+            (JSON) in
+            print("load locations")
+            print(JSON)
+        });
+    }
+    
+    func addUser(userModel:GenericUserModel){
         
+        //make sure userModel doesn't exist in annotations list...
+        var userPoint:UserPointAnnotation = UserPointAnnotation()
+        userPoint.userModel = userModel
+        userPoint.coordinate = CLLocationCoordinate2D(latitude: 40, longitude: -72)
+
+        self.annotations.addObject(userPoint)
+        self.mapView.addAnnotation(userPoint)
     }
     
     func dismissKeyboard() {
@@ -136,7 +158,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
     
     func btnTextClick(sender: AnyObject){
-        
+        //var userPoint:UserPointAnnotation = self.annotations[0] as! UserPointAnnotation
+        //userPoint.coordinate = CLLocationCoordinate2D(latitude: 50, longitude: -52)
+        //self.annotations.addObject(userPoint)
+
         var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Map", style: UIBarButtonItemStyle.Plain, target: self, action: "btnMapClick:")
         self.navigationItem.rightBarButtonItem = switchContextBtn
         print("btn text click..")
@@ -166,6 +191,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             break
         case .Restricted:
         break
+
         case .Denied:
             break
         default:
@@ -238,35 +264,33 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 if anView == nil {
                     anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
                     anView!.canShowCallout = true
-                }
-                else {
+                } else {
                     anView!.annotation = annotation
                 }
 
-
                 anView!.image = profileImage
-                
-                //profileImage
-                //anView!.image = CGRectIntegral(anView!.image.frame);
-
-                //pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-                //pinView!.image = UIImage(named:"test.jpg")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-
                 return anView
             }
-            
-            
-            let reuseId = "pin"
-            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
 
+            let reuseId = "pinAvatarImg"
+            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+            let userPointAnnotation:UserPointAnnotation = annotation as! UserPointAnnotation;
+            //sprint(".....\(userPointAnnotation.pinCustomImageName)")
             if pinView == nil {
-                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
                 pinView!.canShowCallout = true
-                pinView!.animatesDrop = true
-                pinView!.pinColor = .Purple
-            }
-            else {
+                pinView!.image = userPointAnnotation.userModel.avatarImg
+                print("dirtbag")
+            } else {
                 pinView!.annotation = annotation
+                //pinView!.image = userPointAnnotation.userModel.avatarImg
+
+                /*if(userPointAnnotation.userModel.avatarImg != nil){
+                    pinView!.image = profileImage
+                }else{
+                    pinView!.image = UIImage(named:"owl_orbit")
+                }*/
+                //pinView!.image = UIImage(named:"owl_orbit")
             }
             
             return pinView

@@ -257,7 +257,6 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             
             var vc:ChatThreadViewController = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
             vc.hidesBottomBarWhenPushed = true;
-            vc.chatUsers.addObject(genericUser)
 
             navigationController?.pushViewController(vc, animated: true )
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)

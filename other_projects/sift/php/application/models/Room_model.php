@@ -9,6 +9,20 @@ class Room_model extends CI_Model {
         $this->load->database();
     }
 
+    function attribute($userId, $roomId){
+        $query = "select user_id as id, room_id, avatar_original, first_name from room_users ru
+                inner join users u
+            on u.id = ru.user_id
+                where user_id != ? and room_id in (select distinct(room_id) from room_users where user_id = ? and room_id = ?);";
+
+        $result = $this->db->query($query, array($userId, $userId, $roomId));
+
+        if($result->num_rows() > 0){            
+            return $result->result();
+        }
+        return array();        
+    }
+
     function all($userId, $pageIndex){
         $ITEMS_PER_PAGE = 25;
 

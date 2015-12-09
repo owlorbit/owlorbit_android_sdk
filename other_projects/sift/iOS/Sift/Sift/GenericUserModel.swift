@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyJSON
+import Alamofire
+import AlamofireImage.Swift
 
 class GenericUserModel: NSObject {
     
@@ -18,41 +20,16 @@ class GenericUserModel: NSObject {
     var phoneNumber:String = ""
     var accountType:String = ""
     var avatarOriginal:String = ""
-    
-    
-    //id, first_name, last_name, email, phone_number, account_type, avatar_original
+    var avatarImg:UIImage = UIImage()
     
     init(json:JSON){
-        self.userId = json["id"].string!
-        self.firstName = json["first_name"].string!
-        self.lastName = json["last_name"].string!
-        self.email = json["email"].string!
-        self.phoneNumber = json["phone_number"].string!
-        self.accountType = json["account_type"].string!
+        self.userId = (json["id"].error == nil) ? json["id"].string! : ""
+        self.firstName = (json["first_name"].error == nil) ? json["first_name"].string! : ""
+        self.lastName = (json["last_name"].error == nil) ? json["last_name"].string! : ""
+        self.email = (json["email"].error == nil) ? json["email"].string! : ""
+        self.phoneNumber = (json["phone_number"].error == nil) ? json["phone_number"].string! : ""
+        self.accountType = (json["account_type"].error == nil) ? json["account_type"].string! : ""
         self.avatarOriginal = (json["avatar_original"].error == nil) ? json["avatar_original"].string! : ""
     }
-    
-    /*init() {
-        
-        
-        
-        // provide default values
-        userId = ""
-        firstName = ""
-        lastName = ""
-        email = ""
-        
-        // use optional binding the selectively populate the properties
-        if let n = d["name"] as? NSString {
-            name = n
-        }
-        if let a = d["amount"] as? NSNumber {
-            amount = a.doubleValue
-        }
-        if let d = d["description"] as? NSString {
-            description = d
-        }
-    }
-}*/
 
 }

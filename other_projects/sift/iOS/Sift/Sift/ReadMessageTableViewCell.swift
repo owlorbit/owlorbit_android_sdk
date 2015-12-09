@@ -25,6 +25,7 @@ class ReadMessageTableViewCell: UITableViewCell {
     }
 
     func populate(roomData:RoomModel){
+
         self.lblRoomTitle.text = roomData.roomName
         self.lblLastMsg.text = roomData.firstName + ": " + roomData.lastMessage
 
@@ -33,11 +34,14 @@ class ReadMessageTableViewCell: UITableViewCell {
         URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
         self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.timestamp)
-        //mysqlDatetimeFormattedAsTimeAgo
-        
+        self.lblRoomTitle.text = roomData.attributes.name
+
         downloader.downloadImage(URLRequest: URLRequest) { response in
+
             if let image = response.result.value {
                 self.imgAvatar.image = image.roundImage()
+            }else{
+                self.imgAvatar.image = UIImage(named:"owl_orbit")
             }
         }
     }

@@ -16,6 +16,7 @@ class RoomModel: NSObject {
     var lastName:String = ""
     var roomId:String = ""
     var roomName:String = ""
+    var attributes:RoomAttributeModel = RoomAttributeModel()
     
     var lastMessage:String = ""
     var avatarOriginal:String = ""
@@ -23,14 +24,16 @@ class RoomModel: NSObject {
     //var lastMessageTimestamp:NSDate = NSDate()
 
     init(json:JSON){
-        print("json:: \(json)")
+        
+        if(json == nil){
+            return;
+        }
         self.userId = json["user_id"].string!
         self.firstName = json["first_name"].string!
         self.lastName = json["last_name"].string!
         self.roomId = json["room_id"].string!
         self.roomName = (json["room_name"]) ? json["room_name"].string! : ""
-        self.lastMessage = (json["message"].error == nil) ? json["message"].string! : ""
-        self.avatarOriginal = (json["avatar_original"].error == nil) ? json["avatar_original"].string! : ""
+        self.lastMessage = (json["message"].error == nil) ? json["message"].string! : ""        
         self.timestamp = (json["created"].error == nil) ? json["created"].string! : ""
 
         //self.lastMessageBy = (json["last_message_by"].error == nil) ? json["last_message_by"].string! : ""

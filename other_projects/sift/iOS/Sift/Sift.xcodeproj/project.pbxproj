@@ -10,6 +10,7 @@
 		21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
 		3280A1EF51479CC44672D072 /* Pods_Sift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35946F21B48C1DE6863F53BD /* Pods_Sift.framework */; };
 		B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */; };
+		B804C6D01C17BB0D0076F81B /* UserPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */; };
 		B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */; };
 		B866DFB11C061CA000BF8A79 /* UserSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */; };
 		B866DFB21C061CA000BF8A79 /* UserSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */; };
@@ -19,7 +20,7 @@
 		B866DFC21C0BC22A00BF8A79 /* ChatApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC11C0BC22A00BF8A79 /* ChatApiHelper.swift */; };
 		B866DFC41C0D22D100BF8A79 /* RoomApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC31C0D22D100BF8A79 /* RoomApiHelper.swift */; };
 		B866DFC61C0D266300BF8A79 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC51C0D266300BF8A79 /* RoomModel.swift */; };
-		B866DFC81C0D2EDF00BF8A79 /* RoomCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC71C0D2EDF00BF8A79 /* RoomCellModel.swift */; };
+		B866DFC81C0D2EDF00BF8A79 /* RoomAttributeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC71C0D2EDF00BF8A79 /* RoomAttributeModel.swift */; };
 		B866DFCB1C0E733300BF8A79 /* AUIAutoGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B866DFCA1C0E733300BF8A79 /* AUIAutoGrowingTextView.m */; };
 		B866DFCE1C0E811C00BF8A79 /* ChatMapKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFCD1C0E811C00BF8A79 /* ChatMapKeyboardView.swift */; };
 		B866DFD01C0E812600BF8A79 /* ChatMapKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFCF1C0E812600BF8A79 /* ChatMapKeyboardView.xib */; };
@@ -52,6 +53,7 @@
 		B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8792A351BEB15CE00BE05ED /* LaunchScreen.storyboard */; };
 		B8792A421BEB15CE00BE05ED /* SiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A411BEB15CE00BE05ED /* SiftTests.swift */; };
 		B8792A4D1BEB15CE00BE05ED /* SiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A4C1BEB15CE00BE05ED /* SiftUITests.swift */; };
+		B88213361C17F99E00E9469C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213351C17F99E00E9469C /* LocationModel.swift */; };
 		B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
 		B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
 		B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
@@ -103,6 +105,7 @@
 		ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B804C6CC1C16A4920076F81B /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
+		B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPointAnnotation.swift; sourceTree = "<group>"; };
 		B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserModel.swift; sourceTree = "<group>"; };
 		B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewCell.swift; sourceTree = "<group>"; };
 		B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -112,7 +115,7 @@
 		B866DFC11C0BC22A00BF8A79 /* ChatApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatApiHelper.swift; sourceTree = "<group>"; };
 		B866DFC31C0D22D100BF8A79 /* RoomApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomApiHelper.swift; sourceTree = "<group>"; };
 		B866DFC51C0D266300BF8A79 /* RoomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
-		B866DFC71C0D2EDF00BF8A79 /* RoomCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCellModel.swift; sourceTree = "<group>"; };
+		B866DFC71C0D2EDF00BF8A79 /* RoomAttributeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAttributeModel.swift; sourceTree = "<group>"; };
 		B866DFC91C0E733300BF8A79 /* AUIAutoGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUIAutoGrowingTextView.h; sourceTree = "<group>"; };
 		B866DFCA1C0E733300BF8A79 /* AUIAutoGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUIAutoGrowingTextView.m; sourceTree = "<group>"; };
 		B866DFCD1C0E811C00BF8A79 /* ChatMapKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMapKeyboardView.swift; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 		B8792A481BEB15CE00BE05ED /* SiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A4C1BEB15CE00BE05ED /* SiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiftUITests.swift; sourceTree = "<group>"; };
 		B8792A4E1BEB15CE00BE05ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B88213351C17F99E00E9469C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTabBarController.swift; sourceTree = "<group>"; };
 		B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomTabBarController.xib; sourceTree = "<group>"; };
 		B8B80EFD1BF414FC00CF4BB3 /* Sift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sift-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -454,10 +458,12 @@
 				B8E4E7E21BFEB92000995964 /* PersonalUserModel.swift */,
 				B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */,
 				B866DFC51C0D266300BF8A79 /* RoomModel.swift */,
-				B866DFC71C0D2EDF00BF8A79 /* RoomCellModel.swift */,
+				B866DFC71C0D2EDF00BF8A79 /* RoomAttributeModel.swift */,
 				B8CAA48D1C11096B00EC2752 /* DynamicPersonalData.swift */,
 				B8CAA48F1C11343100EC2752 /* MessageModel.swift */,
 				B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */,
+				B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */,
+				B88213351C17F99E00E9469C /* LocationModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -727,7 +733,7 @@
 				B870CED01BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
 				B87654631C03F53F00190B9B /* WriteMessageViewController.swift in Sources */,
 				B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */,
-				B866DFC81C0D2EDF00BF8A79 /* RoomCellModel.swift in Sources */,
+				B866DFC81C0D2EDF00BF8A79 /* RoomAttributeModel.swift in Sources */,
 				B8CAA48E1C11096B00EC2752 /* DynamicPersonalData.swift in Sources */,
 				B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */,
 				B8E4E7E31BFEB92000995964 /* PersonalUserModel.swift in Sources */,
@@ -744,6 +750,7 @@
 				B8E4E7D11BFC40E600995964 /* ReadMessageTableViewCell.swift in Sources */,
 				B866DFD31C0EBA1900BF8A79 /* ProfileImageUploadViewController.swift in Sources */,
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,
+				B88213361C17F99E00E9469C /* LocationModel.swift in Sources */,
 				B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */,
 				B866DFC21C0BC22A00BF8A79 /* ChatApiHelper.swift in Sources */,
 				B866DFB11C061CA000BF8A79 /* UserSearchTableViewCell.swift in Sources */,
@@ -757,6 +764,7 @@
 				B8E4E7DD1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift in Sources */,
 				B8E4E7E11BFD80CE00995964 /* ProjectConstants.swift in Sources */,
 				B8CAA4921C1134F900EC2752 /* MessageCoreModel.swift in Sources */,
+				B804C6D01C17BB0D0076F81B /* UserPointAnnotation.swift in Sources */,
 				B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */,
 				B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */,
 				B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */,

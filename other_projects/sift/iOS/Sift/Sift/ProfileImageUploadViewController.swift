@@ -94,9 +94,8 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
                 print("Send \(controller.selectedImageAssets)")
                 
                 if(controller.selectedImageAssets.count > 0){
-                    
-                    
-                    self.imgCropView.setup(ImageHelper.getAssetThumbnail(controller.selectedImageAssets[0], widthHeight: 320.0), tapDelegate: self)
+
+                    self.imgCropView.setup(ImageHelper.getAssetThumbnail(controller.selectedImageAssets[0], widthHeight: 620.0), tapDelegate: self)
                     self.imgCropView.display()
                     self.imgCropView.editable = true
                     self.navigationItem.rightBarButtonItem?.enabled = true
