@@ -73,9 +73,8 @@ class LoginViewController: UIViewController, LoginDelegate {
 
         UserApiHelper.loginUser(username, password: password, resultJSON: {
             (JSON) in
-            
-            var hasFailed:Bool = (JSON["hasFailed"]) ? true : false
 
+            var hasFailed:Bool = (JSON["hasFailed"]) ? true : false
             if(!hasFailed){
                 PersonalUserModel.updateUserFromLogin(username, password: password, serverReturnedData: JSON)
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

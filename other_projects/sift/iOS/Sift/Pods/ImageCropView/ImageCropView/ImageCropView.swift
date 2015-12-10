@@ -76,6 +76,10 @@ public class ImageCropView: UIScrollView, UIScrollViewDelegate, UIGestureRecogni
     - parameter image: Will be displayed in the view
     */
     public func setup(image: UIImage, tapDelegate: ImageCropViewTapProtocol? = nil) {
+        
+        if(coverImageView != nil){
+            coverImageView.removeFromSuperview()   
+        }
         coverImageView = UIImageView(image: image)
         coverImageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size:image.size)
 

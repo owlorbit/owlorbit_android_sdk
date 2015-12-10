@@ -69,6 +69,7 @@ class LoginTableViewCell: UITableViewCell, LoginKeyboardPrevDelegate, Registrati
     }
     
     func login(){
+        resignFirstResponder()
         if let delegate = self.delegate {
             delegate.signIn(txtEmail.text!, password: txtPassword.text!)
         }

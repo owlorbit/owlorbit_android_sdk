@@ -43,7 +43,6 @@
                     </variation>
                     <connections>
                         <action selector="btnLoginClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="UxQ-CQ-HOO"/>
-                        <action selector="btnNextTouchUp:" destination="iN0-l3-epB" eventType="touchUpInside" id="q74-HW-mkn"/>
                     </connections>
                 </button>
             </subviews>
