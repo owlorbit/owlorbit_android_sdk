@@ -20,7 +20,7 @@ class Location_model extends CI_Model {
     }
 
     function get_all_locations_in_room($userId, $roomId){
-        $query = "select user_id, longitude, latitude, created from locations l where
+        $query = "select user_id, longitude, latitude, device_id, created from locations l where
             l.created in  (select max(created) from locations GROUP BY user_id)
                 and user_id != ?
                 and user_id in (select user_id from room_users where room_id = ?);";

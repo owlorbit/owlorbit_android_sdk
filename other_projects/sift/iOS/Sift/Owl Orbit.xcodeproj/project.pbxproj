@@ -54,6 +54,9 @@
 		B8792A421BEB15CE00BE05ED /* SiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A411BEB15CE00BE05ED /* SiftTests.swift */; };
 		B8792A4D1BEB15CE00BE05ED /* SiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A4C1BEB15CE00BE05ED /* SiftUITests.swift */; };
 		B88213361C17F99E00E9469C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213351C17F99E00E9469C /* LocationModel.swift */; };
+		B88213381C18FB3000E9469C /* String+ToDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213371C18FB3000E9469C /* String+ToDouble.swift */; };
+		B892D65A1C19051B0091F128 /* LoginKeyboardPrevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6581C19051B0091F128 /* LoginKeyboardPrevView.swift */; };
+		B892D65B1C19051B0091F128 /* LoginKeyboardPrevView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D6591C19051B0091F128 /* LoginKeyboardPrevView.xib */; };
 		B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
 		B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
 		B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
@@ -142,20 +145,23 @@
 		B870CEF01BFC093000F47929 /* CustomMapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMapPin.swift; sourceTree = "<group>"; };
 		B87654611C03F53F00190B9B /* WriteMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteMessageViewController.swift; sourceTree = "<group>"; };
 		B87654621C03F53F00190B9B /* WriteMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteMessageViewController.xib; sourceTree = "<group>"; };
-		B8792A261BEB15CE00BE05ED /* Sift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8792A261BEB15CE00BE05ED /* OwlOrbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwlOrbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A291BEB15CE00BE05ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8792A2B1BEB15CE00BE05ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B8792A311BEB15CE00BE05ED /* Sift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sift.xcdatamodel; sourceTree = "<group>"; };
 		B8792A331BEB15CE00BE05ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8792A361BEB15CE00BE05ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8792A381BEB15CE00BE05ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8792A3D1BEB15CE00BE05ED /* SiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8792A3D1BEB15CE00BE05ED /* OwlOrbitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OwlOrbitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A411BEB15CE00BE05ED /* SiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiftTests.swift; sourceTree = "<group>"; };
 		B8792A431BEB15CE00BE05ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8792A481BEB15CE00BE05ED /* SiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8792A481BEB15CE00BE05ED /* OwlOrbitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OwlOrbitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A4C1BEB15CE00BE05ED /* SiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiftUITests.swift; sourceTree = "<group>"; };
 		B8792A4E1BEB15CE00BE05ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B88213351C17F99E00E9469C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		B88213371C18FB3000E9469C /* String+ToDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ToDouble.swift"; sourceTree = "<group>"; };
+		B892D6581C19051B0091F128 /* LoginKeyboardPrevView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginKeyboardPrevView.swift; sourceTree = "<group>"; };
+		B892D6591C19051B0091F128 /* LoginKeyboardPrevView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginKeyboardPrevView.xib; sourceTree = "<group>"; };
 		B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTabBarController.swift; sourceTree = "<group>"; };
 		B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomTabBarController.xib; sourceTree = "<group>"; };
 		B8B80EFD1BF414FC00CF4BB3 /* Sift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sift-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -297,6 +303,7 @@
 		B870CED91BFAA91000F47929 /* Keyboards */ = {
 			isa = PBXGroup;
 			children = (
+				B892D6571C1905160091F128 /* Login */,
 				B866DFCC1C0E80F800BF8A79 /* Chat */,
 				B870CEDA1BFAA91700F47929 /* Registration */,
 			);
@@ -344,6 +351,7 @@
 				B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */,
 				B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */,
 				B866DFD61C0FC80700BF8A79 /* ImageHelper.swift */,
+				B88213371C18FB3000E9469C /* String+ToDouble.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -351,7 +359,7 @@
 		B8792A1D1BEB15CD00BE05ED = {
 			isa = PBXGroup;
 			children = (
-				B8792A281BEB15CE00BE05ED /* Sift */,
+				B8792A281BEB15CE00BE05ED /* Owl Orbit */,
 				B8792A401BEB15CE00BE05ED /* SiftTests */,
 				B8792A4B1BEB15CE00BE05ED /* SiftUITests */,
 				B8792A271BEB15CE00BE05ED /* Products */,
@@ -363,14 +371,14 @@
 		B8792A271BEB15CE00BE05ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B8792A261BEB15CE00BE05ED /* Sift.app */,
-				B8792A3D1BEB15CE00BE05ED /* SiftTests.xctest */,
-				B8792A481BEB15CE00BE05ED /* SiftUITests.xctest */,
+				B8792A261BEB15CE00BE05ED /* OwlOrbit.app */,
+				B8792A3D1BEB15CE00BE05ED /* OwlOrbitTests.xctest */,
+				B8792A481BEB15CE00BE05ED /* OwlOrbitUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B8792A281BEB15CE00BE05ED /* Sift */ = {
+		B8792A281BEB15CE00BE05ED /* Owl Orbit */ = {
 			isa = PBXGroup;
 			children = (
 				B8E4E7D31BFD487200995964 /* API */,
@@ -385,6 +393,7 @@
 				B8792A351BEB15CE00BE05ED /* LaunchScreen.storyboard */,
 				B8792A381BEB15CE00BE05ED /* Info.plist */,
 			);
+			name = "Owl Orbit";
 			path = Sift;
 			sourceTree = "<group>";
 		};
@@ -404,6 +413,15 @@
 				B8792A4E1BEB15CE00BE05ED /* Info.plist */,
 			);
 			path = SiftUITests;
+			sourceTree = "<group>";
+		};
+		B892D6571C1905160091F128 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B892D6581C19051B0091F128 /* LoginKeyboardPrevView.swift */,
+				B892D6591C19051B0091F128 /* LoginKeyboardPrevView.xib */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		B8B80EFA1BF4146300CF4BB3 /* Resources */ = {
@@ -515,9 +533,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B8792A251BEB15CE00BE05ED /* Sift */ = {
+		B8792A251BEB15CE00BE05ED /* OwlOrbit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "Sift" */;
+			buildConfigurationList = B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit" */;
 			buildPhases = (
 				2A255307CDFB5246ABC95317 /* Check Pods Manifest.lock */,
 				B8792A221BEB15CE00BE05ED /* Sources */,
@@ -530,14 +548,14 @@
 			);
 			dependencies = (
 			);
-			name = Sift;
+			name = OwlOrbit;
 			productName = Sift;
-			productReference = B8792A261BEB15CE00BE05ED /* Sift.app */;
+			productReference = B8792A261BEB15CE00BE05ED /* OwlOrbit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B8792A3C1BEB15CE00BE05ED /* SiftTests */ = {
+		B8792A3C1BEB15CE00BE05ED /* OwlOrbitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8792A541BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "SiftTests" */;
+			buildConfigurationList = B8792A541BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbitTests" */;
 			buildPhases = (
 				B8792A391BEB15CE00BE05ED /* Sources */,
 				B8792A3A1BEB15CE00BE05ED /* Frameworks */,
@@ -548,14 +566,14 @@
 			dependencies = (
 				B8792A3F1BEB15CE00BE05ED /* PBXTargetDependency */,
 			);
-			name = SiftTests;
+			name = OwlOrbitTests;
 			productName = SiftTests;
-			productReference = B8792A3D1BEB15CE00BE05ED /* SiftTests.xctest */;
+			productReference = B8792A3D1BEB15CE00BE05ED /* OwlOrbitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B8792A471BEB15CE00BE05ED /* SiftUITests */ = {
+		B8792A471BEB15CE00BE05ED /* OwlOrbitUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8792A571BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "SiftUITests" */;
+			buildConfigurationList = B8792A571BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbitUITests" */;
 			buildPhases = (
 				B8792A441BEB15CE00BE05ED /* Sources */,
 				B8792A451BEB15CE00BE05ED /* Frameworks */,
@@ -566,9 +584,9 @@
 			dependencies = (
 				B8792A4A1BEB15CE00BE05ED /* PBXTargetDependency */,
 			);
-			name = SiftUITests;
+			name = OwlOrbitUITests;
 			productName = SiftUITests;
-			productReference = B8792A481BEB15CE00BE05ED /* SiftUITests.xctest */;
+			productReference = B8792A481BEB15CE00BE05ED /* OwlOrbitUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -603,7 +621,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B8792A211BEB15CE00BE05ED /* Build configuration list for PBXProject "Sift" */;
+			buildConfigurationList = B8792A211BEB15CE00BE05ED /* Build configuration list for PBXProject "Owl Orbit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -616,9 +634,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B8792A251BEB15CE00BE05ED /* Sift */,
-				B8792A3C1BEB15CE00BE05ED /* SiftTests */,
-				B8792A471BEB15CE00BE05ED /* SiftUITests */,
+				B8792A251BEB15CE00BE05ED /* OwlOrbit */,
+				B8792A3C1BEB15CE00BE05ED /* OwlOrbitTests */,
+				B8792A471BEB15CE00BE05ED /* OwlOrbitUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -649,6 +667,7 @@
 				B870CECD1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib in Resources */,
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
 				B87654641C03F53F00190B9B /* WriteMessageViewController.xib in Resources */,
+				B892D65B1C19051B0091F128 /* LoginKeyboardPrevView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,6 +757,7 @@
 				B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */,
 				B8E4E7E31BFEB92000995964 /* PersonalUserModel.swift in Sources */,
 				B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */,
+				B892D65A1C19051B0091F128 /* LoginKeyboardPrevView.swift in Sources */,
 				B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */,
 				B866DFBE1C0A92B000BF8A79 /* UserSearchPendingHeaderView.swift in Sources */,
 				B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */,
@@ -753,6 +773,7 @@
 				B88213361C17F99E00E9469C /* LocationModel.swift in Sources */,
 				B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */,
 				B866DFC21C0BC22A00BF8A79 /* ChatApiHelper.swift in Sources */,
+				B88213381C18FB3000E9469C /* String+ToDouble.swift in Sources */,
 				B866DFB11C061CA000BF8A79 /* UserSearchTableViewCell.swift in Sources */,
 				B870CED51BFA9D2700F47929 /* LoginTableViewCell.swift in Sources */,
 				B866DFCB1C0E733300BF8A79 /* AUIAutoGrowingTextView.m in Sources */,
@@ -792,12 +813,12 @@
 /* Begin PBXTargetDependency section */
 		B8792A3F1BEB15CE00BE05ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B8792A251BEB15CE00BE05ED /* Sift */;
+			target = B8792A251BEB15CE00BE05ED /* OwlOrbit */;
 			targetProxy = B8792A3E1BEB15CE00BE05ED /* PBXContainerItemProxy */;
 		};
 		B8792A4A1BEB15CE00BE05ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B8792A251BEB15CE00BE05ED /* Sift */;
+			target = B8792A251BEB15CE00BE05ED /* OwlOrbit */;
 			targetProxy = B8792A491BEB15CE00BE05ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -907,7 +928,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.Sift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sift/Sift-Bridging-Header.h";
@@ -925,7 +946,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.Sift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sift/Sift-Bridging-Header.h";
@@ -940,7 +961,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.SiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sift.app/Sift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Owl Orbit.app/Owl Orbit";
 			};
 			name = Debug;
 		};
@@ -952,7 +973,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.SiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sift.app/Sift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Owl Orbit.app/Owl Orbit";
 			};
 			name = Release;
 		};
@@ -983,7 +1004,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B8792A211BEB15CE00BE05ED /* Build configuration list for PBXProject "Sift" */ = {
+		B8792A211BEB15CE00BE05ED /* Build configuration list for PBXProject "Owl Orbit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8792A4F1BEB15CE00BE05ED /* Debug */,
@@ -992,7 +1013,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "Sift" */ = {
+		B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8792A521BEB15CE00BE05ED /* Debug */,
@@ -1001,7 +1022,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8792A541BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "SiftTests" */ = {
+		B8792A541BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8792A551BEB15CE00BE05ED /* Debug */,
@@ -1010,7 +1031,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8792A571BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "SiftUITests" */ = {
+		B8792A571BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbitUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8792A581BEB15CE00BE05ED /* Debug */,

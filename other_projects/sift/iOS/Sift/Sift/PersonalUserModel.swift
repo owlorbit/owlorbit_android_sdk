@@ -91,13 +91,14 @@ class PersonalUserModel : NSManagedObject {
 
         if(PersonalUserModel.get().count > 0){
             var currentUser = PersonalUserModel.get()[0] as PersonalUserModel;
-            
+
             currentUser.email = email
             currentUser.password = password
-            currentUser.userId = serverReturnedData["userId"].string!
-            currentUser.publicKey = serverReturnedData["publicKey"].string!
-            currentUser.privateKey = serverReturnedData["privateKey"].string!
-            currentUser.sessionToken = serverReturnedData["sessionToken"].string!
+            currentUser.userId = (serverReturnedData["userId"].error == nil) ? serverReturnedData["userId"].string! : ""
+            currentUser.publicKey = (serverReturnedData["publicKey"].error == nil) ? serverReturnedData["publicKey"].string! : ""
+            currentUser.privateKey = (serverReturnedData["privateKey"].error == nil) ? serverReturnedData["privateKey"].string! : ""
+            currentUser.sessionToken = (serverReturnedData["sessionToken"].error == nil) ? serverReturnedData["sessionToken"].string! : ""
+
             currentUser.avatarOriginal = (serverReturnedData["avatar_original"].error == nil) ? serverReturnedData["avatar_original"].string! : ""
             
             currentUser.sessionHash = EncryptUtil.sha256(currentUser.sessionToken.dataUsingEncoding(NSUTF8StringEncoding)!)
@@ -105,10 +106,10 @@ class PersonalUserModel : NSManagedObject {
             
         }else{
             var currentUser = RegistrationUser()
-            currentUser.firstName = serverReturnedData["firstName"].string!
-            currentUser.lastName = serverReturnedData["lastName"].string!
+            currentUser.firstName = (serverReturnedData["firstName"].error == nil) ? serverReturnedData["firstName"].string! : ""
+            currentUser.lastName = (serverReturnedData["lastName"].error == nil) ? serverReturnedData["lastName"].string! : ""
             currentUser.email = email
-            currentUser.phoneNumber = serverReturnedData["phoneNumber"].string!
+            currentUser.phoneNumber = (serverReturnedData["phoneNumber"].error == nil) ? serverReturnedData["phoneNumber"].string! : ""
             currentUser.password = password
 
             PersonalUserModel.insertFromRegistration(currentUser, serverReturnedData: serverReturnedData)
@@ -119,24 +120,27 @@ class PersonalUserModel : NSManagedObject {
     
     class func insertFromRegistration(userData : RegistrationUser, serverReturnedData:JSON){
 
-        let coreDataHelper:CoreDataHelper = CoreDataHelper();
+        let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         PersonalUserModel.removeAll()
         let fetchRequest = NSFetchRequest(entityName: "PersonalUserModel")
         let entity = NSEntityDescription.entityForName("PersonalUserModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
         var newUser = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext) as! PersonalUserModel
         
+        print("debug everything: \(serverReturnedData)")
         newUser.email = userData.email
         newUser.firstName = userData.firstName
         newUser.lastName = userData.lastName
         newUser.phoneNumber = userData.phoneNumber
         newUser.password = userData.password
 
-        newUser.userId = serverReturnedData["userId"].string!
-        newUser.publicKey = serverReturnedData["publicKey"].string!
-        newUser.privateKey = serverReturnedData["privateKey"].string!
-        newUser.sessionToken = serverReturnedData["sessionToken"].string!
+        newUser.userId = (serverReturnedData["userId"].error == nil) ? serverReturnedData["userId"].string! : ""
+        newUser.publicKey = (serverReturnedData["publicKey"].error == nil) ? serverReturnedData["publicKey"].string! : ""
+        newUser.privateKey = (serverReturnedData["privateKey"].error == nil) ? serverReturnedData["privateKey"].string! : ""
+        newUser.sessionToken = (serverReturnedData["sessionToken"].error == nil) ? serverReturnedData["sessionToken"].string! : ""
         newUser.sessionHash = EncryptUtil.sha256(newUser.sessionToken.dataUsingEncoding(NSUTF8StringEncoding)!)
         newUser.encryptedSession = EncryptUtil.encryptSessionToken(newUser.sessionToken, publicKey: newUser.publicKey, privateKey: newUser.privateKey)
+        
+        newUser.avatarOriginal = (serverReturnedData["avatar_original"].error == nil && (serverReturnedData["avatar_original"].string! as? String) != nil) ? serverReturnedData["avatar_original"].string! : ""
 
         PersonalUserModel.insert(newUser)
     }

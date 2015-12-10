@@ -32,8 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("hello")
         return true
     }
-    
-    
+
+    func sendLocations(){
+        //check if you're logged in...
+        
+    }
+
     func setRootViewController(viewController:UIViewController){
         
     }

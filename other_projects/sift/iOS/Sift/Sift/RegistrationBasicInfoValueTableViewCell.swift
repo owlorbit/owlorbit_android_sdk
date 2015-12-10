@@ -71,10 +71,12 @@ class RegistrationBasicInfoValueTableViewCell: UITableViewCell, RegistrationNext
         }
         
         delegate?.submitRegistration(txtFirstName.text!, lastName: txtLastName.text!)
-        
     }
 
-    
+    @IBAction func goClick(sender: AnyObject) {
+        submitFields()
+    }
+
     /*
     @IBAction func btnNextTouchUp(sender: AnyObject) {
         if let delegate = self.delegate {

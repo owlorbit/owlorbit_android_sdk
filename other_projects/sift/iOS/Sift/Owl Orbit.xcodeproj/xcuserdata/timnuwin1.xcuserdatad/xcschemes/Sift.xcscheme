@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8792A251BEB15CE00BE05ED"
-               BuildableName = "Sift.app"
-               BlueprintName = "Sift"
-               ReferencedContainer = "container:Sift.xcodeproj">
+               BuildableName = "OwlOrbit.app"
+               BlueprintName = "OwlOrbit"
+               ReferencedContainer = "container:Owl Orbit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8792A3C1BEB15CE00BE05ED"
-               BuildableName = "SiftTests.xctest"
-               BlueprintName = "SiftTests"
-               ReferencedContainer = "container:Sift.xcodeproj">
+               BuildableName = "OwlOrbitTests.xctest"
+               BlueprintName = "OwlOrbitTests"
+               ReferencedContainer = "container:Owl Orbit.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8792A471BEB15CE00BE05ED"
-               BuildableName = "SiftUITests.xctest"
-               BlueprintName = "SiftUITests"
-               ReferencedContainer = "container:Sift.xcodeproj">
+               BuildableName = "OwlOrbitUITests.xctest"
+               BlueprintName = "OwlOrbitUITests"
+               ReferencedContainer = "container:Owl Orbit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8792A251BEB15CE00BE05ED"
-            BuildableName = "Sift.app"
-            BlueprintName = "Sift"
-            ReferencedContainer = "container:Sift.xcodeproj">
+            BuildableName = "OwlOrbit.app"
+            BlueprintName = "OwlOrbit"
+            ReferencedContainer = "container:Owl Orbit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8792A251BEB15CE00BE05ED"
-            BuildableName = "Sift.app"
-            BlueprintName = "Sift"
-            ReferencedContainer = "container:Sift.xcodeproj">
+            BuildableName = "OwlOrbit.app"
+            BlueprintName = "OwlOrbit"
+            ReferencedContainer = "container:Owl Orbit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8792A251BEB15CE00BE05ED"
-            BuildableName = "Sift.app"
-            BlueprintName = "Sift"
-            ReferencedContainer = "container:Sift.xcodeproj">
+            BuildableName = "OwlOrbit.app"
+            BlueprintName = "OwlOrbit"
+            ReferencedContainer = "container:Owl Orbit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

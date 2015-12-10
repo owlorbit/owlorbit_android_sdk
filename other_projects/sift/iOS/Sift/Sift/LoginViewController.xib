@@ -3,10 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Sift" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="OwlOrbit" customModuleProvider="target">
             <connections>
+                <outlet property="lblHeghtConstraint" destination="UNh-eM-Rs0" id="JMH-6d-Nnn"/>
+                <outlet property="logoHeightConstraint" destination="4yd-oR-joa" id="wOB-Vo-DNb"/>
                 <outlet property="tableView" destination="pEB-5v-jMN" id="xVQ-LH-UHh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,15 +29,22 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="147" id="4yd-oR-joa"/>
                         <constraint firstAttribute="width" constant="140" id="Rif-LH-rcl"/>
+                        <constraint firstAttribute="width" secondItem="0rm-uQ-idt" secondAttribute="height" multiplier="20:21" id="cYf-aA-HcI"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Rif-LH-rcl"/>
+                        </mask>
+                    </variation>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owl Orbit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdX-f3-aUI">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owl Orbit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sdX-f3-aUI">
                     <rect key="frame" x="14" y="175" width="292" height="88"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="292" id="31N-YW-kVN"/>
                         <constraint firstAttribute="width" constant="292" id="4LZ-i6-4i2"/>
                         <constraint firstAttribute="height" constant="88" id="UNh-eM-Rs0"/>
+                        <constraint firstAttribute="width" secondItem="sdX-f3-aUI" secondAttribute="height" multiplier="73:22" id="ZFI-gN-PbZ"/>
                         <constraint firstAttribute="height" constant="88" id="rlh-HQ-nCM"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="64"/>
@@ -43,6 +53,7 @@
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="31N-YW-kVN"/>
+                            <exclude reference="4LZ-i6-4i2"/>
                             <exclude reference="rlh-HQ-nCM"/>
                         </mask>
                     </variation>

@@ -63,6 +63,8 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     
     func hasProfileImage()->Bool{
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        
+        print("word: \(user.avatarOriginal)")
         if(user.avatarOriginal.isEmpty || user.avatarOriginal == ""){
             return false;
         }else{

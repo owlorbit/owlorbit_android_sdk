@@ -40,6 +40,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     var profileImage:UIImage = UIImage()
     
     var locationDict = [String:UserPointAnnotation]()
+    var timerGetLocations = NSTimer()
+    
+    
+    var RETRIEVE_LOCATION_LOCK:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,11 +115,47 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
 
     func initLocations(){
+        timerGetLocations = NSTimer.scheduledTimerWithTimeInterval(3.5, target: self, selector: "timerCallLocations", userInfo: nil, repeats: true)
+    }
+    
+    func timerCallLocations(){
+        
+        if(RETRIEVE_LOCATION_LOCK){return;}
+
+        RETRIEVE_LOCATION_LOCK = true
         LocationApiHelper.getRoomLocations(self.roomId,resultJSON:{
-            (JSON) in
-            print("load locations")
-            print(JSON)
+        (JSON) in
+            self.updateLocations(JSON)
         });
+    }
+    
+    func updateLocations(json:JSON){
+        //print("Process locations.. \(json)")
+
+        for (key,subJson):(String, SwiftyJSON.JSON) in json["user_locations"] {
+            var location:LocationModel = LocationModel(json: subJson);
+            
+            //self.annotations.addObject(userPoint)
+            
+            var userPointAnnotation:UserPointAnnotation = getAnnotationByUserId(location.userId)
+            userPointAnnotation.coordinate = location.coordinate!
+            
+            //now update...
+        }
+
+        self.RETRIEVE_LOCATION_LOCK = false
+    }
+
+    //make device id eventually...
+    func getAnnotationByUserId(userId:String)->UserPointAnnotation{
+
+        for val in self.annotations{
+            var userPointAnnotation:UserPointAnnotation = val as! UserPointAnnotation
+            if(userPointAnnotation.userModel.userId == userId){
+                return userPointAnnotation
+            }
+        }
+        return UserPointAnnotation();
     }
     
     func addUser(userModel:GenericUserModel){
@@ -327,16 +367,21 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         var imageView: UIImageView = UIImageView(image: image)
         var layer: CALayer = CALayer()
         layer = imageView.layer
-        
+
         layer.masksToBounds = true
         layer.cornerRadius = CGFloat(radius)
-        
+
         UIGraphicsBeginImageContext(imageView.bounds.size)
         layer.renderInContext(UIGraphicsGetCurrentContext()!)
         var roundedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         return roundedImage
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.timerGetLocations.invalidate()
     }
 
     override func didReceiveMemoryWarning() {

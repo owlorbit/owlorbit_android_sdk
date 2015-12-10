@@ -27,6 +27,9 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
         //self.navigationItem.setHidesBackButton(true, animated: false)
         // Do any additional setup after loading the view.
         
+        var selectImgButton : UIBarButtonItem = UIBarButtonItem(title: "Pick", style: UIBarButtonItemStyle.Plain, target: self, action: "btnSelectImg")
+        self.navigationItem.leftBarButtonItem = selectImgButton
+
         var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Continue", style: UIBarButtonItemStyle.Plain, target: self, action: "btnContinueClick:")
         self.navigationItem.rightBarButtonItem = switchContextBtn
         self.navigationItem.rightBarButtonItem?.enabled = false
@@ -34,7 +37,15 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
 
         let tap = UITapGestureRecognizer(target: self, action: Selector("handleTap"))
         //  tap.delegate = self
-        self.view.addGestureRecognizer(tap)
+        //self.view.addGestureRecognizer(tap)
+        selectImage()
+    }
+    
+    func buttonMethod() {
+        print("Yo")
+    }
+    
+    func btnSelectImg(){
         selectImage()
     }
     
@@ -43,8 +54,7 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
     }
     
     func btnContinueClick(sender:AnyObject){
-        
-        
+
         let spinner = ALThreeCircleSpinner(frame: CGRectMake(0,0,44,44))
         spinner.center = self.view.center;
         spinner.startAnimating()
@@ -54,10 +64,10 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             UserApiHelper.uploadProfileImage(self.imgCropView.croppedImage()!, resultJSON: {
                 (JSON) in
-                
+
                 spinner.stopAnimating()
                 spinner.removeFromSuperview()
-                
+
                 if let navController = self.navigationController {
                     navController.popViewControllerAnimated(true)
                 }
@@ -95,6 +105,8 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
                 
                 if(controller.selectedImageAssets.count > 0){
 
+                    //self.imgCropView = ImageCropView()
+
                     self.imgCropView.setup(ImageHelper.getAssetThumbnail(controller.selectedImageAssets[0], widthHeight: 620.0), tapDelegate: self)
                     self.imgCropView.display()
                     self.imgCropView.editable = true
@@ -119,8 +131,6 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
     }
     
     override func viewWillAppear(animated: Bool) {
-        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
-        navigationItem.leftBarButtonItem = backButton
     }
 
     override func didReceiveMemoryWarning() {

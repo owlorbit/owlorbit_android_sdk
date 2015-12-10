@@ -38,6 +38,20 @@ class User extends CI_Controller {
 		$this->output->set_output(json_encode_helper($response));		
 	}
 
+	public function does_email_exist(){
+		$response = array();
+		try{
+			$email = $this->security->xss_clean(strip_tags($this->input->post('email')));
+			$users = $this->user_model->find($value,$pageIndex);
+			$response = array('message'=>'Checking User',
+				'users'=> $users);
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'hasFailed'=> true);
+		}
+		$this->output->set_output(json_encode_helper($response));		
+	}
+
 	public function find($value, $pageIndex=1){
 		$response = array();
 		try{

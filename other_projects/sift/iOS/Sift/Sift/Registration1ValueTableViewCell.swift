@@ -111,6 +111,10 @@ class Registration1ValueTableViewCell: UITableViewCell, RegistrationNextDelegate
     }
         
     
+    @IBAction func goClick(sender: AnyObject) {
+        submitFields()
+    }
+
     func giveRePasswordFocus(){
         txtRePassword.becomeFirstResponder()
     }
