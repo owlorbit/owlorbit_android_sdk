@@ -42,11 +42,16 @@ class User extends CI_Controller {
 		$response = array();
 		try{
 			$email = $this->security->xss_clean(strip_tags($this->input->post('email')));
-			$users = $this->user_model->find($value,$pageIndex);
-			$response = array('message'=>'Checking User',
-				'users'=> $users);
+			$emailExists = $this->user_model->email_exists($email);
+
+			if($emailExists){
+				throw new Exception("Please try a different email address.");
+			}
+			$response = array('message'=>'Checking email exists',
+				'emailExists'=> $emailExists);
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
+				'emailExists'=> true,
 				'hasFailed'=> true);
 		}
 		$this->output->set_output(json_encode_helper($response));		
@@ -99,6 +104,7 @@ class User extends CI_Controller {
 			move_uploaded_file($_FILES["file"]["tmp_name"], $targetPath );
 			$this->user_model->update_avatar($userId, $urlPath);
 
+			error_log('url path: '.$urlPath);
 			$response = array('message'=>'img uploaded..',
 				'original_avatar' => $urlPath);
 		}catch(Exception $e){

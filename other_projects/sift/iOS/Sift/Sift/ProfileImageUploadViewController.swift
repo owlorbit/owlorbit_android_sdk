@@ -21,11 +21,6 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tableView.emptyDataSetSource = self
-        //self.tableView.emptyDataSetDelegate = self
-
-        //self.navigationItem.setHidesBackButton(true, animated: false)
-        // Do any additional setup after loading the view.
         
         var selectImgButton : UIBarButtonItem = UIBarButtonItem(title: "Pick", style: UIBarButtonItemStyle.Plain, target: self, action: "btnSelectImg")
         self.navigationItem.leftBarButtonItem = selectImgButton
@@ -34,10 +29,6 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
         self.navigationItem.rightBarButtonItem = switchContextBtn
         self.navigationItem.rightBarButtonItem?.enabled = false
         self.title = "Profile Image"
-
-        let tap = UITapGestureRecognizer(target: self, action: Selector("handleTap"))
-        //  tap.delegate = self
-        //self.view.addGestureRecognizer(tap)
         selectImage()
     }
     
@@ -55,19 +46,14 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
     
     func btnContinueClick(sender:AnyObject){
 
-        let spinner = ALThreeCircleSpinner(frame: CGRectMake(0,0,44,44))
-        spinner.center = self.view.center;
-        spinner.startAnimating()
-        self.view.addSubview(spinner)
-
+        FullScreenLoaderHelper.startLoader()
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
+
             UserApiHelper.uploadProfileImage(self.imgCropView.croppedImage()!, resultJSON: {
                 (JSON) in
 
-                spinner.stopAnimating()
-                spinner.removeFromSuperview()
-
+                FullScreenLoaderHelper.removeLoader();
                 if let navController = self.navigationController {
                     navController.popViewControllerAnimated(true)
                 }
@@ -77,7 +63,6 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
     }
     
     func onImageCropViewTapped(imageCropView: ImageCropView) {
-        print("wtfff")
     }
     
     func selectImage(){
@@ -104,9 +89,6 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
                 print("Send \(controller.selectedImageAssets)")
                 
                 if(controller.selectedImageAssets.count > 0){
-
-                    //self.imgCropView = ImageCropView()
-
                     self.imgCropView.setup(ImageHelper.getAssetThumbnail(controller.selectedImageAssets[0], widthHeight: 620.0), tapDelegate: self)
                     self.imgCropView.display()
                     self.imgCropView.editable = true

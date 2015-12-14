@@ -11,6 +11,9 @@ PODS:
   - IHKeyboardDismissing (1.1)
   - ImageCropView (1.0.1)
   - ImagePickerSheetController (0.9.1)
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - MBProgressHUD (0.9.1)
   - PureLayout (3.0.1)
   - RNCryptor (4.0.0)
@@ -30,6 +33,7 @@ DEPENDENCIES:
   - IHKeyboardDismissing
   - ImageCropView (~> 1.0)
   - ImagePickerSheetController
+  - JSQMessagesViewController
   - MBProgressHUD
   - RNCryptor
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
@@ -57,6 +61,8 @@ SPEC CHECKSUMS:
   IHKeyboardDismissing: 7c23d41da51ca22f6a1091b3cf852821a2461ac9
   ImageCropView: cbe42a5c4c31677e3d7167f7fd00c63c30d20acf
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe

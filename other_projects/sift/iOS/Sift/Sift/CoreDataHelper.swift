@@ -60,6 +60,24 @@ class CoreDataHelper{
     // MARK: - Core Data Saving support
     
     func saveContext () {
+        
+        //ApplicationManager.shareCoreDataInstance.saveContext()
+        /*
+        let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
+        if coreDataHelper.managedObjectContext.hasChanges {
+            do {
+                print("changes!")
+                try coreDataHelper.managedObjectContext.save()
+                print("save!")
+            } catch {
+                let nserror = error as NSError
+                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+                abort()
+            }
+        }else{
+            print("no changes!")
+        }*/
+        
         if managedObjectContext.hasChanges {
             do {
                 try managedObjectContext.save()

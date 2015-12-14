@@ -18,11 +18,6 @@ class RegisterViewController: UIViewController, Registration1Delegate {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "backToHome")
-        tap.numberOfTapsRequired = 1;
-        btnBack.userInteractionEnabled = true;
-        btnBack.addGestureRecognizer(tap)
 
         self.navigationController?.setNavigationBarHidden(true, animated: false);
         let dismissTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -47,13 +42,13 @@ class RegisterViewController: UIViewController, Registration1Delegate {
         return data.count
     }
 
+    @IBAction func btnCancelClick(sender: AnyObject) {
+         self.navigationController?.popToRootViewControllerAnimated(true);
+    }
+    
     @IBAction func btnNextTouchUp(sender: AnyObject) {
         var viewController : RegisterBasicInfoViewController = RegisterBasicInfoViewController();
         self.navigationController!.pushViewController(viewController, animated: true)
-    }
-
-    func backToHome(){
-        self.navigationController?.popToRootViewControllerAnimated(true);
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +57,6 @@ class RegisterViewController: UIViewController, Registration1Delegate {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Registration1ValueTableViewCell") as! Registration1ValueTableViewCell
         cell.delegate = self
         cell.populate()
@@ -70,9 +64,18 @@ class RegisterViewController: UIViewController, Registration1Delegate {
     }
     
     func nextRegistration(registrationUser:RegistrationUser){
-        var viewController : RegisterBasicInfoViewController = RegisterBasicInfoViewController();
-        viewController.registrationUser = registrationUser;
-        self.navigationController!.pushViewController(viewController, animated: true)
+
+        UserApiHelper.emailExists(registrationUser.email, resultJSON: {
+            (JSON) in
+            var emailExists:Bool = (JSON["emailExists"]) ? true : false
+            if(emailExists){
+                AlertHelper.createPopupMessage(JSON["message"].string!.removeHtml()!, title: "Email Exists")
+            }else{
+                var viewController : RegisterBasicInfoViewController = RegisterBasicInfoViewController();
+                viewController.registrationUser = registrationUser;
+                self.navigationController!.pushViewController(viewController, animated: true)
+            }
+        });
     }
     
     

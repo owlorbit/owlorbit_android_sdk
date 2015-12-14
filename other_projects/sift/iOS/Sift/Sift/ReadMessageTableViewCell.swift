@@ -24,7 +24,7 @@ class ReadMessageTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func populate(roomData:RoomModel){
+    func populate(roomData:RoomManagedModel){
 
         self.lblRoomTitle.text = roomData.roomName
         self.lblLastMsg.text = roomData.firstName + ": " + roomData.lastMessage

@@ -25,9 +25,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
-        //navigationController?.pushViewController(vc, animated: true )
-        //data.addObject("a")
+
         var createNewBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "createNewBtnClick:")
         
         createNewBtn.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
@@ -55,6 +53,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
 
         downloader.downloadImage(URLRequest: URLRequest) { response in
+            //load default...
             if let image = response.result.value {
                 ApplicationManager.userData.profileImage = image
             }
@@ -63,8 +62,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     
     func hasProfileImage()->Bool{
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-        
-        print("word: \(user.avatarOriginal)")
+
         if(user.avatarOriginal.isEmpty || user.avatarOriginal == ""){
             return false;
         }else{
@@ -77,17 +75,19 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             (JSON) in
 
             for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
-                var roomModel:RoomModel = RoomModel(json: subJson);
-                
-                
+                var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
+
                 RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
                     (JSON2) in
 
-                    var roomAttribute:RoomAttributeModel = RoomAttributeModel(json: JSON2)
+                    var roomAttribute:RoomAttributeManagedModel = RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId)
                     roomModel.attributes = roomAttribute
+
                     if(roomModel.attributes.users.count > 0){
-                        roomModel.avatarOriginal = (roomModel.attributes.users[0] as! GenericUserModel).avatarOriginal
+                        roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
                     }
+
+                    ApplicationManager.shareCoreDataInstance.saveContext()
                     self.data.addObject(roomModel)
                     self.tableView.reloadData()
                 });
@@ -145,7 +145,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         var cell:ReadMessageTableViewCell? = tableView.dequeueReusableCellWithIdentifier("ReadMessageTableViewCell")! as! ReadMessageTableViewCell
-        var roomData:RoomModel = data[indexPath.row] as! RoomModel
+        var roomData:RoomManagedModel = data[indexPath.row] as! RoomManagedModel
 
         cell?.populate(roomData)
         return cell!
@@ -153,7 +153,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //get all user ids..?
-        var roomData:RoomModel = data[indexPath.row] as! RoomModel
+        var roomData:RoomManagedModel = data[indexPath.row] as! RoomManagedModel
         let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
         vc.chatRoomTitle = roomData.attributes.name
         vc.roomId = roomData.roomId

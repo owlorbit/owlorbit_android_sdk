@@ -14,7 +14,6 @@ protocol LoginKeyboardPrevDelegate {
     func login()
 }
 
-
 class LoginKeyboardPrevView: UIView {
     
     var delegate:LoginKeyboardPrevDelegate?;
@@ -23,7 +22,7 @@ class LoginKeyboardPrevView: UIView {
         super.init(frame: frame)
         // Initialization code
     }
-    
+
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)!
     }

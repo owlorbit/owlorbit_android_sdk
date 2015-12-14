@@ -56,8 +56,7 @@ class LoginTableViewCell: UITableViewCell, LoginKeyboardPrevDelegate, Registrati
         loginKeyboardPrevView = NSBundle.mainBundle().loadNibNamed("LoginKeyboardPrevView", owner: self, options:nil)[0] as! LoginKeyboardPrevView
         loginKeyboardPrevView?.delegate = self
         txtPassword.inputAccessoryView = loginKeyboardPrevView
-        
-        
+
         loginKeyboardNextView = NSBundle.mainBundle().loadNibNamed("RegistrationNextView", owner: self, options:nil)[0] as! RegistrationNextView
         loginKeyboardNextView?.delegate = self
         
@@ -69,7 +68,8 @@ class LoginTableViewCell: UITableViewCell, LoginKeyboardPrevDelegate, Registrati
     }
     
     func login(){
-        resignFirstResponder()
+        txtPassword.resignFirstResponder()
+
         if let delegate = self.delegate {
             delegate.signIn(txtEmail.text!, password: txtPassword.text!)
         }

@@ -21,11 +21,6 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "backToHome")
-        tap.numberOfTapsRequired = 1;
-        btnBack.userInteractionEnabled = true;
-        btnBack.addGestureRecognizer(tap)
-        
         self.navigationController?.setNavigationBarHidden(true, animated: false);
         let dismissTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(dismissTap)
@@ -36,6 +31,10 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func btnBackClick(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)        
+    }
+
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -48,11 +47,7 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    
-    func backToHome(){
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
+
     func submitRegistration(firstName:String, lastName:String){
 
         registrationUser.firstName = firstName;

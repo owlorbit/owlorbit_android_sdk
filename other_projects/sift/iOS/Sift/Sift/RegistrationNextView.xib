@@ -12,8 +12,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2g-mq-KQG">
-                    <rect key="frame" x="272" y="9" width="32" height="30"/>
+                    <rect key="frame" x="240" y="0.0" width="64" height="48"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="64" id="cIf-Vk-Cep"/>
+                    </constraints>
                     <state key="normal" title="Next">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -27,11 +30,19 @@
             <accessibility key="accessibilityConfiguration" identifier="RegistrationNextView"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="w2g-mq-KQG" secondAttribute="bottom" constant="9" id="O4H-kl-X48"/>
+                <constraint firstAttribute="bottom" secondItem="w2g-mq-KQG" secondAttribute="bottom" id="Y7T-LY-LJG"/>
+                <constraint firstItem="w2g-mq-KQG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Zu5-mN-ik9"/>
                 <constraint firstAttribute="trailing" secondItem="w2g-mq-KQG" secondAttribute="trailing" constant="16" id="lBu-sj-eo2"/>
                 <constraint firstItem="w2g-mq-KQG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="z4b-OZ-jx0"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="O4H-kl-X48"/>
+                    <exclude reference="z4b-OZ-jx0"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="286" y="-20"/>
         </view>
     </objects>

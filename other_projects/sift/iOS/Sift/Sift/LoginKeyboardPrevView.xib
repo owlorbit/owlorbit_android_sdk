@@ -11,24 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2g-mq-KQG">
-                    <rect key="frame" x="8" y="9" width="31" height="30"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="byr-mi-95B"/>
-                        <constraint firstAttribute="width" constant="31" id="z9Y-Kg-2lL"/>
-                    </constraints>
-                    <state key="normal" title="Prev">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="btnNextTouchUp:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rva-w4-lpf"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tw-mS-xhk">
-                    <rect key="frame" x="274" y="9" width="38" height="30"/>
+                    <rect key="frame" x="248" y="0.0" width="64" height="48"/>
                     <animations/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="64" id="Ou7-H6-RvN"/>
                         <constraint firstAttribute="height" constant="30" id="U7p-GU-Mqv"/>
                         <constraint firstAttribute="width" constant="31" id="hX3-aC-H2J"/>
                     </constraints>
@@ -45,6 +32,27 @@
                         <action selector="btnLoginClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="UxQ-CQ-HOO"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2g-mq-KQG">
+                    <rect key="frame" x="8" y="0.0" width="64" height="48"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="64" id="5CY-3z-Cwg"/>
+                        <constraint firstAttribute="height" constant="30" id="byr-mi-95B"/>
+                        <constraint firstAttribute="width" constant="31" id="z9Y-Kg-2lL"/>
+                    </constraints>
+                    <state key="normal" title="Prev">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="byr-mi-95B"/>
+                            <exclude reference="z9Y-Kg-2lL"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnNextTouchUp:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rva-w4-lpf"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.51372549020000002" green="0.52549019610000003" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -52,9 +60,13 @@
             <constraints>
                 <constraint firstItem="0tw-mS-xhk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="Djb-8O-UR4"/>
                 <constraint firstAttribute="bottom" secondItem="w2g-mq-KQG" secondAttribute="bottom" constant="9" id="O4H-kl-X48"/>
+                <constraint firstAttribute="bottom" secondItem="w2g-mq-KQG" secondAttribute="bottom" id="RnB-N0-3cW"/>
+                <constraint firstItem="w2g-mq-KQG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fhU-Km-NZE"/>
+                <constraint firstItem="0tw-mS-xhk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iNW-Ah-Sec"/>
                 <constraint firstAttribute="trailing" secondItem="w2g-mq-KQG" secondAttribute="trailing" constant="16" id="lBu-sj-eo2"/>
                 <constraint firstAttribute="trailing" secondItem="0tw-mS-xhk" secondAttribute="trailing" constant="8" id="t5S-q0-y7T"/>
                 <constraint firstAttribute="bottom" secondItem="0tw-mS-xhk" secondAttribute="bottom" constant="9" id="uQd-IF-rz6"/>
+                <constraint firstAttribute="bottom" secondItem="0tw-mS-xhk" secondAttribute="bottom" id="upa-Wj-bun"/>
                 <constraint firstItem="w2g-mq-KQG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="z4b-OZ-jx0"/>
                 <constraint firstItem="w2g-mq-KQG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="zGf-4u-mUn"/>
             </constraints>
@@ -62,7 +74,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="O4H-kl-X48"/>
                     <exclude reference="lBu-sj-eo2"/>
+                    <exclude reference="z4b-OZ-jx0"/>
+                    <exclude reference="Djb-8O-UR4"/>
+                    <exclude reference="uQd-IF-rz6"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="286" y="-20"/>

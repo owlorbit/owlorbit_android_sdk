@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ALThreeCircleSpinner
 import CoreData
 
 @UIApplicationMain
@@ -22,14 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let window = window {
             window.backgroundColor = UIColor.whiteColor()
             
-            var viewController = UINavigationController(rootViewController: LoginViewController())
+            var viewController = UINavigationController(rootViewController: PreloadHomeViewController())
             
             //window.rootViewController = LoginViewController()
             window.rootViewController = viewController
             window.makeKeyAndVisible()
         }
         
-        print("hello")
         return true
     }
 
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //check if you're logged in...
         
     }
-
+    
     func setRootViewController(viewController:UIViewController){
         
     }

@@ -59,12 +59,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Sift.xcscheme</key>
+		<key>Pods-OwlOrbit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -107,11 +117,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0E21FFB58F01F83BDE639971AA38CD94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
 		<dict>
 			<key>primary</key>
@@ -122,17 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2A8D3ADF24AE50A4F7F5822B6EEAB340</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2A91F94F2DD7830B5E4C0D9810AB069B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2AAAB9973850C35994DC04473435E1A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2F16503D5C569974FA3D4B04CDF367AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,11 +147,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B3C715036EB1FCA872A48555744C55B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4EFCB2A1C2BB2152F1BBA18BB8BB2732</key>
 		<dict>
 			<key>primary</key>
@@ -162,7 +157,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>71CDC816FB9703A5E2D9D0B82056058C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>740EAD3D26EFD0F42B4989BB7D526928</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9293BDAD24D4423350AB71A893BD22CF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95DB89A8BFC5FF0BF98458651D0163CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,22 +182,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AE73CD2333CD5C2B1A361C2CE2FA67DE</key>
+		<key>B612C8953BE7DE0A19FB478BB73ED932</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC2574B58AF0FBD9319BAA72BED673F6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E1F0C09D62EC1FB1E07560293F2E60CE</key>
+		<key>B6D3745A7F9BE7A2968A82A95A56B879</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB585105B3D8C3192212E3FE291F13A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EDA125ADA52355B7CA6DF7BA96918357</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE32620D96EE5D789176C0E0F6199667</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -3,13 +3,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="OwlOrbit" customModuleProvider="target">
             <connections>
-                <outlet property="lblHeghtConstraint" destination="UNh-eM-Rs0" id="JMH-6d-Nnn"/>
-                <outlet property="logoHeightConstraint" destination="4yd-oR-joa" id="wOB-Vo-DNb"/>
                 <outlet property="tableView" destination="pEB-5v-jMN" id="xVQ-LH-UHh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,43 +20,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                     <animations/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl_orbit" translatesAutoresizingMaskIntoConstraints="NO" id="0rm-uQ-idt">
-                    <rect key="frame" x="90" y="28" width="140" height="147"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="147" id="4yd-oR-joa"/>
-                        <constraint firstAttribute="width" constant="140" id="Rif-LH-rcl"/>
-                        <constraint firstAttribute="width" secondItem="0rm-uQ-idt" secondAttribute="height" multiplier="20:21" id="cYf-aA-HcI"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="Rif-LH-rcl"/>
-                        </mask>
-                    </variation>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owl Orbit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sdX-f3-aUI">
-                    <rect key="frame" x="14" y="175" width="292" height="88"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="292" id="31N-YW-kVN"/>
-                        <constraint firstAttribute="width" constant="292" id="4LZ-i6-4i2"/>
-                        <constraint firstAttribute="height" constant="88" id="UNh-eM-Rs0"/>
-                        <constraint firstAttribute="width" secondItem="sdX-f3-aUI" secondAttribute="height" multiplier="73:22" id="ZFI-gN-PbZ"/>
-                        <constraint firstAttribute="height" constant="88" id="rlh-HQ-nCM"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="64"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="31N-YW-kVN"/>
-                            <exclude reference="4LZ-i6-4i2"/>
-                            <exclude reference="rlh-HQ-nCM"/>
-                        </mask>
-                    </variation>
-                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pEB-5v-jMN" customClass="TPKeyboardAvoidingTableView">
-                    <rect key="frame" x="0.0" y="271" width="320" height="233"/>
+                    <rect key="frame" x="0.0" y="77" width="320" height="427"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
@@ -67,27 +29,63 @@
                         <outlet property="delegate" destination="-1" id="gsm-wW-QKu"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRr-YV-hgt">
+                    <rect key="frame" x="110" y="25" width="101" height="44"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="Bfj-az-V3N"/>
+                        <constraint firstAttribute="width" constant="127" id="HoH-Mw-VJP"/>
+                        <constraint firstAttribute="height" constant="88" id="QmC-de-Jvr"/>
+                        <constraint firstAttribute="width" constant="101" id="Y9Z-dp-Z9c"/>
+                        <constraint firstAttribute="width" constant="145" id="ddo-hA-BHG"/>
+                        <constraint firstAttribute="height" constant="40" id="iic-Cv-wNe"/>
+                        <constraint firstAttribute="width" constant="292" id="qdF-VV-K8i"/>
+                        <constraint firstAttribute="width" constant="292" id="vCp-kc-Xnv"/>
+                        <constraint firstAttribute="height" constant="44" id="wRV-fk-MGj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="32"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Bfj-az-V3N"/>
+                            <exclude reference="HoH-Mw-VJP"/>
+                            <exclude reference="QmC-de-Jvr"/>
+                            <exclude reference="ddo-hA-BHG"/>
+                            <exclude reference="iic-Cv-wNe"/>
+                            <exclude reference="qdF-VV-K8i"/>
+                            <exclude reference="vCp-kc-Xnv"/>
+                        </mask>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrM-3d-Ror">
+                    <rect key="frame" x="8" y="32" width="48" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="btnCancel:" destination="-1" eventType="touchUpInside" id="ukA-oS-hJK"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="0rm-uQ-idt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="61l-WK-inv"/>
                 <constraint firstAttribute="bottom" secondItem="bGp-MA-9n2" secondAttribute="bottom" id="DtL-47-H4l"/>
-                <constraint firstItem="0rm-uQ-idt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Fav-Bs-ylh"/>
+                <constraint firstItem="PrM-3d-Ror" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="GBF-uM-HNp"/>
+                <constraint firstItem="pEB-5v-jMN" firstAttribute="top" secondItem="CRr-YV-hgt" secondAttribute="bottom" constant="8" id="LTM-2o-IfJ"/>
+                <constraint firstItem="PrM-3d-Ror" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="NF9-t9-C7O"/>
                 <constraint firstAttribute="bottom" secondItem="bGp-MA-9n2" secondAttribute="bottom" id="PhJ-Sq-Wh5"/>
                 <constraint firstItem="bGp-MA-9n2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SxK-gr-LpB"/>
+                <constraint firstItem="CRr-YV-hgt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="Ula-DD-Go7"/>
                 <constraint firstItem="bGp-MA-9n2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Wvx-o5-DwH"/>
                 <constraint firstAttribute="trailing" secondItem="bGp-MA-9n2" secondAttribute="trailing" id="gos-Ia-Xiv"/>
                 <constraint firstItem="bGp-MA-9n2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ivm-ua-fTa"/>
                 <constraint firstAttribute="trailing" secondItem="pEB-5v-jMN" secondAttribute="trailing" id="iw9-m1-zbV"/>
                 <constraint firstAttribute="bottom" secondItem="pEB-5v-jMN" secondAttribute="bottom" id="kbz-Qr-4KK"/>
                 <constraint firstItem="pEB-5v-jMN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lLZ-l4-J9i"/>
+                <constraint firstItem="CRr-YV-hgt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qJb-h3-dGA"/>
                 <constraint firstAttribute="trailing" secondItem="bGp-MA-9n2" secondAttribute="trailing" id="slb-K4-vsJ"/>
-                <constraint firstItem="0rm-uQ-idt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="szw-Um-R78"/>
-                <constraint firstItem="sdX-f3-aUI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="t0j-y4-rjk"/>
-                <constraint firstItem="pEB-5v-jMN" firstAttribute="top" secondItem="sdX-f3-aUI" secondAttribute="bottom" constant="8" id="vc0-za-nEQ"/>
                 <constraint firstItem="bGp-MA-9n2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xMu-fw-nbt"/>
-                <constraint firstItem="sdX-f3-aUI" firstAttribute="top" secondItem="0rm-uQ-idt" secondAttribute="bottom" id="yG6-oF-3Wa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
@@ -96,13 +94,11 @@
                     <exclude reference="gos-Ia-Xiv"/>
                     <exclude reference="ivm-ua-fTa"/>
                     <exclude reference="xMu-fw-nbt"/>
-                    <exclude reference="szw-Um-R78"/>
                 </mask>
             </variation>
         </view>
     </objects>
     <resources>
         <image name="intro_background" width="375" height="667"/>
-        <image name="owl_orbit" width="280" height="295"/>
     </resources>
 </document>

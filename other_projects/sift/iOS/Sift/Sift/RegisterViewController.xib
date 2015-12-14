@@ -5,9 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="Sift" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="OwlOrbit" customModuleProvider="target">
             <connections>
-                <outlet property="btnBack" destination="sXN-WN-iuY" id="Ja8-Ov-3Q3"/>
                 <outlet property="tableView" destination="wjZ-cZ-kvD" id="BWM-cn-7Td"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="v07-YR-fds"/>
             </connections>
@@ -20,14 +19,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro_background" translatesAutoresizingMaskIntoConstraints="NO" id="sKk-Q4-yEe">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                     <animations/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_button" translatesAutoresizingMaskIntoConstraints="NO" id="sXN-WN-iuY">
-                    <rect key="frame" x="8" y="28" width="36" height="36"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="36" id="XwT-G9-wp4"/>
-                        <constraint firstAttribute="width" constant="36" id="jEl-KL-KL9"/>
-                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84e-ZT-CyQ">
                     <rect key="frame" x="97" y="24" width="127" height="44"/>
@@ -67,6 +58,14 @@
                         <outlet property="delegate" destination="-1" id="LOE-v1-LCj"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14e-4e-f7T">
+                    <rect key="frame" x="8" y="31" width="48" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="btnCancelClick:" destination="-1" eventType="touchUpInside" id="0gt-aG-9hZ"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -76,11 +75,11 @@
                 <constraint firstItem="84e-ZT-CyQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="6RL-kO-SoZ"/>
                 <constraint firstItem="sKk-Q4-yEe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9tv-zU-wYQ"/>
                 <constraint firstAttribute="trailing" secondItem="sKk-Q4-yEe" secondAttribute="trailing" id="DbZ-vS-DFi"/>
+                <constraint firstItem="14e-4e-f7T" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="31" id="ELo-mR-xyY"/>
                 <constraint firstItem="wjZ-cZ-kvD" firstAttribute="top" secondItem="84e-ZT-CyQ" secondAttribute="bottom" constant="8" id="ERa-rP-c80"/>
-                <constraint firstItem="sXN-WN-iuY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="LOX-pD-gut"/>
+                <constraint firstItem="14e-4e-f7T" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="J4r-p1-CB0"/>
                 <constraint firstItem="84e-ZT-CyQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UlD-aZ-JuU"/>
                 <constraint firstItem="sKk-Q4-yEe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WfL-J1-0hW"/>
-                <constraint firstItem="sXN-WN-iuY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="XS3-PF-AX9"/>
                 <constraint firstAttribute="bottom" secondItem="wjZ-cZ-kvD" secondAttribute="bottom" id="XbE-7h-lOd"/>
                 <constraint firstAttribute="bottom" secondItem="sKk-Q4-yEe" secondAttribute="bottom" id="fiw-Ud-dma"/>
                 <constraint firstItem="84e-ZT-CyQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="26" id="p3e-ML-vo0"/>
@@ -94,7 +93,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back_button" width="38" height="38"/>
         <image name="intro_background" width="375" height="667"/>
     </resources>
 </document>

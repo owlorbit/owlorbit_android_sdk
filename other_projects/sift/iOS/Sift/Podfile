@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-target 'Sift' do
+target 'OwlOrbit' do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
     pod 'Alamofire', '~> 3.1'
     pod 'AlamofireImage', '~> 2.0'
@@ -12,6 +12,7 @@ target 'Sift' do
     pod 'ImageCropView', '~> 1.0'
 end
 
+pod 'JSQMessagesViewController'
 pod 'UITextView+Placeholder'
 pod 'RNCryptor'
 pod 'MBProgressHUD'

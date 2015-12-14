@@ -7,13 +7,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegistrationSubmitKeyboardView"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RegistrationSubmitKeyboardView" customModule="Sift" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RegistrationSubmitKeyboardView" customModule="OwlOrbit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rx-C6-xSg">
-                    <rect key="frame" x="255" y="9" width="49" height="30"/>
+                    <rect key="frame" x="240" y="0.0" width="64" height="48"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="64" id="0AV-fg-lOC"/>
+                    </constraints>
                     <state key="normal" title="Submit">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -28,10 +31,18 @@
             <constraints>
                 <constraint firstItem="8rx-C6-xSg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="2fI-GG-hW3"/>
                 <constraint firstAttribute="bottom" secondItem="8rx-C6-xSg" secondAttribute="bottom" constant="9" id="80Z-CC-5vR"/>
+                <constraint firstAttribute="bottom" secondItem="8rx-C6-xSg" secondAttribute="bottom" id="N5f-hp-yZT"/>
+                <constraint firstItem="8rx-C6-xSg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZbK-Ay-bcm"/>
                 <constraint firstAttribute="trailing" secondItem="8rx-C6-xSg" secondAttribute="trailing" constant="16" id="jIR-4i-6Wf"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="2fI-GG-hW3"/>
+                    <exclude reference="80Z-CC-5vR"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

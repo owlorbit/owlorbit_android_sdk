@@ -1,0 +1,6 @@
+framework module Pods_OwlOrbit {
+  umbrella header "Pods-OwlOrbit-umbrella.h"
+
+  export *
+  module * { export * }
+}

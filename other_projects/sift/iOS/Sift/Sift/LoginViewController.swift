@@ -19,24 +19,17 @@ class LoginViewController: UIViewController, LoginDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false);
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        view.addGestureRecognizer(tap)
-
+        
         self.tableView.registerNib(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: "LoginTableViewCell")
         self.tableView.backgroundColor = UIColor.clearColor();
-        test()
+        //test()
     }
 
-    func test(){
-
-        self.logoHeightConstraint.constant = 0
-        UIView.animateWithDuration(0.5) {
-            self.view.layoutIfNeeded()
-        }
-        
-        print(ApplicationManager.deviceId)
+    
+    @IBAction func btnCancel(sender: AnyObject) {
+        self.navigationController?.popToRootViewControllerAnimated(true);        
     }
-
+  
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -71,24 +64,29 @@ class LoginViewController: UIViewController, LoginDelegate {
 
     func signIn(username: String, password: String){
 
-        UserApiHelper.loginUser(username, password: password, resultJSON: {
-            (JSON) in
+        FullScreenLoaderHelper.startLoader()
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC)))
 
-            var hasFailed:Bool = (JSON["hasFailed"]) ? true : false
-            if(!hasFailed){
-                PersonalUserModel.updateUserFromLogin(username, password: password, serverReturnedData: JSON)
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                appDelegate.setupLoggedInViewController()
-            }else{
-                if(JSON["message"].string != ""){
-                    AlertHelper.createPopupMessage(JSON["message"].string!.removeHtml()!, title: "Login Error")
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            UserApiHelper.loginUser(username, password: password, resultJSON: {
+                (JSON) in
+
+                FullScreenLoaderHelper.removeLoader();
+                var hasFailed:Bool = (JSON["hasFailed"]) ? true : false
+                if(!hasFailed){
+                    PersonalUserModel.updateUserFromLogin(username, password: password, serverReturnedData: JSON)
+                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    appDelegate.setupLoggedInViewController()
                 }else{
-                    AlertHelper.createPopupMessage("Try again later...", title: "Login Error")
+                    if(JSON["message"].string != ""){
+                        AlertHelper.createPopupMessage(JSON["message"].string!.removeHtml()!, title: "Login Error")
+                    }else{
+                        AlertHelper.createPopupMessage("Try again later...", title: "Login Error")
+                    }
                 }
-            }
-
-        });
-        
+                
+            });
+        }
     }
 
     @IBAction func btnSignInTouchUp(sender: AnyObject) {

@@ -5,9 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterBasicInfoViewController" customModule="Sift" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterBasicInfoViewController" customModule="OwlOrbit" customModuleProvider="target">
             <connections>
-                <outlet property="btnBack" destination="L01-gC-Ifh" id="dcD-EY-3zb"/>
                 <outlet property="tableView" destination="XhG-VN-bNm" id="oG1-ba-uL7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,14 +19,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro_background" translatesAutoresizingMaskIntoConstraints="NO" id="zl4-mS-4WU">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                     <animations/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_button" translatesAutoresizingMaskIntoConstraints="NO" id="L01-gC-Ifh">
-                    <rect key="frame" x="8" y="28" width="36" height="36"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="36" id="FDe-5t-dbS"/>
-                        <constraint firstAttribute="width" constant="36" id="OEz-pp-w6t"/>
-                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXl-r7-kNm">
                     <rect key="frame" x="97" y="24" width="127" height="44"/>
@@ -67,14 +58,21 @@
                         <outlet property="delegate" destination="-1" id="1ys-mc-dBt"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fw-P0-4iG">
+                    <rect key="frame" x="8" y="31" width="34" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Back"/>
+                    <connections>
+                        <action selector="btnBackClick:" destination="-1" eventType="touchUpInside" id="s8O-Tr-izQ"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="XhG-VN-bNm" secondAttribute="bottom" id="3hW-OU-7QU"/>
-                <constraint firstItem="L01-gC-Ifh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="47y-TY-2el"/>
-                <constraint firstItem="L01-gC-Ifh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="7Ze-Jq-Ojb"/>
                 <constraint firstItem="XhG-VN-bNm" firstAttribute="top" secondItem="rXl-r7-kNm" secondAttribute="bottom" constant="8" id="9w4-zC-xeH"/>
+                <constraint firstItem="1Fw-P0-4iG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="31" id="DG4-cL-Fxp"/>
                 <constraint firstAttribute="trailing" secondItem="XhG-VN-bNm" secondAttribute="trailing" id="G7l-J7-xft"/>
                 <constraint firstItem="XhG-VN-bNm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gpe-JG-LBw"/>
                 <constraint firstItem="rXl-r7-kNm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KNf-9y-lZq"/>
@@ -82,6 +80,7 @@
                 <constraint firstItem="zl4-mS-4WU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Yrc-JM-Zzc"/>
                 <constraint firstAttribute="trailing" secondItem="zl4-mS-4WU" secondAttribute="trailing" id="akW-eu-eu5"/>
                 <constraint firstItem="zl4-mS-4WU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bsT-9L-6qW"/>
+                <constraint firstItem="1Fw-P0-4iG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="cDN-WX-hpB"/>
                 <constraint firstAttribute="bottom" secondItem="zl4-mS-4WU" secondAttribute="bottom" id="jII-nd-PiT"/>
                 <constraint firstItem="XhG-VN-bNm" firstAttribute="top" secondItem="rXl-r7-kNm" secondAttribute="bottom" constant="8" id="pFc-9d-V3H"/>
             </constraints>
@@ -94,7 +93,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back_button" width="38" height="38"/>
         <image name="intro_background" width="375" height="667"/>
     </resources>
 </document>

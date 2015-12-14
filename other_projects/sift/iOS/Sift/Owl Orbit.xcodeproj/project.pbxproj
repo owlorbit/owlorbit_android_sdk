@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
 		3280A1EF51479CC44672D072 /* Pods_Sift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35946F21B48C1DE6863F53BD /* Pods_Sift.framework */; };
+		3E955090A824489C97B61F95 /* Pods_OwlOrbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */; };
 		B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */; };
 		B804C6D01C17BB0D0076F81B /* UserPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */; };
+		B815AA291C1E19020082E136 /* RoomAttributeManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */; };
+		B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */; };
+		B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
 		B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */; };
 		B866DFB11C061CA000BF8A79 /* UserSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */; };
 		B866DFB21C061CA000BF8A79 /* UserSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */; };
@@ -57,6 +61,9 @@
 		B88213381C18FB3000E9469C /* String+ToDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213371C18FB3000E9469C /* String+ToDouble.swift */; };
 		B892D65A1C19051B0091F128 /* LoginKeyboardPrevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6581C19051B0091F128 /* LoginKeyboardPrevView.swift */; };
 		B892D65B1C19051B0091F128 /* LoginKeyboardPrevView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D6591C19051B0091F128 /* LoginKeyboardPrevView.xib */; };
+		B892D65E1C1A45700091F128 /* PreloadHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D65C1C1A45700091F128 /* PreloadHomeViewController.swift */; };
+		B892D65F1C1A45700091F128 /* PreloadHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D65D1C1A45700091F128 /* PreloadHomeViewController.xib */; };
+		B892D6611C1A4FD70091F128 /* FullScreenLoaderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */; };
 		B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
 		B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
 		B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
@@ -106,9 +113,13 @@
 		35946F21B48C1DE6863F53BD /* Pods_Sift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91601974A0D837B391AABADD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OwlOrbit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B804C6CC1C16A4920076F81B /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
 		B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPointAnnotation.swift; sourceTree = "<group>"; };
+		B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAttributeManagedModel.swift; sourceTree = "<group>"; };
+		B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManagedModel.swift; sourceTree = "<group>"; };
+		B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserManagedModel.swift; sourceTree = "<group>"; };
 		B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserModel.swift; sourceTree = "<group>"; };
 		B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewCell.swift; sourceTree = "<group>"; };
 		B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -162,6 +173,9 @@
 		B88213371C18FB3000E9469C /* String+ToDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ToDouble.swift"; sourceTree = "<group>"; };
 		B892D6581C19051B0091F128 /* LoginKeyboardPrevView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginKeyboardPrevView.swift; sourceTree = "<group>"; };
 		B892D6591C19051B0091F128 /* LoginKeyboardPrevView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginKeyboardPrevView.xib; sourceTree = "<group>"; };
+		B892D65C1C1A45700091F128 /* PreloadHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadHomeViewController.swift; sourceTree = "<group>"; };
+		B892D65D1C1A45700091F128 /* PreloadHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreloadHomeViewController.xib; sourceTree = "<group>"; };
+		B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenLoaderHelper.swift; sourceTree = "<group>"; };
 		B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTabBarController.swift; sourceTree = "<group>"; };
 		B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomTabBarController.xib; sourceTree = "<group>"; };
 		B8B80EFD1BF414FC00CF4BB3 /* Sift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sift-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -200,6 +214,7 @@
 				B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */,
 				21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */,
 				3280A1EF51479CC44672D072 /* Pods_Sift.framework in Frameworks */,
+				3E955090A824489C97B61F95 /* Pods_OwlOrbit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +241,7 @@
 				B8B80F001BF4182C00CF4BB3 /* MapKit.framework */,
 				ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */,
 				35946F21B48C1DE6863F53BD /* Pods_Sift.framework */,
+				B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -352,6 +368,7 @@
 				B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */,
 				B866DFD61C0FC80700BF8A79 /* ImageHelper.swift */,
 				B88213371C18FB3000E9469C /* String+ToDouble.swift */,
+				B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -463,6 +480,8 @@
 				B870CEC11BF5755800F47929 /* RegisterViewController.xib */,
 				B870CEC41BF5AF3800F47929 /* RegisterBasicInfoViewController.swift */,
 				B870CEC51BF5AF3800F47929 /* RegisterBasicInfoViewController.xib */,
+				B892D65C1C1A45700091F128 /* PreloadHomeViewController.swift */,
+				B892D65D1C1A45700091F128 /* PreloadHomeViewController.xib */,
 			);
 			name = LoginViewController;
 			sourceTree = "<group>";
@@ -482,6 +501,9 @@
 				B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */,
 				B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */,
 				B88213351C17F99E00E9469C /* LocationModel.swift */,
+				B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */,
+				B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */,
+				B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -665,6 +687,7 @@
 				B870CED81BFA9E4100F47929 /* LoginViewController.xib in Resources */,
 				B870CED61BFA9D2700F47929 /* LoginTableViewCell.xib in Resources */,
 				B870CECD1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib in Resources */,
+				B892D65F1C1A45700091F128 /* PreloadHomeViewController.xib in Resources */,
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
 				B87654641C03F53F00190B9B /* WriteMessageViewController.xib in Resources */,
 				B892D65B1C19051B0091F128 /* LoginKeyboardPrevView.xib in Resources */,
@@ -715,7 +738,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sift/Pods-Sift-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A8165F553BEF927171B1B40D /* Copy Pods Resources */ = {
@@ -730,7 +753,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sift/Pods-Sift-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -740,6 +763,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */,
 				B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */,
 				B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */,
 				B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */,
@@ -747,8 +771,10 @@
 				B866DFC01C0B5F9200BF8A79 /* LocationApiHelper.swift in Sources */,
 				B8E4E7D71BFD4AE200995964 /* RegistrationUser.swift in Sources */,
 				B870CECC1BF96ECF00F47929 /* Registration1ValueTableViewCell.swift in Sources */,
+				B892D65E1C1A45700091F128 /* PreloadHomeViewController.swift in Sources */,
 				B870CEE31BFAF47800F47929 /* RegistrationNextView.swift in Sources */,
 				B866DFC41C0D22D100BF8A79 /* RoomApiHelper.swift in Sources */,
+				B892D6611C1A4FD70091F128 /* FullScreenLoaderHelper.swift in Sources */,
 				B870CED01BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
 				B87654631C03F53F00190B9B /* WriteMessageViewController.swift in Sources */,
 				B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */,
@@ -778,7 +804,9 @@
 				B870CED51BFA9D2700F47929 /* LoginTableViewCell.swift in Sources */,
 				B866DFCB1C0E733300BF8A79 /* AUIAutoGrowingTextView.m in Sources */,
 				B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */,
+				B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */,
 				B866DFCE1C0E811C00BF8A79 /* ChatMapKeyboardView.swift in Sources */,
+				B815AA291C1E19020082E136 /* RoomAttributeManagedModel.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
 				B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */,
 				B8E4E7D91BFD4CEC00995964 /* AlertHelper.swift in Sources */,

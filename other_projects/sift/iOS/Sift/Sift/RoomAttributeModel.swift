@@ -15,7 +15,6 @@ class RoomAttributeModel: NSObject {
     var name:String = ""
 
     override init(){
-        
     }
 
     init(json:JSON){

@@ -26,7 +26,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
     var chatRoomTitle:String = "";
     var roomId:String = ""
-    var roomData:RoomModel = RoomModel(json: nil)
+    var roomData:RoomManagedModel = RoomManagedModel.initWithJson(nil)
     let downloader = ImageDownloader()
     var profileImg:UIImage = UIImage()
 
@@ -95,9 +95,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func loadProfileImg(){
 
         //GenericUserModel
+
         for obj in roomData.attributes.users {
             var userData:GenericUserModel = obj as! GenericUserModel
-            
+
             if(userData.avatarOriginal != ""){
                 var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userData.avatarOriginal
                 var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
@@ -308,7 +309,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                     anView!.annotation = annotation
                 }
 
-                anView!.image = profileImage
+                //anView!.image = profileImage
+                
+                if(ApplicationManager.userData.profileImage != nil){
+                    anView!.image = profileImage
+                }else{
+                    anView!.image = UIImage(named:"owl_orbit")?.resizedImageToFitInSize(CGSize(width: 40, height: 40), scaleIfSmaller: true)
+                }
+                
                 return anView
             }
 
@@ -320,7 +328,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
                 pinView!.canShowCallout = true
                 pinView!.image = userPointAnnotation.userModel.avatarImg
-                print("dirtbag")
             } else {
                 pinView!.annotation = annotation
                 //pinView!.image = userPointAnnotation.userModel.avatarImg
