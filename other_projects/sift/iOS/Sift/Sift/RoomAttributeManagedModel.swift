@@ -17,32 +17,61 @@ class RoomAttributeManagedModel: NSManagedObject {
     @NSManaged var users:NSMutableSet
     @NSManaged var name:String
     @NSManaged var roomId:String
+
     
-    ////
-    
-    class func initWithJson(json:JSON, roomId:String)->RoomAttributeManagedModel{
-        var roomName:String = ""
-        var usersArr:NSMutableSet = []
+    class func initWithJson(json:JSON, roomId:String, roomAttributeModel:(RoomAttributeManagedModel) -> Void){
+
         let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         let fetchRequest = NSFetchRequest(entityName: "RoomAttributeManagedModel")
         
         let entity = NSEntityDescription.entityForName("RoomAttributeManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
         var obj = RoomAttributeManagedModel.getById(roomId)
         
-        
-        for (key,subJson):(String, SwiftyJSON.JSON) in json["room_attributes"] {
-            var genericUser:GenericUserManagedModel = GenericUserManagedModel.initWithJson(subJson)
-            usersArr.addObject(genericUser);
-            roomName += genericUser.firstName + ", "
-        }
-        roomName.removeRange(roomName.endIndex.advancedBy(-2)..<roomName.endIndex)
-        
         obj.roomId = roomId
-        obj.name = roomName
-        obj.users = usersArr
+
+        dispatch_async(dispatch_get_main_queue()) {
+            RoomAttributeManagedModel.generateUserName(obj, json: json, doneLoading:{
+                (doneLoading) in
+                    if(doneLoading){
+                        roomAttributeModel(obj)
+                        ApplicationManager.shareCoreDataInstance.saveContext()
+                        print("all done loading...!")
+                    }
+                }
+            )
+        }
+    }
+    
+    class func generateUserName(obj:RoomAttributeManagedModel, json:JSON, doneLoading:(Bool) -> Void){
+        var usersArr:NSMutableSet = []
+        var roomName:String = ""
+        var objIndex:Int = 0
+
+        for (key,subJson):(String, SwiftyJSON.JSON) in json["room_attributes"] {
+            
+            
+            GenericUserManagedModel.initWithJson(subJson, resultGenericUser:
+                {
+                    (genUser) in
+                    
+                    print("right here user_count: \(json["room_attributes"].count)")
+                    objIndex++
+
+                    var genericUser:GenericUserManagedModel = genUser
+                    usersArr.addObject(genericUser);
+                    roomName += genericUser.firstName + ", "
+                    if(objIndex >= json["room_attributes"].count){
+                        roomName.removeRange(roomName.endIndex.advancedBy(-2)..<roomName.endIndex)
+                        obj.name = roomName
+                        obj.users = usersArr
+                        doneLoading(true)
+                    }
+                }
+            )
+        }
         
-        ApplicationManager.shareCoreDataInstance.saveContext()
-        return obj;
+        
+        
     }
     
     class func getById(roomId:String)->RoomAttributeManagedModel{
@@ -55,7 +84,7 @@ class RoomAttributeManagedModel: NSManagedObject {
         
         do {
             let fetchResults = try coreDataHelper.managedObjectContext.executeFetchRequest(fetchRequest) as? [RoomAttributeManagedModel]
-            
+
             if (!fetchResults!.isEmpty && fetchResults?.count > 0) {
                 if let roomManagedData = fetchResults{
                     return roomManagedData[0]

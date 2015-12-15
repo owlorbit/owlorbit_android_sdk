@@ -17,8 +17,6 @@ class ReadMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var lblRoomTitle: UILabel!
     @IBOutlet weak var imgAvatar: UIImageView!
     
-    let downloader = ImageDownloader()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,27 +26,39 @@ class ReadMessageTableViewCell: UITableViewCell {
 
         self.lblRoomTitle.text = roomData.roomName
         self.lblLastMsg.text = roomData.firstName + ": " + roomData.lastMessage
-
-        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + roomData.avatarOriginal
-        var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-        URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        
         self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.timestamp)
         self.lblRoomTitle.text = roomData.attributes.name
 
-        downloader.downloadImage(URLRequest: URLRequest) { response in
+        dispatch_async(dispatch_get_main_queue()) {
+            for userObj : AnyObject in roomData.attributes.users.allObjects {
+                if let userGeneric = userObj as? GenericUserManagedModel {
+                    //self.imgAvatar.image = UIImage(data: userGeneric.avatarImg)
+                    //self.imgAvatar.image = userGeneric.avatarImg
+                    
+                    
+                    
+                    var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userGeneric.avatarOriginal
+                    var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+                    URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+                 
+                    ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
 
-            if let image = response.result.value {
-                self.imgAvatar.image = image.roundImage()
-            }else{
-                self.imgAvatar.image = UIImage(named:"owl_orbit")
+                        if let image = response.result.value {
+                            //obj.avatarImg = UIImageJPEGRepresentation(image.roundImage(), 1)!
+                            self.imgAvatar.image = image.roundImage()
+                        }
+                    }
+
+                    
+                    
+                    return;
+                }
             }
         }
     }
-    
+
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

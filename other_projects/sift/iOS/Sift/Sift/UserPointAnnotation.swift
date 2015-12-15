@@ -12,5 +12,5 @@ import MapKit
 
 class UserPointAnnotation: MKPointAnnotation {
 
-    var userModel:GenericUserModel!
+    var userModel:GenericUserManagedModel!
 }

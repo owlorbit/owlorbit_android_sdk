@@ -26,7 +26,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
     var chatRoomTitle:String = "";
     var roomId:String = ""
-    var roomData:RoomManagedModel = RoomManagedModel.initWithJson(nil)
     let downloader = ImageDownloader()
     var profileImg:UIImage = UIImage()
 
@@ -47,6 +46,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         self.title = self.chatRoomTitle
         var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "btnTextClick:")
@@ -59,21 +59,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         locationManager.delegate = self;
         mapView.zoomEnabled = true;
         self.chatContainerView.hidden = true;
-        
-        //self.mapView.hidden = true;
-        
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
 
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
-        
-        
         var chatMapKeyboard:ChatMapKeyboardView = NSBundle.mainBundle().loadNibNamed("ChatMapKeyboardView", owner: self, options:nil)[0] as! ChatMapKeyboardView
-        //keyboardNextView.delegate = self
-        
-        chatMapKeyboard.delegate = self
 
+        chatMapKeyboard.delegate = self
         self.mapView.delegate = self;
         self.txtChatView.inputAccessoryView = chatMapKeyboard
         
@@ -95,9 +88,11 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func loadProfileImg(){
 
         //GenericUserModel
+        var roomData:RoomManagedModel = RoomManagedModel.getById(roomId);
+        print(">1111...3331: \(roomData.attributes.users.count)")
 
         for obj in roomData.attributes.users {
-            var userData:GenericUserModel = obj as! GenericUserModel
+            var userData:GenericUserManagedModel = obj as! GenericUserManagedModel
 
             if(userData.avatarOriginal != ""){
                 var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userData.avatarOriginal
@@ -159,7 +154,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         return UserPointAnnotation();
     }
     
-    func addUser(userModel:GenericUserModel){
+    func addUser(userModel:GenericUserManagedModel){
         
         //make sure userModel doesn't exist in annotations list...
         var userPoint:UserPointAnnotation = UserPointAnnotation()

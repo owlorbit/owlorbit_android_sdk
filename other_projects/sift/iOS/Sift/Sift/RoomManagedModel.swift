@@ -30,10 +30,9 @@ class RoomManagedModel: NSManagedObject {
 
         let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         let fetchRequest = NSFetchRequest(entityName: "RoomManagedModel")
-        
         let entity = NSEntityDescription.entityForName("RoomManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
         var obj = RoomManagedModel.getById(json["room_id"].string!)
-        
+
         obj.roomId = json["room_id"].string!
         obj.userId = json["user_id"].string!
         obj.firstName = json["first_name"].string!
@@ -50,7 +49,7 @@ class RoomManagedModel: NSManagedObject {
         
         let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         let fetchRequest = NSFetchRequest(entityName: "RoomManagedModel")
-        
+
         let entity = NSEntityDescription.entityForName("RoomManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
         var obj = RoomManagedModel.getById(roomId)
         
@@ -58,6 +57,28 @@ class RoomManagedModel: NSManagedObject {
         
         ApplicationManager.shareCoreDataInstance.saveContext()
         return obj;
+    }
+    
+    
+    class func getAll()->[RoomManagedModel]{
+        let entity = NSEntityDescription.entityForName("RoomManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
+        
+        let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
+        let fetchRequest = NSFetchRequest(entityName: "RoomManagedModel")
+        
+        do {
+            let fetchResults = try coreDataHelper.managedObjectContext.executeFetchRequest(fetchRequest) as? [RoomManagedModel]
+            
+            if (!fetchResults!.isEmpty && fetchResults?.count > 0) {
+                return fetchResults!
+            }
+        } catch {
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        
+        return []
     }
     
     class func getById(roomId:String)->RoomManagedModel{

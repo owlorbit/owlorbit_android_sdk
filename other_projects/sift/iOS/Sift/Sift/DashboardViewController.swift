@@ -16,7 +16,7 @@ import AlamofireImage.Swift
 
 class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
-    var data:NSMutableArray = [];
+    var data:[RoomManagedModel] = [];
     @IBOutlet weak var tableView: UITableView!
 
     //var userArrayList:NSMutableArray = [];
@@ -27,17 +27,19 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         super.viewDidLoad()
 
         var createNewBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "createNewBtnClick:")
-        
+
         createNewBtn.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
         self.navigationItem.rightBarButtonItem = createNewBtn
-        
         self.tableView.registerNib(UINib(nibName: "ReadMessageTableViewCell", bundle:nil), forCellReuseIdentifier: "ReadMessageTableViewCell")
-
-
         self.navigationController!.navigationBar.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
 
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+
+        getRoomsFromManagedObjects();
         initRooms();
         initProfile();
+
         if(!hasProfileImage()){
             let vc = ProfileImageUploadViewController(nibName: "ProfileImageUploadViewController", bundle: nil)
             vc.hidesBottomBarWhenPushed = true
@@ -47,15 +49,17 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     
     func initProfile(){
         
-        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
-        var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-        URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+            var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
+            var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+            URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
 
-        downloader.downloadImage(URLRequest: URLRequest) { response in
-            //load default...
-            if let image = response.result.value {
-                ApplicationManager.userData.profileImage = image
+            ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
+                if let image = response.result.value {
+                    ApplicationManager.userData.profileImage = image
+                }
             }
         }
     }
@@ -69,35 +73,53 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             return true;
         }
     }
-    
+
+    func getRoomsFromManagedObjects(){
+        self.data = RoomManagedModel.getAll()
+        self.tableView.reloadData()
+    }
+
     func initRooms(){
-        RoomApiHelper.getRooms(1, resultJSON:{
-            (JSON) in
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            RoomApiHelper.getRooms(1, resultJSON:{
+                (JSON) in
 
-            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
-                var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
+                for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
+                    
 
-                RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
-                    (JSON2) in
+                    var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
+                    RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
+                        (JSON2) in
 
-                    var roomAttribute:RoomAttributeManagedModel = RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId)
-                    roomModel.attributes = roomAttribute
+                        
+                        
+                        //this block is the culprit of the lag...
+                        RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
+                            (roomAttribute) in
+                        
 
-                    if(roomModel.attributes.users.count > 0){
-                        roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                    }
+                            roomModel.attributes = roomAttribute
+                            if(roomModel.attributes.users.count > 0){
+                                roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
+                            }
+                            
+                            ApplicationManager.shareCoreDataInstance.saveContext()
+                            self.getRoomsFromManagedObjects()
 
-                    ApplicationManager.shareCoreDataInstance.saveContext()
-                    self.data.addObject(roomModel)
-                    self.tableView.reloadData()
-                });
-                
-            }
+                        })
 
-            self.tableView.emptyDataSetSource = self
-            self.tableView.emptyDataSetDelegate = self
-            self.tableView.reloadData()
-        });
+                        
+                    });
+                    
+                    
+                    
+                    
+
+                }
+            });
+        }
     }
     
     func createNewBtnClick(sender: AnyObject){
@@ -150,17 +172,20 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         cell?.populate(roomData)
         return cell!
     }
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //get all user ids..?
-        var roomData:RoomManagedModel = data[indexPath.row] as! RoomManagedModel
+
+        var roomData:RoomManagedModel = data[indexPath.row]
         let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+        
+
         vc.chatRoomTitle = roomData.attributes.name
         vc.roomId = roomData.roomId
-        vc.roomData = roomData
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true )
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
     }
 
     /*
