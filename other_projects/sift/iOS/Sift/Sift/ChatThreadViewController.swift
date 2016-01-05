@@ -88,8 +88,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func loadProfileImg(){
 
         //GenericUserModel
-        var roomData:RoomManagedModel = RoomManagedModel.getById(roomId);
-        print(">1111...3331: \(roomData.attributes.users.count)")
+        var roomData:RoomManagedModel = RoomManagedModel.getById(roomId)!;
 
         for obj in roomData.attributes.users {
             var userData:GenericUserManagedModel = obj as! GenericUserManagedModel
@@ -198,11 +197,15 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         //userPoint.coordinate = CLLocationCoordinate2D(latitude: 50, longitude: -52)
         //self.annotations.addObject(userPoint)
 
-        var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Map", style: UIBarButtonItemStyle.Plain, target: self, action: "btnMapClick:")
+        
+        /*var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Map", style: UIBarButtonItemStyle.Plain, target: self, action: "btnMapClick:")
         self.navigationItem.rightBarButtonItem = switchContextBtn
         print("btn text click..")
         self.mapView.hidden = true;
-        self.chatContainerView.hidden = false;
+        self.chatContainerView.hidden = false;*/
+        
+        var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
+        self.navigationController!.pushViewController(viewController, animated: true)
     }
 
     func btnMapClick(sender: AnyObject){

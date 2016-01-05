@@ -65,4 +65,27 @@ class ChatApiHelper{
                 }
         }
     }
+    
+    class func test(resultJSON:(JSON) -> Void) -> Void {
+
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/message/test"
+        Alamofire.request(.POST, url, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on \(response.result)")
+                    print(response.result.error!)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
 }

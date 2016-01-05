@@ -14,6 +14,12 @@
 #import "NSDate+NVTimeAgo.h"
 
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
-
 #import "AUIAutoGrowingTextView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/SDWebImageManager.h>
+
+#import <JSQMessagesViewController/JSQMessages.h>
+#import <JSQMessagesViewController/JSQMessageData.h>
+
+
 //#import "<UITextView+Placeholder/UITextView+Placeholder.h>"

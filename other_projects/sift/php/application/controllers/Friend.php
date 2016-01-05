@@ -77,6 +77,40 @@ class Friend extends CI_Controller {
 		$this->output->set_output(json_encode_helper($response));
 	}
 
+	//decline_friend_request
+	public function decline_friend_request(){
+		$response = array();
+		try{
+			$userId = $this->security->xss_clean(strip_tags($this->input->post('userId')));
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$friendUserId = $this->user_session_model->getUserId($sessionToken);
+			if($friendUserId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}
+			$this->friend_model->decline($userId, $friendUserId);
+			$response = array('message'=>'Friend declined!');
+
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'hasFailed'=> true);
+		}
+		$this->output->set_output(json_encode_helper($response));
+	}
+
+
 	public function accept_friend_request(){
 		$response = array();
 		try{

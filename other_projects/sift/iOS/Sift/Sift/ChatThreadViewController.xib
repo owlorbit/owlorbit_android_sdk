@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatThreadViewController" customModule="Sift" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatThreadViewController" customModule="OwlOrbit" customModuleProvider="target">
             <connections>
                 <outlet property="bottomConstraintTextField" destination="LBa-AK-v7s" id="EjA-I2-MNR"/>
                 <outlet property="chatContainerView" destination="Yij-4t-TS9" id="QOo-yT-hhG"/>
@@ -21,7 +21,6 @@
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P7O-19-mUe">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="447"/>
-                    <animations/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="jB2-ad-0qr"/>
                     </connections>
@@ -31,14 +30,12 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgZ-cY-xhf">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
-                            <animations/>
                             <color key="backgroundColor" red="0.67450980390000004" green="0.67450980390000004" blue="0.67450980390000004" alpha="1" colorSpace="deviceRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="EN9-xZ-ElO"/>
                             </constraints>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="not-Dr-ORU">
-                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" id="qHS-nR-bMo"/>
@@ -49,7 +46,6 @@
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iwa-wt-3LK" customClass="AUIAutoGrowingTextView">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                                    <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="pwc-7i-lYB"/>
@@ -58,7 +54,6 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                             </subviews>
-                            <animations/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="iwa-wt-3LK" firstAttribute="top" secondItem="XGn-uY-c0o" secondAttribute="top" id="0tP-fS-vUl"/>
@@ -70,7 +65,6 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <animations/>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="not-Dr-ORU" secondAttribute="trailing" id="IhG-pV-XLU"/>
@@ -91,7 +85,6 @@
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ga8-GN-iAy">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="408"/>
-                            <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="396" id="4TC-iC-JXt"/>
@@ -105,7 +98,6 @@
                             </variation>
                         </tableView>
                     </subviews>
-                    <animations/>
                     <color key="backgroundColor" red="0.77647058820000003" green="0.74509803919999995" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="ga8-GN-iAy" firstAttribute="top" secondItem="Yij-4t-TS9" secondAttribute="top" id="AEy-2W-v8A"/>
@@ -121,7 +113,6 @@
                     </variation>
                 </view>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Yij-4t-TS9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0EL-bh-feV"/>

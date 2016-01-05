@@ -138,9 +138,7 @@ class Message extends CI_Controller {
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
 			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
 			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
-		
 
-			error_log("uhh user ids: ". $userIds);
 			if($sessionToken == -1){
 				$typeOfError = -1;
 				throw new Exception("Public key is invalid.");
@@ -159,14 +157,33 @@ class Message extends CI_Controller {
 
 			$response = array(
 		    	'message' => 'room initiated added!',
-		    	'room_id' => $roomId
+		    	'room_id' => (int)$roomId
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
 				'successful'=> false);
 		}
+
+		error_log('derrr: '.json_encode_helper($response));
 		echo json_encode_helper($response);
 	}
+
+	public function test(){
+
+		$response = array();
+		try{
+
+			$response = array(
+		    	'message' => 'test!',
+		    	'room_id' => 55
+		    );
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+
+		echo json_encode_helper($response);
+	}	
 
 }
 

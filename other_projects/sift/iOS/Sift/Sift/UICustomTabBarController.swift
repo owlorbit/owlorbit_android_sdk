@@ -18,7 +18,6 @@ class UICustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,15 +32,24 @@ class UICustomTabBarController: UITabBarController, UITabBarControllerDelegate {
             tag: 1);
 
         
+        let friendRequestViewController = FriendRequestViewController()
+        var friendsIcon : UIImage = UIImage(named:"email_icon")!
+        var friendRequestNavController = UINavigationController(rootViewController: friendRequestViewController)
+        friendRequestNavController.tabBarItem = UITabBarItem(
+            title: "Discover",
+            image: friendsIcon,
+            tag: 2);
+        
+
         let settingsViewController = SettingsViewController()
         var settingsIcon : UIImage = UIImage(named:"settings")!
         var settingsNavController = UINavigationController(rootViewController: settingsViewController)
         settingsNavController.tabBarItem = UITabBarItem(
             title: "Settings",
             image: settingsIcon,
-            tag: 2);
+            tag: 3);
 
-        let controllers = [homeNavController, settingsNavController]
+        let controllers = [homeNavController, friendRequestNavController, settingsNavController]
         self.viewControllers = controllers
         
         self.delegate = self;

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage.Swift
+
+
 
 class UserSearchTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var txtEmail: UILabel!
-    @IBOutlet weak var txtPhoneNumber: UILabel!
     @IBOutlet weak var txtName: UILabel!
     @IBOutlet weak var imgAvatar: UIImageView!
 
@@ -25,11 +27,29 @@ class UserSearchTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func populate(genericUser:GenericUserModel){
         txtName.text = genericUser.firstName + " " + genericUser.lastName
-        txtEmail.text = "email: " + genericUser.email
-        txtPhoneNumber.text = "phone: " + genericUser.phoneNumber
+        
+        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + genericUser.avatarOriginal
+        var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+        
+        //let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
+        //}
+        
+        let url = NSURL(string: profileImageUrl)
+        self.imgAvatar!.sd_setImageWithURL(url, placeholderImage: UIImage(named: "owl_orbit"))
+
+        /*
+        dispatch_async(dispatch_get_main_queue()) {
+            ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
+                if let image = response.result.value {
+                    self.imgAvatar.image = image.roundImage()
+                }else{
+                    self.imgAvatar.image = UIImage(named:"owl_orbit")!
+                }
+            }
+        }*/
     }
     
     class func cellHeight()->CGFloat{

@@ -64,6 +64,60 @@ class User_model extends CI_Model {
         return array();
     }     
 
+    function find_non_friends($value, $userId, $pageIndex){
+        $ITEMS_PER_PAGE = 25;
+        $valueLike = '%'.$value.'%';
+        $query = "select id, first_name, last_name, email, phone_number, account_type, avatar_original from users 
+
+        where ((email like ? or first_name like ? or last_name like ?) 
+        or (phone_number = ?) or (CONCAT_WS(' ', first_name, last_name) like ?) 
+        or (CONCAT_WS(', ', last_name, first_name) like ?))
+
+            and
+
+        !((id in (select user_id as id from friends where friend_user_id = ?)
+        or id in (select friend_user_id as id from friends where user_id = ?)))
+        and id !=  ?
+
+        limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).";";
+
+        $result = $this->db->query($query, array($valueLike, $valueLike, $valueLike, $value, $valueLike, $valueLike, $userId,
+            $userId, $userId));
+
+        if($result->num_rows() > 0){            
+            return $result->result();
+        }
+        return array();
+    }     
+
+
+    function find_friends($value, $userId, $pageIndex){
+        $ITEMS_PER_PAGE = 25;
+        $valueLike = '%'.$value.'%';
+        $query = "select id, first_name, last_name, email, phone_number, account_type, avatar_original from users 
+
+        where ((email like ? or first_name like ? or last_name like ?) 
+        or (phone_number = ?) or (CONCAT_WS(' ', first_name, last_name) like ?) 
+        or (CONCAT_WS(', ', last_name, first_name) like ?) )
+
+            and 
+
+        (id in (select user_id as id from friends where friend_user_id = ? and status = 'accepted')
+        or id in (select friend_user_id as id from friends where user_id = ? and status = 'accepted'))
+        and id !=  ?
+
+
+        limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).";";
+
+        $result = $this->db->query($query, array($valueLike, $valueLike, $valueLike, $value, $valueLike, $valueLike, $userId,
+            $userId, $userId));
+
+        if($result->num_rows() > 0){            
+            return $result->result();
+        }
+        return array();
+    }     
+
     function login($email, $password){
         $query = "select * from users where email = ? and password = ?";
         $password = sha1(sha1($password.$this->config->item("salt")));

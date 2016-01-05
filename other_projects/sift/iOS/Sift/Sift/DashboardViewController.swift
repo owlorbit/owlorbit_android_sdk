@@ -41,15 +41,18 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         initProfile();
 
         if(!hasProfileImage()){
-            let vc = ProfileImageUploadViewController(nibName: "ProfileImageUploadViewController", bundle: nil)
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true )
+            loadProfileImage()
         }
     }
     
+    func loadProfileImage(){
+        let vc = ProfileImageUploadViewController(nibName: "ProfileImageUploadViewController", bundle: nil)
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true )
+    }
+    
     func initProfile(){
-        
-        
+
         dispatch_async(dispatch_get_main_queue()) {
             var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
             var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
@@ -93,9 +96,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                     RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
                         (JSON2) in
 
-                        
-                        
-                        //this block is the culprit of the lag...
+
                         RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
                             (roomAttribute) in
                         
@@ -112,11 +113,6 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
                         
                     });
-                    
-                    
-                    
-                    
-
                 }
             });
         }

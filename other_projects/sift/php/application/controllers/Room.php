@@ -74,7 +74,7 @@ class Room extends CI_Controller {
 		echo json_encode_helper($response);		
 	}
 
-	public function get($pageIndex=1){
+	public function get_recent($pageIndex=1){
 		$response = array();
 		try{
 			$pageIndex = intval($this->security->xss_clean(strip_tags($pageIndex)));
@@ -101,10 +101,10 @@ class Room extends CI_Controller {
 				throw new Exception("Session is invalid.");	
 			}
 
-		    $lastMessageOfRooms = $this->message_model->recent_messages($userId, $pageIndex);
-		    $roomAttributes = $this->message_model->recent_message_attributes($userId);
+		    $lastMessageOfRooms = $this->room_model->all($userId, $pageIndex);
+
 			$response = array(
-		    	'message' => 'room initiated added!',		    	
+		    	'message' => 'rooms returned!',		    	
 		    	'rooms' => $lastMessageOfRooms		    	
 		    );
 		}catch(Exception $e){
@@ -113,6 +113,43 @@ class Room extends CI_Controller {
 		}
 		echo json_encode_helper($response);
 	}
+
+
+	public function get($roomId=-1){
+		$response = array();
+		try{
+			$roomId = intval($this->security->xss_clean(strip_tags($roomId)));
+
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+		
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$userId = $this->user_session_model->getUserId($sessionToken);
+			if($userId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}
+
+		    $lastMessageOfRooms = $this->room_model->get_room($userId, $roomId);
+			$response = array(
+		    	'message' => 'room attribute!',		    	
+		    	'rooms' => $lastMessageOfRooms		    	
+		    );
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+		echo json_encode_helper($response);
+	}	
 }
 
 ?>

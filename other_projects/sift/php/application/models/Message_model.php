@@ -35,6 +35,27 @@ class Message_model extends CI_Model {
         return array();
     }
 
+    function recent_messages_in_room($userId, $roomId){
+        $ITEMS_PER_PAGE = 25;
+        $query = "SELECT m.id, m.room_id, u.id as user_id, first_name,last_name, r.name as room_name, 
+                  avatar_original, message, m.created FROM messages m
+            inner join users u
+                on u.id = m.user_id
+            inner join rooms r
+                on r.id = m.room_id
+            where 
+                m.created in (select max(created) from messages GROUP BY room_id) and r.active = 1
+            and m.room_id in (select room_id from room_users where user_id = ? and room_id = ? group by room_id)
+                order by m.created desc;";            
+
+        $result = $this->db->query($query, array($userId, $roomId));
+
+        if($result->num_rows() > 0){            
+            return $result->result();
+        }
+        return array();
+    }    
+
     function recent_message_attributes($userId){
         $query = "select user_id, room_id, avatar_original, first_name from room_users ru
                 inner join users u
@@ -83,15 +104,16 @@ class Message_model extends CI_Model {
         }
         $userIdString = rtrim($userIdString, ",");
         $query = "select count(room_id) as room_count, room_id from room_users 
-            where room_id in (select id from rooms where user_id in (".$userIdString.")) 
+            where room_id in (select room_id from room_users where user_id in (".$userIdString."))
+            and user_id in (".$userIdString.")
         group by room_id having room_count = ?;";
         $result = $this->db->query($query, array($userCount));
-        
         error_log($this->db->last_query());
+
         if($result->num_rows() > 0){            
-            return $result->row(0)->room_id;            
+            return $result->row(0)->room_id;
         }
-        //create the room..
+
         $query = "insert into rooms (user_id) values (?)";
         $result = $this->db->query($query, array($creatorUserId));
         $newRoomId = $this->db->insert_id();

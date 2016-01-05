@@ -10,9 +10,10 @@ target 'OwlOrbit' do
     pod 'ImagePickerSheetController'
     pod 'ALThreeCircleSpinner'
     pod 'ImageCropView', '~> 1.0'
+    pod 'JSQMessagesViewController'
 end
 
-pod 'JSQMessagesViewController'
+pod 'SDWebImage'
 pod 'UITextView+Placeholder'
 pod 'RNCryptor'
 pod 'MBProgressHUD'

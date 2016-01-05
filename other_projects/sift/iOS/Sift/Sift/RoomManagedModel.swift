@@ -13,8 +13,7 @@ import SwiftyJSON
 
 @objc(RoomManagedModel)
 class RoomManagedModel: NSManagedObject {
-    
-    
+
     @NSManaged var userId:String
     @NSManaged var firstName:String
     @NSManaged var lastName:String
@@ -33,16 +32,20 @@ class RoomManagedModel: NSManagedObject {
         let entity = NSEntityDescription.entityForName("RoomManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
         var obj = RoomManagedModel.getById(json["room_id"].string!)
 
-        obj.roomId = json["room_id"].string!
-        obj.userId = json["user_id"].string!
-        obj.firstName = json["first_name"].string!
-        obj.lastName = json["last_name"].string!
-        obj.roomName = (json["room_name"]) ? json["room_name"].string! : ""
-        obj.lastMessage = (json["message"].error == nil) ? json["message"].string! : ""
-        obj.timestamp = (json["created"].error == nil) ? json["created"].string! : ""
+        if(obj == nil){
+            obj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext) as! RoomManagedModel
+        }
+
+        obj!.roomId = json["room_id"].string!
+        obj!.userId = json["user_id"].string!
+        obj!.firstName = json["first_name"].string!
+        obj!.lastName = json["last_name"].string!
+        obj!.roomName = (json["room_name"]) ? json["room_name"].string! : ""
+        obj!.lastMessage = (json["message"].error == nil) ? json["message"].string! : ""
+        obj!.timestamp = (json["created"].error == nil) ? json["created"].string! : ""
 
         ApplicationManager.shareCoreDataInstance.saveContext()
-        return obj;
+        return obj!;
     }
     
     class func setRoomAttribute(roomId:String, roomAttribute:RoomAttributeManagedModel)->RoomManagedModel{
@@ -53,10 +56,10 @@ class RoomManagedModel: NSManagedObject {
         let entity = NSEntityDescription.entityForName("RoomManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
         var obj = RoomManagedModel.getById(roomId)
         
-        obj.attributes = roomAttribute
+        obj!.attributes = roomAttribute
         
         ApplicationManager.shareCoreDataInstance.saveContext()
-        return obj;
+        return obj!;
     }
     
     
@@ -81,7 +84,7 @@ class RoomManagedModel: NSManagedObject {
         return []
     }
     
-    class func getById(roomId:String)->RoomManagedModel{
+    class func getById(roomId:String)->RoomManagedModel?{
         let entity = NSEntityDescription.entityForName("RoomManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
         let resultPredicate = NSPredicate(format: "roomId == %@", roomId)
 
@@ -103,7 +106,8 @@ class RoomManagedModel: NSManagedObject {
             abort()
         }
 
-        var obj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext) as! RoomManagedModel
-        return obj
+        return nil
+        /*var obj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext) as! RoomManagedModel
+        return obj*/
     }
 }

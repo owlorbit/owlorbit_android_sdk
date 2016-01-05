@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.backgroundColor = UIColor.whiteColor()
             
             var viewController = UINavigationController(rootViewController: PreloadHomeViewController())
-            
             //window.rootViewController = LoginViewController()
             window.rootViewController = viewController
             window.makeKeyAndVisible()
@@ -41,6 +40,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setRootViewController(viewController:UIViewController){
         
     }
+
+    func setupLoggedOutViewController(){
+        var viewController = UINavigationController(rootViewController: PreloadHomeViewController())
+        
+        //let tabBarController = UICustomTabBarController()
+        //self.window!.rootViewController = tabBarController
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        if let window = window {
+            window.rootViewController = viewController
+        }
+        
+        UIView.transitionWithView(self.window!, duration: 0.2,
+            options:.TransitionCrossDissolve, animations: {
+                self.window!.makeKeyAndVisible()
+            },
+        completion: nil)
+        
+    }
+    
     
     func setupLoggedInViewController(){
         

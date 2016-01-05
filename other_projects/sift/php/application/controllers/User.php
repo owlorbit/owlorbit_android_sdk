@@ -76,6 +76,46 @@ class User extends CI_Controller {
 		$this->output->set_output(json_encode_helper($response));
 	}
 
+	public function find_non_friends($value, $userId, $pageIndex=1){
+		$response = array();
+		try{
+			$pageIndex = intval($this->security->xss_clean(strip_tags($pageIndex)));
+			$userId = intval($this->security->xss_clean(strip_tags($userId)));
+
+			if($pageIndex < 1){
+				$pageIndex = 1;
+			}
+			$value = $this->security->xss_clean(strip_tags(urldecode($value)));
+			$users = $this->user_model->find_non_friends($value, $userId, $pageIndex);
+			$response = array('message'=>'Attached is your user list',
+				'users'=> $users);
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'hasFailed'=> true);
+		}
+		$this->output->set_output(json_encode_helper($response));
+	}	
+
+	public function find_friends($value, $userId, $pageIndex=1){
+		$response = array();
+		try{
+			$pageIndex = intval($this->security->xss_clean(strip_tags($pageIndex)));
+			$userId = intval($this->security->xss_clean(strip_tags($userId)));
+
+			if($pageIndex < 1){
+				$pageIndex = 1;
+			}
+			$value = $this->security->xss_clean(strip_tags(urldecode($value)));
+			$users = $this->user_model->find_friends($value, $userId, $pageIndex);
+			$response = array('message'=>'Attached is your user list',
+				'users'=> $users);
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'hasFailed'=> true);
+		}
+		$this->output->set_output(json_encode_helper($response));
+	}		
+
 	public function upload_profile_img(){
 		$response = array();
 		try{
@@ -96,7 +136,7 @@ class User extends CI_Controller {
 			$userId = $this->user_session_model->getUserId($sessionToken);
 			if($userId == -1){
 				$typeOfError = -2;
-				throw new Exception("Session is invalid.");	
+				throw new Exception("Session is invalid.");
 			}
 
 			$urlPath = '/uploads/profile_imgs/'.$userId.'.png';

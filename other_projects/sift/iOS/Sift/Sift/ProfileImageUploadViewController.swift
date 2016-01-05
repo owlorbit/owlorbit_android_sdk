@@ -14,10 +14,16 @@ import ImageCropView
 import ImagePickerSheetController
 
 
+protocol ProfileDelegate {
+    func updateProfile()
+}
+
 class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, ImageCropViewTapProtocol {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgCropView: ImageCropView!
+    
+    var delegate:ProfileDelegate?;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,12 +61,34 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
 
                 FullScreenLoaderHelper.removeLoader();
                 if let navController = self.navigationController {
+                    
+                    //self.initProfile();
+                    //self.imgCropView.croppedImage()
+                    ApplicationManager.userData.profileImage = self.imgCropView.croppedImage()
                     navController.popViewControllerAnimated(true)
                 }
             })
             
         }
     }
+    
+    /*
+    func initProfile(){
+
+        dispatch_async(dispatch_get_main_queue()) {
+            var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+            var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
+            var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+            URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+            
+            ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
+                if let image = response.result.value {
+                    ApplicationManager.userData.profileImage = image
+                    FullScreenLoaderHelper.removeLoader();
+                }
+            }
+        }
+    }*/
     
     func onImageCropViewTapped(imageCropView: ImageCropView) {
     }
