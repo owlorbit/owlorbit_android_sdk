@@ -205,6 +205,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         self.chatContainerView.hidden = false;*/
         
         var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
+        viewController.roomId = roomId;
         self.navigationController!.pushViewController(viewController, animated: true)
     }
 

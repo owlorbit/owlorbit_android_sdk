@@ -18,7 +18,8 @@ class ChatTextMessageViewController: JSQMessagesViewController {
     
     var outgoingBubbleImage: JSQMessagesBubbleImage!
     var incomingBubbleImage: JSQMessagesBubbleImage!
-    var blankAvatarImage: JSQMessagesAvatarImage!
+    var blankAvatarImage: JSQMessagesAvatarImage!    
+    var roomId:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,9 @@ class ChatTextMessageViewController: JSQMessagesViewController {
         
         var bubbleFactory = JSQMessagesBubbleImageFactory()
         outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
-        incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+        incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleRedColor())
+        
+        self.collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
         blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "owl_orbit"), diameter: 30)
         // Do any additional setup after loading the view.
         
@@ -50,15 +53,24 @@ class ChatTextMessageViewController: JSQMessagesViewController {
         messages.append(message)
             
             
-        var message2: JSQMessage = JSQMessage(senderId: "aaa", senderDisplayName: "DERP", date: date, text: "ZIPAIOJWEF")
-        messages.append(message2)
+            
+        ChatApiHelper.sendMessage(text, roomId: roomId, resultJSON: {
+            (JSON) in
+            
+            
+            
+            //print(JSON)
+        })
+            
+        //var message2: JSQMessage = JSQMessage(senderId: "aaa", senderDisplayName: "DERP", date: date, text: "ZIPAIOJWEF")
+        //messages.append(message2)
 
         finishSendingMessage()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        collectionView!.collectionViewLayout.springinessEnabled = true
+        collectionView!.collectionViewLayout.springinessEnabled = false
     }
     
     
@@ -78,6 +90,46 @@ class ChatTextMessageViewController: JSQMessagesViewController {
         return incomingBubbleImage
     }
     
+    
+    // View  usernames above bubbles
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item];
+        
+        print("\(message.senderId)")
+        // Sent by me, skip
+        if message.senderId == self.senderId {
+            return nil;
+        }
+        
+        // Same as previous sender, skip
+        if indexPath.item > 0 {
+            let previousMessage = messages[indexPath.item - 1];
+            if previousMessage.senderId == message.senderId {
+                return nil;
+            }
+        }
+        
+        return NSAttributedString(string:message.senderId)
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        let message = messages[indexPath.item]
+        
+        // Sent by me, skip
+        if message.senderId == senderId {
+            return CGFloat(0.0);
+        }
+        
+        // Same as previous sender, skip
+        if indexPath.item > 0 {
+            let previousMessage = messages[indexPath.item - 1];
+            if previousMessage.senderId == message.senderId {
+                return CGFloat(0.0);
+            }
+        }
+        
+        return kJSQMessagesCollectionViewCellLabelHeightDefault
+    }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         /*var user = self.users[indexPath.item]
