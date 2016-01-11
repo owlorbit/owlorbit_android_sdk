@@ -28,10 +28,10 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
         var createNewBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "createNewBtnClick:")
 
-        createNewBtn.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
+        //createNewBtn.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
         self.navigationItem.rightBarButtonItem = createNewBtn
         self.tableView.registerNib(UINib(nibName: "ReadMessageTableViewCell", bundle:nil), forCellReuseIdentifier: "ReadMessageTableViewCell")
-        self.navigationController!.navigationBar.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
+        //self.navigationController!.navigationBar.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self

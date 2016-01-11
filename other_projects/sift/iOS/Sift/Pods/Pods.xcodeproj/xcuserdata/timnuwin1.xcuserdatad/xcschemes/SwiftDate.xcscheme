@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7B8A06DB4731D024F0DF7C12'
-               BlueprintName = 'ImagePickerSheetController'
+               BlueprintIdentifier = 'A2941F93D803800D40F43340'
+               BlueprintName = 'SwiftDate'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ImagePickerSheetController.framework'>
+               BuildableName = 'SwiftDate.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

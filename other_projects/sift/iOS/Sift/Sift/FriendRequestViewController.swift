@@ -42,7 +42,6 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         view.addGestureRecognizer(tap)
 
         self.tableView.registerNib(UINib(nibName: "UserSearchTableViewCell", bundle:nil), forCellReuseIdentifier: "UserSearchTableViewCell")
-
         self.tableView.registerNib(UINib(nibName: "UserSearchPendingHeaderView", bundle:nil), forHeaderFooterViewReuseIdentifier: "UserSearchPendingHeaderView")
 
         loadLists()

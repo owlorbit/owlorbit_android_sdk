@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'EAECB4D4574B0ABF6856B1DE'
+               BlueprintIdentifier = '89118FDDC89B69E511E65324'
                BlueprintName = 'Pods-OwlOrbit'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_OwlOrbit.framework'>

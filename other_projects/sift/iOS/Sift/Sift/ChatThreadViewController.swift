@@ -15,6 +15,7 @@ import SwiftyJSON
 import Alamofire
 import AlamofireImage.Swift
 import UITextView_Placeholder
+import SwiftDate
 
 class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate {
 
@@ -170,11 +171,17 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
     
     func submitChat() {
-        ChatApiHelper.sendMessage(self.txtChatView.text, roomId: roomId, resultJSON: {
+
+        /*
+        var updatedDate:DateInRegion = DateInRegion(UTCDate: NSDate().inUTCRegion().UTCDate, region: Region(tzType: TimeZoneNames.America.New_York))!
+        var createdDate:String = updatedDate.toString(DateFormat.Custom("yyyy-MM-dd HH:mm:ss"))! //prints out 10:12
+        
+        ChatApiHelper.sendMessage(self.txtChatView.text, roomId: roomId, created:createdDate, resultJSON: {
             (JSON) in            
             self.txtChatView.text = ""
             print(JSON)
-        })
+        })*/
+        
     }
     
     func keyboardWillHide(notification: NSNotification) {

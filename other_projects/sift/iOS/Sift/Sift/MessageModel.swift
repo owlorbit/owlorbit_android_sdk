@@ -17,7 +17,8 @@ class MessageModel :  NSObject, JSQMessageData {
     var isMediaMessage_ : Bool
     var messageHash_ : Int  = 0
     var text_ : String
-  
+    var roomId_ : String
+    var messageId_ : String!
     
     init(senderId: String, senderDisplayName: String?, isMediaMessage: Bool, messageHash:Int, text: String) {
         self.senderId_ = senderId
@@ -26,8 +27,19 @@ class MessageModel :  NSObject, JSQMessageData {
         self.isMediaMessage_ = isMediaMessage
         self.messageHash_ = messageHash
         self.text_ = text
+        self.roomId_ = ""
     }
-    
+
+    init(messageId:String, senderId: String, senderDisplayName: String?, isMediaMessage: Bool, date:NSDate, roomId:String, text: String) {
+        self.messageId_ = messageId
+        self.senderId_ = senderId
+        self.senderDisplayName_ = senderDisplayName
+        self.date_ = date
+        self.isMediaMessage_ = isMediaMessage
+        self.text_ = text
+        self.roomId_ = roomId
+    }
+
     func senderId() -> String! {
         return senderId_;
     }
@@ -53,6 +65,12 @@ class MessageModel :  NSObject, JSQMessageData {
         return text_;
     }
     
+    func roomId() -> String! {
+        return roomId_;
+    }
     
+    func messageId() -> String! {
+        return messageId_;
+    }
     
 }

@@ -13,6 +13,24 @@ class Message_model extends CI_Model {
         $this->load->database();
     }
 
+    function get_by_room($roomId, $pageIndex){
+        $ITEMS_PER_PAGE = 25;
+
+        $query = "select m.id, u.first_name, u.last_name, u.id as user_id, m.created, message, u.avatar_original, m.room_id from messages m
+            inner join users u
+                on u.id = m.user_id
+            where m.room_id = ? and m.active = 1
+                order by m.created desc
+            limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).";";            
+
+        $result = $this->db->query($query, array($roomId));
+
+        if($result->num_rows() > 0){            
+            return $result->result();
+        }
+        return array();
+    }
+
     function recent_messages($userId, $pageIndex){
         $ITEMS_PER_PAGE = 25;
         $query = "SELECT m.id, m.room_id, u.id as user_id, first_name,last_name, r.name as room_name, 
@@ -24,7 +42,7 @@ class Message_model extends CI_Model {
             where 
                 m.created in (select max(created) from messages GROUP BY room_id) and r.active = 1
             and m.room_id in (select room_id from room_users where user_id = ? group by room_id)
-                order by m.created desc                
+                order by m.created desc
             limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).";";            
 
         $result = $this->db->query($query, array($userId));

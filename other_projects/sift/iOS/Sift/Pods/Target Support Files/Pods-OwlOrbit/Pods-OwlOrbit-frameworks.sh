@@ -103,6 +103,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-OwlOrbit/JSQMessagesViewController.framework"
   install_framework "Pods-OwlOrbit/JSQSystemSoundPlayer.framework"
   install_framework "Pods-OwlOrbit/PureLayout.framework"
+  install_framework "Pods-OwlOrbit/SwiftDate.framework"
   install_framework "Pods-OwlOrbit/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -125,5 +126,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-OwlOrbit/JSQMessagesViewController.framework"
   install_framework "Pods-OwlOrbit/JSQSystemSoundPlayer.framework"
   install_framework "Pods-OwlOrbit/PureLayout.framework"
+  install_framework "Pods-OwlOrbit/SwiftDate.framework"
   install_framework "Pods-OwlOrbit/SwiftyJSON.framework"
 fi

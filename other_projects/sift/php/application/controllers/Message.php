@@ -37,6 +37,52 @@ class Message extends CI_Controller {
 		$this->output->set_output(json_encode_helper($response));		
 	}
 
+	public function get_by_room($pageIndex=1){
+		$response = array();
+		try{
+			$pageIndex = intval($this->security->xss_clean(strip_tags($pageIndex)));
+			if($pageIndex < 1){
+				$pageIndex = 1;
+			}
+
+			
+			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+		
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$userId = $this->user_session_model->getUserId($sessionToken);
+			if($userId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}
+			
+			error_log("...>>".$roomId);
+
+		    $messages = $this->message_model->get_by_room($roomId, $pageIndex);
+
+			error_log("...>>".$this->db->last_query());
+
+			$response = array(
+		    	'message' => 'room initiated added!',
+		    	'messages' => $messages
+		    );
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+		echo json_encode_helper($response);
+	}
+
 	public function get_recent($pageIndex=1){
 		$response = array();
 		try{
@@ -82,8 +128,10 @@ class Message extends CI_Controller {
 
 		$response = array();
 		try{
-			
+
 			$message = $this->security->xss_clean(strip_tags($this->input->post('message')));
+
+			$created = $this->security->xss_clean(strip_tags($this->input->post('created')));
 			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
@@ -108,6 +156,7 @@ class Message extends CI_Controller {
 				'message' => $message,
 				'room_id' => $roomId,
 				'user_id' => $userId,
+				'created' => $created,
 				'message_type' => "text"
 			);
 
