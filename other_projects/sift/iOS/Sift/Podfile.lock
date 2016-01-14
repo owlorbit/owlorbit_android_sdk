@@ -4,6 +4,7 @@ PODS:
     - Alamofire (~> 3.1)
   - ALThreeCircleSpinner (1.0.2)
   - ASImageResize (1.0.3)
+  - Bolts/Tasks (1.6.0)
   - CTAssetsPickerController (3.2.1):
     - PureLayout (~> 3.0.0)
   - DZNEmptyDataSet (1.7.2)
@@ -15,6 +16,8 @@ PODS:
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - MBProgressHUD (0.9.1)
+  - Parse (1.12.0):
+    - Bolts/Tasks (~> 1.5)
   - PureLayout (3.0.1)
   - RNCryptor (4.0.0)
   - SDWebImage (3.7.3):
@@ -39,6 +42,7 @@ DEPENDENCIES:
   - ImagePickerSheetController
   - JSQMessagesViewController
   - MBProgressHUD
+  - Parse
   - RNCryptor
   - SDWebImage
   - SwiftDate (~> 2.0)
@@ -61,6 +65,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 31f7c4e9f516183e0ef2d2da18318de28a4628b8
   ALThreeCircleSpinner: 8bdd4e0d3d8a715b6fec50022911189bb63323af
   ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
+  Bolts: f52a250053bb517ca874523c3913776359ab3def
   CTAssetsPickerController: 629e3c452efe92627b6386f572fc4e2f31533880
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   IHKeyboardAvoiding: 8f14fed93405dd2c44ce070a26f780d9e477538c
@@ -70,6 +75,7 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84

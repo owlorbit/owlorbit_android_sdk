@@ -12,6 +12,7 @@ target 'OwlOrbit' do
     pod 'ImageCropView', '~> 1.0'
     pod 'JSQMessagesViewController'
     pod "SwiftDate", "~> 2.0"
+    pod 'Parse'
 end
 
 

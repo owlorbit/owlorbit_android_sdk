@@ -22,4 +22,6 @@
 #import <JSQMessagesViewController/JSQMessageData.h>
 
 
+#import <Parse/Parse.h>
+
 //#import "<UITextView+Placeholder/UITextView+Placeholder.h>"
