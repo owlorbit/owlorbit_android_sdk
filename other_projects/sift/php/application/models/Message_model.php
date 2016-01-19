@@ -16,12 +16,13 @@ class Message_model extends CI_Model {
     function get_by_room($roomId, $pageIndex){
         $ITEMS_PER_PAGE = 25;
 
-        $query = "select m.id, u.first_name, u.last_name, u.id as user_id, m.created, message, u.avatar_original, m.room_id from messages m
+        $query = "select * from (select m.id, u.first_name, u.last_name, u.id as user_id, m.created, message, u.avatar_original, m.room_id from messages m
             inner join users u
                 on u.id = m.user_id
             where m.room_id = ? and m.active = 1
                 order by m.created desc
-            limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).";";            
+            limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).") as tt
+            order by id asc;"; 
 
         $result = $this->db->query($query, array($roomId));
 

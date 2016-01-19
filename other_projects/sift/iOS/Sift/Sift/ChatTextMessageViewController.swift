@@ -97,39 +97,20 @@ class ChatTextMessageViewController: JSQMessagesViewController {
                 dateFormatter.timeZone = NSTimeZone(abbreviation: "EST")
                 var dateConverted:NSDate = dateFormatter.dateFromString(created)!
 
-                print("DUH - \(subJson["message"].string!) - \(dateConverted.inUTCRegion().UTCDate)")
-
-
-                //if(dateConverted.isEqualToDate(otherDate)){
-                if(subJson["message"].string! == "Okay.."){
-                    //print (dateConverted)
-                }
-                
-//dateConverted.inUTCRegion().UTCDate.toString(DateFormat.Custom("yyyy-MM-dd HH:mm:ss"))! + " +0000"
-
-                if dateConverted.inUTCRegion().UTCDate.toString(DateFormat.Custom("yyyy-MM-dd HH:mm:ss"))! + " +0000" == "2016-01-11 00:28:45 +0000" {
-                    print("other date eqaul but not in coredata wtf")
-                }
-                
-                /*
-                var dateFormatter2 = NSDateFormatter()
-                dateFormatter2.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS Z"
-                dateFormatter2.timeZone = NSTimeZone(abbreviation: "UTC")
-                var dateConverted2:NSDate = dateFormatter2.dateFromString("2016-01-11 01:13:57.000 +0000")!
-                print("Milli - \(subJson["message"].string!) - \(dateConverted2)")*/
-
-
                 if(MessageCoreModel.doesMessageExist(subJson["room_id"].string!, userId: subJson["user_id"].string!, created: dateConverted.inRegion(Region.defaultRegion()).UTCDate)){
                     print("wat the actual")
                 }else{
-                    //print("shit face")
                     var message: JSQMessage = JSQMessage(senderId: subJson["user_id"].string, senderDisplayName: subJson["first_name"].string, date: dateConverted, text: subJson["message"].string)
                     self.messages.append(message)
+                    print("adding \(subJson["message"].string)")
+                    
+                    var messageCore : MessageModel = MessageModel(messageId: "", senderId: subJson["user_id"].string!, senderDisplayName: subJson["first_name"].string!, isMediaMessage: false, date: dateConverted, roomId: subJson["room_id"].string! , text: subJson["message"].string!)
+                    MessageCoreModel.insertFromMessageModel(messageCore)
                 }
 
                 //var message: JSQMessage = JSQMessage(senderId: subJson["user_id"].string, senderDisplayName: subJson["first_name"].string, date: dateConverted, text: subJson["message"].string)
                 //self.messages.append(message)
-                
+
                 //print("wompppp: \(subJson)")
                 /*
                 var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);

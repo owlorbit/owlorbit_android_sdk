@@ -15,8 +15,10 @@ import AlamofireImage.Swift
 class ApplicationManager: NSObject {
     static let shareCoreDataInstance = CoreDataHelper()
     static let deviceId = UIDevice.currentDevice().identifierForVendor!.UUIDString
-    static let userData = DynamicPersonData()
     
+    
+    static var parseDeviceId:String = "dfb741cef2357eb03ec423db038aaa0ccf9188a58d5639cae60029859a0da74e"
+    static let userData = DynamicPersonData()
     static let downloader = ImageDownloader()
     //spinners.
     static var spinner = ALThreeCircleSpinner(frame: CGRectMake(0,0,44,44))

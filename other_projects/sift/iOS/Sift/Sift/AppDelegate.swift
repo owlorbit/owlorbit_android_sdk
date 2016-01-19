@@ -64,9 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let installation = PFInstallation.currentInstallation()
         
         var deviceStr:String = deviceToken.description.stringByReplacingOccurrencesOfString("<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "").stringByReplacingOccurrencesOfString(" ", withString: "")
-
         
-        print("store this: \(deviceStr)")
+        ApplicationManager.parseDeviceId = deviceStr
         installation.setDeviceTokenFromData(deviceToken)
         installation.saveInBackground()
     }
@@ -80,11 +79,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        print("first case....")
-        PFPush.handlePush(userInfo)
+        print("first case.... \(userInfo)")
+        
+        /*PFPush.handlePush(userInfo)
         if application.applicationState == UIApplicationState.Inactive {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
-        }
+        }*/
     }
 
     func sendLocations(){

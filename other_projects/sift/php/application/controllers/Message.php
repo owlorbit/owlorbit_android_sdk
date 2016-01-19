@@ -128,6 +128,7 @@ class Message extends CI_Controller {
 
 		$response = array();
 		try{
+			$this->load->model('notification_queue_model');
 
 			$message = $this->security->xss_clean(strip_tags($this->input->post('message')));
 
@@ -161,6 +162,7 @@ class Message extends CI_Controller {
 			);
 
 		    $messageId = $this->message_model->insert($data);
+		    $this->notification_queue_model->add($roomId, $messageId, $userId);
 
 			$response = array(
 		    	'message' => 'room initiated added!',

@@ -62,7 +62,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         self.chatContainerView.hidden = true;
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
 
         var chatMapKeyboard:ChatMapKeyboardView = NSBundle.mainBundle().loadNibNamed("ChatMapKeyboardView", owner: self, options:nil)[0] as! ChatMapKeyboardView
@@ -248,10 +247,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         
-        
         var latitude:String = (userLocation.location?.coordinate.latitude.description)!
         var longitude:String = (userLocation.location?.coordinate.longitude.description)!
-        
 
         //TODO 
         //send location

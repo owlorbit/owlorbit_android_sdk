@@ -28,6 +28,7 @@ class Notification extends CI_Controller {
 
 		$this->load->model('user_token_model');
 		$this->load->model('user_session_model');
+		$this->load->model('notification_model');
 	}
 
 	public function index(){
@@ -59,12 +60,127 @@ class Notification extends CI_Controller {
 		$this->output->set_output(json_encode_helper($response));		
 	}
 
-	public function add_device(){
-		try{
 
-		}catch(Exception $ex){
+	//check the existing registered devices..
+	//then submit to Parse the message.
+	//message should contain..
+	//roomname, sender name, message
 
+	public function process_notifications(){
+		//$this->load->model('notification_queue_model');
+		//$this->notification_queue_model->add(35, 49, );
+		//make sure only localhost calling this method..
+		$this->load->library('parse-php-sdk/src/Parse/ParseClient');
+		$this->load->library('parse-php-sdk/src/Parse/ParseObject');
+		$this->load->library('parse-php-sdk/src/Parse/ParsePush');
+
+		$this->load->library('parse-php-sdk/src/Parse/ParseInstallation');	
+		$this->load->library('parse-php-sdk/src/Parse/ParseQuery');	
+
+		$this->load->model('notification_queue_model');
+		ParseClient::initialize('mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN', 'zMVFPm0zShj7pxFjlpGGhOoi0BwYtZzmKXNQVqAP', 'eyGXoKU8PTTeXYXJdSY9BonQu3gZEv9sv7x1Yrcu');
+
+		$notificationQueue = $this->notification_queue_model->get_not_sent();
+
+		foreach ($notificationQueue as $notification){
+			$message = ucfirst ($notification->first_name)." ".ucfirst ($notification->last_name[0]).". says:";
+			$message .= "\n";
+			$message .= $notification->message;
+
+			$data = array("alert" => $message, "messageId" => $notification->message_id);
+			$query = ParseInstallation::query();
+			$query->equalTo("deviceToken", $notification->device_id);
+
+			ParsePush::send(array(
+			    "where" => $query,
+			    "data" => $data
+			));
+
+
+			$this->notification_queue_model->update_sent_status($notification->id);			
 		}
+
+		$response = array(
+		    'message' => 'Message added!'
+		);
+		$this->output->set_output(json_encode_helper($response));
+	}
+
+
+	public function enable(){
+		$response = array();
+		try{
+			$deviceId = $this->security->xss_clean(strip_tags($this->input->post('deviceId')));			
+
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+		
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$userId = $this->user_session_model->getUserId($sessionToken);
+			if($userId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}
+
+
+			$this->notification_model->enable_device($deviceId, $userId);
+
+			$response = array(
+		    	'message' => 'Thanks for registering your device!'
+		    );
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'hasFailed'=> true);
+		}
+		$this->output->set_output(json_encode_helper($response));
+	}
+
+
+	public function disable(){
+		try{
+			$deviceId = $this->security->xss_clean(strip_tags($this->input->post('deviceId')));
+			$userId = $this->security->xss_clean(strip_tags($this->input->post('userId')));
+
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+		
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$userId = $this->user_session_model->getUserId($sessionToken);
+			if($userId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}
+
+			$this->notification_model->enable_device($deviceId, $userId);
+
+
+
+			$response = array(
+		    	'message' => 'You have successfull unregistered your device.'
+		    );
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'hasFailed'=> true);
+		}
+		$this->output->set_output(json_encode_helper($response));
 	}
 
 }

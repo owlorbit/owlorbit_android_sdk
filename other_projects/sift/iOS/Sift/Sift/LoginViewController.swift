@@ -75,8 +75,32 @@ class LoginViewController: UIViewController, LoginDelegate {
                 var hasFailed:Bool = (JSON["hasFailed"]) ? true : false
                 if(!hasFailed){
                     PersonalUserModel.updateUserFromLogin(username, password: password, serverReturnedData: JSON)
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    appDelegate.setupLoggedInViewController()
+
+                    if !ApplicationManager.parseDeviceId.isEmpty {
+
+                        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+                        UserApiHelper.enablePushNotification(ApplicationManager.parseDeviceId, resultJSON: {
+                            (JSON) in
+                            
+
+                                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                                appDelegate.setupLoggedInViewController()
+                            
+                            }, error:{
+                                (errStr) in
+                                
+                                AlertHelper.createPopupMessage("Try again later...", title: "Login Error")
+                                print("ze error \(errStr)")
+                        });
+                        
+                        
+                        
+                        
+                        
+                    }else{
+                        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                        appDelegate.setupLoggedInViewController()
+                    }
                 }else{
                     if(JSON["message"].string != ""){
                         AlertHelper.createPopupMessage(JSON["message"].string!.removeHtml()!, title: "Login Error")

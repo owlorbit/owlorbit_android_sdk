@@ -58,6 +58,7 @@ class MessageCoreModel : NSManagedObject {
         let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         let fetchRequest = NSFetchRequest(entityName: "MessageCoreModel")
         fetchRequest.predicate = resultPredicate
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "created", ascending: true)]
 
         do {
             let fetchResults = try coreDataHelper.managedObjectContext.executeFetchRequest(fetchRequest) as? [MessageCoreModel]
