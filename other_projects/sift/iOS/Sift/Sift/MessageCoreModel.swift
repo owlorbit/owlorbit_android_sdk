@@ -33,9 +33,8 @@ class MessageCoreModel : NSManagedObject {
         let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         let fetchRequest = NSFetchRequest(entityName: "MessageCoreModel")
         let entity = NSEntityDescription.entityForName("MessageCoreModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
-
         var obj = MessageCoreModel.getById(message.messageId())
-            
+
         obj.messageId = message.messageId()
         obj.senderDisplayName = message.senderDisplayName()
         obj.userId = message.senderId()
@@ -45,9 +44,8 @@ class MessageCoreModel : NSManagedObject {
         obj.imageLink = ""
         obj.active = true
         obj.created = message.date()
-        
+
         MessageCoreModel.insert(obj)
-       
     }
 
     class func getByRoomId(roomId:String)->[MessageCoreModel]{
@@ -113,7 +111,7 @@ class MessageCoreModel : NSManagedObject {
             return NSManagedObject(entity: entity!, insertIntoManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext) as! MessageCoreModel;
         }
 
-        let resultPredicate = NSPredicate(format: "id == %@", id)
+        let resultPredicate = NSPredicate(format: "messageId == %@", id)
         
         let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         let fetchRequest = NSFetchRequest(entityName: "MessageCoreModel")
@@ -131,7 +129,7 @@ class MessageCoreModel : NSManagedObject {
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()
         }
-        
+
         return NSManagedObject(entity: entity!, insertIntoManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext) as! MessageCoreModel;
     }
     

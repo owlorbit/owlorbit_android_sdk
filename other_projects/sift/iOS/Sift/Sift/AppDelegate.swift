@@ -11,6 +11,10 @@ import ALThreeCircleSpinner
 import CoreData
 import Parse
 
+import JSQMessagesViewController
+import SwiftDate
+import SwiftyJSON
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -62,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let installation = PFInstallation.currentInstallation()
-        
+
         var deviceStr:String = deviceToken.description.stringByReplacingOccurrencesOfString("<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "").stringByReplacingOccurrencesOfString(" ", withString: "")
         
         ApplicationManager.parseDeviceId = deviceStr
@@ -80,20 +84,114 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         print("first case.... \(userInfo)")
+
+        processPushNotification(userInfo)
+        //log the user in../
         
         /*PFPush.handlePush(userInfo)
         if application.applicationState == UIApplicationState.Inactive {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
         }*/
     }
+    
+    func processPushNotification(userInfo: [NSObject : AnyObject]){
+        //first check to see if message is already in coredata...
+
+        
+
+
+        
+        if let apsObj = userInfo["aps"] as? Dictionary<String, AnyObject> {
+            
+
+            var created:String = userInfo["created"] as! String
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.timeZone = NSTimeZone(abbreviation: "EST")
+            var dateConverted:NSDate = dateFormatter.dateFromString(created)!
+            
+            
+            var alertMessage:String = apsObj["alert"] as! String
+            var needle = "says:\n"
+            let hayStackRange = alertMessage.rangeOfString(needle)
+            let myRange = Range<String.Index>(start: hayStackRange!.endIndex, end: alertMessage.endIndex)
+            var message:String = alertMessage.substringWithRange(myRange)
+            
+            var roomId:String = userInfo["room_id"] as! String
+            var userId:String = userInfo["user_id"] as! String
+            var firstName:String = userInfo["first_name"] as! String
+            var messageId:String = userInfo["message_id"] as! String
+            
+
+            if(MessageCoreModel.doesMessageExist(roomId, userId: userId, created: dateConverted.inRegion(Region.defaultRegion()).UTCDate)){
+                print("wat the actual")
+            }else{
+                var messageCore : MessageModel = MessageModel(messageId: messageId, senderId: userId, senderDisplayName: firstName, isMediaMessage: false, date: dateConverted, roomId: roomId , text: message)
+                MessageCoreModel.insertFromMessageModel(messageCore)
+            }
+            
+            
+            //only if you are logged in.
+            //now load the room then launch
+            //if the room is already launched then... uh just call a reload
+            //check what the top most view controller is right now...
+            if(ApplicationManager.isLoggedIn){
+                //((UINavigationController*)appDelegate.window.rootViewController).visibleViewController;
+                
+                //(appDelegate.window.rootViewController as! UINavigationController).visibleViewController
+                //print("fucking deep end: \(   (self.window?.rootViewController as! UICustomTabBarController).visibleViewController?.description      )")
+                
+                if self.window!.rootViewController is UICustomTabBarController {
+                    //do something if it's an instance of that class
+                    print("this isn't real")
+                    var controllers =  ((self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController).viewControllers
+                    var navController = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
+                    //if controllers.last?.classForCoder is
+                    
+                    if controllers.last is DashboardViewController{
+                        print("dash")
+                    }else if controllers.last is ChatThreadViewController{
+                        print("map")
+                    }else if controllers.last is ChatTextMessageViewController{
+                        print("text")
+                    }else{
+                        let tabBarController = UICustomTabBarController()
+                        self.window!.rootViewController = tabBarController
+
+                        var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
+                        let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                        vc.chatRoomTitle = "test"
+                        
+                        ///RIGHT HERE>
+                        vc.roomId = "36"  //check the room....
+                        vc.hidesBottomBarWhenPushed = true
+                        updatedNav.pushViewController(vc, animated: false )
+                        
+                        var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
+                        chatView.roomId = "36";
+                        updatedNav.pushViewController(chatView, animated: true)
+
+                        print("updated nav \(vc.classForCoder)")
+                    }
+
+                    //TYPES
+                    //OwlOrbit.DashboardViewController
+                    //OwlOrbit.ChatThreadViewController
+                    //OwlOrbit.ChatTextMessageViewController
+                    print(controllers.last?.classForCoder)
+                }else{
+                    print("this is life")
+                }
+            }
+            
+        }
+    }
 
     func sendLocations(){
         //check if you're logged in...
-        
     }
-    
+
     func setRootViewController(viewController:UIViewController){
-        
     }
 
     func setupLoggedOutViewController(){

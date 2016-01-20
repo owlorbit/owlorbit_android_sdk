@@ -65,13 +65,8 @@ class Message extends CI_Controller {
 				$typeOfError = -2;
 				throw new Exception("Session is invalid.");	
 			}
-			
-			error_log("...>>".$roomId);
 
 		    $messages = $this->message_model->get_by_room($roomId, $pageIndex);
-
-			error_log("...>>".$this->db->last_query());
-
 			$response = array(
 		    	'message' => 'room initiated added!',
 		    	'messages' => $messages

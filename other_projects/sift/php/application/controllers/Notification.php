@@ -87,7 +87,13 @@ class Notification extends CI_Controller {
 			$message .= "\n";
 			$message .= $notification->message;
 
-			$data = array("alert" => $message, "messageId" => $notification->message_id);
+			$data = array("alert" => $message, 
+				"message_id" => $notification->message_id,
+				"room_id" => $notification->room_id,
+				"created" => $notification->message_created,
+				"user_id" => $notification->user_id,
+				"first_name" => $notification->first_name,
+				"last_name" => $notification->last_name);
 			$query = ParseInstallation::query();
 			$query->equalTo("deviceToken", $notification->device_id);
 

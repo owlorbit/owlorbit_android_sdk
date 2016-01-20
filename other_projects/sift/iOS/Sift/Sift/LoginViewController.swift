@@ -76,8 +76,9 @@ class LoginViewController: UIViewController, LoginDelegate {
                 if(!hasFailed){
                     PersonalUserModel.updateUserFromLogin(username, password: password, serverReturnedData: JSON)
 
-                    if !ApplicationManager.parseDeviceId.isEmpty {
-
+                    //TODO SWITCH THE COMMENTED OUT
+                    //if !ApplicationManager.parseDeviceId.isEmpty {
+                    if !ApplicationManager.parseDeviceId.isEmpty && !ApplicationManager.isTesting {
                         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
                         UserApiHelper.enablePushNotification(ApplicationManager.parseDeviceId, resultJSON: {
                             (JSON) in

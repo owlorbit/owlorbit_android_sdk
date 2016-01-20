@@ -17,10 +17,13 @@ class ApplicationManager: NSObject {
     static let deviceId = UIDevice.currentDevice().identifierForVendor!.UUIDString
     
     
-    static var parseDeviceId:String = "dfb741cef2357eb03ec423db038aaa0ccf9188a58d5639cae60029859a0da74e"
+    static var parseDeviceId:String = "4e46c73e198b3a26db18749092f89c8476a43c20f2f0a8bea79ce50cfc1392fb"
     static let userData = DynamicPersonData()
     static let downloader = ImageDownloader()
     //spinners.
     static var spinner = ALThreeCircleSpinner(frame: CGRectMake(0,0,44,44))
+    static var isLoggedIn:Bool = false
     static var spinnerBg:UIView = UIView(frame: ((UIApplication.sharedApplication().delegate?.window)!)!.frame)
+    
+    static var isTesting:Bool = true
 }

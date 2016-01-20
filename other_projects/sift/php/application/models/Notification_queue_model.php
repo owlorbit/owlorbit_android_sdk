@@ -39,7 +39,7 @@ class Notification_queue_model extends CI_Model {
     }
 
     function get_not_sent(){
-        $query = "select nq.id, m.id as message_id, first_name, last_name, message, message_type, if(r.name IS NULL, '', r.name) as room_name, device_id
+        $query = "select nq.id, m.id as message_id, r.id as room_id, m.created as message_created, u.id as user_id, first_name, last_name, message, message_type, if(r.name IS NULL, '', r.name) as room_name, device_id
                     from notification_queue  nq
                         inner join users u
                             on u.id = nq.user_id
