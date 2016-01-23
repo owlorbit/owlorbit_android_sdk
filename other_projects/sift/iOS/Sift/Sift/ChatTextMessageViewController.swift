@@ -75,10 +75,13 @@ class ChatTextMessageViewController: JSQMessagesViewController {
         finishSendingMessage()
     }
     
-    func loadInitMessages(){
+    public func loadInitMessages(){
         //load core data first...
         //print(">>>  OVER YOUR SHOULDER: \(MessageCoreModel.getByRoomId(roomId).count)")
-
+        
+        //empty messages
+        messages = [JSQMessage]()
+        
         var otherDate:NSDate = NSDate()
         for object in MessageCoreModel.getByRoomId(roomId) as! [MessageCoreModel] {
 
@@ -134,7 +137,13 @@ class ChatTextMessageViewController: JSQMessagesViewController {
             }
             
             self.finishSendingMessage()
-        });
+        },error:{
+            (errStr) in
+            
+            AlertHelper.createPopupMessage("\(errStr)", title: "Error")
+            self.finishSendingMessage()
+        }
+        );
     }
     
     func processNotification(){

@@ -13,6 +13,7 @@ target 'OwlOrbit' do
     pod 'JSQMessagesViewController'
     pod "SwiftDate", "~> 2.0"
     pod 'Parse'
+    pod 'LNRSimpleNotifications', '~> 0.3.0'
 end
 
 

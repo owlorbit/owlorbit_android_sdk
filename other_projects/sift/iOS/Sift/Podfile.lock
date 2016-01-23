@@ -15,6 +15,7 @@ PODS:
   - JSQMessagesViewController (7.2.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - LNRSimpleNotifications (0.3.0)
   - MBProgressHUD (0.9.1)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - ImageCropView (~> 1.0)
   - ImagePickerSheetController
   - JSQMessagesViewController
+  - LNRSimpleNotifications (~> 0.3.0)
   - MBProgressHUD
   - Parse
   - RNCryptor
@@ -74,6 +76,7 @@ SPEC CHECKSUMS:
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
   JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  LNRSimpleNotifications: f8f99020ef6c0e4b46633d11e47c286c6f86700e
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb

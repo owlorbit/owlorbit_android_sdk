@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 
+
+
 class LoginViewController: UIViewController, LoginDelegate {
 
     @IBOutlet weak var lblHeghtConstraint: NSLayoutConstraint!
@@ -83,7 +85,6 @@ class LoginViewController: UIViewController, LoginDelegate {
                         UserApiHelper.enablePushNotification(ApplicationManager.parseDeviceId, resultJSON: {
                             (JSON) in
                             
-
                                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                                 appDelegate.setupLoggedInViewController()
                             

@@ -15,16 +15,35 @@ import JSQMessagesViewController
 import SwiftDate
 import SwiftyJSON
 
+import LNRSimpleNotifications
+import AudioToolbox
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let notificationManager = LNRNotificationManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
         //setApplicationId(applicationId: String, clientKey: String)
+        
+        
+        notificationManager.notificationsPosition = LNRNotificationPosition.Top
+        notificationManager.notificationsBackgroundColor = UIColor.whiteColor()
+        notificationManager.notificationsTitleTextColor = UIColor.blackColor()
+        notificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
+        notificationManager.notificationsSeperatorColor = UIColor.grayColor()
+        notificationManager.notificationsIcon = UIImage(named: "owl_orbit")
+        
+        var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
+        if let _ = alertSoundURL {
+            var mySound: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(alertSoundURL!, &mySound)
+            notificationManager.notificationSound = mySound
+        }
+        
         
         Parse.setApplicationId("mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN",
             clientKey: "fURuXJR5xjG7p2B7AqdKANUJVwb9pko4y4n3zi7o")
@@ -94,11 +113,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }*/
     }
     
+    
+    func methodThatTriggersNotification(title: String, body: String, roomId: String, userId:String) {
+        
+        notificationManager.showNotification(title, body: body, callback: { () -> Void in
+            self.notificationManager.dismissActiveNotification({ () -> Void in
+                print("Notification dismissed: \(roomId)")
+            })
+        })
+    }
+
+    
+    
     func processPushNotification(userInfo: [NSObject : AnyObject]){
         //first check to see if message is already in coredata...
 
-        
-
+        //this is only handling if the app is minimized or closed...
 
         
         if let apsObj = userInfo["aps"] as? Dictionary<String, AnyObject> {
@@ -149,12 +179,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //if controllers.last?.classForCoder is
                     
                     if controllers.last is DashboardViewController{
-                        print("dash")
+                        print("dashboard.. make text bold.. or add")
                     }else if controllers.last is ChatThreadViewController{
                         print("map")
+                        
+                        /*
+                        var mapVC = controllers.last as! ChatThreadViewController
+
+                        //make sure roomId is the room.
+                        var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
+                        let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                     
+                        var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
+                        chatView.roomId = roomId;
+                        updatedNav.pushViewController(chatView, animated: true)
+                        */
+                        methodThatTriggersNotification("\(firstName) says:", body: message, roomId: roomId, userId:userId)
+                        
+                        
                     }else if controllers.last is ChatTextMessageViewController{
                         print("text")
+
+                        //loadInitMessages
+                        var textVC = controllers.last as! ChatTextMessageViewController
+                        
+                        if(textVC.roomId != roomId){
+                            print("change room id \(roomId)")
+                            //textVC.roomId = roomId
+                            methodThatTriggersNotification("\(firstName) says:", body: message, roomId: roomId, userId:userId)
+                        }
+                        
+                        textVC.loadInitMessages()
+                        
+                        
                     }else{
+                        
+                        methodThatTriggersNotification("\(firstName) says:", body: message, roomId: roomId, userId:userId)
+                        /*
                         let tabBarController = UICustomTabBarController()
                         self.window!.rootViewController = tabBarController
 
@@ -163,23 +224,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         vc.chatRoomTitle = "test"
                         
                         ///RIGHT HERE>
-                        vc.roomId = "36"  //check the room....
+                        vc.roomId = roomId  //check the room....
                         vc.hidesBottomBarWhenPushed = true
                         updatedNav.pushViewController(vc, animated: false )
                         
                         var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
-                        chatView.roomId = "36";
+                        chatView.roomId = roomId;
                         updatedNav.pushViewController(chatView, animated: true)
 
-                        print("updated nav \(vc.classForCoder)")
+                        print("updated nav \(vc.classForCoder)")*/
                     }
 
-                    //TYPES
-                    //OwlOrbit.DashboardViewController
-                    //OwlOrbit.ChatThreadViewController
-                    //OwlOrbit.ChatTextMessageViewController
                     print(controllers.last?.classForCoder)
                 }else{
+                    
+                    //look user in
                     print("this is life")
                 }
             }

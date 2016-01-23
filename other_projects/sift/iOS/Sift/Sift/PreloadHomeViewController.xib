@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -20,11 +20,9 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro_background" translatesAutoresizingMaskIntoConstraints="NO" id="00O-Rs-zZQ">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                    <animations/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwc-Ut-O5f">
                     <rect key="frame" x="60" y="363" width="200" height="50"/>
-                    <animations/>
                     <color key="backgroundColor" red="0.51372549020000002" green="0.52549019610000003" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="4eu-1d-eAT"/>
@@ -48,7 +46,6 @@
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't waste your time describing where you are.  Show them." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMo-oQ-sMx">
                     <rect key="frame" x="8" y="273" width="304" height="44"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="292" id="QHw-HC-4sW"/>
                         <constraint firstAttribute="height" constant="88" id="RwX-gF-K66"/>
@@ -72,7 +69,6 @@
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl_orbit" translatesAutoresizingMaskIntoConstraints="NO" id="y9J-Yf-s5d">
                     <rect key="frame" x="90" y="78" width="140" height="147"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="y9J-Yf-s5d" secondAttribute="height" multiplier="20:21" id="5NX-1D-MoI"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="147" id="SWL-Ha-fqZ"/>
@@ -90,7 +86,6 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wne-t7-r8h">
                     <rect key="frame" x="60" y="432" width="200" height="50"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="4VZ-uH-uWG"/>
                         <constraint firstAttribute="height" constant="30" id="gzU-sH-YP8"/>
@@ -113,7 +108,6 @@
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="So glad you could join Owlorbit!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-TZ-d0x">
                     <rect key="frame" x="8" y="231" width="304" height="25"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="RiY-TZ-d0x" secondAttribute="height" multiplier="73:22" id="7d8-NB-0P0"/>
                         <constraint firstAttribute="width" constant="292" id="AbF-d6-x2s"/>
@@ -136,7 +130,6 @@
                     </variation>
                 </label>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="uMo-oQ-sMx" firstAttribute="top" secondItem="RiY-TZ-d0x" secondAttribute="bottom" constant="17" id="1Hu-IF-xEb"/>

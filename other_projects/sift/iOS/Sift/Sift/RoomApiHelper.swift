@@ -64,7 +64,7 @@ class RoomApiHelper{
         }
     }
     
-    class func getRoomMessages(roomId:String, pageIndex:Int, resultJSON:(JSON) -> Void) -> Void {
+    class func getRoomMessages(roomId:String, pageIndex:Int, resultJSON:(JSON) -> Void, error:(String)->Void) -> Void {
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         var url:String = ProjectConstants.ApiBaseUrl.value + "/message/get_by_room/" + String(pageIndex)
@@ -76,7 +76,7 @@ class RoomApiHelper{
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
                     print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    error("error calling GET on \(response.result)")
                     return
                 }
                 
@@ -84,6 +84,8 @@ class RoomApiHelper{
                     let post = JSON(value)
                     if(post["hasFailed"].isEmpty){
                         resultJSON(post)
+                    }else{
+                        error(value as! String)
                     }
                 }
         }

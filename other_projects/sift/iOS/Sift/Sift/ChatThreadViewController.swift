@@ -88,9 +88,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func loadProfileImg(){
 
         //GenericUserModel
-        var roomData:RoomManagedModel = RoomManagedModel.getById(roomId)!;
+        var roomData:RoomManagedModel? = RoomManagedModel.getById(roomId);
 
-        for obj in roomData.attributes.users {
+        if(roomData == nil){
+            print("derpy derpy...")
+            return;
+        }
+
+        for obj in roomData!.attributes.users {
             var userData:GenericUserManagedModel = obj as! GenericUserManagedModel
 
             if(userData.avatarOriginal != ""){
