@@ -290,8 +290,6 @@
 			children = (
 				B87654611C03F53F00190B9B /* WriteMessageViewController.swift */,
 				B87654621C03F53F00190B9B /* WriteMessageViewController.xib */,
-				B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */,
-				B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */,
 			);
 			name = WriteMessage;
 			sourceTree = "<group>";
@@ -527,6 +525,8 @@
 		B8BAD2531BF178D400DC7F60 /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */,
+				B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */,
 				B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */,
 				B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */,
 			);

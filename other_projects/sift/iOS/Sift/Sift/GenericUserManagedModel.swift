@@ -52,6 +52,7 @@ class GenericUserManagedModel: NSManagedObject {
                 //dispatch_async(dispatch_get_main_queue()) {
                 
                 
+                
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) { // 1
                     dispatch_async(dispatch_get_main_queue()) { // 2
                         if let image = response.result.value {
@@ -65,6 +66,8 @@ class GenericUserManagedModel: NSManagedObject {
                         resultGenericUser(obj)
                     }
                 }
+                
+                
                 //}
             }
         }

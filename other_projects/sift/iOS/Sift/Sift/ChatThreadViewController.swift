@@ -42,12 +42,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     var locationDict = [String:UserPointAnnotation]()
     var timerGetLocations = NSTimer()
     
-    
     var RETRIEVE_LOCATION_LOCK:Bool = false
+    var destination: MKMapItem?
 
+    
+    var runOnceTest:Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         self.title = self.chatRoomTitle
         var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "btnTextClick:")
@@ -83,6 +85,71 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
         loadProfileImg()
         initLocations()
+    }
+    
+    func showRoute(response: MKDirectionsResponse) {
+        
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var text:String = self.txtChatView.text
+        
+
+        
+        
+        
+        for route in response.routes as! [MKRoute] {
+
+            self.mapView.addOverlay(route.polyline,
+                level: MKOverlayLevel.AboveRoads)
+            
+            for step in route.steps {
+                
+                
+                print("\(step.distance)m - \(step.instructions)")
+                /*
+                var direction:String = "\(step.distance)m - \(step.instructions)"
+                
+                var date:NSDate = NSDate()
+                var messageCore : MessageModel = MessageModel(messageId: "", senderId: user.userId, senderDisplayName: user.firstName, isMediaMessage: false, date: date.inUTCRegion().UTCDate, roomId: roomId , text: direction)
+                MessageCoreModel.insertFromMessageModel(messageCore)*/
+            }
+        }
+        
+        
+        let userLocation:MKUserLocation = self.mapView.userLocation
+        
+        let region = MKCoordinateRegionMakeWithDistance(
+            userLocation.location!.coordinate, 2000, 2000)
+        
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+    func mapView(mapView: MKMapView!, rendererForOverlay
+        overlay: MKOverlay!) -> MKOverlayRenderer! {
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            
+            renderer.strokeColor = UIColor.blueColor()
+            renderer.lineWidth = 5.0
+            return renderer
+    }
+    
+    func getDirections() {
+        
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem.mapItemForCurrentLocation()
+        request.destination = destination!
+        request.requestsAlternateRoutes = false
+        
+        let directions = MKDirections(request: request)
+        directions.calculateDirectionsWithCompletionHandler{
+            response, error in
+
+            guard let response = response else {
+                //handle the error here
+                return
+            }
+            self.showRoute(response)
+        }
     }
 
     func loadProfileImg(){
@@ -140,6 +207,23 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             var userPointAnnotation:UserPointAnnotation = getAnnotationByUserId(location.userId)
             userPointAnnotation.coordinate = location.coordinate!
             
+            
+            if(runOnceTest){
+                runOnceTest = false;
+                print("location user id \(location.userId)")
+                //destination: MKMapItem?
+                destination = MKMapItem()
+
+                var latitude: Double = userPointAnnotation.coordinate.latitude
+                var longitude: Double = userPointAnnotation.coordinate.longitude
+                var placemark: MKPlacemark = MKPlacemark(coordinate: CLLocationCoordinate2DMake(latitude, longitude), addressDictionary: nil)
+                destination = MKMapItem(placemark: placemark)
+                destination?.name = "Test Location"
+                
+                getDirections()
+
+            }
+            
             //now update...
         }
 
@@ -175,16 +259,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
     
     func submitChat() {
-
-        /*
-        var updatedDate:DateInRegion = DateInRegion(UTCDate: NSDate().inUTCRegion().UTCDate, region: Region(tzType: TimeZoneNames.America.New_York))!
-        var createdDate:String = updatedDate.toString(DateFormat.Custom("yyyy-MM-dd HH:mm:ss"))! //prints out 10:12
-
-        ChatApiHelper.sendMessage(self.txtChatView.text, roomId: roomId, created:createdDate, resultJSON: {
-            (JSON) in            
-            self.txtChatView.text = ""
-            print(JSON)
-        })*/
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         var text:String = self.txtChatView.text
@@ -218,13 +292,13 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         })
         
     }
-    
+
     func keyboardWillHide(notification: NSNotification) {
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.bottomConstraintTextField.constant = 0
         })
     }
-    
+
     func keyboardWillShow(notification: NSNotification) {
         var info = notification.userInfo!
         var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
@@ -235,17 +309,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
     
     func btnTextClick(sender: AnyObject){
-        //var userPoint:UserPointAnnotation = self.annotations[0] as! UserPointAnnotation
-        //userPoint.coordinate = CLLocationCoordinate2D(latitude: 50, longitude: -52)
-        //self.annotations.addObject(userPoint)
-
-        
-        /*var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Map", style: UIBarButtonItemStyle.Plain, target: self, action: "btnMapClick:")
-        self.navigationItem.rightBarButtonItem = switchContextBtn
-        print("btn text click..")
-        self.mapView.hidden = true;
-        self.chatContainerView.hidden = false;*/
-        
         var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
         viewController.roomId = roomId;
         self.navigationController!.pushViewController(viewController, animated: true)
@@ -347,9 +410,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 } else {
                     anView!.annotation = annotation
                 }
+                
+                anView!.canShowCallout = true
 
                 //anView!.image = profileImage
-                
                 if(ApplicationManager.userData.profileImage != nil){
                     anView!.image = profileImage
                 }else{
@@ -359,17 +423,19 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 return anView
             }
 
+            
+            //these are non-you annotations..
             let reuseId = "pinAvatarImg"
             var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
             let userPointAnnotation:UserPointAnnotation = annotation as! UserPointAnnotation;
-            //sprint(".....\(userPointAnnotation.pinCustomImageName)")
+
             if pinView == nil {
                 pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
                 pinView!.canShowCallout = true
                 pinView!.image = userPointAnnotation.userModel.avatarImg
+
             } else {
                 pinView!.annotation = annotation
-                //pinView!.image = userPointAnnotation.userModel.avatarImg
 
                 /*if(userPointAnnotation.userModel.avatarImg != nil){
                     pinView!.image = profileImage
@@ -378,10 +444,18 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 }*/
                 //pinView!.image = UIImage(named:"owl_orbit")
             }
+
+            let button : UIButton = UIButton(type: UIButtonType.DetailDisclosure) as UIButton
+            button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            pinView!.rightCalloutAccessoryView = button
             
             return pinView
     }
     
+    func buttonClicked (sender : UIButton!) {
+        print("buggy.")
+    }
+
     func resizeImage(image: UIImage, newSize: CGSize) -> (UIImage) {
         let newRect = CGRectIntegral(CGRectMake(0,0, newSize.width, newSize.height))
         let imageRef = image.CGImage

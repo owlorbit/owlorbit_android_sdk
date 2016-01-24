@@ -44,9 +44,38 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         initRooms();
         initProfile();
 
+        /*
         if(!hasProfileImage()){
             loadProfileImage()
-        }
+        }*/
+        
+        
+        initDownloadProfile()
+    }
+    
+    func initDownloadProfile(){
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        
+        UserApiHelper.loginUser(user.email, password: user.password, resultJSON: {
+            (JSON) in
+            
+            FullScreenLoaderHelper.removeLoader();
+            var hasFailed:Bool = (JSON["hasFailed"]) ? true : false
+            if(!hasFailed){
+                
+                print("errr \(JSON)")
+                
+                PersonalUserModel.updateUserFromLogin(user.email, password: user.password, serverReturnedData: JSON)
+
+                if(!self.hasProfileImage()){
+                    self.loadProfileImage()
+                }else{
+                    self.initProfile()
+                }
+            }
+        });
+        
     }
     
     func loadProfileImage(){
@@ -60,11 +89,14 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         dispatch_async(dispatch_get_main_queue()) {
             var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
             var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
+            
+            print("hey there \(profileImageUrl)")
             var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
             URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
 
             ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
                 if let image = response.result.value {
+                   
                     ApplicationManager.userData.profileImage = image
                 }
             }
