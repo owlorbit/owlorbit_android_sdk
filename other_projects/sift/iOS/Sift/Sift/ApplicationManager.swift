@@ -17,7 +17,7 @@ class ApplicationManager: NSObject {
     static let deviceId = UIDevice.currentDevice().identifierForVendor!.UUIDString
     
     
-    static var parseDeviceId:String = "4e46c73e198b3a26db18749092f89c8476a43c20f2f0a8bea79ce50cfc1392fb"
+    static var parseDeviceId:String = ""
     static let userData = DynamicPersonData()
     static let downloader = ImageDownloader()
     //spinners.
@@ -25,5 +25,5 @@ class ApplicationManager: NSObject {
     static var isLoggedIn:Bool = false
     static var spinnerBg:UIView = UIView(frame: ((UIApplication.sharedApplication().delegate?.window)!)!.frame)
     
-    static var isTesting:Bool = true
+    static var isTesting:Bool = false
 }

@@ -179,12 +179,43 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         /*
         var updatedDate:DateInRegion = DateInRegion(UTCDate: NSDate().inUTCRegion().UTCDate, region: Region(tzType: TimeZoneNames.America.New_York))!
         var createdDate:String = updatedDate.toString(DateFormat.Custom("yyyy-MM-dd HH:mm:ss"))! //prints out 10:12
-        
+
         ChatApiHelper.sendMessage(self.txtChatView.text, roomId: roomId, created:createdDate, resultJSON: {
             (JSON) in            
             self.txtChatView.text = ""
             print(JSON)
         })*/
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var text:String = self.txtChatView.text
+        
+        var date:NSDate = NSDate()
+
+        
+        var messageCore : MessageModel = MessageModel(messageId: "", senderId: user.userId, senderDisplayName: user.firstName, isMediaMessage: false, date: date.inUTCRegion().UTCDate, roomId: roomId , text: text)
+        MessageCoreModel.insertFromMessageModel(messageCore)
+        
+        var updatedDate:DateInRegion = DateInRegion(UTCDate: date.inUTCRegion().UTCDate, region: Region(tzType: TimeZoneNames.America.New_York))!
+        var createdDate:String = updatedDate.toString(DateFormat.Custom("yyyy-MM-dd HH:mm:ss"))! //prints out 10:12
+        
+        //use this as an outline... for all updating tokens
+        ChatApiHelper.sendMessage(text, roomId:roomId, created:createdDate, resultJSON: {
+            (JSON) in
+                self.txtChatView.text = ""
+            }, error:{
+                (message, errorCode) in
+                
+                if(errorCode < 0){
+                    UserApiHelper.updateToken({
+                        self.txtChatView.text = ""
+                        //things are updated... so now call the send message again..
+                        ChatApiHelper.sendMessage(text, roomId:self.roomId, created:createdDate, resultJSON: {_ in }, error:{_ in})
+                        }, error: {
+                            (errorMsg) in
+                            AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
+                    })
+                }
+        })
         
     }
     

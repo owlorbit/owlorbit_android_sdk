@@ -138,6 +138,17 @@ class User_model extends CI_Model {
         throw new Exception("Wrong Password!");
     }    
 
+
+    function get_by_id($id){
+        $query = "select * from users where id = ?";
+        $result = $this->db->query($query, array($id));
+        if($result->num_rows() > 0){
+            return $result->row(0);
+        }else{      
+            return null;
+        }       
+    }
+
     function update_avatar($userId, $targetPath){
         $query = "update users set avatar_original = ? where id = ?;";
         $result = $this->db->query($query, array($targetPath, $userId));

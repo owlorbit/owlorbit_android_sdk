@@ -129,6 +129,36 @@ class UserApiHelper{
     }
     
     
+    class func updateToken(success:() -> Void, error:(String)->Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/login/go"
+
+        let data = ["email": user.email, "password" : user.password]
+
+        
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on \(response.result)")
+                    error(response.result.description)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        PersonalUserModel.updateUserFromLogin(user.email, password: user.password, serverReturnedData: post)
+                        success();
+                    }else{
+                        error(post["message"].string!)
+                    }
+                }
+        }
+    }
+    
     
     class func loginUser(email:String, password:String, resultJSON:(JSON) -> Void) -> Void {
         

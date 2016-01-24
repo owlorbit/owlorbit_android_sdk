@@ -44,7 +44,10 @@
     <entity name="RoomManagedModel" representedClassName="RoomManagedModel" syncable="YES">
         <attribute name="avatarOriginal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastDisplayName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastMessageId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastMessageTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roomId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roomName" optional="YES" attributeType="String" syncable="YES"/>
@@ -67,7 +70,7 @@
         <element name="MessageCoreModel" positionX="-63" positionY="81" width="128" height="180"/>
         <element name="PersonalUserModel" positionX="-63" positionY="-18" width="128" height="240"/>
         <element name="RoomAttributeManagedModel" positionX="-54" positionY="108" width="128" height="90"/>
-        <element name="RoomManagedModel" positionX="-63" positionY="90" width="128" height="180"/>
+        <element name="RoomManagedModel" positionX="-63" positionY="90" width="128" height="225"/>
         <element name="UserManagedModel" positionX="-45" positionY="117" width="128" height="165"/>
     </elements>
 </model>

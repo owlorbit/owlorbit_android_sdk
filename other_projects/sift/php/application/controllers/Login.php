@@ -99,6 +99,7 @@ class Login extends CI_Controller {
 				'hasFailed'=> true);
 		}
 
+		error_log('hey there: '.json_encode_helper($response));
 		$this->output->set_output(json_encode_helper($response));		
 	}
 

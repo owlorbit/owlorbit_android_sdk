@@ -19,8 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P7O-19-mUe">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="447"/>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P7O-19-mUe">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="jB2-ad-0qr"/>
                     </connections>
@@ -124,6 +124,7 @@
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="P7O-19-mUe" secondAttribute="bottom" id="MHY-7V-k3e"/>
                 <constraint firstAttribute="trailing" secondItem="vEW-HB-tD6" secondAttribute="trailing" id="QH0-r9-NFP"/>
                 <constraint firstItem="P7O-19-mUe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sdq-sP-HBI"/>
+                <constraint firstAttribute="bottom" secondItem="P7O-19-mUe" secondAttribute="bottom" id="U6a-bf-C6S"/>
                 <constraint firstAttribute="trailing" secondItem="Yij-4t-TS9" secondAttribute="trailing" id="Zyf-H8-T5l"/>
                 <constraint firstAttribute="bottom" secondItem="P7O-19-mUe" secondAttribute="bottom" id="cKI-dR-j6h"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="Yij-4t-TS9" secondAttribute="bottom" id="cqx-SG-Fi0"/>
@@ -139,6 +140,7 @@
                     <exclude reference="cKI-dR-j6h"/>
                     <exclude reference="piF-z5-BzR"/>
                     <exclude reference="vTt-mQ-9RO"/>
+                    <exclude reference="MHY-7V-k3e"/>
                     <exclude reference="z87-jM-tGY"/>
                 </mask>
             </variation>

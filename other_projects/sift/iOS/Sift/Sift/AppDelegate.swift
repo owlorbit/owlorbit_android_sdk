@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationManager.notificationsTitleTextColor = UIColor.blackColor()
         notificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
         notificationManager.notificationsSeperatorColor = UIColor.grayColor()
-        notificationManager.notificationsIcon = UIImage(named: "owl_orbit")
+        notificationManager.notificationsIcon = UIImage(named:"owl_orbit")?.resizedImageToFitInSize(CGSize(width: 40, height: 40), scaleIfSmaller: true)
         
         var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
         if let _ = alertSoundURL {
@@ -43,8 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AudioServicesCreateSystemSoundID(alertSoundURL!, &mySound)
             notificationManager.notificationSound = mySound
         }
-        
-        
+
         Parse.setApplicationId("mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN",
             clientKey: "fURuXJR5xjG7p2B7AqdKANUJVwb9pko4y4n3zi7o")
         if application.applicationState != UIApplicationState.Background {
@@ -80,6 +79,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.makeKeyAndVisible()
         }
         
+        //setupLoggedInViewController
+        //setupLoggedInViewController
+        
+        if PersonalUserModel.get().count > 0{
+            var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+            if(!user.userId.isEmpty){
+                setupLoggedInViewController()
+                //also run in the bg to check the password...
+            }
+        }
         return true
     }
     
@@ -123,6 +132,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
 
+    
+    func otherScreenMethodTrigger(title: String, body: String, roomId: String, userId:String) {
+        
+        notificationManager.showNotification(title, body: body, callback: { () -> Void in
+            self.notificationManager.dismissActiveNotification({ () -> Void in
+
+
+                let tabBarController = UICustomTabBarController()
+                self.window!.rootViewController = tabBarController
+                
+                var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
+                let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                vc.chatRoomTitle = "test"
+                
+                ///RIGHT HERE>
+                vc.roomId = roomId  //check the room....
+                vc.hidesBottomBarWhenPushed = true
+                updatedNav.pushViewController(vc, animated: false )
+                
+                var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
+                chatView.roomId = roomId;
+                updatedNav.pushViewController(chatView, animated: true)
+                
+                print("updated nav \(vc.classForCoder)")
+                
+                
+                
+            })
+        })
+    }
+    
     
     
     func processPushNotification(userInfo: [NSObject : AnyObject]){
@@ -179,23 +219,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //if controllers.last?.classForCoder is
                     
                     if controllers.last is DashboardViewController{
+                        JSQSystemSoundPlayer.jsq_playMessageReceivedAlert()
+                        
+                        var dashboardVC = controllers.last as! DashboardViewController
+                        dashboardVC.makeTextBold(roomId, displayName:firstName, message:message)
+                        
                         print("dashboard.. make text bold.. or add")
                     }else if controllers.last is ChatThreadViewController{
                         print("map")
                         
-                        /*
+                        
                         var mapVC = controllers.last as! ChatThreadViewController
 
-                        //make sure roomId is the room.
-                        var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
-                        let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
-                     
-                        var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
-                        chatView.roomId = roomId;
-                        updatedNav.pushViewController(chatView, animated: true)
-                        */
-                        methodThatTriggersNotification("\(firstName) says:", body: message, roomId: roomId, userId:userId)
-                        
+                        if(mapVC.roomId != roomId){
+                            otherScreenMethodTrigger("\(firstName) says:", body: message, roomId: roomId, userId:userId)
+                        }else{
+
+                            //make sure roomId is the room.
+                            var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
+                            let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                         
+                            var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
+                            chatView.roomId = roomId;
+                            updatedNav.pushViewController(chatView, animated: true)
+                        }
+
                         
                     }else if controllers.last is ChatTextMessageViewController{
                         print("text")
@@ -206,33 +254,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if(textVC.roomId != roomId){
                             print("change room id \(roomId)")
                             //textVC.roomId = roomId
-                            methodThatTriggersNotification("\(firstName) says:", body: message, roomId: roomId, userId:userId)
+                            otherScreenMethodTrigger("\(firstName) says:", body: message, roomId: roomId, userId:userId)
                         }
                         
                         textVC.loadInitMessages()
                         
                         
                     }else{
-                        
-                        methodThatTriggersNotification("\(firstName) says:", body: message, roomId: roomId, userId:userId)
-                        /*
-                        let tabBarController = UICustomTabBarController()
-                        self.window!.rootViewController = tabBarController
-
-                        var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
-                        let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
-                        vc.chatRoomTitle = "test"
-                        
-                        ///RIGHT HERE>
-                        vc.roomId = roomId  //check the room....
-                        vc.hidesBottomBarWhenPushed = true
-                        updatedNav.pushViewController(vc, animated: false )
-                        
-                        var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
-                        chatView.roomId = roomId;
-                        updatedNav.pushViewController(chatView, animated: true)
-
-                        print("updated nav \(vc.classForCoder)")*/
+                        otherScreenMethodTrigger("\(firstName) says:", body: message, roomId: roomId, userId:userId)
                     }
 
                     print(controllers.last?.classForCoder)

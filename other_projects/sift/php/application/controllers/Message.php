@@ -26,6 +26,8 @@ class Message extends CI_Controller {
 		$this->load->model('user_model');
 		$this->load->model('message_model');
 		$this->load->model('friend_model');
+
+		$this->load->model('user_model');
 		$this->load->model('user_token_model');
 		$this->load->model('user_session_model');
 	}
@@ -64,7 +66,7 @@ class Message extends CI_Controller {
 			if($userId == -1){
 				$typeOfError = -2;
 				throw new Exception("Session is invalid.");	
-			}
+			}			
 
 		    $messages = $this->message_model->get_by_room($roomId, $pageIndex);
 			$response = array(
@@ -120,7 +122,7 @@ class Message extends CI_Controller {
 	}
 
 	public function send(){
-
+		$typeOfError = 0;
 		$response = array();
 		try{
 			$this->load->model('notification_queue_model');
@@ -158,6 +160,11 @@ class Message extends CI_Controller {
 
 		    $messageId = $this->message_model->insert($data);
 		    $this->notification_queue_model->add($roomId, $messageId, $userId);
+		    $message = $this->message_model->get_by_id($messageId);
+
+		    $user = $this->user_model->get_by_id($userId);
+		    $this->message_model->update_last_message_in_room($roomId, $messageId, $message->message, $message->created, $user->first_name);
+
 
 			$response = array(
 		    	'message' => 'room initiated added!',
@@ -165,6 +172,7 @@ class Message extends CI_Controller {
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
+				'error_code' => $typeOfError,
 				'successful'=> false);
 		}
 		echo json_encode_helper($response);
@@ -209,8 +217,7 @@ class Message extends CI_Controller {
 			$response = array('message'=>$e->getMessage(),
 				'successful'=> false);
 		}
-
-		error_log('derrr: '.json_encode_helper($response));
+		
 		echo json_encode_helper($response);
 	}
 
@@ -225,6 +232,7 @@ class Message extends CI_Controller {
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
+				'error_code' => $typeOfError,
 				'successful'=> false);
 		}
 

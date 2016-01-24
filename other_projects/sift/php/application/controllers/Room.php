@@ -47,7 +47,7 @@ class Room extends CI_Controller {
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
 			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
 			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
-		
+
 			if($sessionToken == -1){
 				$typeOfError = -1;
 				throw new Exception("Public key is invalid.");

@@ -45,7 +45,7 @@ class Notification extends CI_Controller {
 		ParseClient::initialize('mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN', 'zMVFPm0zShj7pxFjlpGGhOoi0BwYtZzmKXNQVqAP', 'eyGXoKU8PTTeXYXJdSY9BonQu3gZEv9sv7x1Yrcu');
 		// Push to Channels
 
-		$data = array("alert" => "FUCK SHIT");
+		//$data = array("alert" => "FUCK SHIT");
 		$query = ParseInstallation::query();
 		$query->equalTo("objectId", "VYOSdWQVGz");
 
@@ -67,49 +67,50 @@ class Notification extends CI_Controller {
 	//roomname, sender name, message
 
 	public function process_notifications(){
-		//$this->load->model('notification_queue_model');
-		//$this->notification_queue_model->add(35, 49, );
-		//make sure only localhost calling this method..
-		$this->load->library('parse-php-sdk/src/Parse/ParseClient');
-		$this->load->library('parse-php-sdk/src/Parse/ParseObject');
-		$this->load->library('parse-php-sdk/src/Parse/ParsePush');
+		
+		if($this->isLocalServer()){
+			//make sure only localhost calling this method..
+			$this->load->library('parse-php-sdk/src/Parse/ParseClient');
+			$this->load->library('parse-php-sdk/src/Parse/ParseObject');
+			$this->load->library('parse-php-sdk/src/Parse/ParsePush');
 
-		$this->load->library('parse-php-sdk/src/Parse/ParseInstallation');	
-		$this->load->library('parse-php-sdk/src/Parse/ParseQuery');	
+			$this->load->library('parse-php-sdk/src/Parse/ParseInstallation');	
+			$this->load->library('parse-php-sdk/src/Parse/ParseQuery');	
 
-		$this->load->model('notification_queue_model');
-		ParseClient::initialize('mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN', 'zMVFPm0zShj7pxFjlpGGhOoi0BwYtZzmKXNQVqAP', 'eyGXoKU8PTTeXYXJdSY9BonQu3gZEv9sv7x1Yrcu');
+			$this->load->model('notification_queue_model');
+			ParseClient::initialize('mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN', 'zMVFPm0zShj7pxFjlpGGhOoi0BwYtZzmKXNQVqAP', 'eyGXoKU8PTTeXYXJdSY9BonQu3gZEv9sv7x1Yrcu');
 
-		$notificationQueue = $this->notification_queue_model->get_not_sent();
+			$notificationQueue = $this->notification_queue_model->get_not_sent();
 
-		foreach ($notificationQueue as $notification){
-			$message = ucfirst ($notification->first_name)." ".ucfirst ($notification->last_name[0]).". says:";
-			$message .= "\n";
-			$message .= $notification->message;
+			foreach ($notificationQueue as $notification){
+				$message = ucfirst ($notification->first_name)." ".ucfirst ($notification->last_name[0]).". says:";
+				$message .= "\n";
+				$message .= $notification->message;
 
-			$data = array("alert" => $message, 
-				"message_id" => $notification->message_id,
-				"room_id" => $notification->room_id,
-				"created" => $notification->message_created,
-				"user_id" => $notification->user_id,
-				"first_name" => $notification->first_name,
-				"last_name" => $notification->last_name);
-			$query = ParseInstallation::query();
-			$query->equalTo("deviceToken", $notification->device_id);
+				$data = array("alert" => $message, 
+					"message_id" => $notification->message_id,
+					"room_id" => $notification->room_id,
+					"created" => $notification->message_created,
+					"user_id" => $notification->user_id,
+					"first_name" => $notification->first_name,
+					"last_name" => $notification->last_name);
+				$query = ParseInstallation::query();
+				$query->equalTo("deviceToken", $notification->device_id);
 
-			ParsePush::send(array(
-			    "where" => $query,
-			    "data" => $data
-			));
+				ParsePush::send(array(
+				    "where" => $query,
+				    "data" => $data
+				));
 
 
-			$this->notification_queue_model->update_sent_status($notification->id);			
+				$this->notification_queue_model->update_sent_status($notification->id);			
+			}
+
+			$response = array(
+			    'message' => 'Message added!'
+			);
+			$this->output->set_output(json_encode_helper($response));
 		}
-
-		$response = array(
-		    'message' => 'Message added!'
-		);
-		$this->output->set_output(json_encode_helper($response));
 	}
 
 

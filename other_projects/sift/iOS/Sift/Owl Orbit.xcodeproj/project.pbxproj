@@ -71,6 +71,7 @@
 		B892D65E1C1A45700091F128 /* PreloadHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D65C1C1A45700091F128 /* PreloadHomeViewController.swift */; };
 		B892D65F1C1A45700091F128 /* PreloadHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D65D1C1A45700091F128 /* PreloadHomeViewController.xib */; };
 		B892D6611C1A4FD70091F128 /* FullScreenLoaderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */; };
+		B895A2AD1C545C7400B2A08D /* UILabel+ItalicBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */; };
 		B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
 		B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
 		B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
@@ -196,6 +197,7 @@
 		B892D65C1C1A45700091F128 /* PreloadHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadHomeViewController.swift; sourceTree = "<group>"; };
 		B892D65D1C1A45700091F128 /* PreloadHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreloadHomeViewController.xib; sourceTree = "<group>"; };
 		B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenLoaderHelper.swift; sourceTree = "<group>"; };
+		B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+ItalicBold.swift"; sourceTree = "<group>"; };
 		B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTabBarController.swift; sourceTree = "<group>"; };
 		B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomTabBarController.xib; sourceTree = "<group>"; };
 		B8B80EFD1BF414FC00CF4BB3 /* Sift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sift-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				B866DFD61C0FC80700BF8A79 /* ImageHelper.swift */,
 				B88213371C18FB3000E9469C /* String+ToDouble.swift */,
 				B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */,
+				B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				B866DFD71C0FC80700BF8A79 /* ImageHelper.swift in Sources */,
 				B870CEF11BFC093000F47929 /* CustomMapPin.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,
+				B895A2AD1C545C7400B2A08D /* UILabel+ItalicBold.swift in Sources */,
 				B866DFC61C0D266300BF8A79 /* RoomModel.swift in Sources */,
 				B8E4E7EC1C02B6CF00995964 /* EncryptUtil.swift in Sources */,
 				B8068B6D1C22364400EE00CA /* ProfileSettingImageUploadViewController.swift in Sources */,
@@ -1028,6 +1032,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -1051,6 +1056,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",

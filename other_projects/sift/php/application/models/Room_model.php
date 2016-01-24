@@ -26,7 +26,7 @@ class Room_model extends CI_Model {
     function all($userId, $pageIndex){
         $ITEMS_PER_PAGE = 25;
 
-        $query = "select u.id as user_id, room_id, first_name, last_name, r.name as room_name, last_message_timestamp from room_users ru 
+        $query = "select u.id as user_id, room_id, first_name, last_name, r.name as room_name, last_message_timestamp, last_message, last_display_name from room_users ru 
             inner join users u
                 on u.id = ru.user_id
             inner join rooms r

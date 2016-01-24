@@ -25,18 +25,23 @@ class ReadMessageTableViewCell: UITableViewCell {
     func populate(roomData:RoomManagedModel){
 
         self.lblRoomTitle.text = roomData.roomName
-        self.lblLastMsg.text = roomData.firstName + ": " + roomData.lastMessage
+        
+        if(roomData.lastDisplayName.capitalizedString.isEmpty || roomData.lastDisplayName == ""){
+            self.lblLastMsg.text = "No message sent"
+            self.lblLastMsg.font = self.lblLastMsg.font.italic()
+            
+        }else{
+            self.lblLastMsg.text = roomData.lastDisplayName.capitalizedString + ": " + roomData.lastMessage
+        }
         self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.timestamp)
-        self.lblRoomTitle.text = roomData.attributes.name
+        self.lblRoomTitle.text = roomData.attributes.name.capitalizedString
 
         dispatch_async(dispatch_get_main_queue()) {
             for userObj : AnyObject in roomData.attributes.users.allObjects {
                 if let userGeneric = userObj as? GenericUserManagedModel {
                     //self.imgAvatar.image = UIImage(data: userGeneric.avatarImg)
                     //self.imgAvatar.image = userGeneric.avatarImg
-                    
-                    
-                    
+
                     var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userGeneric.avatarOriginal
                     var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
                     URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
@@ -49,12 +54,22 @@ class ReadMessageTableViewCell: UITableViewCell {
                         }
                     }
 
-                    
-                    
                     return;
                 }
             }
         }
+    }
+    
+    func setUnread(){
+
+        
+        self.lblLastMsg.font = self.lblLastMsg.font.bold()
+        //self.lblRoomTitle.font = self.lblRoomTitle.font.bold()
+    }
+    
+    func setNormal(){
+        self.lblLastMsg.font = UIFont(name: "AvenirNext-UltraLight", size: 14)
+        //self.lblRoomTitle.font = UIFont(name: "AvenirNext-Regular", size: 17)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

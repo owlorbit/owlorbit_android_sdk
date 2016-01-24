@@ -12,7 +12,7 @@ import Alamofire
 
 class RoomApiHelper{
 
-    class func getRooms(pageIndex:Int, resultJSON:(JSON) -> Void) -> Void {
+    class func getRooms(pageIndex:Int, resultJSON:(JSON) -> Void, error:(String, errorCode:Int)->Void) -> Void {
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         var url:String = ProjectConstants.ApiBaseUrl.value + "/room/get_recent/" + String(pageIndex)
@@ -25,14 +25,16 @@ class RoomApiHelper{
                     // got an error in getting the data, need to handle it
                     print("error calling GET on \(response.result)")
                     print(response.result.error!)
+                    error(response.result.description, errorCode: 0)
                     return
                 }
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["error_code"].int == nil){
                         resultJSON(post)
+                    }else{
+                        error(post["message"].string!, errorCode: post["error_code"].int!)
                     }
                 }
         }
@@ -75,7 +77,6 @@ class RoomApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
                     error("error calling GET on \(response.result)")
                     return
                 }

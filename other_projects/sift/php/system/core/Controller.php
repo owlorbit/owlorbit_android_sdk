@@ -80,6 +80,14 @@ class CI_Controller {
 		log_message('info', 'Controller Class Initialized');
 	}
 
+	public function isLocalServer(){
+		if($_SERVER['SERVER_ADDR'] != $_SERVER['REMOTE_ADDR']){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 	// --------------------------------------------------------------------
 
 	/**

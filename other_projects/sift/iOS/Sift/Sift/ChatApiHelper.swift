@@ -40,7 +40,7 @@ class ChatApiHelper{
     }
     
 
-    class func sendMessage(message:String, roomId:String, created:String, resultJSON:(JSON) -> Void) -> Void {
+    class func sendMessage(message:String, roomId:String, created:String, resultJSON:(JSON) -> Void, error:(String, errorCode:Int)->Void) -> Void {
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         var url:String = ProjectConstants.ApiBaseUrl.value + "/message/send"
@@ -53,14 +53,16 @@ class ChatApiHelper{
                     // got an error in getting the data, need to handle it
                     print("error calling GET on \(response.result)")
                     print(response.result.error!)
+                    error(response.result.description, errorCode: 0)
                     return
                 }
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["error_code"].int == nil){
                         resultJSON(post)
+                    }else{
+                        error(post["message"].string!, errorCode: post["error_code"].int!)
                     }
                 }
         }

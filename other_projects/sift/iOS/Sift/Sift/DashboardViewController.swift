@@ -17,6 +17,9 @@ import AlamofireImage.Swift
 class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     var data:[RoomManagedModel] = [];
+    
+    var boldRoomId = ""
+    
     @IBOutlet weak var tableView: UITableView!
 
     //var userArrayList:NSMutableArray = [];
@@ -25,6 +28,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Home"
 
         var createNewBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "createNewBtnClick:")
         ApplicationManager.isLoggedIn = true;
@@ -83,7 +87,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     }
 
     func initRooms(){
-        
+
         dispatch_async(dispatch_get_main_queue()) {
             
             RoomApiHelper.getRooms(1, resultJSON:{
@@ -100,7 +104,6 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                         RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
                             (roomAttribute) in
                         
-
                             roomModel.attributes = roomAttribute
                             if(roomModel.attributes.users.count > 0){
                                 roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
@@ -114,8 +117,35 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                         
                     });
                 }
-            });
+            },error: {
+                    (message, errorCode) in
+                
+                    if(errorCode < 0){
+                        UserApiHelper.updateToken({
+                            //things are updated... so now call the send message again..
+                            self.initRooms()
+                            }, error: {
+                                (errorMsg) in
+                                AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
+                        })
+                    }
+                
+                }
+            );
         }
+    }
+    
+    public func makeTextBold(targetRoomId:String, displayName:String, message:String){
+        
+        print("understand: \(message)")
+        self.boldRoomId = targetRoomId
+        
+        var roomManagedModel:RoomManagedModel = RoomManagedModel.getById(targetRoomId)!
+        roomManagedModel.lastMessage = message
+        roomManagedModel.lastDisplayName = displayName
+        RoomManagedModel.save()
+
+        self.tableView.reloadData()
     }
     
     func createNewBtnClick(sender: AnyObject){
@@ -164,6 +194,14 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
         var cell:ReadMessageTableViewCell? = tableView.dequeueReusableCellWithIdentifier("ReadMessageTableViewCell")! as! ReadMessageTableViewCell
         var roomData:RoomManagedModel = data[indexPath.row] as! RoomManagedModel
+        
+        if self.boldRoomId == roomData.roomId{
+            print("even after reload: \(self.boldRoomId)")
+            cell?.setUnread()
+        }else{
+            print("normal trig")
+            cell?.setNormal()
+        }
 
         cell?.populate(roomData)
         return cell!
@@ -174,16 +212,20 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
         var roomData:RoomManagedModel = data[indexPath.row]
         let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
-        
 
         vc.chatRoomTitle = roomData.attributes.name
         vc.roomId = roomData.roomId
         vc.hidesBottomBarWhenPushed = true
+        
+        self.boldRoomId = "";
+        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         navigationController?.pushViewController(vc, animated: true )
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
 
     }
 
+    
     /*
     // MARK: - Navigation
 

@@ -66,9 +66,22 @@ class ChatTextMessageViewController: JSQMessagesViewController {
         var updatedDate:DateInRegion = DateInRegion(UTCDate: date.inUTCRegion().UTCDate, region: Region(tzType: TimeZoneNames.America.New_York))!
         var createdDate:String = updatedDate.toString(DateFormat.Custom("yyyy-MM-dd HH:mm:ss"))! //prints out 10:12
             
+        //use this as an outline... for all updating tokens
         ChatApiHelper.sendMessage(text, roomId:roomId, created:createdDate, resultJSON: {
             (JSON) in
-            print(JSON)
+                print(JSON)
+            }, error:{
+                (message, errorCode) in
+
+                if(errorCode < 0){
+                    UserApiHelper.updateToken({
+                        //things are updated... so now call the send message again..
+                        ChatApiHelper.sendMessage(text, roomId:self.roomId, created:createdDate, resultJSON: {_ in }, error:{_ in})
+                        }, error: {
+                            (errorMsg) in
+                            AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
+                    })
+                }
         })
 
         //add to...coredata..

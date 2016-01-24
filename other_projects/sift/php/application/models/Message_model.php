@@ -32,6 +32,21 @@ class Message_model extends CI_Model {
         return array();
     }
 
+    function get_by_id($id){
+        $query = "select * from messages where id = ?";
+        $result = $this->db->query($query, array($id));
+        if($result->num_rows() > 0){
+            return $result->row(0);
+        }else{      
+            return null;
+        }       
+    }
+
+    function update_last_message_in_room($roomId, $messageId, $message, $date, $displayName){
+        $query = "update rooms set last_message_id = ?, last_message = ?, last_message_timestamp = ?, last_display_name = ? where id = ?";
+        $result = $this->db->query($query, array($messageId, $message, $date, $displayName, $roomId));
+    }
+
     function recent_messages($userId, $pageIndex){
         $ITEMS_PER_PAGE = 25;
         $query = "SELECT m.id, m.room_id, u.id as user_id, first_name,last_name, r.name as room_name, 
