@@ -14,13 +14,13 @@ protocol ChatSubmitDelegate {
 
 
 class ChatMapKeyboardView: UIView {
-    
+    @IBOutlet weak var btnSend: UIButton!
     var delegate:ChatSubmitDelegate?;
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         // Initialization code
-        print("chat next vieww")
+        print("chat next vieww")        
         
     }
     

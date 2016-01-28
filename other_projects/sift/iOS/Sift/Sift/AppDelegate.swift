@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         //setApplicationId(applicationId: String, clientKey: String)
-        
-        
+
         notificationManager.notificationsPosition = LNRNotificationPosition.Top
         notificationManager.notificationsBackgroundColor = UIColor.whiteColor()
         notificationManager.notificationsTitleTextColor = UIColor.blackColor()

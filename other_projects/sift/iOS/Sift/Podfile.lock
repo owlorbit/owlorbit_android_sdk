@@ -5,6 +5,7 @@ PODS:
   - ALThreeCircleSpinner (1.0.2)
   - ASImageResize (1.0.3)
   - Bolts/Tasks (1.6.0)
+  - BusyNavigationBar (1.1.0)
   - CTAssetsPickerController (3.2.1):
     - PureLayout (~> 3.0.0)
   - DZNEmptyDataSet (1.7.2)
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - AlamofireImage (~> 2.0)
   - ALThreeCircleSpinner
   - ASImageResize
+  - BusyNavigationBar
   - CTAssetsPickerController (~> 3.2.0)
   - DZNEmptyDataSet
   - IHKeyboardAvoiding
@@ -68,6 +70,7 @@ SPEC CHECKSUMS:
   ALThreeCircleSpinner: 8bdd4e0d3d8a715b6fec50022911189bb63323af
   ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
   Bolts: f52a250053bb517ca874523c3913776359ab3def
+  BusyNavigationBar: cde4cbb450b58448204d5ab87f2dce07b4f0d7e1
   CTAssetsPickerController: 629e3c452efe92627b6386f572fc4e2f31533880
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   IHKeyboardAvoiding: 8f14fed93405dd2c44ce070a26f780d9e477538c

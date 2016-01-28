@@ -33,6 +33,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         var createNewBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "createNewBtnClick:")
         ApplicationManager.isLoggedIn = true;
         //createNewBtn.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
+
         self.navigationItem.rightBarButtonItem = createNewBtn
         self.tableView.registerNib(UINib(nibName: "ReadMessageTableViewCell", bundle:nil), forCellReuseIdentifier: "ReadMessageTableViewCell")
         //self.navigationController!.navigationBar.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
@@ -90,7 +91,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
             var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
             
-            print("hey there \(profileImageUrl)")
+
             var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
             URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
 
@@ -228,10 +229,8 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         var roomData:RoomManagedModel = data[indexPath.row] as! RoomManagedModel
         
         if self.boldRoomId == roomData.roomId{
-            print("even after reload: \(self.boldRoomId)")
             cell?.setUnread()
         }else{
-            print("normal trig")
             cell?.setNormal()
         }
 

@@ -26,6 +26,7 @@ class GenericUserManagedModel: NSManagedObject {
     @NSManaged var avatarOriginal:String
     //@NSManaged var avatarImg:NSData
     var avatarImg:UIImage = UIImage()
+    var originalAvatar:UIImage = UIImage()
     
     class func initWithJson(json:JSON, resultGenericUser:(GenericUserManagedModel) -> Void){
 

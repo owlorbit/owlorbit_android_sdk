@@ -22,6 +22,12 @@
 		B815AA291C1E19020082E136 /* RoomAttributeManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */; };
 		B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */; };
 		B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
+		B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8408C4A1C58577100449BEA /* UserProfileViewController.swift */; };
+		B8408C4D1C58577100449BEA /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8408C4B1C58577100449BEA /* UserProfileViewController.xib */; };
+		B863BECF1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */; };
+		B863BED01C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */; };
+		B863BED41C56E93000C8BA01 /* MapInstructionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BED21C56E93000C8BA01 /* MapInstructionsTableViewCell.xib */; };
+		B863BED51C56E93000C8BA01 /* MapInstructionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BED31C56E93000C8BA01 /* MapInstructionsTableViewCell.swift */; };
 		B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */; };
 		B866DFB11C061CA000BF8A79 /* UserSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */; };
 		B866DFB21C061CA000BF8A79 /* UserSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */; };
@@ -72,6 +78,7 @@
 		B892D65F1C1A45700091F128 /* PreloadHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D65D1C1A45700091F128 /* PreloadHomeViewController.xib */; };
 		B892D6611C1A4FD70091F128 /* FullScreenLoaderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */; };
 		B895A2AD1C545C7400B2A08D /* UILabel+ItalicBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */; };
+		B895A2AF1C55781400B2A08D /* AnnotationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AE1C55781400B2A08D /* AnnotationButton.swift */; };
 		B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
 		B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
 		B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
@@ -141,6 +148,12 @@
 		B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAttributeManagedModel.swift; sourceTree = "<group>"; };
 		B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManagedModel.swift; sourceTree = "<group>"; };
 		B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserManagedModel.swift; sourceTree = "<group>"; };
+		B8408C4A1C58577100449BEA /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		B8408C4B1C58577100449BEA /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
+		B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMapInstructionsViewController.swift; sourceTree = "<group>"; };
+		B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMapInstructionsViewController.xib; sourceTree = "<group>"; };
+		B863BED21C56E93000C8BA01 /* MapInstructionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapInstructionsTableViewCell.xib; sourceTree = "<group>"; };
+		B863BED31C56E93000C8BA01 /* MapInstructionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInstructionsTableViewCell.swift; sourceTree = "<group>"; };
 		B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserModel.swift; sourceTree = "<group>"; };
 		B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewCell.swift; sourceTree = "<group>"; };
 		B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -198,6 +211,7 @@
 		B892D65D1C1A45700091F128 /* PreloadHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreloadHomeViewController.xib; sourceTree = "<group>"; };
 		B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenLoaderHelper.swift; sourceTree = "<group>"; };
 		B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+ItalicBold.swift"; sourceTree = "<group>"; };
+		B895A2AE1C55781400B2A08D /* AnnotationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationButton.swift; sourceTree = "<group>"; };
 		B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTabBarController.swift; sourceTree = "<group>"; };
 		B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomTabBarController.xib; sourceTree = "<group>"; };
 		B8B80EFD1BF414FC00CF4BB3 /* Sift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sift-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -304,6 +318,24 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		B8408C491C58576000449BEA /* UserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B8408C4A1C58577100449BEA /* UserProfileViewController.swift */,
+				B8408C4B1C58577100449BEA /* UserProfileViewController.xib */,
+			);
+			name = UserViewController;
+			sourceTree = "<group>";
+		};
+		B863BED11C56E8FA00C8BA01 /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				B863BED31C56E93000C8BA01 /* MapInstructionsTableViewCell.swift */,
+				B863BED21C56E93000C8BA01 /* MapInstructionsTableViewCell.xib */,
+			);
+			name = Instructions;
+			sourceTree = "<group>";
+		};
 		B866DFAE1C061C5B00BF8A79 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +380,7 @@
 		B870CEC81BF96E9900F47929 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B863BED11C56E8FA00C8BA01 /* Instructions */,
 				B8068B6F1C22375B00EE00CA /* Settings */,
 				B866DFAE1C061C5B00BF8A79 /* UserList */,
 				B8E4E7CE1BFC40A800995964 /* Dashboard */,
@@ -430,6 +463,7 @@
 				B88213371C18FB3000E9469C /* String+ToDouble.swift */,
 				B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */,
 				B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */,
+				B895A2AE1C55781400B2A08D /* AnnotationButton.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -529,6 +563,8 @@
 				B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */,
 				B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */,
 				B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */,
+				B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */,
+				B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */,
 			);
 			name = ChatViewController;
 			sourceTree = "<group>";
@@ -576,6 +612,7 @@
 		B8BAD25E1BF181EA00DC7F60 /* DashboardViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B8408C491C58576000449BEA /* UserViewController */,
 				B8068B6A1C22348800EE00CA /* WriteMessage */,
 				B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */,
 				B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */,
@@ -740,6 +777,7 @@
 				B870CEE51BFAF48100F47929 /* RegistrationNextView.xib in Resources */,
 				B870CEC71BF5AF3800F47929 /* RegisterBasicInfoViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
+				B863BED01C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib in Resources */,
 				B8792A341BEB15CE00BE05ED /* Assets.xcassets in Resources */,
 				B866DFD01C0E812600BF8A79 /* ChatMapKeyboardView.xib in Resources */,
 				B8E4E7DF1BFD520200995964 /* RegistrationSubmitKeyboardView.xib in Resources */,
@@ -747,6 +785,7 @@
 				B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */,
 				B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */,
 				B8068B6E1C22364400EE00CA /* ProfileSettingImageUploadViewController.xib in Resources */,
+				B863BED41C56E93000C8BA01 /* MapInstructionsTableViewCell.xib in Resources */,
 				B8068B731C22379200EE00CA /* UserLogoutTableViewCell.xib in Resources */,
 				B866DFBC1C0A8A8D00BF8A79 /* UserSearchPendingHeaderView.xib in Resources */,
 				B8E4E7D21BFC40E600995964 /* ReadMessageTableViewCell.xib in Resources */,
@@ -761,6 +800,7 @@
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
 				B8068B691C2129E300EE00CA /* UserProfileSearchTableViewCell.xib in Resources */,
 				B87654641C03F53F00190B9B /* WriteMessageViewController.xib in Resources */,
+				B8408C4D1C58577100449BEA /* UserProfileViewController.xib in Resources */,
 				B892D65B1C19051B0091F128 /* LoginKeyboardPrevView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -834,6 +874,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B863BECF1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift in Sources */,
 				B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */,
 				B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */,
 				B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */,
@@ -854,8 +895,10 @@
 				B8068B631C20F95D00EE00CA /* FriendRequestViewController.swift in Sources */,
 				B866DFC81C0D2EDF00BF8A79 /* RoomAttributeModel.swift in Sources */,
 				B8CAA48E1C11096B00EC2752 /* DynamicPersonalData.swift in Sources */,
+				B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */,
 				B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */,
 				B8E4E7E31BFEB92000995964 /* PersonalUserModel.swift in Sources */,
+				B895A2AF1C55781400B2A08D /* AnnotationButton.swift in Sources */,
 				B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */,
 				B892D65A1C19051B0091F128 /* LoginKeyboardPrevView.swift in Sources */,
 				B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */,
@@ -895,6 +938,7 @@
 				B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */,
 				B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */,
 				B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */,
+				B863BED51C56E93000C8BA01 /* MapInstructionsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,6 +38,8 @@ class ProfileSettingImageUploadViewController: UIViewController, DZNEmptyDataSet
         self.navigationItem.rightBarButtonItem?.enabled = false
         self.title = "Profile Image"
         selectImage()
+        
+        print("yea..?")
     }
     
     func buttonMethod() {
@@ -74,24 +76,14 @@ class ProfileSettingImageUploadViewController: UIViewController, DZNEmptyDataSet
         }
     }
     
-    /*
-    
-    func initProfile(){
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-            var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
-            var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-            URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-            
-            ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
-                if let image = response.result.value {
-                    ApplicationManager.userData.profileImage = image
-                    FullScreenLoaderHelper.removeLoader();
-                }
-            }
-        }
-    }*/
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
+        let selectedImage : UIImage =  ImageHelper.RBSquareImageTo(image, size: CGSizeMake(620,620) )
+        self.imgCropView.setup(selectedImage, tapDelegate: self)
+        self.imgCropView.display()
+        self.imgCropView.editable = true
+        self.navigationItem.rightBarButtonItem?.enabled = true
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func onImageCropViewTapped(imageCropView: ImageCropView) {
     }
@@ -113,7 +105,7 @@ class ProfileSettingImageUploadViewController: UIViewController, DZNEmptyDataSet
         
         let controller = ImagePickerSheetController(mediaType: .Image)
         controller.maximumSelection = 1;
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo Or Video", comment: "Action Title"), secondaryTitle: NSLocalizedString("Select Image", comment: "Action Title"), handler: { _ in
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take a Selfie", comment: "Action Title"), secondaryTitle: NSLocalizedString("Select Image", comment: "Action Title"), handler: { _ in
             presentImagePickerController(.Camera)
             }, secondaryHandler: { _, numberOfPhotos in
                 print("Comment \(numberOfPhotos) photos")

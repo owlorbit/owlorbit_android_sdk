@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatThreadViewController" customModule="OwlOrbit" customModuleProvider="target">
             <connections>
                 <outlet property="bottomConstraintTextField" destination="LBa-AK-v7s" id="EjA-I2-MNR"/>
-                <outlet property="chatContainerView" destination="Yij-4t-TS9" id="QOo-yT-hhG"/>
+                <outlet property="btnInstructions" destination="lUo-Fw-oiJ" id="icE-Vr-hkO"/>
                 <outlet property="mapView" destination="P7O-19-mUe" id="D0b-AO-CVz"/>
                 <outlet property="txtChatView" destination="iwa-wt-3LK" id="XWh-VH-PXQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -80,56 +80,51 @@
                         <constraint firstItem="XGn-uY-c0o" firstAttribute="top" secondItem="not-Dr-ORU" secondAttribute="bottom" id="vTq-vc-6wJ"/>
                     </constraints>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yij-4t-TS9">
-                    <rect key="frame" x="0.0" y="64" width="320" height="408"/>
-                    <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ga8-GN-iAy">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="408"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="396" id="4TC-iC-JXt"/>
-                                <constraint firstAttribute="height" constant="396" id="WSV-Ap-gXH"/>
-                            </constraints>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="4TC-iC-JXt"/>
-                                    <exclude reference="WSV-Ap-gXH"/>
-                                </mask>
-                            </variation>
-                        </tableView>
-                    </subviews>
-                    <color key="backgroundColor" red="0.77647058820000003" green="0.74509803919999995" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUo-Fw-oiJ">
+                    <rect key="frame" x="252" y="404" width="60" height="60"/>
                     <constraints>
-                        <constraint firstItem="ga8-GN-iAy" firstAttribute="top" secondItem="Yij-4t-TS9" secondAttribute="top" id="AEy-2W-v8A"/>
-                        <constraint firstItem="ga8-GN-iAy" firstAttribute="leading" secondItem="Yij-4t-TS9" secondAttribute="leading" id="DRu-xS-xdw"/>
-                        <constraint firstAttribute="trailing" secondItem="ga8-GN-iAy" secondAttribute="trailing" id="Exz-Jn-UdL"/>
-                        <constraint firstItem="ga8-GN-iAy" firstAttribute="top" secondItem="Yij-4t-TS9" secondAttribute="top" id="N4g-oD-7ys"/>
-                        <constraint firstAttribute="bottom" secondItem="ga8-GN-iAy" secondAttribute="bottom" id="cvM-Tn-VVv"/>
+                        <constraint firstAttribute="width" constant="25" id="3nC-6d-64h"/>
+                        <constraint firstAttribute="width" constant="45" id="HjR-h3-8ps"/>
+                        <constraint firstAttribute="height" constant="45" id="RdW-zZ-DIT"/>
+                        <constraint firstAttribute="height" constant="25" id="Wbv-HO-sp7"/>
+                        <constraint firstAttribute="width" constant="25" id="Z5V-HF-dAn"/>
+                        <constraint firstAttribute="width" constant="35" id="g2w-sb-Nwt"/>
+                        <constraint firstAttribute="height" constant="33" id="pQJ-dP-MAC"/>
+                        <constraint firstAttribute="width" constant="60" id="tqU-dM-fN1"/>
+                        <constraint firstAttribute="height" constant="60" id="z9N-8b-59r"/>
                     </constraints>
+                    <state key="normal" image="list_icon"/>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="N4g-oD-7ys"/>
+                            <exclude reference="3nC-6d-64h"/>
+                            <exclude reference="HjR-h3-8ps"/>
+                            <exclude reference="RdW-zZ-DIT"/>
+                            <exclude reference="Wbv-HO-sp7"/>
+                            <exclude reference="Z5V-HF-dAn"/>
+                            <exclude reference="g2w-sb-Nwt"/>
+                            <exclude reference="pQJ-dP-MAC"/>
                         </mask>
                     </variation>
-                </view>
+                    <connections>
+                        <action selector="btnInstructionClick:" destination="-1" eventType="touchUpInside" id="4Bk-rE-HBz"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Yij-4t-TS9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0EL-bh-feV"/>
+                <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="lUo-Fw-oiJ" secondAttribute="bottom" constant="8" id="13J-Sd-TAk"/>
                 <constraint firstItem="P7O-19-mUe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7pF-SA-f67"/>
-                <constraint firstItem="Yij-4t-TS9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="DOz-Wj-kGU"/>
                 <constraint firstAttribute="trailing" secondItem="P7O-19-mUe" secondAttribute="trailing" id="GvX-jQ-Jc0"/>
                 <constraint firstAttribute="bottom" secondItem="vEW-HB-tD6" secondAttribute="bottom" id="LBa-AK-v7s"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="M7l-VX-f3M"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="P7O-19-mUe" secondAttribute="bottom" id="MHY-7V-k3e"/>
                 <constraint firstAttribute="trailing" secondItem="vEW-HB-tD6" secondAttribute="trailing" id="QH0-r9-NFP"/>
+                <constraint firstItem="lUo-Fw-oiJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Qco-TP-dJ6"/>
                 <constraint firstItem="P7O-19-mUe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sdq-sP-HBI"/>
                 <constraint firstAttribute="bottom" secondItem="P7O-19-mUe" secondAttribute="bottom" id="U6a-bf-C6S"/>
-                <constraint firstAttribute="trailing" secondItem="Yij-4t-TS9" secondAttribute="trailing" id="Zyf-H8-T5l"/>
                 <constraint firstAttribute="bottom" secondItem="P7O-19-mUe" secondAttribute="bottom" id="cKI-dR-j6h"/>
-                <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="Yij-4t-TS9" secondAttribute="bottom" id="cqx-SG-Fi0"/>
-                <constraint firstAttribute="bottom" secondItem="Yij-4t-TS9" secondAttribute="bottom" id="piF-z5-BzR"/>
-                <constraint firstItem="Yij-4t-TS9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vTt-mQ-9RO"/>
+                <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="lUo-Fw-oiJ" secondAttribute="bottom" constant="8" id="dGE-KU-Kwe"/>
+                <constraint firstAttribute="trailing" secondItem="lUo-Fw-oiJ" secondAttribute="trailing" constant="8" id="qpv-9Q-fv9"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="P7O-19-mUe" secondAttribute="bottom" id="z87-jM-tGY"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -138,12 +133,15 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="cKI-dR-j6h"/>
-                    <exclude reference="piF-z5-BzR"/>
-                    <exclude reference="vTt-mQ-9RO"/>
+                    <exclude reference="13J-Sd-TAk"/>
                     <exclude reference="MHY-7V-k3e"/>
                     <exclude reference="z87-jM-tGY"/>
+                    <exclude reference="Qco-TP-dJ6"/>
                 </mask>
             </variation>
         </view>
     </objects>
+    <resources>
+        <image name="list_icon" width="68" height="68"/>
+    </resources>
 </document>

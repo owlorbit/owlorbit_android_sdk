@@ -36,6 +36,9 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
         self.navigationItem.rightBarButtonItem?.enabled = false
         self.title = "Profile Image"
         selectImage()
+        
+        
+        print("2yea..?")
     }
     
     func buttonMethod() {
@@ -72,26 +75,19 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
         }
     }
     
-    /*
-    func initProfile(){
-
-        dispatch_async(dispatch_get_main_queue()) {
-            var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-            var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
-            var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-            URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-            
-            ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
-                if let image = response.result.value {
-                    ApplicationManager.userData.profileImage = image
-                    FullScreenLoaderHelper.removeLoader();
-                }
-            }
-        }
-    }*/
     
     func onImageCropViewTapped(imageCropView: ImageCropView) {
     }
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
+        let selectedImage : UIImage =  ImageHelper.RBSquareImageTo(image, size: CGSizeMake(620,620) )
+        self.imgCropView.setup(selectedImage, tapDelegate: self)
+        self.imgCropView.display()
+        self.imgCropView.editable = true
+        self.navigationItem.rightBarButtonItem?.enabled = true
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     func selectImage(){
 
@@ -110,8 +106,11 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
         
         let controller = ImagePickerSheetController(mediaType: .Image)
         controller.maximumSelection = 1;
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo Or Video", comment: "Action Title"), secondaryTitle: NSLocalizedString("Select Image", comment: "Action Title"), handler: { _ in
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take a Selfie", comment: "Action Title"), secondaryTitle: NSLocalizedString("Select Image", comment: "Action Title"), handler: { _ in
             presentImagePickerController(.Camera)
+            
+            print("this was picked..")
+            
             }, secondaryHandler: { _, numberOfPhotos in
                 print("Comment \(numberOfPhotos) photos")
                 print("Send \(controller.selectedImageAssets)")
@@ -136,7 +135,7 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
             controller.popoverPresentationController?.sourceView = view
             controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
         }
-        
+
         presentViewController(controller, animated: true, completion: nil)
     }
     

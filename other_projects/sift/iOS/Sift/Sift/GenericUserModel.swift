@@ -21,6 +21,7 @@ class GenericUserModel: NSObject {
     var accountType:String = ""
     var avatarOriginal:String = ""
     var avatarImg:UIImage = UIImage()
+    var originalAvatar:UIImage = UIImage()
     
     init(json:JSON){
         self.userId = (json["id"].error == nil) ? json["id"].string! : ""

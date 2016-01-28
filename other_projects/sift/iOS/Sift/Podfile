@@ -5,6 +5,7 @@ use_frameworks!
 target 'OwlOrbit' do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
     pod 'Alamofire', '~> 3.1'
+    pod 'BusyNavigationBar'
     pod 'AlamofireImage', '~> 2.0'
     pod 'CTAssetsPickerController',  '~> 3.2.0'
     pod 'ImagePickerSheetController'

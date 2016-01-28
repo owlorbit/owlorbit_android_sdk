@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BusyNavigationBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CTAssetsPickerController-CTAssetsPickerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -142,11 +147,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>113A4F3EBFF2D868A51C3748FBBEB741</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
 		<dict>
 			<key>primary</key>
@@ -177,6 +177,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>473F17E8631BCD67CEAB9658DBB21CC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4EFCB2A1C2BB2152F1BBA18BB8BB2732</key>
 		<dict>
 			<key>primary</key>
@@ -187,17 +192,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>58A1957426E5F4F08E4FA4B982EA347E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8C1B388BEC9FBDE1D203A033E09F4ABB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>909682545937E0A2C04678FF5D39ED9C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>912144AD4313E1FBA3D093341262EDE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -252,12 +252,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D6A75DE4033CA58598ED7A59604678C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>EDA125ADA52355B7CA6DF7BA96918357</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F8A16DC4EA97CBEBFF18D3A03587AFE1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
