@@ -25,6 +25,7 @@ class LoginViewController: UIViewController, LoginDelegate {
         self.tableView.registerNib(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: "LoginTableViewCell")
         self.tableView.backgroundColor = UIColor.clearColor();
         //test()
+        
     }
 
     

@@ -36,7 +36,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     //will be removed / cleaned up/////
     let spanX:Double = 0.00725;
     let spanY:Double = 0.00725;
-    var locationManager:CLLocationManager = CLLocationManager();
+    lazy var locationManager:CLLocationManager! = {
+        let manager = CLLocationManager()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.delegate = self
+        manager.allowsBackgroundLocationUpdates = true
+        manager.requestAlwaysAuthorization()
+        return manager
+    }()
     var annotations:NSMutableArray = NSMutableArray();
     
     var messageRecentlySent:Bool = false;
@@ -67,8 +74,11 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         self.navigationItem.rightBarButtonItem = switchContextBtn
         //Do any additional setup after loading the view.
 
-        locationManager.requestWhenInUseAuthorization();
+//        locationManager.requestWhenInUseAuthorization();
         locationManager.requestAlwaysAuthorization();
+        locationManager.startUpdatingLocation()
+        
+        
         mapView.showsUserLocation = true;
         locationManager.delegate = self;
         mapView.zoomEnabled = true;
@@ -501,6 +511,35 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         break
         }
     }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        // Add another annotation to the map.
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = newLocation.coordinate
+
+        var latitude:String = annotation.coordinate.latitude.description
+        var longitude:String = annotation.coordinate.longitude.description
+        
+        if UIApplication.sharedApplication().applicationState == .Active {
+            //
+            //print("duhhhhh..")
+        } else {
+            
+            
+            
+            if(!messageRecentlySent){
+                messageRecentlySent = true
+                
+                print("zztim: \(longitude) - \(latitude)")
+                LocationApiHelper.sendLocation(longitude, latitude: latitude, resultJSON:{
+                    (JSON) in
+                    print(JSON)
+                    var messageRecentTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "updateMessageTimer:", userInfo: nil, repeats: false)
+                });
+            }
+            
+        }
+    }
 
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         
@@ -519,6 +558,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         if(!messageRecentlySent){
             messageRecentlySent = true
             
+            print("tim: \(longitude) - \(latitude)")
             LocationApiHelper.sendLocation(longitude, latitude: latitude, resultJSON:{
                 (JSON) in
                 print(JSON)
@@ -529,6 +569,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     
     func updateMessageTimer(timer: NSTimer) {
     
+        NSLog("App is still sending...")
         messageRecentlySent = false
         timer.invalidate()
     }

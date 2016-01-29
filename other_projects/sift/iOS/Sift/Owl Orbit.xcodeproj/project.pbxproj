@@ -79,6 +79,7 @@
 		B892D6611C1A4FD70091F128 /* FullScreenLoaderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */; };
 		B895A2AD1C545C7400B2A08D /* UILabel+ItalicBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */; };
 		B895A2AF1C55781400B2A08D /* AnnotationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AE1C55781400B2A08D /* AnnotationButton.swift */; };
+		B89F3AD11C59D863008BFFA1 /* NSBundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */; };
 		B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
 		B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
 		B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
@@ -212,6 +213,7 @@
 		B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenLoaderHelper.swift; sourceTree = "<group>"; };
 		B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+ItalicBold.swift"; sourceTree = "<group>"; };
 		B895A2AE1C55781400B2A08D /* AnnotationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationButton.swift; sourceTree = "<group>"; };
+		B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Version.swift"; sourceTree = "<group>"; };
 		B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTabBarController.swift; sourceTree = "<group>"; };
 		B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomTabBarController.xib; sourceTree = "<group>"; };
 		B8B80EFD1BF414FC00CF4BB3 /* Sift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sift-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */,
 				B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */,
 				B895A2AE1C55781400B2A08D /* AnnotationButton.swift */,
+				B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -728,6 +731,9 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = DBA5RDVCJF;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -905,6 +911,7 @@
 				B866DFBE1C0A92B000BF8A79 /* UserSearchPendingHeaderView.swift in Sources */,
 				B8068B681C2129E300EE00CA /* UserProfileSearchTableViewCell.swift in Sources */,
 				B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */,
+				B89F3AD11C59D863008BFFA1 /* NSBundle+Version.swift in Sources */,
 				B866DFD71C0FC80700BF8A79 /* ImageHelper.swift in Sources */,
 				B870CEF11BFC093000F47929 /* CustomMapPin.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,

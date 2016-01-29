@@ -52,6 +52,9 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         
         
         initDownloadProfile()
+
+        
+        print("version... \(NSBundle.mainBundle().buildVersionNumber)")
     }
     
     func initDownloadProfile(){
