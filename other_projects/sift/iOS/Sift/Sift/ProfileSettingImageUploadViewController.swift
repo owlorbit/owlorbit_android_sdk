@@ -60,7 +60,14 @@ class ProfileSettingImageUploadViewController: UIViewController, DZNEmptyDataSet
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
 
-            UserApiHelper.uploadProfileImage(self.imgCropView.croppedImage()!, resultJSON: {
+            
+            //
+            // self.profileImage = self.profileImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
+            // self.profileImage = self.profileImage.roundImage()
+            var croppedImage = self.imgCropView.croppedImage()!
+            //var circleImage = croppedImage.resizedImageToFitInSize(CGSizeMake(45*3, 45*3), scaleIfSmaller: true).roundImage()
+            
+            UserApiHelper.uploadProfileImage(croppedImage, resultJSON: {
                 (JSON) in
 
                 FullScreenLoaderHelper.removeLoader();

@@ -24,6 +24,8 @@
 		B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
 		B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8408C4A1C58577100449BEA /* UserProfileViewController.swift */; };
 		B8408C4D1C58577100449BEA /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8408C4B1C58577100449BEA /* UserProfileViewController.xib */; };
+		B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
+		B849E09E1C5D46A2001A281B /* EnableLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */; };
 		B863BECF1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */; };
 		B863BED01C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */; };
 		B863BED41C56E93000C8BA01 /* MapInstructionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BED21C56E93000C8BA01 /* MapInstructionsTableViewCell.xib */; };
@@ -80,6 +82,7 @@
 		B895A2AD1C545C7400B2A08D /* UILabel+ItalicBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */; };
 		B895A2AF1C55781400B2A08D /* AnnotationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AE1C55781400B2A08D /* AnnotationButton.swift */; };
 		B89F3AD11C59D863008BFFA1 /* NSBundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */; };
+		B89F3AD31C5AF6D4008BFFA1 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F3AD21C5AF6D4008BFFA1 /* LocationHelper.swift */; };
 		B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
 		B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
 		B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
@@ -151,6 +154,8 @@
 		B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserManagedModel.swift; sourceTree = "<group>"; };
 		B8408C4A1C58577100449BEA /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		B8408C4B1C58577100449BEA /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
+		B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
+		B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnableLocationViewController.xib; sourceTree = "<group>"; };
 		B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMapInstructionsViewController.swift; sourceTree = "<group>"; };
 		B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMapInstructionsViewController.xib; sourceTree = "<group>"; };
 		B863BED21C56E93000C8BA01 /* MapInstructionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapInstructionsTableViewCell.xib; sourceTree = "<group>"; };
@@ -214,6 +219,7 @@
 		B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+ItalicBold.swift"; sourceTree = "<group>"; };
 		B895A2AE1C55781400B2A08D /* AnnotationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationButton.swift; sourceTree = "<group>"; };
 		B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Version.swift"; sourceTree = "<group>"; };
+		B89F3AD21C5AF6D4008BFFA1 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTabBarController.swift; sourceTree = "<group>"; };
 		B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomTabBarController.xib; sourceTree = "<group>"; };
 		B8B80EFD1BF414FC00CF4BB3 /* Sift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sift-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -327,6 +333,15 @@
 				B8408C4B1C58577100449BEA /* UserProfileViewController.xib */,
 			);
 			name = UserViewController;
+			sourceTree = "<group>";
+		};
+		B849E09A1C5D4675001A281B /* ErrorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */,
+				B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */,
+			);
+			name = ErrorViewController;
 			sourceTree = "<group>";
 		};
 		B863BED11C56E8FA00C8BA01 /* Instructions */ = {
@@ -467,6 +482,7 @@
 				B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */,
 				B895A2AE1C55781400B2A08D /* AnnotationButton.swift */,
 				B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */,
+				B89F3AD21C5AF6D4008BFFA1 /* LocationHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -615,6 +631,7 @@
 		B8BAD25E1BF181EA00DC7F60 /* DashboardViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B849E09A1C5D4675001A281B /* ErrorViewController */,
 				B8408C491C58576000449BEA /* UserViewController */,
 				B8068B6A1C22348800EE00CA /* WriteMessage */,
 				B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */,
@@ -777,6 +794,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B849E09E1C5D46A2001A281B /* EnableLocationViewController.xib in Resources */,
 				B8068B641C20F95D00EE00CA /* FriendRequestViewController.xib in Resources */,
 				B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */,
 				B8BAD25C1BF17F6C00DC7F60 /* ChatThreadViewController.xib in Resources */,
@@ -907,6 +925,7 @@
 				B895A2AF1C55781400B2A08D /* AnnotationButton.swift in Sources */,
 				B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */,
 				B892D65A1C19051B0091F128 /* LoginKeyboardPrevView.swift in Sources */,
+				B89F3AD31C5AF6D4008BFFA1 /* LocationHelper.swift in Sources */,
 				B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */,
 				B866DFBE1C0A92B000BF8A79 /* UserSearchPendingHeaderView.swift in Sources */,
 				B8068B681C2129E300EE00CA /* UserProfileSearchTableViewCell.swift in Sources */,
@@ -939,6 +958,7 @@
 				B8E4E7D91BFD4CEC00995964 /* AlertHelper.swift in Sources */,
 				B8E4E7DD1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift in Sources */,
 				B8BC48691C284827006A345E /* ChatTextMessageViewController.swift in Sources */,
+				B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */,
 				B8E4E7E11BFD80CE00995964 /* ProjectConstants.swift in Sources */,
 				B8CAA4921C1134F900EC2752 /* MessageCoreModel.swift in Sources */,
 				B804C6D01C17BB0D0076F81B /* UserPointAnnotation.swift in Sources */,

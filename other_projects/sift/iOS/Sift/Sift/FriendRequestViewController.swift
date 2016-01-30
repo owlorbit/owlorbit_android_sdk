@@ -10,6 +10,8 @@ import UIKit
 import DZNEmptyDataSet
 import SwiftyJSON
 
+
+
 class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
 
     @IBOutlet weak var viewSearchContainer: UIView!
@@ -22,6 +24,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
 
     var initialUserArrayList:NSMutableArray = [];
     var sections:NSMutableArray = ["Accept Friend?", "Requests (By You)", "Search Results"];
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +48,47 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         self.tableView.registerNib(UINib(nibName: "UserSearchPendingHeaderView", bundle:nil), forHeaderFooterViewReuseIdentifier: "UserSearchPendingHeaderView")
 
         loadLists()
+        
+        nofucksrightnow()
+    }
+
+    
+    func nofucksrightnow(){
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let userInfo = notification.userInfo as! Dictionary<String, AnyObject>
+        let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSTimeInterval
+        let animationCurve = userInfo[UIKeyboardAnimationCurveUserInfoKey]!.intValue
+        let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue
+        let keyboardFrameConvertedToViewFrame = view.convertRect(keyboardFrame!, fromView: nil)
+        let curveAnimationOption = UIViewAnimationOptions(rawValue: UInt(animationCurve))
+        let options: UIViewAnimationOptions = [UIViewAnimationOptions.BeginFromCurrentState, curveAnimationOption]
+        UIView.animateWithDuration(animationDuration, delay: 0, options:options, animations: { () -> Void in
+            let insetHeight = (self.tableView.frame.height + self.tableView.frame.origin.y) - keyboardFrameConvertedToViewFrame.origin.y
+            self.tableView.contentInset = UIEdgeInsetsMake(0, 0, insetHeight, 0)
+            self.tableView.scrollIndicatorInsets  = UIEdgeInsetsMake(0, 0, insetHeight, 0)
+            }) { (complete) -> Void in
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let userInfo = notification.userInfo as! Dictionary<String, AnyObject>
+        let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSTimeInterval
+        let animationCurve = userInfo[UIKeyboardAnimationCurveUserInfoKey]!.intValue
+        let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue
+        let keyboardFrameConvertedToViewFrame = view.convertRect(keyboardFrame!, fromView: nil)
+        let curveAnimationOption = UIViewAnimationOptions(rawValue: UInt(animationCurve))
+        let options: UIViewAnimationOptions = [UIViewAnimationOptions.BeginFromCurrentState, curveAnimationOption]
+        UIView.animateWithDuration(animationDuration, delay: 0, options:options, animations: { () -> Void in
+            self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+            self.tableView.scrollIndicatorInsets  = UIEdgeInsetsMake(0, 0, 0, 0)
+            }) { (complete) -> Void in
+        }
     }
 
     override func didReceiveMemoryWarning() {

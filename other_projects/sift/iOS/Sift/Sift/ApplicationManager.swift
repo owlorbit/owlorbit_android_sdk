@@ -18,6 +18,8 @@ class ApplicationManager: NSObject {
     
     
     static var parseDeviceId:String = ""
+    
+    static let locationHelper = LocationHelper()
     static let userData = DynamicPersonData()
     static let downloader = ImageDownloader()
     //spinners.
@@ -27,4 +29,9 @@ class ApplicationManager: NSObject {
     
     static var SYSTEM_COLOR:UIColor = UIColor(red:131.0/255.0, green:134.0/255.0, blue:169.0/255.0, alpha:1.0)
     static var isTesting:Bool = false
+    
+    static var messageRecentlySent:Bool = false
+    
+    
+    
 }

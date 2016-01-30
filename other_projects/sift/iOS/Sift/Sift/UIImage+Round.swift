@@ -17,6 +17,7 @@ extension UIImage
         let bounds = CGRect(origin: CGPointZero, size: self.size)
         UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).addClip()
         newImage.drawInRect(bounds)
+
         let finalImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return finalImage

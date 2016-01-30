@@ -36,14 +36,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     //will be removed / cleaned up/////
     let spanX:Double = 0.00725;
     let spanY:Double = 0.00725;
-    lazy var locationManager:CLLocationManager! = {
-        let manager = CLLocationManager()
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.delegate = self
-        manager.allowsBackgroundLocationUpdates = true
-        manager.requestAlwaysAuthorization()
-        return manager
-    }()
+
     var annotations:NSMutableArray = NSMutableArray();
     
     var messageRecentlySent:Bool = false;
@@ -51,13 +44,11 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     
     var locationDict = [String:UserPointAnnotation]()
     var timerGetLocations = NSTimer()
-    
     var RETRIEVE_LOCATION_LOCK:Bool = false
     var destination: MKMapItem?
 
 
     var targetAnnotation:UserPointAnnotation = UserPointAnnotation();
-    
     var routeSteps = [MKRouteStep]()
     
     var progressOptions = BusyNavigationBarOptions()
@@ -73,14 +64,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "btnTextClick:")
         self.navigationItem.rightBarButtonItem = switchContextBtn
         //Do any additional setup after loading the view.
-
-//        locationManager.requestWhenInUseAuthorization();
-        locationManager.requestAlwaysAuthorization();
-        locationManager.startUpdatingLocation()
-        
-        
+   
         mapView.showsUserLocation = true;
-        locationManager.delegate = self;
         mapView.zoomEnabled = true;
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
@@ -96,8 +81,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         self.txtChatView.placeholder = "Enter text..."
         self.txtChatView.placeholderColor = UIColor.lightGrayColor()
-        
-        
         self.txtChatView.delegate = self
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -115,6 +98,21 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         initMapNotifications()
         //hideInstructions()
+        
+        zoomToCurrentLocation()
+        enableMapViewTracking()
+    }
+    
+    func enableMapViewTracking(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.locationManager.stopUpdatingLocation()
+        appDelegate.locationManager.stopMonitoringSignificantLocationChanges()
+    }
+    
+    func disableMapViewTracking(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.locationManager.stopUpdatingLocation()
+        appDelegate.locationManager.stopMonitoringSignificantLocationChanges()
     }
     
     func hideInstructions(){
@@ -379,9 +377,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
         for (key,subJson):(String, SwiftyJSON.JSON) in json["user_locations"] {
             var location:LocationModel = LocationModel(json: subJson);
-            
-            //self.annotations.addObject(userPoint)
-            
+
             var userPointAnnotation:UserPointAnnotation = getAnnotationByUserId(location.userId)
             userPointAnnotation.coordinate = location.coordinate!
             userPointAnnotation.title = userPointAnnotation.userModel.firstName.capitalizedString
@@ -488,73 +484,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         self.navigationItem.rightBarButtonItem = switchContextBtn
         self.mapView.hidden = false;
     }
-
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        switch status {
-            case .NotDetermined:
-                locationManager.requestAlwaysAuthorization()
-            break
-        case .AuthorizedWhenInUse:
-                locationManager.startUpdatingLocation()
-                zoomToCurrentLocation()
-            break
-        case .AuthorizedAlways:
-                locationManager.startUpdatingLocation()
-                zoomToCurrentLocation()
-            break
-        case .Restricted:
-        break
-
-        case .Denied:
-            break
-        default:
-        break
-        }
-    }
     
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        // Add another annotation to the map.
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = newLocation.coordinate
-
-        var latitude:String = annotation.coordinate.latitude.description
-        var longitude:String = annotation.coordinate.longitude.description
-        
-        if UIApplication.sharedApplication().applicationState == .Active {
-            //
-            //print("duhhhhh..")
-        } else {
-            
-            
-            
-            if(!messageRecentlySent){
-                messageRecentlySent = true
-                
-                print("zztim: \(longitude) - \(latitude)")
-                LocationApiHelper.sendLocation(longitude, latitude: latitude, resultJSON:{
-                    (JSON) in
-                    print(JSON)
-                    var messageRecentTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "updateMessageTimer:", userInfo: nil, repeats: false)
-                });
-            }
-            
-        }
-    }
-
+    /*
+    
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         
         var latitude:String = (userLocation.location?.coordinate.latitude.description)!
         var longitude:String = (userLocation.location?.coordinate.longitude.description)!
 
-        //TODO 
-        //send location
-        //but dont spam..
-
-        /*
-        //if sent within the past 5 seconds, don't send
-        //
-        */
-        
         if(!messageRecentlySent){
             messageRecentlySent = true
             
@@ -563,25 +500,31 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 (JSON) in
                 print(JSON)
                 var messageRecentTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "updateMessageTimer:", userInfo: nil, repeats: false)
-            });
+                }, error:{
+                    (String) in
+                    self.messageRecentlySent = false
+                }
+            );
         }
     }
     
     func updateMessageTimer(timer: NSTimer) {
     
-        NSLog("App is still sending...")
+        NSLog("map view App is still sending...")
         messageRecentlySent = false
         timer.invalidate()
     }
-
+*/
     func zoomToCurrentLocation() {
 
         do{
-            if(locationManager.location == nil){return}
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+            if(appDelegate.locationManager.location == nil){return}
             //if not connected reject..
             var region:MKCoordinateRegion = MKCoordinateRegion();
-            region.center.latitude = locationManager.location!.coordinate.latitude;
-            region.center.longitude = locationManager.location!.coordinate.longitude;
+            region.center.latitude = appDelegate.locationManager.location!.coordinate.latitude;
+            region.center.longitude = appDelegate.locationManager.location!.coordinate.longitude;
             region.span.latitudeDelta = spanX;
             region.span.longitudeDelta = spanY;
             mapView.setRegion(region, animated: true)

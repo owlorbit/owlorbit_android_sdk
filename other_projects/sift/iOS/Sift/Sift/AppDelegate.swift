@@ -19,10 +19,25 @@ import LNRSimpleNotifications
 import AudioToolbox
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
     let notificationManager = LNRNotificationManager()
+    
+    var oldLatitude:CLLocationDegrees = 0.0
+    var oldLongitude:CLLocationDegrees = 0.0
+    
+    lazy var locationManager:CLLocationManager! = {
+        let manager = CLLocationManager()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.delegate = self
+
+        manager.allowsBackgroundLocationUpdates = true
+        manager.pausesLocationUpdatesAutomatically = false
+        manager.requestAlwaysAuthorization()
+        return manager
+    }()
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -310,24 +325,153 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window!.makeKeyAndVisible()
             }, completion: nil)
 
+        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
     }
 
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        // Add another annotation to the map.
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = newLocation.coordinate
+        
+        
+        var latitude:String = annotation.coordinate.latitude.description
+        var longitude:String = annotation.coordinate.longitude.description
+        //UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+
+        if(annotation.coordinate.latitude != oldLatitude ||
+            annotation.coordinate.longitude != oldLongitude
+            ){
+                
+                //UIApplication.sharedApplication().applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+                oldLatitude = annotation.coordinate.latitude
+                oldLongitude = annotation.coordinate.longitude
+                
+                print("new location...\(latitude) - \(longitude)")
+
+                if(!ApplicationManager.messageRecentlySent){
+                    ApplicationManager.messageRecentlySent = true
+                    
+                    print("zztim: \(longitude) - \(latitude)")
+                    LocationApiHelper.sendLocation(longitude, latitude: latitude, resultJSON:{
+                        (JSON) in
+                        print(JSON)
+                        var messageRecentTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "updateMessageTimer:", userInfo: nil, repeats: false)
+                        }, error:{
+                            (String) in
+                            
+                            print(String)
+                            ApplicationManager.messageRecentlySent = false
+                        }
+                    );
+                }
+        }
+        
+        //if UIApplication.sharedApplication().applicationState == .Active
+    }
+    
+    func updateMessageTimer(timer: NSTimer) {
+        NSLog("App is still sending...")
+
+        ApplicationManager.messageRecentlySent = false
+        timer.invalidate()
+    }
+
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .NotDetermined:
+            print("not determined... request")
+            locationManager.requestAlwaysAuthorization()
+            break
+        case .AuthorizedWhenInUse:
+            print("start when in use")
+            hideEnableLocationView()
+            break
+        case .AuthorizedAlways:
+            print("start always")
+            hideEnableLocationView()
+            break
+        case .Restricted:
+            print("restricted")
+            break
+            
+        case .Denied:
+            print("denied..")
+            displayEnableLocations()
+            break
+
+        default:
+            break
+        }
+    }
+    
+    func hideEnableLocationView(){
+        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
+        
+        if self.window!.rootViewController is UICustomTabBarController {
+            var controllers =  ((self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController).viewControllers
+            
+            if controllers.last is EnableLocationViewController{
+
+                ((self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController).navigationBarHidden = false
+                
+                ((self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController).popToRootViewControllerAnimated(true)
+            }
+
+        }
+    }
+
+    func displayEnableLocations(){
+        
+        var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
+        let vc = EnableLocationViewController(nibName: "EnableLocationViewController", bundle: nil)
+        vc.hidesBottomBarWhenPushed = true
+        vc.navigationController?.navigationBarHidden = true
+        
+        ((self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController).navigationBarHidden = true
+        
+        
+        updatedNav.pushViewController(vc, animated: true )
+
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+       
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+        //TODO version 1.5 optimize
+        
+        /*
+        if self.window!.rootViewController is UICustomTabBarController {
+            var controllers =  ((self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController).viewControllers
+
+            if controllers.last is ChatThreadViewController{
+                print("disable global and use mapview...")
+                var mapVC = controllers.last as! ChatThreadViewController
+                mapVC.enableMapViewTracking()
+                
+                locationManager.stopUpdatingLocation()
+                locationManager.stopMonitoringSignificantLocationChanges()
+            }
+        }*/
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -384,7 +528,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-
     func saveContext () {
         if managedObjectContext.hasChanges {
             do {

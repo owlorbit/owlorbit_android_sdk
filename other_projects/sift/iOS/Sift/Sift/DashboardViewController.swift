@@ -25,6 +25,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     //var userArrayList:NSMutableArray = [];
     var rooms = Dictionary<String, NSMutableArray>();
     let downloader = ImageDownloader()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +53,8 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         
         
         initDownloadProfile()
-
-        
-        print("version... \(NSBundle.mainBundle().buildVersionNumber)")
     }
-    
+
     func initDownloadProfile(){
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;

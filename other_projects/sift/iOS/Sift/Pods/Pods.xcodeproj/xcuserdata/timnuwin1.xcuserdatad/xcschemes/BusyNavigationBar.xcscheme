@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3671DAC6FEC8D6B6249D1275'
+               BlueprintIdentifier = '8730C7DC48CCC65A5F21DC45'
                BlueprintName = 'BusyNavigationBar'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'BusyNavigationBar.framework'>
