@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '64A8F85FC2CE0BD46B161EDE'
+               BlueprintIdentifier = '2D0500B3FF4B4057A917436E'
                BlueprintName = 'IHKeyboardAvoiding'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'IHKeyboardAvoiding.framework'>

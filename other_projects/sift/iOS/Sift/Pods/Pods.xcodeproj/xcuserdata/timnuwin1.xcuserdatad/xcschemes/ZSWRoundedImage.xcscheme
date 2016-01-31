@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3F36E38DE047C976AA0AC972'
+               BlueprintIdentifier = 'CBD7D3B6AC52A114E3DC71E6'
                BlueprintName = 'ZSWRoundedImage'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ZSWRoundedImage.framework'>

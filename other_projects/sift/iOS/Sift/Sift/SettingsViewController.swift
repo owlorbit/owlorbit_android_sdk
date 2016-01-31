@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Alamofire
 import AlamofireImage.Swift
+import DGElasticPullToRefresh
 
 class SettingsViewController: UIViewController, ProfileSettingsDelegate {
 
@@ -21,8 +22,12 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //self.tableView.registerNib(UINib(nibName: "ReadMessageTableViewCell", bundle:nil), forCellReuseIdentifier: "ReadMessageTableViewCell")
-        //self.navigationController!.navigationBar.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        self.title = "Settings"
         
         self.tableView.registerNib(UINib(nibName: "UserProfileSearchTableViewCell", bundle:nil), forCellReuseIdentifier: "UserProfileSearchTableViewCell")
 
@@ -31,6 +36,23 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         data.addObject(user)
         data.addObject("LOGOUT")
+        initTableViewSettings()
+    }
+    
+    func initTableViewSettings(){
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        
+        loadingView.tintColor = ProjectConstants.AppColors.PRIMARY
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+    }
+    
+    deinit {
+        tableView.dg_removePullToRefresh()
     }
     
     public func updateProfile(){
@@ -66,6 +88,13 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        if let str = data[indexPath.row] as? String {
+            return UserLogoutTableViewCell.cellHeight()
+        }else{
+            return UserProfileSearchTableViewCell.cellHeight()
+        }
+        
         return ReadMessageTableViewCell.cellHeight();
     }
     
@@ -82,6 +111,9 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
             var cell:UserProfileSearchTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserProfileSearchTableViewCell")! as! UserProfileSearchTableViewCell
             cell?.imgAvatar.image = ApplicationManager.userData.profileImage
             cell?.txtName.text = user.firstName + " " + user.lastName
+            
+            cell?.imgAvatar.layer.masksToBounds = true
+            cell!.imgAvatar.layer.cornerRadius = cell!.imgAvatar.frame.size.height/2
             return cell!
         }
     }

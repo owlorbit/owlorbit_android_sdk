@@ -206,10 +206,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         progressOptions.animationType = .Stripes
         
         /// Color of the shapes. Defaults to gray.
-        progressOptions.color = ApplicationManager.SYSTEM_COLOR
+        progressOptions.color = ProjectConstants.AppColors.ORANGE
         
         /// Alpha of the animation layer. Remember that there is also an additional (constant) gradient mask over the animation layer. Defaults to 0.5.
-        progressOptions.alpha = 0.7
+        progressOptions.alpha = 1.0
         
         /// Width of the bar. Defaults to 20.
         progressOptions.barWidth = 20
@@ -589,7 +589,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             //leftButton.frame = CGRectMake(0, 0, 44, 44)
             leftButton.frame.size.width = 44
             leftButton.frame.size.height = 51
-            leftButton.backgroundColor = UIColor.blueColor()
+            leftButton.backgroundColor = ProjectConstants.AppColors.PRIMARY
             leftButton.setImage(UIImage(named: "white_car_icon"), forState: UIControlState.Normal)
             leftButton.userPointAnnotation = userPointAnnotation
             leftButton.addTarget(self, action: "leftButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)

@@ -9,10 +9,10 @@
 import UIKit
 import DZNEmptyDataSet
 import SwiftyJSON
+import DGElasticPullToRefresh
 
 
-
-class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
+class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UITextFieldDelegate{
 
     @IBOutlet weak var viewSearchContainer: UIView!
     @IBOutlet weak var txtSearch: UITextField!
@@ -30,10 +30,16 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         super.viewDidLoad()
         self.viewSearchContainer.layer.cornerRadius = 4
         self.viewSearchContainer.layer.masksToBounds = true
+        self.title = "Find Friends"
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
         self.txtSearch.borderStyle = UITextBorderStyle.None
         self.txtSearch.attributedPlaceholder = NSAttributedString(string:self.txtSearch.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         self.txtSearch.tintColor = UIColor.whiteColor()
+        self.txtSearch.delegate = self;
         // Do any additional setup after loading the view.
 
         self.tableView.emptyDataSetSource = self
@@ -50,8 +56,36 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         loadLists()
         
         nofucksrightnow()
+        initTableViewSettings()
     }
 
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func initTableViewSettings(){
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        
+        loadingView.tintColor = UIColor.whiteColor()
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            // Add your logic here
+            // Do not forget to call dg_stopLoading() at the end
+            //okay...
+
+            self?.loadLists()
+            self?.tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+    }
+    
+    deinit {
+        tableView.dg_removePullToRefresh()
+    }
+
+    
     
     func nofucksrightnow(){
         

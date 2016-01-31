@@ -38,18 +38,10 @@ class UserSearchTableViewCell: UITableViewCell {
         //}
         
         let url = NSURL(string: profileImageUrl)
-        self.imgAvatar!.sd_setImageWithURL(url, placeholderImage: UIImage(named: "owl_orbit"))
-
-        /*
-        dispatch_async(dispatch_get_main_queue()) {
-            ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
-                if let image = response.result.value {
-                    self.imgAvatar.image = image.roundImage()
-                }else{
-                    self.imgAvatar.image = UIImage(named:"owl_orbit")!
-                }
-            }
-        }*/
+        self.imgAvatar.layer.masksToBounds = true
+        self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
+        
+        self.imgAvatar!.sd_setImageWithURL(url, placeholderImage: UIImage(named: "owl_orbit"))        
     }
     
     class func cellHeight()->CGFloat{

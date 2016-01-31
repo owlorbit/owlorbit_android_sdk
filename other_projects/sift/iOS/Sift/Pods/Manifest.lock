@@ -8,6 +8,7 @@ PODS:
   - BusyNavigationBar (1.1.0)
   - CTAssetsPickerController (3.2.1):
     - PureLayout (~> 3.0.0)
+  - DGElasticPullToRefresh (1.0.3)
   - DZNEmptyDataSet (1.7.2)
   - IHKeyboardAvoiding (2.5)
   - IHKeyboardDismissing (1.1)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - ASImageResize
   - BusyNavigationBar
   - CTAssetsPickerController (~> 3.2.0)
+  - DGElasticPullToRefresh
   - DZNEmptyDataSet
   - IHKeyboardAvoiding
   - IHKeyboardDismissing
@@ -72,6 +74,7 @@ SPEC CHECKSUMS:
   Bolts: f52a250053bb517ca874523c3913776359ab3def
   BusyNavigationBar: cde4cbb450b58448204d5ab87f2dce07b4f0d7e1
   CTAssetsPickerController: 629e3c452efe92627b6386f572fc4e2f31533880
+  DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   IHKeyboardAvoiding: 8f14fed93405dd2c44ce070a26f780d9e477538c
   IHKeyboardDismissing: 7c23d41da51ca22f6a1091b3cf852821a2461ac9

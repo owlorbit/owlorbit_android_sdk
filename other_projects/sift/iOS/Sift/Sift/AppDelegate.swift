@@ -48,7 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         notificationManager.notificationsBackgroundColor = UIColor.whiteColor()
         notificationManager.notificationsTitleTextColor = UIColor.blackColor()
         notificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
-        notificationManager.notificationsSeperatorColor = UIColor.grayColor()
+        notificationManager.notificationsSeperatorColor = UIColor.grayColor()        
+        
         notificationManager.notificationsIcon = UIImage(named:"owl_orbit")?.resizedImageToFitInSize(CGSize(width: 40, height: 40), scaleIfSmaller: true)
         
         var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
@@ -103,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 //also run in the bg to check the password...
             }
         }
+
         return true
     }
     

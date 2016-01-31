@@ -13,11 +13,11 @@ import CoreData
 import Alamofire
 import AlamofireImage.Swift
 
+import DGElasticPullToRefresh
 
 class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     var data:[RoomManagedModel] = [];
-    
     var boldRoomId = ""
     
     @IBOutlet weak var tableView: UITableView!
@@ -37,7 +37,13 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
         self.navigationItem.rightBarButtonItem = createNewBtn
         self.tableView.registerNib(UINib(nibName: "ReadMessageTableViewCell", bundle:nil), forCellReuseIdentifier: "ReadMessageTableViewCell")
-        //self.navigationController!.navigationBar.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
+        //self.navigationController!.navigationBar.tintColor = ProjectConstants.AppColors.primary
+        
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
@@ -50,9 +56,30 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         if(!hasProfileImage()){
             loadProfileImage()
         }*/
-        
-        
+
         initDownloadProfile()
+        initTableViewSettings()
+    }
+    
+    func initTableViewSettings(){
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        
+        loadingView.tintColor = UIColor.whiteColor()
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            // Add your logic here
+            // Do not forget to call dg_stopLoading() at the end
+            //okay...
+            self?.getRoomsFromManagedObjects()
+            self?.initRooms();
+            self?.tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+    }
+    
+    deinit {
+        tableView.dg_removePullToRefresh()
     }
 
     func initDownloadProfile(){

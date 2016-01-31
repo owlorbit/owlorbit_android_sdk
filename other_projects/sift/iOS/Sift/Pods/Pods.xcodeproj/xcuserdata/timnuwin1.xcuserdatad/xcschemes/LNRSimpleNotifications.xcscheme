@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'FCD2D7F67DBCF9930404F225'
+               BlueprintIdentifier = '06EE0F7B72D3BD17FC0A79B9'
                BlueprintName = 'LNRSimpleNotifications'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'LNRSimpleNotifications.framework'>

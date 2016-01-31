@@ -35,12 +35,14 @@ class ReadMessageTableViewCell: UITableViewCell {
         }
         self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.timestamp)
         self.lblRoomTitle.text = roomData.attributes.name.capitalizedString
-
+        //self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
+        
+        self.imgAvatar.layer.masksToBounds = true
+        self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
+        
         dispatch_async(dispatch_get_main_queue()) {
             for userObj : AnyObject in roomData.attributes.users.allObjects {
                 if let userGeneric = userObj as? GenericUserManagedModel {
-                    //self.imgAvatar.image = UIImage(data: userGeneric.avatarImg)
-                    //self.imgAvatar.image = userGeneric.avatarImg
 
                     var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userGeneric.avatarOriginal
                     var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
@@ -50,7 +52,8 @@ class ReadMessageTableViewCell: UITableViewCell {
 
                         if let image = response.result.value {
                             //obj.avatarImg = UIImageJPEGRepresentation(image.roundImage(), 1)!
-                            self.imgAvatar.image = image.roundImage()
+                            //self.imgAvatar.image = image.roundImage()
+                            self.imgAvatar.image = image                            
                         }
                     }
 

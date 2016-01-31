@@ -58,7 +58,8 @@ class GenericUserManagedModel: NSManagedObject {
                     dispatch_async(dispatch_get_main_queue()) { // 2
                         if let image = response.result.value {
                             //obj.avatarImg = UIImageJPEGRepresentation(image.roundImage(), 1)!
-                            obj.avatarImg = image.roundImage()
+                            //obj.avatarImg = image.roundImage()
+                            obj.avatarImg = image
                         }else{
                             //obj.avatarImg = UIImageJPEGRepresentation(UIImage(named:"owl_orbit")!, 1)!
                             obj.avatarImg = UIImage(named:"owl_orbit")!

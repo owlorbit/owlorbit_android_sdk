@@ -9,8 +9,9 @@
 import UIKit
 import DZNEmptyDataSet
 import SwiftyJSON
+import DGElasticPullToRefresh
 
-class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
+class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UITextFieldDelegate{
 
     @IBOutlet weak var viewSearchContainer: UIView!
     @IBOutlet weak var txtSearch: UITextField!
@@ -31,6 +32,7 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
 
         self.txtSearch.borderStyle = UITextBorderStyle.None
         self.txtSearch.attributedPlaceholder = NSAttributedString(string:self.txtSearch.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        self.txtSearch.delegate = self;
         self.txtSearch.tintColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
 
@@ -48,6 +50,33 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
 
         loadLists()
         nofucksrightnow()
+        
+        initTableViewSettings()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func initTableViewSettings(){
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        
+        loadingView.tintColor = UIColor.whiteColor()
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            // Add your logic here
+            // Do not forget to call dg_stopLoading() at the end
+            //okay...
+            self?.loadLists()
+            self?.tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+    }
+    
+    deinit {
+        tableView.dg_removePullToRefresh()
     }
     
     func nofucksrightnow(){
@@ -102,13 +131,28 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             self.userArrayList = self.defaultFriendList();
             for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
                 var genericUser:GenericUserModel = GenericUserModel(json: subJson);
-                self.userArrayList.addObject(genericUser)
+                
+                if(!self.isDuplicate(genericUser)){
+                    self.userArrayList.addObject(genericUser)
+                }
             }
 
             self.tableView.reloadData()
             
         });
+    }
+    
+    
+    func isDuplicate(genericUserModel:GenericUserModel)->Bool{
         
+        for user: GenericUserModel in (userArrayList as NSArray as! [GenericUserModel] ) {
+            
+            if genericUserModel.userId == user.userId {
+                return true
+            }
+        }
+
+        return false
     }
 
     func dismissKeyboard() {
@@ -131,7 +175,10 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             self.userArrayList = []
             for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
                 var genericUser:GenericUserModel = GenericUserModel(json: subJson);
-                self.userArrayList.addObject(genericUser)
+                
+                if(!self.isDuplicate(genericUser)){
+                    self.userArrayList.addObject(genericUser)
+                }
             }
             self.tableView.reloadData()
         });

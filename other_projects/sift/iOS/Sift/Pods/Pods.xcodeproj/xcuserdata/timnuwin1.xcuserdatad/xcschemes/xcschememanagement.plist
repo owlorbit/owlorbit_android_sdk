@@ -44,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DGElasticPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -147,6 +152,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>115824B7CB2E76E5ACB836A251E79404</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
 		<dict>
 			<key>primary</key>
@@ -177,11 +187,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>473F17E8631BCD67CEAB9658DBB21CC3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4EFCB2A1C2BB2152F1BBA18BB8BB2732</key>
 		<dict>
 			<key>primary</key>
@@ -192,12 +197,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>909682545937E0A2C04678FF5D39ED9C</key>
+		<key>57D6D5B6DE11C44A4A0637080047DB57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>912144AD4313E1FBA3D093341262EDE6</key>
+		<key>5B7ED5426EC62E8631310D1C91F25E1C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7150148A7C7B8A411CD7F54D8D8F5FA0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>909682545937E0A2C04678FF5D39ED9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -248,11 +263,6 @@
 			<true/>
 		</dict>
 		<key>CD5EDD9CC4350F18829A3C854B30E416</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D6A75DE4033CA58598ED7A59604678C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

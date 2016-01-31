@@ -28,7 +28,8 @@ class UserProfileViewController: UIViewController {
 
         var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + targetAnnotation.userModel.avatarOriginal
         var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-        userProfile.image = targetAnnotation.userModel.originalAvatar.roundImage()
+        //userProfile.image = targetAnnotation.userModel.originalAvatar.roundImage()
+        userProfile.image = targetAnnotation.userModel.originalAvatar
         
         
         var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
