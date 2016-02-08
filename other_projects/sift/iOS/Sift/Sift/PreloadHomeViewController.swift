@@ -17,6 +17,7 @@ class PreloadHomeViewController: UIViewController {
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .Default
         self.navigationController?.setNavigationBarHidden(true, animated: false);
         // Do any additional setup after loading the view.
 
@@ -46,6 +47,18 @@ class PreloadHomeViewController: UIViewController {
         var viewController : LoginViewController = LoginViewController();
         self.navigationController!.pushViewController(viewController, animated: true)
     }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = .Default
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+    }
+
 
     /*
     // MARK: - Navigation

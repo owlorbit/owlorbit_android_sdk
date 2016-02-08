@@ -24,11 +24,12 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
         // Do any additional setup after loading the view.
         navigationController?.navigationBar.translucent = false
         navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         self.title = "Settings"
-        
         self.tableView.registerNib(UINib(nibName: "UserProfileSearchTableViewCell", bundle:nil), forCellReuseIdentifier: "UserProfileSearchTableViewCell")
 
         self.tableView.registerNib(UINib(nibName: "UserLogoutTableViewCell", bundle:nil), forCellReuseIdentifier: "UserLogoutTableViewCell")

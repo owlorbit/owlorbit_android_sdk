@@ -20,6 +20,7 @@ class LoginViewController: UIViewController, LoginDelegate {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .Default
         self.navigationController?.setNavigationBarHidden(true, animated: false);
         
         self.tableView.registerNib(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: "LoginTableViewCell")
@@ -121,6 +122,16 @@ class LoginViewController: UIViewController, LoginDelegate {
         appDelegate.setupLoggedInViewController()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = .Default
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+    }
+
     /*
     // MARK: - Navigation
 

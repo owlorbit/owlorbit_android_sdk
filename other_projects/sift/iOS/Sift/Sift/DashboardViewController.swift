@@ -37,13 +37,22 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
         self.navigationItem.rightBarButtonItem = createNewBtn
         self.tableView.registerNib(UINib(nibName: "ReadMessageTableViewCell", bundle:nil), forCellReuseIdentifier: "ReadMessageTableViewCell")
-        //self.navigationController!.navigationBar.tintColor = ProjectConstants.AppColors.primary
-        
+
+        tableView.separatorColor = ProjectConstants.AppColors.PRIMARY
+        self.navigationController!.navigationBar.tintColor = ProjectConstants.AppColors.PRIMARY
+
         navigationController?.navigationBar.translucent = false
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
         navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
+        
+        
+        tableView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
@@ -71,7 +80,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             //okay...
             self?.getRoomsFromManagedObjects()
             self?.initRooms();
-            self?.tableView.dg_stopLoading()
+            
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
@@ -85,7 +94,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     func initDownloadProfile(){
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-        
+
         UserApiHelper.loginUser(user.email, password: user.password, resultJSON: {
             (JSON) in
             
@@ -118,10 +127,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         dispatch_async(dispatch_get_main_queue()) {
             var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
             var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
-            
-
             var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-            URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
 
             ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
                 if let image = response.result.value {
@@ -178,6 +184,8 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                         
                     });
                 }
+                
+                self.tableView.dg_stopLoading()
             },error: {
                     (message, errorCode) in
                 
@@ -189,6 +197,8 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                                 (errorMsg) in
                                 AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
                         })
+                    }else{
+                        self.tableView.dg_stopLoading()
                     }
                 
                 }

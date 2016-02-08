@@ -6,6 +6,7 @@
         <attribute name="avatarOriginal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFriend" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
@@ -66,7 +67,7 @@
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GenericUserManagedModel" positionX="-36" positionY="126" width="128" height="165"/>
+        <element name="GenericUserManagedModel" positionX="-36" positionY="126" width="128" height="180"/>
         <element name="MessageCoreModel" positionX="-63" positionY="81" width="128" height="180"/>
         <element name="PersonalUserModel" positionX="-63" positionY="-18" width="128" height="240"/>
         <element name="RoomAttributeManagedModel" positionX="-54" positionY="108" width="128" height="90"/>

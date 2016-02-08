@@ -46,7 +46,6 @@ class ReadMessageTableViewCell: UITableViewCell {
 
                     var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userGeneric.avatarOriginal
                     var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-                    URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
                  
                     ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
 

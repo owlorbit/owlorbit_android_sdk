@@ -28,20 +28,16 @@ class UserSearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func populate(genericUser:GenericUserModel){
+    func populate(genericUser:GenericUserManagedModel){
         txtName.text = genericUser.firstName + " " + genericUser.lastName
         
         var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + genericUser.avatarOriginal
         var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-        
-        //let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
-        //}
-        
+                
         let url = NSURL(string: profileImageUrl)
         self.imgAvatar.layer.masksToBounds = true
         self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
-        
-        self.imgAvatar!.sd_setImageWithURL(url, placeholderImage: UIImage(named: "owl_orbit"))        
+        self.imgAvatar!.sd_setImageWithURL(url, placeholderImage: UIImage(named: "owl_orbit"))
     }
     
     class func cellHeight()->CGFloat{

@@ -21,6 +21,7 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.sharedApplication().statusBarStyle = .Default
         self.navigationController?.setNavigationBarHidden(true, animated: false);
         let dismissTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(dismissTap)
@@ -46,6 +47,16 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = .Default
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
 
     func submitRegistration(firstName:String, lastName:String){

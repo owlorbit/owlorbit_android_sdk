@@ -12,7 +12,7 @@ class ResetPasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UIApplication.sharedApplication().statusBarStyle = .Default
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +21,15 @@ class ResetPasswordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = .Default
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+    }
 
     /*
     // MARK: - Navigation

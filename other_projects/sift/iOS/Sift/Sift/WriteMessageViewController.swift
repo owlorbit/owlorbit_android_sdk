@@ -21,7 +21,6 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     var pendingFriendArrayListOthersSent:NSMutableArray = [];
     var pendingFriendArrayListYouSent:NSMutableArray = [];
     var initialUserArrayList:NSMutableArray = [];
-    //var sections:NSMutableArray = ["Friend or Foe?", "Requests (By You)", "Friends"];
     var LOCK_PUSH:Bool = false
     
     override func viewDidLoad() {
@@ -48,6 +47,21 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
 
         self.tableView.registerNib(UINib(nibName: "UserSearchPendingHeaderView", bundle:nil), forHeaderFooterViewReuseIdentifier: "UserSearchPendingHeaderView")
 
+        
+        let btnName = UIButton()
+        btnName.setImage(UIImage(named: "group_chat"), forState: .Normal)
+        
+        btnName.setImage(UIImage(named: "group_selected_chat"), forState: .Selected)
+        btnName.setImage(UIImage(named: "group_selected_chat"), forState: .Focused)
+        btnName.setImage(UIImage(named: "group_selected_chat"), forState: .Highlighted)
+        btnName.frame = CGRectMake(0, 0, 30, 26)
+        btnName.addTarget(self, action: Selector("btnGroupClick"), forControlEvents: .TouchUpInside)
+        
+        //.... Set Right/Left Bar Button item
+        let rightBarButton = UIBarButtonItem()
+        rightBarButton.customView = btnName
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
         loadLists()
         nofucksrightnow()
         
@@ -59,6 +73,13 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         return true
     }
     
+    func btnGroupClick(){
+        let vc = AddGroupViewController(nibName: "AddGroupViewController", bundle: nil)
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true )
+
+    }
+    
     func initTableViewSettings(){
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
@@ -68,7 +89,6 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             // Do not forget to call dg_stopLoading() at the end
             //okay...
             self?.loadLists()
-            self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
@@ -125,12 +145,14 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     
     func loadLists(){
 
+        self.userArrayList = NSMutableArray(array: GenericUserManagedModel.getByFriend())
         UserApiHelper.acceptedFriends({
             (JSON) in
 
-            self.userArrayList = self.defaultFriendList();
+            //self.userArrayList = self.defaultFriendList();
             for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
-                var genericUser:GenericUserModel = GenericUserModel(json: subJson);
+                //var genericUser:GenericUserModel = GenericUserModel(json: subJson, isFriend:true);
+                var genericUser:GenericUserManagedModel = GenericUserManagedModel.initWithJsonFriend(subJson);
                 
                 if(!self.isDuplicate(genericUser)){
                     self.userArrayList.addObject(genericUser)
@@ -138,14 +160,15 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             }
 
             self.tableView.reloadData()
+            self.tableView.dg_stopLoading()
             
         });
     }
     
     
-    func isDuplicate(genericUserModel:GenericUserModel)->Bool{
+    func isDuplicate(genericUserModel:GenericUserManagedModel)->Bool{
         
-        for user: GenericUserModel in (userArrayList as NSArray as! [GenericUserModel] ) {
+        for user: GenericUserManagedModel in (userArrayList as NSArray as! [GenericUserManagedModel] ) {
             
             if genericUserModel.userId == user.userId {
                 return true
@@ -174,7 +197,8 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             //self.userArrayList = self.defaultFriendList();
             self.userArrayList = []
             for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
-                var genericUser:GenericUserModel = GenericUserModel(json: subJson);
+                //var genericUser:GenericUserModel = GenericUserModel(json: subJson);
+                var genericUser:GenericUserManagedModel = GenericUserManagedModel.initWithJsonFriend(subJson);
                 
                 if(!self.isDuplicate(genericUser)){
                     self.userArrayList.addObject(genericUser)
@@ -223,8 +247,8 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UserSearchTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserSearchTableViewCell")! as! UserSearchTableViewCell
 
-        var genericUser:GenericUserModel;
-        genericUser = self.userArrayList[indexPath.row] as! GenericUserModel
+        var genericUser:GenericUserManagedModel;
+        genericUser = self.userArrayList[indexPath.row] as! GenericUserManagedModel
         cell?.populate(genericUser)
         return cell!
     }
@@ -240,9 +264,9 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         //if not a friend, send a friend request if friend request not sent....
         //if a friend, start a message.
         //var genericUser:GenericUserModel = self.userArrayList[indexPath.row] as! GenericUserModel
-        var genericUser:GenericUserModel;
+        var genericUser:GenericUserManagedModel;
         
-        genericUser = self.userArrayList[indexPath.row] as! GenericUserModel
+        genericUser = self.userArrayList[indexPath.row] as! GenericUserManagedModel
 
         var userIds:NSMutableArray = NSMutableArray()
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;

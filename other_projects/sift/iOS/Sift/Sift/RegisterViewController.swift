@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController, Registration1Delegate {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UIApplication.sharedApplication().statusBarStyle = .Default
         self.navigationController?.setNavigationBarHidden(true, animated: false);
         let dismissTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(dismissTap)
@@ -49,6 +49,16 @@ class RegisterViewController: UIViewController, Registration1Delegate {
     @IBAction func btnNextTouchUp(sender: AnyObject) {
         var viewController : RegisterBasicInfoViewController = RegisterBasicInfoViewController();
         self.navigationController!.pushViewController(viewController, animated: true)
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = .Default
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
 
     override func didReceiveMemoryWarning() {

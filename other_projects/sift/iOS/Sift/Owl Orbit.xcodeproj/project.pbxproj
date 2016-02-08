@@ -114,6 +114,13 @@
 		B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */; };
 		B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */; };
 		B8E4E7EC1C02B6CF00995964 /* EncryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */; };
+		B8F512941C61C8F5007DCFD5 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */; };
+		B8F512951C61C8F5007DCFD5 /* AddGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512931C61C8F5007DCFD5 /* AddGroupViewController.xib */; };
+		B8F512991C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512971C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift */; };
+		B8F5129A1C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512981C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib */; };
+		B8F5129C1C65800B007DCFD5 /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5129B1C65800B007DCFD5 /* MapHelper.swift */; };
+		B8F5129F1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5129D1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift */; };
+		B8F512A01C681217007DCFD5 /* UserGroupSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F5129E1C681217007DCFD5 /* UserGroupSelectTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,6 +259,14 @@
 		B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptUtil.swift; sourceTree = "<group>"; };
+		B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
+		B8F512931C61C8F5007DCFD5 /* AddGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGroupViewController.xib; sourceTree = "<group>"; };
+		B8F512961C61CB3B007DCFD5 /* Sift 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 2.xcdatamodel"; sourceTree = "<group>"; };
+		B8F512971C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDiscoverTableViewCell.swift; sourceTree = "<group>"; };
+		B8F512981C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDiscoverTableViewCell.xib; sourceTree = "<group>"; };
+		B8F5129B1C65800B007DCFD5 /* MapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
+		B8F5129D1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupSelectTableViewCell.swift; sourceTree = "<group>"; };
+		B8F5129E1C681217007DCFD5 /* UserGroupSelectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserGroupSelectTableViewCell.xib; sourceTree = "<group>"; };
 		CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -312,6 +327,8 @@
 			children = (
 				B87654611C03F53F00190B9B /* WriteMessageViewController.swift */,
 				B87654621C03F53F00190B9B /* WriteMessageViewController.xib */,
+				B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */,
+				B8F512931C61C8F5007DCFD5 /* AddGroupViewController.xib */,
 			);
 			name = WriteMessage;
 			sourceTree = "<group>";
@@ -358,8 +375,12 @@
 			children = (
 				B866DFBD1C0A92B000BF8A79 /* UserSearchPendingHeaderView.swift */,
 				B866DFBB1C0A8A8D00BF8A79 /* UserSearchPendingHeaderView.xib */,
+				B8F5129D1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift */,
+				B8F5129E1C681217007DCFD5 /* UserGroupSelectTableViewCell.xib */,
 				B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */,
 				B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */,
+				B8F512971C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift */,
+				B8F512981C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib */,
 			);
 			name = UserList;
 			sourceTree = "<group>";
@@ -483,6 +504,7 @@
 				B895A2AE1C55781400B2A08D /* AnnotationButton.swift */,
 				B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */,
 				B89F3AD21C5AF6D4008BFFA1 /* LocationHelper.swift */,
+				B8F5129B1C65800B007DCFD5 /* MapHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -799,6 +821,7 @@
 				B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */,
 				B8BAD25C1BF17F6C00DC7F60 /* ChatThreadViewController.xib in Resources */,
 				B870CEE51BFAF48100F47929 /* RegistrationNextView.xib in Resources */,
+				B8F5129A1C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib in Resources */,
 				B870CEC71BF5AF3800F47929 /* RegisterBasicInfoViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
 				B863BED01C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib in Resources */,
@@ -809,6 +832,7 @@
 				B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */,
 				B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */,
 				B8068B6E1C22364400EE00CA /* ProfileSettingImageUploadViewController.xib in Resources */,
+				B8F512951C61C8F5007DCFD5 /* AddGroupViewController.xib in Resources */,
 				B863BED41C56E93000C8BA01 /* MapInstructionsTableViewCell.xib in Resources */,
 				B8068B731C22379200EE00CA /* UserLogoutTableViewCell.xib in Resources */,
 				B866DFBC1C0A8A8D00BF8A79 /* UserSearchPendingHeaderView.xib in Resources */,
@@ -822,6 +846,7 @@
 				B8BC486A1C284827006A345E /* ChatTextMessageViewController.xib in Resources */,
 				B892D65F1C1A45700091F128 /* PreloadHomeViewController.xib in Resources */,
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
+				B8F512A01C681217007DCFD5 /* UserGroupSelectTableViewCell.xib in Resources */,
 				B8068B691C2129E300EE00CA /* UserProfileSearchTableViewCell.xib in Resources */,
 				B87654641C03F53F00190B9B /* WriteMessageViewController.xib in Resources */,
 				B8408C4D1C58577100449BEA /* UserProfileViewController.xib in Resources */,
@@ -913,6 +938,7 @@
 				B8CF9D531C3F4B6400E3898B /* UserManagedModel.swift in Sources */,
 				B866DFC41C0D22D100BF8A79 /* RoomApiHelper.swift in Sources */,
 				B892D6611C1A4FD70091F128 /* FullScreenLoaderHelper.swift in Sources */,
+				B8F512991C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift in Sources */,
 				B870CED01BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
 				B87654631C03F53F00190B9B /* WriteMessageViewController.swift in Sources */,
 				B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */,
@@ -949,6 +975,7 @@
 				B866DFB11C061CA000BF8A79 /* UserSearchTableViewCell.swift in Sources */,
 				B870CED51BFA9D2700F47929 /* LoginTableViewCell.swift in Sources */,
 				B866DFCB1C0E733300BF8A79 /* AUIAutoGrowingTextView.m in Sources */,
+				B8F5129F1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift in Sources */,
 				B8792A2A1BEB15CE00BE05ED /* AppDelegate.swift in Sources */,
 				B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */,
 				B866DFCE1C0E811C00BF8A79 /* ChatMapKeyboardView.swift in Sources */,
@@ -965,6 +992,8 @@
 				B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */,
 				B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */,
 				B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */,
+				B8F512941C61C8F5007DCFD5 /* AddGroupViewController.swift in Sources */,
+				B8F5129C1C65800B007DCFD5 /* MapHelper.swift in Sources */,
 				B863BED51C56E93000C8BA01 /* MapInstructionsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1101,8 +1130,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1125,8 +1154,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1235,9 +1264,10 @@
 		B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B8F512961C61CB3B007DCFD5 /* Sift 2.xcdatamodel */,
 				B8792A311BEB15CE00BE05ED /* Sift.xcdatamodel */,
 			);
-			currentVersion = B8792A311BEB15CE00BE05ED /* Sift.xcdatamodel */;
+			currentVersion = B8F512961C61CB3B007DCFD5 /* Sift 2.xcdatamodel */;
 			path = Sift.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

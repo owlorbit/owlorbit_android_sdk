@@ -38,12 +38,11 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     let spanY:Double = 0.00725;
 
     var annotations:NSMutableArray = NSMutableArray();
-    
     var messageRecentlySent:Bool = false;
     var profileImage:UIImage = UIImage()
     
     var locationDict = [String:UserPointAnnotation]()
-    var timerGetLocations = NSTimer()
+    var timerGetLocations:NSTimer?
     var RETRIEVE_LOCATION_LOCK:Bool = false
     var destination: MKMapItem?
 
@@ -98,7 +97,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         initMapNotifications()
         //hideInstructions()
-        
+
         zoomToCurrentLocation()
         enableMapViewTracking()
     }
@@ -118,7 +117,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func hideInstructions(){
         btnInstructions.hidden = true;
         
-        
         UIView.animateWithDuration(0.5) {
             self.btnInstructions.alpha = 0;
             self.view.layoutIfNeeded()
@@ -128,7 +126,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func showInstructions(){
         btnInstructions.hidden = false;
 
-        
         UIView.animateWithDuration(0.5) {
             self.btnInstructions.alpha = 1;
             self.view.layoutIfNeeded()
@@ -257,8 +254,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     
     @IBAction func btnDriveClick(sender: AnyObject) {
         
-        /*
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        /*UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.topTargetUserMenu.constant = 0
             self.view.layoutIfNeeded()
         })*/
@@ -345,7 +341,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
                 downloader.downloadImage(URLRequest: URLRequest) { response in
                     if let image = response.result.value {
-                        
                         userData.originalAvatar = image
                         userData.avatarImg = image
                         userData.avatarImg = userData.avatarImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
@@ -358,13 +353,15 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
 
     func initLocations(){
-        timerGetLocations = NSTimer.scheduledTimerWithTimeInterval(3.5, target: self, selector: "timerCallLocations", userInfo: nil, repeats: true)
+        timerCallLocations()
+        timerGetLocations = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "timerCallLocations", userInfo: nil, repeats: true)
     }
     
     func timerCallLocations(){
         
         if(RETRIEVE_LOCATION_LOCK){return;}
-
+        
+        print("timer called")
         RETRIEVE_LOCATION_LOCK = true
         LocationApiHelper.getRoomLocations(self.roomId,resultJSON:{
         (JSON) in
@@ -373,22 +370,26 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
     
     func updateLocations(json:JSON){
-        //print("Process locations.. \(json)")
 
-        for (key,subJson):(String, SwiftyJSON.JSON) in json["user_locations"] {
-            var location:LocationModel = LocationModel(json: subJson);
+        do {
+            for (key,subJson):(String, SwiftyJSON.JSON) in json["user_locations"] {
+                var location:LocationModel = LocationModel(json: subJson);
 
-            var userPointAnnotation:UserPointAnnotation = getAnnotationByUserId(location.userId)
-            userPointAnnotation.coordinate = location.coordinate!
-            userPointAnnotation.title = userPointAnnotation.userModel.firstName.capitalizedString
-
+                var userPointAnnotation:UserPointAnnotation? = getAnnotationByUserId(location.userId)
+                if(userPointAnnotation != nil){
+                    userPointAnnotation!.coordinate = location.coordinate!
+                    userPointAnnotation!.title = userPointAnnotation!.userModel.firstName.capitalizedString
+                }
+            }
+        } catch _{
+            print("error catch")
         }
 
         self.RETRIEVE_LOCATION_LOCK = false
     }
 
     //make device id eventually...
-    func getAnnotationByUserId(userId:String)->UserPointAnnotation{
+    func getAnnotationByUserId(userId:String)->UserPointAnnotation?{
 
         for val in self.annotations{
             var userPointAnnotation:UserPointAnnotation = val as! UserPointAnnotation
@@ -396,18 +397,24 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 return userPointAnnotation
             }
         }
-        return UserPointAnnotation();
+        return nil;
     }
     
     func addUser(userModel:GenericUserManagedModel){
         
         //make sure userModel doesn't exist in annotations list...
-        var userPoint:UserPointAnnotation = UserPointAnnotation()
-        userPoint.userModel = userModel
-        userPoint.coordinate = CLLocationCoordinate2D(latitude: 40, longitude: -72)
+        
+        //make sure user doesn't already exist..
+        
+        if(!MapHelper.doesUserExist(self.annotations, userModel:userModel)){
+        
+            var userPoint:UserPointAnnotation = UserPointAnnotation()
+            userPoint.userModel = userModel
+            //userPoint.coordinate = CLLocationCoordinate2D(latitude: 40, longitude: -72)
 
-        self.annotations.addObject(userPoint)
-        self.mapView.addAnnotation(userPoint)
+            self.annotations.addObject(userPoint)
+            self.mapView.addAnnotation(userPoint)
+        }
     }
     
     func dismissKeyboard() {
@@ -574,6 +581,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             } else {
                 pinView!.annotation = annotation
             }
+        
+            if(!CLLocationCoordinate2DIsValid(userPointAnnotation.coordinate)){
+                return nil;
+            }
 
             pinView!.canShowCallout = true
 
@@ -680,12 +691,19 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.timerGetLocations.invalidate()
+        timerGetLocations?.invalidate()
+        timerGetLocations = nil
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        timerGetLocations?.invalidate()
+        timerGetLocations = nil
     }
 
     /*

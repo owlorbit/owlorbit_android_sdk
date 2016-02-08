@@ -56,8 +56,8 @@ class Location extends CI_Controller {
 				$typeOfError = -2;
 				throw new Exception("Session is invalid.");	
 			}
-		    
-		    $allLocationsInRoom = $this->location_model->get_all_locations_in_room($userId, $roomId);
+
+		    $allLocationsInRoom = $this->location_model->get_all_standard_locations_in_room($userId, $roomId);
 			$response = array(
 		    	'message' => 'room locations',		    	
 		    	'user_locations' => $allLocationsInRoom

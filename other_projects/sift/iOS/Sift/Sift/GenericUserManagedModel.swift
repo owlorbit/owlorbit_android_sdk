@@ -24,9 +24,11 @@ class GenericUserManagedModel: NSManagedObject {
     @NSManaged var phoneNumber:String
     @NSManaged var accountType:String
     @NSManaged var avatarOriginal:String
+    @NSManaged var isFriend:Bool
     //@NSManaged var avatarImg:NSData
     var avatarImg:UIImage = UIImage()
     var originalAvatar:UIImage = UIImage()
+    var checked:Bool = false
     
     class func initWithJson(json:JSON, resultGenericUser:(GenericUserManagedModel) -> Void){
 
@@ -110,6 +112,70 @@ class GenericUserManagedModel: NSManagedObject {
         ApplicationManager.shareCoreDataInstance.saveContext()
         return obj;
     }
+    
+    class func initWithJsonFriend(json:JSON)->GenericUserManagedModel{
+        
+        let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
+        let fetchRequest = NSFetchRequest(entityName: "GenericUserManagedModel")
+        let entity = NSEntityDescription.entityForName("GenericUserManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
+        var obj = GenericUserManagedModel.getById(json["id"].string!)
+        
+        obj.userId = (json["id"].error == nil) ? json["id"].string! : ""
+        obj.firstName = (json["first_name"].error == nil) ? json["first_name"].string! : ""
+        obj.lastName = (json["last_name"].error == nil) ? json["last_name"].string! : ""
+        obj.email = (json["email"].error == nil) ? json["email"].string! : ""
+        obj.phoneNumber = (json["phone_number"].error == nil) ? json["phone_number"].string! : ""
+        obj.accountType = (json["account_type"].error == nil) ? json["account_type"].string! : ""
+        obj.avatarOriginal = (json["avatar_original"].error == nil) ? json["avatar_original"].string! : ""
+        obj.isFriend = true
+        
+        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + obj.avatarOriginal
+        var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+        URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
+            
+            print("save here..?")
+            /*
+            if let image = response.result.value {
+                //obj.avatarImg = UIImagePNGRepresentation(image.roundImage())!
+                obj.avatarImg = image.roundImage()
+            }else{
+                //obj.avatarImg = UIImagePNGRepresentation(UIImage(named:"owl_orbit")!)!
+                obj.avatarImg = UIImage(named:"owl_orbit")!
+            }*/
+            
+            ApplicationManager.shareCoreDataInstance.saveContext()
+        }
+        
+        ApplicationManager.shareCoreDataInstance.saveContext()
+        return obj;
+    }
+    
+    class func getByFriend()->[GenericUserManagedModel]{
+        let entity = NSEntityDescription.entityForName("GenericUserManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
+        let resultPredicate = NSPredicate(format: "isFriend == true")
+        
+        let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
+        let fetchRequest = NSFetchRequest(entityName: "GenericUserManagedModel")
+        fetchRequest.predicate = resultPredicate
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true)]
+        
+        do {
+            let fetchResults = try coreDataHelper.managedObjectContext.executeFetchRequest(fetchRequest) as? [GenericUserManagedModel]
+            
+            if (!fetchResults!.isEmpty && fetchResults?.count > 0) {
+                return fetchResults!
+            }
+        } catch {
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+
+        return []
+    }
+    
     
     class func getById(roomId:String)->GenericUserManagedModel{
         let entity = NSEntityDescription.entityForName("GenericUserManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)

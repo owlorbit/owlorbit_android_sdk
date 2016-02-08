@@ -54,7 +54,6 @@ class RoomAttributeManagedModel: NSManagedObject {
                 {
                     (genUser) in
                     
-                    print("right here user_count: \(json["room_attributes"].count)")
                     objIndex++
 
                     var genericUser:GenericUserManagedModel = genUser

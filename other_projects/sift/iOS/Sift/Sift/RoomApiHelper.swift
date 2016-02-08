@@ -99,8 +99,6 @@ class RoomApiHelper{
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         var url:String = ProjectConstants.ApiBaseUrl.value + "/room/attribute/"
         let data = ["roomId": roomId, "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
-        
-        print("fucawef \(roomId)")
 
         Alamofire.request(.POST, url, parameters: data, encoding: .URL)
             .responseJSON { response in

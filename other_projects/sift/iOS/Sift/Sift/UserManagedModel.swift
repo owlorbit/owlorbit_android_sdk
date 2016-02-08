@@ -24,6 +24,7 @@ class UserManagedModel: NSManagedObject {
     @NSManaged var phoneNumber:String
     
     @NSManaged var id:String
+    
 
     /*
     class func insertFromJSON(serverReturnedData:JSON){

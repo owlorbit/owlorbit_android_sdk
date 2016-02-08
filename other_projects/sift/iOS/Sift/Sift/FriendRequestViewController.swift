@@ -33,6 +33,9 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         self.title = "Find Friends"
         navigationController?.navigationBar.translucent = false
         navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
@@ -50,7 +53,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         tap.cancelsTouchesInView = false;
         view.addGestureRecognizer(tap)
 
-        self.tableView.registerNib(UINib(nibName: "UserSearchTableViewCell", bundle:nil), forCellReuseIdentifier: "UserSearchTableViewCell")
+        self.tableView.registerNib(UINib(nibName: "UserDiscoverTableViewCell", bundle:nil), forCellReuseIdentifier: "UserDiscoverTableViewCell")
         self.tableView.registerNib(UINib(nibName: "UserSearchPendingHeaderView", bundle:nil), forHeaderFooterViewReuseIdentifier: "UserSearchPendingHeaderView")
 
         loadLists()
@@ -59,7 +62,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         initTableViewSettings()
     }
 
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
+    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
         return true
     }
@@ -74,7 +77,6 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
             //okay...
 
             self?.loadLists()
-            self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
@@ -154,6 +156,8 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
                 self.pendingFriendArrayListOthersSent.addObject(genericUser)
             }
             self.tableView.reloadData()
+            
+            self.tableView.dg_stopLoading()
         });
         
     }
@@ -246,7 +250,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UserSearchTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserSearchTableViewCell")! as! UserSearchTableViewCell
+        var cell:UserDiscoverTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserDiscoverTableViewCell")! as! UserDiscoverTableViewCell
 
         var genericUser:GenericUserModel;
         if(indexPath.section == 0){

@@ -13,7 +13,7 @@ import Alamofire
 class LocationApiHelper{
 
     class func getRoomLocations(roomId:String, resultJSON:(JSON) -> Void) -> Void {
-        
+
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         var url:String = ProjectConstants.ApiBaseUrl.value + "/location/get_all_locations"
         let data = ["roomId": roomId, "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]

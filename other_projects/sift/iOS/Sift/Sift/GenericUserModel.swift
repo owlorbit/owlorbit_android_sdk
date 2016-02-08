@@ -22,6 +22,8 @@ class GenericUserModel: NSObject {
     var avatarOriginal:String = ""
     var avatarImg:UIImage = UIImage()
     var originalAvatar:UIImage = UIImage()
+    var isFriend:Bool = false;
+    
     
     init(json:JSON){
         self.userId = (json["id"].error == nil) ? json["id"].string! : ""
@@ -31,6 +33,17 @@ class GenericUserModel: NSObject {
         self.phoneNumber = (json["phone_number"].error == nil) ? json["phone_number"].string! : ""
         self.accountType = (json["account_type"].error == nil) ? json["account_type"].string! : ""
         self.avatarOriginal = (json["avatar_original"].error == nil) ? json["avatar_original"].string! : ""
+    }
+    
+    init(json:JSON, isFriend:Bool){
+        self.userId = (json["id"].error == nil) ? json["id"].string! : ""
+        self.firstName = (json["first_name"].error == nil) ? json["first_name"].string! : ""
+        self.lastName = (json["last_name"].error == nil) ? json["last_name"].string! : ""
+        self.email = (json["email"].error == nil) ? json["email"].string! : ""
+        self.phoneNumber = (json["phone_number"].error == nil) ? json["phone_number"].string! : ""
+        self.accountType = (json["account_type"].error == nil) ? json["account_type"].string! : ""
+        self.avatarOriginal = (json["avatar_original"].error == nil) ? json["avatar_original"].string! : ""
+        self.isFriend = isFriend;
     }
 
 }
