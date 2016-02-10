@@ -182,7 +182,7 @@ class Message extends CI_Controller {
 
 		$response = array();
 		try{
-
+			
 			if(!isset($_POST['userIds'])){
 				throw new Exception("Users were not sent!");
 			}
@@ -192,6 +192,8 @@ class Message extends CI_Controller {
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
 			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
 			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+			$name = $this->security->xss_clean(strip_tags($this->input->post('name')));
+			
 
 			if($sessionToken == -1){
 				$typeOfError = -1;
@@ -206,8 +208,15 @@ class Message extends CI_Controller {
 				$typeOfError = -2;
 				throw new Exception("Session is invalid.");	
 			}
-			//array_push($userIds, $userId);
-		    $roomId = $this->message_model->initiate_room($userId, $userIds);
+			//array_push($userIds, $userId);		    
+
+		    if($name == ""){
+				$roomId = $this->message_model->initiate_room($userId, $userIds);
+			}else{
+				$isFriendsOnly = $this->security->xss_clean(strip_tags($this->input->post('isFriendsOnly')));
+				$isPublic = $this->security->xss_clean(strip_tags($this->input->post('isPublic')));
+				$roomId = $this->message_model->initiate_group_room($userId, $userIds, $name, $isFriendsOnly, $isPublic);				
+			}
 
 			$response = array(
 		    	'message' => 'room initiated added!',

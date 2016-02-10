@@ -13,6 +13,10 @@ struct ProjectConstants {
         static let value = "http://api.owlorbit.com"
     }
     
+    struct CoreData{
+        static let version = "2"
+    }
+    
     struct AppColors{
         static let ORANGE = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
         static let PRIMARY = UIColor(red:131.0/255.0, green:134.0/255.0, blue:169.0/255.0, alpha:1.0)

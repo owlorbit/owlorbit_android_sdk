@@ -23,12 +23,19 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     var initialUserArrayList:NSMutableArray = [];
     var LOCK_PUSH:Bool = false
     
+    var selectedUserArrayList:NSMutableArray = [];
+    
+    var homeBtn : UIBarButtonItem?
+    
+    var enableGroupSelected:Bool = false;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         LOCK_PUSH = false
         self.viewSearchContainer.layer.cornerRadius = 4
         self.viewSearchContainer.layer.masksToBounds = true
 
+        self.title = "Chat"
         self.txtSearch.borderStyle = UITextBorderStyle.None
         self.txtSearch.attributedPlaceholder = NSAttributedString(string:self.txtSearch.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         self.txtSearch.delegate = self;
@@ -43,14 +50,20 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         tap.cancelsTouchesInView = false;
         view.addGestureRecognizer(tap)
 
-        self.tableView.registerNib(UINib(nibName: "UserSearchTableViewCell", bundle:nil), forCellReuseIdentifier: "UserSearchTableViewCell")
+        self.tableView.registerNib(UINib(nibName: "UserGroupSelectTableViewCell", bundle:nil), forCellReuseIdentifier: "UserGroupSelectTableViewCell")
 
         self.tableView.registerNib(UINib(nibName: "UserSearchPendingHeaderView", bundle:nil), forHeaderFooterViewReuseIdentifier: "UserSearchPendingHeaderView")
 
-        
+        initGroupButton()
+        loadLists()
+        nofucksrightnow()
+        initTableViewSettings()
+    }
+    
+    
+    func initGroupButton(){
         let btnName = UIButton()
         btnName.setImage(UIImage(named: "group_chat"), forState: .Normal)
-        
         btnName.setImage(UIImage(named: "group_selected_chat"), forState: .Selected)
         btnName.setImage(UIImage(named: "group_selected_chat"), forState: .Focused)
         btnName.setImage(UIImage(named: "group_selected_chat"), forState: .Highlighted)
@@ -61,11 +74,11 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         let rightBarButton = UIBarButtonItem()
         rightBarButton.customView = btnName
         self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        loadLists()
-        nofucksrightnow()
-        
-        initTableViewSettings()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.LOCK_PUSH = false;
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
@@ -74,11 +87,47 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     }
     
     func btnGroupClick(){
+        
+        /*
         let vc = AddGroupViewController(nibName: "AddGroupViewController", bundle: nil)
         vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true )
+        self.navigationController?.pushViewController(vc, animated: true )*/
+        
+        enableGroupSelected = true;
+        
+        var rightBtn : UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "btnNextClick:")
+        self.navigationItem.rightBarButtonItem = rightBtn
 
+        var cancelBtn : UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "btnCancelClick:")
+        
+        homeBtn = self.navigationItem.leftBarButtonItem
+        self.navigationItem.leftBarButtonItem = cancelBtn
+        
+        self.tableView.reloadData()
     }
+    
+    func btnCancelClick(sender: AnyObject){
+
+        enableGroupSelected = false
+        self.navigationItem.leftBarButtonItem = homeBtn
+        initGroupButton()
+        tableView.reloadData()
+    }
+    
+    func btnNextClick(sender: AnyObject){
+        
+        
+        if(selectedUserArrayList.count == 0){
+            AlertHelper.createPopupMessage("Please select a user!", title: "Hold Up")
+        }else{
+            let vc = GroupSettingsStep1ViewController(nibName: "GroupSettingsStep1ViewController", bundle: nil)
+            vc.selectedUserArrayList = selectedUserArrayList
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true )
+        }
+    }
+
+    
     
     func initTableViewSettings(){
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -217,7 +266,7 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     }
     
     func defaultFriendList() ->NSMutableArray{
-        return self.initialUserArrayList;
+        return NSMutableArray(array: GenericUserManagedModel.getByFriend());
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
@@ -241,15 +290,28 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UserSearchTableViewCell.cellHeight();
+        return UserGroupSelectTableViewCell.cellHeight();
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UserSearchTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserSearchTableViewCell")! as! UserSearchTableViewCell
+        var cell:UserGroupSelectTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserGroupSelectTableViewCell")! as! UserGroupSelectTableViewCell
 
         var genericUser:GenericUserManagedModel;
         genericUser = self.userArrayList[indexPath.row] as! GenericUserManagedModel
-        cell?.populate(genericUser)
+        
+        if(enableGroupSelected){
+            if(isInCheckedList(genericUser.userId)){
+                genericUser.checked = true;
+            }else{
+                genericUser.checked = false;
+            }
+            
+            cell?.populate(genericUser)
+        }else{
+            cell?.populateNoMulti(genericUser)
+        }
+        
+        
         return cell!
     }
     
@@ -259,14 +321,64 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         }
         return true
     }
+    
+    func addUserToCheckedList(userId:String){
+        for userIdInArray in (selectedUserArrayList as NSArray as! [String]) {
+            if(userIdInArray == userId){
+                print("already added!")
+                return;
+            }
+        }
+        
+        selectedUserArrayList.addObject(userId)
+    }
+    
+    
+    func removeUserFromCheckedList(userId:String){
+        
+        for (var i:Int=0; i < selectedUserArrayList.count; i++) {
+            var userIdInArray:String = selectedUserArrayList.objectAtIndex(i) as! String
+            if(userId == userIdInArray){
+                selectedUserArrayList.removeObjectAtIndex(i)
+                return;
+            }
+        }
+    }
+    
+    func isInCheckedList(userId:String)->Bool{
+        for (var i:Int=0; i < selectedUserArrayList.count; i++) {
+            var userIdInArray:String = selectedUserArrayList.objectAtIndex(i) as! String
+            if(userId == userIdInArray){
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
         //if not a friend, send a friend request if friend request not sent....
         //if a friend, start a message.
         //var genericUser:GenericUserModel = self.userArrayList[indexPath.row] as! GenericUserModel
         var genericUser:GenericUserManagedModel;
-        
         genericUser = self.userArrayList[indexPath.row] as! GenericUserManagedModel
+        
+        if(enableGroupSelected){
+            
+            
+            if(genericUser.checked){
+                genericUser.checked = false;
+                removeUserFromCheckedList(genericUser.userId)
+            }else{
+                genericUser.checked = true;
+                addUserToCheckedList(genericUser.userId)
+            }
+            self.tableView.reloadData()
+            return;
+        }
+        
 
         var userIds:NSMutableArray = NSMutableArray()
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
@@ -274,10 +386,14 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         userIds.addObject(user.userId)
         
         print("dis: \(genericUser.userId)");
+        FullScreenLoaderHelper.startLoader()
 
         ChatApiHelper.initChatMessage("Init Message", userIds: userIds, resultJSON:{
+            
             (JSON) in
             
+            
+            FullScreenLoaderHelper.removeLoader();
             let roomId:Int? = JSON["room_id"].int
             //var roomData:RoomManagedModel? = RoomManagedModel.getById(String(roomId))
 
@@ -334,10 +450,6 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
                         });
                     }
                 });
-                
-                
-                
-                
             }
 
         });

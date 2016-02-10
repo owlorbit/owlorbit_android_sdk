@@ -61,13 +61,10 @@ class AddGroupViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         return true
     }
     
-    func btnNextClick(){
-        /*let vc = AddGroupViewController(nibName: "AddGroupViewController", bundle: nil)
+    func btnNextClick(sender: AnyObject){
+        let vc = GroupSettingsStep1ViewController(nibName: "GroupSettingsStep1ViewController", bundle: nil)
         vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true )*/
-        
-        print("print next..")
-        
+        self.navigationController?.pushViewController(vc, animated: true )
     }
     
     func initTableViewSettings(){

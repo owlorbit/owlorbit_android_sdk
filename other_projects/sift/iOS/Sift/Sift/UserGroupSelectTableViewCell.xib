@@ -22,7 +22,7 @@
                             <constraint firstAttribute="width" constant="50" id="sjO-fg-3Vf"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tim Nuwin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-T4-dUw">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tim Nuwin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-T4-dUw">
                         <rect key="frame" x="66" y="8" width="204" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="190" id="uVE-Px-fBJ"/>
@@ -40,50 +40,95 @@
                         <rect key="frame" x="0.0" y="68" width="320" height="1"/>
                         <color key="backgroundColor" red="1" green="0.75686274509999996" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eUM-Ws-1ca">
+                        <rect key="frame" x="278" y="20" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="4ge-bU-kYk"/>
+                            <constraint firstAttribute="width" constant="30" id="Gz3-4b-DQ3"/>
+                            <constraint firstAttribute="height" constant="25" id="P2M-3D-mam"/>
+                            <constraint firstAttribute="width" constant="30" id="ctL-iO-Ef4"/>
+                            <constraint firstAttribute="width" constant="35" id="gww-h2-Ek9"/>
+                            <constraint firstAttribute="height" constant="30" id="odH-fG-ldd"/>
+                            <constraint firstAttribute="width" constant="25" id="qOl-Dt-7L2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4ge-bU-kYk"/>
+                                <exclude reference="Gz3-4b-DQ3"/>
+                                <exclude reference="ctL-iO-Ef4"/>
+                                <exclude reference="gww-h2-Ek9"/>
+                                <exclude reference="odH-fG-ldd"/>
+                            </mask>
+                        </variation>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_icon" translatesAutoresizingMaskIntoConstraints="NO" id="rqW-pr-RWC">
-                        <rect key="frame" x="278" y="26" width="20" height="15"/>
+                        <rect key="frame" x="282" y="27" width="17" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="G50-ed-A7j"/>
                             <constraint firstAttribute="height" constant="22" id="WYx-5P-VeZ"/>
+                            <constraint firstAttribute="width" constant="17" id="bNM-W5-lxX"/>
                             <constraint firstAttribute="width" constant="30" id="e0W-X4-bTh"/>
+                            <constraint firstAttribute="height" constant="12" id="jMM-nV-ivK"/>
                             <constraint firstAttribute="width" constant="20" id="kWl-Pr-6Ke"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="G50-ed-A7j"/>
                                 <exclude reference="WYx-5P-VeZ"/>
                                 <exclude reference="e0W-X4-bTh"/>
+                                <exclude reference="kWl-Pr-6Ke"/>
                             </mask>
                         </variation>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="l3J-T4-dUw" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="6rQ-t7-BtP"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="rqW-pr-RWC" secondAttribute="trailing" constant="13" id="Cv9-2c-zRY"/>
+                    <constraint firstItem="eUM-Ws-1ca" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="FYo-T0-ljS"/>
                     <constraint firstItem="rqW-pr-RWC" firstAttribute="leading" secondItem="l3J-T4-dUw" secondAttribute="trailing" constant="8" id="GPz-3l-jYk"/>
                     <constraint firstItem="rqW-pr-RWC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="V5I-Ud-u94"/>
                     <constraint firstAttribute="trailingMargin" secondItem="rqW-pr-RWC" secondAttribute="trailing" constant="14" id="aps-ew-omd"/>
                     <constraint firstItem="l3J-T4-dUw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bIz-iB-Sf1"/>
                     <constraint firstItem="2sM-Ar-JxX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bi9-JV-Q9T"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eUM-Ws-1ca" secondAttribute="trailing" constant="9" id="dqO-hz-lhy"/>
                     <constraint firstItem="2sM-Ar-JxX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ejA-nM-eZv"/>
+                    <constraint firstItem="eUM-Ws-1ca" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="fUd-CK-sq1"/>
                     <constraint firstItem="rqW-pr-RWC" firstAttribute="leading" secondItem="l3J-T4-dUw" secondAttribute="trailing" constant="8" id="fc1-7R-o4y"/>
                     <constraint firstItem="rqW-pr-RWC" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="foL-Jc-ImB"/>
                     <constraint firstItem="rqW-pr-RWC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="18" id="gjt-kC-OrF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eUM-Ws-1ca" secondAttribute="trailing" constant="10" id="mLR-XO-hxX"/>
+                    <constraint firstItem="eUM-Ws-1ca" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="nOs-ad-Q8O"/>
                     <constraint firstItem="WuA-Mz-LaL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="q8E-Pg-Uyy"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eUM-Ws-1ca" secondAttribute="trailing" constant="9" id="qTQ-1x-l0M"/>
                     <constraint firstAttribute="trailingMargin" secondItem="WuA-Mz-LaL" secondAttribute="trailing" constant="-8" id="sGV-pY-RT1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eUM-Ws-1ca" secondAttribute="trailing" constant="4" id="uSl-gs-etv"/>
+                    <constraint firstItem="rqW-pr-RWC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="19" id="x9G-Lx-3hw"/>
                     <constraint firstAttribute="bottomMargin" secondItem="WuA-Mz-LaL" secondAttribute="bottom" constant="-9.5" id="xVA-gs-lKQ"/>
                     <constraint firstAttribute="bottomMargin" secondItem="WuA-Mz-LaL" secondAttribute="bottom" constant="-8" id="xaa-Rh-4Vh"/>
+                    <constraint firstItem="eUM-Ws-1ca" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="9" id="xx3-Vn-HNL"/>
                     <constraint firstItem="l3J-T4-dUw" firstAttribute="leading" secondItem="2sM-Ar-JxX" secondAttribute="trailing" constant="8" id="yQM-h4-6xA"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="6rQ-t7-BtP"/>
                         <exclude reference="xVA-gs-lKQ"/>
+                        <exclude reference="FYo-T0-ljS"/>
+                        <exclude reference="fUd-CK-sq1"/>
+                        <exclude reference="mLR-XO-hxX"/>
+                        <exclude reference="qTQ-1x-l0M"/>
+                        <exclude reference="uSl-gs-etv"/>
+                        <exclude reference="xx3-Vn-HNL"/>
+                        <exclude reference="GPz-3l-jYk"/>
                         <exclude reference="V5I-Ud-u94"/>
+                        <exclude reference="aps-ew-omd"/>
                         <exclude reference="fc1-7R-o4y"/>
                         <exclude reference="foL-Jc-ImB"/>
+                        <exclude reference="gjt-kC-OrF"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="circleIcon" destination="eUM-Ws-1ca" id="StJ-US-C1b"/>
                 <outlet property="imgAvatar" destination="2sM-Ar-JxX" id="TBq-2K-k9y"/>
                 <outlet property="imgCheck" destination="rqW-pr-RWC" id="xCL-sF-7Op"/>
                 <outlet property="txtName" destination="l3J-T4-dUw" id="3e2-Qy-LRW"/>
@@ -93,6 +138,7 @@
     </objects>
     <resources>
         <image name="check_icon" width="60" height="46"/>
+        <image name="circle_icon" width="30" height="30"/>
         <image name="owl_orbit" width="280" height="295"/>
     </resources>
 </document>

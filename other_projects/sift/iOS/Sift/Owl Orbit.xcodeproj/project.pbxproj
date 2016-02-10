@@ -22,6 +22,7 @@
 		B815AA291C1E19020082E136 /* RoomAttributeManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */; };
 		B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */; };
 		B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
+		B821E7231C6AC60100EF9018 /* CreateGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */; };
 		B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8408C4A1C58577100449BEA /* UserProfileViewController.swift */; };
 		B8408C4D1C58577100449BEA /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8408C4B1C58577100449BEA /* UserProfileViewController.xib */; };
 		B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
@@ -121,6 +122,18 @@
 		B8F5129C1C65800B007DCFD5 /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5129B1C65800B007DCFD5 /* MapHelper.swift */; };
 		B8F5129F1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5129D1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift */; };
 		B8F512A01C681217007DCFD5 /* UserGroupSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F5129E1C681217007DCFD5 /* UserGroupSelectTableViewCell.xib */; };
+		B8F512A31C696565007DCFD5 /* GroupSettingsStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512A11C696565007DCFD5 /* GroupSettingsStep1ViewController.swift */; };
+		B8F512A41C696565007DCFD5 /* GroupSettingsStep1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512A21C696565007DCFD5 /* GroupSettingsStep1ViewController.xib */; };
+		B8F512A81C6966D8007DCFD5 /* GroupNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512A61C6966D8007DCFD5 /* GroupNameTableViewCell.swift */; };
+		B8F512A91C6966D8007DCFD5 /* GroupNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512A71C6966D8007DCFD5 /* GroupNameTableViewCell.xib */; };
+		B8F512AC1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512AA1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.swift */; };
+		B8F512AD1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512AB1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib */; };
+		B8F512B01C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512AE1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift */; };
+		B8F512B11C6966FC007DCFD5 /* GroupIsPublicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512AF1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.xib */; };
+		B8F512B41C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512B21C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.swift */; };
+		B8F512B51C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512B31C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib */; };
+		B8F512B81C696726007DCFD5 /* GroupCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512B61C696726007DCFD5 /* GroupCountTableViewCell.swift */; };
+		B8F512B91C696726007DCFD5 /* GroupCountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512B71C696726007DCFD5 /* GroupCountTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +172,8 @@
 		B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAttributeManagedModel.swift; sourceTree = "<group>"; };
 		B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManagedModel.swift; sourceTree = "<group>"; };
 		B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserManagedModel.swift; sourceTree = "<group>"; };
+		B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupManager.swift; sourceTree = "<group>"; };
+		B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 3.xcdatamodel"; sourceTree = "<group>"; };
 		B8408C4A1C58577100449BEA /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		B8408C4B1C58577100449BEA /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +282,18 @@
 		B8F5129B1C65800B007DCFD5 /* MapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
 		B8F5129D1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupSelectTableViewCell.swift; sourceTree = "<group>"; };
 		B8F5129E1C681217007DCFD5 /* UserGroupSelectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserGroupSelectTableViewCell.xib; sourceTree = "<group>"; };
+		B8F512A11C696565007DCFD5 /* GroupSettingsStep1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSettingsStep1ViewController.swift; sourceTree = "<group>"; };
+		B8F512A21C696565007DCFD5 /* GroupSettingsStep1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupSettingsStep1ViewController.xib; sourceTree = "<group>"; };
+		B8F512A61C6966D8007DCFD5 /* GroupNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupNameTableViewCell.swift; sourceTree = "<group>"; };
+		B8F512A71C6966D8007DCFD5 /* GroupNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupNameTableViewCell.xib; sourceTree = "<group>"; };
+		B8F512AA1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		B8F512AB1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		B8F512AE1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupIsPublicTableViewCell.swift; sourceTree = "<group>"; };
+		B8F512AF1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupIsPublicTableViewCell.xib; sourceTree = "<group>"; };
+		B8F512B21C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupIsFriendsOnlyTableViewCell.swift; sourceTree = "<group>"; };
+		B8F512B31C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupIsFriendsOnlyTableViewCell.xib; sourceTree = "<group>"; };
+		B8F512B61C696726007DCFD5 /* GroupCountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCountTableViewCell.swift; sourceTree = "<group>"; };
+		B8F512B71C696726007DCFD5 /* GroupCountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCountTableViewCell.xib; sourceTree = "<group>"; };
 		CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -329,6 +356,8 @@
 				B87654621C03F53F00190B9B /* WriteMessageViewController.xib */,
 				B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */,
 				B8F512931C61C8F5007DCFD5 /* AddGroupViewController.xib */,
+				B8F512A11C696565007DCFD5 /* GroupSettingsStep1ViewController.swift */,
+				B8F512A21C696565007DCFD5 /* GroupSettingsStep1ViewController.xib */,
 			);
 			name = WriteMessage;
 			sourceTree = "<group>";
@@ -418,6 +447,7 @@
 		B870CEC81BF96E9900F47929 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B8F512A51C696694007DCFD5 /* GroupDescription */,
 				B863BED11C56E8FA00C8BA01 /* Instructions */,
 				B8068B6F1C22375B00EE00CA /* Settings */,
 				B866DFAE1C061C5B00BF8A79 /* UserList */,
@@ -505,6 +535,7 @@
 				B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */,
 				B89F3AD21C5AF6D4008BFFA1 /* LocationHelper.swift */,
 				B8F5129B1C65800B007DCFD5 /* MapHelper.swift */,
+				B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -688,6 +719,23 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		B8F512A51C696694007DCFD5 /* GroupDescription */ = {
+			isa = PBXGroup;
+			children = (
+				B8F512A61C6966D8007DCFD5 /* GroupNameTableViewCell.swift */,
+				B8F512A71C6966D8007DCFD5 /* GroupNameTableViewCell.xib */,
+				B8F512AA1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.swift */,
+				B8F512AB1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib */,
+				B8F512AE1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift */,
+				B8F512AF1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.xib */,
+				B8F512B21C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.swift */,
+				B8F512B31C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib */,
+				B8F512B61C696726007DCFD5 /* GroupCountTableViewCell.swift */,
+				B8F512B71C696726007DCFD5 /* GroupCountTableViewCell.xib */,
+			);
+			name = GroupDescription;
+			sourceTree = "<group>";
+		};
 		CEFA435EA322FF036A6DBA3E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,25 +871,31 @@
 				B870CEE51BFAF48100F47929 /* RegistrationNextView.xib in Resources */,
 				B8F5129A1C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib in Resources */,
 				B870CEC71BF5AF3800F47929 /* RegisterBasicInfoViewController.xib in Resources */,
+				B8F512A91C6966D8007DCFD5 /* GroupNameTableViewCell.xib in Resources */,
+				B8F512A41C696565007DCFD5 /* GroupSettingsStep1ViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
 				B863BED01C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib in Resources */,
 				B8792A341BEB15CE00BE05ED /* Assets.xcassets in Resources */,
 				B866DFD01C0E812600BF8A79 /* ChatMapKeyboardView.xib in Resources */,
 				B8E4E7DF1BFD520200995964 /* RegistrationSubmitKeyboardView.xib in Resources */,
+				B8F512AD1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib in Resources */,
 				B866DFD41C0EBA1900BF8A79 /* ProfileImageUploadViewController.xib in Resources */,
 				B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */,
 				B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */,
 				B8068B6E1C22364400EE00CA /* ProfileSettingImageUploadViewController.xib in Resources */,
 				B8F512951C61C8F5007DCFD5 /* AddGroupViewController.xib in Resources */,
 				B863BED41C56E93000C8BA01 /* MapInstructionsTableViewCell.xib in Resources */,
+				B8F512B51C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib in Resources */,
 				B8068B731C22379200EE00CA /* UserLogoutTableViewCell.xib in Resources */,
 				B866DFBC1C0A8A8D00BF8A79 /* UserSearchPendingHeaderView.xib in Resources */,
 				B8E4E7D21BFC40E600995964 /* ReadMessageTableViewCell.xib in Resources */,
 				B866DFB21C061CA000BF8A79 /* UserSearchTableViewCell.xib in Resources */,
 				B8B80F051BF452A500CF4BB3 /* SettingsViewController.xib in Resources */,
+				B8F512B11C6966FC007DCFD5 /* GroupIsPublicTableViewCell.xib in Resources */,
 				B870CED11BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib in Resources */,
 				B870CED81BFA9E4100F47929 /* LoginViewController.xib in Resources */,
 				B870CED61BFA9D2700F47929 /* LoginTableViewCell.xib in Resources */,
+				B8F512B91C696726007DCFD5 /* GroupCountTableViewCell.xib in Resources */,
 				B870CECD1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib in Resources */,
 				B8BC486A1C284827006A345E /* ChatTextMessageViewController.xib in Resources */,
 				B892D65F1C1A45700091F128 /* PreloadHomeViewController.xib in Resources */,
@@ -923,9 +977,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8F512A31C696565007DCFD5 /* GroupSettingsStep1ViewController.swift in Sources */,
 				B863BECF1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift in Sources */,
 				B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */,
 				B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */,
+				B8F512B41C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.swift in Sources */,
+				B8F512B81C696726007DCFD5 /* GroupCountTableViewCell.swift in Sources */,
 				B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */,
 				B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */,
 				B870CEEA1BFC00D800F47929 /* UIImage+Round.swift in Sources */,
@@ -934,6 +991,7 @@
 				B870CECC1BF96ECF00F47929 /* Registration1ValueTableViewCell.swift in Sources */,
 				B892D65E1C1A45700091F128 /* PreloadHomeViewController.swift in Sources */,
 				B870CEE31BFAF47800F47929 /* RegistrationNextView.swift in Sources */,
+				B8F512AC1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.swift in Sources */,
 				B8068B721C22379200EE00CA /* UserLogoutTableViewCell.swift in Sources */,
 				B8CF9D531C3F4B6400E3898B /* UserManagedModel.swift in Sources */,
 				B866DFC41C0D22D100BF8A79 /* RoomApiHelper.swift in Sources */,
@@ -944,6 +1002,7 @@
 				B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */,
 				B8068B631C20F95D00EE00CA /* FriendRequestViewController.swift in Sources */,
 				B866DFC81C0D2EDF00BF8A79 /* RoomAttributeModel.swift in Sources */,
+				B8F512A81C6966D8007DCFD5 /* GroupNameTableViewCell.swift in Sources */,
 				B8CAA48E1C11096B00EC2752 /* DynamicPersonalData.swift in Sources */,
 				B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */,
 				B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */,
@@ -980,6 +1039,7 @@
 				B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */,
 				B866DFCE1C0E811C00BF8A79 /* ChatMapKeyboardView.swift in Sources */,
 				B815AA291C1E19020082E136 /* RoomAttributeManagedModel.swift in Sources */,
+				B8F512B01C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
 				B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */,
 				B8E4E7D91BFD4CEC00995964 /* AlertHelper.swift in Sources */,
@@ -991,6 +1051,7 @@
 				B804C6D01C17BB0D0076F81B /* UserPointAnnotation.swift in Sources */,
 				B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */,
 				B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */,
+				B821E7231C6AC60100EF9018 /* CreateGroupManager.swift in Sources */,
 				B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */,
 				B8F512941C61C8F5007DCFD5 /* AddGroupViewController.swift in Sources */,
 				B8F5129C1C65800B007DCFD5 /* MapHelper.swift in Sources */,
@@ -1264,10 +1325,11 @@
 		B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */,
 				B8F512961C61CB3B007DCFD5 /* Sift 2.xcdatamodel */,
 				B8792A311BEB15CE00BE05ED /* Sift.xcdatamodel */,
 			);
-			currentVersion = B8F512961C61CB3B007DCFD5 /* Sift 2.xcdatamodel */;
+			currentVersion = B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */;
 			path = Sift.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
