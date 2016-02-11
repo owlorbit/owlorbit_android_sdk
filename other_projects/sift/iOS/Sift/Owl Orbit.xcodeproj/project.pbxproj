@@ -23,6 +23,7 @@
 		B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */; };
 		B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
 		B821E7231C6AC60100EF9018 /* CreateGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */; };
+		B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */; };
 		B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8408C4A1C58577100449BEA /* UserProfileViewController.swift */; };
 		B8408C4D1C58577100449BEA /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8408C4B1C58577100449BEA /* UserProfileViewController.xib */; };
 		B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
@@ -174,6 +175,7 @@
 		B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserManagedModel.swift; sourceTree = "<group>"; };
 		B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupManager.swift; sourceTree = "<group>"; };
 		B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 3.xcdatamodel"; sourceTree = "<group>"; };
+		B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMeetupPin.swift; sourceTree = "<group>"; };
 		B8408C4A1C58577100449BEA /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		B8408C4B1C58577100449BEA /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 			children = (
 				B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */,
 				B870CEF01BFC093000F47929 /* CustomMapPin.swift */,
+				B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */,
 				B8E4E7D61BFD4AE200995964 /* RegistrationUser.swift */,
 				B8E4E7E21BFEB92000995964 /* PersonalUserModel.swift */,
 				B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */,
@@ -1027,6 +1030,7 @@
 				B8E4E7D11BFC40E600995964 /* ReadMessageTableViewCell.swift in Sources */,
 				B866DFD31C0EBA1900BF8A79 /* ProfileImageUploadViewController.swift in Sources */,
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,
+				B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */,
 				B88213361C17F99E00E9469C /* LocationModel.swift in Sources */,
 				B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */,
 				B866DFC21C0BC22A00BF8A79 /* ChatApiHelper.swift in Sources */,

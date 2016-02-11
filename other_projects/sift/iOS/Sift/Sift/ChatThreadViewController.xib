@@ -109,6 +109,32 @@
                         <action selector="btnInstructionClick:" destination="-1" eventType="touchUpInside" id="4Bk-rE-HBz"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVw-Nh-Jlb">
+                    <rect key="frame" x="8" y="404" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="PgT-8Y-w5z"/>
+                        <constraint firstAttribute="height" constant="33" id="TUO-AW-VwL"/>
+                        <constraint firstAttribute="height" constant="60" id="cDQ-mB-K4F"/>
+                        <constraint firstAttribute="width" constant="35" id="e3E-Cs-BEP"/>
+                        <constraint firstAttribute="width" constant="45" id="egU-Cw-fl3"/>
+                        <constraint firstAttribute="width" constant="25" id="iY1-Ie-zVS"/>
+                        <constraint firstAttribute="width" constant="25" id="ogz-s4-3R1"/>
+                        <constraint firstAttribute="height" constant="45" id="qRM-fC-esi"/>
+                        <constraint firstAttribute="width" constant="60" id="xu4-sL-d2V"/>
+                    </constraints>
+                    <state key="normal" image="btn_meetup"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ogz-s4-3R1"/>
+                            <exclude reference="egU-Cw-fl3"/>
+                            <exclude reference="qRM-fC-esi"/>
+                            <exclude reference="PgT-8Y-w5z"/>
+                            <exclude reference="iY1-Ie-zVS"/>
+                            <exclude reference="e3E-Cs-BEP"/>
+                            <exclude reference="TUO-AW-VwL"/>
+                        </mask>
+                    </variation>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -124,6 +150,8 @@
                 <constraint firstAttribute="bottom" secondItem="P7O-19-mUe" secondAttribute="bottom" id="U6a-bf-C6S"/>
                 <constraint firstAttribute="bottom" secondItem="P7O-19-mUe" secondAttribute="bottom" id="cKI-dR-j6h"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="lUo-Fw-oiJ" secondAttribute="bottom" constant="8" id="dGE-KU-Kwe"/>
+                <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="JVw-Nh-Jlb" secondAttribute="bottom" constant="8" id="hIF-Dc-Sas"/>
+                <constraint firstItem="JVw-Nh-Jlb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="pnt-I7-fTh"/>
                 <constraint firstAttribute="trailing" secondItem="lUo-Fw-oiJ" secondAttribute="trailing" constant="8" id="qpv-9Q-fv9"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="P7O-19-mUe" secondAttribute="bottom" id="z87-jM-tGY"/>
             </constraints>
@@ -142,6 +170,7 @@
         </view>
     </objects>
     <resources>
+        <image name="btn_meetup" width="76" height="76"/>
         <image name="list_icon" width="68" height="68"/>
     </resources>
 </document>

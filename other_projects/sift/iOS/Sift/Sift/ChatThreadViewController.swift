@@ -535,9 +535,29 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             region.span.latitudeDelta = spanX;
             region.span.longitudeDelta = spanY;
             mapView.setRegion(region, animated: true)
+            
+            
+            let annotation = CustomMeetupPin()
+            annotation.coordinate = appDelegate.locationManager.location!.coordinate // your location here
+            annotation.title = "My Title"
+            annotation.subtitle = "My Subtitle"
+            self.mapView.addAnnotation(annotation)
 
         }catch _ {
             
+        }
+    }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+        switch (newState) {
+            case .Starting:
+                //view.dragState = .Dragging
+                break
+            case .Ending, .Canceling:
+                //view.dragState = .None
+                print("drag state stopped.")
+                break
+            default: break
         }
     }
     
@@ -566,6 +586,16 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 }
                 
                 return anView
+            }
+        
+            if annotation is CustomMeetupPin{
+                
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "meetupPin")
+                pinAnnotationView.pinColor = .Purple
+                pinAnnotationView.draggable = true
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.animatesDrop = true
+                return pinAnnotationView
             }
 
             

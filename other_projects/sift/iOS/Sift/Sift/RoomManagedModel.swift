@@ -28,7 +28,7 @@ class RoomManagedModel: NSManagedObject {
     @NSManaged var lastMessage:String
     @NSManaged var lastDisplayName:String
     @NSManaged var lastMessageId:String
-    @NSManaged var lastMessageTimestamp:NSDate
+    @NSManaged var lastMessageTimestamp:NSDate?
     
 
     class func initWithJson(json:JSON)->RoomManagedModel{
@@ -58,6 +58,8 @@ class RoomManagedModel: NSManagedObject {
         if(json["last_message"].string != nil){
             obj!.lastMessage = (json["last_message"].error == nil) ? json["last_message"].string! : ""
         }
+        
+        print("hello world: \(json["last_message_timestamp"])")
 
         if(json["last_message_timestamp"].string != nil){
 

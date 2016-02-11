@@ -33,7 +33,19 @@ class ReadMessageTableViewCell: UITableViewCell {
         }else{
             self.lblLastMsg.text = roomData.lastDisplayName.capitalizedString + ": " + roomData.lastMessage
         }
-        self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.timestamp)
+
+        //self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.lastMessageTimestamp)
+        if( roomData.lastMessageTimestamp != nil){
+            print("longgg:  \(roomData.lastMessageTimestamp)")
+            
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            var dateString = dateFormatter.stringFromDate(roomData.lastMessageTimestamp!)
+            
+            self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(dateString)
+        }else{
+            self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.timestamp)
+        }
         self.lblRoomTitle.text = roomData.attributes.name.capitalizedString
         //self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
         
