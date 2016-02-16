@@ -40,6 +40,14 @@ class UICustomTabBarController: UITabBarController, UITabBarControllerDelegate {
             image: friendsIcon,
             tag: 2);
         
+        
+        let manageRequestsViewController = ManageRequestsViewController()
+        var manageRequestsNavController = UINavigationController(rootViewController: manageRequestsViewController)
+        manageRequestsNavController.tabBarItem = UITabBarItem(
+            title: "Requests",
+            image: UIImage(named:"request_icon")!,
+            tag: 3);
+        
 
         let settingsViewController = SettingsViewController()
         var settingsIcon : UIImage = UIImage(named:"settings")!
@@ -47,9 +55,9 @@ class UICustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         settingsNavController.tabBarItem = UITabBarItem(
             title: "Settings",
             image: settingsIcon,
-            tag: 3);
+            tag: 4);
 
-        let controllers = [homeNavController, friendRequestNavController, settingsNavController]
+        let controllers = [homeNavController, friendRequestNavController, manageRequestsNavController, settingsNavController]
         self.viewControllers = controllers
         
         self.delegate = self;

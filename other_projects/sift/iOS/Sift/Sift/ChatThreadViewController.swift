@@ -21,7 +21,7 @@ import BusyNavigationBar
 import LNRSimpleNotifications
 import AudioToolbox
 
-class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate, UITextViewDelegate {
+class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate, UITextViewDelegate, AddMeetupDelegate {
 
     @IBOutlet weak var bottomConstraintTextField: NSLayoutConstraint!
     @IBOutlet weak var chatKeyboardView: UIView!
@@ -50,11 +50,18 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     var targetAnnotation:UserPointAnnotation = UserPointAnnotation();
     var routeSteps = [MKRouteStep]()
     
+    
+    var prevUserCount:Int = 0
+    
     var progressOptions = BusyNavigationBarOptions()
     let notificationManager = LNRNotificationManager()
     
     @IBOutlet weak var btnInstructions: UIButton!
     var chatMapKeyboard:ChatMapKeyboardView?
+    
+    var addMeetupView:AddMeetupView?
+    
+    var isYourUserLoaded:Bool = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +98,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.profileImage = self.profileImage.roundImage()
         }
 
+        initAddMeetup()
+        addMapViewOnClick()
         loadProfileImg()
         initLocations()
         initLoadingBar()
@@ -100,6 +109,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
         zoomToCurrentLocation()
         enableMapViewTracking()
+    }
+    
+    func addMapViewOnClick(){
+        //self.mapView
     }
     
     func enableMapViewTracking(){
@@ -235,29 +248,19 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         //routes = response.routes[0].ste
 
         for route in response.routes as! [MKRoute] {
-
             self.mapView.addOverlay(route.polyline,
                 level: MKOverlayLevel.AboveRoads)
-
             routeSteps = route.steps
         }
-        
-        
+
         let userLocation:MKUserLocation = self.mapView.userLocation
         
         let region = MKCoordinateRegionMakeWithDistance(
             userLocation.location!.coordinate, 2000, 2000)
-        
-        //self.mapView.setRegion(region, animated: true)
     }
     
     
     @IBAction func btnDriveClick(sender: AnyObject) {
-        
-        /*UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.topTargetUserMenu.constant = 0
-            self.view.layoutIfNeeded()
-        })*/
 
         hideInstructions()
         destination = MKMapItem()
@@ -271,7 +274,20 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         self.navigationController?.navigationBar.start(progressOptions)
         getDirections()
     }
-
+    
+    func navigateMeetup(customMeetupPin:CustomMeetupPin){
+        
+        
+        hideInstructions()
+        destination = MKMapItem()
+        var placemark: MKPlacemark = MKPlacemark(coordinate: customMeetupPin.coordinate, addressDictionary: nil)
+        destination = MKMapItem(placemark: placemark)
+        destination?.name = customMeetupPin.title
+        
+        self.navigationController?.navigationBar.start(progressOptions)
+        getDirections()
+    }
+    
     func mapView(mapView: MKMapView!, rendererForOverlay
         overlay: MKOverlay!) -> MKOverlayRenderer! {
             let renderer = MKPolylineRenderer(overlay: overlay)
@@ -301,7 +317,75 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.showRoute(response)
         }
     }
+    
+    func initAddMeetup(){
+        var mainWindow: UIWindow = UIApplication.sharedApplication().keyWindow!
+        self.addMeetupView = AddMeetupView.initView()
+        self.addMeetupView!.frame = UIScreen.mainScreen().bounds
+        self.addMeetupView!.delegate = self
+        UIScreen.mainScreen().bounds.height
+        var infoFrame: CGRect = self.addMeetupView!.frame
+        infoFrame.origin.y = UIScreen.mainScreen().bounds.height * 2
+        self.addMeetupView!.frame = infoFrame
+        mainWindow.addSubview(self.addMeetupView!)
+    }
+    
+    func addMeetup(title:String, subtitle:String, global:Bool){
 
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if(appDelegate.locationManager.location == nil){return}
+
+        self.addMeetupView?.txtTitle.text = ""
+
+        hideMeetUp()
+
+        LocationApiHelper.createMeetup(title, subtitle: subtitle, isGlobal: global, roomId: self.roomId, longitude: String(self.mapView.centerCoordinate.longitude), latitude: String(self.mapView.centerCoordinate.latitude), resultJSON: {
+            (JSON) in
+                var meetupId:String! = JSON["meetup_id"].int?.stringValue
+            
+                let annotation = CustomMeetupPin()
+                
+                annotation.coordinate = self.mapView.centerCoordinate // your location here
+                annotation.title = title
+                annotation.id = meetupId
+                annotation.subtitle = subtitle
+            
+                self.annotations.addObject(annotation)
+                self.mapView.addAnnotation(annotation)
+
+                print("meetup \(meetupId)")
+            }, error: {
+                (String) in
+                print("error \(String)")
+        })
+        
+    }
+    
+    func cancelMeetup(){
+        hideMeetUp()
+        self.addMeetupView?.txtTitle.text = ""
+    }
+    
+    func hideMeetUp(){
+        var mainWindow: UIWindow = UIApplication.sharedApplication().keyWindow!
+        UIView.animateWithDuration(0.5, animations: {() -> Void in
+            var infoFrame: CGRect = self.addMeetupView!.frame
+            infoFrame.origin.y = UIScreen.mainScreen().bounds.height * 2
+            self.addMeetupView!.frame = infoFrame
+        })
+    }
+
+    @IBAction func createDropActionClick(sender: AnyObject) {
+        
+        
+        //self.window.addSubview(myview)
+
+        UIView.animateWithDuration(0.5, animations: {() -> Void in
+            var infoFrame: CGRect = self.addMeetupView!.frame
+            infoFrame.origin.y = 0.0
+            self.addMeetupView!.frame = infoFrame
+        })
+    }
     
     func getDirections() {
         
@@ -338,7 +422,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             if(userData.avatarOriginal != ""){
                 var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userData.avatarOriginal
                 var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-                URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+                //URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+                print ("start loading.. \(profileImageUrl)")
                 downloader.downloadImage(URLRequest: URLRequest) { response in
                     if let image = response.result.value {
                         userData.originalAvatar = image
@@ -346,6 +431,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                         userData.avatarImg = userData.avatarImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
                         userData.avatarImg = userData.avatarImg.roundImage()
                         self.addUser(userData)
+                        print ("user has been added")
                     }
                 }
             }
@@ -372,14 +458,66 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func updateLocations(json:JSON){
 
         do {
+
+            var currentUserCount = 0
             for (key,subJson):(String, SwiftyJSON.JSON) in json["user_locations"] {
                 var location:LocationModel = LocationModel(json: subJson);
 
                 var userPointAnnotation:UserPointAnnotation? = getAnnotationByUserId(location.userId)
                 if(userPointAnnotation != nil){
                     userPointAnnotation!.coordinate = location.coordinate!
+                    userPointAnnotation!.userModel.longitude = location.coordinate!.longitude
+                    userPointAnnotation!.userModel.latitude = location.coordinate!.latitude
                     userPointAnnotation!.title = userPointAnnotation!.userModel.firstName.capitalizedString
+                    
+                    //save context
+                    ApplicationManager.shareCoreDataInstance.saveContext()
+                }else{
+                    //fix this..
+                    /*
+                    if let userModelExtreme = userPointAnnotation!.userModel{
+                        if(userModelExtreme.latitude != 0 && userModelExtreme.longitude != 0){
+                            var storedLocation = CLLocationCoordinate2D.init(latitude: userModelExtreme.latitude, longitude: userModelExtreme.longitude)
+                            userPointAnnotation!.coordinate = storedLocation
+                        }
+                    }*/
                 }
+                
+                //if(userPointAnnotation!.userModel != nil){
+                //    userPointAnnotation!.title = userPointAnnotation!.userModel.firstName.capitalizedString
+                //}
+                currentUserCount++;
+            }
+            
+            for (key,subJson):(String, SwiftyJSON.JSON) in json["meetup_locations"] {
+                
+                var meetupId:String! = subJson["id"].string
+                var longitude:Double! = Double(subJson["longitude"].string!)
+                var latitude:Double! = Double(subJson["latitude"].string!)
+
+                var meetupTitle:String! = subJson["title"].string!
+                var meetupSubtitle:String! = subJson["subtitle"].string!
+                
+                if let userMeetupAnnotation:CustomMeetupPin = getMeetupAnnotation(meetupId){
+                    userMeetupAnnotation.coordinate = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+                    userMeetupAnnotation.title = meetupTitle
+                    userMeetupAnnotation.subtitle = meetupSubtitle
+                }else{
+                    let annotation = CustomMeetupPin()
+                    annotation.id = meetupId
+                    annotation.coordinate = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+                    annotation.title = meetupTitle
+                    annotation.subtitle = meetupSubtitle
+
+                    self.annotations.addObject(annotation)
+                    self.mapView.addAnnotation(annotation)
+                }
+                
+            }
+            
+            if(prevUserCount != currentUserCount && currentUserCount > 0 && isYourUserLoaded){
+                prevUserCount = currentUserCount
+                mapView.showAnnotations(mapView.annotations, animated: true)
             }
         } catch _{
             print("error catch")
@@ -387,30 +525,47 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
         self.RETRIEVE_LOCATION_LOCK = false
     }
+    
+    func getMeetupAnnotation(annotationId:String)->CustomMeetupPin?{
+
+        for val in self.annotations{
+            if val is CustomMeetupPin{
+                var meetupPointAnnotation:CustomMeetupPin = val as! CustomMeetupPin
+                if(meetupPointAnnotation.id == annotationId){
+                    return meetupPointAnnotation
+                }
+            }
+ 
+        }
+        return nil;
+    }
 
     //make device id eventually...
     func getAnnotationByUserId(userId:String)->UserPointAnnotation?{
 
         for val in self.annotations{
-            var userPointAnnotation:UserPointAnnotation = val as! UserPointAnnotation
-            if(userPointAnnotation.userModel.userId == userId){
-                return userPointAnnotation
+            
+            if val is UserPointAnnotation{
+                var userPointAnnotation:UserPointAnnotation = val as! UserPointAnnotation
+                if(userPointAnnotation.userModel.userId == userId){
+                    return userPointAnnotation
+                }
             }
         }
         return nil;
     }
     
     func addUser(userModel:GenericUserManagedModel){
-        
-        //make sure userModel doesn't exist in annotations list...
-        
-        //make sure user doesn't already exist..
-        
+
         if(!MapHelper.doesUserExist(self.annotations, userModel:userModel)){
         
             var userPoint:UserPointAnnotation = UserPointAnnotation()
             userPoint.userModel = userModel
-            //userPoint.coordinate = CLLocationCoordinate2D(latitude: 40, longitude: -72)
+
+            if(userModel.latitude != 0 && userModel.longitude != 0){
+                var storedLocation = CLLocationCoordinate2D.init(latitude: userModel.latitude, longitude: userModel.longitude)
+                userPoint.coordinate = storedLocation
+            }
 
             self.annotations.addObject(userPoint)
             self.mapView.addAnnotation(userPoint)
@@ -535,13 +690,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             region.span.latitudeDelta = spanX;
             region.span.longitudeDelta = spanY;
             mapView.setRegion(region, animated: true)
-            
-            
-            let annotation = CustomMeetupPin()
-            annotation.coordinate = appDelegate.locationManager.location!.coordinate // your location here
-            annotation.title = "My Title"
-            annotation.subtitle = "My Subtitle"
-            self.mapView.addAnnotation(annotation)
 
         }catch _ {
             
@@ -553,9 +701,24 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             case .Starting:
                 //view.dragState = .Dragging
                 break
-            case .Ending, .Canceling:
+            case .Canceling:
+                break
+            case .Ending:
                 //view.dragState = .None
-                print("drag state stopped.")
+                var meetupAnnotation:CustomMeetupPin = view.annotation as! CustomMeetupPin
+                var meetupId:String! = meetupAnnotation.id
+
+                LocationApiHelper.updateMeetup(meetupId, longitude: String(meetupAnnotation.coordinate.longitude), latitude: String(meetupAnnotation.coordinate.latitude), resultJSON: {
+                (JSON) in
+                    print("success update")
+                }, error: {
+                (String) in
+                    print("error \(String)")
+                })
+                
+                
+                
+                
                 break
             default: break
         }
@@ -584,17 +747,30 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 }else{
                     anView!.image = UIImage(named:"owl_orbit")?.resizedImageToFitInSize(CGSize(width: 40, height: 40), scaleIfSmaller: true)
                 }
-                
+
+                isYourUserLoaded = true;
                 return anView
             }
         
             if annotation is CustomMeetupPin{
-                
+
+                let meetupPin:CustomMeetupPin = annotation as! CustomMeetupPin;
                 let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "meetupPin")
                 pinAnnotationView.pinColor = .Purple
                 pinAnnotationView.draggable = true
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.animatesDrop = true
+                
+                let leftButton : MeetupButton = MeetupButton(type: UIButtonType.Custom) as! MeetupButton
+                //leftButton.frame = CGRectMake(0, 0, 44, 44)
+                leftButton.frame.size.width = 44
+                leftButton.frame.size.height = 51
+                leftButton.backgroundColor = ProjectConstants.AppColors.PRIMARY
+                leftButton.setImage(UIImage(named: "white_car_icon"), forState: UIControlState.Normal)
+                leftButton.meetupPin = meetupPin
+                leftButton.addTarget(self, action: "navigateMeetupClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                pinAnnotationView.leftCalloutAccessoryView = leftButton
+
                 return pinAnnotationView
             }
 
@@ -607,7 +783,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             if pinView == nil {
                 pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
                 pinView!.image = userPointAnnotation.userModel.avatarImg
-
+                //pinView!.image = UIImage(named:"owl_orbit")?.resizedImageToFitInSize(CGSize(width: 40, height: 40), scaleIfSmaller: true);
             } else {
                 pinView!.annotation = annotation
             }
@@ -640,12 +816,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             return pinView
     }
     
+    
+    func navigateMeetupClick (sender : MeetupButton!) {
+        navigateMeetup(sender.meetupPin)
+    }
+    
     //leftButtonClicked
     func leftButtonClicked (sender : AnnotationButton!) {
-        //print("derp..")
         self.targetAnnotation = sender.userPointAnnotation
-        //tableViewTopConstraint.constant = 64
-        //tableViewBottomConstraint.constant = 32
         UIView.animateWithDuration(0.5) {
             self.view.layoutIfNeeded()
         }

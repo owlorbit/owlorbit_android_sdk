@@ -25,6 +25,9 @@ class GenericUserManagedModel: NSManagedObject {
     @NSManaged var accountType:String
     @NSManaged var avatarOriginal:String
     @NSManaged var isFriend:Bool
+    
+    @NSManaged var longitude:Double
+    @NSManaged var latitude:Double
     //@NSManaged var avatarImg:NSData
     var avatarImg:UIImage = UIImage()
     var originalAvatar:UIImage = UIImage()

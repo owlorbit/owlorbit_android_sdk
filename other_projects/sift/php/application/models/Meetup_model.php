@@ -4,10 +4,12 @@ class Meetup_model extends CI_Model {
 
     var $id   = '';
     var $user_id   = '';
-    var $device_id   = '';
+    var $title   = '';
+    var $subtitle   = '';
+    var $room_id   = '';
+    var $is_global   = '';
     var $longitude = '';
     var $latitude = '';
-
 
     function __construct(){        
         parent::__construct();
@@ -15,43 +17,22 @@ class Meetup_model extends CI_Model {
     }
   
     function get_last_ten_entries(){
-        $query = $this->db->get('users', 10);
+        $query = $this->db->get('meetup', 10);
         return $query->result();
     }
 
-    function get_all_locations_in_room($userId, $roomId){
+    function get_all_in_room($roomId){
 
-        $query = "select user_id, longitude, latitude, device_id, max(created) from meetup where 
-                    user_id != ? and user_id in (select user_id from room_users where room_id = ?)
-                GROUP BY user_id;";
-
-
-        $result = $this->db->query($query, array($userId, $roomId));
+        $query = "select distinct(id), user_id, room_id, title, longitude, latitude, created, active, subtitle, display_before, is_global from (select *
+                    from meetup where user_id in (select user_id from room_users where room_id = ?) and active = 1 and room_id = ? union all
+                select * from meetup where user_id in (select user_id from room_users where room_id = ?) and active = 1 and is_global = 1) y;";
+        $result = $this->db->query($query, array($roomId, $roomId, $roomId));
         if($result->num_rows() > 0){            
             return $result->result();
         }
 
         return array();
     }
-
-    function get_all_standard_locations_in_room($userId, $roomId){
-
-        $query = "select l.user_id, longitude, latitude, device_id, max(l.created) from locations l 
-                    inner join users u
-                        on u.id = l.user_id                        
-                where                               
-                    user_id != ? and user_id in (select user_id from room_users where room_id = ?)
-                    and account_type = 'standard'
-                GROUP BY user_id;";
-
-
-        $result = $this->db->query($query, array($userId, $roomId));
-        if($result->num_rows() > 0){            
-            return $result->result();
-        }
-
-        return array();
-    }    
 
     function get(){
         $this->id = $this->security->xss_clean(strip_tags($_GET['id']));
@@ -59,15 +40,39 @@ class Meetup_model extends CI_Model {
         return $this->db->query($query, array($this->id));
     }
 
+    function update($meetupId, $userId, $longitude, $latitude){
+        //check if the meetup id's creator is the userId being passed.
+
+        $query = "select user_id from meetup where id = ? and user_id = ?";
+        $result = $this->db->query($query, array($meetupId, $userId));
+
+        error_log($this->db->last_query());
+
+        if($result->num_rows() == 0){
+            return;
+        }
+
+        $updateQuery = "update meetup set longitude = ?, latitude = ? where id = ?";
+        $this->db->query($updateQuery, array($longitude, $latitude, $meetupId));
+    }
+
     //post entry
     function insert_entry($userId){
         $this->user_id   = $userId;
-        $this->device_id   = $this->security->xss_clean(strip_tags($_POST['device_id']));
+        $this->title   = $this->security->xss_clean(strip_tags($_POST['title']));
+
+        $this->subtitle   = $this->security->xss_clean(strip_tags($_POST['subtitle']));
+        $this->room_id   = $this->security->xss_clean(strip_tags($_POST['roomId']));
+        $this->is_global   = $this->security->xss_clean(strip_tags($_POST['isGlobal']));
+
         $this->longitude    = $this->security->xss_clean(strip_tags($_POST['longitude']));
         $this->latitude  = $this->security->xss_clean(strip_tags($_POST['latitude']));
 
-        unset($this->id);
-        $this->db->insert('locations', $this);
+        $query = "insert into meetup (user_id,  title, subtitle, room_id, is_global, longitude, latitude ) values (?, ?, ?, ?, ?, ?, ?)";
+        $result = $this->db->query($query, array($this->user_id, $this->title, $this->subtitle, $this->room_id,
+            $this->is_global, $this->longitude, $this->latitude));
+
+        error_log($this->db->last_query());
     }
     
 

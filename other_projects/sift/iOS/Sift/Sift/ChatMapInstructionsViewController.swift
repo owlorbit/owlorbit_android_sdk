@@ -12,13 +12,29 @@ class ChatMapInstructionsViewController: UIViewController {
 
     var routeSteps = [MKRouteStep]()
     var userAnnotation:UserPointAnnotation = UserPointAnnotation();
+    var customMeetupPin:CustomMeetupPin = CustomMeetupPin()
+    
+    var customMeetupPinActive:Bool = false
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Directions to " + userAnnotation.userModel.firstName.capitalizedString
+        if let userModel = userAnnotation.userModel{
+            self.title = "Directions to " + userModel.firstName.capitalizedString
+            customMeetupPinActive = false
+        }else{
+            customMeetupPinActive = true
+        }
+        
         // Do any additional setup after loading the view.
+        
+        
+        var rightBtn : UIBarButtonItem = UIBarButtonItem(title: "Launch Map", style: UIBarButtonItemStyle.Plain, target: self, action: "btnLoadMap:")
+        
+        self.navigationItem.rightBarButtonItem = rightBtn
+        
         
         self.tableView.registerNib(UINib(nibName: "MapInstructionsTableViewCell", bundle:nil), forCellReuseIdentifier: "MapInstructionsTableViewCell")
     }
@@ -26,6 +42,26 @@ class ChatMapInstructionsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func btnLoadMap(sender: AnyObject){
+        
+        AlertHelper.createPopupMessage("It will be implemented...", title: "Derp Derp")
+        /*
+        if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
+            
+            if(customMeetupPinActive){
+                UIApplication.sharedApplication().openURL(NSURL(string:
+                    "comgooglemaps://?center=\(customMeetupPin.coordinate.latitude),\(customMeetupPin.coordinate.latitude)&zoom=14&views=traffic")!)
+            }else{
+                UIApplication.sharedApplication().openURL(NSURL(string:
+                    "comgooglemaps://?center=\(customMeetupPin.coordinate.latitude),\(customMeetupPin.coordinate.latitude)&zoom=14&views=traffic")!)
+            }
+            
+        } else {
+            print("Can't use comgooglemaps://");
+        }*/
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -180,6 +180,8 @@ class UserApiHelper{
                     if(post["hasFailed"].isEmpty){
                         //send succesful
                         resultJSON(post)
+                    }else{
+                        print("what the whaaat: \(post)")
                     }
                 }
         }

@@ -44,7 +44,6 @@ class Location_model extends CI_Model {
                     and account_type = 'standard'
                 GROUP BY user_id;";
 
-
         $result = $this->db->query($query, array($userId, $roomId));
         if($result->num_rows() > 0){            
             return $result->result();

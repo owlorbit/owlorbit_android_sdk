@@ -8,11 +8,11 @@
 
 import Foundation
 
-
-import Foundation
 import UIKit
 
 class AnnotationButton: UIButton {
 
     public var userPointAnnotation:UserPointAnnotation = UserPointAnnotation();
+    
+    
 }

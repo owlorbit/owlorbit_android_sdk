@@ -18,10 +18,14 @@ class MapHelper{
             
             for val in annotations{
                 //make sure not nil..
-                var userPointAnnotation:UserPointAnnotation = val as! UserPointAnnotation
                 
-                if(userPointAnnotation.userModel.userId == userModel.userId){
-                    return true
+                
+                if val is UserPointAnnotation{
+                    var userPointAnnotation:UserPointAnnotation = val as! UserPointAnnotation
+
+                    if(userPointAnnotation.userModel.userId == userModel.userId){
+                        return true
+                    }
                 }
             }
         }catch _ {
@@ -29,5 +33,18 @@ class MapHelper{
         }
         
         return false
+    }
+    
+    
+    class func addAnnotation(){
+        /*
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if(appDelegate.locationManager.location == nil){return}
+        let annotation = CustomMeetupPin()
+        annotation.coordinate = appDelegate.locationManager.location!.coordinate // your location here
+        annotation.title = "My Title"
+        annotation.subtitle = "My Subtitle"
+        self.mapView.addAnnotation(annotation)*/
     }
 }

@@ -23,14 +23,14 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
     var pendingFriendArrayListYouSent:NSMutableArray = [];
 
     var initialUserArrayList:NSMutableArray = [];
-    var sections:NSMutableArray = ["Accept Friend?", "Requests (By You)", "Search Results"];
+    //var sections:NSMutableArray = ["Accept Friend?", "Requests (By You)", "Search Results"];
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSearchContainer.layer.cornerRadius = 4
         self.viewSearchContainer.layer.masksToBounds = true
-        self.title = "Find Friends"
+        self.title = "Discover"
         navigationController?.navigationBar.translucent = false
         navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -75,7 +75,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
             // Add your logic here
             // Do not forget to call dg_stopLoading() at the end
             //okay...
-
+            self?.txtSearch.text = ""
             self?.loadLists()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
@@ -84,7 +84,9 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
     }
     
     deinit {
-        tableView.dg_removePullToRefresh()
+        if(tableView != nil){
+            tableView.dg_removePullToRefresh()
+        }
     }
 
     
@@ -206,6 +208,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         return self.initialUserArrayList;
     }
 
+    /*
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         var view:UserSearchPendingHeaderView? = tableView.dequeueReusableHeaderFooterViewWithIdentifier("UserSearchPendingHeaderView")! as! UserSearchPendingHeaderView
@@ -213,11 +216,11 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
 
         return view;
     }
-    
+
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 28
     }
-    
+    */
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         return NSAttributedString(string: "No One Found")
     }
@@ -236,13 +239,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(section == 0){
-            return self.pendingFriendArrayListOthersSent.count
-        }else if(section == 1){
-            return self.pendingFriendArrayListYouSent.count;
-        }else{
-            return userArrayList.count
-        }
+        return userArrayList.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -253,20 +250,10 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         var cell:UserDiscoverTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserDiscoverTableViewCell")! as! UserDiscoverTableViewCell
 
         var genericUser:GenericUserModel;
-        if(indexPath.section == 0){
-            genericUser = self.pendingFriendArrayListOthersSent[indexPath.row] as! GenericUserModel            
-        }else if(indexPath.section == 1){
-            genericUser = self.pendingFriendArrayListYouSent[indexPath.row] as! GenericUserModel
-        }else{
-            genericUser = self.userArrayList[indexPath.row] as! GenericUserModel
-        }
 
+        genericUser = self.userArrayList[indexPath.row] as! GenericUserModel
         cell?.populate(genericUser)
         return cell!
-    }
-
-    func numberOfSectionsInTableView(tableView: UITableView?) -> Int {
-        return self.sections.count
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
@@ -279,49 +266,17 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
         //if not a friend, send a friend request if friend request not sent....
         //if a friend, start a message.
-        //var genericUser:GenericUserModel = self.userArrayList[indexPath.row] as! GenericUserModel
-        var genericUser:GenericUserModel;
+        var genericUser:GenericUserModel = self.userArrayList[indexPath.row] as! GenericUserModel
         
-        if(indexPath.section == 0){
-            genericUser = self.pendingFriendArrayListOthersSent[indexPath.row] as! GenericUserModel
-            print("ask if they accept or decline")
-            
-            let name:String = genericUser.firstName + " " + genericUser.lastName
-            // Create the alert controller
-            var alertController = UIAlertController(title: "Friendship Request", message: "Accept friendship from \(name)", preferredStyle: .Alert)
-            
-            // Create the actions
-            var okAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.Default) {
-                UIAlertAction in
-                NSLog("Accept")
-                UserApiHelper.acceptFriendRequest(genericUser.userId, resultJSON:{
-                    (JSON) in
-                    print(JSON)
-                    self.loadLists()
-                });
-                
-            }
-
-            var cancelAction = UIAlertAction(title: "Decline", style: UIAlertActionStyle.Destructive) {
-                UIAlertAction in
-                NSLog("Decline")
-                UserApiHelper.declineFriendRequest(genericUser.userId, resultJSON:{
-                    (JSON) in
-                    print(JSON)
-                    self.loadLists()
-                });
-            }
-            
-            // Add the actions
-            alertController.addAction(okAction)
-            alertController.addAction(cancelAction)
-
-            // Present the controller
-            self.presentViewController(alertController, animated: true, completion: nil)
-        }else if(indexPath.section == 1){
-            print("dont do anything...")
-            AlertHelper.createPopupMessage("Still waiting for a response.", title: "Friend Request")
-        }else{
+        
+        
+        var alertController = UIAlertController(title: "Friend Request", message: "Send Request to \(genericUser.firstName)", preferredStyle: .Alert)
+        
+        // Create the actions
+        var okAction = UIAlertAction(title: "Send", style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            NSLog("Accept")
+            var genericUser:GenericUserModel;
             genericUser = self.userArrayList[indexPath.row] as! GenericUserModel
             UserApiHelper.addFriend(genericUser.userId, resultJSON:{
                 (JSON) in
@@ -330,10 +285,26 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
                 //print("----- \(JSON)")
                 self.loadLists()
             });
+            
+            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.tableView.reloadData()
+            
+            
+            
         }
         
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.tableView.reloadData()
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+            UIAlertAction in
+            NSLog("Decline")
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.presentViewController(alertController, animated: true, completion: nil)
+
     }
 
     /*

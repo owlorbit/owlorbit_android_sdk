@@ -125,15 +125,18 @@
                     <state key="normal" image="btn_meetup"/>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="ogz-s4-3R1"/>
-                            <exclude reference="egU-Cw-fl3"/>
-                            <exclude reference="qRM-fC-esi"/>
                             <exclude reference="PgT-8Y-w5z"/>
-                            <exclude reference="iY1-Ie-zVS"/>
-                            <exclude reference="e3E-Cs-BEP"/>
                             <exclude reference="TUO-AW-VwL"/>
+                            <exclude reference="e3E-Cs-BEP"/>
+                            <exclude reference="egU-Cw-fl3"/>
+                            <exclude reference="iY1-Ie-zVS"/>
+                            <exclude reference="ogz-s4-3R1"/>
+                            <exclude reference="qRM-fC-esi"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <action selector="createDropActionClick:" destination="-1" eventType="touchUpInside" id="Z5R-j5-lDn"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -26,16 +26,17 @@ class Location extends CI_Controller {
 		$this->load->model('user_model');
 		$this->load->model('location_model');
 		$this->load->model('user_token_model');
-		$this->load->model('user_session_model');		
+		$this->load->model('user_session_model');
 	}
 
 	public function index(){
 		echo "location";	
 	}
 
-	public function get_all_locations(){	
+	public function get_all_locations(){
 		$response = array();
 		try{
+			$this->load->model('meetup_model');
 
 			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
@@ -58,9 +59,14 @@ class Location extends CI_Controller {
 			}
 
 		    $allLocationsInRoom = $this->location_model->get_all_standard_locations_in_room($userId, $roomId);
+		    $meetupInRoom = $this->meetup_model->get_all_in_room($roomId);
+
+
+
 			$response = array(
 		    	'message' => 'room locations',		    	
-		    	'user_locations' => $allLocationsInRoom
+		    	'user_locations' => $allLocationsInRoom,
+		    	'meetup_locations' => $meetupInRoom
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),

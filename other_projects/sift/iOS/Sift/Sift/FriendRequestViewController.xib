@@ -94,7 +94,7 @@
                 <constraint firstAttribute="trailing" secondItem="qqa-n7-WrV" secondAttribute="trailing" id="rYO-Hm-yRI"/>
                 <constraint firstAttribute="trailing" secondItem="qqa-n7-WrV" secondAttribute="trailing" id="v76-CS-gHU"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">

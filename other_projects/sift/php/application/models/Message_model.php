@@ -189,7 +189,7 @@ class Message_model extends CI_Model {
         $result = $this->db->query($query, array($creatorUserId, $roomName, $isFriendsOnly, $isPublic));
 
         error_log($this->db->last_query());
-        $newRoomId = $this->db->insert_id();        
+        $newRoomId = $this->db->insert_id();
         error_log('new room id: '. $newRoomId);
         
         foreach ( $userIds as $userId){ 

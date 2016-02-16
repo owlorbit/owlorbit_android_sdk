@@ -24,10 +24,16 @@
 		B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
 		B821E7231C6AC60100EF9018 /* CreateGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */; };
 		B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */; };
+		B821E72A1C6D6C4200EF9018 /* ManageRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */; };
+		B821E72B1C6D6C4200EF9018 /* ManageRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */; };
+		B83C60DC1C72617B00A30260 /* Int+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DB1C72617B00A30260 /* Int+ToString.swift */; };
+		B83C60DE1C72755B00A30260 /* MeetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DD1C72755B00A30260 /* MeetupButton.swift */; };
 		B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8408C4A1C58577100449BEA /* UserProfileViewController.swift */; };
 		B8408C4D1C58577100449BEA /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8408C4B1C58577100449BEA /* UserProfileViewController.xib */; };
 		B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
 		B849E09E1C5D46A2001A281B /* EnableLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */; };
+		B84F077F1C6E421E00D42FEB /* AddMeetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F077E1C6E421E00D42FEB /* AddMeetupView.swift */; };
+		B84F07811C6E42C600D42FEB /* AddMeetupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84F07801C6E42C600D42FEB /* AddMeetupView.xib */; };
 		B863BECF1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */; };
 		B863BED01C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */; };
 		B863BED41C56E93000C8BA01 /* MapInstructionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BED21C56E93000C8BA01 /* MapInstructionsTableViewCell.xib */; };
@@ -176,10 +182,16 @@
 		B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupManager.swift; sourceTree = "<group>"; };
 		B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 3.xcdatamodel"; sourceTree = "<group>"; };
 		B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMeetupPin.swift; sourceTree = "<group>"; };
+		B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageRequestsViewController.swift; sourceTree = "<group>"; };
+		B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManageRequestsViewController.xib; sourceTree = "<group>"; };
+		B83C60DB1C72617B00A30260 /* Int+ToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+ToString.swift"; sourceTree = "<group>"; };
+		B83C60DD1C72755B00A30260 /* MeetupButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupButton.swift; sourceTree = "<group>"; };
 		B8408C4A1C58577100449BEA /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		B8408C4B1C58577100449BEA /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
 		B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnableLocationViewController.xib; sourceTree = "<group>"; };
+		B84F077E1C6E421E00D42FEB /* AddMeetupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMeetupView.swift; sourceTree = "<group>"; };
+		B84F07801C6E42C600D42FEB /* AddMeetupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMeetupView.xib; sourceTree = "<group>"; };
 		B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMapInstructionsViewController.swift; sourceTree = "<group>"; };
 		B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMapInstructionsViewController.xib; sourceTree = "<group>"; };
 		B863BED21C56E93000C8BA01 /* MapInstructionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapInstructionsTableViewCell.xib; sourceTree = "<group>"; };
@@ -374,6 +386,13 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		B821E7271C6D56D300EF9018 /* mapview */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = mapview;
+			sourceTree = "<group>";
+		};
 		B8408C491C58576000449BEA /* UserViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +409,15 @@
 				B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */,
 			);
 			name = ErrorViewController;
+			sourceTree = "<group>";
+		};
+		B84F077D1C6E415E00D42FEB /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				B84F077E1C6E421E00D42FEB /* AddMeetupView.swift */,
+				B84F07801C6E42C600D42FEB /* AddMeetupView.xib */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		B863BED11C56E8FA00C8BA01 /* Instructions */ = {
@@ -519,6 +547,7 @@
 		B870CEE81BFC008F00F47929 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B821E7271C6D56D300EF9018 /* mapview */,
 				B866DFC91C0E733300BF8A79 /* AUIAutoGrowingTextView.h */,
 				B866DFCA1C0E733300BF8A79 /* AUIAutoGrowingTextView.m */,
 				B804C6CC1C16A4920076F81B /* NSDate+NVTimeAgo.h */,
@@ -538,6 +567,8 @@
 				B89F3AD21C5AF6D4008BFFA1 /* LocationHelper.swift */,
 				B8F5129B1C65800B007DCFD5 /* MapHelper.swift */,
 				B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */,
+				B83C60DB1C72617B00A30260 /* Int+ToString.swift */,
+				B83C60DD1C72755B00A30260 /* MeetupButton.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -633,6 +664,7 @@
 		B8BAD2531BF178D400DC7F60 /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B84F077D1C6E415E00D42FEB /* Map */,
 				B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */,
 				B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */,
 				B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */,
@@ -698,6 +730,8 @@
 				B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */,
 				B8068B611C20F95D00EE00CA /* FriendRequestViewController.swift */,
 				B8068B621C20F95D00EE00CA /* FriendRequestViewController.xib */,
+				B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */,
+				B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */,
 			);
 			name = DashboardViewController;
 			sourceTree = "<group>";
@@ -883,6 +917,7 @@
 				B8E4E7DF1BFD520200995964 /* RegistrationSubmitKeyboardView.xib in Resources */,
 				B8F512AD1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib in Resources */,
 				B866DFD41C0EBA1900BF8A79 /* ProfileImageUploadViewController.xib in Resources */,
+				B821E72B1C6D6C4200EF9018 /* ManageRequestsViewController.xib in Resources */,
 				B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */,
 				B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */,
 				B8068B6E1C22364400EE00CA /* ProfileSettingImageUploadViewController.xib in Resources */,
@@ -902,6 +937,7 @@
 				B870CECD1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib in Resources */,
 				B8BC486A1C284827006A345E /* ChatTextMessageViewController.xib in Resources */,
 				B892D65F1C1A45700091F128 /* PreloadHomeViewController.xib in Resources */,
+				B84F07811C6E42C600D42FEB /* AddMeetupView.xib in Resources */,
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
 				B8F512A01C681217007DCFD5 /* UserGroupSelectTableViewCell.xib in Resources */,
 				B8068B691C2129E300EE00CA /* UserProfileSearchTableViewCell.xib in Resources */,
@@ -1020,6 +1056,8 @@
 				B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */,
 				B89F3AD11C59D863008BFFA1 /* NSBundle+Version.swift in Sources */,
 				B866DFD71C0FC80700BF8A79 /* ImageHelper.swift in Sources */,
+				B84F077F1C6E421E00D42FEB /* AddMeetupView.swift in Sources */,
+				B83C60DC1C72617B00A30260 /* Int+ToString.swift in Sources */,
 				B870CEF11BFC093000F47929 /* CustomMapPin.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,
 				B895A2AD1C545C7400B2A08D /* UILabel+ItalicBold.swift in Sources */,
@@ -1043,6 +1081,7 @@
 				B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */,
 				B866DFCE1C0E811C00BF8A79 /* ChatMapKeyboardView.swift in Sources */,
 				B815AA291C1E19020082E136 /* RoomAttributeManagedModel.swift in Sources */,
+				B83C60DE1C72755B00A30260 /* MeetupButton.swift in Sources */,
 				B8F512B01C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
 				B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */,
@@ -1050,6 +1089,7 @@
 				B8E4E7DD1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift in Sources */,
 				B8BC48691C284827006A345E /* ChatTextMessageViewController.swift in Sources */,
 				B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */,
+				B821E72A1C6D6C4200EF9018 /* ManageRequestsViewController.swift in Sources */,
 				B8E4E7E11BFD80CE00995964 /* ProjectConstants.swift in Sources */,
 				B8CAA4921C1134F900EC2752 /* MessageCoreModel.swift in Sources */,
 				B804C6D01C17BB0D0076F81B /* UserPointAnnotation.swift in Sources */,
@@ -1195,8 +1235,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1219,8 +1259,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
