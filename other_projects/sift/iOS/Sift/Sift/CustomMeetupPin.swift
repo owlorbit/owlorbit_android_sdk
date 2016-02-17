@@ -12,4 +12,5 @@ import MapKit
 class CustomMeetupPin: MKPointAnnotation {
 
     var id: String! = ""
+    var userId:String! = ""
 }

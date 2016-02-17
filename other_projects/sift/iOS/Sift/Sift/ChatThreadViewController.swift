@@ -342,12 +342,13 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         LocationApiHelper.createMeetup(title, subtitle: subtitle, isGlobal: global, roomId: self.roomId, longitude: String(self.mapView.centerCoordinate.longitude), latitude: String(self.mapView.centerCoordinate.latitude), resultJSON: {
             (JSON) in
                 var meetupId:String! = JSON["meetup_id"].int?.stringValue
-            
+                var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
                 let annotation = CustomMeetupPin()
                 
                 annotation.coordinate = self.mapView.centerCoordinate // your location here
                 annotation.title = title
                 annotation.id = meetupId
+                annotation.userId = user.userId
                 annotation.subtitle = subtitle
             
                 self.annotations.addObject(annotation)
@@ -492,6 +493,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             for (key,subJson):(String, SwiftyJSON.JSON) in json["meetup_locations"] {
                 
                 var meetupId:String! = subJson["id"].string
+                var userId:String! = subJson["user_id"].string
                 var longitude:Double! = Double(subJson["longitude"].string!)
                 var latitude:Double! = Double(subJson["latitude"].string!)
 
@@ -508,12 +510,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                     annotation.coordinate = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
                     annotation.title = meetupTitle
                     annotation.subtitle = meetupSubtitle
+                    annotation.userId = userId
 
                     self.annotations.addObject(annotation)
                     self.mapView.addAnnotation(annotation)
                 }
-                
             }
+            
+            removeOldMeetupAnnotations(json["meetup_locations"])
             
             if(prevUserCount != currentUserCount && currentUserCount > 0 && isYourUserLoaded){
                 prevUserCount = currentUserCount
@@ -538,6 +542,46 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
  
         }
         return nil;
+    }
+    
+    func removeMeetupAnnotation(annotationId:String)->Void{
+        
+        for (var i:Int = 0; i < self.mapView.annotations.count;i++){
+            var val = self.mapView.annotations[i]
+            //for val in self.annotations{
+            if val is CustomMeetupPin{
+                var meetupPointAnnotation:CustomMeetupPin = val as! CustomMeetupPin
+                if(meetupPointAnnotation.id == annotationId){
+                    ///return meetupPointAnnotation
+                    self.annotations.removeObject(val)
+                    self.mapView.removeAnnotation( val )
+                    return;
+                }
+            }
+        }
+    }
+    
+    func removeOldMeetupAnnotations(meetupJSON:SwiftyJSON.JSON)->Void{
+
+        for (var i:Int = self.mapView.annotations.count-1; i >= 0; i--){
+            var containsAnnotation:Bool = false
+            var val = self.mapView.annotations[i]
+
+            if val is CustomMeetupPin{
+                for (key,subJson):(String, SwiftyJSON.JSON) in meetupJSON {
+                    var meetupId:String! = subJson["id"].string
+                    if(meetupId == (val as! CustomMeetupPin).id){
+                        containsAnnotation = true
+                    }
+                }
+                
+                if(!containsAnnotation){
+                    self.annotations.removeObject(val)
+                    self.mapView.removeAnnotation( val )
+                }
+            }
+        }
+        
     }
 
     //make device id eventually...
@@ -757,7 +801,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 let meetupPin:CustomMeetupPin = annotation as! CustomMeetupPin;
                 let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "meetupPin")
                 pinAnnotationView.pinColor = .Purple
-                pinAnnotationView.draggable = true
+                
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.animatesDrop = true
                 
@@ -770,6 +814,20 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 leftButton.meetupPin = meetupPin
                 leftButton.addTarget(self, action: "navigateMeetupClick:", forControlEvents: UIControlEvents.TouchUpInside)
                 pinAnnotationView.leftCalloutAccessoryView = leftButton
+                
+                var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+                if(meetupPin.userId == user.userId){
+                    pinAnnotationView.draggable = true
+                    let button : MeetupButton = MeetupButton(type: UIButtonType.ContactAdd) as! MeetupButton
+                    button.setImage(UIImage(named: "delete_icon"), forState: UIControlState.Normal)
+                    button.frame = CGRectMake(10, 0, 25, 25)
+                    button.meetupPin = meetupPin
+                    button.addTarget(self, action: "deleteAnnotation:", forControlEvents: UIControlEvents.TouchUpInside)
+                    pinAnnotationView.rightCalloutAccessoryView = button
+                }else{
+                    print("opposing: \(meetupPin.userId) -- \(user.userId)")
+                }
+                
 
                 return pinAnnotationView
             }
@@ -819,6 +877,24 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     
     func navigateMeetupClick (sender : MeetupButton!) {
         navigateMeetup(sender.meetupPin)
+    }
+    
+    
+    func deleteAnnotation (sender : MeetupButton!) {
+        //navigateMeetup(sender.meetupPin)
+        print("remove..\(sender.meetupPin.id)")
+        
+        
+        LocationApiHelper.disableMeetup(sender.meetupPin.id, resultJSON: {
+            (JSON) in
+            
+                //remove annotations..
+                self.removeMeetupAnnotation(sender.meetupPin.id)
+
+            }, error: {
+                (String) in
+                print("error \(String)")
+        })
     }
     
     //leftButtonClicked

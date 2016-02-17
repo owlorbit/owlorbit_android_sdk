@@ -46,8 +46,6 @@ class Meetup_model extends CI_Model {
         $query = "select user_id from meetup where id = ? and user_id = ?";
         $result = $this->db->query($query, array($meetupId, $userId));
 
-        error_log($this->db->last_query());
-
         if($result->num_rows() == 0){
             return;
         }
@@ -55,6 +53,19 @@ class Meetup_model extends CI_Model {
         $updateQuery = "update meetup set longitude = ?, latitude = ? where id = ?";
         $this->db->query($updateQuery, array($longitude, $latitude, $meetupId));
     }
+
+    function disable($meetupId, $userId){
+        //check if the meetup id's creator is the userId being passed.
+
+        $query = "select user_id from meetup where id = ? and user_id = ?";
+        $result = $this->db->query($query, array($meetupId, $userId));
+        if($result->num_rows() == 0){
+            return;
+        }
+
+        $updateQuery = "update meetup set active = 0 where id = ?";
+        $this->db->query($updateQuery, array($meetupId));
+    }    
 
     //post entry
     function insert_entry($userId){
