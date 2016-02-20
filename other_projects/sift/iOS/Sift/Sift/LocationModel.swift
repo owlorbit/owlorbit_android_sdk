@@ -16,9 +16,9 @@ class LocationModel :NSObject {
     var deviceId:String = ""
     var longitude:String=""
     var latitude:String=""
-    var created:String=""
+    var created:NSDate?
     var coordinate:CLLocationCoordinate2D?
-    
+
     init(json:JSON){
         if(json == nil){
             return;
@@ -28,7 +28,18 @@ class LocationModel :NSObject {
         self.deviceId = (json["device_id"]) ? json["device_id"].string! : ""
         self.longitude = (json["longitude"]) ? json["longitude"].string! : ""
         self.latitude = (json["latitude"]) ? json["latitude"].string! : ""
-        self.created = (json["created"]) ? json["created"].string! : ""
+
+        var createdStr:String = json["created"].string!
+
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "EST")
+        var dateConverted:NSDate = dateFormatter.dateFromString(createdStr)!
+        self.created = dateConverted
+
+        
+        
+        //self.created = (json["created"]) ? json["created"].string! : ""
 
         self.coordinate = CLLocationCoordinate2D(latitude: self.latitude.toDouble()!, longitude: self.longitude.toDouble()!)
     }

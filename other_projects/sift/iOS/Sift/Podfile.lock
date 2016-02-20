@@ -6,6 +6,7 @@ PODS:
   - ASImageResize (1.0.3)
   - Bolts/Tasks (1.6.0)
   - BusyNavigationBar (1.1.0)
+  - CKCircleMenuView (0.1.6)
   - CTAssetsPickerController (3.2.1):
     - PureLayout (~> 3.0.0)
   - DGElasticPullToRefresh (1.0.3)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - ALThreeCircleSpinner
   - ASImageResize
   - BusyNavigationBar
+  - CKCircleMenuView
   - CTAssetsPickerController (~> 3.2.0)
   - DGElasticPullToRefresh
   - DZNEmptyDataSet
@@ -73,6 +75,7 @@ SPEC CHECKSUMS:
   ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
   Bolts: f52a250053bb517ca874523c3913776359ab3def
   BusyNavigationBar: cde4cbb450b58448204d5ab87f2dce07b4f0d7e1
+  CKCircleMenuView: c73335207c5b4f57f532c272c17aeb2adeb77106
   CTAssetsPickerController: 629e3c452efe92627b6386f572fc4e2f31533880
   DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6

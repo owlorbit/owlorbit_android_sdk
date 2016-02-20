@@ -5,10 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatThreadViewController" customModule="OwlOrbit" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapRadialViewController" customModule="OwlOrbit" customModuleProvider="target">
             <connections>
                 <outlet property="bottomConstraintTextField" destination="LBa-AK-v7s" id="EjA-I2-MNR"/>
+                <outlet property="btnExit" destination="k5m-n0-V9G" id="NxK-qa-q7H"/>
                 <outlet property="btnInstructions" destination="lUo-Fw-oiJ" id="icE-Vr-hkO"/>
+                <outlet property="btnMeetup" destination="grx-D9-QtA" id="pyO-cA-wfH"/>
+                <outlet property="btnMenu" destination="JVw-Nh-Jlb" id="Zsi-oY-fxQ"/>
                 <outlet property="mapView" destination="P7O-19-mUe" id="D0b-AO-CVz"/>
                 <outlet property="txtChatView" destination="iwa-wt-3LK" id="XWh-VH-PXQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -80,8 +83,95 @@
                         <constraint firstItem="XGn-uY-c0o" firstAttribute="top" secondItem="not-Dr-ORU" secondAttribute="bottom" id="vTq-vc-6wJ"/>
                     </constraints>
                 </view>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUo-Fw-oiJ">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5m-n0-V9G">
+                    <rect key="frame" x="209" y="423" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="6Gk-Wj-0iU"/>
+                        <constraint firstAttribute="height" constant="45" id="AWv-0W-NZi"/>
+                        <constraint firstAttribute="width" constant="25" id="DOy-Ox-fWO"/>
+                        <constraint firstAttribute="width" constant="35" id="GJq-ft-vBn"/>
+                        <constraint firstAttribute="height" constant="40" id="GLg-QJ-9B6"/>
+                        <constraint firstAttribute="width" constant="40" id="Pq0-F7-k0O"/>
+                        <constraint firstAttribute="height" constant="33" id="S0T-6m-MLQ"/>
+                        <constraint firstAttribute="width" constant="25" id="XWY-Gr-G70"/>
+                        <constraint firstAttribute="height" constant="25" id="fAJ-M0-Li8"/>
+                    </constraints>
+                    <state key="normal" image="btn_exit"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="DOy-Ox-fWO"/>
+                            <exclude reference="6Gk-Wj-0iU"/>
+                            <exclude reference="AWv-0W-NZi"/>
+                            <exclude reference="fAJ-M0-Li8"/>
+                            <exclude reference="XWY-Gr-G70"/>
+                            <exclude reference="GJq-ft-vBn"/>
+                            <exclude reference="S0T-6m-MLQ"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnExitClick:" destination="-1" eventType="touchUpInside" id="ZRF-fL-wXI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVw-Nh-Jlb">
                     <rect key="frame" x="252" y="404" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="PgT-8Y-w5z"/>
+                        <constraint firstAttribute="height" constant="33" id="TUO-AW-VwL"/>
+                        <constraint firstAttribute="height" constant="60" id="cDQ-mB-K4F"/>
+                        <constraint firstAttribute="width" constant="35" id="e3E-Cs-BEP"/>
+                        <constraint firstAttribute="width" constant="45" id="egU-Cw-fl3"/>
+                        <constraint firstAttribute="width" constant="25" id="iY1-Ie-zVS"/>
+                        <constraint firstAttribute="width" constant="25" id="ogz-s4-3R1"/>
+                        <constraint firstAttribute="height" constant="45" id="qRM-fC-esi"/>
+                        <constraint firstAttribute="width" constant="60" id="xu4-sL-d2V"/>
+                    </constraints>
+                    <state key="normal" image="btn_add"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="PgT-8Y-w5z"/>
+                            <exclude reference="TUO-AW-VwL"/>
+                            <exclude reference="e3E-Cs-BEP"/>
+                            <exclude reference="egU-Cw-fl3"/>
+                            <exclude reference="iY1-Ie-zVS"/>
+                            <exclude reference="ogz-s4-3R1"/>
+                            <exclude reference="qRM-fC-esi"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnMenuClick:" destination="-1" eventType="touchUpInside" id="HzU-VQ-BmL"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grx-D9-QtA">
+                    <rect key="frame" x="271" y="362" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="23f-9G-hNO"/>
+                        <constraint firstAttribute="height" constant="25" id="AY5-RC-yWw"/>
+                        <constraint firstAttribute="height" constant="45" id="Idk-5M-Fsc"/>
+                        <constraint firstAttribute="width" constant="40" id="Nvb-PB-VnF"/>
+                        <constraint firstAttribute="width" constant="25" id="dAk-Qf-dSh"/>
+                        <constraint firstAttribute="width" constant="35" id="e3h-u2-PSz"/>
+                        <constraint firstAttribute="width" constant="45" id="eht-zL-hNM"/>
+                        <constraint firstAttribute="width" constant="25" id="ub1-bH-hBn"/>
+                        <constraint firstAttribute="height" constant="40" id="w7g-Ye-y8V"/>
+                    </constraints>
+                    <state key="normal" image="btn_meetup"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="23f-9G-hNO"/>
+                            <exclude reference="AY5-RC-yWw"/>
+                            <exclude reference="Idk-5M-Fsc"/>
+                            <exclude reference="dAk-Qf-dSh"/>
+                            <exclude reference="e3h-u2-PSz"/>
+                            <exclude reference="eht-zL-hNM"/>
+                            <exclude reference="ub1-bH-hBn"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="createDropActionClick:" destination="-1" eventType="touchUpInside" id="Xyu-qs-ZQA"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUo-Fw-oiJ">
+                    <rect key="frame" x="222" y="374" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="3nC-6d-64h"/>
                         <constraint firstAttribute="width" constant="45" id="HjR-h3-8ps"/>
@@ -90,8 +180,8 @@
                         <constraint firstAttribute="width" constant="25" id="Z5V-HF-dAn"/>
                         <constraint firstAttribute="width" constant="35" id="g2w-sb-Nwt"/>
                         <constraint firstAttribute="height" constant="33" id="pQJ-dP-MAC"/>
-                        <constraint firstAttribute="width" constant="60" id="tqU-dM-fN1"/>
-                        <constraint firstAttribute="height" constant="60" id="z9N-8b-59r"/>
+                        <constraint firstAttribute="width" constant="40" id="tqU-dM-fN1"/>
+                        <constraint firstAttribute="height" constant="40" id="z9N-8b-59r"/>
                     </constraints>
                     <state key="normal" image="list_icon"/>
                     <variation key="default">
@@ -109,53 +199,33 @@
                         <action selector="btnInstructionClick:" destination="-1" eventType="touchUpInside" id="4Bk-rE-HBz"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVw-Nh-Jlb">
-                    <rect key="frame" x="8" y="404" width="60" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="PgT-8Y-w5z"/>
-                        <constraint firstAttribute="height" constant="33" id="TUO-AW-VwL"/>
-                        <constraint firstAttribute="height" constant="60" id="cDQ-mB-K4F"/>
-                        <constraint firstAttribute="width" constant="35" id="e3E-Cs-BEP"/>
-                        <constraint firstAttribute="width" constant="45" id="egU-Cw-fl3"/>
-                        <constraint firstAttribute="width" constant="25" id="iY1-Ie-zVS"/>
-                        <constraint firstAttribute="width" constant="25" id="ogz-s4-3R1"/>
-                        <constraint firstAttribute="height" constant="45" id="qRM-fC-esi"/>
-                        <constraint firstAttribute="width" constant="60" id="xu4-sL-d2V"/>
-                    </constraints>
-                    <state key="normal" image="btn_meetup"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="PgT-8Y-w5z"/>
-                            <exclude reference="TUO-AW-VwL"/>
-                            <exclude reference="e3E-Cs-BEP"/>
-                            <exclude reference="egU-Cw-fl3"/>
-                            <exclude reference="iY1-Ie-zVS"/>
-                            <exclude reference="ogz-s4-3R1"/>
-                            <exclude reference="qRM-fC-esi"/>
-                        </mask>
-                    </variation>
-                    <connections>
-                        <action selector="createDropActionClick:" destination="-1" eventType="touchUpInside" id="Z5R-j5-lDn"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="lUo-Fw-oiJ" secondAttribute="bottom" constant="8" id="13J-Sd-TAk"/>
+                <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="lUo-Fw-oiJ" secondAttribute="bottom" constant="9" id="22H-eC-vEG"/>
                 <constraint firstItem="P7O-19-mUe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7pF-SA-f67"/>
                 <constraint firstAttribute="trailing" secondItem="P7O-19-mUe" secondAttribute="trailing" id="GvX-jQ-Jc0"/>
+                <constraint firstAttribute="trailing" secondItem="grx-D9-QtA" secondAttribute="trailing" constant="9" id="HMO-Nk-Psq"/>
                 <constraint firstAttribute="bottom" secondItem="vEW-HB-tD6" secondAttribute="bottom" id="LBa-AK-v7s"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="M7l-VX-f3M"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="P7O-19-mUe" secondAttribute="bottom" id="MHY-7V-k3e"/>
+                <constraint firstItem="JVw-Nh-Jlb" firstAttribute="leading" secondItem="lUo-Fw-oiJ" secondAttribute="trailing" constant="3" id="OGZ-NM-OeC"/>
                 <constraint firstAttribute="trailing" secondItem="vEW-HB-tD6" secondAttribute="trailing" id="QH0-r9-NFP"/>
                 <constraint firstItem="lUo-Fw-oiJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Qco-TP-dJ6"/>
                 <constraint firstItem="P7O-19-mUe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sdq-sP-HBI"/>
                 <constraint firstAttribute="bottom" secondItem="P7O-19-mUe" secondAttribute="bottom" id="U6a-bf-C6S"/>
+                <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="k5m-n0-V9G" secondAttribute="bottom" constant="9" id="V4F-MX-1C8"/>
+                <constraint firstAttribute="trailing" secondItem="JVw-Nh-Jlb" secondAttribute="trailing" constant="8" id="bPK-DI-5Yy"/>
                 <constraint firstAttribute="bottom" secondItem="P7O-19-mUe" secondAttribute="bottom" id="cKI-dR-j6h"/>
+                <constraint firstItem="JVw-Nh-Jlb" firstAttribute="leading" secondItem="k5m-n0-V9G" secondAttribute="trailing" constant="3" id="cq6-NO-ceN"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="lUo-Fw-oiJ" secondAttribute="bottom" constant="8" id="dGE-KU-Kwe"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="JVw-Nh-Jlb" secondAttribute="bottom" constant="8" id="hIF-Dc-Sas"/>
+                <constraint firstItem="grx-D9-QtA" firstAttribute="leading" secondItem="lUo-Fw-oiJ" secondAttribute="trailing" constant="9" id="m7H-yT-gMC"/>
                 <constraint firstItem="JVw-Nh-Jlb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="pnt-I7-fTh"/>
                 <constraint firstAttribute="trailing" secondItem="lUo-Fw-oiJ" secondAttribute="trailing" constant="8" id="qpv-9Q-fv9"/>
+                <constraint firstItem="JVw-Nh-Jlb" firstAttribute="top" secondItem="grx-D9-QtA" secondAttribute="bottom" constant="2" id="vJg-vE-xu1"/>
+                <constraint firstItem="k5m-n0-V9G" firstAttribute="top" secondItem="lUo-Fw-oiJ" secondAttribute="bottom" constant="9" id="wU2-VJ-Wwv"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="P7O-19-mUe" secondAttribute="bottom" id="z87-jM-tGY"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -164,15 +234,22 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="cKI-dR-j6h"/>
-                    <exclude reference="13J-Sd-TAk"/>
-                    <exclude reference="MHY-7V-k3e"/>
-                    <exclude reference="z87-jM-tGY"/>
                     <exclude reference="Qco-TP-dJ6"/>
+                    <exclude reference="qpv-9Q-fv9"/>
+                    <exclude reference="13J-Sd-TAk"/>
+                    <exclude reference="22H-eC-vEG"/>
+                    <exclude reference="MHY-7V-k3e"/>
+                    <exclude reference="dGE-KU-Kwe"/>
+                    <exclude reference="z87-jM-tGY"/>
+                    <exclude reference="OGZ-NM-OeC"/>
+                    <exclude reference="pnt-I7-fTh"/>
                 </mask>
             </variation>
         </view>
     </objects>
     <resources>
+        <image name="btn_add" width="70" height="70"/>
+        <image name="btn_exit" width="70" height="70"/>
         <image name="btn_meetup" width="76" height="76"/>
         <image name="list_icon" width="68" height="68"/>
     </resources>

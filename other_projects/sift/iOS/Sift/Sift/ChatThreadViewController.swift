@@ -21,13 +21,16 @@ import BusyNavigationBar
 import LNRSimpleNotifications
 import AudioToolbox
 
-class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate, UITextViewDelegate, AddMeetupDelegate {
+class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate, UITextViewDelegate, AddMeetupDelegate,UIGestureRecognizerDelegate {
 
     @IBOutlet weak var bottomConstraintTextField: NSLayoutConstraint!
     @IBOutlet weak var chatKeyboardView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var txtChatView: AUIAutoGrowingTextView!
-
+    @IBOutlet weak var btnMenu: UIButton!
+    @IBOutlet weak var btnMeetup: UIButton!
+    @IBOutlet weak var btnExit: UIButton!
+    
     var chatRoomTitle:String = "";
     var roomId:String = ""
     let downloader = ImageDownloader()
@@ -60,9 +63,9 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     var chatMapKeyboard:ChatMapKeyboardView?
     
     var addMeetupView:AddMeetupView?
-    
     var isYourUserLoaded:Bool = false;
-    
+    var tapGesture:UILongPressGestureRecognizer?;
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -246,7 +249,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         var text:String = self.txtChatView.text
 
         //routes = response.routes[0].ste
-
+        self.mapView.removeOverlays(self.mapView.overlays)
         for route in response.routes as! [MKRoute] {
             self.mapView.addOverlay(route.polyline,
                 level: MKOverlayLevel.AboveRoads)
@@ -254,7 +257,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         }
 
         let userLocation:MKUserLocation = self.mapView.userLocation
-        
         let region = MKCoordinateRegionMakeWithDistance(
             userLocation.location!.coordinate, 2000, 2000)
     }
@@ -279,6 +281,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         
         hideInstructions()
+        var meetupAnnotation = UserPointAnnotation()
+        meetupAnnotation.coordinate = customMeetupPin.coordinate
+        self.targetAnnotation = meetupAnnotation
+        
         destination = MKMapItem()
         var placemark: MKPlacemark = MKPlacemark(coordinate: customMeetupPin.coordinate, addressDictionary: nil)
         destination = MKMapItem(placemark: placemark)
@@ -377,17 +383,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
 
     @IBAction func createDropActionClick(sender: AnyObject) {
-        
-        
-        //self.window.addSubview(myview)
-
-        UIView.animateWithDuration(0.5, animations: {() -> Void in
-            var infoFrame: CGRect = self.addMeetupView!.frame
-            infoFrame.origin.y = 0.0
-            self.addMeetupView!.frame = infoFrame
-        })
     }
-    
+
     func getDirections() {
         
         let request = MKDirectionsRequest()
@@ -447,8 +444,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func timerCallLocations(){
         
         if(RETRIEVE_LOCATION_LOCK){return;}
-        
-        print("timer called")
+
         RETRIEVE_LOCATION_LOCK = true
         LocationApiHelper.getRoomLocations(self.roomId,resultJSON:{
         (JSON) in
@@ -459,7 +455,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func updateLocations(json:JSON){
 
         do {
-
             var currentUserCount = 0
             for (key,subJson):(String, SwiftyJSON.JSON) in json["user_locations"] {
                 var location:LocationModel = LocationModel(json: subJson);
@@ -470,7 +465,17 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                     userPointAnnotation!.userModel.longitude = location.coordinate!.longitude
                     userPointAnnotation!.userModel.latitude = location.coordinate!.latitude
                     userPointAnnotation!.title = userPointAnnotation!.userModel.firstName.capitalizedString
-                    
+
+                    if(location.created != nil){
+                        userPointAnnotation!.userModel.lastPositionTimestamp = location.created
+                    }
+
+                    var dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    var dateString = dateFormatter.stringFromDate(location.created!)
+                    var timeAgo = NSDate.mysqlDatetimeFormattedAsTimeAgoFull(dateString)
+                    userPointAnnotation!.subtitle = "Last active \(timeAgo)"
+
                     //save context
                     ApplicationManager.shareCoreDataInstance.saveContext()
                 }else{
@@ -629,7 +634,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         if(text == ""){
             return;
         }
-        
+
         chatMapKeyboard!.btnSend.enabled = false;
         var date:NSDate = NSDate()
         var messageCore : MessageModel = MessageModel(messageId: "", senderId: user.userId, senderDisplayName: user.firstName, isMediaMessage: false, date: date.inUTCRegion().UTCDate, roomId: roomId , text: text)
@@ -744,32 +749,37 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         switch (newState) {
             case .Starting:
                 //view.dragState = .Dragging
+
                 break
             case .Canceling:
                 break
             case .Ending:
                 //view.dragState = .None
-                var meetupAnnotation:CustomMeetupPin = view.annotation as! CustomMeetupPin
-                var meetupId:String! = meetupAnnotation.id
+                
+                if view.annotation is CustomMeetupPin{
+                    var meetupAnnotation:CustomMeetupPin = view.annotation as! CustomMeetupPin
+                    var meetupId:String! = meetupAnnotation.id
 
-                LocationApiHelper.updateMeetup(meetupId, longitude: String(meetupAnnotation.coordinate.longitude), latitude: String(meetupAnnotation.coordinate.latitude), resultJSON: {
-                (JSON) in
-                    print("success update")
-                }, error: {
-                (String) in
-                    print("error \(String)")
-                })
-                
-                
-                
-                
+                    LocationApiHelper.updateMeetup(meetupId, longitude: String(meetupAnnotation.coordinate.longitude), latitude: String(meetupAnnotation.coordinate.latitude), resultJSON: {
+                    (JSON) in
+                        print("success update")
+                    }, error: {
+                    (String) in
+                        print("error \(String)")
+                    })
+                }
+
                 break
             default: break
         }
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-            
+
+            tapGesture = UILongPressGestureRecognizer(target: self, action: "tapGestureClick:")
+            //tapGesture!.numberOfTapsRequired = 2;
+            tapGesture!.delegate = self;
+
             if annotation is MKUserLocation {
                 //return nil so map view draws "blue dot" for standard user location
                 //return nil
@@ -793,6 +803,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 }
 
                 isYourUserLoaded = true;
+                anView?.addGestureRecognizer(tapGesture!)
+
                 return anView
             }
         
@@ -827,11 +839,12 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 }else{
                     print("opposing: \(meetupPin.userId) -- \(user.userId)")
                 }
+
                 
+                pinAnnotationView.addGestureRecognizer(tapGesture!)
 
                 return pinAnnotationView
             }
-
             
             //these are non-you annotations..
             let reuseId = "pinAvatarImg"
@@ -852,14 +865,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
             pinView!.canShowCallout = true
 
+
             let button : AnnotationButton = AnnotationButton(type: UIButtonType.ContactAdd) as! AnnotationButton
             button.setImage(UIImage(named: "right_arrow_map"), forState: UIControlState.Normal)
             button.frame = CGRectMake(10, 0, 25, 25)
             button.userPointAnnotation = userPointAnnotation
             button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
             pinView!.rightCalloutAccessoryView = button
-        
-        
+
             let leftButton : AnnotationButton = AnnotationButton(type: UIButtonType.Custom) as! AnnotationButton
             //leftButton.frame = CGRectMake(0, 0, 44, 44)
             leftButton.frame.size.width = 44
@@ -869,9 +882,80 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             leftButton.userPointAnnotation = userPointAnnotation
             leftButton.addTarget(self, action: "leftButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
             pinView!.leftCalloutAccessoryView = leftButton
+            pinView!.addGestureRecognizer(tapGesture!)
+        
+            return pinView
+    }
+    
+    
+    
+    var prevSelected:MKAnnotationView?;
+    
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+        
+        prevSelected = view
+        //self.mapView.deselectAnnotation(view.annotation, animated: false)
+        
+        /*
+        var region:MKCoordinateRegion = MKCoordinateRegion();
+        region.center.latitude = view.annotation!.coordinate.latitude;
+        region.center.longitude = view.annotation!.coordinate.longitude;
+        region.span.latitudeDelta = spanX;
+        region.span.longitudeDelta = spanY;
+        mapView.setRegion(region, animated: true)
+        */
+        
+        /*
+        if view.annotation is CustomMeetupPin{
+            
+            
+            
+        }else if view.annotation is UserPointAnnotation{
+            
+            
+            
+        }*/
+    }
+    
+    
+    func tapGestureClick(gestureRecognizer:UIGestureRecognizer){
         
 
-            return pinView
+        var region:MKCoordinateRegion = MKCoordinateRegion();
+        if(prevSelected == nil){
+            var view: UIView = gestureRecognizer.view!
+            var loc: CGPoint = gestureRecognizer.locationInView(view)
+            var subview  = view.hitTest(loc, withEvent: nil) as! MKAnnotationView
+            
+            region.center.latitude = subview.annotation!.coordinate.latitude;
+            region.center.longitude = subview.annotation!.coordinate.longitude;
+            
+            region.span.latitudeDelta = spanX;
+            region.span.longitudeDelta = spanY;
+            mapView.setRegion(region, animated: true)
+            self.mapView.selectAnnotation(subview.annotation!, animated: false)
+        }else{
+            region.center.latitude = prevSelected!.annotation!.coordinate.latitude;
+            region.center.longitude = prevSelected!.annotation!.coordinate.longitude;
+            
+            region.span.latitudeDelta = spanX;
+            region.span.longitudeDelta = spanY;
+            mapView.setRegion(region, animated: true)
+            
+            self.mapView.selectAnnotation(prevSelected!.annotation!, animated: false)
+        }
+        
+        
+        
+    }
+    
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    func longPressMap(gestureRecognizer:UIGestureRecognizer){
+        print("derp")
     }
     
     
@@ -988,6 +1072,13 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         super.viewWillDisappear(animated)
         timerGetLocations?.invalidate()
         timerGetLocations = nil
+    }
+    
+    
+    @IBAction func btnMenuClick(sender: AnyObject) {
+    }
+    
+    @IBAction func btnExitClick(sender: AnyObject) {
     }
 
     /*

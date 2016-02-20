@@ -28,6 +28,7 @@ class GenericUserManagedModel: NSManagedObject {
     
     @NSManaged var longitude:Double
     @NSManaged var latitude:Double
+    @NSManaged var lastPositionTimestamp:NSDate?
     //@NSManaged var avatarImg:NSData
     var avatarImg:UIImage = UIImage()
     var originalAvatar:UIImage = UIImage()

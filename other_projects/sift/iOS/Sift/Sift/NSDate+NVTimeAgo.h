@@ -10,6 +10,8 @@
  */
 + (NSString*)mysqlDatetimeFormattedAsTimeAgo:(NSString *)mysqlDatetime;
 
++ (NSString*)mysqlDatetimeFormattedAsTimeAgoFull:(NSString *)mysqlDatetime;
+
 
 /*
  Formatted As Time Ago

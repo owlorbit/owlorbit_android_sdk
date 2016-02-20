@@ -348,8 +348,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 //UIApplication.sharedApplication().applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
                 oldLatitude = annotation.coordinate.latitude
                 oldLongitude = annotation.coordinate.longitude
-                
-                print("new location...\(latitude) - \(longitude)")
 
                 if(!ApplicationManager.messageRecentlySent){
                     ApplicationManager.messageRecentlySent = true

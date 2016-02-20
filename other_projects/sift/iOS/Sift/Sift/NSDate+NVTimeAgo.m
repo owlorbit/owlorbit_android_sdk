@@ -37,6 +37,20 @@
     
 }
 
++ (NSString *)mysqlDatetimeFormattedAsTimeAgoFull:(NSString *)mysqlDatetime
+{
+    //http://stackoverflow.com/questions/10026714/ios-converting-a-date-received-from-a-mysql-server-into-users-local-time
+    //If this is not in UTC, we don't have any knowledge about
+    //which tz it is. MUST BE IN UTC.
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSDate *date = [formatter dateFromString:mysqlDatetime];
+    
+    return [date formattedAsTimeAgoFull];
+    
+}
+
 
 /*
  Formatted As Time Ago
@@ -88,6 +102,56 @@
     
     // Anything else = "September 9, 2011"
     return [self formatAsOther];
+
+}
+
+
+- (NSString *)formattedAsTimeAgoFull
+{
+    //Now
+    NSDate *now = [NSDate date];
+    NSTimeInterval secondsSince = -(int)[self timeIntervalSinceDate:now];
+    
+    //Should never hit this but handle the future case
+    if(secondsSince < 0)
+        return @"In The Future";
+    
+    
+    // < 1 minute = "Just now"
+    if(secondsSince < MINUTE)
+        return @"Just now";
+    
+    
+    // < 1 hour = "x minutes ago"
+    if(secondsSince < HOUR)
+        return [self formatMinutesAgoFull:secondsSince];
+    
+    
+    // Today = "x hours ago"
+    if([self isSameDayAs:now])
+        return [self formatAsTodayFull:secondsSince];
+    
+    
+    // Yesterday = "Yesterday at 1:28 PM"
+    if([self isYesterday:now])
+        return [self formatAsYesterdayFull];
+    
+    
+    // < Last 7 days = "Friday at 1:48 AM"
+    if([self isLastWeek:secondsSince])
+        return [self formatAsLastWeekFull];
+    
+    
+    // < Last 30 days = "March 30 at 1:14 PM"
+    if([self isLastMonth:secondsSince])
+        return [self formatAsLastMonthFull];
+    
+    // < 1 year = "September 15"
+    if([self isLastYear:secondsSince])
+        return [self formatAsLastYearFull];
+    
+    // Anything else = "September 9, 2011"
+    return [self formatAsOtherFull];
     
 }
 
@@ -186,8 +250,18 @@
 // < 1 hour = "x minutes ago"
 - (NSString *)formatMinutesAgo:(NSTimeInterval)secondsSince
 {
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    //Format
+    [dateFormatter setDateFormat:@"h:mm a"];
+    //[dateFormatter setDateFormat:@"EEE"];
+    return [dateFormatter stringFromDate:self];
+}
+
+- (NSString *)formatMinutesAgoFull:(NSTimeInterval)secondsSince
+{
     //Convert to minutes
-    /*
     int minutesSince = (int)secondsSince / MINUTE;
     
     //Handle Plural
@@ -195,15 +269,6 @@
         return @"1 minute ago";
     else
         return [NSString stringWithFormat:@"%d minutes ago", minutesSince];
-     */
-    
-    //Create date formatter
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-    //Format
-    [dateFormatter setDateFormat:@"h:mm a"];
-    //[dateFormatter setDateFormat:@"EEE"];
-    return [dateFormatter stringFromDate:self];
 }
 
 
@@ -228,6 +293,17 @@
     return [dateFormatter stringFromDate:self];
 }
 
+- (NSString *)formatAsTodayFull:(NSTimeInterval)secondsSince
+{
+    //Convert to hours
+    int hoursSince = (int)secondsSince / HOUR;
+    
+    //Handle Plural
+    if(hoursSince == 1)
+        return @"1 hour ago";
+    else
+        return [NSString stringWithFormat:@"%d hours ago", hoursSince];
+}
 
 // Yesterday = "Fri"
 - (NSString *)formatAsYesterday
@@ -240,6 +316,16 @@
     return [dateFormatter stringFromDate:self];
 }
 
+// Yesterday = "Fri"
+- (NSString *)formatAsYesterdayFull
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    //Format
+    [dateFormatter setDateFormat:@"EEE 'at' h:mm a"];
+    return [dateFormatter stringFromDate:self];
+}
+
 
 // < Last 7 days = "Friday at 1:48 AM"
 - (NSString *)formatAsLastWeek
@@ -248,11 +334,31 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
     //Format
-    //[dateFormatter setDateFormat:@"EEE 'at' h:mm a"];
     [dateFormatter setDateFormat:@"EEE"];
     return [dateFormatter stringFromDate:self];
 }
 
+// < Last 7 days = "Friday at 1:48 AM"
+- (NSString *)formatAsLastWeekFull
+{
+    //Create date formatter
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    //Format
+    [dateFormatter setDateFormat:@"EEE 'at' h:mm a"];
+    return [dateFormatter stringFromDate:self];
+}
+
+
+- (NSString *)formatAsLastMonthFull
+{
+    //Create date formatter
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    //Format
+    [dateFormatter setDateFormat:@"MMMM d 'at' h:mm a"];
+    return [dateFormatter stringFromDate:self];
+}
 
 // < Last 30 days = "March 30 at 1:14 PM"
 - (NSString *)formatAsLastMonth
@@ -276,6 +382,29 @@
     [dateFormatter setDateFormat:@"MMM d"];
     return [dateFormatter stringFromDate:self];
 }
+
+// < 1 year = "September 15"
+- (NSString *)formatAsLastYearFull
+{
+    //Create date formatter
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    //Format
+    [dateFormatter setDateFormat:@"MMMM d"];
+    return [dateFormatter stringFromDate:self];
+}
+
+
+- (NSString *)formatAsOtherFull
+{
+    //Create date formatter
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    //Format
+    [dateFormatter setDateFormat:@"LLLL d, yyyy"];
+    return [dateFormatter stringFromDate:self];
+}
+
 
 
 // Anything else = "September 9, 2011"

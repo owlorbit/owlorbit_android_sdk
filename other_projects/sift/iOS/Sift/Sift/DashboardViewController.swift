@@ -13,12 +13,17 @@ import CoreData
 import Alamofire
 import AlamofireImage.Swift
 
+import QuartzCore
 import DGElasticPullToRefresh
 
-class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+
+class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+{
+
 
     var data:[RoomManagedModel] = [];
     var boldRoomId = ""
+    
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -68,7 +73,12 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
         initDownloadProfile()
         initTableViewSettings()
+
     }
+    
+    
+    /////////////////////
+    
     
     func initTableViewSettings(){
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -220,9 +230,11 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     func createNewBtnClick(sender: AnyObject){
-        let vc = WriteMessageViewController(nibName: "WriteMessageViewController", bundle: nil)
+        
+       let vc = WriteMessageViewController(nibName: "WriteMessageViewController", bundle: nil)
         vc.hidesBottomBarWhenPushed = true;
         navigationController?.pushViewController(vc, animated: true )
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -231,7 +243,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     @IBAction func btnTest(sender: AnyObject) {
-        let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+        let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
         vc.hidesBottomBarWhenPushed = true;
         navigationController?.pushViewController(vc, animated: true )
     }
@@ -280,7 +292,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         //get all user ids..?
 
         var roomData:RoomManagedModel = data[indexPath.row]
-        let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+        let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
 
         vc.chatRoomTitle = roomData.attributes.name
         vc.roomId = roomData.roomId

@@ -45,8 +45,7 @@ class ChatMapInstructionsViewController: UIViewController {
     }
     
     func btnLoadMap(sender: AnyObject){
-        
-        AlertHelper.createPopupMessage("It will be implemented...", title: "Derp Derp")
+
         /*
         if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
             
@@ -62,6 +61,16 @@ class ChatMapInstructionsViewController: UIViewController {
             print("Can't use comgooglemaps://");
         }*/
         
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var URL: NSURL = NSURL(string: "https://www.google.com/maps/dir/\(appDelegate.oldLatitude),\(appDelegate.oldLongitude)/\(userAnnotation.coordinate.latitude),\(userAnnotation.coordinate.longitude)")!
+        //https://www.google.com/maps/dir/37.33233141,37.33233141/0.0,0.0
+        
+        
+        UIApplication.sharedApplication().openURL(URL)
+        
+        print("https://www.google.de/maps/dir/\(appDelegate.oldLatitude),\(appDelegate.oldLongitude)/\(userAnnotation.coordinate.latitude),\(userAnnotation.coordinate.longitude)")
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

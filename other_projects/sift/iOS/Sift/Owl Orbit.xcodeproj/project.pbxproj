@@ -22,12 +22,15 @@
 		B815AA291C1E19020082E136 /* RoomAttributeManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */; };
 		B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */; };
 		B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
+		B81CAB681C76A976007B5131 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB671C76A976007B5131 /* MainMapViewController.swift */; };
 		B821E7231C6AC60100EF9018 /* CreateGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */; };
 		B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */; };
 		B821E72A1C6D6C4200EF9018 /* ManageRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */; };
 		B821E72B1C6D6C4200EF9018 /* ManageRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */; };
 		B83C60DC1C72617B00A30260 /* Int+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DB1C72617B00A30260 /* Int+ToString.swift */; };
 		B83C60DE1C72755B00A30260 /* MeetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DD1C72755B00A30260 /* MeetupButton.swift */; };
+		B83C60EC1C768A8A00A30260 /* MapRadialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60EB1C768A8A00A30260 /* MapRadialViewController.swift */; };
+		B83C60F11C768F9A00A30260 /* UIColor+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60F01C768F9A00A30260 /* UIColor+helpers.swift */; };
 		B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8408C4A1C58577100449BEA /* UserProfileViewController.swift */; };
 		B8408C4D1C58577100449BEA /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8408C4B1C58577100449BEA /* UserProfileViewController.xib */; };
 		B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
@@ -179,6 +182,8 @@
 		B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAttributeManagedModel.swift; sourceTree = "<group>"; };
 		B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManagedModel.swift; sourceTree = "<group>"; };
 		B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserManagedModel.swift; sourceTree = "<group>"; };
+		B81CAB671C76A976007B5131 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
+		B81CAB691C76ABD1007B5131 /* Sift 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 4.xcdatamodel"; sourceTree = "<group>"; };
 		B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupManager.swift; sourceTree = "<group>"; };
 		B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 3.xcdatamodel"; sourceTree = "<group>"; };
 		B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMeetupPin.swift; sourceTree = "<group>"; };
@@ -186,6 +191,8 @@
 		B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManageRequestsViewController.xib; sourceTree = "<group>"; };
 		B83C60DB1C72617B00A30260 /* Int+ToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+ToString.swift"; sourceTree = "<group>"; };
 		B83C60DD1C72755B00A30260 /* MeetupButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupButton.swift; sourceTree = "<group>"; };
+		B83C60EB1C768A8A00A30260 /* MapRadialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRadialViewController.swift; sourceTree = "<group>"; };
+		B83C60F01C768F9A00A30260 /* UIColor+helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+helpers.swift"; sourceTree = "<group>"; };
 		B8408C4A1C58577100449BEA /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		B8408C4B1C58577100449BEA /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +400,31 @@
 			name = mapview;
 			sourceTree = "<group>";
 		};
+		B83C60DF1C75559200A30260 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		B83C60EE1C768D7900A30260 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		B83C60EF1C768D8100A30260 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B83C60EB1C768A8A00A30260 /* MapRadialViewController.swift */,
+				B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */,
+				B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */,
+				B81CAB671C76A976007B5131 /* MainMapViewController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
 		B8408C491C58576000449BEA /* UserViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +446,8 @@
 		B84F077D1C6E415E00D42FEB /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				B83C60EF1C768D8100A30260 /* controllers */,
+				B83C60EE1C768D7900A30260 /* views */,
 				B84F077E1C6E421E00D42FEB /* AddMeetupView.swift */,
 				B84F07801C6E42C600D42FEB /* AddMeetupView.xib */,
 			);
@@ -569,6 +603,7 @@
 				B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */,
 				B83C60DB1C72617B00A30260 /* Int+ToString.swift */,
 				B83C60DD1C72755B00A30260 /* MeetupButton.swift */,
+				B83C60F01C768F9A00A30260 /* UIColor+helpers.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -598,6 +633,7 @@
 		B8792A281BEB15CE00BE05ED /* Owl Orbit */ = {
 			isa = PBXGroup;
 			children = (
+				B83C60DF1C75559200A30260 /* Libraries */,
 				B8E4E7D31BFD487200995964 /* API */,
 				B870CEE81BFC008F00F47929 /* Helpers */,
 				B870CEBB1BF5741B00F47929 /* Views */,
@@ -667,8 +703,6 @@
 				B84F077D1C6E415E00D42FEB /* Map */,
 				B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */,
 				B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */,
-				B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */,
-				B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */,
 				B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */,
 				B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */,
 			);
@@ -1037,6 +1071,7 @@
 				B892D6611C1A4FD70091F128 /* FullScreenLoaderHelper.swift in Sources */,
 				B8F512991C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift in Sources */,
 				B870CED01BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
+				B81CAB681C76A976007B5131 /* MainMapViewController.swift in Sources */,
 				B87654631C03F53F00190B9B /* WriteMessageViewController.swift in Sources */,
 				B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */,
 				B8068B631C20F95D00EE00CA /* FriendRequestViewController.swift in Sources */,
@@ -1057,6 +1092,8 @@
 				B89F3AD11C59D863008BFFA1 /* NSBundle+Version.swift in Sources */,
 				B866DFD71C0FC80700BF8A79 /* ImageHelper.swift in Sources */,
 				B84F077F1C6E421E00D42FEB /* AddMeetupView.swift in Sources */,
+				B83C60EC1C768A8A00A30260 /* MapRadialViewController.swift in Sources */,
+				B83C60F11C768F9A00A30260 /* UIColor+helpers.swift in Sources */,
 				B83C60DC1C72617B00A30260 /* Int+ToString.swift in Sources */,
 				B870CEF11BFC093000F47929 /* CustomMapPin.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,
@@ -1235,8 +1272,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1259,8 +1296,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Timmy Nguyen (DBA5RDVCJF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1369,11 +1406,12 @@
 		B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B81CAB691C76ABD1007B5131 /* Sift 4.xcdatamodel */,
 				B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */,
 				B8F512961C61CB3B007DCFD5 /* Sift 2.xcdatamodel */,
 				B8792A311BEB15CE00BE05ED /* Sift.xcdatamodel */,
 			);
-			currentVersion = B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */;
+			currentVersion = B81CAB691C76ABD1007B5131 /* Sift 4.xcdatamodel */;
 			path = Sift.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

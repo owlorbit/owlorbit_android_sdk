@@ -14,6 +14,7 @@ target 'OwlOrbit' do
     pod 'JSQMessagesViewController'
     pod "SwiftDate", "~> 2.0"
     pod 'Parse'
+    pod 'CKCircleMenuView'
     pod 'LNRSimpleNotifications', '~> 0.3.0'
     pod "DGElasticPullToRefresh"
 end
