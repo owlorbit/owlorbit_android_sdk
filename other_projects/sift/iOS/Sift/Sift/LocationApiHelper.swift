@@ -106,7 +106,6 @@ class LocationApiHelper{
                     }
                 }
         }
-        
     }
     
     class func createMeetup(title:String, subtitle:String, isGlobal:Bool, roomId:String, longitude:String, latitude:String, resultJSON:(JSON) -> Void, error:(String) -> Void) -> Void {
@@ -160,7 +159,7 @@ class LocationApiHelper{
                     print("error calling GET on \(response.result)")
                     print(response.result.error!)
                     
-                    error(response.result.description)
+                    error(response.result.description)  
                     return
                 }
                 

@@ -29,13 +29,16 @@ class LocationModel :NSObject {
         self.longitude = (json["longitude"]) ? json["longitude"].string! : ""
         self.latitude = (json["latitude"]) ? json["latitude"].string! : ""
 
-        var createdStr:String = json["created"].string!
+        var createdStr:String = (json["created"]) ? json["created"].string! : ""
 
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(abbreviation: "EST")
-        var dateConverted:NSDate = dateFormatter.dateFromString(createdStr)!
-        self.created = dateConverted
+        
+        if(createdStr != ""){
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.timeZone = NSTimeZone(abbreviation: "EST")
+            var dateConverted:NSDate = dateFormatter.dateFromString(createdStr)!
+            self.created = dateConverted
+        }
 
         
         

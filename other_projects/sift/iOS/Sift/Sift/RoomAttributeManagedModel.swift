@@ -33,9 +33,8 @@ class RoomAttributeManagedModel: NSManagedObject {
             RoomAttributeManagedModel.generateUserName(obj, json: json, doneLoading:{
                 (doneLoading) in
                     if(doneLoading){
-                        roomAttributeModel(obj)
                         ApplicationManager.shareCoreDataInstance.saveContext()
-                        print("all done loading...!")
+                        roomAttributeModel(obj)
                     }
                 }
             )
@@ -53,9 +52,8 @@ class RoomAttributeManagedModel: NSManagedObject {
             GenericUserManagedModel.initWithJson(subJson, resultGenericUser:
                 {
                     (genUser) in
-                    
-                    objIndex++
 
+                    objIndex++
                     var genericUser:GenericUserManagedModel = genUser
                     usersArr.addObject(genericUser);
                     roomName += genericUser.firstName + ", "
@@ -63,6 +61,7 @@ class RoomAttributeManagedModel: NSManagedObject {
                         roomName.removeRange(roomName.endIndex.advancedBy(-2)..<roomName.endIndex)
                         obj.name = roomName
                         obj.users = usersArr
+                        ApplicationManager.shareCoreDataInstance.saveContext()
                         doneLoading(true)
                     }
                 }

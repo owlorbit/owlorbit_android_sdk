@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ChatMapInstructionsViewController: UIViewController {
+import DZNEmptyDataSet
+
+class ChatMapInstructionsViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     var routeSteps = [MKRouteStep]()
     var userAnnotation:UserPointAnnotation = UserPointAnnotation();
@@ -25,6 +27,7 @@ class ChatMapInstructionsViewController: UIViewController {
             self.title = "Directions to " + userModel.firstName.capitalizedString
             customMeetupPinActive = false
         }else{
+            self.title = "Directions"
             customMeetupPinActive = true
         }
         
@@ -33,8 +36,11 @@ class ChatMapInstructionsViewController: UIViewController {
         
         var rightBtn : UIBarButtonItem = UIBarButtonItem(title: "Launch Map", style: UIBarButtonItemStyle.Plain, target: self, action: "btnLoadMap:")
         
-        self.navigationItem.rightBarButtonItem = rightBtn
-        
+        if(routeSteps.count > 0){
+            self.navigationItem.rightBarButtonItem = rightBtn
+        }
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
         
         self.tableView.registerNib(UINib(nibName: "MapInstructionsTableViewCell", bundle:nil), forCellReuseIdentifier: "MapInstructionsTableViewCell")
     }
@@ -71,6 +77,22 @@ class ChatMapInstructionsViewController: UIViewController {
         
         print("https://www.google.de/maps/dir/\(appDelegate.oldLatitude),\(appDelegate.oldLongitude)/\(userAnnotation.coordinate.latitude),\(userAnnotation.coordinate.longitude)")
 
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "Please Go Back")
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "Select a location to travel to!")
+    }
+    
+    func emptyDataSetShouldAllowTouch(scrollView: UIScrollView!) -> Bool{
+        return true
+    }
+    
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool{
+        return true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

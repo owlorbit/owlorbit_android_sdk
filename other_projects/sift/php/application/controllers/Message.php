@@ -188,6 +188,7 @@ class Message extends CI_Controller {
 			}
 
 			$userIds = $this->security->xss_clean($_POST['userIds']);
+
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
 			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));

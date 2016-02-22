@@ -55,13 +55,13 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
 
         self.tableView.registerNib(UINib(nibName: "UserDiscoverTableViewCell", bundle:nil), forCellReuseIdentifier: "UserDiscoverTableViewCell")
         self.tableView.registerNib(UINib(nibName: "UserSearchPendingHeaderView", bundle:nil), forHeaderFooterViewReuseIdentifier: "UserSearchPendingHeaderView")
-
+     
+        navigationController?.hidesBarsOnTap = true
         loadLists()
-        
         nofucksrightnow()
         initTableViewSettings()
     }
-
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
         return true

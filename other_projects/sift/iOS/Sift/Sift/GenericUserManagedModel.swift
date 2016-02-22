@@ -39,7 +39,8 @@ class GenericUserManagedModel: NSManagedObject {
         let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         let fetchRequest = NSFetchRequest(entityName: "GenericUserManagedModel")
         let entity = NSEntityDescription.entityForName("GenericUserManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
-        var obj = GenericUserManagedModel.getById(json["room_id"].string!)
+        //var obj = GenericUserManagedModel.getById(json["room_id"].string!)
+        var obj = GenericUserManagedModel.getById(json["id"].string!)
         
         obj.userId = (json["id"].error == nil) ? json["id"].string! : ""
         obj.firstName = (json["first_name"].error == nil) ? json["first_name"].string! : ""
@@ -86,7 +87,8 @@ class GenericUserManagedModel: NSManagedObject {
         let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         let fetchRequest = NSFetchRequest(entityName: "GenericUserManagedModel")
         let entity = NSEntityDescription.entityForName("GenericUserManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
-        var obj = GenericUserManagedModel.getById(json["room_id"].string!)
+        //var obj = GenericUserManagedModel.getById(json["room_id"].string!)
+        var obj = GenericUserManagedModel.getById(json["id"].string!)
 
         obj.userId = (json["id"].error == nil) ? json["id"].string! : ""
         obj.firstName = (json["first_name"].error == nil) ? json["first_name"].string! : ""
@@ -101,8 +103,7 @@ class GenericUserManagedModel: NSManagedObject {
         URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
         ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
-            
-            print("save here..?")
+
             if let image = response.result.value {
                 //obj.avatarImg = UIImagePNGRepresentation(image.roundImage())!
                 obj.avatarImg = image.roundImage()
@@ -138,17 +139,6 @@ class GenericUserManagedModel: NSManagedObject {
         URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
         ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
-            
-            print("save here..?")
-            /*
-            if let image = response.result.value {
-                //obj.avatarImg = UIImagePNGRepresentation(image.roundImage())!
-                obj.avatarImg = image.roundImage()
-            }else{
-                //obj.avatarImg = UIImagePNGRepresentation(UIImage(named:"owl_orbit")!)!
-                obj.avatarImg = UIImage(named:"owl_orbit")!
-            }*/
-            
             ApplicationManager.shareCoreDataInstance.saveContext()
         }
         
@@ -181,9 +171,9 @@ class GenericUserManagedModel: NSManagedObject {
     }
     
     
-    class func getById(roomId:String)->GenericUserManagedModel{
+    class func getById(userId:String)->GenericUserManagedModel{
         let entity = NSEntityDescription.entityForName("GenericUserManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
-        let resultPredicate = NSPredicate(format: "userId == %@", roomId)
+        let resultPredicate = NSPredicate(format: "userId == %@", userId)
         
         let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
         let fetchRequest = NSFetchRequest(entityName: "GenericUserManagedModel")

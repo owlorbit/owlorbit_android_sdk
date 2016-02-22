@@ -21,8 +21,10 @@ import BusyNavigationBar
 import LNRSimpleNotifications
 import AudioToolbox
 
-class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate, UITextViewDelegate, AddMeetupDelegate,UIGestureRecognizerDelegate {
+class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate, UITextViewDelegate, AddMeetupDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate {
 
+    @IBOutlet weak var txtSearch: UITextField!
+    @IBOutlet weak var viewSearchContainer: UIView!
     @IBOutlet weak var bottomConstraintTextField: NSLayoutConstraint!
     @IBOutlet weak var chatKeyboardView: UIView!
     @IBOutlet weak var mapView: MKMapView!
@@ -70,6 +72,15 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         super.viewDidLoad()
 
         self.title = self.chatRoomTitle
+        self.viewSearchContainer.layer.cornerRadius = 4
+        self.viewSearchContainer.layer.masksToBounds = true
+        
+        
+        self.txtSearch.borderStyle = UITextBorderStyle.None
+        self.txtSearch.attributedPlaceholder = NSAttributedString(string:self.txtSearch.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        self.txtSearch.delegate = self;
+        self.txtSearch.tintColor = UIColor.whiteColor()
+        
         var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "btnTextClick:")
         self.navigationItem.rightBarButtonItem = switchContextBtn
         //Do any additional setup after loading the view.
@@ -101,6 +112,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.profileImage = self.profileImage.roundImage()
         }
 
+        retrieveUsers()
         initAddMeetup()
         addMapViewOnClick()
         loadProfileImg()
@@ -146,6 +158,17 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.btnInstructions.alpha = 1;
             self.view.layoutIfNeeded()
         }
+    }
+    
+    @IBAction func txtSearchOnChange(sender: AnyObject) {
+        
+    }
+
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
+        textField.resignFirstResponder()
+        print("Search for \(textField.text)")
+        return true
     }
     
     func textViewDidChangeSelection(textView: UITextView) {
@@ -424,10 +447,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 print ("start loading.. \(profileImageUrl)")
                 downloader.downloadImage(URLRequest: URLRequest) { response in
                     if let image = response.result.value {
-                        userData.originalAvatar = image
-                        userData.avatarImg = image
-                        userData.avatarImg = userData.avatarImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true)
-                        userData.avatarImg = userData.avatarImg.roundImage()
+                        userData.originalAvatar = image.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
+                        //userData.avatarImg = image
+                        userData.avatarImg = image.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
+                        //userData.avatarImg = userData.avatarImg.roundImage()
                         self.addUser(userData)
                         print ("user has been added")
                     }
@@ -452,10 +475,35 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         });
     }
     
+    
+    func retrieveUsers(){
+        var roomModel:RoomManagedModel! = RoomManagedModel.getById(roomId);
+        RoomApiHelper.getRoomAttribute(roomId, resultJSON:{
+            (JSON2) in
+            
+            RoomAttributeManagedModel.initWithJson(JSON2, roomId: self.roomId, roomAttributeModel:{
+                (roomAttribute) in
+                
+                roomModel.attributes = roomAttribute
+                if(roomModel.attributes.users.count > 0){
+                    roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
+                }
+                
+                ApplicationManager.shareCoreDataInstance.saveContext()
+                print("hey oh")
+                self.loadProfileImg()
+            })
+            
+            
+        });
+    }
+    
     func updateLocations(json:JSON){
 
         do {
             var currentUserCount = 0
+
+
             for (key,subJson):(String, SwiftyJSON.JSON) in json["user_locations"] {
                 var location:LocationModel = LocationModel(json: subJson);
 
@@ -472,9 +520,12 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
                     var dateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                    var dateString = dateFormatter.stringFromDate(location.created!)
-                    var timeAgo = NSDate.mysqlDatetimeFormattedAsTimeAgoFull(dateString)
-                    userPointAnnotation!.subtitle = "Last active \(timeAgo)"
+                    
+                    if(location.created != nil){
+                        var dateString = dateFormatter.stringFromDate(location.created!)
+                        var timeAgo = NSDate.mysqlDatetimeFormattedAsTimeAgoFull(dateString)
+                        userPointAnnotation!.subtitle = "Last active \(timeAgo)"
+                    }
 
                     //save context
                     ApplicationManager.shareCoreDataInstance.saveContext()
@@ -844,6 +895,25 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 pinAnnotationView.addGestureRecognizer(tapGesture!)
 
                 return pinAnnotationView
+            } else if annotation is CustomFindAddressPin{
+                
+                
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "CustomFindAddressPin")
+                pinAnnotationView.pinColor = .Red
+                
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.animatesDrop = true
+                pinAnnotationView.draggable = true
+                
+                let button : AnnotationButton = AnnotationButton(type: UIButtonType.ContactAdd) as! AnnotationButton
+                button.setImage(UIImage(named: "right_arrow_map"), forState: UIControlState.Normal)
+                button.frame = CGRectMake(10, 0, 25, 25)
+                //button.userPointAnnotation = userPointAnnotation
+                button.addTarget(self, action: "btnSaveFindAddress:", forControlEvents: UIControlEvents.TouchUpInside)
+                pinAnnotationView.rightCalloutAccessoryView = button
+                
+                
+                return pinAnnotationView
             }
             
             //these are non-you annotations..
@@ -853,7 +923,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
             if pinView == nil {
                 pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-                pinView!.image = userPointAnnotation.userModel.avatarImg
+                pinView!.image = userPointAnnotation.userModel.avatarImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
+
                 //pinView!.image = UIImage(named:"owl_orbit")?.resizedImageToFitInSize(CGSize(width: 40, height: 40), scaleIfSmaller: true);
             } else {
                 pinView!.annotation = annotation
@@ -864,7 +935,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             }
 
             pinView!.canShowCallout = true
-
 
             let button : AnnotationButton = AnnotationButton(type: UIButtonType.ContactAdd) as! AnnotationButton
             button.setImage(UIImage(named: "right_arrow_map"), forState: UIControlState.Normal)
@@ -990,6 +1060,12 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         self.btnDriveClick(sender)
     }
+    
+    
+    func btnSaveFindAddress (sender : AnnotationButton!) {
+
+    }
+    
     
     func buttonClicked (sender : AnnotationButton!) {
         

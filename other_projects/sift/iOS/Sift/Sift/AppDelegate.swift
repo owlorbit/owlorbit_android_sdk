@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 self.window!.rootViewController = tabBarController
                 
                 var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
-                let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
                 vc.chatRoomTitle = "test"
                 
                 ///RIGHT HERE>
@@ -241,11 +241,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         dashboardVC.makeTextBold(roomId, displayName:firstName, message:message)
                         
                         print("dashboard.. make text bold.. or add")
-                    }else if controllers.last is ChatThreadViewController{
+                    }else if controllers.last is MapRadialViewController{
                         print("map")
                         
                         
-                        var mapVC = controllers.last as! ChatThreadViewController
+                        var mapVC = controllers.last as! MapRadialViewController
 
                         if(mapVC.roomId != roomId){
                             otherScreenMethodTrigger("\(firstName) says:", body: message, roomId: roomId, userId:userId)
@@ -253,7 +253,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
                             //make sure roomId is the room.
                             var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
-                            let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                            let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
                          
                             var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
                             chatView.roomId = roomId;
@@ -297,9 +297,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func setRootViewController(viewController:UIViewController){
     }
+    
+    func removeAllObjects(){
+        
+        locationManager.stopUpdatingLocation()
+        locationManager.stopMonitoringSignificantLocationChanges()
+        
+        let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
+        let context = coreDataHelper.managedObjectContext
+        let coord = coreDataHelper.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: "PersonalUserModel")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        let fetchRequestRoomModel = NSFetchRequest(entityName: "RoomManagedModel")
+        let deleteRequestRoom = NSBatchDeleteRequest(fetchRequest: fetchRequestRoomModel)
 
+        do {
+            try coord.executeRequest(deleteRequestRoom, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        let fetchRequestRoomAttribute = NSFetchRequest(entityName: "RoomAttributeManagedModel")
+        let deleteRequestAttr = NSBatchDeleteRequest(fetchRequest: fetchRequestRoomAttribute)
+        
+        do {
+            try coord.executeRequest(deleteRequestAttr, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+
+    }
+    
+    
     func setupLoggedOutViewController(){
         var viewController = UINavigationController(rootViewController: PreloadHomeViewController())
+        
+        //delete coredata
+        removeAllObjects()
         
         //let tabBarController = UICustomTabBarController()
         //self.window!.rootViewController = tabBarController

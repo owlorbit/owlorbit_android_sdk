@@ -25,7 +25,6 @@ class Location_model extends CI_Model {
                     and room_id = ?
                     and active = 1) group by user_id);";
 
-
         $result = $this->db->query($query, array($userId, $roomId));
         if($result->num_rows() > 0){            
             return $result->result();
@@ -63,6 +62,10 @@ class Location_model extends CI_Model {
 
         unset($this->id);
         $this->db->insert('locations', $this);
+
+        $query =  "delete from locations where user_id = ? and id != ?";
+        $insertId = $this->db->insert_id();
+        $this->db->query($query, array($userId, $insertId));
     }
     
 

@@ -28,9 +28,7 @@ class GroupSettingsStep1ViewController: UIViewController, UIGestureRecognizerDel
         LOCK_PUSH = false
         
         self.tableView.registerNib(UINib(nibName: "GroupNameTableViewCell", bundle:nil), forCellReuseIdentifier: "GroupNameTableViewCell")
-        
         self.tableView.registerNib(UINib(nibName: "GroupIsPublicTableViewCell", bundle:nil), forCellReuseIdentifier: "GroupIsPublicTableViewCell")
-        
         self.tableView.registerNib(UINib(nibName: "GroupIsFriendsOnlyTableViewCell", bundle:nil), forCellReuseIdentifier: "GroupIsFriendsOnlyTableViewCell")
         
         let tap = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
@@ -58,22 +56,17 @@ class GroupSettingsStep1ViewController: UIViewController, UIGestureRecognizerDel
         ChatApiHelper.initChatMessage("Init Message", userIds: self.selectedUserArrayList, resultJSON:  {
             (JSON) in
             
-            
-                FullScreenLoaderHelper.removeLoader();
-            
-            
-            
-            
-            
-                let roomId:Int? = JSON["room_id"].int
+
+                let roomId:Int! = JSON["room_id"].int
                 //var roomData:RoomManagedModel? = RoomManagedModel.getById(String(roomId))
                 
                 if let roomData = RoomManagedModel.getById(String(roomId)) as RoomManagedModel? {
                     
                     
+                    FullScreenLoaderHelper.removeLoader();
                     if(!self.LOCK_PUSH){
                         self.LOCK_PUSH = true;
-                        let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                        let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
                         vc.chatRoomTitle = roomData.attributes.name
                         vc.roomId = roomData.roomId
                         vc.hidesBottomBarWhenPushed = true
@@ -81,8 +74,7 @@ class GroupSettingsStep1ViewController: UIViewController, UIGestureRecognizerDel
                     }
                     
                 }else{
-                    
-                    print("SHIT BAG \(JSON["room_id"].string)")
+
                     var roomData:RoomManagedModel? = RoomManagedModel.getById(String(roomId))
                     RoomApiHelper.getRoomManaged(roomId!, resultJSON:{
                         (JSON3) in
@@ -104,8 +96,9 @@ class GroupSettingsStep1ViewController: UIViewController, UIGestureRecognizerDel
                                     roomData = RoomManagedModel.getById(roomModel.roomId)
                                     
                                     if(!self.LOCK_PUSH){
+                                        FullScreenLoaderHelper.removeLoader();
                                         self.LOCK_PUSH = true;
-                                        let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                                        let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
                                         vc.chatRoomTitle = roomData!.attributes.name
                                         vc.roomId = roomData!.roomId
                                         vc.hidesBottomBarWhenPushed = true

@@ -47,11 +47,11 @@ class UserGroupSelectTableViewCell: UITableViewCell {
         }else{
             imgCheck.hidden = true;
         }
-        
-        UIView.animateWithDuration(0.3) {
+
+        //UIView.animateWithDuration(0.3) {
             self.circleIcon.alpha = 1.0;
-            self.layoutIfNeeded()
-        }
+            //self.layoutIfNeeded()
+        //}
         
         
         self.circleIcon.hidden = false;
@@ -73,10 +73,10 @@ class UserGroupSelectTableViewCell: UITableViewCell {
         
         //self.circleIcon.hidden = true;
         
-        UIView.animateWithDuration(0.3) {
+        //UIView.animateWithDuration(0.3) {
             self.circleIcon.alpha = 0;
-            self.layoutIfNeeded()
-        }
+            //self.layoutIfNeeded()
+        //}
         self.selectionStyle = UITableViewCellSelectionStyle.Default
     }
     

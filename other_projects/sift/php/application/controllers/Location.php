@@ -23,7 +23,7 @@ class Location extends CI_Controller {
 		$this->output->set_header('Content-Type: application/json; charset=utf-8');	
 		$this->load->helper('json_encode_helper');
 		$this->load->library('verify_session');
-		$this->load->model('user_model');
+		$this->load->model('user_model');		
 		$this->load->model('location_model');
 		$this->load->model('user_token_model');
 		$this->load->model('user_session_model');
@@ -37,6 +37,7 @@ class Location extends CI_Controller {
 		$response = array();
 		try{
 			$this->load->model('meetup_model');
+			$this->load->model('room_model');
 
 			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
@@ -57,14 +58,17 @@ class Location extends CI_Controller {
 				$typeOfError = -2;
 				throw new Exception("Session is invalid.");	
 			}
+			//make sure they are part of the room..
 
 		    $allLocationsInRoom = $this->location_model->get_all_locations_in_room($userId, $roomId);
 		    $meetupInRoom = $this->meetup_model->get_all_in_room($roomId);
+		    $roomUsers = $this->room_model->get_users($roomId);
 
 			$response = array(
 		    	'message' => 'room locations',		    	
 		    	'user_locations' => $allLocationsInRoom,
-		    	'meetup_locations' => $meetupInRoom
+		    	'meetup_locations' => $meetupInRoom,
+		    	'users' => $roomUsers
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),

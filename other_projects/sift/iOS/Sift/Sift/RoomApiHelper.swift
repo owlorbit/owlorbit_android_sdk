@@ -12,10 +12,10 @@ import Alamofire
 
 class RoomApiHelper{
 
-    class func getRooms(pageIndex:Int, resultJSON:(JSON) -> Void, error:(String, errorCode:Int)->Void) -> Void {
+    class func getRooms(resultJSON:(JSON) -> Void, error:(String, errorCode:Int)->Void) -> Void {
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-        var url:String = ProjectConstants.ApiBaseUrl.value + "/room/get_recent/" + String(pageIndex)
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/room/get_all"
         let data = ["publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
         
         Alamofire.request(.POST, url, parameters: data, encoding: .URL)
@@ -92,6 +92,38 @@ class RoomApiHelper{
         }
     }
     
+    class func leaveRoom(roomId:String, resultJSON:(JSON) ->Void, error:(String)->Void)->Void{
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/room/leave"
+        let data = [
+            "roomId" : roomId,
+            "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    
+                    
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                    
+                    error(response.result.description)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }else{
+                        error("Failed")
+                    }
+                }
+        }
+    }
     
     
     class func getRoomAttribute(roomId:String, resultJSON:(JSON) -> Void) -> Void {

@@ -58,8 +58,6 @@ class RoomManagedModel: NSManagedObject {
         if(json["last_message"].string != nil){
             obj!.lastMessage = (json["last_message"].error == nil) ? json["last_message"].string! : ""
         }
-        
-        print("hello world: \(json["last_message_timestamp"])")
 
         if(json["last_message_timestamp"].string != nil){
 

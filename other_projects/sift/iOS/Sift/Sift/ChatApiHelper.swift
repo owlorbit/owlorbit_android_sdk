@@ -114,7 +114,13 @@ class ChatApiHelper{
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
                     print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    //print(response.result.error!)
+                    
+                    if let data = response.data {
+                        let json = String(data: data, encoding: NSUTF8StringEncoding)
+                        print("Failure Response: \(json)")
+                    }
+                    
                     return
                 }
                 

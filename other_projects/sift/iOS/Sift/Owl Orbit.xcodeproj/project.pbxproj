@@ -23,10 +23,14 @@
 		B815AA2B1C1E1BA90082E136 /* RoomManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */; };
 		B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
 		B81CAB681C76A976007B5131 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB671C76A976007B5131 /* MainMapViewController.swift */; };
+		B81CAB6C1C78F21A007B5131 /* ImageManipulate.m in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB6B1C78F21A007B5131 /* ImageManipulate.m */; };
+		B81CAB6E1C78F347007B5131 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81CAB6D1C78F347007B5131 /* UIKit.framework */; };
+		B81CAB701C7909DB007B5131 /* LeaveRoomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB6F1C7909DB007B5131 /* LeaveRoomHelper.swift */; };
 		B821E7231C6AC60100EF9018 /* CreateGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */; };
 		B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */; };
 		B821E72A1C6D6C4200EF9018 /* ManageRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */; };
 		B821E72B1C6D6C4200EF9018 /* ManageRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */; };
+		B827320C1C7A48C50020C060 /* CustomFindAddressPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B827320B1C7A48C50020C060 /* CustomFindAddressPin.swift */; };
 		B83C60DC1C72617B00A30260 /* Int+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DB1C72617B00A30260 /* Int+ToString.swift */; };
 		B83C60DE1C72755B00A30260 /* MeetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DD1C72755B00A30260 /* MeetupButton.swift */; };
 		B83C60EC1C768A8A00A30260 /* MapRadialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60EB1C768A8A00A30260 /* MapRadialViewController.swift */; };
@@ -184,11 +188,16 @@
 		B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUserManagedModel.swift; sourceTree = "<group>"; };
 		B81CAB671C76A976007B5131 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		B81CAB691C76ABD1007B5131 /* Sift 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 4.xcdatamodel"; sourceTree = "<group>"; };
+		B81CAB6A1C78F21A007B5131 /* ImageManipulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManipulate.h; sourceTree = "<group>"; };
+		B81CAB6B1C78F21A007B5131 /* ImageManipulate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManipulate.m; sourceTree = "<group>"; };
+		B81CAB6D1C78F347007B5131 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B81CAB6F1C7909DB007B5131 /* LeaveRoomHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveRoomHelper.swift; sourceTree = "<group>"; };
 		B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupManager.swift; sourceTree = "<group>"; };
 		B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 3.xcdatamodel"; sourceTree = "<group>"; };
 		B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMeetupPin.swift; sourceTree = "<group>"; };
 		B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageRequestsViewController.swift; sourceTree = "<group>"; };
 		B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManageRequestsViewController.xib; sourceTree = "<group>"; };
+		B827320B1C7A48C50020C060 /* CustomFindAddressPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFindAddressPin.swift; sourceTree = "<group>"; };
 		B83C60DB1C72617B00A30260 /* Int+ToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+ToString.swift"; sourceTree = "<group>"; };
 		B83C60DD1C72755B00A30260 /* MeetupButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupButton.swift; sourceTree = "<group>"; };
 		B83C60EB1C768A8A00A30260 /* MapRadialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRadialViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B81CAB6E1C78F347007B5131 /* UIKit.framework in Frameworks */,
 				B8BC48651C284363006A345E /* AudioToolbox.framework in Frameworks */,
 				B8BC48481C250C67006A345E /* QuartzCore.framework in Frameworks */,
 				B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */,
@@ -351,6 +361,7 @@
 		A47F75AA7BBF8E4E58BD0708 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B81CAB6D1C78F347007B5131 /* UIKit.framework */,
 				B8BC48641C284363006A345E /* AudioToolbox.framework */,
 				B8BC48471C250C67006A345E /* QuartzCore.framework */,
 				B8B80F001BF4182C00CF4BB3 /* MapKit.framework */,
@@ -586,6 +597,8 @@
 				B866DFCA1C0E733300BF8A79 /* AUIAutoGrowingTextView.m */,
 				B804C6CC1C16A4920076F81B /* NSDate+NVTimeAgo.h */,
 				B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */,
+				B81CAB6A1C78F21A007B5131 /* ImageManipulate.h */,
+				B81CAB6B1C78F21A007B5131 /* ImageManipulate.m */,
 				B870CEE91BFC00D800F47929 /* UIImage+Round.swift */,
 				B8E4E7D81BFD4CEC00995964 /* AlertHelper.swift */,
 				B8E4E7DA1BFD4F5F00995964 /* FormValidateHelper.swift */,
@@ -604,6 +617,7 @@
 				B83C60DB1C72617B00A30260 /* Int+ToString.swift */,
 				B83C60DD1C72755B00A30260 /* MeetupButton.swift */,
 				B83C60F01C768F9A00A30260 /* UIColor+helpers.swift */,
+				B81CAB6F1C7909DB007B5131 /* LeaveRoomHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -730,6 +744,7 @@
 			isa = PBXGroup;
 			children = (
 				B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */,
+				B827320B1C7A48C50020C060 /* CustomFindAddressPin.swift */,
 				B870CEF01BFC093000F47929 /* CustomMapPin.swift */,
 				B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */,
 				B8E4E7D61BFD4AE200995964 /* RegistrationUser.swift */,
@@ -1057,6 +1072,7 @@
 				B8F512B41C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.swift in Sources */,
 				B8F512B81C696726007DCFD5 /* GroupCountTableViewCell.swift in Sources */,
 				B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */,
+				B81CAB6C1C78F21A007B5131 /* ImageManipulate.m in Sources */,
 				B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */,
 				B870CEEA1BFC00D800F47929 /* UIImage+Round.swift in Sources */,
 				B866DFC01C0B5F9200BF8A79 /* LocationApiHelper.swift in Sources */,
@@ -1107,6 +1123,7 @@
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,
 				B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */,
 				B88213361C17F99E00E9469C /* LocationModel.swift in Sources */,
+				B81CAB701C7909DB007B5131 /* LeaveRoomHelper.swift in Sources */,
 				B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */,
 				B866DFC21C0BC22A00BF8A79 /* ChatApiHelper.swift in Sources */,
 				B88213381C18FB3000E9469C /* String+ToDouble.swift in Sources */,
@@ -1120,6 +1137,7 @@
 				B815AA291C1E19020082E136 /* RoomAttributeManagedModel.swift in Sources */,
 				B83C60DE1C72755B00A30260 /* MeetupButton.swift in Sources */,
 				B8F512B01C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift in Sources */,
+				B827320C1C7A48C50020C060 /* CustomFindAddressPin.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
 				B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */,
 				B8E4E7D91BFD4CEC00995964 /* AlertHelper.swift in Sources */,

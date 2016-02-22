@@ -218,7 +218,7 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     func isDuplicate(genericUserModel:GenericUserManagedModel)->Bool{
         
         for user: GenericUserManagedModel in (userArrayList as NSArray as! [GenericUserManagedModel] ) {
-            
+
             if genericUserModel.userId == user.userId {
                 return true
             }
@@ -393,16 +393,16 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             (JSON) in
             
             
-            FullScreenLoaderHelper.removeLoader();
-            let roomId:Int? = JSON["room_id"].int
+            let roomId:Int! = JSON["room_id"].int
             //var roomData:RoomManagedModel? = RoomManagedModel.getById(String(roomId))
-
+            print("duhhh: \(String(roomId))");
             if let roomData = RoomManagedModel.getById(String(roomId)) as RoomManagedModel? {
-                
-                
+
+                FullScreenLoaderHelper.removeLoader();
                 if(!self.LOCK_PUSH){
+                    print("VAMOS")
                     self.LOCK_PUSH = true;
-                    let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                    let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
                     vc.chatRoomTitle = roomData.attributes.name
                     vc.roomId = roomData.roomId
                     vc.hidesBottomBarWhenPushed = true
@@ -412,8 +412,7 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
                 self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
             }else{
-                
-                print("SHIT BAG \(JSON["room_id"].string)")
+
                 var roomData:RoomManagedModel? = RoomManagedModel.getById(String(roomId))
                 RoomApiHelper.getRoomManaged(roomId!, resultJSON:{
                     (JSON3) in
@@ -435,8 +434,9 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
                                 roomData = RoomManagedModel.getById(roomModel.roomId)
                                 
                                 if(!self.LOCK_PUSH){
+                                    FullScreenLoaderHelper.removeLoader();
                                     self.LOCK_PUSH = true;
-                                    let vc = ChatThreadViewController(nibName: "ChatThreadViewController", bundle: nil)
+                                    let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
                                     vc.chatRoomTitle = roomData!.attributes.name
                                     vc.roomId = roomData!.roomId
                                     vc.hidesBottomBarWhenPushed = true

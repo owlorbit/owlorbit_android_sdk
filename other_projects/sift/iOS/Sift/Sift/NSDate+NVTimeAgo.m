@@ -32,7 +32,7 @@
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     NSDate *date = [formatter dateFromString:mysqlDatetime];
-    
+
     return [date formattedAsTimeAgo];
     
 }

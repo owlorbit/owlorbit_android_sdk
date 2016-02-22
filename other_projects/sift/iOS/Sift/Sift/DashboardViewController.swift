@@ -17,7 +17,7 @@ import QuartzCore
 import DGElasticPullToRefresh
 
 
-class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MapRadialViewControllerDelegate
 {
 
 
@@ -75,10 +75,6 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         initTableViewSettings()
 
     }
-    
-    
-    /////////////////////
-    
     
     func initTableViewSettings(){
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -141,7 +137,6 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
             ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
                 if let image = response.result.value {
-                   
                     ApplicationManager.userData.profileImage = image
                 }
             }
@@ -165,62 +160,61 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
     func initRooms(){
 
-        dispatch_async(dispatch_get_main_queue()) {
+        //self.data = []
             
-            RoomApiHelper.getRooms(1, resultJSON:{
-                (JSON) in
+        RoomApiHelper.getRooms({
+            (JSON) in
 
-                for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
+            LeaveRoomHelper.removeRoom(JSON["rooms"])
+            
+            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
+                
+
+                var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
+                RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
+                    (JSON2) in
+
+
+                    RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
+                        (roomAttribute) in
                     
+                        roomModel.attributes = roomAttribute
+                        if(roomModel.attributes.users.count > 0){
+                            roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
+                        }
 
-                    var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
-                    RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
-                        (JSON2) in
+                        ApplicationManager.shareCoreDataInstance.saveContext()
+                        self.getRoomsFromManagedObjects()
+                    })
 
-
-                        RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
-                            (roomAttribute) in
-                        
-                            roomModel.attributes = roomAttribute
-                            if(roomModel.attributes.users.count > 0){
-                                roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                            }
-                            
-                            ApplicationManager.shareCoreDataInstance.saveContext()
-                            self.getRoomsFromManagedObjects()
-
-                        })
-
-                        
-                    });
+                    
+                });
+            }
+            
+            self.tableView.dg_stopLoading()
+        },error: {
+                (message, errorCode) in
+            
+                if(errorCode < 0){
+                    UserApiHelper.updateToken({
+                        //things are updated... so now call the send message again..
+                        self.initRooms()
+                        }, error: {
+                            (errorMsg) in
+                            AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
+                    })
+                }else{
+                    self.tableView.dg_stopLoading()
                 }
-                
-                self.tableView.dg_stopLoading()
-            },error: {
-                    (message, errorCode) in
-                
-                    if(errorCode < 0){
-                        UserApiHelper.updateToken({
-                            //things are updated... so now call the send message again..
-                            self.initRooms()
-                            }, error: {
-                                (errorMsg) in
-                                AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
-                        })
-                    }else{
-                        self.tableView.dg_stopLoading()
-                    }
-                
-                }
-            );
-        }
+            
+            }
+        );
+
     }
     
     public func makeTextBold(targetRoomId:String, displayName:String, message:String){
-        
-        print("understand: \(message)")
+
         self.boldRoomId = targetRoomId
-        
         var roomManagedModel:RoomManagedModel = RoomManagedModel.getById(targetRoomId)!
         roomManagedModel.lastMessage = message
         roomManagedModel.lastDisplayName = displayName
@@ -245,6 +239,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     @IBAction func btnTest(sender: AnyObject) {
         let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
         vc.hidesBottomBarWhenPushed = true;
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true )
     }
 
@@ -264,6 +259,9 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         return true
     }
     
+    func didExitRoom(controller: MapRadialViewController){
+        initRooms()
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -296,7 +294,10 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
         vc.chatRoomTitle = roomData.attributes.name
         vc.roomId = roomData.roomId
+        vc.delegate = self;
         vc.hidesBottomBarWhenPushed = true
+        
+        print("okokawef: \(roomData.attributes.name)")
         
         self.boldRoomId = "";
         self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)

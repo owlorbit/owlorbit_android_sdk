@@ -61,6 +61,26 @@ class LoginTableViewCell: UITableViewCell, LoginKeyboardPrevDelegate, Registrati
         loginKeyboardNextView?.delegate = self
         
         txtEmail.inputAccessoryView = loginKeyboardNextView;
+        
+        
+        let tapEmail:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "lblEmailClick:")
+        tapEmail.numberOfTapsRequired = 1
+        lblEmail.addGestureRecognizer(tapEmail)
+        lblEmail.userInteractionEnabled = true
+        
+        
+        let tapPassword:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "lblPasswordClick:")
+        tapPassword.numberOfTapsRequired = 1
+        lblPassword.addGestureRecognizer(tapPassword)
+        lblPassword.userInteractionEnabled = true
+    }
+    
+    func lblPasswordClick(gr:UITapGestureRecognizer){
+        txtPassword.becomeFirstResponder()
+    }
+    
+    func lblEmailClick(gr:UITapGestureRecognizer){
+        txtEmail.becomeFirstResponder()
     }
     
     func nextField(){

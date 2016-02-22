@@ -10,7 +10,8 @@ extension UIImage
 {
     func roundImage() -> UIImage
     {
-        let newImage = self.copy() as! UIImage
+        var newImage = self.copy() as! UIImage
+        //newImage = ImageManipulate.addBorderToImage(newImage)
         let cornerRadius = self.size.height/2
 
         UIGraphicsBeginImageContextWithOptions(self.size, false , 0.0)

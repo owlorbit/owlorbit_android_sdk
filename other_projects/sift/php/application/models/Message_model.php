@@ -137,15 +137,47 @@ class Message_model extends CI_Model {
             $userIdString .= $userId.',';
         }
         $userIdString = rtrim($userIdString, ",");
-        $query = "select count(room_id) as room_count, room_id from room_users 
-            where room_id in (select room_id from room_users where user_id in (".$userIdString."))
-            and user_id in (".$userIdString.")
-        group by room_id having room_count = ?;";
-        $result = $this->db->query($query, array($userCount));
-        error_log($this->db->last_query());
+        $query = "select room_id, user_id from room_users where room_id in (select room_id from (
+        select room_id, count(user_id) as user_count from room_users where room_id in (select room_id from room_users where user_id = ? and active = 1)
+            group by room_id
+        having user_count = ?) ru2) order by room_id;";
+        $result = $this->db->query($query, array($creatorUserId, $userCount));        
 
-        if($result->num_rows() > 0){            
-            return $result->row(0)->room_id;
+        if($result->num_rows() > 0){
+            //if contains both...
+
+            $containsAllUsers = true;
+            $storedRoomId = -1;
+
+            foreach ($result->result() as $row){
+                $dbRoomId = $row->room_id;
+                $dbUserId = $row->user_id;
+                if($storedRoomId != -1){  
+                    if($dbRoomId !=  $storedRoomId && $containsAllUsers) {
+                        error_log("okay store: ".$storedRoomId);                        
+                        return $storedRoomId;
+                    }else if($dbRoomId !=  $storedRoomId && !$containsAllUsers){
+                        $containsAllUsers = true;
+                    }
+                }
+
+                $storedRoomId = $dbRoomId;
+                $hasUser = false;
+
+                foreach ( $userIds as $userId){
+                    if($userId == $dbUserId){                        
+                        $hasUser = true;
+                    }
+                }
+
+                if(!$hasUser){
+                    $containsAllUsers = false;
+                }
+            }
+
+            if($containsAllUsers){                
+                return $storedRoomId;
+            }
         }
 
         $query = "insert into rooms (user_id) values (?)";
@@ -157,8 +189,7 @@ class Message_model extends CI_Model {
             error_log('user id>>: '.$userId);
 
             $query = "insert into room_users (user_id, room_id) values (?, ?)";
-            $result = $this->db->query($query, array($userId, $newRoomId));
-            error_log('insert room_id: '.$this->db->last_query());
+            $result = $this->db->query($query, array($userId, $newRoomId));            
         }
 
         return $newRoomId;
@@ -174,30 +205,57 @@ class Message_model extends CI_Model {
             $userIdString .= $userId.',';
         }
         $userIdString = rtrim($userIdString, ",");
-        $query = "select count(room_id) as room_count, room_id from room_users 
-            where room_id in (select room_id from room_users where user_id in (".$userIdString."))
-            and user_id in (".$userIdString.")
-        group by room_id having room_count = ?;";
-        $result = $this->db->query($query, array($userCount));
-        error_log($this->db->last_query());
+        $query = "select room_id, user_id from room_users where room_id in (select room_id from (
+        select room_id, count(user_id) as user_count from room_users where room_id in (select room_id from room_users where user_id = ? and active = 1)
+            group by room_id
+        having user_count = ?) ru2) order by room_id;";
+        $result = $this->db->query($query, array($creatorUserId, $userCount));        
 
-        if($result->num_rows() > 0){            
-            return $result->row(0)->room_id;
+        if($result->num_rows() > 0){
+            //if contains both...
+
+            $containsAllUsers = true;
+            $storedRoomId = -1;
+
+            foreach ($result->result() as $row){
+                $dbRoomId = $row->room_id;
+                $dbUserId = $row->user_id;
+                if($storedRoomId != -1){  
+                    if($dbRoomId !=  $storedRoomId && $containsAllUsers) {
+                        error_log("okay store: ".$storedRoomId);                        
+                        return $storedRoomId;
+                    }else if($dbRoomId !=  $storedRoomId && !$containsAllUsers){
+                        $containsAllUsers = true;
+                    }
+                }
+
+                $storedRoomId = $dbRoomId;
+                $hasUser = false;
+                foreach ( $userIds as $userId){ 
+                    if($userId == $dbUserId){                        
+                        $hasUser = true;
+                    }
+                }
+
+                if(!$hasUser){
+                    $containsAllUsers = false;
+                }
+            }
+
+            if($containsAllUsers){                
+                return $storedRoomId;
+            }
         }
 
         $query = "insert into rooms (user_id, name, friends_only, is_public) values (?, ?, ?, ?)";
         $result = $this->db->query($query, array($creatorUserId, $roomName, $isFriendsOnly, $isPublic));
-
-        error_log($this->db->last_query());
         $newRoomId = $this->db->insert_id();
-        error_log('new room id: '. $newRoomId);
         
         foreach ( $userIds as $userId){ 
             error_log('user id>>: '.$userId);
 
             $query = "insert into room_users (user_id, room_id) values (?, ?)";
-            $result = $this->db->query($query, array($userId, $newRoomId));
-            error_log('insert room_id: '.$this->db->last_query());
+            $result = $this->db->query($query, array($userId, $newRoomId));            
         }
 
         return $newRoomId;

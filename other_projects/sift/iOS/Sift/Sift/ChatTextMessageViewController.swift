@@ -43,6 +43,7 @@ class ChatTextMessageViewController: JSQMessagesViewController {
         // Do any additional setup after loading the view.
 
         self.inputToolbar!.contentView!.leftBarButtonItem = nil
+        
         loadInitMessages()
     }
 

@@ -36,8 +36,6 @@ class ReadMessageTableViewCell: UITableViewCell {
 
         //self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.lastMessageTimestamp)
         if( roomData.lastMessageTimestamp != nil){
-            print("longgg:  \(roomData.lastMessageTimestamp)")
-            
             var dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             var dateString = dateFormatter.stringFromDate(roomData.lastMessageTimestamp!)
