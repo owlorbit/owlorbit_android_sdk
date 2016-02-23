@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddMeetupDelegate {
     func addMeetup(title:String, subtitle:String, global:Bool)
+    func addMeetupFromAddress(customFindAddressPin:CustomFindAddressPin, title:String, subtitle:String, global:Bool)
     func cancelMeetup()
 }
 
@@ -20,6 +21,8 @@ class AddMeetupView: UIView {
     @IBOutlet weak var txtSubtitle: UITextField!
 
     var delegate:AddMeetupDelegate?;
+    var customFindAddressPin:CustomFindAddressPin?;
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -48,7 +51,12 @@ class AddMeetupView: UIView {
     
     @IBAction func btnCreateClick(sender: AnyObject) {
         if(txtTitle.text != ""){
-            delegate?.addMeetup(txtTitle.text!, subtitle: txtSubtitle.text!, global: swGlobal.on)
+            
+            if(customFindAddressPin != nil){
+                delegate?.addMeetupFromAddress(customFindAddressPin!, title: txtTitle.text!, subtitle: txtSubtitle.text!, global: swGlobal.on)
+            }else{
+                delegate?.addMeetup(txtTitle.text!, subtitle: txtSubtitle.text!, global: swGlobal.on)
+            }
         }else{
             AlertHelper.createPopupMessage("Please name your meetup point!", title: "")
         }

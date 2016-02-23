@@ -22,6 +22,7 @@ import LNRSimpleNotifications
 import AudioToolbox
 
 class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate, UITextViewDelegate, AddMeetupDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate {
+    @IBOutlet weak var searchContainerConstraintTop: NSLayoutConstraint!
 
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var viewSearchContainer: UIView!
@@ -32,7 +33,11 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     @IBOutlet weak var btnMenu: UIButton!
     @IBOutlet weak var btnMeetup: UIButton!
     @IBOutlet weak var btnExit: UIButton!
+    var prevSelected:MKAnnotationView?;
     
+    @IBOutlet weak var viewSearchContainerBG: UIView!
+    
+    @IBOutlet weak var bottomTxtConstraint: NSLayoutConstraint!
     var chatRoomTitle:String = "";
     var roomId:String = ""
     let downloader = ImageDownloader()
@@ -67,6 +72,9 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     var addMeetupView:AddMeetupView?
     var isYourUserLoaded:Bool = false;
     var tapGesture:UILongPressGestureRecognizer?;
+    
+    var LOCK_TOGGLE:Bool = false
+    var PREV_WAS_LOCKED:Bool = false
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -214,6 +222,16 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.notificationManager.dismissActiveNotification({ () -> Void in
                 var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
                 viewController.roomId = self.roomId;
+                
+                
+                self.searchContainerConstraintTop.constant = 0;
+                UIView.animateWithDuration(0.5, animations: {() -> Void in
+                    
+                    self.bottomTxtConstraint.constant = 0
+                    self.LOCK_TOGGLE = false
+                    self.view.layoutIfNeeded()
+                })
+                
                 self.navigationController!.pushViewController(viewController, animated: true)
                 
             })
@@ -227,6 +245,16 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         vc.userAnnotation = self.targetAnnotation
         vc.routeSteps = routeSteps
         vc.hidesBottomBarWhenPushed = true
+        
+        
+        self.searchContainerConstraintTop.constant = 0;
+        UIView.animateWithDuration(0.5, animations: {() -> Void in
+            
+            self.bottomTxtConstraint.constant = 0
+            self.LOCK_TOGGLE = false
+            self.view.layoutIfNeeded()
+        })
+        
         navigationController?.pushViewController(vc, animated: true )
     }
     
@@ -359,6 +387,38 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         mainWindow.addSubview(self.addMeetupView!)
     }
     
+    
+    func addMeetupFromAddress(customFindAddressPin:CustomFindAddressPin, title:String, subtitle:String, global:Bool){
+        
+        self.addMeetupView?.txtTitle.text = ""
+        
+        hideMeetUp()
+        
+        LocationApiHelper.createMeetup(title, subtitle: subtitle, isGlobal: global, roomId: self.roomId, longitude: String(customFindAddressPin.coordinate.longitude), latitude: String(customFindAddressPin.coordinate.latitude), resultJSON: {
+            (JSON) in
+            var meetupId:String! = JSON["meetup_id"].int?.stringValue
+            var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+            let annotation = CustomMeetupPin()
+            
+            annotation.coordinate = self.mapView.centerCoordinate // your location here
+            annotation.title = title
+            annotation.id = meetupId
+            annotation.userId = user.userId
+            annotation.subtitle = subtitle
+            
+            
+            self.removeFindAddressAnnotation(customFindAddressPin)
+            //removeeeee
+            self.annotations.addObject(annotation)
+            self.mapView.addAnnotation(annotation)
+            
+            print("meetup \(meetupId)")
+            }, error: {
+                (String) in
+                print("error \(String)")
+        })
+    }
+    
     func addMeetup(title:String, subtitle:String, global:Bool){
 
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -388,12 +448,21 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 (String) in
                 print("error \(String)")
         })
-        
     }
     
     func cancelMeetup(){
         hideMeetUp()
         self.addMeetupView?.txtTitle.text = ""
+    }
+    
+    func showMeetup(customFindAddressPin:CustomFindAddressPin){
+        UIView.animateWithDuration(0.5, animations: {() -> Void in
+            var infoFrame: CGRect = self.addMeetupView!.frame
+            infoFrame.origin.y = 0.0
+            self.addMeetupView!.frame = infoFrame
+            self.addMeetupView!.customFindAddressPin = customFindAddressPin
+            self.addMeetupView!.txtSubtitle.text = customFindAddressPin.initAddress
+        })
     }
     
     func hideMeetUp(){
@@ -402,6 +471,9 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             var infoFrame: CGRect = self.addMeetupView!.frame
             infoFrame.origin.y = UIScreen.mainScreen().bounds.height * 2
             self.addMeetupView!.frame = infoFrame
+            self.addMeetupView!.customFindAddressPin = nil
+            self.addMeetupView!.txtTitle.text = "";
+            self.addMeetupView!.txtSubtitle.text = "";
         })
     }
 
@@ -600,6 +672,30 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         return nil;
     }
     
+    
+    func removeFindAddressAnnotation(customFindAddressPin:CustomFindAddressPin)->Void{
+        
+        //self.annotations.removeObject( customFindAddressPin)
+        //self.mapView.removeAnnotation( customFindAddressPin )
+        
+        
+        for (var i:Int = 0; i < self.mapView.annotations.count;i++){
+            var val = self.mapView.annotations[i]
+            //for val in self.annotations{
+            if val is CustomFindAddressPin{
+                var meetupPointAnnotation:CustomFindAddressPin = val as! CustomFindAddressPin
+                if(meetupPointAnnotation.coordinate.latitude == customFindAddressPin.coordinate.latitude  &&
+                    meetupPointAnnotation.coordinate.longitude == customFindAddressPin.coordinate.longitude
+                    ){
+                    ///return meetupPointAnnotation
+                    //self.annotations.removeObject(val)
+                    self.mapView.removeAnnotation( val )
+                    return;
+                }
+            }
+        }
+    }
+    
     func removeMeetupAnnotation(annotationId:String)->Void{
         
         for (var i:Int = 0; i < self.mapView.annotations.count;i++){
@@ -718,6 +814,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
 
     func keyboardWillHide(notification: NSNotification) {
+
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.bottomConstraintTextField.constant = 0
             self.view.layoutIfNeeded()
@@ -738,6 +835,15 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func btnTextClick(sender: AnyObject){
         var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
         viewController.roomId = roomId;
+        
+        self.searchContainerConstraintTop.constant = 0;
+        UIView.animateWithDuration(0.5, animations: {() -> Void in
+            
+            self.bottomTxtConstraint.constant = 0
+            self.LOCK_TOGGLE = false
+            self.view.layoutIfNeeded()
+        })
+        
         self.navigationController!.pushViewController(viewController, animated: true)
     }
 
@@ -897,10 +1003,9 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 return pinAnnotationView
             } else if annotation is CustomFindAddressPin{
                 
-                
+                let findAddressPin:CustomFindAddressPin = annotation as! CustomFindAddressPin;
                 let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "CustomFindAddressPin")
                 pinAnnotationView.pinColor = .Red
-                
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.animatesDrop = true
                 pinAnnotationView.draggable = true
@@ -908,7 +1013,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 let button : AnnotationButton = AnnotationButton(type: UIButtonType.ContactAdd) as! AnnotationButton
                 button.setImage(UIImage(named: "right_arrow_map"), forState: UIControlState.Normal)
                 button.frame = CGRectMake(10, 0, 25, 25)
-                //button.userPointAnnotation = userPointAnnotation
+                button.findAddressAnnotation = findAddressPin
                 button.addTarget(self, action: "btnSaveFindAddress:", forControlEvents: UIControlEvents.TouchUpInside)
                 pinAnnotationView.rightCalloutAccessoryView = button
                 
@@ -957,10 +1062,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             return pinView
     }
     
-    
-    
-    var prevSelected:MKAnnotationView?;
-    
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
         
         prevSelected = view
@@ -989,7 +1090,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     
     
     func tapGestureClick(gestureRecognizer:UIGestureRecognizer){
-        
 
         var region:MKCoordinateRegion = MKCoordinateRegion();
         if(prevSelected == nil){
@@ -1063,7 +1163,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     
     
     func btnSaveFindAddress (sender : AnnotationButton!) {
-
+        self.showMeetup(sender.findAddressAnnotation)
     }
     
     
@@ -1084,6 +1184,15 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         viewController.navigationController?.navigationBarHidden = true
         self.navigationController?.navigationBarHidden = true
+        
+        self.searchContainerConstraintTop.constant = 0;
+        UIView.animateWithDuration(0.5, animations: {() -> Void in
+            
+            self.bottomTxtConstraint.constant = 0
+            self.LOCK_TOGGLE = false
+            self.view.layoutIfNeeded()
+        })
+        
         self.navigationController!.pushViewController(viewController, animated: true)
         
         //launch profile..

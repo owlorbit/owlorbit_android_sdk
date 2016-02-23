@@ -19,11 +19,32 @@ class MapRadialViewController: ChatThreadViewController{
     
 
     var delegate: MapRadialViewControllerDelegate! = nil
-    
     var displayMenu:Bool = false
+    
+    var firstLoad:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        initToggleViews()
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        if(!self.navigationController!.navigationBar.hidden){
+            
+            self.searchContainerConstraintTop.constant = 0;
+            UIView.animateWithDuration(0.5, animations: {() -> Void in
+                
+                self.bottomTxtConstraint.constant = 0
+                self.LOCK_TOGGLE = false
+                self.view.layoutIfNeeded()
+            })
+        }
+
     }
     
     @IBAction override func btnMenuClick(sender: AnyObject){
@@ -152,25 +173,22 @@ class MapRadialViewController: ChatThreadViewController{
     
     override func textFieldShouldReturn(textField: UITextField!) -> Bool {
         super.textFieldShouldReturn(textField)
-        
-        
-        
+
         //let address = "1 Infinite Loop, CA, USA"
         let address:String! = txtSearch.text
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
                 print("Error", error)
+                
+                AlertHelper.createPopupMessage("We could not find \(address).", title: "Not Found")
             }
             if let placemark = placemarks?.first {
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
-                
-                //remove all previous find addresses?
-                
+
                 var customFindAddressPin:CustomFindAddressPin = CustomFindAddressPin()
                 customFindAddressPin.coordinate = coordinates
 
-                
                 var region:MKCoordinateRegion = MKCoordinateRegion();
                 region.center.latitude = customFindAddressPin.coordinate.latitude;
                 region.center.longitude = customFindAddressPin.coordinate.longitude;
@@ -179,9 +197,12 @@ class MapRadialViewController: ChatThreadViewController{
                 self.mapView.setRegion(region, animated: true)
                 customFindAddressPin.title = address
                 customFindAddressPin.subtitle = "Save this pin"
+                customFindAddressPin.initAddress = address
                 
-                
+                self.annotations.addObject(customFindAddressPin)
                 self.mapView.addAnnotation(customFindAddressPin)
+                
+                self.mapView.selectAnnotation(customFindAddressPin, animated: true)
                 print("hey there \(coordinates)")
             }
         })
@@ -191,6 +212,89 @@ class MapRadialViewController: ChatThreadViewController{
         return true
     }
     
+    
+    func initToggleViews(){
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "toggleViews")
+        tap.numberOfTapsRequired = 1
+        self.mapView.addGestureRecognizer(tap)
+        
+    }
+    
+    func toggleViews() {
+        
+        
+        if(txtChatView.isFirstResponder()){
+            self.PREV_WAS_LOCKED = true
+            self.dismissKeyboard()
+            return
+        }else{
+            self.PREV_WAS_LOCKED = false
+        }
+        
+        
+        self.dismissKeyboard()
+        
+        
+        if(LOCK_TOGGLE){
+            return
+        }
+        
+        
+        if(self.mapView.selectedAnnotations.count > 0){
+            self.PREV_WAS_LOCKED = false
+            return
+        }
+        
+        LOCK_TOGGLE = true
+        
+        var delayInSeconds:Float = 0.5;
+        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW),  Int64(  0.5 * Double(NSEC_PER_SEC)  ))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            
+
+            if(self.PREV_WAS_LOCKED){
+                return
+            }
+            
+            if(self.mapView.selectedAnnotations.count == 0){
+
+                self.PREV_WAS_LOCKED = false
+                
+                var updatedPosition:CGFloat = self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.size.height
+                if(self.searchContainerConstraintTop.constant == 0 || self.searchContainerConstraintTop.constant == updatedPosition){
+                    self.navigationController!.navigationBar.translucent = true;
+                    self.navigationController!.navigationBar.hidden = true;
+                    UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+                    
+                    
+                    UIView.animateWithDuration(0.5, animations: {() -> Void in
+                        self.searchContainerConstraintTop.constant = -150;
+                        self.bottomTxtConstraint.constant = -200
+                        self.LOCK_TOGGLE = false
+                        self.view.layoutIfNeeded()
+                    })
+
+                }else{
+                    
+                    self.navigationController!.navigationBar.translucent = false;
+                    self.navigationController!.navigationBar.hidden = false;
+                    UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+
+                    self.searchContainerConstraintTop.constant = updatedPosition;
+                    UIView.animateWithDuration(0.5, animations: {() -> Void in
+                        
+                        self.bottomTxtConstraint.constant = 0
+                        self.LOCK_TOGGLE = false
+                        self.view.layoutIfNeeded()
+                    })
+                }
+            }else{
+                self.LOCK_TOGGLE = false
+                self.PREV_WAS_LOCKED = true
+            }
+        }
+    }
     
     @IBAction override func createDropActionClick(sender: AnyObject) {
 
@@ -204,7 +308,7 @@ class MapRadialViewController: ChatThreadViewController{
     override func btnSaveFindAddress(sender : AnnotationButton!){
         super.btnSaveFindAddress(sender)
         
-        print("btn save find address launch view...")        
+        print("btn save find address launch view...")
     }
     
 

@@ -12,4 +12,5 @@ import MapKit
 class CustomFindAddressPin: MKPointAnnotation {
     
     var id: String! = ""
+    var initAddress: String! = ""
 }

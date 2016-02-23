@@ -13,6 +13,6 @@ import UIKit
 class AnnotationButton: UIButton {
 
     public var userPointAnnotation:UserPointAnnotation = UserPointAnnotation();
-    
+    public var findAddressAnnotation:CustomFindAddressPin = CustomFindAddressPin();
     
 }
