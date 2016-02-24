@@ -224,23 +224,21 @@ class MapRadialViewController: ChatThreadViewController{
     func toggleViews() {
         
         
-        if(txtChatView.isFirstResponder()){
+        if(txtChatView.isFirstResponder() || txtSearch.isFirstResponder()){
             self.PREV_WAS_LOCKED = true
             self.dismissKeyboard()
             return
         }else{
             self.PREV_WAS_LOCKED = false
         }
-        
-        
+
         self.dismissKeyboard()
         
         
         if(LOCK_TOGGLE){
             return
         }
-        
-        
+
         if(self.mapView.selectedAnnotations.count > 0){
             self.PREV_WAS_LOCKED = false
             return
@@ -270,7 +268,7 @@ class MapRadialViewController: ChatThreadViewController{
                     
                     UIView.animateWithDuration(0.5, animations: {() -> Void in
                         self.searchContainerConstraintTop.constant = -150;
-                        self.bottomTxtConstraint.constant = -200
+                        self.bottomTxtConstraint.constant = -240
                         self.LOCK_TOGGLE = false
                         self.view.layoutIfNeeded()
                     })
@@ -311,6 +309,71 @@ class MapRadialViewController: ChatThreadViewController{
         print("btn save find address launch view...")
     }
     
+    
+    @IBAction override func btnVisibilityClick(sender: AnyObject){
+        super.btnVisibilityClick(sender)
+        
+        
+        if(isHiddenInRoom){
+
+            if let image = UIImage(named: "btn_visible") {
+                self.btnVisibility.setImage(image, forState: .Normal)
+            }
+            UIView.animateWithDuration(0.5, animations: {() -> Void in
+                self.viewGrey.alpha = 0.0
+            })
+            
+            
+            
+            RoomApiHelper.setVisible(self.roomId, resultJSON:
+                {
+                    (JSON) in
+                    
+                    print("success")
+
+                }
+                , error:{
+                    (Error) in
+                    AlertHelper.createPopupMessage("\(Error)", title: "")
+                }
+            )
+
+            
+            
+            
+            isHiddenInRoom = false
+        }else{
+            
+            
+            if let image = UIImage(named: "btn_hidden") {
+                self.btnVisibility.setImage(image, forState: .Normal)
+            }
+
+            UIView.animateWithDuration(0.5, animations: {() -> Void in
+                self.viewGrey.alpha = 0.5
+            })
+            
+            RoomApiHelper.setHidden(self.roomId, resultJSON:
+                {
+                    (JSON) in
+                    
+                    print("succ2ess \(self.roomId)")
+                    
+                    
+                }
+                , error:{
+                    (Error) in
+                    AlertHelper.createPopupMessage("\(Error)", title: "")
+                }
+            )
+
+            isHiddenInRoom = true
+        }
+        
+        //self.isHidden
+//viewGrey
+        
+    }
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)

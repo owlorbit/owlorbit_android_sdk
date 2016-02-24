@@ -2,11 +2,6 @@
 
 class Location_model extends CI_Model {
 
-    var $id   = '';
-    var $user_id   = '';
-    var $device_id   = '';
-    var $longitude = '';
-    var $latitude = '';
 
 
     function __construct(){        
@@ -23,7 +18,7 @@ class Location_model extends CI_Model {
 
         $query = "select * from locations where id in (select max(id) from locations where user_id in (select user_id from room_users where user_id != ?
                     and room_id = ?
-                    and active = 1) group by user_id);";
+                    and active = 1 and is_hidden = 0) group by user_id);";
 
         $result = $this->db->query($query, array($userId, $roomId));
         if($result->num_rows() > 0){            
@@ -37,7 +32,7 @@ class Location_model extends CI_Model {
 
         $query = "select * from locations where id in (select max(id) from locations where user_id in (select user_id from room_users where user_id != ?
                     and room_id = ?
-                    and active = 1) group by user_id);";
+                    and active = 1 and is_hidden = 0) group by user_id);";
 
         $result = $this->db->query($query, array($userId, $roomId));
         if($result->num_rows() > 0){            
@@ -55,17 +50,25 @@ class Location_model extends CI_Model {
 
     //post entry
     function insert_entry($userId){
-        $this->user_id   = $userId;
-        $this->device_id   = $this->security->xss_clean(strip_tags($_POST['device_id']));
-        $this->longitude    = $this->security->xss_clean(strip_tags($_POST['longitude']));
-        $this->latitude  = $this->security->xss_clean(strip_tags($_POST['latitude']));
 
-        unset($this->id);
-        $this->db->insert('locations', $this);
+        //if userId exists, then just update...
+        $device_id   = $this->security->xss_clean(strip_tags($_POST['device_id']));
+        $longitude    = $this->security->xss_clean(strip_tags($_POST['longitude']));
+        $latitude  = $this->security->xss_clean(strip_tags($_POST['latitude']));
 
-        $query =  "delete from locations where user_id = ? and id != ?";
-        $insertId = $this->db->insert_id();
-        $this->db->query($query, array($userId, $insertId));
+        $query = "select * from locations where user_id = ?";
+        $result = $this->db->query($query, array($userId));
+        if($result->num_rows() > 0){            
+            //update
+            $updateQuery = "update locations set longitude = ?, latitude = ?, created = CURRENT_TIMESTAMP, device_id = ? where user_id = ?";   
+            $this->db->query($updateQuery, array($longitude, $latitude, $device_id, $userId));
+        }else{
+            //insert..
+            $insertQuery = "insert into locations (user_id, longitude, latitude, device_id) values (?, ?, ?, ?);";
+            $this->db->query($insertQuery, array($userId, $longitude, $latitude, $device_id));
+
+        }
+
     }
     
 

@@ -78,6 +78,35 @@ class Room_model extends CI_Model {
         return array();
     }
 
+
+    //you_are_hidden
+    function you_are_hidden($userId, $roomId){
+
+        $query = "select is_hidden from room_users where user_id = ? and room_id = ?;";
+
+        $result = $this->db->query($query, array($userId, $roomId));
+        if($result->num_rows() > 0){
+            foreach ($result->result() as $row){
+                if($row->is_hidden == 1){
+                    return true;
+                }
+            }            
+        }
+
+        return false;
+    }
+
+
+    function set_visible($userId, $roomId){
+        $query = "update room_users set is_hidden = 0 where user_id = ? and room_id = ?";
+        $this->db->query($query, array($userId, $roomId));
+    }
+
+    function set_hidden($userId, $roomId){
+        $query = "update room_users set is_hidden = 1 where user_id = ? and room_id = ?";
+        $this->db->query($query, array($userId, $roomId));
+    }
+
     function leave_room($userId, $roomId){
         $query = "update room_users set active = 0 where user_id = ? and room_id = ?";
         $this->db->query($query, array($userId, $roomId));

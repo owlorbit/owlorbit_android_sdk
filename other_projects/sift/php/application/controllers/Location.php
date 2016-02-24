@@ -63,11 +63,15 @@ class Location extends CI_Controller {
 		    $allLocationsInRoom = $this->location_model->get_all_locations_in_room($userId, $roomId);
 		    $meetupInRoom = $this->meetup_model->get_all_in_room($roomId);
 		    $roomUsers = $this->room_model->get_users($roomId);
+			
+			$youAreHidden = $this->room_model->you_are_hidden($userId, $roomId);
+
 
 			$response = array(
 		    	'message' => 'room locations',		    	
 		    	'user_locations' => $allLocationsInRoom,
 		    	'meetup_locations' => $meetupInRoom,
+		    	'you_are_hidden' => $youAreHidden,
 		    	'users' => $roomUsers
 		    );
 		}catch(Exception $e){

@@ -36,7 +36,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     var prevSelected:MKAnnotationView?;
     
     @IBOutlet weak var viewSearchContainerBG: UIView!
-    
+    @IBOutlet weak var btnVisibility: UIButton!
+    @IBOutlet weak var viewGrey: UIView!
     @IBOutlet weak var bottomTxtConstraint: NSLayoutConstraint!
     var chatRoomTitle:String = "";
     var roomId:String = ""
@@ -56,13 +57,11 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     var RETRIEVE_LOCATION_LOCK:Bool = false
     var destination: MKMapItem?
 
-
+    var isHiddenInRoom:Bool = false
     var targetAnnotation:UserPointAnnotation = UserPointAnnotation();
     var routeSteps = [MKRouteStep]()
-    
-    
+
     var prevUserCount:Int = 0
-    
     var progressOptions = BusyNavigationBarOptions()
     let notificationManager = LNRNotificationManager()
     
@@ -509,6 +508,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             return;
         }
 
+        print("counter: \(roomData!.attributes.users.count)")
+        
         for obj in roomData!.attributes.users {
             var userData:GenericUserManagedModel = obj as! GenericUserManagedModel
 
@@ -574,13 +575,44 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
         do {
             var currentUserCount = 0
-
-
+            var youAreHidden:Bool = json["you_are_hidden"].bool!
+            
+            if(youAreHidden){
+                isHiddenInRoom = true
+                
+                if(self.viewGrey.alpha == 0.0){
+                    if let image = UIImage(named: "btn_hidden") {
+                        self.btnVisibility.setImage(image, forState: .Normal)
+                    }
+                    
+                    UIView.animateWithDuration(0.5, animations: {() -> Void in
+                        self.viewGrey.alpha = 0.5
+                    })
+                }
+                
+            }else{
+                isHiddenInRoom = false
+                
+                if(self.viewGrey.alpha == 0.5){
+                    if let image = UIImage(named: "btn_visible") {
+                        self.btnVisibility.setImage(image, forState: .Normal)
+                    }
+                    UIView.animateWithDuration(0.5, animations: {() -> Void in
+                        self.viewGrey.alpha = 0.0
+                    })
+                }
+            }
+            
+            
+            
             for (key,subJson):(String, SwiftyJSON.JSON) in json["user_locations"] {
                 var location:LocationModel = LocationModel(json: subJson);
 
+                print("yeauser id: \(location.userId)")
+
                 var userPointAnnotation:UserPointAnnotation? = getAnnotationByUserId(location.userId)
                 if(userPointAnnotation != nil){
+                    print("not nil.")
                     userPointAnnotation!.coordinate = location.coordinate!
                     userPointAnnotation!.userModel.longitude = location.coordinate!.longitude
                     userPointAnnotation!.userModel.latitude = location.coordinate!.latitude
@@ -602,6 +634,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                     //save context
                     ApplicationManager.shareCoreDataInstance.saveContext()
                 }else{
+                    
+                    print("nil.")
                     //fix this..
                     /*
                     if let userModelExtreme = userPointAnnotation!.userModel{
@@ -1266,6 +1300,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     @IBAction func btnExitClick(sender: AnyObject) {
     }
 
+    @IBAction func btnVisibilityClick(sender: AnyObject) {
+    }
     /*
     // MARK: - Navigation
 

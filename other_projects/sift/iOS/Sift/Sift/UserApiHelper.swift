@@ -24,8 +24,9 @@ class UserApiHelper{
 
             guard response.result.error == nil else {
                 // got an error in getting the data, need to handle it
-                print("error calling GET on \(response)")
-                print(response.result.error!)
+                let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                print("Failure Response: \(json)")
+
                 return
             }
             
@@ -110,8 +111,8 @@ class UserApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
 
                     error("error calling GET on \(response.result)")
                     return
@@ -142,8 +143,8 @@ class UserApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    error(response.result.description)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     return
                 }
                 
@@ -170,8 +171,8 @@ class UserApiHelper{
 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     return
                 }
 
@@ -197,8 +198,8 @@ class UserApiHelper{
 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     return
                 }
                 
@@ -222,8 +223,8 @@ class UserApiHelper{
 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     return
                 }
                 
@@ -250,8 +251,8 @@ class UserApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     return
                 }
                 
@@ -279,8 +280,8 @@ class UserApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     return
                 }
                 
@@ -307,8 +308,9 @@ class UserApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                        
                     return
                 }
                 
@@ -335,8 +337,9 @@ class UserApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+
                     return
                 }
                 
@@ -361,8 +364,9 @@ class UserApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+
                     return
                 }
                 
@@ -387,8 +391,8 @@ class UserApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     return
                 }
                 
@@ -415,8 +419,9 @@ class UserApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+
                     return
                 }
                 
@@ -441,8 +446,9 @@ class UserApiHelper{
 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                        
                     return
                 }
                 
@@ -466,8 +472,8 @@ class UserApiHelper{
             .responseJSON { response in
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on /posts/1")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     return
                 }
                 

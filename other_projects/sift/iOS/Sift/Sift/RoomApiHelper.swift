@@ -23,8 +23,8 @@ class RoomApiHelper{
                 
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     error(response.result.description, errorCode: 0)
                     return
                 }
@@ -50,9 +50,9 @@ class RoomApiHelper{
             .responseJSON { response in
                 
                 guard response.result.error == nil else {
-                    // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+
                     return
                 }
                 
@@ -76,8 +76,10 @@ class RoomApiHelper{
             .responseJSON { response in
                 
                 guard response.result.error == nil else {
-                    // got an error in getting the data, need to handle it
-                    error("error calling GET on \(response.result)")
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                    
+                    error(response.result.description)
                     return
                 }
                 
@@ -100,6 +102,70 @@ class RoomApiHelper{
             "roomId" : roomId,
             "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
 
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                    
+                    error(response.result.description)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }else{
+                        error("Failed")
+                    }
+                }
+        }
+    }
+    
+    class func setHidden(roomId:String, resultJSON:(JSON) ->Void, error:(String)->Void)->Void{
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/room/set_hidden"
+        let data = [
+            "roomId" : roomId,
+            "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+        
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    
+                    
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                    
+                    error(response.result.description)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }else{
+                        error("Failed")
+                    }
+                }
+        }
+    }
+    
+    class func setVisible(roomId:String, resultJSON:(JSON) ->Void, error:(String)->Void)->Void{
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/room/set_visible"
+        let data = [
+            "roomId" : roomId,
+            "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+        
         Alamofire.request(.POST, url, parameters: data, encoding: .URL)
             .responseJSON { response in
                 
@@ -136,9 +202,8 @@ class RoomApiHelper{
             .responseJSON { response in
                 
                 guard response.result.error == nil else {
-                    // got an error in getting the data, need to handle it
-                    print("error calling GET on \(response.result)")
-                    print(response.result.error!)
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
                     return
                 }
                 
