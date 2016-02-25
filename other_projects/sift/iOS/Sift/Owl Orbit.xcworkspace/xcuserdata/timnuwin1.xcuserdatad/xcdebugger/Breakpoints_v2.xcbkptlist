@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sift/ChatThreadViewController.swift"
-            timestampString = "477985439.489491"
+            timestampString = "478073485.168361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "939"
-            endingLineNumber = "939"
+            startingLineNumber = "923"
+            endingLineNumber = "923"
             landmarkName = "mapView(_:annotationView:didChangeDragState:fromOldState:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sift/ChatThreadViewController.swift"
-            timestampString = "477978826.287401"
+            timestampString = "478073485.168361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
+            startingLineNumber = "491"
+            endingLineNumber = "491"
             landmarkName = "loadProfileImg()"
             landmarkType = "5">
          </BreakpointContent>

@@ -20,8 +20,8 @@ class MapRadialViewController: ChatThreadViewController{
 
     var delegate: MapRadialViewControllerDelegate! = nil
     var displayMenu:Bool = false
-    
     var firstLoad:Bool = true
+    var tempVisibleLockTmr:NSTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class MapRadialViewController: ChatThreadViewController{
             self.searchContainerConstraintTop.constant = 0;
             UIView.animateWithDuration(0.5, animations: {() -> Void in
                 
-                self.bottomTxtConstraint.constant = 0
+                self.bottomTxtConstraint.constant = 12
                 self.LOCK_TOGGLE = false
                 self.view.layoutIfNeeded()
             })
@@ -173,6 +173,12 @@ class MapRadialViewController: ChatThreadViewController{
     
     override func textFieldShouldReturn(textField: UITextField!) -> Bool {
         super.textFieldShouldReturn(textField)
+        
+        if(textField == self.txtChatView){
+            
+            self.submitChat()
+            return true
+        }
 
         //let address = "1 Infinite Loop, CA, USA"
         let address:String! = txtSearch.text
@@ -282,7 +288,7 @@ class MapRadialViewController: ChatThreadViewController{
                     self.searchContainerConstraintTop.constant = updatedPosition;
                     UIView.animateWithDuration(0.5, animations: {() -> Void in
                         
-                        self.bottomTxtConstraint.constant = 0
+                        self.bottomTxtConstraint.constant = 12
                         self.LOCK_TOGGLE = false
                         self.view.layoutIfNeeded()
                     })
@@ -302,11 +308,17 @@ class MapRadialViewController: ChatThreadViewController{
             self.addMeetupView!.frame = infoFrame
         })
     }
-    
+
     override func btnSaveFindAddress(sender : AnnotationButton!){
         super.btnSaveFindAddress(sender)
         
         print("btn save find address launch view...")
+    }
+    
+    func tempVisibleLockTmrUpdate(){
+        print("heh")
+        TEMP_VISIBLE_LOCK = false
+        tempVisibleLockTmr.invalidate()
     }
     
     
@@ -314,8 +326,16 @@ class MapRadialViewController: ChatThreadViewController{
         super.btnVisibilityClick(sender)
         
         
-        if(isHiddenInRoom){
+        //then start timer...
+        
+        if(TEMP_VISIBLE_LOCK){
+            tempVisibleLockTmr = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "tempVisibleLockTmrUpdate", userInfo: nil, repeats: false)
+        }
 
+        
+        
+        TEMP_VISIBLE_LOCK = true
+        if(isHiddenInRoom){
             if let image = UIImage(named: "btn_visible") {
                 self.btnVisibility.setImage(image, forState: .Normal)
             }

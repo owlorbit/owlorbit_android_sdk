@@ -29,7 +29,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     @IBOutlet weak var bottomConstraintTextField: NSLayoutConstraint!
     @IBOutlet weak var chatKeyboardView: UIView!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var txtChatView: AUIAutoGrowingTextView!
+    //@IBOutlet weak var txtChatView: AUIAutoGrowingTextView!
+    @IBOutlet weak var txtChatView: UITextField!
+    
+    
     @IBOutlet weak var btnMenu: UIButton!
     @IBOutlet weak var btnMeetup: UIButton!
     @IBOutlet weak var btnExit: UIButton!
@@ -75,12 +78,17 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     var LOCK_TOGGLE:Bool = false
     var PREV_WAS_LOCKED:Bool = false
  
+    var TEMP_VISIBLE_LOCK:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = self.chatRoomTitle
         self.viewSearchContainer.layer.cornerRadius = 4
         self.viewSearchContainer.layer.masksToBounds = true
+
+        //txtChatView.layer.cornerRadius = 4
+        //txtChatView.layer.masksToBounds = true
         
         
         self.txtSearch.borderStyle = UITextBorderStyle.None
@@ -102,12 +110,12 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
         chatMapKeyboard!.delegate = self
         self.mapView.delegate = self;
-        self.txtChatView.inputAccessoryView = chatMapKeyboard
+        //self.txtChatView.inputAccessoryView = chatMapKeyboard
         chatMapKeyboard!.btnSend.enabled = false;
         chatMapKeyboard!.btnSend.alpha = 0;
         
-        self.txtChatView.placeholder = "Enter text..."
-        self.txtChatView.placeholderColor = UIColor.lightGrayColor()
+        //self.txtChatView.placeholder = "Enter text..."
+        //self.txtChatView.placeholderColor = UIColor.lightGrayColor()
         self.txtChatView.delegate = self
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -221,16 +229,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.notificationManager.dismissActiveNotification({ () -> Void in
                 var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
                 viewController.roomId = self.roomId;
-                
-                
-                self.searchContainerConstraintTop.constant = 0;
-                UIView.animateWithDuration(0.5, animations: {() -> Void in
-                    
-                    self.bottomTxtConstraint.constant = 0
-                    self.LOCK_TOGGLE = false
-                    self.view.layoutIfNeeded()
-                })
-                
                 self.navigationController!.pushViewController(viewController, animated: true)
                 
             })
@@ -244,16 +242,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         vc.userAnnotation = self.targetAnnotation
         vc.routeSteps = routeSteps
         vc.hidesBottomBarWhenPushed = true
-        
-        
-        self.searchContainerConstraintTop.constant = 0;
-        UIView.animateWithDuration(0.5, animations: {() -> Void in
-            
-            self.bottomTxtConstraint.constant = 0
-            self.LOCK_TOGGLE = false
-            self.view.layoutIfNeeded()
-        })
-        
+     
         navigationController?.pushViewController(vc, animated: true )
     }
     
@@ -296,7 +285,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         self.navigationController?.navigationBar.stop()
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-        var text:String = self.txtChatView.text
+        var text:String = self.txtChatView.text!
 
         //routes = response.routes[0].ste
         self.mapView.removeOverlays(self.mapView.overlays)
@@ -577,29 +566,33 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             var currentUserCount = 0
             var youAreHidden:Bool = json["you_are_hidden"].bool!
             
-            if(youAreHidden){
-                isHiddenInRoom = true
-                
-                if(self.viewGrey.alpha == 0.0){
-                    if let image = UIImage(named: "btn_hidden") {
-                        self.btnVisibility.setImage(image, forState: .Normal)
+            
+            if(!TEMP_VISIBLE_LOCK){
+            
+                if(youAreHidden){
+                    isHiddenInRoom = true
+                    
+                    if(self.viewGrey.alpha == 0.0){
+                        if let image = UIImage(named: "btn_hidden") {
+                            self.btnVisibility.setImage(image, forState: .Normal)
+                        }
+                        
+                        UIView.animateWithDuration(0.5, animations: {() -> Void in
+                            self.viewGrey.alpha = 0.5
+                        })
                     }
                     
-                    UIView.animateWithDuration(0.5, animations: {() -> Void in
-                        self.viewGrey.alpha = 0.5
-                    })
-                }
-                
-            }else{
-                isHiddenInRoom = false
-                
-                if(self.viewGrey.alpha == 0.5){
-                    if let image = UIImage(named: "btn_visible") {
-                        self.btnVisibility.setImage(image, forState: .Normal)
+                }else{
+                    isHiddenInRoom = false
+                    
+                    if(self.viewGrey.alpha == 0.5){
+                        if let image = UIImage(named: "btn_visible") {
+                            self.btnVisibility.setImage(image, forState: .Normal)
+                        }
+                        UIView.animateWithDuration(0.5, animations: {() -> Void in
+                            self.viewGrey.alpha = 0.0
+                        })
                     }
-                    UIView.animateWithDuration(0.5, animations: {() -> Void in
-                        self.viewGrey.alpha = 0.0
-                    })
                 }
             }
             
@@ -608,11 +601,9 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             for (key,subJson):(String, SwiftyJSON.JSON) in json["user_locations"] {
                 var location:LocationModel = LocationModel(json: subJson);
 
-                print("yeauser id: \(location.userId)")
 
                 var userPointAnnotation:UserPointAnnotation? = getAnnotationByUserId(location.userId)
                 if(userPointAnnotation != nil){
-                    print("not nil.")
                     userPointAnnotation!.coordinate = location.coordinate!
                     userPointAnnotation!.userModel.longitude = location.coordinate!.longitude
                     userPointAnnotation!.userModel.latitude = location.coordinate!.latitude
@@ -810,7 +801,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func submitChat() {
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-        var text:String = self.txtChatView.text
+        var text:String = self.txtChatView.text!
         
         if(text == ""){
             return;
@@ -850,7 +841,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func keyboardWillHide(notification: NSNotification) {
 
         UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.bottomConstraintTextField.constant = 0
+            self.bottomConstraintTextField.constant = 12
+            self.txtChatView.alpha = 0.65
             self.view.layoutIfNeeded()
         })
     }
@@ -861,7 +853,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         
         UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.bottomConstraintTextField.constant = keyboardFrame.size.height
+            self.txtChatView.alpha = 1
+            self.bottomConstraintTextField.constant = keyboardFrame.size.height + 12
             self.view.layoutIfNeeded()
         })
     }
@@ -869,15 +862,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func btnTextClick(sender: AnyObject){
         var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
         viewController.roomId = roomId;
-        
-        self.searchContainerConstraintTop.constant = 0;
-        UIView.animateWithDuration(0.5, animations: {() -> Void in
-            
-            self.bottomTxtConstraint.constant = 0
-            self.LOCK_TOGGLE = false
-            self.view.layoutIfNeeded()
-        })
-        
         self.navigationController!.pushViewController(viewController, animated: true)
     }
 
@@ -1080,7 +1064,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             button.frame = CGRectMake(10, 0, 25, 25)
             button.userPointAnnotation = userPointAnnotation
             button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-            pinView!.rightCalloutAccessoryView = button
+            //5pinView!.rightCalloutAccessoryView = button
 
             let leftButton : AnnotationButton = AnnotationButton(type: UIButtonType.Custom) as! AnnotationButton
             //leftButton.frame = CGRectMake(0, 0, 44, 44)
@@ -1218,15 +1202,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         viewController.navigationController?.navigationBarHidden = true
         self.navigationController?.navigationBarHidden = true
-        
-        self.searchContainerConstraintTop.constant = 0;
-        UIView.animateWithDuration(0.5, animations: {() -> Void in
-            
-            self.bottomTxtConstraint.constant = 0
-            self.LOCK_TOGGLE = false
-            self.view.layoutIfNeeded()
-        })
-        
+
         self.navigationController!.pushViewController(viewController, animated: true)
         
         //launch profile..
@@ -1291,6 +1267,21 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         super.viewWillDisappear(animated)
         timerGetLocations?.invalidate()
         timerGetLocations = nil
+
+        var delayInSeconds:Float = 0.5;
+        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW),  Int64(  0.5 * Double(NSEC_PER_SEC)  ))
+        dispatch_after(time, dispatch_get_main_queue()) {
+
+            self.PREV_WAS_LOCKED = false
+            
+            UIView.animateWithDuration(0.5, animations: {() -> Void in
+                self.searchContainerConstraintTop.constant = -150;
+                self.bottomTxtConstraint.constant = -240
+                self.LOCK_TOGGLE = false
+                self.view.layoutIfNeeded()
+            })
+            
+        }
     }
     
     

@@ -43,7 +43,12 @@ class LocationModel :NSObject {
         
         
         //self.created = (json["created"]) ? json["created"].string! : ""
-
-        self.coordinate = CLLocationCoordinate2D(latitude: self.latitude.toDouble()!, longitude: self.longitude.toDouble()!)
+        if(self.latitude != ""){
+            if(self.longitude != ""){
+                self.coordinate = CLLocationCoordinate2D(latitude: self.latitude.toDouble()!, longitude: self.longitude.toDouble()!)
+            }else{
+                self.coordinate = CLLocationCoordinate2D()
+            }
+        }
     }
 }
