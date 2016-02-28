@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var oldLatitude:CLLocationDegrees = 0.0
     var oldLongitude:CLLocationDegrees = 0.0
     
+    var pendingNotification:[NSObject : AnyObject]?
+    
     lazy var locationManager:CLLocationManager! = {
         let manager = CLLocationManager()
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -126,9 +128,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        if application.applicationState == .Inactive {
+            NSLog("Inactive")
+            //Show the view with the content of the push
+            //AlertHelper.createPopupMessage("inactive", title: "")
+            //AlertHelper.createPopupMessage("aaO", title: "zzzz")
+            
+            //probably log in first.. then call this?
+            processPushNotification(userInfo)
+            completionHandler(.NewData)
+        }else if application.applicationState == .Background {
+            NSLog("Background")
+            //Refresh the local model
+            processPushNotification(userInfo)
+            completionHandler(.NewData)
+        }
+        else {
+            NSLog("Active")
+            //Show an in-app banner
+            processPushNotification(userInfo)
+            completionHandler(.NewData)
+        }
+    }
+    
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         print("first case.... \(userInfo)")
 
+        pendingNotification = nil
         processPushNotification(userInfo)
         //log the user in../
         
@@ -137,8 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
         }*/
     }
-    
-    
+
     func methodThatTriggersNotification(title: String, body: String, roomId: String, userId:String) {
         
         notificationManager.showNotification(title, body: body, callback: { () -> Void in
@@ -148,147 +174,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         })
     }
 
-    
-    func otherScreenMethodTrigger(title: String, body: String, roomId: String, userId:String) {
-        
-        notificationManager.showNotification(title, body: body, callback: { () -> Void in
-            self.notificationManager.dismissActiveNotification({ () -> Void in
-
-
-                let tabBarController = UICustomTabBarController()
-                self.window!.rootViewController = tabBarController
-                
-                var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
-                let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
-                vc.chatRoomTitle = "test"
-                
-                ///RIGHT HERE>
-                vc.roomId = roomId  //check the room....
-                vc.hidesBottomBarWhenPushed = true
-                updatedNav.pushViewController(vc, animated: false )
-                
-                var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
-                chatView.roomId = roomId;
-                updatedNav.pushViewController(chatView, animated: true)
-                
-                print("updated nav \(vc.classForCoder)")
-                
-                
-                
-            })
-        })
-    }
-    
-    
-    
     func processPushNotification(userInfo: [NSObject : AnyObject]){
         //first check to see if message is already in coredata...
-
         //this is only handling if the app is minimized or closed...
-
-        
-        if let apsObj = userInfo["aps"] as? Dictionary<String, AnyObject> {
-            
-
-            var created:String = userInfo["created"] as! String
-            var dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            dateFormatter.timeZone = NSTimeZone(abbreviation: "EST")
-            var dateConverted:NSDate = dateFormatter.dateFromString(created)!
-            
-            
-            var alertMessage:String = apsObj["alert"] as! String
-            var needle = "says:\n"
-            let hayStackRange = alertMessage.rangeOfString(needle)
-            let myRange = Range<String.Index>(start: hayStackRange!.endIndex, end: alertMessage.endIndex)
-            var message:String = alertMessage.substringWithRange(myRange)
-            
-            var roomId:String = userInfo["room_id"] as! String
-            var userId:String = userInfo["user_id"] as! String
-            var firstName:String = userInfo["first_name"] as! String
-            var messageId:String = userInfo["message_id"] as! String
-            
-
-            if(MessageCoreModel.doesMessageExist(roomId, userId: userId, created: dateConverted.inRegion(Region.defaultRegion()).UTCDate)){
-                print("wat the actual")
-            }else{
-                var messageCore : MessageModel = MessageModel(messageId: messageId, senderId: userId, senderDisplayName: firstName, isMediaMessage: false, date: dateConverted, roomId: roomId , text: message)
-                MessageCoreModel.insertFromMessageModel(messageCore)
-            }
-            
-            
-            //only if you are logged in.
-            //now load the room then launch
-            //if the room is already launched then... uh just call a reload
-            //check what the top most view controller is right now...
-            if(ApplicationManager.isLoggedIn){
-                //((UINavigationController*)appDelegate.window.rootViewController).visibleViewController;
-                
-                //(appDelegate.window.rootViewController as! UINavigationController).visibleViewController
-                //print("fucking deep end: \(   (self.window?.rootViewController as! UICustomTabBarController).visibleViewController?.description      )")
-                
-                if self.window!.rootViewController is UICustomTabBarController {
-                    //do something if it's an instance of that class
-                    print("this isn't real")
-                    var controllers =  ((self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController).viewControllers
-                    var navController = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
-                    //if controllers.last?.classForCoder is
-                    
-                    if controllers.last is DashboardViewController{
-                        JSQSystemSoundPlayer.jsq_playMessageReceivedAlert()
-                        
-                        var dashboardVC = controllers.last as! DashboardViewController
-                        dashboardVC.makeTextBold(roomId, displayName:firstName, message:message)
-                        
-                        print("dashboard.. make text bold.. or add")
-                    }else if controllers.last is MapRadialViewController{
-                        print("map")
-                        
-                        
-                        var mapVC = controllers.last as! MapRadialViewController
-
-                        if(mapVC.roomId != roomId){
-                            otherScreenMethodTrigger("\(firstName) says:", body: message, roomId: roomId, userId:userId)
-                        }else{
-
-                            //make sure roomId is the room.
-                            var updatedNav = (self.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
-                            let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
-                         
-                            var chatView:ChatTextMessageViewController = ChatTextMessageViewController();
-                            chatView.roomId = roomId;
-                            updatedNav.pushViewController(chatView, animated: true)
-                        }
-
-                        
-                    }else if controllers.last is ChatTextMessageViewController{
-                        print("text")
-
-                        //loadInitMessages
-                        var textVC = controllers.last as! ChatTextMessageViewController
-                        
-                        if(textVC.roomId != roomId){
-                            print("change room id \(roomId)")
-                            //textVC.roomId = roomId
-                            otherScreenMethodTrigger("\(firstName) says:", body: message, roomId: roomId, userId:userId)
-                        }
-                        
-                        textVC.loadInitMessages()
-                        
-                        
-                    }else{
-                        otherScreenMethodTrigger("\(firstName) says:", body: message, roomId: roomId, userId:userId)
-                    }
-
-                    print(controllers.last?.classForCoder)
-                }else{
-                    
-                    //look user in
-                    print("this is life")
-                }
-            }
-            
-        }
+        NotificationHelper.createPopupMessage(self, userInfo:userInfo)
     }
 
     func sendLocations(){

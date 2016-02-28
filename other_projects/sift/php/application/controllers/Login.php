@@ -31,9 +31,7 @@ class Login extends CI_Controller {
 
 	public function index(){
 
-		$encryptedSession = "AwGqydyaDAJ9Ybt3UM/qDDPfQoym3xoKHjA/1nX25UYVUP62q8179VK1HOVZLKCKDnYEsVT0yRvBoFrLIUI09pys0l7sf/AiIGb6oN9nWTWydeaW4dreeGq7/WfUU2q6rRdNuvvkntX8z+f4NQZlCca317isT8d51yHk0ZP6zP8bW1w1HSTJkP00Z0r30G1tzcLptwrx0CL7ie5jwfXf09H4MKCx4m3PxkOU24mtAnq70zUts3KWnQchXmxo5QpH1TTrw9cR1uJP0ymUq3/Ne7PF+lUP9gI2qNaph9PkcoFPbKt0tzM0obWz95L81hTCqLaDaqHugjLD/VVEcREOWd3DUkam02Q1nAJ19AcIxY/ekA==";
-
-		echo $this->verify_session->isValidSession($encryptedSession, "dc3db1715337d4451943f43cf9bf073164a17609c97006ec04970117037f121d", "");
+		echo "hello";
 	}
 
 	public function go(){
@@ -96,7 +94,7 @@ class Login extends CI_Controller {
 		    );			
 		} catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 
 		error_log('hey there: '.json_encode_helper($response));

@@ -14,7 +14,7 @@ import AlamofireImage.Swift
 
 class UserApiHelper{
 
-    class func createUser(user:RegistrationUser, resultJSON:(JSON) -> Void) -> Void {
+    class func createUser(user:RegistrationUser, resultJSON:(JSON) -> Void, error:(String)->Void) -> Void {
 
         var url:String = ProjectConstants.ApiBaseUrl.value + "/user/add"
         let data = ["email": user.email, "first_name" : user.firstName, "last_name" : user.lastName, "phone_number":user.phoneNumber, "password" : user.password]
@@ -26,14 +26,21 @@ class UserApiHelper{
                 // got an error in getting the data, need to handle it
                 let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
                 print("Failure Response: \(json)")
-
+                error("Server error, please try again later.")
                 return
             }
             
             if let value: AnyObject = response.result.value {
                 let post = JSON(value)
-                if(post["hasFailed"].isEmpty){
+                if(post["successful"] == nil){
                     resultJSON(post)
+                }else{
+                    //post["message"].string!,
+                    var success:Bool = post["successful"].bool!
+                    if(!success){
+                        var message:String = post["message"].string!
+                        error(message)
+                    }
                 }
             }
         }
@@ -86,9 +93,10 @@ class UserApiHelper{
                     upload.responseJSON{ response in
                         if let value: AnyObject = response.result.value {
                             let post = JSON(value)
+                            
+                            
                             user.avatarOriginal = (post["original_avatar"]) ? post["original_avatar"].string! : ""
                             PersonalUserModel.save()
-                            
                             resultJSON(post)
                             //post["original_avatar"]
                         }
@@ -120,11 +128,17 @@ class UserApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        error(value as! String)
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
+                    
                 }
         }
     }

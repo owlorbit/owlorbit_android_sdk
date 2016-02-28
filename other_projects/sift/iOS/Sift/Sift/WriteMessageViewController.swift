@@ -145,7 +145,9 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
     }
     
     deinit {
-        tableView.dg_removePullToRefresh()
+        if(tableView != nil){
+            tableView.dg_removePullToRefresh()
+        }
     }
     
     func nofucksrightnow(){
@@ -392,6 +394,7 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             
             (JSON) in
             
+            print("zzzwgg: \(JSON)");
             
             let roomId:Int! = JSON["room_id"].int
             //var roomData:RoomManagedModel? = RoomManagedModel.getById(String(roomId))
@@ -413,14 +416,23 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
 
             }else{
 
-                var roomData:RoomManagedModel? = RoomManagedModel.getById(String(roomId))
+                print("waahhv")
+                //var roomData:RoomManagedModel? = RoomManagedModel.getById(String(roomId))
+                //print("zeerdP: \(roomData?.roomId)")
                 RoomApiHelper.getRoomManaged(roomId!, resultJSON:{
                     (JSON3) in
                     
+                    
+                    print("fawef: \(JSON3)");
                     for (key,subJson):(String, SwiftyJSON.JSON) in JSON3["rooms"] {
                         var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
+                        
+                        print("ferrrp: \(subJson)");
                         RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
                             (JSON2) in
+                            
+                            
+                            print("zzzzzzn: \(JSON2)")
                             
                             RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
                                 (roomAttribute) in
@@ -431,14 +443,14 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
                                 }
                                 
                                 ApplicationManager.shareCoreDataInstance.saveContext()
-                                roomData = RoomManagedModel.getById(roomModel.roomId)
+                                var roomData:RoomManagedModel?  = RoomManagedModel.getById(roomModel.roomId)
                                 
                                 if(!self.LOCK_PUSH){
                                     FullScreenLoaderHelper.removeLoader();
                                     self.LOCK_PUSH = true;
                                     let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
-                                    vc.chatRoomTitle = roomData!.attributes.name
-                                    vc.roomId = roomData!.roomId
+                                    vc.chatRoomTitle = roomModel.attributes.name
+                                    vc.roomId = roomModel.roomId
                                     vc.hidesBottomBarWhenPushed = true
                                     self.navigationController?.pushViewController(vc, animated: true )
                                     self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -452,6 +464,13 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
                 });
             }
 
+        },
+            
+            
+            error:{
+                (message, errorCode) in
+                
+                print("errorrr: \(message)")
         });
     }
 

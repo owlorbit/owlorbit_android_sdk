@@ -25,7 +25,7 @@ class Location_model extends CI_Model {
                     and active = 1 and is_hidden = 0) group by user_id;";
 
         $result = $this->db->query($query, array($userId, $roomId));
-        if($result->num_rows() > 0){            
+        if($result->num_rows() > 0){
             return $result->result();
         }
 

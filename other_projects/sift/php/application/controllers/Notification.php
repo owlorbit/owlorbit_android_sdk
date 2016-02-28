@@ -74,7 +74,7 @@ class Notification extends CI_Controller {
 			$this->load->library('parse-php-sdk/src/Parse/ParseObject');
 			$this->load->library('parse-php-sdk/src/Parse/ParsePush');
 
-			$this->load->library('parse-php-sdk/src/Parse/ParseInstallation');	
+			$this->load->library('parse-php-sdk/src/Parse/ParseInstallation');
 			$this->load->library('parse-php-sdk/src/Parse/ParseQuery');	
 
 			$this->load->model('notification_queue_model');
@@ -92,6 +92,7 @@ class Notification extends CI_Controller {
 					"room_id" => $notification->room_id,
 					"created" => $notification->message_created,
 					"user_id" => $notification->user_id,
+					"message_type" => $notification->message_type,
 					"first_name" => $notification->first_name,
 					"last_name" => $notification->last_name);
 				$query = ParseInstallation::query();
@@ -146,7 +147,7 @@ class Notification extends CI_Controller {
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}
@@ -185,7 +186,7 @@ class Notification extends CI_Controller {
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}

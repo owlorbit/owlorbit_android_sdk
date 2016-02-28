@@ -12,7 +12,7 @@ import Alamofire
 
 class LocationApiHelper{
 
-    class func getRoomLocations(roomId:String, resultJSON:(JSON) -> Void) -> Void {
+    class func getRoomLocations(roomId:String, resultJSON:(JSON) -> Void, error:(String) -> Void) -> Void {
 
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         var url:String = ProjectConstants.ApiBaseUrl.value + "/location/get_all_locations"
@@ -30,7 +30,7 @@ class LocationApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
+                    if(post["successful"] == nil){
                         //send succesful
                         resultJSON(post)
                     }
@@ -63,11 +63,15 @@ class LocationApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        error("failed")
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }
@@ -95,11 +99,15 @@ class LocationApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        error("failed")
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }
@@ -132,11 +140,15 @@ class LocationApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        error("failed")
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }
@@ -162,11 +174,15 @@ class LocationApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        error("failed")
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }

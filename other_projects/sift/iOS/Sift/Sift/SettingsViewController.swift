@@ -53,7 +53,9 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
     }
     
     deinit {
-        tableView.dg_removePullToRefresh()
+        if(tableView != nil){
+            tableView.dg_removePullToRefresh()
+        }
     }
     
     public func updateProfile(){

@@ -72,7 +72,12 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
             
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.setupLoggedInViewController()
-        });
+        }, error:{
+                (Error) in
+                AlertHelper.createPopupMessage("\(Error)", title: "")
+            }
+        
+        );
     }
     
     override func didReceiveMemoryWarning() {

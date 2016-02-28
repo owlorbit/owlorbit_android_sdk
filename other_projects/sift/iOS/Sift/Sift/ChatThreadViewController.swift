@@ -534,7 +534,13 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         LocationApiHelper.getRoomLocations(self.roomId,resultJSON:{
         (JSON) in
             self.updateLocations(JSON)
-        });
+        },error:{
+                (String) in
+            
+                print("error \(String)")
+            }
+        
+        );
     }
     
     

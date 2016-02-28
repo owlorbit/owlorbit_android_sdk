@@ -19,7 +19,7 @@ class Message_model extends CI_Model {
         $query = "select * from (select m.id, u.first_name, u.last_name, u.id as user_id, m.created, message, u.avatar_original, m.room_id from messages m
             inner join users u
                 on u.id = m.user_id
-            where m.room_id = ? and m.active = 1
+            where m.room_id = ? and m.active = 1 and message_type = 'text'     
                 order by m.created desc
             limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).") as tt
             order by id asc;"; 
@@ -154,7 +154,9 @@ class Message_model extends CI_Model {
                 $dbUserId = $row->user_id;
                 if($storedRoomId != -1){  
                     if($dbRoomId !=  $storedRoomId && $containsAllUsers) {
-                        error_log("okay store: ".$storedRoomId);                        
+                        error_log("okay store: ".$storedRoomId);
+
+                        //make sure                     
                         return $storedRoomId;
                     }else if($dbRoomId !=  $storedRoomId && !$containsAllUsers){
                         $containsAllUsers = true;
@@ -175,10 +177,14 @@ class Message_model extends CI_Model {
                 }
             }
 
-            if($containsAllUsers){                
+            if($containsAllUsers){
+                error_log("so...?".$storedRoomId);
                 return $storedRoomId;
             }
         }
+
+        error_log("please...");
+
 
         $query = "insert into rooms (user_id) values (?)";
         $result = $this->db->query($query, array($creatorUserId));
@@ -220,7 +226,10 @@ class Message_model extends CI_Model {
             foreach ($result->result() as $row){
                 $dbRoomId = $row->room_id;
                 $dbUserId = $row->user_id;
-                if($storedRoomId != -1){  
+
+                error_log("db user id: ".$dbUserId);
+
+                if($storedRoomId != -1){
                     if($dbRoomId !=  $storedRoomId && $containsAllUsers) {
                         error_log("okay store: ".$storedRoomId);                        
                         return $storedRoomId;
@@ -247,6 +256,8 @@ class Message_model extends CI_Model {
             }
         }
 
+        error_log("group group group....!!!!!");
+
         $query = "insert into rooms (user_id, name, friends_only, is_public) values (?, ?, ?, ?)";
         $result = $this->db->query($query, array($creatorUserId, $roomName, $isFriendsOnly, $isPublic));
         $newRoomId = $this->db->insert_id();
@@ -259,7 +270,8 @@ class Message_model extends CI_Model {
         }
 
         return $newRoomId;
-    }    
+    }
+
     //post entry
     function insert($data){
         $this->db->insert('messages', $data);

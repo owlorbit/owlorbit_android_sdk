@@ -14,7 +14,7 @@ class Notification_queue_model extends CI_Model {
     //roomname, sender name, message
 
 
-    function add($roomId, $messageId, $senderUserId){
+    function add($roomId, $messageId, $senderUserId, $type){
 
         $this->load->model('room_model');
         $this->load->model('notification_model');
@@ -27,10 +27,37 @@ class Notification_queue_model extends CI_Model {
 
             $devices = $this->notification_model->get_devices_by_user_id($user->user_id);
             foreach($devices as $device){
-                $query = "insert into notification_queue (user_id, message_id, room_id, device_id) values (?, ?, ?, ?)";
-                $this->db->query($query, array($senderUserId, $messageId, $roomId, $device->device_id));
+                $query = "insert into notification_queue (user_id, message_id, room_id, device_id, type) values (?, ?, ?, ?, ?)";
+
+                error_log('sender user: '.$senderUserId);
+                error_log('message id: '.$messageId);
+                error_log('roomId: '.$roomId);
+                error_log('device: '.$device->device_id);
+
+                $this->db->query($query, array($senderUserId, $messageId, $roomId, $device->device_id, $type));
             }      
         }
+    }
+
+    function add_no_room($messageId, $senderUserId, $type){
+
+        $this->load->model('room_model');
+        $this->load->model('notification_model');
+
+        /*
+        $users = $this->room_model->get_users($roomId);
+
+        foreach ( $users as $user){
+            if($user->user_id == $senderUserId){
+                continue;
+            }
+
+            $devices = $this->notification_model->get_devices_by_user_id($user->user_id);
+            foreach($devices as $device){
+                $query = "insert into notification_queue (user_id, message_id, device_id, type) values (?, ?, ?, ?)";
+                $this->db->query($query, array($senderUserId, $messageId, $roomId, $device->device_id));
+            }      
+        }*/
     }
 
     function update_sent_status($id){

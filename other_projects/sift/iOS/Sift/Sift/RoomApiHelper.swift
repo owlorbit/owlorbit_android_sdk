@@ -58,7 +58,7 @@ class RoomApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
+                    if(post["successful"] == nil){
                         //send succesful
                         resultJSON(post)
                     }
@@ -85,10 +85,15 @@ class RoomApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        error(value as! String)
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }
@@ -115,11 +120,15 @@ class RoomApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        error("Failed")
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }
@@ -148,11 +157,15 @@ class RoomApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        error("Failed")
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }
@@ -181,11 +194,15 @@ class RoomApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        error("Failed")
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }
@@ -209,7 +226,7 @@ class RoomApiHelper{
                 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
+                    if(post["successful"] == nil){
                         //send succesful
                         resultJSON(post)
                     }

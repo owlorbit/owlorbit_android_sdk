@@ -52,7 +52,7 @@ class User extends CI_Controller {
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
 				'emailExists'=> true,
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));		
 	}
@@ -71,7 +71,7 @@ class User extends CI_Controller {
 				'users'=> $users);
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}
@@ -91,7 +91,7 @@ class User extends CI_Controller {
 				'users'=> $users);
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}	
@@ -111,7 +111,7 @@ class User extends CI_Controller {
 				'users'=> $users);
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}		
@@ -149,7 +149,7 @@ class User extends CI_Controller {
 				'original_avatar' => $urlPath);
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 
 		
@@ -161,9 +161,13 @@ class User extends CI_Controller {
 	public function add(){		
 		$response = array();
 		try{
+
+			throw new Exception("FUCK BOIY");
+
 		    if($this->add_validate()){
 		    	$this->user_model->insert_entry();
 		    }
+
 			$email = $this->security->xss_clean(strip_tags($this->input->post('email')));		    
 		    $timestamp = time();
 			$user = $this->user_model->get(array('email' => $email));
@@ -208,7 +212,7 @@ class User extends CI_Controller {
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 
 		$this->output->set_output(json_encode_helper($response));

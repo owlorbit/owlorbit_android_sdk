@@ -27,6 +27,10 @@ class Friend extends CI_Controller {
 		$this->load->model('friend_model');
 		$this->load->model('user_token_model');
 		$this->load->model('user_session_model');
+
+		$this->load->model('notification_queue_model');
+		$this->load->model('message_model');
+		$this->load->model('user_model');
 	}
 
 	public function index(){
@@ -72,7 +76,7 @@ class Friend extends CI_Controller {
 
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}
@@ -81,6 +85,7 @@ class Friend extends CI_Controller {
 	public function decline_friend_request(){
 		$response = array();
 		try{
+
 			$userId = $this->security->xss_clean(strip_tags($this->input->post('userId')));
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
@@ -101,11 +106,24 @@ class Friend extends CI_Controller {
 				throw new Exception("Session is invalid.");	
 			}
 			$this->friend_model->decline($userId, $friendUserId);
-			$response = array('message'=>'Friend declined!');
+
+			$friendUser = $this->user_model->get_by_id($friendUserId);
+			$type = "decline_friend";
+			$msg = $friendUser." declined being friends with you.";
+			$messageData = array(
+				'message' => $msg,				
+				'user_id' => $userId,
+				'message_type' => $type
+			);
+
+			$messageId = $this->message_model->insert($messageData);
+			$this->notification_queue_model->add_no_room($messageId, $userId);
+
+			$response = array('message'=>$msg);
 
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}
@@ -134,11 +152,24 @@ class Friend extends CI_Controller {
 				throw new Exception("Session is invalid.");	
 			}
 			$this->friend_model->accept($userId, $friendUserId);
+
+			$friendUser = $this->user_model->get_by_id($friendUserId);
+			$type = "accept_friend";
+			$msg = $friendUser." is now friends with you.";
+			$messageData = array(
+				'message' => $msg,				
+				'user_id' => $userId,
+				'message_type' => $type
+			);
+			$messageId = $this->message_model->insert($messageData);
+			$this->notification_queue_model->add($messageId, $userId);
+
+
 			$response = array('message'=>'Friend accepted!');
 
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}
@@ -176,7 +207,7 @@ class Friend extends CI_Controller {
 				'users'=> $users);
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}	
@@ -214,7 +245,7 @@ class Friend extends CI_Controller {
 				'users'=> $users);
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}	
@@ -256,10 +287,22 @@ class Friend extends CI_Controller {
 				);
 
 			$message = $this->friend_model->insert($data);
+
+			$friendUser = $this->user_model->get_by_id($friendUserId);
+			$type = "request_friend";
+			$msg = $friendUser." requested being friends with you.";
+			$messageData = array(
+				'message' => $msg,				
+				'user_id' => $userId,
+				'message_type' => $type
+			);
+			$messageId = $this->message_model->insert($messageData);
+			$this->notification_queue_model->add_no_room($messageId, $userId);
+
 			$response = array('message' => $message);
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
-				'hasFailed'=> true);
+				'successful'=> false);
 		}
 
 		$this->output->set_output(json_encode_helper($response));

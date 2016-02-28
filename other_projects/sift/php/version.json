@@ -1,0 +1,6 @@
+{
+	"ios":  {
+		"min_version": "1.0",
+		"message" : "Please upgrade to the first version."
+	}
+}

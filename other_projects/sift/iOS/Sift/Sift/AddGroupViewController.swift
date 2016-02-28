@@ -83,7 +83,9 @@ class AddGroupViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     }
     
     deinit {
-        tableView.dg_removePullToRefresh()
+        if(tableView != nil){
+            tableView.dg_removePullToRefresh()
+        }
     }
     
     func nofucksrightnow(){

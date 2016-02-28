@@ -73,6 +73,10 @@ class Meetup extends CI_Controller {
 	public function add(){
 		$response = array();
 		try{
+			$this->load->model('notification_queue_model');
+			$this->load->model('message_model');
+			$this->load->model('user_model');
+
 			$this->validate();
 
 			$title = $this->security->xss_clean(strip_tags($this->input->post('title')));
@@ -99,8 +103,21 @@ class Meetup extends CI_Controller {
 			if($userId == -1){
 				$typeOfError = -2;
 				throw new Exception("Session is invalid.");	
-			}		    
+			}
 		    $this->meetup_model->insert_entry($userId);
+		    $user = $this->user_model->get_by_id($userId);
+
+		    $type = "meetup";
+		    $meetupMsg = $title." pin created by ".$user->first_name;
+			$messageData = array(
+				'message' => $meetupMsg,	
+				'room_id' => $roomId,			
+				'user_id' => $userId,
+				'message_type' => $type
+			);
+
+		    $messageId = $this->message_model->insert($messageData);		    
+		    $this->notification_queue_model->add($roomId, $messageId, $userId, $type);
 
 			$response = array(
 		    	'message' => 'meetup added!',

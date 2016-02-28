@@ -38,6 +38,12 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
         var createNewBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "createNewBtnClick:")
         ApplicationManager.isLoggedIn = true;
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+        if(appDelegate.pendingNotification != nil){
+            NotificationHelper.createPopupMessage(appDelegate, userInfo: appDelegate.pendingNotification!)
+        }
         //createNewBtn.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
 
         self.navigationItem.rightBarButtonItem = createNewBtn
@@ -94,7 +100,9 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     deinit {
-        tableView.dg_removePullToRefresh()
+        if(tableView != nil){
+            tableView.dg_removePullToRefresh()
+        }
     }
 
     func initDownloadProfile(){

@@ -128,7 +128,6 @@ class Message extends CI_Controller {
 			$this->load->model('notification_queue_model');
 
 			$message = $this->security->xss_clean(strip_tags($this->input->post('message')));
-
 			$created = $this->security->xss_clean(strip_tags($this->input->post('created')));
 			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
@@ -149,17 +148,18 @@ class Message extends CI_Controller {
 				$typeOfError = -2;
 				throw new Exception("Session is invalid.");	
 			}
-			
+
+			$type = "text";
 			$data = array(
 				'message' => $message,
 				'room_id' => $roomId,
 				'user_id' => $userId,
 				'created' => $created,
-				'message_type' => "text"
+				'message_type' => $type
 			);
 
 		    $messageId = $this->message_model->insert($data);
-		    $this->notification_queue_model->add($roomId, $messageId, $userId);
+		    $this->notification_queue_model->add($roomId, $messageId, $userId, $type);
 		    $message = $this->message_model->get_by_id($messageId);
 
 		    $user = $this->user_model->get_by_id($userId);
@@ -167,7 +167,7 @@ class Message extends CI_Controller {
 
 
 			$response = array(
-		    	'message' => 'room initiated added!',
+		    	'message' => 'message added!',
 		    	'message_id' => $messageId
 		    );
 		}catch(Exception $e){
@@ -188,7 +188,6 @@ class Message extends CI_Controller {
 			}
 
 			$userIds = $this->security->xss_clean($_POST['userIds']);
-
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
 			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
@@ -225,6 +224,7 @@ class Message extends CI_Controller {
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
+				'error_code' => $typeOfError,
 				'successful'=> false);
 		}
 		

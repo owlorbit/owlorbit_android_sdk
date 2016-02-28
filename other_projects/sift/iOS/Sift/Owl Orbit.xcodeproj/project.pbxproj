@@ -116,6 +116,7 @@
 		B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA48F1C11343100EC2752 /* MessageModel.swift */; };
 		B8CAA4921C1134F900EC2752 /* MessageCoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */; };
 		B8CF9D531C3F4B6400E3898B /* UserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF9D521C3F4B6400E3898B /* UserManagedModel.swift */; };
+		B8D8DD581C82869D00942FDB /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8DD571C82869D00942FDB /* NotificationHelper.swift */; };
 		B8E4E7D11BFC40E600995964 /* ReadMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */; };
 		B8E4E7D21BFC40E600995964 /* ReadMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E4E7D01BFC40E600995964 /* ReadMessageTableViewCell.xib */; };
 		B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D41BFD488700995964 /* UserApiHelper.swift */; };
@@ -291,6 +292,7 @@
 		B8CAA48F1C11343100EC2752 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCoreModel.swift; sourceTree = "<group>"; };
 		B8CF9D521C3F4B6400E3898B /* UserManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagedModel.swift; sourceTree = "<group>"; };
+		B8D8DD571C82869D00942FDB /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMessageTableViewCell.swift; sourceTree = "<group>"; };
 		B8E4E7D01BFC40E600995964 /* ReadMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadMessageTableViewCell.xib; sourceTree = "<group>"; };
 		B8E4E7D41BFD488700995964 /* UserApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApiHelper.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				B83C60DD1C72755B00A30260 /* MeetupButton.swift */,
 				B83C60F01C768F9A00A30260 /* UIColor+helpers.swift */,
 				B81CAB6F1C7909DB007B5131 /* LeaveRoomHelper.swift */,
+				B8D8DD571C82869D00942FDB /* NotificationHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1071,6 +1074,7 @@
 				B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */,
 				B8F512B41C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.swift in Sources */,
 				B8F512B81C696726007DCFD5 /* GroupCountTableViewCell.swift in Sources */,
+				B8D8DD581C82869D00942FDB /* NotificationHelper.swift in Sources */,
 				B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */,
 				B81CAB6C1C78F21A007B5131 /* ImageManipulate.m in Sources */,
 				B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */,
