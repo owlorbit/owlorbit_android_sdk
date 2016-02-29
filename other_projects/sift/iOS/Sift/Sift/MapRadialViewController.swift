@@ -25,7 +25,7 @@ class MapRadialViewController: ChatThreadViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initToggleViews()
     }
     
@@ -43,7 +43,7 @@ class MapRadialViewController: ChatThreadViewController{
                 self.LOCK_TOGGLE = false
                 self.view.layoutIfNeeded()
             })
-        }
+        }                
 
     }
     

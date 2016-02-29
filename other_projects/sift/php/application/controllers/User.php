@@ -162,8 +162,6 @@ class User extends CI_Controller {
 		$response = array();
 		try{
 
-			throw new Exception("FUCK BOIY");
-
 		    if($this->add_validate()){
 		    	$this->user_model->insert_entry();
 		    }

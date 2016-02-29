@@ -80,11 +80,17 @@ class Notification extends CI_Controller {
 			$this->load->model('notification_queue_model');
 			ParseClient::initialize('mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN', 'zMVFPm0zShj7pxFjlpGGhOoi0BwYtZzmKXNQVqAP', 'eyGXoKU8PTTeXYXJdSY9BonQu3gZEv9sv7x1Yrcu');
 
-			$notificationQueue = $this->notification_queue_model->get_not_sent();
+			$notificationQueueWithRoom = $this->notification_queue_model->get_not_sent();
+			$notificationQueueWithNoRoom = $this->notification_queue_model->get_not_sent_no_room();			
 
-			foreach ($notificationQueue as $notification){
-				$message = ucfirst ($notification->first_name)." ".ucfirst ($notification->last_name[0]).". says:";
-				$message .= "\n";
+			foreach ($notificationQueueWithRoom as $notification){
+
+				$message = "";
+				if($notification->message_type == "text"){
+					$message = ucfirst ($notification->first_name)." ".ucfirst ($notification->last_name[0]).". says:";
+					$message .= "\n";
+				}
+
 				$message .= $notification->message;
 
 				$data = array("alert" => $message, 
@@ -103,9 +109,32 @@ class Notification extends CI_Controller {
 				    "data" => $data
 				));
 
+				$this->notification_queue_model->update_sent_status($notification->id);			
+			}
+
+
+			foreach ($notificationQueueWithNoRoom as $notification){
+
+				$message = $notification->message;
+				$data = array("alert" => $message, 
+					"message_id" => $notification->message_id,					
+					"created" => $notification->message_created,
+					"user_id" => $notification->user_id,
+					"message_type" => $notification->message_type,
+					"first_name" => $notification->first_name,
+					"last_name" => $notification->last_name);
+				$query = ParseInstallation::query();
+				$query->equalTo("deviceToken", $notification->device_id);
+
+				ParsePush::send(array(
+				    "where" => $query,
+				    "data" => $data
+				));
 
 				$this->notification_queue_model->update_sent_status($notification->id);			
 			}
+
+
 
 			$response = array(
 			    'message' => 'Message added!'

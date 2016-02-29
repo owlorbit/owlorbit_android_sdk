@@ -24,7 +24,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4T-PN-5qr">
                             <rect key="frame" x="16" y="8" width="288" height="29"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name or Number or Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOh-gm-Kcv">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name or Number or Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOh-gm-Kcv">
                                     <rect key="frame" x="31" y="0.0" width="257" height="30"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -37,7 +37,7 @@
                                         <action selector="txtSearchOnChange:" destination="-1" eventType="editingChanged" id="8Ar-vX-wua"/>
                                     </connections>
                                 </textField>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Uz1-ln-zPZ">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="search_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Uz1-ln-zPZ">
                                     <rect key="frame" x="7" y="6" width="16" height="17"/>
                                 </imageView>
                             </subviews>

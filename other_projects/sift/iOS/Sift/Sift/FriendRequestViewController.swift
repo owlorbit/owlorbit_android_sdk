@@ -23,7 +23,6 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
     var pendingFriendArrayListYouSent:NSMutableArray = [];
 
     var initialUserArrayList:NSMutableArray = [];
-    //var sections:NSMutableArray = ["Accept Friend?", "Requests (By You)", "Search Results"];
     
     
     override func viewDidLoad() {
@@ -138,30 +137,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         //friendsRequestedByYou
         
         userArrayList = []
-        UserApiHelper.friendsRequestedByYou({
-            (JSON) in
-
-            self.pendingFriendArrayListYouSent = self.defaultFriendRequestedByYouList();
-            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
-                var genericUser:GenericUserModel = GenericUserModel(json: subJson);
-                self.pendingFriendArrayListYouSent.addObject(genericUser)
-            }
-            self.tableView.reloadData()
-        });
-        
-        UserApiHelper.friendsRequestedByThem({
-            (JSON) in
-
-            self.pendingFriendArrayListOthersSent = self.defaultFriendRequestedByThemList();
-            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
-                var genericUser:GenericUserModel = GenericUserModel(json: subJson);
-                self.pendingFriendArrayListOthersSent.addObject(genericUser)
-            }
-            self.tableView.reloadData()
-            
-            self.tableView.dg_stopLoading()
-        });
-        
+        self.tableView.reloadData()
     }
 
     func dismissKeyboard() {
@@ -286,11 +262,8 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
                 self.loadLists()
             });
             
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            //self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             self.tableView.reloadData()
-            
-            
-            
         }
         
         var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {

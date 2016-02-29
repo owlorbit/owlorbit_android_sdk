@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var oldLatitude:CLLocationDegrees = 0.0
     var oldLongitude:CLLocationDegrees = 0.0
-    
     var pendingNotification:[NSObject : AnyObject]?
     
     lazy var locationManager:CLLocationManager! = {
@@ -131,39 +130,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         if application.applicationState == .Inactive {
             NSLog("Inactive")
-            //Show the view with the content of the push
-            //AlertHelper.createPopupMessage("inactive", title: "")
+            //Show the view with the content of the push            
             //AlertHelper.createPopupMessage("aaO", title: "zzzz")
             
             //probably log in first.. then call this?
-            processPushNotification(userInfo)
+            //processPushNotification(userInfo, applicationState)
+            processPushNotification(userInfo, applicationState: application.applicationState)
             completionHandler(.NewData)
         }else if application.applicationState == .Background {
             NSLog("Background")
+            
+            AlertHelper.createPopupMessage("background", title: "")
             //Refresh the local model
-            processPushNotification(userInfo)
+            processPushNotification(userInfo, applicationState: application.applicationState)
             completionHandler(.NewData)
-        }
-        else {
+        } else {
             NSLog("Active")
             //Show an in-app banner
-            processPushNotification(userInfo)
+            processPushNotification(userInfo, applicationState: application.applicationState)
             completionHandler(.NewData)
         }
     }
     
+    /*
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         print("first case.... \(userInfo)")
 
-        pendingNotification = nil
-        processPushNotification(userInfo)
+        //pendingNotification = nil
+        //processPushNotification(userInfo)
         //log the user in../
         
-        /*PFPush.handlePush(userInfo)
-        if application.applicationState == UIApplicationState.Inactive {
-            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
-        }*/
-    }
+        //PFPush.handlePush(userInfo)
+        //if application.applicationState == UIApplicationState.Inactive {
+        //    PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        //}
+    }*/
 
     func methodThatTriggersNotification(title: String, body: String, roomId: String, userId:String) {
         
@@ -174,10 +175,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         })
     }
 
-    func processPushNotification(userInfo: [NSObject : AnyObject]){
+    func processPushNotification(userInfo: [NSObject : AnyObject], applicationState: UIApplicationState){
         //first check to see if message is already in coredata...
         //this is only handling if the app is minimized or closed...
-        NotificationHelper.createPopupMessage(self, userInfo:userInfo)
+        NotificationHelper.createPopupMessage(self, userInfo:userInfo, applicationState:applicationState)
     }
 
     func sendLocations(){
@@ -261,7 +262,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
     }
-
+    
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         // Add another annotation to the map.
         let annotation = MKPointAnnotation()

@@ -560,6 +560,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 ApplicationManager.shareCoreDataInstance.saveContext()
                 print("hey oh")
                 self.loadProfileImg()
+                ApplicationManager.NOTIFICATION_LOCK_PUSH = false;
             })
             
             

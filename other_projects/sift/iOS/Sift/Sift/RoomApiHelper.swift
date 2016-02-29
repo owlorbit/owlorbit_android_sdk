@@ -66,6 +66,32 @@ class RoomApiHelper{
         }
     }
     
+    class func getRoomManaged(roomId:String, resultJSON:(JSON) -> Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/room/get/" + roomId
+        let data = ["publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+        
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                    
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["successful"] == nil){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
+    
     class func getRoomMessages(roomId:String, pageIndex:Int, resultJSON:(JSON) -> Void, error:(String)->Void) -> Void {
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;

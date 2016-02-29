@@ -32,6 +32,9 @@ class ApplicationManager: NSObject {
     
     static var messageRecentlySent:Bool = false
     
+    static var NOTIFICATION_LOCK_PUSH:Bool = false
+    //static var NOTIFICATION_LOCK_PUSH:Bool = false
+    
     
     
 }

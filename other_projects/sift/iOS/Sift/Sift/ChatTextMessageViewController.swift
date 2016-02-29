@@ -124,32 +124,8 @@ class ChatTextMessageViewController: JSQMessagesViewController {
                     var messageCore : MessageModel = MessageModel(messageId: "", senderId: subJson["user_id"].string!, senderDisplayName: subJson["first_name"].string!, isMediaMessage: false, date: dateConverted, roomId: subJson["room_id"].string! , text: subJson["message"].string!)
                     MessageCoreModel.insertFromMessageModel(messageCore)
                 }
-
-                //var message: JSQMessage = JSQMessage(senderId: subJson["user_id"].string, senderDisplayName: subJson["first_name"].string, date: dateConverted, text: subJson["message"].string)
-                //self.messages.append(message)
-
-                //print("wompppp: \(subJson)")
-                /*
-                var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
-                RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
-                    (JSON2) in
-                    
-                    
-                    RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
-                        (roomAttribute) in
-                        
-                        
-                        roomModel.attributes = roomAttribute
-                        if(roomModel.attributes.users.count > 0){
-                            roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                        }
-                        
-                        ApplicationManager.shareCoreDataInstance.saveContext()
-                        self.getRoomsFromManagedObjects()
-                    })
-                });*/
             }
-            
+
             self.finishSendingMessage()
         },error:{
             (errStr) in

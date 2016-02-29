@@ -188,6 +188,10 @@ class Room extends CI_Controller {
 	public function set_hidden(){
 		$response = array();
 		try{
+			$this->load->model('notification_queue_model');
+			$this->load->model('message_model');
+			$this->load->model('user_model');
+
 			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));			
 			
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
@@ -210,6 +214,23 @@ class Room extends CI_Controller {
 			}		    
 		    $this->room_model->set_hidden($userId, $roomId);
 
+
+		    $user = $this->user_model->get_by_id($userId);
+		    $type = "visibility";
+		    $meetupMsg = $user->first_name." just became hidden.";
+			$messageData = array(
+				'message' => $meetupMsg,	
+				'room_id' => $roomId,			
+				'user_id' => $userId,
+				'message_type' => $type
+			);
+
+		    $messageId = $this->message_model->insert($messageData);		    
+		    $this->notification_queue_model->add($roomId, $messageId, $userId, $type);
+
+
+
+
 			$response = array(
 		    	'message' => 'set hidden',
 		    );		    
@@ -223,6 +244,10 @@ class Room extends CI_Controller {
 	public function set_visible(){
 		$response = array();
 		try{
+			$this->load->model('notification_queue_model');
+			$this->load->model('message_model');
+			$this->load->model('user_model');
+			
 			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));			
 			
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
@@ -244,6 +269,21 @@ class Room extends CI_Controller {
 				throw new Exception("Session is invalid.");	
 			}		    
 		    $this->room_model->set_visible($userId, $roomId);
+
+
+		    $user = $this->user_model->get_by_id($userId);
+		    $type = "visibility";
+		    $meetupMsg = $user->first_name." just became visible.";
+			$messageData = array(
+				'message' => $meetupMsg,	
+				'room_id' => $roomId,			
+				'user_id' => $userId,
+				'message_type' => $type
+			);
+
+		    $messageId = $this->message_model->insert($messageData);		    
+		    $this->notification_queue_model->add($roomId, $messageId, $userId, $type);
+
 
 			$response = array(
 		    	'message' => 'set visible',

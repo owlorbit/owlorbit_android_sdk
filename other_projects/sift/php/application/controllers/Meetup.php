@@ -105,8 +105,8 @@ class Meetup extends CI_Controller {
 				throw new Exception("Session is invalid.");	
 			}
 		    $this->meetup_model->insert_entry($userId);
+		    
 		    $user = $this->user_model->get_by_id($userId);
-
 		    $type = "meetup";
 		    $meetupMsg = $title." pin created by ".$user->first_name;
 			$messageData = array(
@@ -134,7 +134,6 @@ class Meetup extends CI_Controller {
 		$response = array();
 		try{
 
-
 			$meetupId = $this->security->xss_clean(strip_tags($this->input->post('meetupId')));	
 			$longitude = $this->security->xss_clean(strip_tags($this->input->post('longitude')));
 			$latitude = $this->security->xss_clean(strip_tags($this->input->post('latitude')));
@@ -158,6 +157,7 @@ class Meetup extends CI_Controller {
 			}	
 
 		    $this->meetup_model->update($meetupId, $userId, $longitude, $latitude);
+		  
 
 			$response = array(
 		    	'message' => 'meetup updated!'

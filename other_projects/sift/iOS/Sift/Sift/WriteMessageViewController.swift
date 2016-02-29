@@ -41,6 +41,19 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         self.txtSearch.delegate = self;
         self.txtSearch.tintColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
+        
+        self.navigationController!.navigationBar.tintColor = ProjectConstants.AppColors.PRIMARY
+        
+        navigationController?.navigationBar.translucent = false
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
@@ -212,6 +225,7 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
 
             self.tableView.reloadData()
             self.tableView.dg_stopLoading()
+            ApplicationManager.NOTIFICATION_LOCK_PUSH = false;
             
         });
     }
@@ -457,10 +471,11 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
                                 }
                                 
                             })
-                            
-                            
                         });
                     }
+                    
+                    
+                    
                 });
             }
 

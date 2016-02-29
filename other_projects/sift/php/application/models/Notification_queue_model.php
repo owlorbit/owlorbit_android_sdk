@@ -28,36 +28,20 @@ class Notification_queue_model extends CI_Model {
             $devices = $this->notification_model->get_devices_by_user_id($user->user_id);
             foreach($devices as $device){
                 $query = "insert into notification_queue (user_id, message_id, room_id, device_id, type) values (?, ?, ?, ?, ?)";
-
-                error_log('sender user: '.$senderUserId);
-                error_log('message id: '.$messageId);
-                error_log('roomId: '.$roomId);
-                error_log('device: '.$device->device_id);
-
                 $this->db->query($query, array($senderUserId, $messageId, $roomId, $device->device_id, $type));
             }      
         }
     }
 
-    function add_no_room($messageId, $senderUserId, $type){
-
+    function add_no_room($messageId, $senderUserId, $receiverUserId, $type){
         $this->load->model('room_model');
         $this->load->model('notification_model');
 
-        /*
-        $users = $this->room_model->get_users($roomId);
-
-        foreach ( $users as $user){
-            if($user->user_id == $senderUserId){
-                continue;
-            }
-
-            $devices = $this->notification_model->get_devices_by_user_id($user->user_id);
-            foreach($devices as $device){
-                $query = "insert into notification_queue (user_id, message_id, device_id, type) values (?, ?, ?, ?)";
-                $this->db->query($query, array($senderUserId, $messageId, $roomId, $device->device_id));
-            }      
-        }*/
+        $devices = $this->notification_model->get_devices_by_user_id($receiverUserId);
+        foreach($devices as $device){
+            $query = "insert into notification_queue (user_id, message_id, device_id, type) values (?, ?, ?, ?)";
+            $this->db->query($query, array($senderUserId, $messageId, $device->device_id, $type));
+        }        
     }
 
     function update_sent_status($id){
@@ -75,6 +59,18 @@ class Notification_queue_model extends CI_Model {
                         inner join rooms r
                             on r.id = m.room_id
                     where sent_to_parse = 0 and m.active = 1;";
+        $result = $this->db->query($query)->result();
+        return $result;
+    }
+
+    function get_not_sent_no_room(){
+        $query = "select nq.id, m.id as message_id, m.created as message_created, u.id as user_id, first_name, last_name, message, message_type, device_id
+                    from notification_queue  nq
+                        inner join users u
+                            on u.id = nq.user_id
+                        inner join messages m
+                            on m.id = nq.message_id                        
+                    where sent_to_parse = 0  and nq.room_id is null and m.active = 1;";
         $result = $this->db->query($query)->result();
         return $result;
     }    

@@ -109,15 +109,15 @@ class Friend extends CI_Controller {
 
 			$friendUser = $this->user_model->get_by_id($friendUserId);
 			$type = "decline_friend";
-			$msg = $friendUser." declined being friends with you.";
+			$msg = $friendUser->first_name." declined being friends with you.";
 			$messageData = array(
 				'message' => $msg,				
 				'user_id' => $userId,
 				'message_type' => $type
 			);
 
-			$messageId = $this->message_model->insert($messageData);
-			$this->notification_queue_model->add_no_room($messageId, $userId);
+			$messageId = $this->message_model->insert($messageData);			
+			$this->notification_queue_model->add_no_room($messageId, $friendUserId, $userId, $type);
 
 			$response = array('message'=>$msg);
 
@@ -155,14 +155,14 @@ class Friend extends CI_Controller {
 
 			$friendUser = $this->user_model->get_by_id($friendUserId);
 			$type = "accept_friend";
-			$msg = $friendUser." is now friends with you.";
+			$msg = $friendUser->first_name." is now friends with you.";
 			$messageData = array(
 				'message' => $msg,				
 				'user_id' => $userId,
 				'message_type' => $type
 			);
 			$messageId = $this->message_model->insert($messageData);
-			$this->notification_queue_model->add($messageId, $userId);
+			$this->notification_queue_model->add_no_room($messageId, $friendUserId, $userId, $type);
 
 
 			$response = array('message'=>'Friend accepted!');
@@ -254,6 +254,10 @@ class Friend extends CI_Controller {
 		$response = array();
 		try{
 			//looking for
+			$this->load->model('notification_queue_model');
+			$this->load->model('message_model');
+			$this->load->model('user_model');
+
 
 			$this->validate();
 			$friendUserId = $this->security->xss_clean(strip_tags($this->input->post('friendUserId')));
@@ -290,14 +294,14 @@ class Friend extends CI_Controller {
 
 			$friendUser = $this->user_model->get_by_id($friendUserId);
 			$type = "request_friend";
-			$msg = $friendUser." requested being friends with you.";
+			$msg = $friendUser->first_name." requested being friends with you.";
 			$messageData = array(
 				'message' => $msg,				
 				'user_id' => $userId,
 				'message_type' => $type
 			);
 			$messageId = $this->message_model->insert($messageData);
-			$this->notification_queue_model->add_no_room($messageId, $userId);
+			$this->notification_queue_model->add_no_room($messageId, $userId, $friendUserId, $type);
 
 			$response = array('message' => $message);
 		}catch(Exception $e){

@@ -42,7 +42,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
         if(appDelegate.pendingNotification != nil){
-            NotificationHelper.createPopupMessage(appDelegate, userInfo: appDelegate.pendingNotification!)
+            NotificationHelper.createPopupMessage(appDelegate, userInfo: appDelegate.pendingNotification!, applicationState: .Background)
         }
         //createNewBtn.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
 
@@ -176,7 +176,6 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             LeaveRoomHelper.removeRoom(JSON["rooms"])
             
             for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
-                
 
                 var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
                 RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
