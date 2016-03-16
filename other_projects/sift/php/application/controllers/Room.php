@@ -215,6 +215,7 @@ class Room extends CI_Controller {
 		    $this->room_model->set_hidden($userId, $roomId);
 
 
+		    /*
 		    $user = $this->user_model->get_by_id($userId);
 		    $type = "visibility";
 		    $meetupMsg = $user->first_name." just became hidden.";
@@ -227,6 +228,7 @@ class Room extends CI_Controller {
 
 		    $messageId = $this->message_model->insert($messageData);		    
 		    $this->notification_queue_model->add($roomId, $messageId, $userId, $type);
+		    */
 
 
 
@@ -270,7 +272,7 @@ class Room extends CI_Controller {
 			}		    
 		    $this->room_model->set_visible($userId, $roomId);
 
-
+		    /*
 		    $user = $this->user_model->get_by_id($userId);
 		    $type = "visibility";
 		    $meetupMsg = $user->first_name." just became visible.";
@@ -283,6 +285,7 @@ class Room extends CI_Controller {
 
 		    $messageId = $this->message_model->insert($messageData);		    
 		    $this->notification_queue_model->add($roomId, $messageId, $userId, $type);
+		    */
 
 
 			$response = array(

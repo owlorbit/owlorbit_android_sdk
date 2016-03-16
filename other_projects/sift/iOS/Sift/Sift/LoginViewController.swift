@@ -92,7 +92,7 @@ class LoginViewController: UIViewController, LoginDelegate {
                             
                             }, error:{
                                 (errStr) in
-                                
+                                FullScreenLoaderHelper.removeLoader();
                                 AlertHelper.createPopupMessage("Try again later...", title: "Login Error")
                                 print("ze error \(errStr)")
                         });
@@ -113,6 +113,10 @@ class LoginViewController: UIViewController, LoginDelegate {
                     }
                 }
                 
+                }, error:{
+                    (errorMsg) in
+                    FullScreenLoaderHelper.removeLoader();
+                    AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
             });
         }
     }

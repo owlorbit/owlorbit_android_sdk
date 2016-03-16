@@ -209,11 +209,8 @@ class RoomApiHelper{
             .responseJSON { response in
                 
                 guard response.result.error == nil else {
-                    
-                    
                     let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
                     print("Failure Response: \(json)")
-                    
                     error(response.result.description)
                     return
                 }

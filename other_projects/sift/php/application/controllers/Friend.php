@@ -312,6 +312,49 @@ class Friend extends CI_Controller {
 		$this->output->set_output(json_encode_helper($response));
 	}
 
+	public function remove(){
+		$response = array();
+		try{
+			//looking for
+			$this->load->model('notification_queue_model');
+			$this->load->model('message_model');
+			$this->load->model('user_model');
+
+			$friendUserId = $this->security->xss_clean(strip_tags($this->input->post('userId')));
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$userId = $this->user_session_model->getUserId($sessionToken);
+			if($userId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}
+
+			if($userId == $friendUserId){
+				throw new Exception("Id's are the same");
+			}
+
+			$this->friend_model->remove($userId, $friendUserId);
+			$response = array('message' => "Successful");
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+
+		$this->output->set_output(json_encode_helper($response));
+	}
+
+
 	public function get(){
 	}
 

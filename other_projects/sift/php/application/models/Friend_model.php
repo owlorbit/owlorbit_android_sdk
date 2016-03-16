@@ -55,7 +55,7 @@ class Friend_model extends CI_Model {
             email, phone_number, account_type, avatar_original from friends f
         inner join users u
             on u.id = f.friend_user_id
-        where user_id = ? and status = 'pending'
+        where user_id = ? and status = 'pending' and deleted = 0
             limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).";";
 
         $result = $this->db->query($query, array($userId));
@@ -72,7 +72,7 @@ class Friend_model extends CI_Model {
             email, phone_number, account_type, avatar_original from friends f
         inner join users u
             on u.id = f.user_id
-        where friend_user_id = ? and status = 'pending'
+        where friend_user_id = ? and status = 'pending' and deleted = 0 
             limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).";";
 
         $result = $this->db->query($query, array($userId));
@@ -96,6 +96,14 @@ class Friend_model extends CI_Model {
         }else{
             throw new Exception("Friend request already sent");
         }
+    }
+
+    function remove($userId, $friendUserId){
+        $query = "delete from friends where user_id = ? and friend_user_id = ?";
+
+        error_log("visions of fucakiaowef ==>>".$userId.'--'.$friendUserId);
+        $this->db->query($query, array($userId, $friendUserId));
+        $this->db->query($query, array($friendUserId, $userId));
     }
 
     function accept($userId, $friendUserId){

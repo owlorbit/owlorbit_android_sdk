@@ -52,8 +52,6 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
-        
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
@@ -214,8 +212,33 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             (JSON) in
 
             //self.userArrayList = self.defaultFriendList();
+            
+            
+            for user: GenericUserManagedModel in (self.userArrayList as NSArray as! [GenericUserManagedModel] ) {
+                var friendFound:Bool = false
+                
+                for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
+                    var genericUser:GenericUserManagedModel = GenericUserManagedModel.initWithJsonFriend(subJson);
+                    
+                    if(user.userId == genericUser.userId){
+                        friendFound = true;
+                    }
+                }
+
+                
+                if(!friendFound){
+                    do{
+                        ApplicationManager.shareCoreDataInstance.managedObjectContext.deleteObject(user)
+                        self.userArrayList.removeObject(user)
+                        try ApplicationManager.shareCoreDataInstance.managedObjectContext.save()
+                    }catch{
+                        
+                    }
+                    //break;
+                }
+            }
+      
             for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
-                //var genericUser:GenericUserModel = GenericUserModel(json: subJson, isFriend:true);
                 var genericUser:GenericUserManagedModel = GenericUserManagedModel.initWithJsonFriend(subJson);
                 
                 if(!self.isDuplicate(genericUser)){
@@ -372,6 +395,25 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
         return false;
     }
     
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            
+            var genericUser:GenericUserManagedModel;
+            genericUser = self.userArrayList[indexPath.row] as! GenericUserManagedModel
+
+            UserApiHelper.removeFriend(genericUser.userId, resultJSON: {
+                    (JSON) in
+                        self.loadLists()
+                }, error: {
+                    (Error) in
+                        AlertHelper.createPopupMessage("\(Error)", title: "")
+            })
+            //AlertHelper.createPopupMessage("removing " + genericUser.userId, title: "title")
+            //numbers.removeAtIndex(indexPath.row)
+            //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
     
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {

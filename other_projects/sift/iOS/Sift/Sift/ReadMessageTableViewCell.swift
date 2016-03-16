@@ -29,7 +29,6 @@ class ReadMessageTableViewCell: UITableViewCell {
         if(roomData.lastDisplayName.capitalizedString.isEmpty || roomData.lastDisplayName == ""){
             self.lblLastMsg.text = "No message sent"
             self.lblLastMsg.font = self.lblLastMsg.font.italic()
-            
         }else{
             self.lblLastMsg.text = roomData.lastDisplayName.capitalizedString + ": " + roomData.lastMessage
         }
@@ -49,25 +48,42 @@ class ReadMessageTableViewCell: UITableViewCell {
         
         self.imgAvatar.layer.masksToBounds = true
         self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
+
         
-        dispatch_async(dispatch_get_main_queue()) {
-            for userObj : AnyObject in roomData.attributes.users.allObjects {
-                if let userGeneric = userObj as? GenericUserManagedModel {
+        var imageSet:Bool = false
+        
+        
+        if (roomData.attributes.users.allObjects.count > 0){
+            if let userGeneric = roomData.attributes.users.allObjects[0] as? GenericUserManagedModel {
+                
+                
+                FileHelper.getUserImage(userGeneric.userId, completion: { data,error in
 
-                    var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userGeneric.avatarOriginal
-                    var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
-                 
-                    ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
-
-                        if let image = response.result.value {
-                            //obj.avatarImg = UIImageJPEGRepresentation(image.roundImage(), 1)!
-                            //self.imgAvatar.image = image.roundImage()
-                            self.imgAvatar.image = image                            
-                        }
+                    if let imgData:NSData = data {
+                        self.imgAvatar.image = UIImage(data:imgData,scale:1.0)
+                        imageSet = true
                     }
 
-                    return;
-                }
+                    if let err:NSError = error {
+                        if (roomData.attributes.users.allObjects.count > 0){
+                            if let userGeneric = roomData.attributes.users.allObjects[0] as? GenericUserManagedModel {
+                                
+                                let profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userGeneric.avatarOriginal
+                                let URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+                                
+                                ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
+                                    
+                                    if let image = response.result.value {
+                                        self.imgAvatar.image = image
+                                        //FileHelper.saveImage(image, fileName:  (userGeneric.userId + ".png") )
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                })
+                
             }
         }
     }

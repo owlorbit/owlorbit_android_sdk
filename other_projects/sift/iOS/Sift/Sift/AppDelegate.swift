@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
         manager.allowsBackgroundLocationUpdates = true
         manager.pausesLocationUpdatesAutomatically = false
-        manager.requestAlwaysAuthorization()
+        //manager.requestAlwaysAuthorization()
+        manager.requestWhenInUseAuthorization()
         return manager
     }()
     
@@ -313,7 +314,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         switch status {
         case .NotDetermined:
             print("not determined... request")
-            locationManager.requestAlwaysAuthorization()
+            //locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             break
         case .AuthorizedWhenInUse:
             print("start when in use")

@@ -10,4 +10,5 @@ import Foundation
 
 class DynamicPersonData: NSObject {
     var profileImage:UIImage?;
+    var profileRoundImage:UIImage?;
 }

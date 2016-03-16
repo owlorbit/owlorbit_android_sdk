@@ -44,7 +44,7 @@
                         <action selector="btnSignUpClick:" destination="-1" eventType="touchUpInside" id="i0U-oR-QE8"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't waste your time describing where you are.  Show them." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMo-oQ-sMx">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't waste your time telling friends where you are.  Show them." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMo-oQ-sMx">
                     <rect key="frame" x="8" y="273" width="304" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="292" id="QHw-HC-4sW"/>
@@ -106,7 +106,7 @@
                         <action selector="btnLogInClick:" destination="-1" eventType="touchUpInside" id="5em-aj-hGQ"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="So glad you could join Owlorbit!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-TZ-d0x">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Owlorbit!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-TZ-d0x">
                     <rect key="frame" x="8" y="231" width="304" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="RiY-TZ-d0x" secondAttribute="height" multiplier="73:22" id="7d8-NB-0P0"/>

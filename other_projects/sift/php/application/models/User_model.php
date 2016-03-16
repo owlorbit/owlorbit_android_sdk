@@ -77,7 +77,7 @@ class User_model extends CI_Model {
 
         !((id in (select user_id as id from friends where friend_user_id = ?)
         or id in (select friend_user_id as id from friends where user_id = ?)))
-        and id !=  ?
+        and id !=  ? and deleted = 0
 
         limit ".$ITEMS_PER_PAGE." offset ".(($pageIndex-1) * $ITEMS_PER_PAGE).";";
 

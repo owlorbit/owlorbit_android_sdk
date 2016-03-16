@@ -76,6 +76,34 @@ class User extends CI_Controller {
 		$this->output->set_output(json_encode_helper($response));
 	}
 
+
+	public function global_search($value, $userId, $pageIndex=1){
+		$response = array();
+		try{
+			$pageIndex = intval($this->security->xss_clean(strip_tags($pageIndex)));
+			$userId = intval($this->security->xss_clean(strip_tags($userId)));
+
+			if($pageIndex < 1){
+				$pageIndex = 1;
+			}
+			$value = $this->security->xss_clean(strip_tags(urldecode($value)));
+			$nonFriends = $this->user_model->find_non_friends($value, $userId, $pageIndex);
+			$friends = $this->user_model->find_friends($value, $userId, $pageIndex);
+
+			//this includes verified users/celebrities
+			$brand = '';
+			$verifiedUsers = '';
+
+			$response = array('message'=>'Attached is your user list',
+				'non_friends'=> $nonFriends,
+				'friends' => $friends);
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+		$this->output->set_output(json_encode_helper($response));
+	}	
+
 	public function find_non_friends($value, $userId, $pageIndex=1){
 		$response = array();
 		try{

@@ -14,6 +14,7 @@ class EnableLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .Default
         navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view.
         

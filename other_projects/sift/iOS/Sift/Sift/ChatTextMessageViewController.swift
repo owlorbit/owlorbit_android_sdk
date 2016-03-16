@@ -35,8 +35,8 @@ class ChatTextMessageViewController: JSQMessagesViewController {
         //sender = (sender != nil) ? sender : "Anonymous"
         
         var bubbleFactory = JSQMessagesBubbleImageFactory()
-        outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
-        incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleRedColor())
+        outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(ProjectConstants.AppColors.PRIMARY_SHADE)
+        incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(ProjectConstants.AppColors.ORANGE)
         
         self.collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
         blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "owl_orbit"), diameter: 30)

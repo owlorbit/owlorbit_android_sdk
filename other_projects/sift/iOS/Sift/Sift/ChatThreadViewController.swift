@@ -472,6 +472,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         let request = MKDirectionsRequest()
         request.source = MKMapItem.mapItemForCurrentLocation()
+        request.transportType = MKDirectionsTransportType.Automobile
         request.destination = destination!
         request.requestsAlternateRoutes = false
         //request.transportType = MKDirectionsTransportType.Automobile
@@ -503,20 +504,64 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             var userData:GenericUserManagedModel = obj as! GenericUserManagedModel
 
             if(userData.avatarOriginal != ""){
-                var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userData.avatarOriginal
-                var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+
                 //URLRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-                print ("start loading.. \(profileImageUrl)")
-                downloader.downloadImage(URLRequest: URLRequest) { response in
-                    if let image = response.result.value {
-                        userData.originalAvatar = image.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
-                        //userData.avatarImg = image
-                        userData.avatarImg = image.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
-                        //userData.avatarImg = userData.avatarImg.roundImage()
+                
+                FileHelper.getRoundUserImage(userData.userId, completion: { data,error in
+                    
+                    if let imgData:NSData = data {
+                        userData.originalAvatar = UIImage(data:imgData,scale:1.0)!
+                        userData.avatarImg = userData.originalAvatar
+
+                        //todo update user profile...
+                        print("xuser has been added")
                         self.addUser(userData)
-                        print ("user has been added")
+                        
+                        //then eventually update to the latest.
+                        
+                        
+                        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userData.avatarOriginal
+                        var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+                        self.downloader.downloadImage(URLRequest: URLRequest) { response in
+                            if let image = response.result.value {
+                                userData.originalAvatar = image.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
+                                userData.avatarImg = userData.originalAvatar
+                                print ("user has been updated")
+                            }
+                        }
+                        
+                        
+                        
                     }
-                }
+                    
+                    
+                    
+                    if let err:NSError = error {
+                        
+                        print("user image failed to load: \(err)")
+
+                        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userData.avatarOriginal
+                        var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+                        self.downloader.downloadImage(URLRequest: URLRequest) { response in
+                            if let image = response.result.value {
+                                userData.originalAvatar = image.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
+                                userData.avatarImg = userData.originalAvatar
+
+                                FileHelper.saveRoundImage(userData.avatarImg, fileName:  (userData.userId + "-round.png") )
+                                self.addUser(userData)
+                                print ("user has been added")
+                            }
+                        }
+                        
+                        
+                        
+                    }
+                })
+                
+                
+                
+                
+                
             }
         }
     }

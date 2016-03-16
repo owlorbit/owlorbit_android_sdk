@@ -108,10 +108,9 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     func initDownloadProfile(){
         
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-
         UserApiHelper.loginUser(user.email, password: user.password, resultJSON: {
             (JSON) in
-            
+
             FullScreenLoaderHelper.removeLoader();
             var hasFailed:Bool = (JSON["hasFailed"]) ? true : false
             if(!hasFailed){
@@ -126,6 +125,10 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                     self.initProfile()
                 }
             }
+            }, error:{
+               (errorMsg) in
+                FullScreenLoaderHelper.removeLoader();
+                AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
         });
         
     }
@@ -137,8 +140,9 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     func initProfile(){
-
+    
         dispatch_async(dispatch_get_main_queue()) {
+            self.initProfileImage()
             var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
             var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + user.avatarOriginal
             var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
@@ -146,11 +150,44 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
                 if let image = response.result.value {
                     ApplicationManager.userData.profileImage = image
+                    FileHelper.saveImage(image, fileName:  (user.userId + ".png") )
+                    FileHelper.saveRoundImage(image, fileName:  (user.userId + "-round.png") )
+                    print("image save...")
                 }
             }
         }
     }
     
+    func initProfileImage(){
+
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        FileHelper.getUserImage(user.userId, completion: {
+            data,error in
+
+            if let imgData:NSData = data {
+                ApplicationManager.userData.profileImage = UIImage(data:imgData,scale:1.0)
+            }
+
+            if let err:NSError = error {
+               print("user image failed to load: \(err)")
+            }
+        })
+        
+        FileHelper.getRoundUserImage(user.userId, completion: {
+            data,error in
+            
+            if let imgData:NSData = data {
+                ApplicationManager.userData.profileRoundImage = UIImage(data:imgData,scale:1.0)
+            }
+            
+            if let err:NSError = error {
+                print("user image failed to load: \(err)")
+            }
+        })
+        
+        
+    }
+
     func hasProfileImage()->Bool{
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
 
@@ -241,6 +278,14 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    public override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if(!self.hasProfileImage()){
+            self.loadProfileImage()
+        }
     }
     
     @IBAction func btnTest(sender: AnyObject) {

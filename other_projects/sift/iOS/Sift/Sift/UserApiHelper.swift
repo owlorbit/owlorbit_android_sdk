@@ -175,7 +175,7 @@ class UserApiHelper{
     }
     
     
-    class func loginUser(email:String, password:String, resultJSON:(JSON) -> Void) -> Void {
+    class func loginUser(email:String, password:String, resultJSON:(JSON) -> Void, error:(String)->Void) -> Void {
         
         var url:String = ProjectConstants.ApiBaseUrl.value + "/login/go"
         let data = ["email": email, "password" : password]
@@ -187,16 +187,21 @@ class UserApiHelper{
                     // got an error in getting the data, need to handle it
                     let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
                     print("Failure Response: \(json)")
+                    error(response.result.description)
                     return
                 }
 
                 if let value: AnyObject = response.result.value {
                     let post = JSON(value)
-                    if(post["hasFailed"].isEmpty){
-                        //send succesful
+                    if(post["successful"] == nil){
                         resultJSON(post)
                     }else{
-                        print("what the whaaat: \(post)")
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }
@@ -251,6 +256,35 @@ class UserApiHelper{
                 }
         }
     }
+    
+    class func findGlobal(value:String, resultJSON:(JSON) -> Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var customAllowedSet =  NSCharacterSet(charactersInString:"=\"#%/<>?@\\^`{|}").invertedSet
+        var escapedString:String = value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/user/global_search/" + escapedString + "/" + user.userId
+        
+        Alamofire.request(.GET, url, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
+    
     
     class func findFriends(value:String, resultJSON:(JSON) -> Void) -> Void {
         
@@ -333,6 +367,43 @@ class UserApiHelper{
                     if(post["hasFailed"].isEmpty){
                         //send succesful
                         resultJSON(post)
+                    }
+                }
+        }
+    }
+    
+    
+    class func removeFriend(userId:String, resultJSON:(JSON) -> Void, error:(String)->Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/friend/remove"
+        let data = ["userId": userId,"publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+        
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                    error(response.result.description)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    
+                    print("comeee on:: \(json)")
+                    
+                    let post = JSON(value)
+                    if(post["successful"] == nil){
+                        resultJSON(post)
+                    }else{
+                        //post["message"].string!,
+                        var success:Bool = post["successful"].bool!
+                        if(!success){
+                            var message:String = post["message"].string!
+                            error(message)
+                        }
                     }
                 }
         }

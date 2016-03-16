@@ -22,6 +22,7 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgCropView: ImageCropView!
+    var controller:ImagePickerSheetController = ImagePickerSheetController(mediaType: .Image)
     
     var delegate:ProfileDelegate?;
 
@@ -35,22 +36,20 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
         self.navigationItem.rightBarButtonItem = switchContextBtn
         self.navigationItem.rightBarButtonItem?.enabled = false
         self.title = "Profile Image"
+
+        initLoadImagePicker()
         selectImage()
-        
-        
-        print("2yea..?")
     }
     
     func buttonMethod() {
-        print("Yo")
     }
     
     func btnSelectImg(){
         selectImage()
     }
     
-    func handleTap(){
-        selectImage()
+    func initLoadImagePicker(){
+        
     }
     
     func btnContinueClick(sender:AnyObject){
@@ -67,14 +66,29 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
                     
                     //self.initProfile();
                     //self.imgCropView.croppedImage()
-                    ApplicationManager.userData.profileImage = self.imgCropView.croppedImage()
-                    navController.popViewControllerAnimated(true)
+                    
+                    var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+                    UserApiHelper.loginUser(user.email, password: user.password, resultJSON: {
+                        (JSON) in
+                        
+                        FullScreenLoaderHelper.removeLoader();
+                        var hasFailed:Bool = (JSON["hasFailed"]) ? true : false
+                        if(!hasFailed){                            
+                            PersonalUserModel.updateUserFromLogin(user.email, password: user.password, serverReturnedData: JSON)
+                            
+                            ApplicationManager.userData.profileImage = self.imgCropView.croppedImage()
+                            navController.popViewControllerAnimated(true)
+                        }
+                        }, error:{
+                            (errorMsg) in
+                            FullScreenLoaderHelper.removeLoader();
+                            AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
+                    });
                 }
             })
             
         }
     }
-    
     
     func onImageCropViewTapped(imageCropView: ImageCropView) {
     }
@@ -103,8 +117,8 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
             
             self.presentViewController(controller, animated: true, completion: nil)
         }
-        
-        let controller = ImagePickerSheetController(mediaType: .Image)
+
+        controller = ImagePickerSheetController(mediaType: .Image)
         controller.maximumSelection = 1;
         controller.addAction(ImagePickerAction(title: NSLocalizedString("Take a Selfie", comment: "Action Title"), secondaryTitle: NSLocalizedString("Select Image", comment: "Action Title"), handler: { _ in
             presentImagePickerController(.Camera)
@@ -113,10 +127,10 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
             
             }, secondaryHandler: { _, numberOfPhotos in
                 print("Comment \(numberOfPhotos) photos")
-                print("Send \(controller.selectedImageAssets)")
+                print("Send \(self.controller.selectedImageAssets)")
                 
-                if(controller.selectedImageAssets.count > 0){
-                    self.imgCropView.setup(ImageHelper.getAssetThumbnail(controller.selectedImageAssets[0], widthHeight: 620.0), tapDelegate: self)
+                if(self.controller.selectedImageAssets.count > 0){
+                    self.imgCropView.setup(ImageHelper.getAssetThumbnail(self.controller.selectedImageAssets[0], widthHeight: 620.0), tapDelegate: self)
                     self.imgCropView.display()
                     self.imgCropView.editable = true
                     self.navigationItem.rightBarButtonItem?.enabled = true
@@ -140,6 +154,16 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //how do i hide this fucker...
+        controller.dismissViewControllerAnimated(false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
