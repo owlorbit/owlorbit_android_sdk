@@ -179,7 +179,7 @@ class Message extends CI_Controller {
 	}	
 
 	public function init(){
-
+		$typeOfError = 0;
 		$response = array();
 		try{
 			
@@ -208,8 +208,7 @@ class Message extends CI_Controller {
 				$typeOfError = -2;
 				throw new Exception("Session is invalid.");	
 			}
-			//array_push($userIds, $userId);		    
-
+			
 		    if($name == ""){
 				$roomId = $this->message_model->initiate_room($userId, $userIds);
 			}else{
@@ -217,6 +216,8 @@ class Message extends CI_Controller {
 				$isPublic = $this->security->xss_clean(strip_tags($this->input->post('isPublic')));
 				$roomId = $this->message_model->initiate_group_room($userId, $userIds, $name, $isFriendsOnly, $isPublic);				
 			}
+
+			//$accepted = $this->message_model->isAccepted($userId, $roomId);
 
 			$response = array(
 		    	'message' => 'room initiated added!',

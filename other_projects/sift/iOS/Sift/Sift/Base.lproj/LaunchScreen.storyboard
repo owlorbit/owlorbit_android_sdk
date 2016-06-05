@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,20 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl_orbit_outline" translatesAutoresizingMaskIntoConstraints="NO" id="RGr-NN-9BE">
-                                <rect key="frame" x="230" y="32" width="140" height="147"/>
-                                <animations/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Owlorbit 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qt5-GQ-wv6">
+                                <rect key="frame" x="237" y="559" width="126" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="147" id="1fD-yB-6TZ"/>
-                                    <constraint firstAttribute="width" constant="140" id="PRP-No-EPX"/>
+                                    <constraint firstAttribute="height" constant="21" id="OnW-oc-YMa"/>
+                                    <constraint firstAttribute="width" constant="126" id="qXX-jR-FMU"/>
                                 </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.51372549020000002" green="0.52549019610000003" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="RGr-NN-9BE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Afs-tp-s4j"/>
-                            <constraint firstItem="RGr-NN-9BE" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="12" id="tXa-vT-3FW"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="qt5-GQ-wv6" secondAttribute="bottom" constant="20" id="VUV-vd-5qA"/>
+                            <constraint firstItem="qt5-GQ-wv6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="auE-o6-Hiy"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,7 +40,4 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="owl_orbit_outline" width="280" height="295"/>
-    </resources>
 </document>

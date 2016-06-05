@@ -43,6 +43,7 @@ class Notification extends CI_Controller {
 
 		//$this->parseclient->initialize( "mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN", "fURuXJR5xjG7p2B7AqdKANUJVwb9pko4y4n3zi7o", "eyGXoKU8PTTeXYXJdSY9BonQu3gZEv9sv7x1Yrcu" );				
 		ParseClient::initialize('mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN', 'zMVFPm0zShj7pxFjlpGGhOoi0BwYtZzmKXNQVqAP', 'eyGXoKU8PTTeXYXJdSY9BonQu3gZEv9sv7x1Yrcu');
+		ParseClient::setServerURL('https://parseapi.back4app.com');
 		// Push to Channels
 
 		//$data = array("alert" => "FUCK SHIT");
@@ -79,6 +80,7 @@ class Notification extends CI_Controller {
 
 			$this->load->model('notification_queue_model');
 			ParseClient::initialize('mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN', 'zMVFPm0zShj7pxFjlpGGhOoi0BwYtZzmKXNQVqAP', 'eyGXoKU8PTTeXYXJdSY9BonQu3gZEv9sv7x1Yrcu');
+			ParseClient::setServerURL('https://parseapi.back4app.com');
 
 			$notificationQueueWithRoom = $this->notification_queue_model->get_not_sent();
 			$notificationQueueWithNoRoom = $this->notification_queue_model->get_not_sent_no_room();			

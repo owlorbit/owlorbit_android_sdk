@@ -48,11 +48,23 @@ class ReadMessageTableViewCell: UITableViewCell {
         
         self.imgAvatar.layer.masksToBounds = true
         self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
-
-        
         var imageSet:Bool = false
         
         
+        
+        let profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + roomData.avatarOriginal
+        let URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+
+        ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
+            
+            if let image = response.result.value {
+                self.imgAvatar.image = image
+                //FileHelper.saveImage(image, fileName:  (userGeneric.userId + ".png") )
+            }
+        }
+        
+        
+        /*
         if (roomData.attributes.users.allObjects.count > 0){
             if let userGeneric = roomData.attributes.users.allObjects[0] as? GenericUserManagedModel {
                 
@@ -85,7 +97,7 @@ class ReadMessageTableViewCell: UITableViewCell {
                 })
                 
             }
-        }
+        }*/
     }
     
     func setUnread(){

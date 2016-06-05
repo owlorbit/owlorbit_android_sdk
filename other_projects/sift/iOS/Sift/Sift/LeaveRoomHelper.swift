@@ -41,4 +41,31 @@ class LeaveRoomHelper {
         }
     }
     
+    
+    class func removeRoomById(roomId:String){
+        
+        let coreDataHelper:CoreDataHelper = ApplicationManager.shareCoreDataInstance;
+        
+        //loop through context..
+        for roomManagedModel: RoomManagedModel in RoomManagedModel.getAll() {
+            
+            
+            var containsUser:Bool = false
+         
+            if(roomId == roomManagedModel.roomId){
+                containsUser = true
+            }
+            
+            if(containsUser){
+                do {
+                    coreDataHelper.managedObjectContext.deleteObject(roomManagedModel)
+                    try coreDataHelper.managedObjectContext.save()
+                }catch{
+                    let nserror = error as NSError
+                    NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
+            }
+        }
+    }
+    
 }

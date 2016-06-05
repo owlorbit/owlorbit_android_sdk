@@ -50,7 +50,7 @@ class Notification_queue_model extends CI_Model {
     }
 
     function get_not_sent(){
-        $query = "select nq.id, m.id as message_id, r.id as room_id, m.created as message_created, u.id as user_id, first_name, last_name, message, message_type, if(r.name IS NULL, '', r.name) as room_name, device_id
+        $query = "select nq.id, m.id as message_id, r.id as room_id, m.created as message_created, u.id as user_id, first_name, last_name, message, message_type, if(r.name IS NULL, '', r.name) as room_name, device_id, ru.accepted
                     from notification_queue  nq
                         inner join users u
                             on u.id = nq.user_id
@@ -58,7 +58,9 @@ class Notification_queue_model extends CI_Model {
                             on m.id = nq.message_id
                         inner join rooms r
                             on r.id = m.room_id
-                    where sent_to_parse = 0 and m.active = 1;";
+                        inner join room_users ru
+                            on ru.room_id = r.id
+                    where sent_to_parse = 0 and m.active = 1 and ru.accepted = 1;";
         $result = $this->db->query($query)->result();
         return $result;
     }

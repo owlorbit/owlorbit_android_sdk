@@ -26,7 +26,7 @@ class ApplicationManager: NSObject {
     static var spinner = ALThreeCircleSpinner(frame: CGRectMake(0,0,44,44))
     static var isLoggedIn:Bool = false
     static var spinnerBg:UIView = UIView(frame: ((UIApplication.sharedApplication().delegate?.window)!)!.frame)
-    
+
     static var SYSTEM_COLOR:UIColor = UIColor(red:131.0/255.0, green:134.0/255.0, blue:169.0/255.0, alpha:1.0)
     static var isTesting:Bool = false
     

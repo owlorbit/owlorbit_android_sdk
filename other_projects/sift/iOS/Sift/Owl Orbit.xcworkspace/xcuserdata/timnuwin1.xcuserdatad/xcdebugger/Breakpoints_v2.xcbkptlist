@@ -14,9 +14,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "975"
-            endingLineNumber = "975"
-            landmarkName = "mapView(_:annotationView:didChangeDragState:fromOldState:)"
-            landmarkType = "5">
+            endingLineNumber = "975">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,9 +28,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "492"
-            endingLineNumber = "492"
-            landmarkName = "loadProfileImg()"
-            landmarkType = "5">
+            endingLineNumber = "492">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

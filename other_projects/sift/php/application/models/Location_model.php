@@ -22,7 +22,7 @@ class Location_model extends CI_Model {
 
         $query = "select * from locations where user_id in (select user_id from room_users where user_id != ?
                     and room_id = ?
-                    and active = 1 and is_hidden = 0) group by user_id;";
+                    and active = 1 and is_hidden = 0 and accepted = 1) group by user_id;";
 
         $result = $this->db->query($query, array($userId, $roomId));
         if($result->num_rows() > 0){
@@ -41,7 +41,7 @@ class Location_model extends CI_Model {
 
         $query = "select * from locations where user_id in (select user_id from room_users where user_id != ?
                     and room_id = ?
-                    and active = 1 and is_hidden = 0) group by user_id;";
+                    and active = 1 and is_hidden = 0 and accepted = 1) group by user_id;";
 
         $result = $this->db->query($query, array($userId, $roomId));
         if($result->num_rows() > 0){            

@@ -31,8 +31,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="sfP-U5-4Bd"/>
                             <exclude reference="or0-Ss-niN"/>
+                            <exclude reference="sfP-U5-4Bd"/>
                             <exclude reference="sgS-sE-IXd"/>
                         </mask>
                     </variation>

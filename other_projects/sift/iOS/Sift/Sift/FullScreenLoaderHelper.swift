@@ -28,10 +28,10 @@ class FullScreenLoaderHelper: NSObject {
     
     class func removeLoader(){
         ApplicationManager.spinner.stopAnimating()
-        
-        
         ApplicationManager.spinner.removeFromSuperview()
         ApplicationManager.spinnerBg.removeFromSuperview()
     }
-
+    
+    
+   
 }

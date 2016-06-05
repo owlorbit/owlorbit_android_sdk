@@ -115,6 +115,11 @@
 		B8BC48651C284363006A345E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48641C284363006A345E /* AudioToolbox.framework */; };
 		B8BC48691C284827006A345E /* ChatTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */; };
 		B8BC486A1C284827006A345E /* ChatTextMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */; };
+		B8C867961CFBF38A008CDED1 /* RoomUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C867951CFBF38A008CDED1 /* RoomUsersModel.swift */; };
+		B8C8679D1D024F82008CDED1 /* MyMessageChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8679B1D024F82008CDED1 /* MyMessageChatTableViewCell.swift */; };
+		B8C8679E1D024F82008CDED1 /* MyMessageChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C8679C1D024F82008CDED1 /* MyMessageChatTableViewCell.xib */; };
+		B8C867A11D024FB9008CDED1 /* OtherMessageChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8679F1D024FB9008CDED1 /* OtherMessageChatTableViewCell.swift */; };
+		B8C867A21D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C867A01D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib */; };
 		B8CAA48E1C11096B00EC2752 /* DynamicPersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA48D1C11096B00EC2752 /* DynamicPersonalData.swift */; };
 		B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA48F1C11343100EC2752 /* MessageModel.swift */; };
 		B8CAA4921C1134F900EC2752 /* MessageCoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */; };
@@ -133,6 +138,8 @@
 		B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */; };
 		B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */; };
 		B8E4E7EC1C02B6CF00995964 /* EncryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */; };
+		B8EE8A881C9A690C00FE2276 /* DisableGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EE8A861C9A690C00FE2276 /* DisableGPSViewController.swift */; };
+		B8EE8A891C9A690C00FE2276 /* DisableGPSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */; };
 		B8F512941C61C8F5007DCFD5 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */; };
 		B8F512951C61C8F5007DCFD5 /* AddGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512931C61C8F5007DCFD5 /* AddGroupViewController.xib */; };
 		B8F512991C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512971C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift */; };
@@ -294,9 +301,15 @@
 		B8BC48641C284363006A345E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextMessageViewController.swift; sourceTree = "<group>"; };
 		B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTextMessageViewController.xib; sourceTree = "<group>"; };
+		B8C867951CFBF38A008CDED1 /* RoomUsersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersModel.swift; sourceTree = "<group>"; };
+		B8C8679B1D024F82008CDED1 /* MyMessageChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessageChatTableViewCell.swift; sourceTree = "<group>"; };
+		B8C8679C1D024F82008CDED1 /* MyMessageChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMessageChatTableViewCell.xib; sourceTree = "<group>"; };
+		B8C8679F1D024FB9008CDED1 /* OtherMessageChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherMessageChatTableViewCell.swift; sourceTree = "<group>"; };
+		B8C867A01D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherMessageChatTableViewCell.xib; sourceTree = "<group>"; };
 		B8CAA48D1C11096B00EC2752 /* DynamicPersonalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicPersonalData.swift; sourceTree = "<group>"; };
 		B8CAA48F1C11343100EC2752 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCoreModel.swift; sourceTree = "<group>"; };
+		B8CD1A631CDB014C0050A42E /* Sift 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 5.xcdatamodel"; sourceTree = "<group>"; };
 		B8CF9D521C3F4B6400E3898B /* UserManagedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagedModel.swift; sourceTree = "<group>"; };
 		B8D8DD571C82869D00942FDB /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -312,6 +325,8 @@
 		B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptUtil.swift; sourceTree = "<group>"; };
+		B8EE8A861C9A690C00FE2276 /* DisableGPSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisableGPSViewController.swift; sourceTree = "<group>"; };
+		B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisableGPSViewController.xib; sourceTree = "<group>"; };
 		B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		B8F512931C61C8F5007DCFD5 /* AddGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGroupViewController.xib; sourceTree = "<group>"; };
 		B8F512961C61CB3B007DCFD5 /* Sift 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -726,6 +741,7 @@
 		B8BAD2531BF178D400DC7F60 /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B8C867971D024E42008CDED1 /* Chat */,
 				B84F077D1C6E415E00D42FEB /* Map */,
 				B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */,
 				B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */,
@@ -755,6 +771,7 @@
 		B8BAD25D1BF180C500DC7F60 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B8C867941CFBF374008CDED1 /* Dashboard */,
 				B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */,
 				B827320B1C7A48C50020C060 /* CustomFindAddressPin.swift */,
 				B870CEF01BFC093000F47929 /* CustomMapPin.swift */,
@@ -780,6 +797,7 @@
 		B8BAD25E1BF181EA00DC7F60 /* DashboardViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B8EE8A851C9A68DE00FE2276 /* SettingsViewController */,
 				B849E09A1C5D4675001A281B /* ErrorViewController */,
 				B8408C491C58576000449BEA /* UserViewController */,
 				B8068B6A1C22348800EE00CA /* WriteMessage */,
@@ -795,6 +813,33 @@
 				B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */,
 			);
 			name = DashboardViewController;
+			sourceTree = "<group>";
+		};
+		B8C867941CFBF374008CDED1 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B8C867951CFBF38A008CDED1 /* RoomUsersModel.swift */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		B8C867971D024E42008CDED1 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				B8C867981D024E5F008CDED1 /* cells */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		B8C867981D024E5F008CDED1 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				B8C8679B1D024F82008CDED1 /* MyMessageChatTableViewCell.swift */,
+				B8C8679C1D024F82008CDED1 /* MyMessageChatTableViewCell.xib */,
+				B8C8679F1D024FB9008CDED1 /* OtherMessageChatTableViewCell.swift */,
+				B8C867A01D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib */,
+			);
+			name = cells;
 			sourceTree = "<group>";
 		};
 		B8E4E7CE1BFC40A800995964 /* Dashboard */ = {
@@ -815,6 +860,15 @@
 				B866DFC31C0D22D100BF8A79 /* RoomApiHelper.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		B8EE8A851C9A68DE00FE2276 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B8EE8A861C9A690C00FE2276 /* DisableGPSViewController.swift */,
+				B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */,
+			);
+			name = SettingsViewController;
 			sourceTree = "<group>";
 		};
 		B8F512A51C696694007DCFD5 /* GroupDescription */ = {
@@ -969,6 +1023,7 @@
 				B870CEE51BFAF48100F47929 /* RegistrationNextView.xib in Resources */,
 				B8F5129A1C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib in Resources */,
 				B870CEC71BF5AF3800F47929 /* RegisterBasicInfoViewController.xib in Resources */,
+				B8C8679E1D024F82008CDED1 /* MyMessageChatTableViewCell.xib in Resources */,
 				B8F512A91C6966D8007DCFD5 /* GroupNameTableViewCell.xib in Resources */,
 				B8F512A41C696565007DCFD5 /* GroupSettingsStep1ViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
@@ -976,10 +1031,12 @@
 				B8792A341BEB15CE00BE05ED /* Assets.xcassets in Resources */,
 				B866DFD01C0E812600BF8A79 /* ChatMapKeyboardView.xib in Resources */,
 				B8E4E7DF1BFD520200995964 /* RegistrationSubmitKeyboardView.xib in Resources */,
+				B8EE8A891C9A690C00FE2276 /* DisableGPSViewController.xib in Resources */,
 				B8F512AD1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib in Resources */,
 				B866DFD41C0EBA1900BF8A79 /* ProfileImageUploadViewController.xib in Resources */,
 				B8333F281C89327000626B72 /* UserSingleWriteTableViewCell.xib in Resources */,
 				B821E72B1C6D6C4200EF9018 /* ManageRequestsViewController.xib in Resources */,
+				B8C867A21D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib in Resources */,
 				B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */,
 				B870CEBF1BF5752300F47929 /* ResetPasswordViewController.xib in Resources */,
 				B8068B6E1C22364400EE00CA /* ProfileSettingImageUploadViewController.xib in Resources */,
@@ -1127,6 +1184,7 @@
 				B83C60F11C768F9A00A30260 /* UIColor+helpers.swift in Sources */,
 				B83C60DC1C72617B00A30260 /* Int+ToString.swift in Sources */,
 				B870CEF11BFC093000F47929 /* CustomMapPin.swift in Sources */,
+				B8C867A11D024FB9008CDED1 /* OtherMessageChatTableViewCell.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,
 				B895A2AD1C545C7400B2A08D /* UILabel+ItalicBold.swift in Sources */,
 				B866DFC61C0D266300BF8A79 /* RoomModel.swift in Sources */,
@@ -1138,6 +1196,7 @@
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,
 				B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */,
 				B88213361C17F99E00E9469C /* LocationModel.swift in Sources */,
+				B8EE8A881C9A690C00FE2276 /* DisableGPSViewController.swift in Sources */,
 				B81CAB701C7909DB007B5131 /* LeaveRoomHelper.swift in Sources */,
 				B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */,
 				B866DFC21C0BC22A00BF8A79 /* ChatApiHelper.swift in Sources */,
@@ -1159,6 +1218,7 @@
 				B8E4E7DD1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift in Sources */,
 				B8BC48691C284827006A345E /* ChatTextMessageViewController.swift in Sources */,
 				B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */,
+				B8C8679D1D024F82008CDED1 /* MyMessageChatTableViewCell.swift in Sources */,
 				B8333F271C89327000626B72 /* UserSingleWriteTableViewCell.swift in Sources */,
 				B821E72A1C6D6C4200EF9018 /* ManageRequestsViewController.swift in Sources */,
 				B8E4E7E11BFD80CE00995964 /* ProjectConstants.swift in Sources */,
@@ -1169,6 +1229,7 @@
 				B821E7231C6AC60100EF9018 /* CreateGroupManager.swift in Sources */,
 				B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */,
 				B8F512941C61C8F5007DCFD5 /* AddGroupViewController.swift in Sources */,
+				B8C867961CFBF38A008CDED1 /* RoomUsersModel.swift in Sources */,
 				B8F5129C1C65800B007DCFD5 /* MapHelper.swift in Sources */,
 				B863BED51C56E93000C8BA01 /* MapInstructionsTableViewCell.swift in Sources */,
 			);
@@ -1440,12 +1501,13 @@
 		B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B8CD1A631CDB014C0050A42E /* Sift 5.xcdatamodel */,
 				B81CAB691C76ABD1007B5131 /* Sift 4.xcdatamodel */,
 				B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */,
 				B8F512961C61CB3B007DCFD5 /* Sift 2.xcdatamodel */,
 				B8792A311BEB15CE00BE05ED /* Sift.xcdatamodel */,
 			);
-			currentVersion = B81CAB691C76ABD1007B5131 /* Sift 4.xcdatamodel */;
+			currentVersion = B8CD1A631CDB014C0050A42E /* Sift 5.xcdatamodel */;
 			path = Sift.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

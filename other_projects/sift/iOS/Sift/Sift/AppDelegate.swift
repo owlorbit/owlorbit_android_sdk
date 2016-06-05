@@ -61,8 +61,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             notificationManager.notificationSound = mySound
         }
 
+        
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN"
+            $0.clientKey = "fURuXJR5xjG7p2B7AqdKANUJVwb9pko4y4n3zi7o"
+            $0.server = "https://parseapi.back4app.com"
+        }
+        //Parse.initializeWithConfiguration(configuration)
+        /*
         Parse.setApplicationId("mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN",
             clientKey: "fURuXJR5xjG7p2B7AqdKANUJVwb9pko4y4n3zi7o")
+         */
         if application.applicationState != UIApplicationState.Background {
 
             let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")

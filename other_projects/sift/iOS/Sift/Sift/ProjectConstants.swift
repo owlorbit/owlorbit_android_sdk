@@ -14,7 +14,7 @@ struct ProjectConstants {
     }
     
     struct CoreData{
-        static let version = "4"
+        static let version = "5"
     }
 
     struct AppColors{

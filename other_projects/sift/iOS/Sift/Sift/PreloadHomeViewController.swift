@@ -27,10 +27,12 @@ class PreloadHomeViewController: UIViewController {
     }
     
     func updateLogo(){
-        self.logoHeightConstraint.constant = 50
+        //self.logoHeightConstraint.constant = 50
+        
+        /*
         UIView.animateWithDuration(0.5) {
             self.view.layoutIfNeeded()
-        }
+        }*/
     }
 
     override func didReceiveMemoryWarning() {

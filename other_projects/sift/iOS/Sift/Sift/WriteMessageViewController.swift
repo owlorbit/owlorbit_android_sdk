@@ -405,6 +405,7 @@ class WriteMessageViewController: UIViewController, DZNEmptyDataSetSource, DZNEm
             UserApiHelper.removeFriend(genericUser.userId, resultJSON: {
                     (JSON) in
                         self.loadLists()
+                        RoomManagedModel.removeAll()
                 }, error: {
                     (Error) in
                         AlertHelper.createPopupMessage("\(Error)", title: "")

@@ -194,7 +194,11 @@ class Message_model extends CI_Model {
         foreach ( $userIds as $userId){ 
             error_log('user id>>: '.$userId);
 
-            $query = "insert into room_users (user_id, room_id) values (?, ?)";
+            if($creatorUserId == $userId){
+                $query = "insert into room_users (user_id, room_id, accepted) values (?, ?, 1)";
+            }else{
+                $query = "insert into room_users (user_id, room_id) values (?, ?)";
+            }
             $result = $this->db->query($query, array($userId, $newRoomId));            
         }
 

@@ -100,6 +100,18 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
         
         return ReadMessageTableViewCell.cellHeight();
     }
+
+    @IBAction func btnPowerDown(sender: AnyObject) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.locationManager.stopUpdatingLocation()
+        appDelegate.locationManager.stopMonitoringSignificantLocationChanges()
+        
+        let vc = DisableGPSViewController(nibName: "DisableGPSViewController", bundle: nil)
+        vc.hidesBottomBarWhenPushed = true
+        vc.navigationController?.navigationBarHidden = true
+        self.navigationController?.pushViewController(vc, animated: true )
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       

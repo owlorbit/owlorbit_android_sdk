@@ -58,9 +58,7 @@ class GenericUserManagedModel: NSManagedObject {
             ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
 
                 //dispatch_async(dispatch_get_main_queue()) {
-                
-                
-                
+
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) { // 1
                     dispatch_async(dispatch_get_main_queue()) { // 2
                         if let image = response.result.value {
@@ -71,8 +69,13 @@ class GenericUserManagedModel: NSManagedObject {
                             //obj.avatarImg = UIImageJPEGRepresentation(UIImage(named:"owl_orbit")!, 1)!
                             obj.avatarImg = UIImage(named:"owl_orbit")!
                         }
-                        ApplicationManager.shareCoreDataInstance.saveContext()
-                        resultGenericUser(obj)
+                        
+                        do {
+                            try ApplicationManager.shareCoreDataInstance.saveContext()
+                            resultGenericUser(obj)
+                        }catch{
+                            
+                        }
                     }
                 }
                 

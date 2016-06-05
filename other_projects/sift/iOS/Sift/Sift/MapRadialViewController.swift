@@ -95,7 +95,7 @@ class MapRadialViewController: ChatThreadViewController{
         
         FullScreenLoaderHelper.startLoader()
         dispatch_async(dispatch_get_main_queue()) {
-            
+
             RoomApiHelper.getRooms({
                 (JSON) in
                 
@@ -130,13 +130,67 @@ class MapRadialViewController: ChatThreadViewController{
                         (JSON) in
                         
                         if let navController = self.navigationController {
-                            FullScreenLoaderHelper.removeLoader()
+                            //FullScreenLoaderHelper.removeLoader()
                             
-                            navController.popViewControllerAnimated(true)
+                            /*navController.popViewControllerAnimated(true)
                             
                             if(self.delegate != nil){
                                 self.delegate.didExitRoom(self)
-                            }
+                            }*/
+                            
+                            
+                            RoomApiHelper.getRooms({
+                                (JSON) in
+                                
+                                LeaveRoomHelper.removeRoom(JSON["rooms"])
+                                
+                                for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
+                                    
+                                    var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
+                                    RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
+                                        (JSON2) in
+                                        
+                                        
+                                        RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
+                                            (roomAttribute) in
+                                            
+                                            roomModel.attributes = roomAttribute
+                                            if(roomModel.attributes.users.count > 0){
+                                                roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
+                                            }
+                                            
+                                            ApplicationManager.shareCoreDataInstance.saveContext()
+                                            
+                                        })
+                                        
+                                        
+                                    });
+                                }
+                                
+                                
+                                FullScreenLoaderHelper.removeLoader()
+                                
+                                navController.popViewControllerAnimated(true)
+                                
+                                if(self.delegate != nil){
+                                    self.delegate.didExitRoom(self)
+                                }
+                                
+                                },error: {
+                                    (message, errorCode) in
+                                    
+                                   
+                                    
+                                }
+                            );
+                            
+                            
+                            
+                            
+                            
+                            
+                            /////////FWEF
+                            
                         }
                         
                         

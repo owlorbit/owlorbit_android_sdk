@@ -38,7 +38,7 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
 
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+        //view.endEditing(true)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

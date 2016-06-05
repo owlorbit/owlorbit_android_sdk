@@ -27,8 +27,10 @@ class LoginViewController: UIViewController, LoginDelegate {
         self.tableView.backgroundColor = UIColor.clearColor();
         //test()
         
+        
+        let dismissTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(dismissTap)
     }
-
     
     @IBAction func btnCancel(sender: AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true);        
@@ -36,7 +38,7 @@ class LoginViewController: UIViewController, LoginDelegate {
   
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+        //view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {

@@ -24,16 +24,50 @@
                         <outlet property="delegate" destination="-1" id="0PH-W7-OPY"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJA-jB-FPb">
+                    <rect key="frame" x="252" y="386" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="1af-X3-EJf"/>
+                        <constraint firstAttribute="width" constant="45" id="DgB-Wx-baO"/>
+                        <constraint firstAttribute="height" constant="45" id="ML1-OH-9Uo"/>
+                        <constraint firstAttribute="width" constant="25" id="P9W-Pw-q8X"/>
+                        <constraint firstAttribute="width" constant="35" id="Rhs-pT-ugm"/>
+                        <constraint firstAttribute="width" constant="60" id="aC3-4r-Ibx"/>
+                        <constraint firstAttribute="height" constant="33" id="eOB-V7-fhX"/>
+                        <constraint firstAttribute="width" constant="25" id="xUr-zS-LKO"/>
+                        <constraint firstAttribute="height" constant="60" id="yxh-Vu-7El"/>
+                    </constraints>
+                    <state key="normal" image="power_button_icon"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="1af-X3-EJf"/>
+                            <exclude reference="eOB-V7-fhX"/>
+                            <exclude reference="Rhs-pT-ugm"/>
+                            <exclude reference="DgB-Wx-baO"/>
+                            <exclude reference="P9W-Pw-q8X"/>
+                            <exclude reference="xUr-zS-LKO"/>
+                            <exclude reference="ML1-OH-9Uo"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnPowerDown:" destination="-1" eventType="touchUpInside" id="d5x-EC-mFw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="tyn-km-gbv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PTm-7s-8bQ"/>
                 <constraint firstAttribute="bottom" secondItem="tyn-km-gbv" secondAttribute="bottom" id="YMB-mc-zY4"/>
                 <constraint firstItem="tyn-km-gbv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZRI-nK-xUF"/>
+                <constraint firstAttribute="bottom" secondItem="eJA-jB-FPb" secondAttribute="bottom" constant="58" id="aIA-IR-bEQ"/>
+                <constraint firstAttribute="trailing" secondItem="eJA-jB-FPb" secondAttribute="trailing" constant="8" id="wS8-6S-kDW"/>
                 <constraint firstAttribute="trailing" secondItem="tyn-km-gbv" secondAttribute="trailing" id="y2u-ds-xwZ"/>
             </constraints>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="power_button_icon" width="78" height="78"/>
+    </resources>
 </document>

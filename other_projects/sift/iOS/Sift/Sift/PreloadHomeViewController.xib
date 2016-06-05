@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -67,17 +67,19 @@
                         </mask>
                     </variation>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl_orbit" translatesAutoresizingMaskIntoConstraints="NO" id="y9J-Yf-s5d">
-                    <rect key="frame" x="90" y="78" width="140" height="147"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_icon" translatesAutoresizingMaskIntoConstraints="NO" id="y9J-Yf-s5d">
+                    <rect key="frame" x="95" y="78" width="130" height="130"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="130" id="189-qV-8Ko"/>
                         <constraint firstAttribute="width" secondItem="y9J-Yf-s5d" secondAttribute="height" multiplier="20:21" id="5NX-1D-MoI"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="147" id="SWL-Ha-fqZ"/>
-                        <constraint firstAttribute="height" constant="147" id="WFA-jl-cpT"/>
+                        <constraint firstAttribute="height" constant="130" id="WFA-jl-cpT"/>
                         <constraint firstAttribute="width" constant="140" id="kAG-Ui-JfL"/>
                         <constraint firstAttribute="width" secondItem="y9J-Yf-s5d" secondAttribute="height" multiplier="20:21" id="yqx-e6-d0P"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="5NX-1D-MoI"/>
                             <exclude reference="SWL-Ha-fqZ"/>
                             <exclude reference="kAG-Ui-JfL"/>
                             <exclude reference="yqx-e6-d0P"/>
@@ -164,6 +166,6 @@
     </objects>
     <resources>
         <image name="intro_background" width="375" height="667"/>
-        <image name="owl_orbit" width="280" height="295"/>
+        <image name="main_icon" width="276" height="274"/>
     </resources>
 </document>
