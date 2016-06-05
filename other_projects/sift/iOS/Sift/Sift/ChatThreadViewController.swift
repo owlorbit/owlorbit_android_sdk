@@ -31,13 +31,12 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     @IBOutlet weak var mapView: MKMapView!
     //@IBOutlet weak var txtChatView: AUIAutoGrowingTextView!
     @IBOutlet weak var txtChatView: UITextField!
-    
-    
+
     @IBOutlet weak var btnMenu: UIButton!
     @IBOutlet weak var btnMeetup: UIButton!
     @IBOutlet weak var btnExit: UIButton!
     var prevSelected:MKAnnotationView?;
-    
+
     @IBOutlet weak var viewSearchContainerBG: UIView!
     @IBOutlet weak var btnVisibility: UIButton!
     @IBOutlet weak var viewGrey: UIView!
@@ -230,7 +229,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
                 viewController.roomId = self.roomId;
                 self.navigationController!.pushViewController(viewController, animated: true)
-                
             })
         })
     }
@@ -912,8 +910,14 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     }
     
     func btnTextClick(sender: AnyObject){
+        
+        /*
         var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
         viewController.roomId = roomId;
+        self.navigationController!.pushViewController(viewController, animated: true)*/
+        
+        var viewController:ChatViewController = ChatViewController();
+        viewController.roomId = self.roomId;
         self.navigationController!.pushViewController(viewController, animated: true)
     }
 

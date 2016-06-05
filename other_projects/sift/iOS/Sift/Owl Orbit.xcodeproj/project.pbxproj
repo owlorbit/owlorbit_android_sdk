@@ -115,6 +115,8 @@
 		B8BC48651C284363006A345E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48641C284363006A345E /* AudioToolbox.framework */; };
 		B8BC48691C284827006A345E /* ChatTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */; };
 		B8BC486A1C284827006A345E /* ChatTextMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */; };
+		B8C2F34A1D04D9F700B6073D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C2F3481D04D9F700B6073D /* ChatViewController.swift */; };
+		B8C2F34B1D04D9F700B6073D /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C2F3491D04D9F700B6073D /* ChatViewController.xib */; };
 		B8C867961CFBF38A008CDED1 /* RoomUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C867951CFBF38A008CDED1 /* RoomUsersModel.swift */; };
 		B8C8679D1D024F82008CDED1 /* MyMessageChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8679B1D024F82008CDED1 /* MyMessageChatTableViewCell.swift */; };
 		B8C8679E1D024F82008CDED1 /* MyMessageChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C8679C1D024F82008CDED1 /* MyMessageChatTableViewCell.xib */; };
@@ -301,6 +303,8 @@
 		B8BC48641C284363006A345E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextMessageViewController.swift; sourceTree = "<group>"; };
 		B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTextMessageViewController.xib; sourceTree = "<group>"; };
+		B8C2F3481D04D9F700B6073D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		B8C2F3491D04D9F700B6073D /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		B8C867951CFBF38A008CDED1 /* RoomUsersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersModel.swift; sourceTree = "<group>"; };
 		B8C8679B1D024F82008CDED1 /* MyMessageChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessageChatTableViewCell.swift; sourceTree = "<group>"; };
 		B8C8679C1D024F82008CDED1 /* MyMessageChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMessageChatTableViewCell.xib; sourceTree = "<group>"; };
@@ -827,6 +831,8 @@
 			isa = PBXGroup;
 			children = (
 				B8C867981D024E5F008CDED1 /* cells */,
+				B8C2F3481D04D9F700B6073D /* ChatViewController.swift */,
+				B8C2F3491D04D9F700B6073D /* ChatViewController.xib */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1054,6 +1060,7 @@
 				B870CED61BFA9D2700F47929 /* LoginTableViewCell.xib in Resources */,
 				B8F512B91C696726007DCFD5 /* GroupCountTableViewCell.xib in Resources */,
 				B870CECD1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib in Resources */,
+				B8C2F34B1D04D9F700B6073D /* ChatViewController.xib in Resources */,
 				B8BC486A1C284827006A345E /* ChatTextMessageViewController.xib in Resources */,
 				B892D65F1C1A45700091F128 /* PreloadHomeViewController.xib in Resources */,
 				B84F07811C6E42C600D42FEB /* AddMeetupView.xib in Resources */,
@@ -1187,6 +1194,7 @@
 				B8C867A11D024FB9008CDED1 /* OtherMessageChatTableViewCell.swift in Sources */,
 				B8BAD2691BF1869C00DC7F60 /* DashboardViewController.swift in Sources */,
 				B895A2AD1C545C7400B2A08D /* UILabel+ItalicBold.swift in Sources */,
+				B8C2F34A1D04D9F700B6073D /* ChatViewController.swift in Sources */,
 				B866DFC61C0D266300BF8A79 /* RoomModel.swift in Sources */,
 				B8E4E7EC1C02B6CF00995964 /* EncryptUtil.swift in Sources */,
 				B8068B6D1C22364400EE00CA /* ProfileSettingImageUploadViewController.swift in Sources */,
