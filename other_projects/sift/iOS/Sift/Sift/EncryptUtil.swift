@@ -34,6 +34,8 @@ class EncryptUtil: NSObject {
         var base64Encoded:String = encryptedPrivate.base64EncodedStringWithOptions([])
 
         print(EncryptUtil.sha256(sessionToken.dataUsingEncoding(NSUTF8StringEncoding)!))
+        
+        print ("aaa:: \(encryptSessionToken(sessionToken, publicKey: publicKey, privateKey: privateKey))")
     }
 
     class func sha256(data : NSData) -> String {

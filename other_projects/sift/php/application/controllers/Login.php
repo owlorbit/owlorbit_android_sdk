@@ -37,9 +37,11 @@ class Login extends CI_Controller {
 	public function go(){
 		$response = array();
 		try{
-			
+
+
 			$email = $this->security->xss_clean(strip_tags($this->input->post('email')));
 			$password = $this->security->xss_clean(strip_tags($this->input->post('password')));
+
 			
 			if($this->validate()){
 				$this->user_model->login($email, $password);

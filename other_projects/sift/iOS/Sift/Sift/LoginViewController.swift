@@ -30,6 +30,14 @@ class LoginViewController: UIViewController, LoginDelegate {
         
         let dismissTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(dismissTap)
+        
+        
+        print("balloon2")
+        
+        
+        EncryptUtil.test()
+        //print(EncryptUtil.sha256("erg".dataUsingEncoding(NSUTF8StringEncoding)!))
+        
     }
     
     @IBAction func btnCancel(sender: AnyObject) {
