@@ -9,7 +9,7 @@
 struct ProjectConstants {
     
     struct ApiBaseUrl {
-        static let value = "http://127.0.0.1"        
+        static let value = "https://api.owlorbit.com"
     }
     
     struct CoreData{

@@ -33,8 +33,6 @@ class LoginViewController: UIViewController, LoginDelegate {
         
         
         print("balloon2")
-        
-        
         EncryptUtil.test()
         //print(EncryptUtil.sha256("erg".dataUsingEncoding(NSUTF8StringEncoding)!))
         
@@ -77,7 +75,7 @@ class LoginViewController: UIViewController, LoginDelegate {
     }
 
     func signIn(username: String, password: String){
-        
+
         FullScreenLoaderHelper.startLoader()
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC)))
 

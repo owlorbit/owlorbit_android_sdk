@@ -76,11 +76,16 @@ class Room extends CI_Controller {
 
 	public function get_all(){
 		$response = array();
-		try{
+		try{		
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
 			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
 			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+
+			error_log("public key".$publicKey);
+			error_log("session token".$sessionToken);
+			error_log("session hash".$sessionHash);
+			error_log("session encryptedSession".$encryptedSession);
 
 			if($sessionToken == -1){
 				$typeOfError = -1;
@@ -94,18 +99,22 @@ class Room extends CI_Controller {
 			if($userId == -1){
 				$typeOfError = -2;
 				throw new Exception("Session is invalid.");	
-			}
+			}			
 
-		    $lastMessageOfRooms = $this->room_model->load_all($userId);
+		    $users = $this->room_model->load_all($userId);
+		    $rooms = $this->room_model->load_rooms($userId);
 
 			$response = array(
-		    	'message' => 'rooms returned!',		    	
-		    	'rooms' => $lastMessageOfRooms		    	
+		    	'message' => 'rooms returned!',
+		    	'users' => $users,
+		    	'rooms' => $rooms
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
 				'successful'=> false);
 		}
+
+		error_log("flarv". json_encode_helper($response));
 		echo json_encode_helper($response);
 	}	
 

@@ -60,6 +60,17 @@
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RoomAttributeManagedModel" syncable="YES"/>
     </entity>
+    <entity name="RoomUsersManagedModel" syncable="YES">
+        <attribute name="accepted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastDisplayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastMessageTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roomId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roomName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="UserManagedModel" representedClassName="UserManagedModel" syncable="YES">
         <attribute name="accountType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -77,5 +88,6 @@
         <element name="RoomAttributeManagedModel" positionX="-54" positionY="108" width="128" height="90"/>
         <element name="RoomManagedModel" positionX="-63" positionY="90" width="128" height="240"/>
         <element name="UserManagedModel" positionX="-45" positionY="117" width="128" height="165"/>
+        <element name="RoomUsersManagedModel" positionX="-45" positionY="135" width="128" height="180"/>
     </elements>
 </model>

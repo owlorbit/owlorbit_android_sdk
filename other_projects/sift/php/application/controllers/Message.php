@@ -210,8 +210,11 @@ class Message extends CI_Controller {
 			}
 			
 		    if($name == ""){
+
+		    	error_log("often gone");
 				$roomId = $this->message_model->initiate_room($userId, $userIds);
 			}else{
+				error_log("shiiiiet");
 				$isFriendsOnly = $this->security->xss_clean(strip_tags($this->input->post('isFriendsOnly')));
 				$isPublic = $this->security->xss_clean(strip_tags($this->input->post('isPublic')));
 				$roomId = $this->message_model->initiate_group_room($userId, $userIds, $name, $isFriendsOnly, $isPublic);				

@@ -89,7 +89,7 @@ class Notification extends CI_Controller {
 
 				$message = "";
 				if($notification->message_type == "text"){
-					$message = ucfirst ($notification->first_name)." ".ucfirst ($notification->last_name[0]).". says:";
+					$message = ucfirst ($notification->first_name)." ".ucfirst($notification->last_name[0]).". says:";
 					$message .= "\n";
 				}
 

@@ -79,6 +79,9 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
         
         );
     }
+    //pangea money transfers
+    //tanbas,
+    //cec - will
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

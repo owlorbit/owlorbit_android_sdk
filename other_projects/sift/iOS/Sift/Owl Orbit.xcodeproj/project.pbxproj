@@ -92,6 +92,310 @@
 		B8792A4D1BEB15CE00BE05ED /* SiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A4C1BEB15CE00BE05ED /* SiftUITests.swift */; };
 		B88213361C17F99E00E9469C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213351C17F99E00E9469C /* LocationModel.swift */; };
 		B88213381C18FB3000E9469C /* String+ToDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213371C18FB3000E9469C /* String+ToDouble.swift */; };
+		B891A8B81D0B905700E88EEF /* GroupSettingsStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512A11C696565007DCFD5 /* GroupSettingsStep1ViewController.swift */; };
+		B891A8B91D0B905700E88EEF /* ChatMapInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */; };
+		B891A8BA1D0B905700E88EEF /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
+		B891A8BB1D0B905700E88EEF /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */; };
+		B891A8BC1D0B905700E88EEF /* GroupIsFriendsOnlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512B21C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.swift */; };
+		B891A8BD1D0B905700E88EEF /* GroupCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512B61C696726007DCFD5 /* GroupCountTableViewCell.swift */; };
+		B891A8BE1D0B905700E88EEF /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8DD571C82869D00942FDB /* NotificationHelper.swift */; };
+		B891A8BF1D0B905700E88EEF /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */; };
+		B891A8C01D0B905700E88EEF /* ImageManipulate.m in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB6B1C78F21A007B5131 /* ImageManipulate.m */; };
+		B891A8C11D0B905700E88EEF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEC01BF5755800F47929 /* RegisterViewController.swift */; };
+		B891A8C21D0B905700E88EEF /* UIImage+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEE91BFC00D800F47929 /* UIImage+Round.swift */; };
+		B891A8C31D0B905700E88EEF /* LocationApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFBF1C0B5F9200BF8A79 /* LocationApiHelper.swift */; };
+		B891A8C41D0B905700E88EEF /* RegistrationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D61BFD4AE200995964 /* RegistrationUser.swift */; };
+		B891A8C51D0B905700E88EEF /* Registration1ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CECA1BF96ECF00F47929 /* Registration1ValueTableViewCell.swift */; };
+		B891A8C61D0B905700E88EEF /* PreloadHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D65C1C1A45700091F128 /* PreloadHomeViewController.swift */; };
+		B891A8C71D0B905700E88EEF /* RegistrationNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEE21BFAF47800F47929 /* RegistrationNextView.swift */; };
+		B891A8C81D0B905700E88EEF /* GroupDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512AA1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.swift */; };
+		B891A8C91D0B905700E88EEF /* UserLogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B701C22379200EE00CA /* UserLogoutTableViewCell.swift */; };
+		B891A8CA1D0B905700E88EEF /* UserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF9D521C3F4B6400E3898B /* UserManagedModel.swift */; };
+		B891A8CB1D0B905700E88EEF /* RoomApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC31C0D22D100BF8A79 /* RoomApiHelper.swift */; };
+		B891A8CC1D0B905700E88EEF /* FullScreenLoaderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */; };
+		B891A8CD1D0B905700E88EEF /* UserDiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512971C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift */; };
+		B891A8CE1D0B905700E88EEF /* RegistrationBasicInfoValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CECE1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift */; };
+		B891A8CF1D0B905700E88EEF /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8333F291C8D219100626B72 /* FileHelper.swift */; };
+		B891A8D01D0B905700E88EEF /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB671C76A976007B5131 /* MainMapViewController.swift */; };
+		B891A8D11D0B905700E88EEF /* WriteMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87654611C03F53F00190B9B /* WriteMessageViewController.swift */; };
+		B891A8D21D0B905700E88EEF /* FormValidateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7DA1BFD4F5F00995964 /* FormValidateHelper.swift */; };
+		B891A8D31D0B905700E88EEF /* FriendRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B611C20F95D00EE00CA /* FriendRequestViewController.swift */; };
+		B891A8D41D0B905700E88EEF /* RoomAttributeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC71C0D2EDF00BF8A79 /* RoomAttributeModel.swift */; };
+		B891A8D51D0B905700E88EEF /* GroupNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512A61C6966D8007DCFD5 /* GroupNameTableViewCell.swift */; };
+		B891A8D61D0B905700E88EEF /* DynamicPersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA48D1C11096B00EC2752 /* DynamicPersonalData.swift */; };
+		B891A8D71D0B905700E88EEF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8408C4A1C58577100449BEA /* UserProfileViewController.swift */; };
+		B891A8D81D0B905700E88EEF /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */; };
+		B891A8D91D0B905700E88EEF /* PersonalUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E21BFEB92000995964 /* PersonalUserModel.swift */; };
+		B891A8DA1D0B905700E88EEF /* AnnotationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AE1C55781400B2A08D /* AnnotationButton.swift */; };
+		B891A8DB1D0B905700E88EEF /* GenericUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */; };
+		B891A8DC1D0B905700E88EEF /* LoginKeyboardPrevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6581C19051B0091F128 /* LoginKeyboardPrevView.swift */; };
+		B891A8DD1D0B905700E88EEF /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F3AD21C5AF6D4008BFFA1 /* LocationHelper.swift */; };
+		B891A8DE1D0B905700E88EEF /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
+		B891A8DF1D0B905700E88EEF /* UserSearchPendingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFBD1C0A92B000BF8A79 /* UserSearchPendingHeaderView.swift */; };
+		B891A8E01D0B905700E88EEF /* UserProfileSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B661C2129E300EE00CA /* UserProfileSearchTableViewCell.swift */; };
+		B891A8E11D0B905700E88EEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2551BF1794A00DC7F60 /* LoginViewController.swift */; };
+		B891A8E21D0B905700E88EEF /* NSBundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */; };
+		B891A8E31D0B905700E88EEF /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFD61C0FC80700BF8A79 /* ImageHelper.swift */; };
+		B891A8E41D0B905700E88EEF /* AddMeetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F077E1C6E421E00D42FEB /* AddMeetupView.swift */; };
+		B891A8E51D0B905700E88EEF /* MapRadialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60EB1C768A8A00A30260 /* MapRadialViewController.swift */; };
+		B891A8E61D0B905700E88EEF /* UIColor+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60F01C768F9A00A30260 /* UIColor+helpers.swift */; };
+		B891A8E71D0B905700E88EEF /* Int+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DB1C72617B00A30260 /* Int+ToString.swift */; };
+		B891A8E81D0B905700E88EEF /* CustomMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEF01BFC093000F47929 /* CustomMapPin.swift */; };
+		B891A8E91D0B905700E88EEF /* OtherMessageChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8679F1D024FB9008CDED1 /* OtherMessageChatTableViewCell.swift */; };
+		B891A8EA1D0B905700E88EEF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2671BF1869C00DC7F60 /* DashboardViewController.swift */; };
+		B891A8EB1D0B905700E88EEF /* UILabel+ItalicBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */; };
+		B891A8EC1D0B905700E88EEF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C2F3481D04D9F700B6073D /* ChatViewController.swift */; };
+		B891A8ED1D0B905700E88EEF /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC51C0D266300BF8A79 /* RoomModel.swift */; };
+		B891A8EE1D0B905700E88EEF /* EncryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */; };
+		B891A8EF1D0B905700E88EEF /* ProfileSettingImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B6B1C22364400EE00CA /* ProfileSettingImageUploadViewController.swift */; };
+		B891A8F01D0B905700E88EEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A2B1BEB15CE00BE05ED /* ViewController.swift */; };
+		B891A8F11D0B905700E88EEF /* ReadMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */; };
+		B891A8F21D0B905700E88EEF /* ProfileImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFD11C0EBA1900BF8A79 /* ProfileImageUploadViewController.swift */; };
+		B891A8F31D0B905700E88EEF /* ChatThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */; };
+		B891A8F41D0B905700E88EEF /* CustomMeetupPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */; };
+		B891A8F51D0B905700E88EEF /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213351C17F99E00E9469C /* LocationModel.swift */; };
+		B891A8F61D0B905700E88EEF /* DisableGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EE8A861C9A690C00FE2276 /* DisableGPSViewController.swift */; };
+		B891A8F71D0B905700E88EEF /* LeaveRoomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB6F1C7909DB007B5131 /* LeaveRoomHelper.swift */; };
+		B891A8F81D0B905700E88EEF /* UserApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D41BFD488700995964 /* UserApiHelper.swift */; };
+		B891A8F91D0B905700E88EEF /* ChatApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC11C0BC22A00BF8A79 /* ChatApiHelper.swift */; };
+		B891A8FA1D0B905700E88EEF /* String+ToDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213371C18FB3000E9469C /* String+ToDouble.swift */; };
+		B891A8FB1D0B905700E88EEF /* UserSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */; };
+		B891A8FC1D0B905700E88EEF /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CED31BFA9D2700F47929 /* LoginTableViewCell.swift */; };
+		B891A8FD1D0B905700E88EEF /* AUIAutoGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B866DFCA1C0E733300BF8A79 /* AUIAutoGrowingTextView.m */; };
+		B891A8FE1D0B905700E88EEF /* UserGroupSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5129D1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift */; };
+		B891A8FF1D0B905700E88EEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A291BEB15CE00BE05ED /* AppDelegate.swift */; };
+		B891A9001D0B905700E88EEF /* RoomManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */; };
+		B891A9011D0B905700E88EEF /* ChatMapKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFCD1C0E811C00BF8A79 /* ChatMapKeyboardView.swift */; };
+		B891A9021D0B905700E88EEF /* RoomAttributeManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */; };
+		B891A9031D0B905700E88EEF /* MeetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DD1C72755B00A30260 /* MeetupButton.swift */; };
+		B891A9041D0B905700E88EEF /* GroupIsPublicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512AE1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift */; };
+		B891A9051D0B905700E88EEF /* CustomFindAddressPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B827320B1C7A48C50020C060 /* CustomFindAddressPin.swift */; };
+		B891A9061D0B905700E88EEF /* Sift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */; };
+		B891A9071D0B905700E88EEF /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */; };
+		B891A9081D0B905700E88EEF /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D81BFD4CEC00995964 /* AlertHelper.swift */; };
+		B891A9091D0B905700E88EEF /* RegistrationSubmitKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7DC1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift */; };
+		B891A90A1D0B905700E88EEF /* ChatTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */; };
+		B891A90B1D0B905700E88EEF /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
+		B891A90C1D0B905700E88EEF /* MyMessageChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8679B1D024F82008CDED1 /* MyMessageChatTableViewCell.swift */; };
+		B891A90D1D0B905700E88EEF /* UserSingleWriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8333F251C89327000626B72 /* UserSingleWriteTableViewCell.swift */; };
+		B891A90E1D0B905700E88EEF /* ManageRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */; };
+		B891A90F1D0B905700E88EEF /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */; };
+		B891A9101D0B905700E88EEF /* MessageCoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */; };
+		B891A9111D0B905700E88EEF /* UserPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */; };
+		B891A9121D0B905700E88EEF /* RegisterBasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEC41BF5AF3800F47929 /* RegisterBasicInfoViewController.swift */; };
+		B891A9131D0B905700E88EEF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80F021BF452A500CF4BB3 /* SettingsViewController.swift */; };
+		B891A9141D0B905700E88EEF /* CreateGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */; };
+		B891A9151D0B905700E88EEF /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA48F1C11343100EC2752 /* MessageModel.swift */; };
+		B891A9161D0B905700E88EEF /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */; };
+		B891A9171D0B905700E88EEF /* RoomUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C867951CFBF38A008CDED1 /* RoomUsersModel.swift */; };
+		B891A9181D0B905700E88EEF /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5129B1C65800B007DCFD5 /* MapHelper.swift */; };
+		B891A9191D0B905700E88EEF /* MapInstructionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BED31C56E93000C8BA01 /* MapInstructionsTableViewCell.swift */; };
+		B891A91B1D0B905700E88EEF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81CAB6D1C78F347007B5131 /* UIKit.framework */; };
+		B891A91C1D0B905700E88EEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48641C284363006A345E /* AudioToolbox.framework */; };
+		B891A91D1D0B905700E88EEF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48471C250C67006A345E /* QuartzCore.framework */; };
+		B891A91E1D0B905700E88EEF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
+		B891A91F1D0B905700E88EEF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
+		B891A9201D0B905700E88EEF /* Pods_OwlOrbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */; };
+		B891A9221D0B905700E88EEF /* EnableLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */; };
+		B891A9231D0B905700E88EEF /* FriendRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B621C20F95D00EE00CA /* FriendRequestViewController.xib */; };
+		B891A9241D0B905700E88EEF /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
+		B891A9251D0B905700E88EEF /* ChatThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */; };
+		B891A9261D0B905700E88EEF /* RegistrationNextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */; };
+		B891A9271D0B905700E88EEF /* UserDiscoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512981C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib */; };
+		B891A9281D0B905700E88EEF /* RegisterBasicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEC51BF5AF3800F47929 /* RegisterBasicInfoViewController.xib */; };
+		B891A9291D0B905700E88EEF /* MyMessageChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C8679C1D024F82008CDED1 /* MyMessageChatTableViewCell.xib */; };
+		B891A92A1D0B905700E88EEF /* GroupNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512A71C6966D8007DCFD5 /* GroupNameTableViewCell.xib */; };
+		B891A92B1D0B905700E88EEF /* GroupSettingsStep1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512A21C696565007DCFD5 /* GroupSettingsStep1ViewController.xib */; };
+		B891A92C1D0B905700E88EEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8792A351BEB15CE00BE05ED /* LaunchScreen.storyboard */; };
+		B891A92D1D0B905700E88EEF /* ChatMapInstructionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */; };
+		B891A92E1D0B905700E88EEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8792A331BEB15CE00BE05ED /* Assets.xcassets */; };
+		B891A92F1D0B905700E88EEF /* ChatMapKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFCF1C0E812600BF8A79 /* ChatMapKeyboardView.xib */; };
+		B891A9301D0B905700E88EEF /* RegistrationSubmitKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E4E7DE1BFD520200995964 /* RegistrationSubmitKeyboardView.xib */; };
+		B891A9311D0B905700E88EEF /* DisableGPSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */; };
+		B891A9321D0B905700E88EEF /* GroupDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512AB1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib */; };
+		B891A9331D0B905700E88EEF /* ProfileImageUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFD21C0EBA1900BF8A79 /* ProfileImageUploadViewController.xib */; };
+		B891A9341D0B905700E88EEF /* UserSingleWriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8333F261C89327000626B72 /* UserSingleWriteTableViewCell.xib */; };
+		B891A9351D0B905700E88EEF /* ManageRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */; };
+		B891A9361D0B905700E88EEF /* OtherMessageChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C867A01D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib */; };
+		B891A9371D0B905700E88EEF /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEC11BF5755800F47929 /* RegisterViewController.xib */; };
+		B891A9381D0B905700E88EEF /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */; };
+		B891A9391D0B905700E88EEF /* ProfileSettingImageUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B6C1C22364400EE00CA /* ProfileSettingImageUploadViewController.xib */; };
+		B891A93A1D0B905700E88EEF /* AddGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512931C61C8F5007DCFD5 /* AddGroupViewController.xib */; };
+		B891A93B1D0B905700E88EEF /* MapInstructionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BED21C56E93000C8BA01 /* MapInstructionsTableViewCell.xib */; };
+		B891A93C1D0B905700E88EEF /* GroupIsFriendsOnlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512B31C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib */; };
+		B891A93D1D0B905700E88EEF /* UserLogoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B711C22379200EE00CA /* UserLogoutTableViewCell.xib */; };
+		B891A93E1D0B905700E88EEF /* UserSearchPendingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFBB1C0A8A8D00BF8A79 /* UserSearchPendingHeaderView.xib */; };
+		B891A93F1D0B905700E88EEF /* ReadMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E4E7D01BFC40E600995964 /* ReadMessageTableViewCell.xib */; };
+		B891A9401D0B905700E88EEF /* UserSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */; };
+		B891A9411D0B905700E88EEF /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */; };
+		B891A9421D0B905700E88EEF /* GroupIsPublicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512AF1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.xib */; };
+		B891A9431D0B905700E88EEF /* RegistrationBasicInfoValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CECF1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib */; };
+		B891A9441D0B905700E88EEF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CED71BFA9E4100F47929 /* LoginViewController.xib */; };
+		B891A9451D0B905700E88EEF /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CED41BFA9D2700F47929 /* LoginTableViewCell.xib */; };
+		B891A9461D0B905700E88EEF /* GroupCountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512B71C696726007DCFD5 /* GroupCountTableViewCell.xib */; };
+		B891A9471D0B905700E88EEF /* Registration1ValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CECB1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib */; };
+		B891A9481D0B905700E88EEF /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C2F3491D04D9F700B6073D /* ChatViewController.xib */; };
+		B891A9491D0B905700E88EEF /* ChatTextMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */; };
+		B891A94A1D0B905700E88EEF /* PreloadHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D65D1C1A45700091F128 /* PreloadHomeViewController.xib */; };
+		B891A94B1D0B905700E88EEF /* AddMeetupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84F07801C6E42C600D42FEB /* AddMeetupView.xib */; };
+		B891A94C1D0B905700E88EEF /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD2681BF1869C00DC7F60 /* DashboardViewController.xib */; };
+		B891A94D1D0B905700E88EEF /* UserGroupSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F5129E1C681217007DCFD5 /* UserGroupSelectTableViewCell.xib */; };
+		B891A94E1D0B905700E88EEF /* UserProfileSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B671C2129E300EE00CA /* UserProfileSearchTableViewCell.xib */; };
+		B891A94F1D0B905700E88EEF /* WriteMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87654621C03F53F00190B9B /* WriteMessageViewController.xib */; };
+		B891A9501D0B905700E88EEF /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8408C4B1C58577100449BEA /* UserProfileViewController.xib */; };
+		B891A9511D0B905700E88EEF /* LoginKeyboardPrevView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D6591C19051B0091F128 /* LoginKeyboardPrevView.xib */; };
+		B891A95C1D0B90A500E88EEF /* GroupSettingsStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512A11C696565007DCFD5 /* GroupSettingsStep1ViewController.swift */; };
+		B891A95D1D0B90A500E88EEF /* ChatMapInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BECD1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift */; };
+		B891A95E1D0B90A500E88EEF /* GenericUserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2C1C1E8DAC0082E136 /* GenericUserManagedModel.swift */; };
+		B891A95F1D0B90A500E88EEF /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */; };
+		B891A9601D0B90A500E88EEF /* GroupIsFriendsOnlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512B21C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.swift */; };
+		B891A9611D0B90A500E88EEF /* GroupCountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512B61C696726007DCFD5 /* GroupCountTableViewCell.swift */; };
+		B891A9621D0B90A500E88EEF /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8DD571C82869D00942FDB /* NotificationHelper.swift */; };
+		B891A9631D0B90A500E88EEF /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEBC1BF5752300F47929 /* ResetPasswordViewController.swift */; };
+		B891A9641D0B90A500E88EEF /* ImageManipulate.m in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB6B1C78F21A007B5131 /* ImageManipulate.m */; };
+		B891A9651D0B90A500E88EEF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEC01BF5755800F47929 /* RegisterViewController.swift */; };
+		B891A9661D0B90A500E88EEF /* UIImage+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEE91BFC00D800F47929 /* UIImage+Round.swift */; };
+		B891A9671D0B90A500E88EEF /* LocationApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFBF1C0B5F9200BF8A79 /* LocationApiHelper.swift */; };
+		B891A9681D0B90A500E88EEF /* RegistrationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D61BFD4AE200995964 /* RegistrationUser.swift */; };
+		B891A9691D0B90A500E88EEF /* Registration1ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CECA1BF96ECF00F47929 /* Registration1ValueTableViewCell.swift */; };
+		B891A96A1D0B90A500E88EEF /* PreloadHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D65C1C1A45700091F128 /* PreloadHomeViewController.swift */; };
+		B891A96B1D0B90A500E88EEF /* RegistrationNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEE21BFAF47800F47929 /* RegistrationNextView.swift */; };
+		B891A96C1D0B90A500E88EEF /* GroupDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512AA1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.swift */; };
+		B891A96D1D0B90A500E88EEF /* UserLogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B701C22379200EE00CA /* UserLogoutTableViewCell.swift */; };
+		B891A96E1D0B90A500E88EEF /* UserManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF9D521C3F4B6400E3898B /* UserManagedModel.swift */; };
+		B891A96F1D0B90A500E88EEF /* RoomApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC31C0D22D100BF8A79 /* RoomApiHelper.swift */; };
+		B891A9701D0B90A500E88EEF /* FullScreenLoaderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6601C1A4FD70091F128 /* FullScreenLoaderHelper.swift */; };
+		B891A9711D0B90A500E88EEF /* UserDiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512971C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift */; };
+		B891A9721D0B90A500E88EEF /* RegistrationBasicInfoValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CECE1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift */; };
+		B891A9731D0B90A500E88EEF /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8333F291C8D219100626B72 /* FileHelper.swift */; };
+		B891A9741D0B90A500E88EEF /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB671C76A976007B5131 /* MainMapViewController.swift */; };
+		B891A9751D0B90A500E88EEF /* WriteMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87654611C03F53F00190B9B /* WriteMessageViewController.swift */; };
+		B891A9761D0B90A500E88EEF /* FormValidateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7DA1BFD4F5F00995964 /* FormValidateHelper.swift */; };
+		B891A9771D0B90A500E88EEF /* FriendRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B611C20F95D00EE00CA /* FriendRequestViewController.swift */; };
+		B891A9781D0B90A500E88EEF /* RoomAttributeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC71C0D2EDF00BF8A79 /* RoomAttributeModel.swift */; };
+		B891A9791D0B90A500E88EEF /* GroupNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512A61C6966D8007DCFD5 /* GroupNameTableViewCell.swift */; };
+		B891A97A1D0B90A500E88EEF /* DynamicPersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA48D1C11096B00EC2752 /* DynamicPersonalData.swift */; };
+		B891A97B1D0B90A500E88EEF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8408C4A1C58577100449BEA /* UserProfileViewController.swift */; };
+		B891A97C1D0B90A500E88EEF /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */; };
+		B891A97D1D0B90A500E88EEF /* PersonalUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E21BFEB92000995964 /* PersonalUserModel.swift */; };
+		B891A97E1D0B90A500E88EEF /* AnnotationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AE1C55781400B2A08D /* AnnotationButton.swift */; };
+		B891A97F1D0B90A500E88EEF /* GenericUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAC1C0579A000BF8A79 /* GenericUserModel.swift */; };
+		B891A9801D0B90A500E88EEF /* LoginKeyboardPrevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6581C19051B0091F128 /* LoginKeyboardPrevView.swift */; };
+		B891A9811D0B90A500E88EEF /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F3AD21C5AF6D4008BFFA1 /* LocationHelper.swift */; };
+		B891A9821D0B90A500E88EEF /* UICustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80EF61BF4102500CF4BB3 /* UICustomTabBarController.swift */; };
+		B891A9831D0B90A500E88EEF /* UserSearchPendingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFBD1C0A92B000BF8A79 /* UserSearchPendingHeaderView.swift */; };
+		B891A9841D0B90A500E88EEF /* UserProfileSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B661C2129E300EE00CA /* UserProfileSearchTableViewCell.swift */; };
+		B891A9851D0B90A500E88EEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2551BF1794A00DC7F60 /* LoginViewController.swift */; };
+		B891A9861D0B90A500E88EEF /* NSBundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F3AD01C59D863008BFFA1 /* NSBundle+Version.swift */; };
+		B891A9871D0B90A500E88EEF /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFD61C0FC80700BF8A79 /* ImageHelper.swift */; };
+		B891A9881D0B90A500E88EEF /* AddMeetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F077E1C6E421E00D42FEB /* AddMeetupView.swift */; };
+		B891A9891D0B90A500E88EEF /* MapRadialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60EB1C768A8A00A30260 /* MapRadialViewController.swift */; };
+		B891A98A1D0B90A500E88EEF /* UIColor+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60F01C768F9A00A30260 /* UIColor+helpers.swift */; };
+		B891A98B1D0B90A500E88EEF /* Int+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DB1C72617B00A30260 /* Int+ToString.swift */; };
+		B891A98C1D0B90A500E88EEF /* CustomMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEF01BFC093000F47929 /* CustomMapPin.swift */; };
+		B891A98D1D0B90A500E88EEF /* OtherMessageChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8679F1D024FB9008CDED1 /* OtherMessageChatTableViewCell.swift */; };
+		B891A98E1D0B90A500E88EEF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2671BF1869C00DC7F60 /* DashboardViewController.swift */; };
+		B891A98F1D0B90A500E88EEF /* UILabel+ItalicBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A2AC1C545C7400B2A08D /* UILabel+ItalicBold.swift */; };
+		B891A9901D0B90A500E88EEF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C2F3481D04D9F700B6073D /* ChatViewController.swift */; };
+		B891A9911D0B90A500E88EEF /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC51C0D266300BF8A79 /* RoomModel.swift */; };
+		B891A9921D0B90A500E88EEF /* EncryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */; };
+		B891A9931D0B90A500E88EEF /* ProfileSettingImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B6B1C22364400EE00CA /* ProfileSettingImageUploadViewController.swift */; };
+		B891A9941D0B90A500E88EEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A2B1BEB15CE00BE05ED /* ViewController.swift */; };
+		B891A9951D0B90A500E88EEF /* ReadMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7CF1BFC40E600995964 /* ReadMessageTableViewCell.swift */; };
+		B891A9961D0B90A500E88EEF /* ProfileImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFD11C0EBA1900BF8A79 /* ProfileImageUploadViewController.swift */; };
+		B891A9971D0B90A500E88EEF /* ChatThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */; };
+		B891A9981D0B90A500E88EEF /* CustomMeetupPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */; };
+		B891A9991D0B90A500E88EEF /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213351C17F99E00E9469C /* LocationModel.swift */; };
+		B891A99A1D0B90A500E88EEF /* DisableGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EE8A861C9A690C00FE2276 /* DisableGPSViewController.swift */; };
+		B891A99B1D0B90A500E88EEF /* LeaveRoomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CAB6F1C7909DB007B5131 /* LeaveRoomHelper.swift */; };
+		B891A99C1D0B90A500E88EEF /* UserApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D41BFD488700995964 /* UserApiHelper.swift */; };
+		B891A99D1D0B90A500E88EEF /* ChatApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFC11C0BC22A00BF8A79 /* ChatApiHelper.swift */; };
+		B891A99E1D0B90A500E88EEF /* String+ToDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88213371C18FB3000E9469C /* String+ToDouble.swift */; };
+		B891A99F1D0B90A500E88EEF /* UserSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFAF1C061CA000BF8A79 /* UserSearchTableViewCell.swift */; };
+		B891A9A01D0B90A500E88EEF /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CED31BFA9D2700F47929 /* LoginTableViewCell.swift */; };
+		B891A9A11D0B90A500E88EEF /* AUIAutoGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B866DFCA1C0E733300BF8A79 /* AUIAutoGrowingTextView.m */; };
+		B891A9A21D0B90A500E88EEF /* UserGroupSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5129D1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift */; };
+		B891A9A31D0B90A500E88EEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8792A291BEB15CE00BE05ED /* AppDelegate.swift */; };
+		B891A9A41D0B90A500E88EEF /* RoomManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA2A1C1E1BA90082E136 /* RoomManagedModel.swift */; };
+		B891A9A51D0B90A500E88EEF /* ChatMapKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866DFCD1C0E811C00BF8A79 /* ChatMapKeyboardView.swift */; };
+		B891A9A61D0B90A500E88EEF /* RoomAttributeManagedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815AA281C1E19020082E136 /* RoomAttributeManagedModel.swift */; };
+		B891A9A71D0B90A500E88EEF /* MeetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DD1C72755B00A30260 /* MeetupButton.swift */; };
+		B891A9A81D0B90A500E88EEF /* GroupIsPublicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512AE1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift */; };
+		B891A9A91D0B90A500E88EEF /* CustomFindAddressPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B827320B1C7A48C50020C060 /* CustomFindAddressPin.swift */; };
+		B891A9AA1D0B90A500E88EEF /* Sift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8792A301BEB15CE00BE05ED /* Sift.xcdatamodeld */; };
+		B891A9AB1D0B90A500E88EEF /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */; };
+		B891A9AC1D0B90A500E88EEF /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7D81BFD4CEC00995964 /* AlertHelper.swift */; };
+		B891A9AD1D0B90A500E88EEF /* RegistrationSubmitKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7DC1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift */; };
+		B891A9AE1D0B90A500E88EEF /* ChatTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */; };
+		B891A9AF1D0B90A500E88EEF /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
+		B891A9B01D0B90A500E88EEF /* MyMessageChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8679B1D024F82008CDED1 /* MyMessageChatTableViewCell.swift */; };
+		B891A9B11D0B90A500E88EEF /* UserSingleWriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8333F251C89327000626B72 /* UserSingleWriteTableViewCell.swift */; };
+		B891A9B21D0B90A500E88EEF /* ManageRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */; };
+		B891A9B31D0B90A500E88EEF /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */; };
+		B891A9B41D0B90A500E88EEF /* MessageCoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */; };
+		B891A9B51D0B90A500E88EEF /* UserPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */; };
+		B891A9B61D0B90A500E88EEF /* RegisterBasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B870CEC41BF5AF3800F47929 /* RegisterBasicInfoViewController.swift */; };
+		B891A9B71D0B90A500E88EEF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80F021BF452A500CF4BB3 /* SettingsViewController.swift */; };
+		B891A9B81D0B90A500E88EEF /* CreateGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */; };
+		B891A9B91D0B90A500E88EEF /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA48F1C11343100EC2752 /* MessageModel.swift */; };
+		B891A9BA1D0B90A500E88EEF /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */; };
+		B891A9BB1D0B90A500E88EEF /* RoomUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C867951CFBF38A008CDED1 /* RoomUsersModel.swift */; };
+		B891A9BC1D0B90A500E88EEF /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5129B1C65800B007DCFD5 /* MapHelper.swift */; };
+		B891A9BD1D0B90A500E88EEF /* MapInstructionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BED31C56E93000C8BA01 /* MapInstructionsTableViewCell.swift */; };
+		B891A9BF1D0B90A500E88EEF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81CAB6D1C78F347007B5131 /* UIKit.framework */; };
+		B891A9C01D0B90A500E88EEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48641C284363006A345E /* AudioToolbox.framework */; };
+		B891A9C11D0B90A500E88EEF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48471C250C67006A345E /* QuartzCore.framework */; };
+		B891A9C21D0B90A500E88EEF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
+		B891A9C31D0B90A500E88EEF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
+		B891A9C41D0B90A500E88EEF /* Pods_OwlOrbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */; };
+		B891A9C61D0B90A500E88EEF /* EnableLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */; };
+		B891A9C71D0B90A500E88EEF /* FriendRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B621C20F95D00EE00CA /* FriendRequestViewController.xib */; };
+		B891A9C81D0B90A500E88EEF /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
+		B891A9C91D0B90A500E88EEF /* ChatThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */; };
+		B891A9CA1D0B90A500E88EEF /* RegistrationNextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEE41BFAF48100F47929 /* RegistrationNextView.xib */; };
+		B891A9CB1D0B90A500E88EEF /* UserDiscoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512981C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib */; };
+		B891A9CC1D0B90A500E88EEF /* RegisterBasicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEC51BF5AF3800F47929 /* RegisterBasicInfoViewController.xib */; };
+		B891A9CD1D0B90A500E88EEF /* MyMessageChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C8679C1D024F82008CDED1 /* MyMessageChatTableViewCell.xib */; };
+		B891A9CE1D0B90A500E88EEF /* GroupNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512A71C6966D8007DCFD5 /* GroupNameTableViewCell.xib */; };
+		B891A9CF1D0B90A500E88EEF /* GroupSettingsStep1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512A21C696565007DCFD5 /* GroupSettingsStep1ViewController.xib */; };
+		B891A9D01D0B90A500E88EEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8792A351BEB15CE00BE05ED /* LaunchScreen.storyboard */; };
+		B891A9D11D0B90A500E88EEF /* ChatMapInstructionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BECE1C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib */; };
+		B891A9D21D0B90A500E88EEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8792A331BEB15CE00BE05ED /* Assets.xcassets */; };
+		B891A9D31D0B90A500E88EEF /* ChatMapKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFCF1C0E812600BF8A79 /* ChatMapKeyboardView.xib */; };
+		B891A9D41D0B90A500E88EEF /* RegistrationSubmitKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E4E7DE1BFD520200995964 /* RegistrationSubmitKeyboardView.xib */; };
+		B891A9D51D0B90A500E88EEF /* DisableGPSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */; };
+		B891A9D61D0B90A500E88EEF /* GroupDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512AB1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib */; };
+		B891A9D71D0B90A500E88EEF /* ProfileImageUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFD21C0EBA1900BF8A79 /* ProfileImageUploadViewController.xib */; };
+		B891A9D81D0B90A500E88EEF /* UserSingleWriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8333F261C89327000626B72 /* UserSingleWriteTableViewCell.xib */; };
+		B891A9D91D0B90A500E88EEF /* ManageRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */; };
+		B891A9DA1D0B90A500E88EEF /* OtherMessageChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C867A01D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib */; };
+		B891A9DB1D0B90A500E88EEF /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEC11BF5755800F47929 /* RegisterViewController.xib */; };
+		B891A9DC1D0B90A500E88EEF /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEBD1BF5752300F47929 /* ResetPasswordViewController.xib */; };
+		B891A9DD1D0B90A500E88EEF /* ProfileSettingImageUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B6C1C22364400EE00CA /* ProfileSettingImageUploadViewController.xib */; };
+		B891A9DE1D0B90A500E88EEF /* AddGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512931C61C8F5007DCFD5 /* AddGroupViewController.xib */; };
+		B891A9DF1D0B90A500E88EEF /* MapInstructionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B863BED21C56E93000C8BA01 /* MapInstructionsTableViewCell.xib */; };
+		B891A9E01D0B90A500E88EEF /* GroupIsFriendsOnlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512B31C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib */; };
+		B891A9E11D0B90A500E88EEF /* UserLogoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B711C22379200EE00CA /* UserLogoutTableViewCell.xib */; };
+		B891A9E21D0B90A500E88EEF /* UserSearchPendingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFBB1C0A8A8D00BF8A79 /* UserSearchPendingHeaderView.xib */; };
+		B891A9E31D0B90A500E88EEF /* ReadMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E4E7D01BFC40E600995964 /* ReadMessageTableViewCell.xib */; };
+		B891A9E41D0B90A500E88EEF /* UserSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFB01C061CA000BF8A79 /* UserSearchTableViewCell.xib */; };
+		B891A9E51D0B90A500E88EEF /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80F031BF452A500CF4BB3 /* SettingsViewController.xib */; };
+		B891A9E61D0B90A500E88EEF /* GroupIsPublicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512AF1C6966FC007DCFD5 /* GroupIsPublicTableViewCell.xib */; };
+		B891A9E71D0B90A500E88EEF /* RegistrationBasicInfoValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CECF1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib */; };
+		B891A9E81D0B90A500E88EEF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CED71BFA9E4100F47929 /* LoginViewController.xib */; };
+		B891A9E91D0B90A500E88EEF /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CED41BFA9D2700F47929 /* LoginTableViewCell.xib */; };
+		B891A9EA1D0B90A500E88EEF /* GroupCountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512B71C696726007DCFD5 /* GroupCountTableViewCell.xib */; };
+		B891A9EB1D0B90A500E88EEF /* Registration1ValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CECB1BF96ECF00F47929 /* Registration1ValueTableViewCell.xib */; };
+		B891A9EC1D0B90A500E88EEF /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C2F3491D04D9F700B6073D /* ChatViewController.xib */; };
+		B891A9ED1D0B90A500E88EEF /* ChatTextMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BC48681C284827006A345E /* ChatTextMessageViewController.xib */; };
+		B891A9EE1D0B90A500E88EEF /* PreloadHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D65D1C1A45700091F128 /* PreloadHomeViewController.xib */; };
+		B891A9EF1D0B90A500E88EEF /* AddMeetupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84F07801C6E42C600D42FEB /* AddMeetupView.xib */; };
+		B891A9F01D0B90A500E88EEF /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BAD2681BF1869C00DC7F60 /* DashboardViewController.xib */; };
+		B891A9F11D0B90A500E88EEF /* UserGroupSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F5129E1C681217007DCFD5 /* UserGroupSelectTableViewCell.xib */; };
+		B891A9F21D0B90A500E88EEF /* UserProfileSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B671C2129E300EE00CA /* UserProfileSearchTableViewCell.xib */; };
+		B891A9F31D0B90A500E88EEF /* WriteMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87654621C03F53F00190B9B /* WriteMessageViewController.xib */; };
+		B891A9F41D0B90A500E88EEF /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8408C4B1C58577100449BEA /* UserProfileViewController.xib */; };
+		B891A9F51D0B90A500E88EEF /* LoginKeyboardPrevView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D6591C19051B0091F128 /* LoginKeyboardPrevView.xib */; };
 		B892D65A1C19051B0091F128 /* LoginKeyboardPrevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D6581C19051B0091F128 /* LoginKeyboardPrevView.swift */; };
 		B892D65B1C19051B0091F128 /* LoginKeyboardPrevView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B892D6591C19051B0091F128 /* LoginKeyboardPrevView.xib */; };
 		B892D65E1C1A45700091F128 /* PreloadHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892D65C1C1A45700091F128 /* PreloadHomeViewController.swift */; };
@@ -264,7 +568,7 @@
 		B870CEF01BFC093000F47929 /* CustomMapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMapPin.swift; sourceTree = "<group>"; };
 		B87654611C03F53F00190B9B /* WriteMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteMessageViewController.swift; sourceTree = "<group>"; };
 		B87654621C03F53F00190B9B /* WriteMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteMessageViewController.xib; sourceTree = "<group>"; };
-		B8792A261BEB15CE00BE05ED /* OwlOrbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwlOrbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8792A261BEB15CE00BE05ED /* OwlOrbit Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OwlOrbit Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A291BEB15CE00BE05ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8792A2B1BEB15CE00BE05ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B8792A311BEB15CE00BE05ED /* Sift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sift.xcdatamodel; sourceTree = "<group>"; };
@@ -279,6 +583,10 @@
 		B8792A4E1BEB15CE00BE05ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B88213351C17F99E00E9469C /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		B88213371C18FB3000E9469C /* String+ToDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ToDouble.swift"; sourceTree = "<group>"; };
+		B891A9571D0B905700E88EEF /* OwlOrbit Docker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OwlOrbit Docker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B891A9581D0B905700E88EEF /* OwlOrbit copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OwlOrbit copy-Info.plist"; path = "/Users/timnuwin1/Documents/Personal_Workspace/MolePeopleBrowser/other_projects/sift/iOS/Sift/OwlOrbit copy-Info.plist"; sourceTree = "<absolute>"; };
+		B891A9FB1D0B90A500E88EEF /* OwlOrbit Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OwlOrbit Local.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B891A9FC1D0B90A500E88EEF /* OwlOrbit copy copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OwlOrbit copy copy-Info.plist"; path = "/Users/timnuwin1/Documents/Personal_Workspace/MolePeopleBrowser/other_projects/sift/iOS/Sift/OwlOrbit copy copy-Info.plist"; sourceTree = "<absolute>"; };
 		B892D6581C19051B0091F128 /* LoginKeyboardPrevView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginKeyboardPrevView.swift; sourceTree = "<group>"; };
 		B892D6591C19051B0091F128 /* LoginKeyboardPrevView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginKeyboardPrevView.xib; sourceTree = "<group>"; };
 		B892D65C1C1A45700091F128 /* PreloadHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadHomeViewController.swift; sourceTree = "<group>"; };
@@ -379,6 +687,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B891A91A1D0B905700E88EEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B891A91B1D0B905700E88EEF /* UIKit.framework in Frameworks */,
+				B891A91C1D0B905700E88EEF /* AudioToolbox.framework in Frameworks */,
+				B891A91D1D0B905700E88EEF /* QuartzCore.framework in Frameworks */,
+				B891A91E1D0B905700E88EEF /* MapKit.framework in Frameworks */,
+				B891A91F1D0B905700E88EEF /* Pods.framework in Frameworks */,
+				B891A9201D0B905700E88EEF /* Pods_OwlOrbit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B891A9BE1D0B90A500E88EEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B891A9BF1D0B90A500E88EEF /* UIKit.framework in Frameworks */,
+				B891A9C01D0B90A500E88EEF /* AudioToolbox.framework in Frameworks */,
+				B891A9C11D0B90A500E88EEF /* QuartzCore.framework in Frameworks */,
+				B891A9C21D0B90A500E88EEF /* MapKit.framework in Frameworks */,
+				B891A9C31D0B90A500E88EEF /* Pods.framework in Frameworks */,
+				B891A9C41D0B90A500E88EEF /* Pods_OwlOrbit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,15 +996,19 @@
 				B8792A271BEB15CE00BE05ED /* Products */,
 				CEFA435EA322FF036A6DBA3E /* Pods */,
 				A47F75AA7BBF8E4E58BD0708 /* Frameworks */,
+				B891A9581D0B905700E88EEF /* OwlOrbit copy-Info.plist */,
+				B891A9FC1D0B90A500E88EEF /* OwlOrbit copy copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		B8792A271BEB15CE00BE05ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B8792A261BEB15CE00BE05ED /* OwlOrbit.app */,
+				B8792A261BEB15CE00BE05ED /* OwlOrbit Prod.app */,
 				B8792A3D1BEB15CE00BE05ED /* OwlOrbitTests.xctest */,
 				B8792A481BEB15CE00BE05ED /* OwlOrbitUITests.xctest */,
+				B891A9571D0B905700E88EEF /* OwlOrbit Docker.app */,
+				B891A9FB1D0B90A500E88EEF /* OwlOrbit Local.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -906,10 +1244,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B8792A251BEB15CE00BE05ED /* OwlOrbit */ = {
+		B8792A251BEB15CE00BE05ED /* OwlOrbit Prod */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit" */;
+			buildConfigurationList = B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit Prod" */;
 			buildPhases = (
+				B891A9FE1D0B912100E88EEF /* ShellScript */,
 				2A255307CDFB5246ABC95317 /* Check Pods Manifest.lock */,
 				B8792A221BEB15CE00BE05ED /* Sources */,
 				B8792A231BEB15CE00BE05ED /* Frameworks */,
@@ -921,9 +1260,9 @@
 			);
 			dependencies = (
 			);
-			name = OwlOrbit;
+			name = "OwlOrbit Prod";
 			productName = Sift;
-			productReference = B8792A261BEB15CE00BE05ED /* OwlOrbit.app */;
+			productReference = B8792A261BEB15CE00BE05ED /* OwlOrbit Prod.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B8792A3C1BEB15CE00BE05ED /* OwlOrbitTests */ = {
@@ -961,6 +1300,48 @@
 			productName = SiftUITests;
 			productReference = B8792A481BEB15CE00BE05ED /* OwlOrbitUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		B891A8B51D0B905700E88EEF /* OwlOrbit Docker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B891A9541D0B905700E88EEF /* Build configuration list for PBXNativeTarget "OwlOrbit Docker" */;
+			buildPhases = (
+				B891A9FD1D0B90F500E88EEF /* Run Script */,
+				B891A8B61D0B905700E88EEF /* Check Pods Manifest.lock */,
+				B891A8B71D0B905700E88EEF /* Sources */,
+				B891A91A1D0B905700E88EEF /* Frameworks */,
+				B891A9211D0B905700E88EEF /* Resources */,
+				B891A9521D0B905700E88EEF /* Embed Pods Frameworks */,
+				B891A9531D0B905700E88EEF /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OwlOrbit Docker";
+			productName = Sift;
+			productReference = B891A9571D0B905700E88EEF /* OwlOrbit Docker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B891A9591D0B90A500E88EEF /* OwlOrbit Local */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B891A9F81D0B90A500E88EEF /* Build configuration list for PBXNativeTarget "OwlOrbit Local" */;
+			buildPhases = (
+				B891A9FF1D0B912C00E88EEF /* ShellScript */,
+				B891A95A1D0B90A500E88EEF /* Check Pods Manifest.lock */,
+				B891A95B1D0B90A500E88EEF /* Sources */,
+				B891A9BE1D0B90A500E88EEF /* Frameworks */,
+				B891A9C51D0B90A500E88EEF /* Resources */,
+				B891A9F61D0B90A500E88EEF /* Embed Pods Frameworks */,
+				B891A9F71D0B90A500E88EEF /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OwlOrbit Local";
+			productName = Sift;
+			productReference = B891A9FB1D0B90A500E88EEF /* OwlOrbit Local.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -1010,7 +1391,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B8792A251BEB15CE00BE05ED /* OwlOrbit */,
+				B8792A251BEB15CE00BE05ED /* OwlOrbit Prod */,
+				B891A8B51D0B905700E88EEF /* OwlOrbit Docker */,
+				B891A9591D0B90A500E88EEF /* OwlOrbit Local */,
 				B8792A3C1BEB15CE00BE05ED /* OwlOrbitTests */,
 				B8792A471BEB15CE00BE05ED /* OwlOrbitUITests */,
 			);
@@ -1087,6 +1470,116 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B891A9211D0B905700E88EEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B891A9221D0B905700E88EEF /* EnableLocationViewController.xib in Resources */,
+				B891A9231D0B905700E88EEF /* FriendRequestViewController.xib in Resources */,
+				B891A9241D0B905700E88EEF /* UICustomTabBarController.xib in Resources */,
+				B891A9251D0B905700E88EEF /* ChatThreadViewController.xib in Resources */,
+				B891A9261D0B905700E88EEF /* RegistrationNextView.xib in Resources */,
+				B891A9271D0B905700E88EEF /* UserDiscoverTableViewCell.xib in Resources */,
+				B891A9281D0B905700E88EEF /* RegisterBasicInfoViewController.xib in Resources */,
+				B891A9291D0B905700E88EEF /* MyMessageChatTableViewCell.xib in Resources */,
+				B891A92A1D0B905700E88EEF /* GroupNameTableViewCell.xib in Resources */,
+				B891A92B1D0B905700E88EEF /* GroupSettingsStep1ViewController.xib in Resources */,
+				B891A92C1D0B905700E88EEF /* LaunchScreen.storyboard in Resources */,
+				B891A92D1D0B905700E88EEF /* ChatMapInstructionsViewController.xib in Resources */,
+				B891A92E1D0B905700E88EEF /* Assets.xcassets in Resources */,
+				B891A92F1D0B905700E88EEF /* ChatMapKeyboardView.xib in Resources */,
+				B891A9301D0B905700E88EEF /* RegistrationSubmitKeyboardView.xib in Resources */,
+				B891A9311D0B905700E88EEF /* DisableGPSViewController.xib in Resources */,
+				B891A9321D0B905700E88EEF /* GroupDescriptionTableViewCell.xib in Resources */,
+				B891A9331D0B905700E88EEF /* ProfileImageUploadViewController.xib in Resources */,
+				B891A9341D0B905700E88EEF /* UserSingleWriteTableViewCell.xib in Resources */,
+				B891A9351D0B905700E88EEF /* ManageRequestsViewController.xib in Resources */,
+				B891A9361D0B905700E88EEF /* OtherMessageChatTableViewCell.xib in Resources */,
+				B891A9371D0B905700E88EEF /* RegisterViewController.xib in Resources */,
+				B891A9381D0B905700E88EEF /* ResetPasswordViewController.xib in Resources */,
+				B891A9391D0B905700E88EEF /* ProfileSettingImageUploadViewController.xib in Resources */,
+				B891A93A1D0B905700E88EEF /* AddGroupViewController.xib in Resources */,
+				B891A93B1D0B905700E88EEF /* MapInstructionsTableViewCell.xib in Resources */,
+				B891A93C1D0B905700E88EEF /* GroupIsFriendsOnlyTableViewCell.xib in Resources */,
+				B891A93D1D0B905700E88EEF /* UserLogoutTableViewCell.xib in Resources */,
+				B891A93E1D0B905700E88EEF /* UserSearchPendingHeaderView.xib in Resources */,
+				B891A93F1D0B905700E88EEF /* ReadMessageTableViewCell.xib in Resources */,
+				B891A9401D0B905700E88EEF /* UserSearchTableViewCell.xib in Resources */,
+				B891A9411D0B905700E88EEF /* SettingsViewController.xib in Resources */,
+				B891A9421D0B905700E88EEF /* GroupIsPublicTableViewCell.xib in Resources */,
+				B891A9431D0B905700E88EEF /* RegistrationBasicInfoValueTableViewCell.xib in Resources */,
+				B891A9441D0B905700E88EEF /* LoginViewController.xib in Resources */,
+				B891A9451D0B905700E88EEF /* LoginTableViewCell.xib in Resources */,
+				B891A9461D0B905700E88EEF /* GroupCountTableViewCell.xib in Resources */,
+				B891A9471D0B905700E88EEF /* Registration1ValueTableViewCell.xib in Resources */,
+				B891A9481D0B905700E88EEF /* ChatViewController.xib in Resources */,
+				B891A9491D0B905700E88EEF /* ChatTextMessageViewController.xib in Resources */,
+				B891A94A1D0B905700E88EEF /* PreloadHomeViewController.xib in Resources */,
+				B891A94B1D0B905700E88EEF /* AddMeetupView.xib in Resources */,
+				B891A94C1D0B905700E88EEF /* DashboardViewController.xib in Resources */,
+				B891A94D1D0B905700E88EEF /* UserGroupSelectTableViewCell.xib in Resources */,
+				B891A94E1D0B905700E88EEF /* UserProfileSearchTableViewCell.xib in Resources */,
+				B891A94F1D0B905700E88EEF /* WriteMessageViewController.xib in Resources */,
+				B891A9501D0B905700E88EEF /* UserProfileViewController.xib in Resources */,
+				B891A9511D0B905700E88EEF /* LoginKeyboardPrevView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B891A9C51D0B90A500E88EEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B891A9C61D0B90A500E88EEF /* EnableLocationViewController.xib in Resources */,
+				B891A9C71D0B90A500E88EEF /* FriendRequestViewController.xib in Resources */,
+				B891A9C81D0B90A500E88EEF /* UICustomTabBarController.xib in Resources */,
+				B891A9C91D0B90A500E88EEF /* ChatThreadViewController.xib in Resources */,
+				B891A9CA1D0B90A500E88EEF /* RegistrationNextView.xib in Resources */,
+				B891A9CB1D0B90A500E88EEF /* UserDiscoverTableViewCell.xib in Resources */,
+				B891A9CC1D0B90A500E88EEF /* RegisterBasicInfoViewController.xib in Resources */,
+				B891A9CD1D0B90A500E88EEF /* MyMessageChatTableViewCell.xib in Resources */,
+				B891A9CE1D0B90A500E88EEF /* GroupNameTableViewCell.xib in Resources */,
+				B891A9CF1D0B90A500E88EEF /* GroupSettingsStep1ViewController.xib in Resources */,
+				B891A9D01D0B90A500E88EEF /* LaunchScreen.storyboard in Resources */,
+				B891A9D11D0B90A500E88EEF /* ChatMapInstructionsViewController.xib in Resources */,
+				B891A9D21D0B90A500E88EEF /* Assets.xcassets in Resources */,
+				B891A9D31D0B90A500E88EEF /* ChatMapKeyboardView.xib in Resources */,
+				B891A9D41D0B90A500E88EEF /* RegistrationSubmitKeyboardView.xib in Resources */,
+				B891A9D51D0B90A500E88EEF /* DisableGPSViewController.xib in Resources */,
+				B891A9D61D0B90A500E88EEF /* GroupDescriptionTableViewCell.xib in Resources */,
+				B891A9D71D0B90A500E88EEF /* ProfileImageUploadViewController.xib in Resources */,
+				B891A9D81D0B90A500E88EEF /* UserSingleWriteTableViewCell.xib in Resources */,
+				B891A9D91D0B90A500E88EEF /* ManageRequestsViewController.xib in Resources */,
+				B891A9DA1D0B90A500E88EEF /* OtherMessageChatTableViewCell.xib in Resources */,
+				B891A9DB1D0B90A500E88EEF /* RegisterViewController.xib in Resources */,
+				B891A9DC1D0B90A500E88EEF /* ResetPasswordViewController.xib in Resources */,
+				B891A9DD1D0B90A500E88EEF /* ProfileSettingImageUploadViewController.xib in Resources */,
+				B891A9DE1D0B90A500E88EEF /* AddGroupViewController.xib in Resources */,
+				B891A9DF1D0B90A500E88EEF /* MapInstructionsTableViewCell.xib in Resources */,
+				B891A9E01D0B90A500E88EEF /* GroupIsFriendsOnlyTableViewCell.xib in Resources */,
+				B891A9E11D0B90A500E88EEF /* UserLogoutTableViewCell.xib in Resources */,
+				B891A9E21D0B90A500E88EEF /* UserSearchPendingHeaderView.xib in Resources */,
+				B891A9E31D0B90A500E88EEF /* ReadMessageTableViewCell.xib in Resources */,
+				B891A9E41D0B90A500E88EEF /* UserSearchTableViewCell.xib in Resources */,
+				B891A9E51D0B90A500E88EEF /* SettingsViewController.xib in Resources */,
+				B891A9E61D0B90A500E88EEF /* GroupIsPublicTableViewCell.xib in Resources */,
+				B891A9E71D0B90A500E88EEF /* RegistrationBasicInfoValueTableViewCell.xib in Resources */,
+				B891A9E81D0B90A500E88EEF /* LoginViewController.xib in Resources */,
+				B891A9E91D0B90A500E88EEF /* LoginTableViewCell.xib in Resources */,
+				B891A9EA1D0B90A500E88EEF /* GroupCountTableViewCell.xib in Resources */,
+				B891A9EB1D0B90A500E88EEF /* Registration1ValueTableViewCell.xib in Resources */,
+				B891A9EC1D0B90A500E88EEF /* ChatViewController.xib in Resources */,
+				B891A9ED1D0B90A500E88EEF /* ChatTextMessageViewController.xib in Resources */,
+				B891A9EE1D0B90A500E88EEF /* PreloadHomeViewController.xib in Resources */,
+				B891A9EF1D0B90A500E88EEF /* AddMeetupView.xib in Resources */,
+				B891A9F01D0B90A500E88EEF /* DashboardViewController.xib in Resources */,
+				B891A9F11D0B90A500E88EEF /* UserGroupSelectTableViewCell.xib in Resources */,
+				B891A9F21D0B90A500E88EEF /* UserProfileSearchTableViewCell.xib in Resources */,
+				B891A9F31D0B90A500E88EEF /* WriteMessageViewController.xib in Resources */,
+				B891A9F41D0B90A500E88EEF /* UserProfileViewController.xib in Resources */,
+				B891A9F51D0B90A500E88EEF /* LoginKeyboardPrevView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1134,6 +1627,136 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B891A8B61D0B905700E88EEF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B891A9521D0B905700E88EEF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B891A9531D0B905700E88EEF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B891A95A1D0B90A500E88EEF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B891A9F61D0B90A500E88EEF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B891A9F71D0B90A500E88EEF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B891A9FD1D0B90F500E88EEF /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./presettings-docker.sh";
+		};
+		B891A9FE1D0B912100E88EEF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./presettings-prod.sh";
+		};
+		B891A9FF1D0B912C00E88EEF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./presettings-local.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1259,17 +1882,227 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B891A8B71D0B905700E88EEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B891A8B81D0B905700E88EEF /* GroupSettingsStep1ViewController.swift in Sources */,
+				B891A8B91D0B905700E88EEF /* ChatMapInstructionsViewController.swift in Sources */,
+				B891A8BA1D0B905700E88EEF /* GenericUserManagedModel.swift in Sources */,
+				B891A8BB1D0B905700E88EEF /* ApplicationManager.swift in Sources */,
+				B891A8BC1D0B905700E88EEF /* GroupIsFriendsOnlyTableViewCell.swift in Sources */,
+				B891A8BD1D0B905700E88EEF /* GroupCountTableViewCell.swift in Sources */,
+				B891A8BE1D0B905700E88EEF /* NotificationHelper.swift in Sources */,
+				B891A8BF1D0B905700E88EEF /* ResetPasswordViewController.swift in Sources */,
+				B891A8C01D0B905700E88EEF /* ImageManipulate.m in Sources */,
+				B891A8C11D0B905700E88EEF /* RegisterViewController.swift in Sources */,
+				B891A8C21D0B905700E88EEF /* UIImage+Round.swift in Sources */,
+				B891A8C31D0B905700E88EEF /* LocationApiHelper.swift in Sources */,
+				B891A8C41D0B905700E88EEF /* RegistrationUser.swift in Sources */,
+				B891A8C51D0B905700E88EEF /* Registration1ValueTableViewCell.swift in Sources */,
+				B891A8C61D0B905700E88EEF /* PreloadHomeViewController.swift in Sources */,
+				B891A8C71D0B905700E88EEF /* RegistrationNextView.swift in Sources */,
+				B891A8C81D0B905700E88EEF /* GroupDescriptionTableViewCell.swift in Sources */,
+				B891A8C91D0B905700E88EEF /* UserLogoutTableViewCell.swift in Sources */,
+				B891A8CA1D0B905700E88EEF /* UserManagedModel.swift in Sources */,
+				B891A8CB1D0B905700E88EEF /* RoomApiHelper.swift in Sources */,
+				B891A8CC1D0B905700E88EEF /* FullScreenLoaderHelper.swift in Sources */,
+				B891A8CD1D0B905700E88EEF /* UserDiscoverTableViewCell.swift in Sources */,
+				B891A8CE1D0B905700E88EEF /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
+				B891A8CF1D0B905700E88EEF /* FileHelper.swift in Sources */,
+				B891A8D01D0B905700E88EEF /* MainMapViewController.swift in Sources */,
+				B891A8D11D0B905700E88EEF /* WriteMessageViewController.swift in Sources */,
+				B891A8D21D0B905700E88EEF /* FormValidateHelper.swift in Sources */,
+				B891A8D31D0B905700E88EEF /* FriendRequestViewController.swift in Sources */,
+				B891A8D41D0B905700E88EEF /* RoomAttributeModel.swift in Sources */,
+				B891A8D51D0B905700E88EEF /* GroupNameTableViewCell.swift in Sources */,
+				B891A8D61D0B905700E88EEF /* DynamicPersonalData.swift in Sources */,
+				B891A8D71D0B905700E88EEF /* UserProfileViewController.swift in Sources */,
+				B891A8D81D0B905700E88EEF /* CoreDataHelper.swift in Sources */,
+				B891A8D91D0B905700E88EEF /* PersonalUserModel.swift in Sources */,
+				B891A8DA1D0B905700E88EEF /* AnnotationButton.swift in Sources */,
+				B891A8DB1D0B905700E88EEF /* GenericUserModel.swift in Sources */,
+				B891A8DC1D0B905700E88EEF /* LoginKeyboardPrevView.swift in Sources */,
+				B891A8DD1D0B905700E88EEF /* LocationHelper.swift in Sources */,
+				B891A8DE1D0B905700E88EEF /* UICustomTabBarController.swift in Sources */,
+				B891A8DF1D0B905700E88EEF /* UserSearchPendingHeaderView.swift in Sources */,
+				B891A8E01D0B905700E88EEF /* UserProfileSearchTableViewCell.swift in Sources */,
+				B891A8E11D0B905700E88EEF /* LoginViewController.swift in Sources */,
+				B891A8E21D0B905700E88EEF /* NSBundle+Version.swift in Sources */,
+				B891A8E31D0B905700E88EEF /* ImageHelper.swift in Sources */,
+				B891A8E41D0B905700E88EEF /* AddMeetupView.swift in Sources */,
+				B891A8E51D0B905700E88EEF /* MapRadialViewController.swift in Sources */,
+				B891A8E61D0B905700E88EEF /* UIColor+helpers.swift in Sources */,
+				B891A8E71D0B905700E88EEF /* Int+ToString.swift in Sources */,
+				B891A8E81D0B905700E88EEF /* CustomMapPin.swift in Sources */,
+				B891A8E91D0B905700E88EEF /* OtherMessageChatTableViewCell.swift in Sources */,
+				B891A8EA1D0B905700E88EEF /* DashboardViewController.swift in Sources */,
+				B891A8EB1D0B905700E88EEF /* UILabel+ItalicBold.swift in Sources */,
+				B891A8EC1D0B905700E88EEF /* ChatViewController.swift in Sources */,
+				B891A8ED1D0B905700E88EEF /* RoomModel.swift in Sources */,
+				B891A8EE1D0B905700E88EEF /* EncryptUtil.swift in Sources */,
+				B891A8EF1D0B905700E88EEF /* ProfileSettingImageUploadViewController.swift in Sources */,
+				B891A8F01D0B905700E88EEF /* ViewController.swift in Sources */,
+				B891A8F11D0B905700E88EEF /* ReadMessageTableViewCell.swift in Sources */,
+				B891A8F21D0B905700E88EEF /* ProfileImageUploadViewController.swift in Sources */,
+				B891A8F31D0B905700E88EEF /* ChatThreadViewController.swift in Sources */,
+				B891A8F41D0B905700E88EEF /* CustomMeetupPin.swift in Sources */,
+				B891A8F51D0B905700E88EEF /* LocationModel.swift in Sources */,
+				B891A8F61D0B905700E88EEF /* DisableGPSViewController.swift in Sources */,
+				B891A8F71D0B905700E88EEF /* LeaveRoomHelper.swift in Sources */,
+				B891A8F81D0B905700E88EEF /* UserApiHelper.swift in Sources */,
+				B891A8F91D0B905700E88EEF /* ChatApiHelper.swift in Sources */,
+				B891A8FA1D0B905700E88EEF /* String+ToDouble.swift in Sources */,
+				B891A8FB1D0B905700E88EEF /* UserSearchTableViewCell.swift in Sources */,
+				B891A8FC1D0B905700E88EEF /* LoginTableViewCell.swift in Sources */,
+				B891A8FD1D0B905700E88EEF /* AUIAutoGrowingTextView.m in Sources */,
+				B891A8FE1D0B905700E88EEF /* UserGroupSelectTableViewCell.swift in Sources */,
+				B891A8FF1D0B905700E88EEF /* AppDelegate.swift in Sources */,
+				B891A9001D0B905700E88EEF /* RoomManagedModel.swift in Sources */,
+				B891A9011D0B905700E88EEF /* ChatMapKeyboardView.swift in Sources */,
+				B891A9021D0B905700E88EEF /* RoomAttributeManagedModel.swift in Sources */,
+				B891A9031D0B905700E88EEF /* MeetupButton.swift in Sources */,
+				B891A9041D0B905700E88EEF /* GroupIsPublicTableViewCell.swift in Sources */,
+				B891A9051D0B905700E88EEF /* CustomFindAddressPin.swift in Sources */,
+				B891A9061D0B905700E88EEF /* Sift.xcdatamodeld in Sources */,
+				B891A9071D0B905700E88EEF /* NSDate+NVTimeAgo.m in Sources */,
+				B891A9081D0B905700E88EEF /* AlertHelper.swift in Sources */,
+				B891A9091D0B905700E88EEF /* RegistrationSubmitKeyboardView.swift in Sources */,
+				B891A90A1D0B905700E88EEF /* ChatTextMessageViewController.swift in Sources */,
+				B891A90B1D0B905700E88EEF /* EnableLocationViewController.swift in Sources */,
+				B891A90C1D0B905700E88EEF /* MyMessageChatTableViewCell.swift in Sources */,
+				B891A90D1D0B905700E88EEF /* UserSingleWriteTableViewCell.swift in Sources */,
+				B891A90E1D0B905700E88EEF /* ManageRequestsViewController.swift in Sources */,
+				B891A90F1D0B905700E88EEF /* ProjectConstants.swift in Sources */,
+				B891A9101D0B905700E88EEF /* MessageCoreModel.swift in Sources */,
+				B891A9111D0B905700E88EEF /* UserPointAnnotation.swift in Sources */,
+				B891A9121D0B905700E88EEF /* RegisterBasicInfoViewController.swift in Sources */,
+				B891A9131D0B905700E88EEF /* SettingsViewController.swift in Sources */,
+				B891A9141D0B905700E88EEF /* CreateGroupManager.swift in Sources */,
+				B891A9151D0B905700E88EEF /* MessageModel.swift in Sources */,
+				B891A9161D0B905700E88EEF /* AddGroupViewController.swift in Sources */,
+				B891A9171D0B905700E88EEF /* RoomUsersModel.swift in Sources */,
+				B891A9181D0B905700E88EEF /* MapHelper.swift in Sources */,
+				B891A9191D0B905700E88EEF /* MapInstructionsTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B891A95B1D0B90A500E88EEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B891A95C1D0B90A500E88EEF /* GroupSettingsStep1ViewController.swift in Sources */,
+				B891A95D1D0B90A500E88EEF /* ChatMapInstructionsViewController.swift in Sources */,
+				B891A95E1D0B90A500E88EEF /* GenericUserManagedModel.swift in Sources */,
+				B891A95F1D0B90A500E88EEF /* ApplicationManager.swift in Sources */,
+				B891A9601D0B90A500E88EEF /* GroupIsFriendsOnlyTableViewCell.swift in Sources */,
+				B891A9611D0B90A500E88EEF /* GroupCountTableViewCell.swift in Sources */,
+				B891A9621D0B90A500E88EEF /* NotificationHelper.swift in Sources */,
+				B891A9631D0B90A500E88EEF /* ResetPasswordViewController.swift in Sources */,
+				B891A9641D0B90A500E88EEF /* ImageManipulate.m in Sources */,
+				B891A9651D0B90A500E88EEF /* RegisterViewController.swift in Sources */,
+				B891A9661D0B90A500E88EEF /* UIImage+Round.swift in Sources */,
+				B891A9671D0B90A500E88EEF /* LocationApiHelper.swift in Sources */,
+				B891A9681D0B90A500E88EEF /* RegistrationUser.swift in Sources */,
+				B891A9691D0B90A500E88EEF /* Registration1ValueTableViewCell.swift in Sources */,
+				B891A96A1D0B90A500E88EEF /* PreloadHomeViewController.swift in Sources */,
+				B891A96B1D0B90A500E88EEF /* RegistrationNextView.swift in Sources */,
+				B891A96C1D0B90A500E88EEF /* GroupDescriptionTableViewCell.swift in Sources */,
+				B891A96D1D0B90A500E88EEF /* UserLogoutTableViewCell.swift in Sources */,
+				B891A96E1D0B90A500E88EEF /* UserManagedModel.swift in Sources */,
+				B891A96F1D0B90A500E88EEF /* RoomApiHelper.swift in Sources */,
+				B891A9701D0B90A500E88EEF /* FullScreenLoaderHelper.swift in Sources */,
+				B891A9711D0B90A500E88EEF /* UserDiscoverTableViewCell.swift in Sources */,
+				B891A9721D0B90A500E88EEF /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
+				B891A9731D0B90A500E88EEF /* FileHelper.swift in Sources */,
+				B891A9741D0B90A500E88EEF /* MainMapViewController.swift in Sources */,
+				B891A9751D0B90A500E88EEF /* WriteMessageViewController.swift in Sources */,
+				B891A9761D0B90A500E88EEF /* FormValidateHelper.swift in Sources */,
+				B891A9771D0B90A500E88EEF /* FriendRequestViewController.swift in Sources */,
+				B891A9781D0B90A500E88EEF /* RoomAttributeModel.swift in Sources */,
+				B891A9791D0B90A500E88EEF /* GroupNameTableViewCell.swift in Sources */,
+				B891A97A1D0B90A500E88EEF /* DynamicPersonalData.swift in Sources */,
+				B891A97B1D0B90A500E88EEF /* UserProfileViewController.swift in Sources */,
+				B891A97C1D0B90A500E88EEF /* CoreDataHelper.swift in Sources */,
+				B891A97D1D0B90A500E88EEF /* PersonalUserModel.swift in Sources */,
+				B891A97E1D0B90A500E88EEF /* AnnotationButton.swift in Sources */,
+				B891A97F1D0B90A500E88EEF /* GenericUserModel.swift in Sources */,
+				B891A9801D0B90A500E88EEF /* LoginKeyboardPrevView.swift in Sources */,
+				B891A9811D0B90A500E88EEF /* LocationHelper.swift in Sources */,
+				B891A9821D0B90A500E88EEF /* UICustomTabBarController.swift in Sources */,
+				B891A9831D0B90A500E88EEF /* UserSearchPendingHeaderView.swift in Sources */,
+				B891A9841D0B90A500E88EEF /* UserProfileSearchTableViewCell.swift in Sources */,
+				B891A9851D0B90A500E88EEF /* LoginViewController.swift in Sources */,
+				B891A9861D0B90A500E88EEF /* NSBundle+Version.swift in Sources */,
+				B891A9871D0B90A500E88EEF /* ImageHelper.swift in Sources */,
+				B891A9881D0B90A500E88EEF /* AddMeetupView.swift in Sources */,
+				B891A9891D0B90A500E88EEF /* MapRadialViewController.swift in Sources */,
+				B891A98A1D0B90A500E88EEF /* UIColor+helpers.swift in Sources */,
+				B891A98B1D0B90A500E88EEF /* Int+ToString.swift in Sources */,
+				B891A98C1D0B90A500E88EEF /* CustomMapPin.swift in Sources */,
+				B891A98D1D0B90A500E88EEF /* OtherMessageChatTableViewCell.swift in Sources */,
+				B891A98E1D0B90A500E88EEF /* DashboardViewController.swift in Sources */,
+				B891A98F1D0B90A500E88EEF /* UILabel+ItalicBold.swift in Sources */,
+				B891A9901D0B90A500E88EEF /* ChatViewController.swift in Sources */,
+				B891A9911D0B90A500E88EEF /* RoomModel.swift in Sources */,
+				B891A9921D0B90A500E88EEF /* EncryptUtil.swift in Sources */,
+				B891A9931D0B90A500E88EEF /* ProfileSettingImageUploadViewController.swift in Sources */,
+				B891A9941D0B90A500E88EEF /* ViewController.swift in Sources */,
+				B891A9951D0B90A500E88EEF /* ReadMessageTableViewCell.swift in Sources */,
+				B891A9961D0B90A500E88EEF /* ProfileImageUploadViewController.swift in Sources */,
+				B891A9971D0B90A500E88EEF /* ChatThreadViewController.swift in Sources */,
+				B891A9981D0B90A500E88EEF /* CustomMeetupPin.swift in Sources */,
+				B891A9991D0B90A500E88EEF /* LocationModel.swift in Sources */,
+				B891A99A1D0B90A500E88EEF /* DisableGPSViewController.swift in Sources */,
+				B891A99B1D0B90A500E88EEF /* LeaveRoomHelper.swift in Sources */,
+				B891A99C1D0B90A500E88EEF /* UserApiHelper.swift in Sources */,
+				B891A99D1D0B90A500E88EEF /* ChatApiHelper.swift in Sources */,
+				B891A99E1D0B90A500E88EEF /* String+ToDouble.swift in Sources */,
+				B891A99F1D0B90A500E88EEF /* UserSearchTableViewCell.swift in Sources */,
+				B891A9A01D0B90A500E88EEF /* LoginTableViewCell.swift in Sources */,
+				B891A9A11D0B90A500E88EEF /* AUIAutoGrowingTextView.m in Sources */,
+				B891A9A21D0B90A500E88EEF /* UserGroupSelectTableViewCell.swift in Sources */,
+				B891A9A31D0B90A500E88EEF /* AppDelegate.swift in Sources */,
+				B891A9A41D0B90A500E88EEF /* RoomManagedModel.swift in Sources */,
+				B891A9A51D0B90A500E88EEF /* ChatMapKeyboardView.swift in Sources */,
+				B891A9A61D0B90A500E88EEF /* RoomAttributeManagedModel.swift in Sources */,
+				B891A9A71D0B90A500E88EEF /* MeetupButton.swift in Sources */,
+				B891A9A81D0B90A500E88EEF /* GroupIsPublicTableViewCell.swift in Sources */,
+				B891A9A91D0B90A500E88EEF /* CustomFindAddressPin.swift in Sources */,
+				B891A9AA1D0B90A500E88EEF /* Sift.xcdatamodeld in Sources */,
+				B891A9AB1D0B90A500E88EEF /* NSDate+NVTimeAgo.m in Sources */,
+				B891A9AC1D0B90A500E88EEF /* AlertHelper.swift in Sources */,
+				B891A9AD1D0B90A500E88EEF /* RegistrationSubmitKeyboardView.swift in Sources */,
+				B891A9AE1D0B90A500E88EEF /* ChatTextMessageViewController.swift in Sources */,
+				B891A9AF1D0B90A500E88EEF /* EnableLocationViewController.swift in Sources */,
+				B891A9B01D0B90A500E88EEF /* MyMessageChatTableViewCell.swift in Sources */,
+				B891A9B11D0B90A500E88EEF /* UserSingleWriteTableViewCell.swift in Sources */,
+				B891A9B21D0B90A500E88EEF /* ManageRequestsViewController.swift in Sources */,
+				B891A9B31D0B90A500E88EEF /* ProjectConstants.swift in Sources */,
+				B891A9B41D0B90A500E88EEF /* MessageCoreModel.swift in Sources */,
+				B891A9B51D0B90A500E88EEF /* UserPointAnnotation.swift in Sources */,
+				B891A9B61D0B90A500E88EEF /* RegisterBasicInfoViewController.swift in Sources */,
+				B891A9B71D0B90A500E88EEF /* SettingsViewController.swift in Sources */,
+				B891A9B81D0B90A500E88EEF /* CreateGroupManager.swift in Sources */,
+				B891A9B91D0B90A500E88EEF /* MessageModel.swift in Sources */,
+				B891A9BA1D0B90A500E88EEF /* AddGroupViewController.swift in Sources */,
+				B891A9BB1D0B90A500E88EEF /* RoomUsersModel.swift in Sources */,
+				B891A9BC1D0B90A500E88EEF /* MapHelper.swift in Sources */,
+				B891A9BD1D0B90A500E88EEF /* MapInstructionsTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		B8792A3F1BEB15CE00BE05ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B8792A251BEB15CE00BE05ED /* OwlOrbit */;
+			target = B8792A251BEB15CE00BE05ED /* OwlOrbit Prod */;
 			targetProxy = B8792A3E1BEB15CE00BE05ED /* PBXContainerItemProxy */;
 		};
 		B8792A4A1BEB15CE00BE05ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B8792A251BEB15CE00BE05ED /* OwlOrbit */;
+			target = B8792A251BEB15CE00BE05ED /* OwlOrbit Prod */;
 			targetProxy = B8792A491BEB15CE00BE05ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1464,6 +2297,100 @@
 			};
 			name = Release;
 		};
+		B891A9551D0B905700E88EEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91601974A0D837B391AABADD /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "OwlOrbit copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sift/Sift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B891A9561D0B905700E88EEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "OwlOrbit copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sift/Sift-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B891A9F91D0B90A500E88EEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91601974A0D837B391AABADD /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "OwlOrbit copy copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sift/Sift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B891A9FA1D0B90A500E88EEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "OwlOrbit copy copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timnuwin.OwlOrbit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sift/Sift-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1476,7 +2403,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit" */ = {
+		B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit Prod" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8792A521BEB15CE00BE05ED /* Debug */,
@@ -1499,6 +2426,24 @@
 			buildConfigurations = (
 				B8792A581BEB15CE00BE05ED /* Debug */,
 				B8792A591BEB15CE00BE05ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B891A9541D0B905700E88EEF /* Build configuration list for PBXNativeTarget "OwlOrbit Docker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B891A9551D0B905700E88EEF /* Debug */,
+				B891A9561D0B905700E88EEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B891A9F81D0B90A500E88EEF /* Build configuration list for PBXNativeTarget "OwlOrbit Local" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B891A9F91D0B90A500E88EEF /* Debug */,
+				B891A9FA1D0B90A500E88EEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

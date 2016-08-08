@@ -38,7 +38,6 @@ class Login extends CI_Controller {
 		$response = array();
 		try{
 
-
 			$email = $this->security->xss_clean(strip_tags($this->input->post('email')));
 			$password = $this->security->xss_clean(strip_tags($this->input->post('password')));
 
