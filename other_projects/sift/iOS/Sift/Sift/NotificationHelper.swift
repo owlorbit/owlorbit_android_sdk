@@ -44,12 +44,10 @@ class NotificationHelper{
                     RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
                         (roomAttribute) in
                         
-                        
-                        /*
                         roomModel.attributes = roomAttribute
                         if(roomModel.attributes.users.count > 0){
                             roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                        }*/
+                        }
                         
                         ApplicationManager.shareCoreDataInstance.saveContext()
                         var roomData:RoomManagedModel?  = RoomManagedModel.getById(roomModel.roomId)
@@ -59,7 +57,7 @@ class NotificationHelper{
                             ApplicationManager.NOTIFICATION_LOCK_PUSH = true;
                             var updatedNav = (appDelegate.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
                             let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
-                            //vc.chatRoomTitle = roomModel.attributes.name
+                            vc.chatRoomTitle = roomModel.attributes.name
                             vc.roomId = roomModel.roomId
                             vc.hidesBottomBarWhenPushed = true
                             updatedNav.pushViewController(vc, animated: false )
@@ -106,11 +104,11 @@ class NotificationHelper{
                     RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
                         (roomAttribute) in
                         
-                        /*
                         roomModel.attributes = roomAttribute
                         if(roomModel.attributes.users.count > 0){
                             roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                        }*/
+                        }
+                        
                         ApplicationManager.shareCoreDataInstance.saveContext()
                         var roomData:RoomManagedModel?  = RoomManagedModel.getById(roomModel.roomId)
                         
@@ -119,7 +117,7 @@ class NotificationHelper{
                             ApplicationManager.NOTIFICATION_LOCK_PUSH = true;
                             var updatedNav = (appDelegate.window!.rootViewController as! UICustomTabBarController).selectedViewController as! UINavigationController
                             let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
-                            //vc.chatRoomTitle = roomModel.attributes.name
+                            vc.chatRoomTitle = roomModel.attributes.name
                             vc.roomId = roomModel.roomId
                             vc.hidesBottomBarWhenPushed = true
                             updatedNav.pushViewController(vc, animated: false )

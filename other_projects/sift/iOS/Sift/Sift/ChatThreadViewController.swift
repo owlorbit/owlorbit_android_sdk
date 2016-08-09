@@ -495,8 +495,9 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         if(roomData == nil){
             return;
         }
+
+        print("counter: \(roomData!.attributes.users.count)")
         
-        /*
         for obj in roomData!.attributes.users {
             var userData:GenericUserManagedModel = obj as! GenericUserManagedModel
 
@@ -561,8 +562,6 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 
             }
         }
-        
-        */
     }
 
     func initLocations(){
@@ -596,11 +595,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             RoomAttributeManagedModel.initWithJson(JSON2, roomId: self.roomId, roomAttributeModel:{
                 (roomAttribute) in
                 
-                /*
                 roomModel.attributes = roomAttribute
                 if(roomModel.attributes.users.count > 0){
                     roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                }*/
+                }
                 
                 ApplicationManager.shareCoreDataInstance.saveContext()
                 print("hey oh")
@@ -913,14 +911,16 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     
     func btnTextClick(sender: AnyObject){
         
-        /*
+        
         var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
         viewController.roomId = roomId;
-        self.navigationController!.pushViewController(viewController, animated: true)*/
+        self.navigationController!.pushViewController(viewController, animated: true)
         
+        
+        /*
         var viewController:ChatViewController = ChatViewController();
         viewController.roomId = self.roomId;
-        self.navigationController!.pushViewController(viewController, animated: true)
+        self.navigationController!.pushViewController(viewController, animated: true)*/
     }
 
     func btnMapClick(sender: AnyObject){

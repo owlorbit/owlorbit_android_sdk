@@ -13,10 +13,9 @@ import Alamofire
 class RoomApiHelper{
 
     class func getRooms(resultJSON:(JSON) -> Void, error:(String, errorCode:Int)->Void) -> Void {
-        
-        
+
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-        var url:String = ProjectConstants.ApiBaseUrl.value + "/room/get_all"
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/room/get_all_only_rooms"
         let data = ["publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
         
         Alamofire.request(.POST, url, parameters: data, encoding: .URL)

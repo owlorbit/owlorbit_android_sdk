@@ -110,11 +110,10 @@ class MapRadialViewController: ChatThreadViewController{
                         RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
                             (roomAttribute) in
                             
-                            /*
                             roomModel.attributes = roomAttribute
                             if(roomModel.attributes.users.count > 0){
                                 roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                            }*/
+                            }
                             
                             ApplicationManager.shareCoreDataInstance.saveContext()
                             
@@ -155,10 +154,10 @@ class MapRadialViewController: ChatThreadViewController{
                                         RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
                                             (roomAttribute) in
                                             
-                                            /*roomModel.attributes = roomAttribute
+                                            roomModel.attributes = roomAttribute
                                             if(roomModel.attributes.users.count > 0){
                                                 roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                                            }*/
+                                            }
                                             
                                             ApplicationManager.shareCoreDataInstance.saveContext()
                                             

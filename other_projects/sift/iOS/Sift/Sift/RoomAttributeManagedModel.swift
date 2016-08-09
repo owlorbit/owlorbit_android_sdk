@@ -26,7 +26,7 @@ class RoomAttributeManagedModel: NSManagedObject {
         
         let entity = NSEntityDescription.entityForName("RoomAttributeManagedModel", inManagedObjectContext: ApplicationManager.shareCoreDataInstance.managedObjectContext)
         var obj = RoomAttributeManagedModel.getById(roomId)
-        
+
         obj.roomId = roomId
 
         dispatch_async(dispatch_get_main_queue()) {
@@ -47,8 +47,8 @@ class RoomAttributeManagedModel: NSManagedObject {
         var objIndex:Int = 0
 
         for (key,subJson):(String, SwiftyJSON.JSON) in json["room_attributes"] {
-            
-            
+
+
             GenericUserManagedModel.initWithJson(subJson, resultGenericUser:
                 {
                     (genUser) in

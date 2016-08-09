@@ -239,23 +239,16 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     
     func initRooms(){
 
-        //self.data = []
-            
         RoomApiHelper.getRooms({
             (JSON) in
-            
-            var roomModel:RoomManagedModel;
-            
+
             LeaveRoomHelper.removeRoom(JSON["rooms"])
+
             for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
                 var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
-                
-                
-                
-                print(">>>   \(roomModel.roomId)")
-                /*
                 RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
                     (JSON2) in
+
                     RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
                         (roomAttribute) in
                     
@@ -269,12 +262,10 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                     })
 
                     
-                });*/
+                });
             }
             
             self.tableView.dg_stopLoading()
-            
-            
         },error: {
                 (message, errorCode) in
             
@@ -398,16 +389,17 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         var roomManaged:RoomManagedModel = RoomManagedModel.getByRoomIdAndUserId(roomData.roomId, userId: user.userId)!
 
 
-        /*if(roomManaged.accepted){
+        if(roomManaged.accepted){
             for roomUser: RoomManagedModel in roomData.roomManagedModels {
                 
                 if(roomUser.userId != user.userId){
                     let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
                     
-                    //vc.chatRoomTitle = roomUser.attributes.name
+                    vc.chatRoomTitle = roomUser.attributes.name
                     vc.roomId = roomUser.roomId
                     vc.delegate = self;
                     vc.hidesBottomBarWhenPushed = true
+                    print("okokawef: \(roomUser.attributes.name)")
                     self.boldRoomId = "";
                     self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                     navigationController?.pushViewController(vc, animated: true )
@@ -415,7 +407,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                 }
             }
 
-        }else{*/
+        }else{
             
             var refreshAlert = UIAlertController(title: "Accept Chat", message: "Do you want to join the room?", preferredStyle: UIAlertControllerStyle.Alert)
             refreshAlert.addAction(UIAlertAction(title: "Confirm", style: .Default, handler: { (action: UIAlertAction!) in
@@ -425,17 +417,18 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                     (JSON) in
                     
                     
-                        //roomManaged.accepted = true
+                        roomManaged.accepted = true
                         ApplicationManager.shareCoreDataInstance.saveContext()
                         for roomUser: RoomManagedModel in roomData.roomManagedModels {
                             
                             if(roomUser.userId != user.userId){
                                 let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
                                 
-                                //vc.chatRoomTitle = roomUser.attributes.name
+                                vc.chatRoomTitle = roomUser.attributes.name
                                 vc.roomId = roomUser.roomId
                                 vc.delegate = self;
                                 vc.hidesBottomBarWhenPushed = true
+                                print("okokawef: \(roomUser.attributes.name)")
                                 self.boldRoomId = "";
                                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                                 self.navigationController?.pushViewController(vc, animated: true )
@@ -467,7 +460,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             }))
             presentViewController(refreshAlert, animated: true, completion: nil)
             
-        //}
+        }
         
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
