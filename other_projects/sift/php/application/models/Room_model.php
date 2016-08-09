@@ -31,13 +31,15 @@ class Room_model extends CI_Model {
     function load_rooms($userId){
         $ITEMS_PER_PAGE = 25;
 
-        $query = "select r.id as room_id, r.name as room_name, last_message_timestamp, r.created, last_message, last_display_name, avatar_original from rooms r
+        $query = "select r.id as room_id, r.name as room_name, m.user_id, last_message_timestamp, r.created, last_message, last_display_name, avatar_original,
+        IF(last_message_timestamp IS NULL, r.created, last_message_timestamp) as active_timestamp
+         from rooms r
             left join messages m
                 on m.id = r.last_message_id
             left join users u
                 on u.id = m.user_id
             where r.id in (select room_id from room_users ru2 where user_id = ? and ru2.active = 1) and r.active = 1
-        order by last_message_timestamp desc;";
+        order by active_timestamp desc;";
 
         $result = $this->db->query($query, array($userId));
 

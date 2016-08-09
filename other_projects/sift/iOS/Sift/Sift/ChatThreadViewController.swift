@@ -495,9 +495,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         if(roomData == nil){
             return;
         }
-
-        print("counter: \(roomData!.attributes.users.count)")
         
+        /*
         for obj in roomData!.attributes.users {
             var userData:GenericUserManagedModel = obj as! GenericUserManagedModel
 
@@ -562,6 +561,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
                 
             }
         }
+        
+        */
     }
 
     func initLocations(){
@@ -595,10 +596,11 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             RoomAttributeManagedModel.initWithJson(JSON2, roomId: self.roomId, roomAttributeModel:{
                 (roomAttribute) in
                 
+                /*
                 roomModel.attributes = roomAttribute
                 if(roomModel.attributes.users.count > 0){
                     roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                }
+                }*/
                 
                 ApplicationManager.shareCoreDataInstance.saveContext()
                 print("hey oh")

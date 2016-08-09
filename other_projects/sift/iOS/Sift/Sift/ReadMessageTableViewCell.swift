@@ -41,9 +41,14 @@ class ReadMessageTableViewCell: UITableViewCell {
             
             self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(dateString)
         }else{
-            self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(roomData.timestamp)
+            
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            var dateString = dateFormatter.stringFromDate(roomData.created!)
+            self.lblDate.text = NSDate.mysqlDatetimeFormattedAsTimeAgo(dateString)
         }
-        self.lblRoomTitle.text = roomData.attributes.name.capitalizedString
+        
+        self.lblRoomTitle.text = roomData.roomName
         //self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
         
         self.imgAvatar.layer.masksToBounds = true

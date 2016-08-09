@@ -67,7 +67,7 @@ class GroupSettingsStep1ViewController: UIViewController, UIGestureRecognizerDel
                     if(!self.LOCK_PUSH){
                         self.LOCK_PUSH = true;
                         let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
-                        vc.chatRoomTitle = roomData.attributes.name
+                        //vc.chatRoomTitle = roomData.attributes.name
                         vc.roomId = roomData.roomId
                         vc.hidesBottomBarWhenPushed = true
                         self.navigationController?.pushViewController(vc, animated: true )
@@ -87,10 +87,12 @@ class GroupSettingsStep1ViewController: UIViewController, UIGestureRecognizerDel
                                 RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
                                     (roomAttribute) in
                                     
+                                    
+                                    /*
                                     roomModel.attributes = roomAttribute
                                     if(roomModel.attributes.users.count > 0){
                                         roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                                    }
+                                    }*/
                                     
                                     ApplicationManager.shareCoreDataInstance.saveContext()
                                     roomData = RoomManagedModel.getById(roomModel.roomId)
@@ -99,7 +101,7 @@ class GroupSettingsStep1ViewController: UIViewController, UIGestureRecognizerDel
                                         FullScreenLoaderHelper.removeLoader();
                                         self.LOCK_PUSH = true;
                                         let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
-                                        vc.chatRoomTitle = roomData!.attributes.name
+                                        //vc.chatRoomTitle = roomData!.attributes.name
                                         vc.roomId = roomData!.roomId
                                         vc.hidesBottomBarWhenPushed = true
                                         self.navigationController?.pushViewController(vc, animated: true )

@@ -84,7 +84,7 @@ class UserApiHelper{
             for (key, value) in data {
                 multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
             }
-            
+
             }, encodingCompletion: {
                 encodingResult in
 
