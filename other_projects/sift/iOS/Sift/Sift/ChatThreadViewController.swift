@@ -20,8 +20,9 @@ import BusyNavigationBar
 
 import LNRSimpleNotifications
 import AudioToolbox
+import SidebarOverlay
 
-class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate, UITextViewDelegate, AddMeetupDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate {
+class ChatThreadViewController: SOContainerViewController, CLLocationManagerDelegate, ChatSubmitDelegate, MKMapViewDelegate, UITextViewDelegate, AddMeetupDelegate, UITextFieldDelegate, UsersInRoomDelegate {
     @IBOutlet weak var searchContainerConstraintTop: NSLayoutConstraint!
 
     @IBOutlet weak var txtSearch: UITextField!
@@ -82,20 +83,30 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.menuSide = .Right
+        self.sideViewController = ListOfUsersViewController(nibName: "ListOfUsersViewController", bundle: nil)
+        
+        var listOfUsersVC:ListOfUsersViewController  = (self.sideViewController as! ListOfUsersViewController)
+        listOfUsersVC.roomId = self.roomId
+        listOfUsersVC.delegate = self
+        listOfUsersVC.initUsers()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
+        //UIViewController(nibName: "AddMeetupView", bundle: nil)
+        
         self.title = self.chatRoomTitle
         self.viewSearchContainer.layer.cornerRadius = 4
         self.viewSearchContainer.layer.masksToBounds = true
 
         //txtChatView.layer.cornerRadius = 4
         //txtChatView.layer.masksToBounds = true
-        
-        
+
         self.txtSearch.borderStyle = UITextBorderStyle.None
         self.txtSearch.attributedPlaceholder = NSAttributedString(string:self.txtSearch.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         self.txtSearch.delegate = self;
         self.txtSearch.tintColor = UIColor.whiteColor()
         
-        var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "btnTextClick:")
+        var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Users", style: UIBarButtonItemStyle.Plain, target: self, action: "btnUserClick:")
         self.navigationItem.rightBarButtonItem = switchContextBtn
         //Do any additional setup after loading the view.
    
@@ -126,11 +137,11 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.profileImage = self.profileImage.roundImage()
         }
 
-        retrieveUsers()
+        //retrieveUsers()
         initAddMeetup()
         addMapViewOnClick()
-        loadProfileImg()
-        initLocations()
+        //loadProfileImg()
+        //initLocations()
         initLoadingBar()
         
         initMapNotifications()
@@ -138,6 +149,17 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
 
         zoomToCurrentLocation()
         enableMapViewTracking()
+    }
+    
+    func btnUserClick(sender: AnyObject){
+        if let container = self.so_containerViewController {
+            
+            if(container.isSideViewControllerPresented){
+                container.isSideViewControllerPresented = false
+            }else{
+                container.isSideViewControllerPresented = true
+            }
+        }
     }
     
     func addMapViewOnClick(){
@@ -172,6 +194,10 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.btnInstructions.alpha = 1;
             self.view.layoutIfNeeded()
         }
+    }
+    
+    func clickUser(userId:String){
+        AlertHelper.createPopupMessage("ahh yeah no contexts", title: "god dammit.")
     }
     
     @IBAction func txtSearchOnChange(sender: AnyObject) {
@@ -585,8 +611,7 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
         
         );
     }
-    
-    
+
     func retrieveUsers(){
         var roomModel:RoomManagedModel! = RoomManagedModel.getById(roomId);
         RoomApiHelper.getRoomAttribute(roomId, resultJSON:{
@@ -908,24 +933,8 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
             self.view.layoutIfNeeded()
         })
     }
-    
-    func btnTextClick(sender: AnyObject){
-        
-        
-        var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
-        viewController.roomId = roomId;
-        self.navigationController!.pushViewController(viewController, animated: true)
-        
-        
-        /*
-        var viewController:ChatViewController = ChatViewController();
-        viewController.roomId = self.roomId;
-        self.navigationController!.pushViewController(viewController, animated: true)*/
-    }
 
     func btnMapClick(sender: AnyObject){
-        var switchContextBtn : UIBarButtonItem = UIBarButtonItem(title: "Text", style: UIBarButtonItemStyle.Plain, target: self, action: "btnTextClick:")
-        self.navigationItem.rightBarButtonItem = switchContextBtn
         self.mapView.hidden = false;
     }
     
@@ -1141,6 +1150,13 @@ class ChatThreadViewController: UIViewController, CLLocationManagerDelegate, Cha
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
         
         prevSelected = view
+        
+        mapView.setCenterCoordinate(view.annotation!.coordinate, animated: true)
+        
+        
+        //[mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
+
+        
         //self.mapView.deselectAnnotation(view.annotation, animated: false)
         
         /*

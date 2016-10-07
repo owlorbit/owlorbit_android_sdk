@@ -66,7 +66,6 @@ class Notification extends CI_Controller {
 	//then submit to Parse the message.
 	//message should contain..
 	//roomname, sender name, message
-
 	public function process_notifications(){
 		
 		if($this->isLocalServer()){
@@ -83,7 +82,7 @@ class Notification extends CI_Controller {
 			ParseClient::setServerURL('https://parseapi.back4app.com');
 
 			$notificationQueueWithRoom = $this->notification_queue_model->get_not_sent();
-			$notificationQueueWithNoRoom = $this->notification_queue_model->get_not_sent_no_room();			
+			$notificationQueueWithNoRoom = $this->notification_queue_model->get_not_sent_no_room();
 
 			foreach ($notificationQueueWithRoom as $notification){
 
@@ -136,8 +135,6 @@ class Notification extends CI_Controller {
 				$this->notification_queue_model->update_sent_status($notification->id);			
 			}
 
-
-
 			$response = array(
 			    'message' => 'Message added!'
 			);
@@ -145,6 +142,212 @@ class Notification extends CI_Controller {
 		}
 	}
 
+	public function test_curl(){
+		session_write_close();
+
+		$ch = curl_init();
+
+
+        $data = ['app_id' => "6593a224-cbe7-4bf1-988d-430cec831bbf",
+                 'contents' => ["en"=> "New incident: awefaewf"],
+                 'headings' => ["en"=> "test"],
+                 'isSafari' => true,
+                 'isAnyWeb' => true,
+                 'included_segments' => ['Key Decision Maker'],
+                 'data' => ['incidentId' => "...."
+                            ]];
+
+        $fields = json_encode($data);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json',
+        'Authorization: Basic MDg5NTk1NGMtMjAzZS00NjFjLTg2Y2ItNzFlNTM0ZTU5Yzcx']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        $response = curl_exec($ch);
+        curl_close($ch);		
+
+
+		echo "heyzz";
+	}
+
+	public function process_onesignal_notifications(){
+		$this->load->model('notification_queue_model');
+
+		if($this->isLocalServer()){
+			session_write_close();
+			try{
+				$ONESIGNAL_REST_KEY = "MDg5NTk1NGMtMjAzZS00NjFjLTg2Y2ItNzFlNTM0ZTU5Yzcx";
+				$ONESIGNAL_APP_KEY = "6593a224-cbe7-4bf1-988d-430cec831bbf";
+
+				$notificationQueueWithRoom = $this->notification_queue_model->get_not_sent();
+				$notificationQueueWithNoRoom = $this->notification_queue_model->get_not_sent_no_room();
+
+
+				foreach ($notificationQueueWithRoom as $notification){
+
+					$message = "";
+					$notificationMsg = "";
+					if($notification->message_type == "text"){
+						$notificationMsg = ucfirst ($notification->first_name)." ".ucfirst($notification->last_name[0]).". says:";
+						$notificationMsg .= "\n";
+						$message .= $notification->message;
+					}else if($notification->message_type == "meetup"){
+						$notificationMsg = ucfirst ($notification->first_name)." ".ucfirst($notification->last_name[0])." has created a meetup point.";
+						$notification->message = 'Meetup up point created.';
+					}
+
+					$headerMsg = ucfirst ($notification->first_name)." ".ucfirst($notification->last_name[0]);
+					
+					$data = array("alert" => $message, 
+						"message_id" => $notification->message_id,
+						"room_id" => $notification->room_id,
+						"created" => $notification->message_created,
+						"user_id" => $notification->user_id,
+						"message_type" => $notification->message_type,
+						"first_name" => $notification->first_name,
+						"last_name" => $notification->last_name,
+						"app_id" => $ONESIGNAL_APP_KEY
+						);
+
+					$content = array(
+					  "en" => $notification->message
+					  );
+
+					$fields = array(
+					  'app_id' => $ONESIGNAL_APP_KEY,					  
+					  'data' => $data,
+					  "include_player_ids" => array($notification->device_id),
+					  "ios_badgeType" => "SetTo",
+                	  "ios_badgeCount" => "1",                	  
+                	  "small_icon" => "onesignal_receive_icon",
+                	  "large_icon" => "owlorbit_icon",
+                	  "contents" => array("en" => $notification->message),
+                	  "headings" => array("en" => $headerMsg),
+					  'contents' => $content
+					);
+
+					$fields = json_encode($fields);
+				    $ch = curl_init();
+				    curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+				    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',
+				                           'Authorization: Basic '.$ONESIGNAL_REST_KEY));
+				    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+				    curl_setopt($ch, CURLOPT_HEADER, FALSE);
+				    curl_setopt($ch, CURLOPT_POST, TRUE);
+				    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+				    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    
+				  	if(curl_exec($ch)){
+				  		curl_close($ch);				  		
+				  		$this->notification_queue_model->update_sent_status($notification->id);
+				    	continue; // ?? - go to the next loop
+				  	}
+				}
+
+				foreach ($notificationQueueWithNoRoom as $notification){
+
+					$message = "";
+					$notificationMsg = "";
+					if($notification->message_type == "request_friend"){
+						$notificationMsg = "Friend Request!\n";						
+						$message .= $notification->message;
+					}else if($notification->message_type == "accept_friend"){
+						//accept_friend
+						$notificationMsg = "Friend Accepted!\n";						
+						$message .= $notification->message;
+					}
+
+					$headerMsg = ucfirst ($notification->first_name)." ".ucfirst($notification->last_name[0]);
+
+					$data = array("alert" => $message, 
+						"message_id" => $notification->message_id,						
+						"created" => $notification->message_created,
+						"user_id" => $notification->user_id,
+						"message_type" => $notification->message_type,
+						"first_name" => $notification->first_name,
+						"last_name" => $notification->last_name,
+						"app_id" => $ONESIGNAL_APP_KEY
+						);
+
+					$content = array(
+					  "en" => $notificationMsg.$message
+					  );
+
+					$fields = array(
+					  'app_id' => $ONESIGNAL_APP_KEY,					  
+					  'data' => $data,
+					  "include_player_ids" => array($notification->device_id),
+					  "ios_badgeType" => "SetTo",
+                	  "ios_badgeCount" => "1",                	  
+                	  "small_icon" => "onesignal_receive_icon",
+                	  "large_icon" => "owlorbit_icon",
+                	  "contents" => array("en" => $headerMsg),
+                	  "headings" => array("en" => $notificationMsg),
+					  'contents' => $content
+					);
+
+					$fields = json_encode($fields);
+				    $ch = curl_init();
+				    curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+				    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',
+				                           'Authorization: Basic '.$ONESIGNAL_REST_KEY));
+				    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+				    curl_setopt($ch, CURLOPT_HEADER, FALSE);
+				    curl_setopt($ch, CURLOPT_POST, TRUE);
+				    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+				    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    
+				  	if(curl_exec($ch)){
+				  		curl_close($ch);				  		
+				  		$this->notification_queue_model->update_sent_status($notification->id);
+				    	continue; // ?? - go to the next loop
+				  	}
+				}
+
+			}catch(Exception $ex){
+
+			}
+		}
+	}
+
+	public function get_users_notifications(){
+		$this->load->model('notification_queue_model');
+		$response = array();
+		try{
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+		
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$userId = $this->user_session_model->getUserId($sessionToken);
+			if($userId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}
+			
+		    $notifications = $this->notification_queue_model->get_users_notifications($userId);
+			$response = array(
+		    	'message' => 'success',		    	
+		    	'notification' => $notifications
+		    );
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+		echo json_encode_helper($response);	
+	}
 
 	public function enable(){
 		$response = array();
@@ -209,8 +412,6 @@ class Notification extends CI_Controller {
 			}
 
 			$this->notification_model->enable_device($deviceId, $userId);
-
-
 
 			$response = array(
 		    	'message' => 'You have successfull unregistered your device.'

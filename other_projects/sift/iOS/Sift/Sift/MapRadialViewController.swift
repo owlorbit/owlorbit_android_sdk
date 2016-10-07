@@ -9,13 +9,13 @@
 import Foundation
 import QuartzCore
 import SwiftyJSON
-
+import SidebarOverlay
 
 protocol MapRadialViewControllerDelegate {
     func didExitRoom(controller: MapRadialViewController)
 }
 
-class MapRadialViewController: ChatThreadViewController{
+class MapRadialViewController: ChatThreadViewController {
     
 
     var delegate: MapRadialViewControllerDelegate! = nil
@@ -375,6 +375,16 @@ class MapRadialViewController: ChatThreadViewController{
         tempVisibleLockTmr.invalidate()
     }
     
+    @IBAction func btnLocationBoundsClick(sender: AnyObject) {
+        mapView.showAnnotations(mapView.annotations, animated: true)
+    }
+    
+    @IBAction func btnChatClick(sender: AnyObject) {
+        var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
+        viewController.roomId = roomId;
+        self.navigationController!.pushViewController(viewController, animated: true)
+        
+    }
     
     @IBAction override func btnVisibilityClick(sender: AnyObject){
         super.btnVisibilityClick(sender)
@@ -443,10 +453,6 @@ class MapRadialViewController: ChatThreadViewController{
 
             isHiddenInRoom = true
         }
-        
-        //self.isHidden
-//viewGrey
-        
     }
 
     override func viewDidDisappear(animated: Bool) {

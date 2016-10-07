@@ -113,7 +113,8 @@ class Friend extends CI_Controller {
 			$messageData = array(
 				'message' => $msg,				
 				'user_id' => $userId,
-				'message_type' => $type
+				'message_type' => $type,
+				'other_user_id' => $friendUserId
 			);
 
 			$messageId = $this->message_model->insert($messageData);			
@@ -154,12 +155,15 @@ class Friend extends CI_Controller {
 			$this->friend_model->accept($userId, $friendUserId);
 
 			$friendUser = $this->user_model->get_by_id($friendUserId);
+			$user = $this->user_model->get_by_id($userId);
+
 			$type = "accept_friend";
 			$msg = $friendUser->first_name." is now friends with you.";
 			$messageData = array(
-				'message' => $msg,				
+				'message' => $msg,
 				'user_id' => $userId,
-				'message_type' => $type
+				'message_type' => $type,
+				'other_user_id' => $friendUserId
 			);
 			$messageId = $this->message_model->insert($messageData);
 			$this->notification_queue_model->add_no_room($messageId, $friendUserId, $userId, $type);
@@ -293,12 +297,14 @@ class Friend extends CI_Controller {
 			$message = $this->friend_model->insert($data);
 
 			$friendUser = $this->user_model->get_by_id($friendUserId);
+			$user = $this->user_model->get_by_id($userId);
 			$type = "request_friend";
-			$msg = $friendUser->first_name." requested being friends with you.";
+			$msg = $user->first_name." requested being friends with you.";
 			$messageData = array(
 				'message' => $msg,				
-				'user_id' => $userId,
-				'message_type' => $type
+				'user_id' => $friendUserId,
+				'message_type' => $type,
+				'other_user_id' => $userId
 			);
 			$messageId = $this->message_model->insert($messageData);
 			$this->notification_queue_model->add_no_room($messageId, $userId, $friendUserId, $type);

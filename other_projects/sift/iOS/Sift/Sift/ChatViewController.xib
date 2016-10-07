@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController" customModule="OwlOrbit" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController" customModule="OwlOrbit_Docker" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="A6S-6G-iOA" id="3HP-kY-vuI"/>
                 <outlet property="txtBottomConstraint" destination="ISO-gd-n3w" id="yMJ-Ka-AMd"/>

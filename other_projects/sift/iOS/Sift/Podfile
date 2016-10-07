@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-target 'OwlOrbit' do
+target 'OwlOrbit Prod' do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
     pod 'Alamofire', '~> 3.1'
     pod 'BusyNavigationBar'
@@ -17,8 +17,8 @@ target 'OwlOrbit' do
     pod 'CKCircleMenuView'
     pod 'LNRSimpleNotifications', '~> 0.3.0'
     pod "DGElasticPullToRefresh"
+    pod 'SidebarOverlay', '~> 3.1.0'
 end
-
 
 pod 'SDWebImage'
 pod 'UITextView+Placeholder'

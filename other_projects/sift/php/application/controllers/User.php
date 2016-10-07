@@ -103,6 +103,90 @@ class User extends CI_Controller {
 		}
 		$this->output->set_output(json_encode_helper($response));
 	}	
+	
+	public function global_search_not_in_room($value, $userId, $pageIndex=1){
+		$response = array();
+		try{
+			$pageIndex = intval($this->security->xss_clean(strip_tags($pageIndex)));
+			$userId = intval($this->security->xss_clean(strip_tags($userId)));
+			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
+
+			if($pageIndex < 1){
+				$pageIndex = 1;
+			}
+			$value = $this->security->xss_clean(strip_tags(urldecode($value)));
+			$nonFriends = $this->user_model->find_non_friends($value, $userId, $pageIndex);
+			$friends = $this->user_model->find_friends_not_in_room($value, $userId, $pageIndex, $roomId);
+
+			//this includes verified users/celebrities
+			$brand = '';
+			$verifiedUsers = '';
+
+			$response = array('message'=>'Attached is your user list',
+				'non_friends'=> $nonFriends,
+				'friends' => $friends);
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+		$this->output->set_output(json_encode_helper($response));
+	}	
+
+
+	public function get_all_friends($userId, $pageIndex=1){
+		$response = array();
+		try{
+			$pageIndex = intval($this->security->xss_clean(strip_tags($pageIndex)));
+			$userId = intval($this->security->xss_clean(strip_tags($userId)));
+
+			if($pageIndex < 1){
+				$pageIndex = 1;
+			}
+			
+			$friends = $this->user_model->find_friends("", $userId, $pageIndex);
+
+			//this includes verified users/celebrities
+			$brand = '';
+			$verifiedUsers = '';
+
+			$response = array('message'=>'Attached is your user list',
+				'non_friends'=> null,
+				'friends' => $friends);
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+		$this->output->set_output(json_encode_helper($response));
+	}	
+
+
+	public function get_all_friends_not_in_room($userId, $pageIndex=1){
+		$response = array();
+		try{
+			$pageIndex = intval($this->security->xss_clean(strip_tags($pageIndex)));
+			$userId = intval($this->security->xss_clean(strip_tags($userId)));
+			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
+
+			if($pageIndex < 1){
+				$pageIndex = 1;
+			}
+			
+			$friends = $this->user_model->find_friends_not_in_room("", $userId, $pageIndex, $roomId);
+
+			//this includes verified users/celebrities
+			$brand = '';
+			$verifiedUsers = '';
+
+			$response = array('message'=>'Attached is your user list',
+				'non_friends'=> null,
+				'friends' => $friends);
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+		$this->output->set_output(json_encode_helper($response));
+	}		
+
 
 	public function find_non_friends($value, $userId, $pageIndex=1){
 		$response = array();
@@ -142,7 +226,7 @@ class User extends CI_Controller {
 				'successful'=> false);
 		}
 		$this->output->set_output(json_encode_helper($response));
-	}		
+	}
 
 	public function upload_profile_img(){
 		$response = array();
@@ -190,11 +274,17 @@ class User extends CI_Controller {
 		$response = array();
 		try{
 
+			$betaCode = $this->security->xss_clean(strip_tags($this->input->post('beta_code')));
+			if($betaCode == "" && $this->user_model->isPromoRequired()){
+				throw new Exception("An invite is required!  Please use a working beta code.");
+			}
+
 		    if($this->add_validate()){
-		    	$this->user_model->insert_entry();
+		    	$this->user_model->insert_entry($betaCode);
 		    }
 
-			$email = $this->security->xss_clean(strip_tags($this->input->post('email')));		    
+			$email = $this->security->xss_clean(strip_tags($this->input->post('email')));		    		
+
 		    $timestamp = time();
 			$user = $this->user_model->get(array('email' => $email));
 			if($user->num_rows() > 0){

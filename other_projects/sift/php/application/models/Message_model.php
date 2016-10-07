@@ -32,6 +32,24 @@ class Message_model extends CI_Model {
         return array();
     }
 
+    function get_all_by_room($roomId){
+        $ITEMS_PER_PAGE = 25;
+
+        $query = "select * from (select m.id, u.first_name, u.last_name, u.id as user_id, m.created, message, u.avatar_original, m.room_id from messages m
+            inner join users u
+                on u.id = m.user_id
+            where m.room_id = ? and m.active = 1 and message_type = 'text'     
+                order by m.created desc) as tt
+            order by id asc;"; 
+
+        $result = $this->db->query($query, array($roomId));
+
+        if($result->num_rows() > 0){            
+            return $result->result();
+        }
+        return array();
+    }    
+
     function get_by_id($id){
         $query = "select * from messages where id = ?";
         $result = $this->db->query($query, array($id));
@@ -128,8 +146,15 @@ class Message_model extends CI_Model {
         return array();
     } 
 
+    function clear_accept($userId, $roomId){
+        $query = "update messages set active = 0 where other_user_id = ? and room_id = ?";
+        $this->db->query($query, array($userId, $roomId));
+    }
+
     function initiate_room($creatorUserId, $userIds){
 
+        $this->load->model('notification_queue_model');
+        $this->load->model('user_model');
         //TODO make fucking sure userIds only are numbers
         $userCount = count($userIds); //$userIds        
         $userIdString = "";
@@ -191,23 +216,87 @@ class Message_model extends CI_Model {
         $newRoomId = $this->db->insert_id();
         error_log('new room id: '. $newRoomId);
         
-        foreach ( $userIds as $userId){ 
+        $user = $this->user_model->get_by_id($creatorUserId);
+        $type = 'new_room';
+        $msg = $user->first_name.' has created a room.  Do you want to join?';
+
+
+        foreach ( $userIds as $userId){
             error_log('user id>>: '.$userId);
 
             if($creatorUserId == $userId){
                 $query = "insert into room_users (user_id, room_id, accepted) values (?, ?, 1)";
             }else{
+
+                $data = array(
+                    'message' => $msg,
+                    'room_id' => $newRoomId,
+                    'user_id' => $creatorUserId,
+                    'message_type' => $type,
+                    'other_user_id' => $userId
+                );
+                $messageId = $this->insert($data);
+                $this->notification_queue_model->add_no_room($messageId, $userId, $creatorUserId, $type);
                 $query = "insert into room_users (user_id, room_id) values (?, ?)";
             }
             $result = $this->db->query($query, array($userId, $newRoomId));            
         }
 
+        
         return $newRoomId;
     }
 
 
+    function invite_friends($creatorUserId, $userIds, $roomId){
+        $this->load->model('notification_queue_model');
+        $this->load->model('user_model');
+
+        //TODO make fucking sure userIds only are numbers
+        $userCount = count($userIds); //$userIds
+        $userIdString = "";
+        foreach ( $userIds as $userId){ 
+            $userIdString .= $userId.',';
+        }
+        $userIdString = rtrim($userIdString, ",");
+
+        $user = $this->user_model->get_by_id($creatorUserId);
+        $type = 'new_room';
+        $msg = $user->first_name.' has invited you to join a room.';
+
+        foreach ( $userIds as $userId){ 
+            if($userId != $creatorUserId){
+
+                $query = "select * from room_users where room_id = ? and user_id = ?";
+                $result = $this->db->query($query, array($roomId, $userId));
+
+                if($result->num_rows() > 0){
+                    //update room_users
+                    $queryUpdate = "delete from room_users where room_id = ? and user_id = ?";
+                    $this->db->query($queryUpdate, array($roomId, $userId));
+                }
+
+                $data = array(
+                    'message' => $msg,
+                    'room_id' => $roomId,
+                    'user_id' => $creatorUserId,
+                    'message_type' => $type,
+                    'other_user_id' => $userId
+                );
+
+                $messageId = $this->insert($data);                
+                $this->notification_queue_model->add_no_room($messageId, $userId, $creatorUserId, $type);
+                $query = "insert into room_users (user_id, room_id) values (?, ?)";
+                $result = $this->db->query($query, array($userId, $roomId));
+            }
+        }
+
+        return true;
+    }
+
     function initiate_group_room($creatorUserId, $userIds, $roomName, $isFriendsOnly, $isPublic){
 
+        $this->load->model('notification_queue_model');
+        $this->load->model('user_model');
         //TODO make fucking sure userIds only are numbers
         $userCount = count($userIds); //$userIds        
         $userIdString = "";
@@ -255,21 +344,37 @@ class Message_model extends CI_Model {
                 }
             }
 
-            if($containsAllUsers){                
+            if($containsAllUsers){
                 return $storedRoomId;
             }
         }
 
         error_log("group group group....!!!!!");
-
         $query = "insert into rooms (user_id, name, friends_only, is_public) values (?, ?, ?, ?)";
         $result = $this->db->query($query, array($creatorUserId, $roomName, $isFriendsOnly, $isPublic));
         $newRoomId = $this->db->insert_id();
+
+        $user = $this->user_model->get_by_id($creatorUserId);
+        $type = 'new_room';
+        $msg = $user->first_name.' has created a room.  Do you want to join?';
         
         foreach ( $userIds as $userId){ 
             error_log('user id>>: '.$userId);
 
-            $query = "insert into room_users (user_id, room_id) values (?, ?)";
+            if($userId == $creatorUserId){
+                $query = "insert into room_users (user_id, room_id, accepted) values (?, ?, 1)";
+            }else{
+                $data = array(
+                    'message' => $msg,
+                    'room_id' => $newRoomId,
+                    'user_id' => $creatorUserId,
+                    'message_type' => $type,
+                    'other_user_id' => $userId
+                );
+                $messageId = $this->insert($data);                
+                $this->notification_queue_model->add_no_room($messageId, $userId, $creatorUserId, $type);
+                $query = "insert into room_users (user_id, room_id) values (?, ?)";
+            }            
             $result = $this->db->query($query, array($userId, $newRoomId));            
         }
 

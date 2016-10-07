@@ -47,7 +47,6 @@ class Message extends CI_Controller {
 				$pageIndex = 1;
 			}
 
-			
 			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
@@ -69,6 +68,42 @@ class Message extends CI_Controller {
 			}			
 
 		    $messages = $this->message_model->get_by_room($roomId, $pageIndex);
+			$response = array(
+		    	'message' => 'room initiated added!',
+		    	'messages' => $messages
+		    );
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'successful'=> false);
+		}
+		echo json_encode_helper($response);
+	}
+
+	public function get_all_by_room(){
+		$response = array();
+		try{			
+
+			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+		
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$userId = $this->user_session_model->getUserId($sessionToken);
+			if($userId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}			
+
+		    $messages = $this->message_model->get_all_by_room($roomId);
 			$response = array(
 		    	'message' => 'room initiated added!',
 		    	'messages' => $messages
@@ -178,6 +213,53 @@ class Message extends CI_Controller {
 		echo json_encode_helper($response);
 	}	
 
+
+	public function invite_friends(){
+		$typeOfError = 0;
+		$response = array();
+		try{
+			
+			if(!isset($_POST['userIds'])){
+				throw new Exception("Users were not sent!");
+			}
+
+			$userIds = $this->security->xss_clean($_POST['userIds']);
+			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
+			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
+			$sessionHash = $this->security->xss_clean(strip_tags($this->input->post('sessionHash')));
+			$sessionToken = $this->verify_session->isValidSession($encryptedSession, $publicKey, $sessionHash);
+			$name = $this->security->xss_clean(strip_tags($this->input->post('name')));
+			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
+			
+
+			if($sessionToken == -1){
+				$typeOfError = -1;
+				throw new Exception("Public key is invalid.");
+			}else if ($sessionToken == -2){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");
+			}
+
+			$userId = $this->user_session_model->getUserId($sessionToken);
+			if($userId == -1){
+				$typeOfError = -2;
+				throw new Exception("Session is invalid.");	
+			}
+
+			$this->message_model->invite_friends($userId, $userIds, $roomId);			
+			$response = array(
+		    	'message' => 'friend[s] added!',
+		    	'room_id' => $roomId
+		    );
+		}catch(Exception $e){
+			$response = array('message'=>$e->getMessage(),
+				'error_code' => $typeOfError,
+				'successful'=> false);
+		}
+		
+		echo json_encode_helper($response);
+	}
+
 	public function init(){
 		$typeOfError = 0;
 		$response = array();
@@ -209,12 +291,9 @@ class Message extends CI_Controller {
 				throw new Exception("Session is invalid.");	
 			}
 			
-		    if($name == ""){
-
-		    	error_log("often gone");
+		    if($name == ""){		    		
 				$roomId = $this->message_model->initiate_room($userId, $userIds);
-			}else{
-				error_log("shiiiiet");
+			}else{				
 				$isFriendsOnly = $this->security->xss_clean(strip_tags($this->input->post('isFriendsOnly')));
 				$isPublic = $this->security->xss_clean(strip_tags($this->input->post('isPublic')));
 				$roomId = $this->message_model->initiate_group_room($userId, $userIds, $name, $isFriendsOnly, $isPublic);				

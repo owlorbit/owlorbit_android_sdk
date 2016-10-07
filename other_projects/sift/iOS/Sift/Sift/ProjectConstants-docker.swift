@@ -9,7 +9,7 @@
 struct ProjectConstants {
     
     struct ApiBaseUrl {
-        static let value = "http://192.168.1.101"        
+        static let value = "http://192.168.99.100:8080"        
     }
     
     struct CoreData{

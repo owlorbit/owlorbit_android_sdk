@@ -16,13 +16,24 @@ class Location_model extends CI_Model {
 
     function get_all_locations_in_room($userId, $roomId){
 
-        /*$query = "select * from locations where id in (select * from locations where user_id in (select user_id from room_users where user_id != ?
-                    and room_id = ?
-                    and active = 1 and is_hidden = 0) group by user_id);";*/
-
+        /*
         $query = "select * from locations where user_id in (select user_id from room_users where user_id != ?
                     and room_id = ?
-                    and active = 1 and is_hidden = 0 and accepted = 1) group by user_id;";
+                    and active = 1 and is_hidden = 0 and accepted = 1) group by user_id;";*/
+
+
+        $query = "select 
+                user_id, longitude, latitude, l.created, device_id,
+                email, phone_number, first_name, last_name,
+                avatar_original
+                from locations l
+                    inner join users u
+                        on u.id = user_id
+                where user_id in 
+                (select user_id from room_users where user_id != ?
+                    and room_id = ?
+                    and active = 1 and is_hidden = 0 and accepted = 1)     
+                    group by user_id;";
 
         $result = $this->db->query($query, array($userId, $roomId));
         if($result->num_rows() > 0){

@@ -21,6 +21,8 @@ class Info extends CI_Controller {
 	public function __construct(){
 		parent::__construct();		
 		$this->load->helper('json_encode_helper');
+
+		$this->load->model('user_model');
 	}
 
 	public function server(){
@@ -31,6 +33,7 @@ class Info extends CI_Controller {
 		    	'description' => 'Real-Time Map Finding App',
 		    	'ios_version_threshold' => '1.0.0',
 		    	'android_version_threshold' => '1.0.0',
+		    	'enable_only_beta_invite' => $this->user_model->isPromoRequired(),
 		    	'api_version' => '0.5'
 		    );			
 		}catch(Exception $e){

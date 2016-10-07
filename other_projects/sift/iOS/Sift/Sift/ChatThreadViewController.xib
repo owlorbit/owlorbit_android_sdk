@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapRadialViewController" customModule="OwlOrbit" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapRadialViewController" customModule="OwlOrbit_Docker" customModuleProvider="target">
             <connections>
                 <outlet property="bottomConstraintTextField" destination="LBa-AK-v7s" id="EjA-I2-MNR"/>
                 <outlet property="bottomTxtConstraint" destination="LBa-AK-v7s" id="nkr-Mu-W9o"/>
@@ -279,6 +279,64 @@
                         <action selector="btnVisibilityClick:" destination="-1" eventType="touchUpInside" id="zMS-gX-lwv"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ciu-LY-d8a">
+                    <rect key="frame" x="116" y="392" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="4U7-d7-49f"/>
+                        <constraint firstAttribute="width" constant="35" id="OSw-Ke-ogM"/>
+                        <constraint firstAttribute="height" constant="25" id="R5f-ye-1CF"/>
+                        <constraint firstAttribute="height" constant="33" id="TXb-RY-frO"/>
+                        <constraint firstAttribute="width" constant="25" id="dAi-gO-qHl"/>
+                        <constraint firstAttribute="width" constant="25" id="lNN-0x-7GK"/>
+                        <constraint firstAttribute="width" constant="60" id="pyD-rk-rrg"/>
+                        <constraint firstAttribute="height" constant="60" id="qjJ-aI-sSY"/>
+                        <constraint firstAttribute="height" constant="45" id="w6U-kp-ko3"/>
+                    </constraints>
+                    <state key="normal" image="chat_icon"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="4U7-d7-49f"/>
+                            <exclude reference="R5f-ye-1CF"/>
+                            <exclude reference="lNN-0x-7GK"/>
+                            <exclude reference="TXb-RY-frO"/>
+                            <exclude reference="OSw-Ke-ogM"/>
+                            <exclude reference="dAi-gO-qHl"/>
+                            <exclude reference="w6U-kp-ko3"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnChatClick:" destination="-1" eventType="touchUpInside" id="I2Q-hw-Vzd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZV-lI-k0E">
+                    <rect key="frame" x="48" y="392" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="3l4-oH-LH4"/>
+                        <constraint firstAttribute="width" constant="35" id="BzM-Ey-e3S"/>
+                        <constraint firstAttribute="width" constant="60" id="IOO-Sn-thF"/>
+                        <constraint firstAttribute="width" constant="25" id="IUK-K2-t0K"/>
+                        <constraint firstAttribute="width" constant="45" id="RTP-d0-yl7"/>
+                        <constraint firstAttribute="width" constant="25" id="bpT-fB-g4n"/>
+                        <constraint firstAttribute="height" constant="45" id="siD-FA-EyG"/>
+                        <constraint firstAttribute="height" constant="60" id="tcN-C6-dTp"/>
+                        <constraint firstAttribute="height" constant="33" id="tr0-g2-8eG"/>
+                    </constraints>
+                    <state key="normal" image="bounds_icon"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="RTP-d0-yl7"/>
+                            <exclude reference="3l4-oH-LH4"/>
+                            <exclude reference="bpT-fB-g4n"/>
+                            <exclude reference="tr0-g2-8eG"/>
+                            <exclude reference="BzM-Ey-e3S"/>
+                            <exclude reference="IUK-K2-t0K"/>
+                            <exclude reference="siD-FA-EyG"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnLocationBoundsClick:" destination="-1" eventType="touchUpInside" id="QIm-KJ-Q5H"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -313,9 +371,12 @@
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="lUo-Fw-oiJ" secondAttribute="bottom" constant="8" id="dGE-KU-Kwe"/>
                 <constraint firstItem="Egi-4i-q9l" firstAttribute="trailing" secondItem="P7O-19-mUe" secondAttribute="trailing" id="dL5-8F-9fy"/>
                 <constraint firstAttribute="trailing" secondItem="lUo-Fw-oiJ" secondAttribute="trailing" constant="18" id="dOj-wn-t6g"/>
+                <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="EZV-lI-k0E" secondAttribute="bottom" constant="8" id="dOp-Nb-SrT"/>
+                <constraint firstItem="EA7-xg-ApP" firstAttribute="leading" secondItem="Ciu-LY-d8a" secondAttribute="trailing" constant="8" id="e6o-dm-1Ku"/>
                 <constraint firstItem="k5m-n0-V9G" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2yV-BG-4MT" secondAttribute="bottom" constant="12" id="eNu-cD-JVg"/>
                 <constraint firstItem="2yV-BG-4MT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gYB-FP-Kd4"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="JVw-Nh-Jlb" secondAttribute="bottom" constant="8" id="hIF-Dc-Sas"/>
+                <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="Ciu-LY-d8a" secondAttribute="bottom" constant="8" id="hYd-Fi-7XP"/>
                 <constraint firstItem="Egi-4i-q9l" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="j7i-6u-0rn"/>
                 <constraint firstItem="lUo-Fw-oiJ" firstAttribute="top" secondItem="k5m-n0-V9G" secondAttribute="bottom" constant="8" id="lvf-Ue-D8F"/>
                 <constraint firstItem="grx-D9-QtA" firstAttribute="leading" secondItem="lUo-Fw-oiJ" secondAttribute="trailing" constant="9" id="m7H-yT-gMC"/>
@@ -323,6 +384,7 @@
                 <constraint firstAttribute="trailing" secondItem="lUo-Fw-oiJ" secondAttribute="trailing" constant="8" id="qpv-9Q-fv9"/>
                 <constraint firstItem="vEW-HB-tD6" firstAttribute="top" secondItem="EA7-xg-ApP" secondAttribute="bottom" constant="8" id="t25-ka-WFX"/>
                 <constraint firstItem="Egi-4i-q9l" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tRk-nR-cmI"/>
+                <constraint firstItem="Ciu-LY-d8a" firstAttribute="leading" secondItem="EZV-lI-k0E" secondAttribute="trailing" constant="8" id="uf5-zj-a0y"/>
                 <constraint firstItem="JVw-Nh-Jlb" firstAttribute="top" secondItem="grx-D9-QtA" secondAttribute="bottom" constant="2" id="vJg-vE-xu1"/>
                 <constraint firstItem="k5m-n0-V9G" firstAttribute="top" secondItem="lUo-Fw-oiJ" secondAttribute="bottom" constant="9" id="wU2-VJ-Wwv"/>
                 <constraint firstItem="P7O-19-mUe" firstAttribute="top" secondItem="2yV-BG-4MT" secondAttribute="bottom" id="ydp-zM-pOi"/>
@@ -356,10 +418,12 @@
         </view>
     </objects>
     <resources>
+        <image name="bounds_icon" width="68" height="68"/>
         <image name="btn_add" width="70" height="70"/>
         <image name="btn_exit" width="70" height="70"/>
         <image name="btn_meetup" width="70" height="70"/>
         <image name="btn_visible" width="70" height="70"/>
+        <image name="chat_icon" width="68" height="68"/>
         <image name="list_icon" width="70" height="70"/>
         <image name="search_icon" width="16" height="17"/>
     </resources>

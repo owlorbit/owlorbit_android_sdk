@@ -113,6 +113,7 @@ class Room extends CI_Controller {
 	}	
 
 	public function get_all(){
+		$typeOfError = 0;
 		$response = array();
 		try{		
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
@@ -149,6 +150,7 @@ class Room extends CI_Controller {
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
+				'error_code' => $typeOfError,
 				'successful'=> false);
 		}
 
@@ -190,7 +192,7 @@ class Room extends CI_Controller {
 		    	'rooms' => $lastMessageOfRooms		    	
 		    );
 		}catch(Exception $e){
-			$response = array('message'=>$e->getMessage(),
+			$response = array('message'=>$e->getMessage(),				
 				'successful'=> false);
 		}
 		echo json_encode_helper($response);
@@ -220,6 +222,9 @@ class Room extends CI_Controller {
 				throw new Exception("Session is invalid.");	
 			}		    
 		    $this->room_model->accept_room($userId, $roomId);
+		    $this->message_model->clear_accept($userId, $roomId);
+
+		    error_log($this->db->last_query());
 
 			$response = array(
 		    	'message' => 'Joins Room',
@@ -255,6 +260,7 @@ class Room extends CI_Controller {
 				throw new Exception("Session is invalid.");	
 			}		    
 		    $this->room_model->leave_room($userId, $roomId);
+		    $this->message_model->clear_accept($userId, $roomId);
 
 			$response = array(
 		    	'message' => 'Left Room',

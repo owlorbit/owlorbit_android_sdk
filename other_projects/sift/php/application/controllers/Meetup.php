@@ -36,7 +36,6 @@ class Meetup extends CI_Controller {
 	public function get_all_locations(){	
 		$response = array();
 		try{
-
 			$roomId = $this->security->xss_clean(strip_tags($this->input->post('roomId')));
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
 			$encryptedSession = $this->security->xss_clean(strip_tags($this->input->post('encryptedSession')));
@@ -111,7 +110,7 @@ class Meetup extends CI_Controller {
 		    $meetupMsg = $title." pin created by ".$user->first_name;
 			$messageData = array(
 				'message' => $meetupMsg,	
-				'room_id' => $roomId,			
+				'room_id' => $roomId,	
 				'user_id' => $userId,
 				'message_type' => $type
 			);

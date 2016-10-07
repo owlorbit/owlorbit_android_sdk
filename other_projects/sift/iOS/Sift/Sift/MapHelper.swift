@@ -14,12 +14,8 @@ class MapHelper{
     class func doesUserExist(annotations:NSMutableArray, userModel:GenericUserManagedModel) -> Bool {
 
         do {
-
-            
             for val in annotations{
                 //make sure not nil..
-                
-                
                 if val is UserPointAnnotation{
                     var userPointAnnotation:UserPointAnnotation = val as! UserPointAnnotation
 
