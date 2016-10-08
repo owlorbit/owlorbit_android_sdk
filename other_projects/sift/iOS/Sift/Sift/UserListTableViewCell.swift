@@ -10,6 +10,11 @@ import UIKit
 import Alamofire
 import AlamofireImage.Swift
 
+
+protocol UserListTableViewCellDelegate {
+    func clickUser(userLocationModel:UserLocationModel)
+}
+
 class UserListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblDate: UILabel!
@@ -18,13 +23,18 @@ class UserListTableViewCell: UITableViewCell {
     @IBOutlet weak var lblSubtitle: UILabel!
     @IBOutlet weak var imgAvatar: UIImageView!
     
+    var delegate:UserListTableViewCellDelegate?
+    
+    
+    var userLocationModel:UserLocationModel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     func populate(userLocationModel:UserLocationModel){
-
+        self.userLocationModel = userLocationModel
         self.imgAvatar.layer.masksToBounds = true
         self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
         
@@ -41,6 +51,15 @@ class UserListTableViewCell: UITableViewCell {
         }
         
         
+        let tap = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+        tap.delegate = self
+        self.addGestureRecognizer(tap)
+        
+        
+    }
+    
+    func handleTap(sender: UITapGestureRecognizer? = nil) {
+        delegate?.clickUser(userLocationModel)
     }
     
     

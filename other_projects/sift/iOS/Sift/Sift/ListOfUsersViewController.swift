@@ -11,10 +11,10 @@ import SwiftyJSON
 
 protocol UsersInRoomDelegate {
     func updateLocations(userList:NSMutableArray, isHidden:Bool)
-    func clickUser(userId:String)
+    func clickUser(userLocationModel:UserLocationModel)
 }
 
-class ListOfUsersViewController: UIViewController {
+class ListOfUsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UserListTableViewCellDelegate {
     
     var delegate:UsersInRoomDelegate?
     var roomId:String = ""
@@ -31,6 +31,8 @@ class ListOfUsersViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //self.tableView.cancels
+
     }
     
     func initUsers(){
@@ -146,6 +148,11 @@ class ListOfUsersViewController: UIViewController {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UserListTableViewCell.cellHeight();
     }
+    
+    
+    func clickUser(userLocationModel:UserLocationModel){
+        delegate?.clickUser(userLocationModel)
+    }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -158,6 +165,7 @@ class ListOfUsersViewController: UIViewController {
                 var userLocation:UserLocationModel;
                 userLocation = data[indexPath.row] as! UserLocationModel
                 cell?.populate(userLocation)
+                cell?.delegate = self;
                 return cell!
             }else{
                 //MeetupListTableViewCell
@@ -165,6 +173,8 @@ class ListOfUsersViewController: UIViewController {
                 var userLocation:UserLocationModel;
                 userLocation = data[indexPath.row] as! UserLocationModel
                 cell?.populate(userLocation)
+                //cell?.delegate = self;
+                
                 return cell!
             }
         }
@@ -186,7 +196,6 @@ class ListOfUsersViewController: UIViewController {
     */
 
     @IBAction func btnAddUserClick(sender: AnyObject) {
-    
-        delegate?.clickUser("launch thing")
+        AlertHelper.createPopupMessage("awef", title: "laaa")
     }
 }

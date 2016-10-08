@@ -262,8 +262,31 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         self.RETRIEVE_LOCATION_LOCK = false
     }
 
-    func clickUser(userId:String){
-        AlertHelper.createPopupMessage("ahh yeah no contexts", title: "god dammit.")
+    func clickUser(userLocationModel:UserLocationModel){
+        
+        if let container = self.so_containerViewController {
+            container.isSideViewControllerPresented = false
+        }
+        
+        if(userLocationModel.isPerson){
+            //loop through all annotations.
+            
+            var region:MKCoordinateRegion = MKCoordinateRegion();
+            
+            
+            region.center.latitude = userLocationModel.coordinate!.latitude;
+            region.center.longitude = userLocationModel.coordinate!.longitude;
+            
+            region.span.latitudeDelta = spanX;
+            region.span.longitudeDelta = spanY;
+            mapView.setRegion(region, animated: true)
+            self.mapView.selectAnnotation(getAnnotationByDeviceIdAndUserId(userLocationModel.deviceId, userId: userLocationModel.userId)!, animated: false)
+      
+        }
+        //AlertHelper.createPopupMessage("ahh yeah no contexts", title: "god dammit.")
+        
+        
+        
     }
     
     @IBAction func txtSearchOnChange(sender: AnyObject) {

@@ -127,8 +127,11 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
             _sideViewController = newValue
             
             if let vc = _sideViewController {
-                self.view.addSubview(vc.view)                
-                vc.view.addGestureRecognizer(self.createPanGestureRecognizer())
+                self.view.addSubview(vc.view)
+                
+                var gesture:UIPanGestureRecognizer = self.createPanGestureRecognizer()
+                gesture.cancelsTouchesInView = false
+                vc.view.addGestureRecognizer(gesture)
                 
                 var menuFrame = vc.view.frame
                 menuFrame.size.width = self.view.frame.size.width - SideViewControllerTrailingIndent
@@ -216,9 +219,11 @@ public class SOContainerViewController: UIViewController, UIGestureRecognizerDel
         self.contentCoverView.alpha = 0.0
         
         let tapOnContentCoverViewGesture = UITapGestureRecognizer(target: self, action: #selector(SOContainerViewController.contentCoverViewClicked))
+        tapOnContentCoverViewGesture.cancelsTouchesInView = false
         self.contentCoverView.addGestureRecognizer(tapOnContentCoverViewGesture)
         
         let panOnContentCoverVewGesture = UIPanGestureRecognizer(target: self, action: #selector(SOContainerViewController.contentCoverViewClicked))
+        panOnContentCoverVewGesture.cancelsTouchesInView = false
         self.contentCoverView.addGestureRecognizer(panOnContentCoverVewGesture)
         
         self.view.addSubview(self.contentCoverView)
