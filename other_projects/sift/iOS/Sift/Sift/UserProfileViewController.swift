@@ -15,7 +15,7 @@ import AlamofireImage.Swift
 
 class UserProfileViewController: UIViewController {
     
-    var targetAnnotation:UserPointAnnotation = UserPointAnnotation();
+    var targetAnnotation:UserLocationPointAnnotation = UserLocationPointAnnotation();
     let downloader = ImageDownloader()
     @IBOutlet weak var userProfile: UIImageView!
     
@@ -24,12 +24,12 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = targetAnnotation.userModel.firstName + " Profile"
+        self.title = targetAnnotation.userLocationModel.firstName + " Profile"
 
-        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + targetAnnotation.userModel.avatarOriginal
+        var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + targetAnnotation.userLocationModel.avatarOriginal
         var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
         //userProfile.image = targetAnnotation.userModel.originalAvatar.roundImage()
-        userProfile.image = targetAnnotation.userModel.originalAvatar
+        userProfile.image = targetAnnotation.userLocationModel.avatarImg
         
         
         var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")

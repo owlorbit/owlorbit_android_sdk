@@ -11,45 +11,65 @@ import SwiftyJSON
 
 class UserLocationModel :NSObject {
     
-    var longitude:String = ""
     var deviceId:String = ""
     var avatarOriginal:String=""
     var lastName:String=""
-    var latitude:String=""
+
     var userId:String=""    
     var email:String=""
     var phoneNumber:String=""
     var firstName:String=""
     
-    var isPerson:Bool = true
-    
-    
-    //meetup specific
-    var title:String=""
-    var subtitle:String=""
 
+    var title:String=""
+    var subTitle:String=""
+    
+    var isPerson:Bool = true
     var created:NSDate?
     var coordinate:CLLocationCoordinate2D?
+
+    //meetup specific
+    var meetupTitle:String=""
+    var subtitle:String=""
+    var meetupId:String=""
+    
+    var latitude:Double=0.0
+    var longitude:Double = 0.0
+    var avatarImg:UIImage = UIImage()
     
     init(json:JSON, _isPerson:Bool){
         if(json == nil){
             return;
         }
         
-        self.userId = json["user_id"].string!
-        self.deviceId = json["device_id"].string!
-        self.longitude = json["longitude"].string!
-        self.latitude = json["latitude"].string!
         
-        self.avatarOriginal = json["avatar_original"].string!
-        self.firstName = json["first_name"].string!.capitalizedString
-        self.lastName = json["last_name"].string!.capitalizedString
-        self.email = json["email"].string!
-        self.phoneNumber = json["phone_number"].string!                
+        if(_isPerson){
+            self.userId = json["user_id"].string!
+            self.deviceId = json["device_id"].string!
+            self.longitude = json["longitude"].string!.toDouble()!
+            self.latitude = json["latitude"].string!.toDouble()!
+            
+            self.avatarOriginal = json["avatar_original"].string!
+            self.firstName = json["first_name"].string!.capitalizedString
+            self.lastName = json["last_name"].string!.capitalizedString
+            self.email = json["email"].string!
+            self.phoneNumber = json["phone_number"].string!
+
+        }else{
+            
+
+            self.longitude = json["longitude"].string!.toDouble()!
+            self.latitude = json["latitude"].string!.toDouble()!
+            self.meetupId = json["id"].string!
+            self.userId = json["user_id"].string!
+            self.meetupTitle = json["title"].string!
+            self.subTitle = json["subtitle"].string!            
+        }
+        
+        
         self.isPerson = _isPerson
         var createdStr:String = json["created"].string!
-        
-        
+
         if(createdStr != ""){
             var dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -57,13 +77,8 @@ class UserLocationModel :NSObject {
             var dateConverted:NSDate = dateFormatter.dateFromString(createdStr)!
             self.created = dateConverted
         }
-
-        if(self.latitude != ""){
-            if(self.longitude != ""){
-                self.coordinate = CLLocationCoordinate2D(latitude: self.latitude.toDouble()!, longitude: self.longitude.toDouble()!)
-            }else{
-                self.coordinate = CLLocationCoordinate2D()
-            }
-        }
+        
+    
+        self.coordinate = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
     }
 }

@@ -13,7 +13,7 @@ import DZNEmptyDataSet
 class ChatMapInstructionsViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     var routeSteps = [MKRouteStep]()
-    var userAnnotation:UserPointAnnotation = UserPointAnnotation();
+    var userAnnotation:UserLocationPointAnnotation = UserLocationPointAnnotation();
     var customMeetupPin:CustomMeetupPin = CustomMeetupPin()
     
     var customMeetupPinActive:Bool = false
@@ -23,7 +23,7 @@ class ChatMapInstructionsViewController: UIViewController, DZNEmptyDataSetSource
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let userModel = userAnnotation.userModel{
+        if let userModel = userAnnotation.userLocationModel{
             self.title = "Directions to " + userModel.firstName.capitalizedString
             customMeetupPinActive = false
         }else{

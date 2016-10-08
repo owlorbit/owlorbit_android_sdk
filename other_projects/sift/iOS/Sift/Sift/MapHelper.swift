@@ -32,6 +32,29 @@ class MapHelper{
     }
     
     
+    class func doesUserLocationExist(annotations:NSMutableArray, userModel:UserLocationModel) -> Bool {
+        
+        do {
+            for val in annotations{
+                //make sure not nil..
+                if val is UserPointAnnotation{
+                    var userPointAnnotation:UserLocationPointAnnotation = val as! UserLocationPointAnnotation
+                    
+                    if(userPointAnnotation.userLocationModel.userId == userModel.userId &&
+                        userPointAnnotation.userLocationModel.deviceId == userModel.deviceId
+                        ){
+                        return true
+                    }
+                }
+            }
+        }catch _ {
+            print("test")
+        }
+        
+        return false
+    }
+    
+    
     class func addAnnotation(){
         /*
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

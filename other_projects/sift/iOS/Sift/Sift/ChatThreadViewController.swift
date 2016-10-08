@@ -61,7 +61,7 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
     var destination: MKMapItem?
 
     var isHiddenInRoom:Bool = false
-    var targetAnnotation:UserPointAnnotation = UserPointAnnotation();
+    var targetAnnotation:UserLocationPointAnnotation = UserLocationPointAnnotation();
     var routeSteps = [MKRouteStep]()
 
     var prevUserCount:Int = 0
@@ -195,7 +195,73 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
             self.view.layoutIfNeeded()
         }
     }
-    
+
+    func updateLocations(userList:NSMutableArray, isHidden:Bool){
+        
+        
+        if(!TEMP_VISIBLE_LOCK){
+            
+            if(isHidden){
+                isHiddenInRoom = true
+                
+                if(self.viewGrey.alpha == 0.0){
+                    if let image = UIImage(named: "btn_hidden") {
+                        self.btnVisibility.setImage(image, forState: .Normal)
+                    }
+                    
+                    UIView.animateWithDuration(0.5, animations: {() -> Void in
+                        self.viewGrey.alpha = 0.5
+                    })
+                }
+                
+            }else{
+                isHiddenInRoom = false
+                
+                if(self.viewGrey.alpha == 0.5){
+                    if let image = UIImage(named: "btn_visible") {
+                        self.btnVisibility.setImage(image, forState: .Normal)
+                    }
+                    UIView.animateWithDuration(0.5, animations: {() -> Void in
+                        self.viewGrey.alpha = 0.0
+                    })
+                }
+            }
+        }
+        
+        for obj in userList {
+            if let userLocation = obj as? UserLocationModel{
+             
+                
+                if(userLocation.isPerson){
+                    var userPointAnnotation:UserLocationPointAnnotation? = getAnnotationByDeviceIdAndUserId(userLocation.deviceId, userId: userLocation.userId)
+                    if(userPointAnnotation != nil){
+                        userPointAnnotation!.coordinate = userLocation.coordinate!
+                        userPointAnnotation!.userLocationModel.longitude = userLocation.coordinate!.longitude
+                        userPointAnnotation!.userLocationModel.latitude = userLocation.coordinate!.latitude
+                        userPointAnnotation!.title = userPointAnnotation!.userLocationModel.firstName.capitalizedString
+                        
+                        if(userLocation.created != nil){
+                            userPointAnnotation!.userLocationModel.created = userLocation.created
+                        }
+                        
+                        var dateFormatter = NSDateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        var dateString = dateFormatter.stringFromDate(userLocation.created!)
+                        var timeAgo = NSDate.mysqlDatetimeFormattedAsTimeAgoFull(dateString)
+                        userPointAnnotation!.subtitle = "Last active \(timeAgo)"
+                    }else{
+                        var userPoint:UserLocationPointAnnotation = UserLocationPointAnnotation()
+                        userPoint.userLocationModel = userLocation
+                        self.addLocationUser(userLocation)
+                    }
+                }
+            }
+        }
+        
+        
+        self.RETRIEVE_LOCATION_LOCK = false
+    }
+
     func clickUser(userId:String){
         AlertHelper.createPopupMessage("ahh yeah no contexts", title: "god dammit.")
     }
@@ -344,7 +410,7 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         
         
         hideInstructions()
-        var meetupAnnotation = UserPointAnnotation()
+        var meetupAnnotation = UserLocationPointAnnotation()
         meetupAnnotation.coordinate = customMeetupPin.coordinate
         self.targetAnnotation = meetupAnnotation
         
@@ -553,13 +619,8 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
                                 print ("user has been updated")
                             }
                         }
-                        
-                        
-                        
                     }
-                    
-                    
-                    
+
                     if let err:NSError = error {
                         
                         print("user image failed to load: \(err)")
@@ -581,11 +642,6 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
                         
                     }
                 })
-                
-                
-                
-                
-                
             }
         }
     }
@@ -833,8 +889,22 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
                 }
             }
         }
-        
     }
+
+    func getAnnotationByDeviceIdAndUserId(deviceId:String, userId:String)->UserLocationPointAnnotation?{
+        
+        for val in self.annotations{
+            
+            if val is UserLocationPointAnnotation{
+                var userPointAnnotation:UserLocationPointAnnotation = val as! UserLocationPointAnnotation
+                if(userPointAnnotation.userLocationModel.userId == userId && userPointAnnotation.userLocationModel.deviceId == deviceId){
+                    return userPointAnnotation
+                }
+            }
+        }
+        return nil;
+    }
+    
 
     //make device id eventually...
     func getAnnotationByUserId(userId:String)->UserPointAnnotation?{
@@ -850,7 +920,7 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         }
         return nil;
     }
-    
+
     func addUser(userModel:GenericUserManagedModel){
 
         if(!MapHelper.doesUserExist(self.annotations, userModel:userModel)){
@@ -863,6 +933,38 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
                 userPoint.coordinate = storedLocation
             }
 
+            self.annotations.addObject(userPoint)
+            self.mapView.addAnnotation(userPoint)
+        }
+    }
+    
+    
+    func addLocationUser(userModel:UserLocationModel){
+        
+        if(!MapHelper.doesUserLocationExist(self.annotations, userModel:userModel)){
+            
+            var userPoint:UserLocationPointAnnotation = UserLocationPointAnnotation()
+            userPoint.userLocationModel = userModel
+            
+            if(userModel.latitude != 0 && userModel.longitude != 0){
+                var storedLocation = CLLocationCoordinate2D.init(latitude: userModel.latitude, longitude: userModel.longitude)
+                userPoint.coordinate = storedLocation
+            }
+
+            var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + userModel.avatarOriginal
+            
+            print("well i do: \(profileImageUrl)")
+            var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+            self.downloader.downloadImage(URLRequest: URLRequest) { response in
+                if let image = response.result.value {
+                    userModel.avatarImg = image.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
+                    print ("user has been updated")
+                }
+            }
+            
+            
+            
+            
             self.annotations.addObject(userPoint)
             self.mapView.addAnnotation(userPoint)
         }
@@ -1109,11 +1211,11 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
             //these are non-you annotations..
             let reuseId = "pinAvatarImg"
             var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
-            let userPointAnnotation:UserPointAnnotation = annotation as! UserPointAnnotation;
+            let userPointAnnotation:UserLocationPointAnnotation = annotation as! UserLocationPointAnnotation;
 
             if pinView == nil {
                 pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-                pinView!.image = userPointAnnotation.userModel.avatarImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
+                pinView!.image = userPointAnnotation.userLocationModel.avatarImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
 
                 //pinView!.image = UIImage(named:"owl_orbit")?.resizedImageToFitInSize(CGSize(width: 40, height: 40), scaleIfSmaller: true);
             } else {

@@ -45,6 +45,12 @@
 		B81DD7831DA7C1C900893DBD /* UserLocationPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD7821DA7C1C900893DBD /* UserLocationPointAnnotation.swift */; };
 		B81DD7841DA7C1C900893DBD /* UserLocationPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD7821DA7C1C900893DBD /* UserLocationPointAnnotation.swift */; };
 		B81DD7851DA7C1C900893DBD /* UserLocationPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD7821DA7C1C900893DBD /* UserLocationPointAnnotation.swift */; };
+		B81DD7881DA8858300893DBD /* MeetupListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD7861DA8858300893DBD /* MeetupListTableViewCell.swift */; };
+		B81DD7891DA8858300893DBD /* MeetupListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD7861DA8858300893DBD /* MeetupListTableViewCell.swift */; };
+		B81DD78A1DA8858300893DBD /* MeetupListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD7861DA8858300893DBD /* MeetupListTableViewCell.swift */; };
+		B81DD78B1DA8858300893DBD /* MeetupListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81DD7871DA8858300893DBD /* MeetupListTableViewCell.xib */; };
+		B81DD78C1DA8858300893DBD /* MeetupListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81DD7871DA8858300893DBD /* MeetupListTableViewCell.xib */; };
+		B81DD78D1DA8858300893DBD /* MeetupListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81DD7871DA8858300893DBD /* MeetupListTableViewCell.xib */; };
 		B821E7231C6AC60100EF9018 /* CreateGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */; };
 		B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */; };
 		B821E72A1C6D6C4200EF9018 /* ManageRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */; };
@@ -535,6 +541,8 @@
 		B81DD77A1DA74B8B00893DBD /* UserListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
 		B81DD77B1DA74B8B00893DBD /* UserListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListTableViewCell.xib; sourceTree = "<group>"; };
 		B81DD7821DA7C1C900893DBD /* UserLocationPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationPointAnnotation.swift; sourceTree = "<group>"; };
+		B81DD7861DA8858300893DBD /* MeetupListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupListTableViewCell.swift; sourceTree = "<group>"; };
+		B81DD7871DA8858300893DBD /* MeetupListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetupListTableViewCell.xib; sourceTree = "<group>"; };
 		B821E7221C6AC60100EF9018 /* CreateGroupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupManager.swift; sourceTree = "<group>"; };
 		B821E7241C6AEFCD00EF9018 /* Sift 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sift 3.xcdatamodel"; sourceTree = "<group>"; };
 		B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMeetupPin.swift; sourceTree = "<group>"; };
@@ -877,6 +885,8 @@
 		B866DFAE1C061C5B00BF8A79 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				B81DD7861DA8858300893DBD /* MeetupListTableViewCell.swift */,
+				B81DD7871DA8858300893DBD /* MeetupListTableViewCell.xib */,
 				B81DD77A1DA74B8B00893DBD /* UserListTableViewCell.swift */,
 				B81DD77B1DA74B8B00893DBD /* UserListTableViewCell.xib */,
 				B8333F251C89327000626B72 /* UserSingleWriteTableViewCell.swift */,
@@ -1449,6 +1459,7 @@
 			files = (
 				B849E09E1C5D46A2001A281B /* EnableLocationViewController.xib in Resources */,
 				B8068B641C20F95D00EE00CA /* FriendRequestViewController.xib in Resources */,
+				B81DD78B1DA8858300893DBD /* MeetupListTableViewCell.xib in Resources */,
 				B81DD7721DA700F100893DBD /* ListOfUsersViewController.xib in Resources */,
 				B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */,
 				B8BAD25C1BF17F6C00DC7F60 /* ChatThreadViewController.xib in Resources */,
@@ -1520,6 +1531,7 @@
 			files = (
 				B891A9221D0B905700E88EEF /* EnableLocationViewController.xib in Resources */,
 				B891A9231D0B905700E88EEF /* FriendRequestViewController.xib in Resources */,
+				B81DD78C1DA8858300893DBD /* MeetupListTableViewCell.xib in Resources */,
 				B81DD7731DA700F100893DBD /* ListOfUsersViewController.xib in Resources */,
 				B891A9241D0B905700E88EEF /* UICustomTabBarController.xib in Resources */,
 				B891A9251D0B905700E88EEF /* ChatThreadViewController.xib in Resources */,
@@ -1577,6 +1589,7 @@
 			files = (
 				B891A9C61D0B90A500E88EEF /* EnableLocationViewController.xib in Resources */,
 				B891A9C71D0B90A500E88EEF /* FriendRequestViewController.xib in Resources */,
+				B81DD78D1DA8858300893DBD /* MeetupListTableViewCell.xib in Resources */,
 				B81DD7741DA700F100893DBD /* ListOfUsersViewController.xib in Resources */,
 				B891A9C81D0B90A500E88EEF /* UICustomTabBarController.xib in Resources */,
 				B891A9C91D0B90A500E88EEF /* ChatThreadViewController.xib in Resources */,
@@ -1845,6 +1858,7 @@
 				B8068B631C20F95D00EE00CA /* FriendRequestViewController.swift in Sources */,
 				B81DD77C1DA74B8B00893DBD /* UserListTableViewCell.swift in Sources */,
 				B866DFC81C0D2EDF00BF8A79 /* RoomAttributeModel.swift in Sources */,
+				B81DD7881DA8858300893DBD /* MeetupListTableViewCell.swift in Sources */,
 				B8F512A81C6966D8007DCFD5 /* GroupNameTableViewCell.swift in Sources */,
 				B8CAA48E1C11096B00EC2752 /* DynamicPersonalData.swift in Sources */,
 				B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */,
@@ -1970,6 +1984,7 @@
 				B891A8D31D0B905700E88EEF /* FriendRequestViewController.swift in Sources */,
 				B81DD77D1DA74B8B00893DBD /* UserListTableViewCell.swift in Sources */,
 				B891A8D41D0B905700E88EEF /* RoomAttributeModel.swift in Sources */,
+				B81DD7891DA8858300893DBD /* MeetupListTableViewCell.swift in Sources */,
 				B891A8D51D0B905700E88EEF /* GroupNameTableViewCell.swift in Sources */,
 				B891A8D61D0B905700E88EEF /* DynamicPersonalData.swift in Sources */,
 				B891A8D71D0B905700E88EEF /* UserProfileViewController.swift in Sources */,
@@ -2079,6 +2094,7 @@
 				B891A9771D0B90A500E88EEF /* FriendRequestViewController.swift in Sources */,
 				B81DD77E1DA74B8B00893DBD /* UserListTableViewCell.swift in Sources */,
 				B891A9781D0B90A500E88EEF /* RoomAttributeModel.swift in Sources */,
+				B81DD78A1DA8858300893DBD /* MeetupListTableViewCell.swift in Sources */,
 				B891A9791D0B90A500E88EEF /* GroupNameTableViewCell.swift in Sources */,
 				B891A97A1D0B90A500E88EEF /* DynamicPersonalData.swift in Sources */,
 				B891A97B1D0B90A500E88EEF /* UserProfileViewController.swift in Sources */,

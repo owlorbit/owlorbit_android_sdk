@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 
 protocol UsersInRoomDelegate {
+    func updateLocations(userList:NSMutableArray, isHidden:Bool)
     func clickUser(userId:String)
 }
 
@@ -37,8 +38,8 @@ class ListOfUsersViewController: UIViewController {
             //start the
             
             self.tableView.registerNib(UINib(nibName: "UserListTableViewCell", bundle:nil), forCellReuseIdentifier: "UserListTableViewCell")
-            
-            
+            self.tableView.registerNib(UINib(nibName: "MeetupListTableViewCell", bundle:nil), forCellReuseIdentifier: "MeetupListTableViewCell")
+
             timerUpdateUsers()
             timerGetLocations = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "timerUpdateUsers", userInfo: nil, repeats: true)
         }
@@ -49,19 +50,36 @@ class ListOfUsersViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
     func timerUpdateUsers(){
 
         LocationApiHelper.getRoomLocations(self.roomId,resultJSON:{
             (JSON) in
+            
+            
                 //self.data.removeAllObjects()
                 var listChanged:Bool = false
-                for (key,subJson):(String, SwiftyJSON.JSON) in JSON["user_locations"] {
+                var _isHidden:Bool = JSON["you_are_hidden"].boolValue
+            
+            
+                for (key,subJson):(String, SwiftyJSON.JSON) in JSON["meetup_locations"] {
 
+                    var userLocation:UserLocationModel = UserLocationModel(json: subJson, _isPerson:false);
+                    var userInList = self.getMeetup(userLocation.meetupId)
+                    
+                    if (userInList != nil){
+                        userInList?.longitude = userLocation.longitude
+                        userInList?.latitude = userLocation.latitude
+                    }else{
+                        listChanged = true;
+                        self.data.addObject(userLocation)
+                    }
+                }
+            
+            
+            
+                for (key,subJson):(String, SwiftyJSON.JSON) in JSON["user_locations"] {
+                    
                     var userLocation:UserLocationModel = UserLocationModel(json: subJson, _isPerson:true);
-                    
-                    
                     var userInList = self.getUser(userLocation.deviceId, userId: userLocation.userId)
                     
                     if (userInList != nil){
@@ -73,6 +91,7 @@ class ListOfUsersViewController: UIViewController {
                     }
                 }
             
+                self.updateLocations(_isHidden)
                 if(listChanged){
                     self.tableView.reloadData()
                 }
@@ -86,8 +105,8 @@ class ListOfUsersViewController: UIViewController {
         );
     }
     
-    func updateUserValues(){
-        
+    func updateLocations(_isHidden:Bool){
+        delegate?.updateLocations(data, isHidden: _isHidden)
     }
     
     func getUser(deviceId:String, userId:String)->UserLocationModel?{
@@ -104,6 +123,20 @@ class ListOfUsersViewController: UIViewController {
         
         return nil;
     }
+    
+    
+    func getMeetup(meetupId:String)->UserLocationModel?{
+        for obj in data {
+            
+            if let userLocation = obj as? UserLocationModel{
+                if(userLocation.meetupId == meetupId){
+                    return userLocation;
+                }
+            }
+        }
+        
+        return nil;
+    }
 
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,23 +148,28 @@ class ListOfUsersViewController: UIViewController {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UserListTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserListTableViewCell")! as! UserListTableViewCell
         
         var obj:AnyObject = data[indexPath.row] as AnyObject
-        
+        var testCell:UITableViewCell = UITableViewCell()
         if let userData = obj as? UserLocationModel{
-            print("hehehe")
-        }else{
             
+            if (userData.isPerson){
+                var cell:UserListTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserListTableViewCell")! as! UserListTableViewCell
+                var userLocation:UserLocationModel;
+                userLocation = data[indexPath.row] as! UserLocationModel
+                cell?.populate(userLocation)
+                return cell!
+            }else{
+                //MeetupListTableViewCell
+                var cell:MeetupListTableViewCell? = tableView.dequeueReusableCellWithIdentifier("MeetupListTableViewCell")! as! MeetupListTableViewCell
+                var userLocation:UserLocationModel;
+                userLocation = data[indexPath.row] as! UserLocationModel
+                cell?.populate(userLocation)
+                return cell!
+            }
         }
         
-        
-        var userLocation:UserLocationModel;
-        userLocation = data[indexPath.row] as! UserLocationModel
-        
-        cell?.populate(userLocation)
-        
-        return cell!
+        return testCell;
     }
     
     
@@ -149,6 +187,6 @@ class ListOfUsersViewController: UIViewController {
 
     @IBAction func btnAddUserClick(sender: AnyObject) {
     
-        delegate?.clickUser("fuck boi")
+        delegate?.clickUser("launch thing")
     }
 }
