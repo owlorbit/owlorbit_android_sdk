@@ -24,6 +24,6 @@
 
 
 #import <Parse/Parse.h>
-
+#import <OneSignal/OneSignal.h>
 
 //#import "<UITextView+Placeholder/UITextView+Placeholder.h>"

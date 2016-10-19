@@ -10,12 +10,20 @@ import UIKit
 import Alamofire
 import AlamofireImage.Swift
 
+
+protocol MeetupListTableViewCellDelegate {
+    func clickUser(userLocationModel:UserLocationModel)
+}
+
 class MeetupListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblDate: UILabel!
     
     @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblSubtitle: UILabel!    
+    @IBOutlet weak var lblSubtitle: UILabel!
+    
+    var delegate:UserListTableViewCellDelegate?
+    var userLocationModel:UserLocationModel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,11 +31,14 @@ class MeetupListTableViewCell: UITableViewCell {
     }
 
     func populate(userLocationModel:UserLocationModel){
-
-        
+        self.userLocationModel = userLocationModel        
         self.lblTitle.text = userLocationModel.meetupTitle
         self.lblSubtitle.text = userLocationModel.subTitle
         //self.lblTitle.text = userLocationModel.firstName + " " + userLocationModel.lastName
+        
+        let tap = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+        tap.delegate = self
+        self.addGestureRecognizer(tap)
     }
     
     
@@ -40,4 +51,8 @@ class MeetupListTableViewCell: UITableViewCell {
         return 74.0
     }
     
+    
+    func handleTap(sender: UITapGestureRecognizer? = nil) {
+        delegate?.clickUser(userLocationModel)
+    }
 }

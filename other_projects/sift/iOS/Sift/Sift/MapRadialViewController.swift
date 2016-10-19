@@ -27,6 +27,13 @@ class MapRadialViewController: ChatThreadViewController {
         super.viewDidLoad()
         
         initToggleViews()
+        
+        self.menuSide = .Right
+        self.sideViewController = ListOfUsersViewController(nibName: "ListOfUsersViewController", bundle: nil)
+        var listOfUsersVC:ListOfUsersViewController  = (self.sideViewController as! ListOfUsersViewController)
+        listOfUsersVC.roomId = self.roomId
+        listOfUsersVC.delegate = self
+        listOfUsersVC.initUsers()
     }
     
     
@@ -277,12 +284,13 @@ class MapRadialViewController: ChatThreadViewController {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "toggleViews")
         tap.numberOfTapsRequired = 1
-        self.mapView.addGestureRecognizer(tap)
-        
+        self.mapView.addGestureRecognizer(tap)        
     }
     
     func toggleViews() {
         
+        //@IBOutlet weak var topConstraint: NSLayoutConstraint!        
+        (self.sideViewController as! ListOfUsersViewController).setUpdatedConstraint()
         
         if(txtChatView.isFirstResponder() || txtSearch.isFirstResponder()){
             self.PREV_WAS_LOCKED = true
@@ -293,8 +301,6 @@ class MapRadialViewController: ChatThreadViewController {
         }
 
         self.dismissKeyboard()
-        
-        
         if(LOCK_TOGGLE){
             return
         }
@@ -303,7 +309,6 @@ class MapRadialViewController: ChatThreadViewController {
             self.PREV_WAS_LOCKED = false
             return
         }
-        
         LOCK_TOGGLE = true
         
         var delayInSeconds:Float = 0.5;
@@ -333,8 +338,7 @@ class MapRadialViewController: ChatThreadViewController {
                         self.view.layoutIfNeeded()
                     })
 
-                }else{
-                    
+                }else{                
                     self.navigationController!.navigationBar.translucent = false;
                     self.navigationController!.navigationBar.hidden = false;
                     UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
@@ -351,6 +355,43 @@ class MapRadialViewController: ChatThreadViewController {
                 self.LOCK_TOGGLE = false
                 self.PREV_WAS_LOCKED = true
             }
+        }
+    }
+    
+    
+    func displayViews() {
+        if(self.bottomTxtConstraint.constant == 12){
+            return
+        }
+
+        self.PREV_WAS_LOCKED = false
+        self.dismissKeyboard()
+        LOCK_TOGGLE = false
+        
+        var delayInSeconds:Float = 0.5;
+        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW),  Int64(  0.5 * Double(NSEC_PER_SEC)  ))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            
+            
+        
+        self.PREV_WAS_LOCKED = false
+        
+        var updatedPosition:CGFloat = self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.size.height
+        
+        
+        self.navigationController!.navigationBar.translucent = false;
+        self.navigationController!.navigationBar.hidden = false;
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        
+        self.searchContainerConstraintTop.constant = updatedPosition;
+        UIView.animateWithDuration(0.5, animations: {() -> Void in
+            
+            self.bottomTxtConstraint.constant = 12
+            self.LOCK_TOGGLE = false
+            self.view.layoutIfNeeded()
+        })
+                
+            
         }
     }
     
@@ -375,6 +416,67 @@ class MapRadialViewController: ChatThreadViewController {
         tempVisibleLockTmr.invalidate()
     }
     
+    
+    @IBAction func btnZoomClick(sender: AnyObject) {
+        
+        var region:MKCoordinateRegion = MKCoordinateRegion();
+        if(prevSelected != nil){
+            region.center.latitude = prevSelected!.annotation!.coordinate.latitude;
+            region.center.longitude = prevSelected!.annotation!.coordinate.longitude;
+            
+            region.span.latitudeDelta = spanX;
+            region.span.longitudeDelta = spanY;
+            mapView.setRegion(region, animated: true)
+            
+            self.mapView.selectAnnotation(prevSelected!.annotation!, animated: false)
+        }
+        
+    }
+
+    @IBAction func btnRouteClick(sender: AnyObject) {
+
+        var userPointAnnotation:UserLocationPointAnnotation
+        if(btnPhone.hidden){
+            userPointAnnotation = UserLocationPointAnnotation()
+            userPointAnnotation.coordinate = (prevSelected?.annotation?.coordinate)!
+        }else{
+            userPointAnnotation = prevSelected!.annotation as! UserLocationPointAnnotation;
+        }
+        self.targetAnnotation = userPointAnnotation
+
+        UIView.animateWithDuration(0.5) {
+            self.view.layoutIfNeeded()
+        }
+        self.btnDriveClick(sender)
+    }
+    
+    @IBAction func btnEmailClick(sender: AnyObject) {
+        let userPointAnnotation:UserLocationPointAnnotation = prevSelected!.annotation as! UserLocationPointAnnotation;
+        let email = userPointAnnotation.userLocationModel.email
+        
+        if(email == ""){
+            AlertHelper.createPopupMessage("Error", title: userPointAnnotation.userLocationModel.firstName + " does not have an email.")
+        }else{
+            let url = NSURL(string: "mailto:\(email)")
+            UIApplication.sharedApplication().openURL(url!)
+        }
+    }
+    
+    @IBAction func btnCallClick(sender: AnyObject) {
+        let userPointAnnotation:UserLocationPointAnnotation = prevSelected!.annotation as! UserLocationPointAnnotation;
+        
+        if(userPointAnnotation.userLocationModel.phoneNumber == ""){
+            AlertHelper.createPopupMessage("Error", title: userPointAnnotation.userLocationModel.firstName + " does not have a phone-number!")
+        }else{        
+            if let phoneCallURL:NSURL = NSURL(string:"tel://\(userPointAnnotation.userLocationModel.phoneNumber)") {
+                let application:UIApplication = UIApplication.sharedApplication()
+                if (application.canOpenURL(phoneCallURL)) {
+                    application.openURL(phoneCallURL);
+                }
+            }
+        }
+    }
+    
     @IBAction func btnLocationBoundsClick(sender: AnyObject) {
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
@@ -383,7 +485,6 @@ class MapRadialViewController: ChatThreadViewController {
         var viewController:ChatTextMessageViewController = ChatTextMessageViewController();
         viewController.roomId = roomId;
         self.navigationController!.pushViewController(viewController, animated: true)
-        
     }
     
     @IBAction override func btnVisibilityClick(sender: AnyObject){

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8792A251BEB15CE00BE05ED"
-               BuildableName = "OwlOrbit Prod.app"
-               BlueprintName = "OwlOrbit Prod"
+               BuildableName = "OwlOrbit.app"
+               BlueprintName = "OwlOrbit"
                ReferencedContainer = "container:Owl Orbit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -53,8 +53,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8792A251BEB15CE00BE05ED"
-            BuildableName = "OwlOrbit Prod.app"
-            BlueprintName = "OwlOrbit Prod"
+            BuildableName = "OwlOrbit.app"
+            BlueprintName = "OwlOrbit"
             ReferencedContainer = "container:Owl Orbit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8792A251BEB15CE00BE05ED"
-            BuildableName = "OwlOrbit Prod.app"
-            BlueprintName = "OwlOrbit Prod"
+            BuildableName = "OwlOrbit.app"
+            BlueprintName = "OwlOrbit"
             ReferencedContainer = "container:Owl Orbit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -95,8 +95,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8792A251BEB15CE00BE05ED"
-            BuildableName = "OwlOrbit Prod.app"
-            BlueprintName = "OwlOrbit Prod"
+            BuildableName = "OwlOrbit.app"
+            BlueprintName = "OwlOrbit"
             ReferencedContainer = "container:Owl Orbit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -16,6 +16,8 @@ class RegisterViewController: UIViewController, Registration1Delegate {
     
     var data:NSMutableArray = [1];
     @IBOutlet weak var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .Default
@@ -25,9 +27,9 @@ class RegisterViewController: UIViewController, Registration1Delegate {
 
         self.tableView.registerNib(UINib(nibName: "Registration1ValueTableViewCell", bundle: nil), forCellReuseIdentifier: "Registration1ValueTableViewCell")
         self.tableView.backgroundColor = UIColor.clearColor();
-
         // Do any additional setup after loading the view.
     }
+    
     
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.

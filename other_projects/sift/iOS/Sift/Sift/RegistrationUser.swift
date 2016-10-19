@@ -17,4 +17,5 @@ class RegistrationUser : NSObject {
     var phoneNumber:String=""
     var password:String=""
 
+    var betaCode:String = ""
 }

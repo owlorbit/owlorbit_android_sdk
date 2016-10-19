@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import SwiftyJSON
 
-class LocationModel :NSObject {
+class LocationModel : NSObject {
     
     var userId:String = ""
     var deviceId:String = ""

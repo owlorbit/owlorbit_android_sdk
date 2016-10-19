@@ -1,1 +1,0 @@
-../../../ASImageResize/Classes/ios/UIImage+Resize.h

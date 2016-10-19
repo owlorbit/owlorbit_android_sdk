@@ -316,6 +316,7 @@ class Notification extends CI_Controller {
 
 	public function get_users_notifications(){
 		$this->load->model('notification_queue_model');
+		$typeOfError = 0;
 		$response = array();
 		try{
 			$publicKey = $this->security->xss_clean(strip_tags($this->input->post('publicKey')));
@@ -344,6 +345,7 @@ class Notification extends CI_Controller {
 		    );
 		}catch(Exception $e){
 			$response = array('message'=>$e->getMessage(),
+				'error_code' => $typeOfError,
 				'successful'=> false);
 		}
 		echo json_encode_helper($response);	

@@ -24,11 +24,14 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     var data:[RoomUsersModel] = [];
     var boldRoomId = ""
     
+    var rooms:NSMutableArray = NSMutableArray();
+    var users:NSMutableArray = NSMutableArray();
+    
     
     @IBOutlet weak var tableView: UITableView!
 
     //var userArrayList:NSMutableArray = [];
-    var rooms = Dictionary<String, NSMutableArray>();
+    //var rooms = Dictionary<String, NSMutableArray>();
     let downloader = ImageDownloader()
 
     
@@ -60,26 +63,40 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         navigationController?.navigationBar.barTintColor = ProjectConstants.AppColors.PRIMARY
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-
-        
-        
         tableView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
 
-        getRoomsFromManagedObjects();
+        //getRoomsFromManagedObjects();
+        
+        initPushNotifications();
         initRooms();
         initProfile();
 
-        /*
-        if(!hasProfileImage()){
+        /*if(!hasProfileImage()){
             loadProfileImage()
         }*/
 
         initDownloadProfile()
         initTableViewSettings()
-
+    }
+    
+    func initPushNotifications(){
+        OneSignal.IdsAvailable({ (userId, pushToken) in
+            
+            var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+            ApplicationManager.oneSignalDeviceId = userId
+            UserApiHelper.enablePushNotification(userId, resultJSON: {
+                (JSON) in
+                
+                }, error:{
+                    (errStr) in
+                    FullScreenLoaderHelper.removeLoader();
+                    AlertHelper.createPopupMessage("Try again later...", title: "Push Notification Error")
+            })
+        });
+        
     }
     
     func initTableViewSettings(){
@@ -90,10 +107,11 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             // Add your logic here
             // Do not forget to call dg_stopLoading() at the end
             //okay...
-            self?.getRoomsFromManagedObjects()
+            //self?.getRoomsFromManagedObjects()
             self?.initRooms();
             
             }, loadingView: loadingView)
+        
         tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
@@ -114,9 +132,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             FullScreenLoaderHelper.removeLoader();
             var hasFailed:Bool = (JSON["hasFailed"]) ? true : false
             if(!hasFailed){
-                
-                print("errr \(JSON)")
-                
+
                 PersonalUserModel.updateUserFromLogin(user.email, password: user.password, serverReturnedData: JSON)
 
                 if(!self.hasProfileImage()){
@@ -205,7 +221,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         var getUsersAndGroup = RoomManagedModel.getUsersAndGroup(user.userId);
         
 
-        self.data = getUsersInRoomGrouped(getUsersAndGroup)
+        //self.data = getUsersInRoomGrouped(getUsersAndGroup)
         self.tableView.reloadData()
     }
 
@@ -239,70 +255,50 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     
     func initRooms(){
 
-        RoomApiHelper.getRooms({
+        RoomApiHelper.getAllUsersInRoom({
             (JSON) in
-
-            LeaveRoomHelper.removeRoom(JSON["rooms"])
-
-            for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
-                var roomModel:RoomManagedModel = RoomManagedModel.initWithJson(subJson);
-                RoomApiHelper.getRoomAttribute(roomModel.roomId, resultJSON:{
-                    (JSON2) in
-
-                    RoomAttributeManagedModel.initWithJson(JSON2, roomId: roomModel.roomId, roomAttributeModel:{
-                        (roomAttribute) in
-                    
-                        roomModel.attributes = roomAttribute
-                        if(roomModel.attributes.users.count > 0){
-                            roomModel.avatarOriginal = (roomModel.attributes.users.allObjects[0] as! GenericUserManagedModel).avatarOriginal
-                        }
-
-                        ApplicationManager.shareCoreDataInstance.saveContext()
-                        self.getRoomsFromManagedObjects()
-                    })
-
-                    
-                });
-            }
-            
-            self.tableView.dg_stopLoading()
-        },error: {
-                (message, errorCode) in
-            
-                if(errorCode < 0){
-                    UserApiHelper.updateToken({
-                        //things are updated... so now call the send message again..
-                        self.initRooms()
-                        }, error: {
-                            (errorMsg) in
-                            AlertHelper.createPopupMessage("\(errorMsg)", title:  "Error")
-                    })
-                }else{
-                    self.tableView.dg_stopLoading()
+                self.tableView.dg_stopLoading()
+                self.users.removeAllObjects()
+                self.rooms.removeAllObjects()
+                for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
+                    var room:DashboardRoomModel = DashboardRoomModel(json:subJson)
+                    //add to room list...
+                    self.rooms.addObject(room)
                 }
             
-            }
-        );
+                for (key,subJson):(String, SwiftyJSON.JSON) in JSON["users"] {
+                    var user:DashboardUserModel = DashboardUserModel(json:subJson)
+                    //add to user list...
+                    self.users.addObject(user)
+                }
 
+            
+                self.tableView.reloadData()
+            
+            },error: {
+            (message, errorCode) in
+                
+            }
+        )
     }
     
     public func makeTextBold(targetRoomId:String, displayName:String, message:String){
 
         self.boldRoomId = targetRoomId
         var roomManagedModel:RoomManagedModel = RoomManagedModel.getById(targetRoomId)!
+
         roomManagedModel.lastMessage = message
         roomManagedModel.lastDisplayName = displayName
-        RoomManagedModel.save()
 
+        RoomManagedModel.save()
         self.tableView.reloadData()
     }
     
     func createNewBtnClick(sender: AnyObject){
-        
        let vc = WriteMessageViewController(nibName: "WriteMessageViewController", bundle: nil)
+
         vc.hidesBottomBarWhenPushed = true;
         navigationController?.pushViewController(vc, animated: true )
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -317,7 +313,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             self.loadProfileImage()
         }
         
-        getRoomsFromManagedObjects();
+        //getRoomsFromManagedObjects();
     }
     
     @IBAction func btnTest(sender: AnyObject) {
@@ -348,7 +344,7 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return rooms.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -358,91 +354,109 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         var cell:ReadMessageTableViewCell? = tableView.dequeueReusableCellWithIdentifier("ReadMessageTableViewCell")! as! ReadMessageTableViewCell
-        var roomData:RoomUsersModel = data[indexPath.row] as! RoomUsersModel
+
+        var roomData:DashboardRoomModel = rooms[indexPath.row] as! DashboardRoomModel
+        cell?.populateRoomData(roomData, users:users)
+  
+        return cell!
+    }
+    
+    func getDashboardUsersInRoom(roomId:String) -> DashboardUserModel?{
+        var listOfUsers:NSMutableArray = NSMutableArray()
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-        //RoomManagedModel
         
-        for roomUser: RoomManagedModel in roomData.roomManagedModels {
-
-            if(roomUser.userId != user.userId){
-                
-                if self.boldRoomId == roomUser.roomId{
-                    cell?.setUnread()
-                }else{
-                    cell?.setNormal()
-                }
-
-                
-                cell?.populate(roomUser)
-                break;
+        for usr in users as! [DashboardUserModel] {
+            if(usr.roomId == roomId && usr.userId == user.userId){
+                return usr
             }
         }
         
-        return cell!
+        return nil
     }
 
+    func getRoomName(room:DashboardRoomModel)->String{
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var allUsers:String = "";
+        var usersInRoom:NSMutableArray = getAllUsersInRoom(room.roomId, users: users)
+        
+        if(usersInRoom.count > 0) {
+            for usr in usersInRoom as! [DashboardUserModel] {
+                if(usr.userId != user.userId){
+                    allUsers += usr.firstName + ", ";
+                }
+            }
+        }
+        
+        if(room.roomName == ""){
+            
+            allUsers = allUsers.trim();
+            if(allUsers.characters.last! == ","){
+                allUsers = allUsers.substringToIndex(allUsers.endIndex.predecessor())
+            }
+            
+            return allUsers
+        }else{
+            return room.roomName
+        }
+    }
+    
+    func getAllUsersInRoom(roomId:String, users:NSMutableArray) -> NSMutableArray{
+        var listOfUsers:NSMutableArray = NSMutableArray()
+        
+        for usr in users as! [DashboardUserModel] {
+            if(usr.roomId == roomId){
+                listOfUsers.addObject(usr)
+            }
+        }
+        
+        return listOfUsers
+    }
+    
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //get all user ids..?
 
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
-        var roomData:RoomUsersModel = data[indexPath.row]
-        var roomManaged:RoomManagedModel = RoomManagedModel.getByRoomIdAndUserId(roomData.roomId, userId: user.userId)!
-
-
-        if(roomManaged.accepted){
-            for roomUser: RoomManagedModel in roomData.roomManagedModels {
-                
-                if(roomUser.userId != user.userId){
-                    let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
-                    
-                    vc.chatRoomTitle = roomUser.attributes.name
-                    vc.roomId = roomUser.roomId
-                    vc.delegate = self;
-                    vc.hidesBottomBarWhenPushed = true
-                    print("okokawef: \(roomUser.attributes.name)")
-                    self.boldRoomId = "";
-                    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-                    navigationController?.pushViewController(vc, animated: true )
-                    return
-                }
-            }
-
-        }else{
+        //var roomData:RoomUsersModel = data[indexPath.row]
+        var roomData:DashboardRoomModel = rooms[indexPath.row] as! DashboardRoomModel
+        
+        var userInRoom:DashboardUserModel = getDashboardUsersInRoom(roomData.roomId)! as DashboardUserModel
+        var roomName:String = getRoomName(roomData)
+        
+        if(userInRoom.accepted){
+            let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
             
+            vc.chatRoomTitle = roomName
+            vc.roomId = roomData.roomId
+            vc.delegate = self;
+            vc.hidesBottomBarWhenPushed = true            
+            self.boldRoomId = "";
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            navigationController?.pushViewController(vc, animated: true )
+            return
+        }else{
             var refreshAlert = UIAlertController(title: "Accept Chat", message: "Do you want to join the room?", preferredStyle: UIAlertControllerStyle.Alert)
             refreshAlert.addAction(UIAlertAction(title: "Confirm", style: .Default, handler: { (action: UIAlertAction!) in
-                
-                
                 RoomApiHelper.acceptRoom(roomData.roomId, resultJSON:{
                     (JSON) in
-                    
-                    
-                        roomManaged.accepted = true
-                        ApplicationManager.shareCoreDataInstance.saveContext()
-                        for roomUser: RoomManagedModel in roomData.roomManagedModels {
+
+                        if(roomData.userId != user.userId){
+                            let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
                             
-                            if(roomUser.userId != user.userId){
-                                let vc = MapRadialViewController(nibName: "ChatThreadViewController", bundle: nil)
-                                
-                                vc.chatRoomTitle = roomUser.attributes.name
-                                vc.roomId = roomUser.roomId
-                                vc.delegate = self;
-                                vc.hidesBottomBarWhenPushed = true
-                                print("okokawef: \(roomUser.attributes.name)")
-                                self.boldRoomId = "";
-                                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-                                self.navigationController?.pushViewController(vc, animated: true )
-                                return
-                            }
+                            vc.chatRoomTitle = roomName
+                            vc.roomId = roomData.roomId
+                            vc.delegate = self;
+                            vc.hidesBottomBarWhenPushed = true
+                            self.boldRoomId = "";
+                            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                            self.navigationController?.pushViewController(vc, animated: true )
+                            return
                         }
-                    
                     }, error:{
                         (Error) in
                         AlertHelper.createPopupMessage("\(Error)", title: "")
                 })
-                
-                
-                
+
             }))
             refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
                 
@@ -459,9 +473,8 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
                 refreshAlert .dismissViewControllerAnimated(true, completion: nil)
             }))
             presentViewController(refreshAlert, animated: true, completion: nil)
-            
         }
-        
+ 
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 

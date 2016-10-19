@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
-		3E955090A824489C97B61F95 /* Pods_OwlOrbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */; };
-		6D4296BFBC621244AF4B7C85 /* Pods_OwlOrbit_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA482717555D0DF6418A663 /* Pods_OwlOrbit_Prod.framework */; };
 		B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */; };
 		B804C6D01C17BB0D0076F81B /* UserPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */; };
 		B8068B631C20F95D00EE00CA /* FriendRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B611C20F95D00EE00CA /* FriendRequestViewController.swift */; };
@@ -55,9 +52,37 @@
 		B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */; };
 		B821E72A1C6D6C4200EF9018 /* ManageRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */; };
 		B821E72B1C6D6C4200EF9018 /* ManageRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */; };
+		B825F1FC1DA94B8300E8693D /* UserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F1FA1DA94B8300E8693D /* UserAnnotationView.swift */; };
+		B825F1FD1DA94B8300E8693D /* UserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F1FA1DA94B8300E8693D /* UserAnnotationView.swift */; };
+		B825F1FE1DA94B8300E8693D /* UserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F1FA1DA94B8300E8693D /* UserAnnotationView.swift */; };
+		B825F1FF1DA94B8300E8693D /* UserAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F1FB1DA94B8300E8693D /* UserAnnotationView.xib */; };
+		B825F2001DA94B8300E8693D /* UserAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F1FB1DA94B8300E8693D /* UserAnnotationView.xib */; };
+		B825F2011DA94B8300E8693D /* UserAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F1FB1DA94B8300E8693D /* UserAnnotationView.xib */; };
+		B825F20C1DAE5B2400E8693D /* UserBetaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F20A1DAE5B2400E8693D /* UserBetaTableViewCell.swift */; };
+		B825F20D1DAE5B2400E8693D /* UserBetaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F20A1DAE5B2400E8693D /* UserBetaTableViewCell.swift */; };
+		B825F20E1DAE5B2400E8693D /* UserBetaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F20A1DAE5B2400E8693D /* UserBetaTableViewCell.swift */; };
+		B825F20F1DAE5B2400E8693D /* UserBetaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F20B1DAE5B2400E8693D /* UserBetaTableViewCell.xib */; };
+		B825F2101DAE5B2400E8693D /* UserBetaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F20B1DAE5B2400E8693D /* UserBetaTableViewCell.xib */; };
+		B825F2111DAE5B2400E8693D /* UserBetaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F20B1DAE5B2400E8693D /* UserBetaTableViewCell.xib */; };
+		B825F2141DAE5CC400E8693D /* BetaInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F2121DAE5CC400E8693D /* BetaInviteViewController.swift */; };
+		B825F2151DAE5CC400E8693D /* BetaInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F2121DAE5CC400E8693D /* BetaInviteViewController.swift */; };
+		B825F2161DAE5CC400E8693D /* BetaInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F2121DAE5CC400E8693D /* BetaInviteViewController.swift */; };
+		B825F2171DAE5CC400E8693D /* BetaInviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F2131DAE5CC400E8693D /* BetaInviteViewController.xib */; };
+		B825F2181DAE5CC400E8693D /* BetaInviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F2131DAE5CC400E8693D /* BetaInviteViewController.xib */; };
+		B825F2191DAE5CC400E8693D /* BetaInviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F2131DAE5CC400E8693D /* BetaInviteViewController.xib */; };
+		B825F21B1DAE5EBF00E8693D /* BetaApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F21A1DAE5EBF00E8693D /* BetaApiHelper.swift */; };
+		B825F21C1DAE5EBF00E8693D /* BetaApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F21A1DAE5EBF00E8693D /* BetaApiHelper.swift */; };
+		B825F21D1DAE5EBF00E8693D /* BetaApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F21A1DAE5EBF00E8693D /* BetaApiHelper.swift */; };
+		B825F21F1DAFA8B200E8693D /* InfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F21E1DAFA8B200E8693D /* InfoApi.swift */; };
+		B825F2201DAFA8B300E8693D /* InfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F21E1DAFA8B200E8693D /* InfoApi.swift */; };
+		B825F2211DAFA8B300E8693D /* InfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F21E1DAFA8B200E8693D /* InfoApi.swift */; };
+		B825F2241DAFACD500E8693D /* RegistrationBetaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F2221DAFACD500E8693D /* RegistrationBetaTableViewCell.swift */; };
+		B825F2251DAFACD500E8693D /* RegistrationBetaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F2221DAFACD500E8693D /* RegistrationBetaTableViewCell.swift */; };
+		B825F2261DAFACD500E8693D /* RegistrationBetaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825F2221DAFACD500E8693D /* RegistrationBetaTableViewCell.swift */; };
+		B825F2271DAFACD500E8693D /* RegistrationBetaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F2231DAFACD500E8693D /* RegistrationBetaTableViewCell.xib */; };
+		B825F2281DAFACD500E8693D /* RegistrationBetaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F2231DAFACD500E8693D /* RegistrationBetaTableViewCell.xib */; };
+		B825F2291DAFACD500E8693D /* RegistrationBetaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B825F2231DAFACD500E8693D /* RegistrationBetaTableViewCell.xib */; };
 		B827320C1C7A48C50020C060 /* CustomFindAddressPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B827320B1C7A48C50020C060 /* CustomFindAddressPin.swift */; };
-		B8333F271C89327000626B72 /* UserSingleWriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8333F251C89327000626B72 /* UserSingleWriteTableViewCell.swift */; };
-		B8333F281C89327000626B72 /* UserSingleWriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8333F261C89327000626B72 /* UserSingleWriteTableViewCell.xib */; };
 		B8333F2A1C8D219100626B72 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8333F291C8D219100626B72 /* FileHelper.swift */; };
 		B83C60DC1C72617B00A30260 /* Int+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DB1C72617B00A30260 /* Int+ToString.swift */; };
 		B83C60DE1C72755B00A30260 /* MeetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60DD1C72755B00A30260 /* MeetupButton.swift */; };
@@ -65,6 +90,33 @@
 		B83C60F11C768F9A00A30260 /* UIColor+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C60F01C768F9A00A30260 /* UIColor+helpers.swift */; };
 		B8408C4C1C58577100449BEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8408C4A1C58577100449BEA /* UserProfileViewController.swift */; };
 		B8408C4D1C58577100449BEA /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8408C4B1C58577100449BEA /* UserProfileViewController.xib */; };
+		B84341871DB03A05002D6CFE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341851DB03A05002D6CFE /* NotificationsViewController.swift */; };
+		B84341881DB03A05002D6CFE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341851DB03A05002D6CFE /* NotificationsViewController.swift */; };
+		B84341891DB03A05002D6CFE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341851DB03A05002D6CFE /* NotificationsViewController.swift */; };
+		B843418A1DB03A05002D6CFE /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84341861DB03A05002D6CFE /* NotificationsViewController.xib */; };
+		B843418B1DB03A05002D6CFE /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84341861DB03A05002D6CFE /* NotificationsViewController.xib */; };
+		B843418C1DB03A05002D6CFE /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84341861DB03A05002D6CFE /* NotificationsViewController.xib */; };
+		B843418E1DB03CE6002D6CFE /* NotificationApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843418D1DB03CE6002D6CFE /* NotificationApiHelper.swift */; };
+		B843418F1DB03CE6002D6CFE /* NotificationApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843418D1DB03CE6002D6CFE /* NotificationApiHelper.swift */; };
+		B84341901DB03CE6002D6CFE /* NotificationApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843418D1DB03CE6002D6CFE /* NotificationApiHelper.swift */; };
+		B84341921DB062F5002D6CFE /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341911DB062F5002D6CFE /* NotificationModel.swift */; };
+		B84341931DB062F5002D6CFE /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341911DB062F5002D6CFE /* NotificationModel.swift */; };
+		B84341941DB062F5002D6CFE /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341911DB062F5002D6CFE /* NotificationModel.swift */; };
+		B84341981DB07AFA002D6CFE /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341961DB07AFA002D6CFE /* NotificationTableViewCell.swift */; };
+		B84341991DB07AFA002D6CFE /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341961DB07AFA002D6CFE /* NotificationTableViewCell.swift */; };
+		B843419A1DB07AFA002D6CFE /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341961DB07AFA002D6CFE /* NotificationTableViewCell.swift */; };
+		B843419B1DB07AFA002D6CFE /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84341971DB07AFA002D6CFE /* NotificationTableViewCell.xib */; };
+		B843419C1DB07AFA002D6CFE /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84341971DB07AFA002D6CFE /* NotificationTableViewCell.xib */; };
+		B843419D1DB07AFA002D6CFE /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84341971DB07AFA002D6CFE /* NotificationTableViewCell.xib */; };
+		B843419F1DB100BF002D6CFE /* DashboardRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843419E1DB100BF002D6CFE /* DashboardRoomModel.swift */; };
+		B84341A01DB100BF002D6CFE /* DashboardRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843419E1DB100BF002D6CFE /* DashboardRoomModel.swift */; };
+		B84341A11DB100BF002D6CFE /* DashboardRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843419E1DB100BF002D6CFE /* DashboardRoomModel.swift */; };
+		B84341A31DB101B7002D6CFE /* DashboardUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341A21DB101B7002D6CFE /* DashboardUserModel.swift */; };
+		B84341A41DB101B7002D6CFE /* DashboardUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341A21DB101B7002D6CFE /* DashboardUserModel.swift */; };
+		B84341A51DB101B7002D6CFE /* DashboardUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341A21DB101B7002D6CFE /* DashboardUserModel.swift */; };
+		B84341A71DB2A73E002D6CFE /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341A61DB2A73E002D6CFE /* String+Trim.swift */; };
+		B84341A81DB2A73E002D6CFE /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341A61DB2A73E002D6CFE /* String+Trim.swift */; };
+		B84341A91DB2A73E002D6CFE /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84341A61DB2A73E002D6CFE /* String+Trim.swift */; };
 		B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
 		B849E09E1C5D46A2001A281B /* EnableLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */; };
 		B84F077F1C6E421E00D42FEB /* AddMeetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F077E1C6E421E00D42FEB /* AddMeetupView.swift */; };
@@ -202,7 +254,6 @@
 		B891A90A1D0B905700E88EEF /* ChatTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */; };
 		B891A90B1D0B905700E88EEF /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
 		B891A90C1D0B905700E88EEF /* MyMessageChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8679B1D024F82008CDED1 /* MyMessageChatTableViewCell.swift */; };
-		B891A90D1D0B905700E88EEF /* UserSingleWriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8333F251C89327000626B72 /* UserSingleWriteTableViewCell.swift */; };
 		B891A90E1D0B905700E88EEF /* ManageRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */; };
 		B891A90F1D0B905700E88EEF /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */; };
 		B891A9101D0B905700E88EEF /* MessageCoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */; };
@@ -219,8 +270,6 @@
 		B891A91C1D0B905700E88EEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48641C284363006A345E /* AudioToolbox.framework */; };
 		B891A91D1D0B905700E88EEF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48471C250C67006A345E /* QuartzCore.framework */; };
 		B891A91E1D0B905700E88EEF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
-		B891A91F1D0B905700E88EEF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
-		B891A9201D0B905700E88EEF /* Pods_OwlOrbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */; };
 		B891A9221D0B905700E88EEF /* EnableLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */; };
 		B891A9231D0B905700E88EEF /* FriendRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B621C20F95D00EE00CA /* FriendRequestViewController.xib */; };
 		B891A9241D0B905700E88EEF /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
@@ -239,7 +288,6 @@
 		B891A9311D0B905700E88EEF /* DisableGPSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */; };
 		B891A9321D0B905700E88EEF /* GroupDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512AB1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib */; };
 		B891A9331D0B905700E88EEF /* ProfileImageUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFD21C0EBA1900BF8A79 /* ProfileImageUploadViewController.xib */; };
-		B891A9341D0B905700E88EEF /* UserSingleWriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8333F261C89327000626B72 /* UserSingleWriteTableViewCell.xib */; };
 		B891A9351D0B905700E88EEF /* ManageRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */; };
 		B891A9361D0B905700E88EEF /* OtherMessageChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C867A01D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib */; };
 		B891A9371D0B905700E88EEF /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEC11BF5755800F47929 /* RegisterViewController.xib */; };
@@ -354,7 +402,6 @@
 		B891A9AE1D0B90A500E88EEF /* ChatTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BC48671C284827006A345E /* ChatTextMessageViewController.swift */; };
 		B891A9AF1D0B90A500E88EEF /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */; };
 		B891A9B01D0B90A500E88EEF /* MyMessageChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8679B1D024F82008CDED1 /* MyMessageChatTableViewCell.swift */; };
-		B891A9B11D0B90A500E88EEF /* UserSingleWriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8333F251C89327000626B72 /* UserSingleWriteTableViewCell.swift */; };
 		B891A9B21D0B90A500E88EEF /* ManageRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */; };
 		B891A9B31D0B90A500E88EEF /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E01BFD80CE00995964 /* ProjectConstants.swift */; };
 		B891A9B41D0B90A500E88EEF /* MessageCoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CAA4911C1134F900EC2752 /* MessageCoreModel.swift */; };
@@ -371,8 +418,6 @@
 		B891A9C01D0B90A500E88EEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48641C284363006A345E /* AudioToolbox.framework */; };
 		B891A9C11D0B90A500E88EEF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BC48471C250C67006A345E /* QuartzCore.framework */; };
 		B891A9C21D0B90A500E88EEF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B80F001BF4182C00CF4BB3 /* MapKit.framework */; };
-		B891A9C31D0B90A500E88EEF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
-		B891A9C41D0B90A500E88EEF /* Pods_OwlOrbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */; };
 		B891A9C61D0B90A500E88EEF /* EnableLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */; };
 		B891A9C71D0B90A500E88EEF /* FriendRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8068B621C20F95D00EE00CA /* FriendRequestViewController.xib */; };
 		B891A9C81D0B90A500E88EEF /* UICustomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80EF71BF4102500CF4BB3 /* UICustomTabBarController.xib */; };
@@ -391,7 +436,6 @@
 		B891A9D51D0B90A500E88EEF /* DisableGPSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */; };
 		B891A9D61D0B90A500E88EEF /* GroupDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F512AB1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib */; };
 		B891A9D71D0B90A500E88EEF /* ProfileImageUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B866DFD21C0EBA1900BF8A79 /* ProfileImageUploadViewController.xib */; };
-		B891A9D81D0B90A500E88EEF /* UserSingleWriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8333F261C89327000626B72 /* UserSingleWriteTableViewCell.xib */; };
 		B891A9D91D0B90A500E88EEF /* ManageRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */; };
 		B891A9DA1D0B90A500E88EEF /* OtherMessageChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C867A01D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib */; };
 		B891A9DB1D0B90A500E88EEF /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B870CEC11BF5755800F47929 /* RegisterViewController.xib */; };
@@ -469,6 +513,18 @@
 		B8E4E7E51BFEDD0F00995964 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */; };
 		B8E4E7E71BFEDE6100995964 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */; };
 		B8E4E7EC1C02B6CF00995964 /* EncryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */; };
+		B8E88CD11DB57FA1003F0A48 /* AddUserToRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E88CCF1DB57FA1003F0A48 /* AddUserToRoomViewController.swift */; };
+		B8E88CD21DB57FA1003F0A48 /* AddUserToRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E88CCF1DB57FA1003F0A48 /* AddUserToRoomViewController.swift */; };
+		B8E88CD31DB57FA1003F0A48 /* AddUserToRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E88CCF1DB57FA1003F0A48 /* AddUserToRoomViewController.swift */; };
+		B8E88CD41DB57FA1003F0A48 /* AddUserToRoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E88CD01DB57FA1003F0A48 /* AddUserToRoomViewController.xib */; };
+		B8E88CD51DB57FA1003F0A48 /* AddUserToRoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E88CD01DB57FA1003F0A48 /* AddUserToRoomViewController.xib */; };
+		B8E88CD61DB57FA1003F0A48 /* AddUserToRoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E88CD01DB57FA1003F0A48 /* AddUserToRoomViewController.xib */; };
+		B8E88CD91DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E88CD71DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift */; };
+		B8E88CDA1DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E88CD71DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift */; };
+		B8E88CDB1DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E88CD71DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift */; };
+		B8E88CDC1DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E88CD81DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib */; };
+		B8E88CDD1DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E88CD81DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib */; };
+		B8E88CDE1DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E88CD81DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib */; };
 		B8EE8A881C9A690C00FE2276 /* DisableGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EE8A861C9A690C00FE2276 /* DisableGPSViewController.swift */; };
 		B8EE8A891C9A690C00FE2276 /* DisableGPSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */; };
 		B8F512941C61C8F5007DCFD5 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */; };
@@ -510,11 +566,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		35946F21B48C1DE6863F53BD /* Pods_Sift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7EA482717555D0DF6418A663 /* Pods_OwlOrbit_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OwlOrbit_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		91601974A0D837B391AABADD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OwlOrbit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B804C6CC1C16A4920076F81B /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
 		B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPointAnnotation.swift; sourceTree = "<group>"; };
@@ -548,9 +600,17 @@
 		B821E7251C6C4D5A00EF9018 /* CustomMeetupPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMeetupPin.swift; sourceTree = "<group>"; };
 		B821E7281C6D6C4200EF9018 /* ManageRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageRequestsViewController.swift; sourceTree = "<group>"; };
 		B821E7291C6D6C4200EF9018 /* ManageRequestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManageRequestsViewController.xib; sourceTree = "<group>"; };
+		B825F1FA1DA94B8300E8693D /* UserAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotationView.swift; sourceTree = "<group>"; };
+		B825F1FB1DA94B8300E8693D /* UserAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserAnnotationView.xib; sourceTree = "<group>"; };
+		B825F20A1DAE5B2400E8693D /* UserBetaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserBetaTableViewCell.swift; sourceTree = "<group>"; };
+		B825F20B1DAE5B2400E8693D /* UserBetaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserBetaTableViewCell.xib; sourceTree = "<group>"; };
+		B825F2121DAE5CC400E8693D /* BetaInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaInviteViewController.swift; sourceTree = "<group>"; };
+		B825F2131DAE5CC400E8693D /* BetaInviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BetaInviteViewController.xib; sourceTree = "<group>"; };
+		B825F21A1DAE5EBF00E8693D /* BetaApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaApiHelper.swift; sourceTree = "<group>"; };
+		B825F21E1DAFA8B200E8693D /* InfoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoApi.swift; sourceTree = "<group>"; };
+		B825F2221DAFACD500E8693D /* RegistrationBetaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationBetaTableViewCell.swift; sourceTree = "<group>"; };
+		B825F2231DAFACD500E8693D /* RegistrationBetaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationBetaTableViewCell.xib; sourceTree = "<group>"; };
 		B827320B1C7A48C50020C060 /* CustomFindAddressPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFindAddressPin.swift; sourceTree = "<group>"; };
-		B8333F251C89327000626B72 /* UserSingleWriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSingleWriteTableViewCell.swift; path = ../../../../../../../owlorbit_assets/UserSingleWriteTableViewCell.swift; sourceTree = "<group>"; };
-		B8333F261C89327000626B72 /* UserSingleWriteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserSingleWriteTableViewCell.xib; path = ../../../../../../../owlorbit_assets/UserSingleWriteTableViewCell.xib; sourceTree = "<group>"; };
 		B8333F291C8D219100626B72 /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		B83C60DB1C72617B00A30260 /* Int+ToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+ToString.swift"; sourceTree = "<group>"; };
 		B83C60DD1C72755B00A30260 /* MeetupButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupButton.swift; sourceTree = "<group>"; };
@@ -558,6 +618,15 @@
 		B83C60F01C768F9A00A30260 /* UIColor+helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+helpers.swift"; sourceTree = "<group>"; };
 		B8408C4A1C58577100449BEA /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		B8408C4B1C58577100449BEA /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
+		B84341851DB03A05002D6CFE /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		B84341861DB03A05002D6CFE /* NotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewController.xib; sourceTree = "<group>"; };
+		B843418D1DB03CE6002D6CFE /* NotificationApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationApiHelper.swift; sourceTree = "<group>"; };
+		B84341911DB062F5002D6CFE /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		B84341961DB07AFA002D6CFE /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		B84341971DB07AFA002D6CFE /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		B843419E1DB100BF002D6CFE /* DashboardRoomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardRoomModel.swift; sourceTree = "<group>"; };
+		B84341A21DB101B7002D6CFE /* DashboardUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardUserModel.swift; sourceTree = "<group>"; };
+		B84341A61DB2A73E002D6CFE /* String+Trim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Trim.swift"; sourceTree = "<group>"; };
 		B849E09B1C5D46A2001A281B /* EnableLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
 		B849E09C1C5D46A2001A281B /* EnableLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnableLocationViewController.xib; sourceTree = "<group>"; };
 		B84F077E1C6E421E00D42FEB /* AddMeetupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMeetupView.swift; sourceTree = "<group>"; };
@@ -602,7 +671,7 @@
 		B870CEF01BFC093000F47929 /* CustomMapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMapPin.swift; sourceTree = "<group>"; };
 		B87654611C03F53F00190B9B /* WriteMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteMessageViewController.swift; sourceTree = "<group>"; };
 		B87654621C03F53F00190B9B /* WriteMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteMessageViewController.xib; sourceTree = "<group>"; };
-		B8792A261BEB15CE00BE05ED /* OwlOrbit Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OwlOrbit Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8792A261BEB15CE00BE05ED /* OwlOrbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwlOrbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8792A291BEB15CE00BE05ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8792A2B1BEB15CE00BE05ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B8792A311BEB15CE00BE05ED /* Sift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sift.xcdatamodel; sourceTree = "<group>"; };
@@ -671,6 +740,10 @@
 		B8E4E7E41BFEDD0F00995964 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		B8E4E7E61BFEDE6100995964 /* ApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		B8E4E7EB1C02B6CF00995964 /* EncryptUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptUtil.swift; sourceTree = "<group>"; };
+		B8E88CCF1DB57FA1003F0A48 /* AddUserToRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserToRoomViewController.swift; sourceTree = "<group>"; };
+		B8E88CD01DB57FA1003F0A48 /* AddUserToRoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddUserToRoomViewController.xib; sourceTree = "<group>"; };
+		B8E88CD71DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSingleWriteTableViewCell.swift; sourceTree = "<group>"; };
+		B8E88CD81DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSingleWriteTableViewCell.xib; sourceTree = "<group>"; };
 		B8EE8A861C9A690C00FE2276 /* DisableGPSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisableGPSViewController.swift; sourceTree = "<group>"; };
 		B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisableGPSViewController.xib; sourceTree = "<group>"; };
 		B8F512921C61C8F5007DCFD5 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
@@ -693,7 +766,6 @@
 		B8F512B31C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupIsFriendsOnlyTableViewCell.xib; sourceTree = "<group>"; };
 		B8F512B61C696726007DCFD5 /* GroupCountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCountTableViewCell.swift; sourceTree = "<group>"; };
 		B8F512B71C696726007DCFD5 /* GroupCountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCountTableViewCell.xib; sourceTree = "<group>"; };
-		CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -705,9 +777,6 @@
 				B8BC48651C284363006A345E /* AudioToolbox.framework in Frameworks */,
 				B8BC48481C250C67006A345E /* QuartzCore.framework in Frameworks */,
 				B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */,
-				21298FC3E47AC4027C7A9035 /* Pods.framework in Frameworks */,
-				3E955090A824489C97B61F95 /* Pods_OwlOrbit.framework in Frameworks */,
-				6D4296BFBC621244AF4B7C85 /* Pods_OwlOrbit_Prod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,8 +802,6 @@
 				B891A91C1D0B905700E88EEF /* AudioToolbox.framework in Frameworks */,
 				B891A91D1D0B905700E88EEF /* QuartzCore.framework in Frameworks */,
 				B891A91E1D0B905700E88EEF /* MapKit.framework in Frameworks */,
-				B891A91F1D0B905700E88EEF /* Pods.framework in Frameworks */,
-				B891A9201D0B905700E88EEF /* Pods_OwlOrbit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,8 +813,6 @@
 				B891A9C01D0B90A500E88EEF /* AudioToolbox.framework in Frameworks */,
 				B891A9C11D0B90A500E88EEF /* QuartzCore.framework in Frameworks */,
 				B891A9C21D0B90A500E88EEF /* MapKit.framework in Frameworks */,
-				B891A9C31D0B90A500E88EEF /* Pods.framework in Frameworks */,
-				B891A9C41D0B90A500E88EEF /* Pods_OwlOrbit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,9 +827,6 @@
 				B8BC48471C250C67006A345E /* QuartzCore.framework */,
 				B8B80F001BF4182C00CF4BB3 /* MapKit.framework */,
 				ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */,
-				35946F21B48C1DE6863F53BD /* Pods_Sift.framework */,
-				B09F0BF50D7646F2FD7E75B5 /* Pods_OwlOrbit.framework */,
-				7EA482717555D0DF6418A663 /* Pods_OwlOrbit_Prod.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -794,6 +856,8 @@
 		B8068B6F1C22375B00EE00CA /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				B825F20A1DAE5B2400E8693D /* UserBetaTableViewCell.swift */,
+				B825F20B1DAE5B2400E8693D /* UserBetaTableViewCell.xib */,
 				B8068B701C22379200EE00CA /* UserLogoutTableViewCell.swift */,
 				B8068B711C22379200EE00CA /* UserLogoutTableViewCell.xib */,
 				B8068B651C2129DE00EE00CA /* Profile */,
@@ -806,6 +870,9 @@
 			children = (
 				B81DD7761DA7482600893DBD /* UserLocationModel.swift */,
 				B81DD7821DA7C1C900893DBD /* UserLocationPointAnnotation.swift */,
+				B84341911DB062F5002D6CFE /* NotificationModel.swift */,
+				B843419E1DB100BF002D6CFE /* DashboardRoomModel.swift */,
+				B84341A21DB101B7002D6CFE /* DashboardUserModel.swift */,
 			);
 			name = V2;
 			sourceTree = "<group>";
@@ -827,6 +894,8 @@
 		B83C60EE1C768D7900A30260 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				B825F1FA1DA94B8300E8693D /* UserAnnotationView.swift */,
+				B825F1FB1DA94B8300E8693D /* UserAnnotationView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -834,6 +903,8 @@
 		B83C60EF1C768D8100A30260 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B8E88CCF1DB57FA1003F0A48 /* AddUserToRoomViewController.swift */,
+				B8E88CD01DB57FA1003F0A48 /* AddUserToRoomViewController.xib */,
 				B83C60EB1C768A8A00A30260 /* MapRadialViewController.swift */,
 				B8BAD2591BF17F6C00DC7F60 /* ChatThreadViewController.swift */,
 				B8BAD25A1BF17F6C00DC7F60 /* ChatThreadViewController.xib */,
@@ -851,6 +922,24 @@
 				B8408C4B1C58577100449BEA /* UserProfileViewController.xib */,
 			);
 			name = UserViewController;
+			sourceTree = "<group>";
+		};
+		B84341841DB03944002D6CFE /* NotificationsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B84341851DB03A05002D6CFE /* NotificationsViewController.swift */,
+				B84341861DB03A05002D6CFE /* NotificationsViewController.xib */,
+			);
+			name = NotificationsViewController;
+			sourceTree = "<group>";
+		};
+		B84341951DB07AED002D6CFE /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				B84341961DB07AFA002D6CFE /* NotificationTableViewCell.swift */,
+				B84341971DB07AFA002D6CFE /* NotificationTableViewCell.xib */,
+			);
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 		B849E09A1C5D4675001A281B /* ErrorViewController */ = {
@@ -885,12 +974,12 @@
 		B866DFAE1C061C5B00BF8A79 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				B8E88CD71DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift */,
+				B8E88CD81DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib */,
 				B81DD7861DA8858300893DBD /* MeetupListTableViewCell.swift */,
 				B81DD7871DA8858300893DBD /* MeetupListTableViewCell.xib */,
 				B81DD77A1DA74B8B00893DBD /* UserListTableViewCell.swift */,
 				B81DD77B1DA74B8B00893DBD /* UserListTableViewCell.xib */,
-				B8333F251C89327000626B72 /* UserSingleWriteTableViewCell.swift */,
-				B8333F261C89327000626B72 /* UserSingleWriteTableViewCell.xib */,
 				B866DFBD1C0A92B000BF8A79 /* UserSearchPendingHeaderView.swift */,
 				B866DFBB1C0A8A8D00BF8A79 /* UserSearchPendingHeaderView.xib */,
 				B8F5129D1C681217007DCFD5 /* UserGroupSelectTableViewCell.swift */,
@@ -936,6 +1025,7 @@
 		B870CEC81BF96E9900F47929 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B84341951DB07AED002D6CFE /* Notifications */,
 				B8F512A51C696694007DCFD5 /* GroupDescription */,
 				B863BED11C56E8FA00C8BA01 /* Instructions */,
 				B8068B6F1C22375B00EE00CA /* Settings */,
@@ -950,6 +1040,8 @@
 		B870CEC91BF96E9E00F47929 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				B825F2221DAFACD500E8693D /* RegistrationBetaTableViewCell.swift */,
+				B825F2231DAFACD500E8693D /* RegistrationBetaTableViewCell.xib */,
 				B870CECE1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift */,
 				B870CECF1BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib */,
 				B870CECA1BF96ECF00F47929 /* Registration1ValueTableViewCell.swift */,
@@ -1034,6 +1126,7 @@
 				B81CAB6F1C7909DB007B5131 /* LeaveRoomHelper.swift */,
 				B8D8DD571C82869D00942FDB /* NotificationHelper.swift */,
 				B8333F291C8D219100626B72 /* FileHelper.swift */,
+				B84341A61DB2A73E002D6CFE /* String+Trim.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1045,7 +1138,6 @@
 				B8792A401BEB15CE00BE05ED /* SiftTests */,
 				B8792A4B1BEB15CE00BE05ED /* SiftUITests */,
 				B8792A271BEB15CE00BE05ED /* Products */,
-				CEFA435EA322FF036A6DBA3E /* Pods */,
 				A47F75AA7BBF8E4E58BD0708 /* Frameworks */,
 				B891A9581D0B905700E88EEF /* OwlOrbit copy-Info.plist */,
 				B891A9FC1D0B90A500E88EEF /* OwlOrbit copy copy-Info.plist */,
@@ -1055,7 +1147,7 @@
 		B8792A271BEB15CE00BE05ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B8792A261BEB15CE00BE05ED /* OwlOrbit Prod.app */,
+				B8792A261BEB15CE00BE05ED /* OwlOrbit.app */,
 				B8792A3D1BEB15CE00BE05ED /* OwlOrbitTests.xctest */,
 				B8792A481BEB15CE00BE05ED /* OwlOrbitUITests.xctest */,
 				B891A9571D0B905700E88EEF /* OwlOrbit Docker.app */,
@@ -1191,6 +1283,7 @@
 		B8BAD25E1BF181EA00DC7F60 /* DashboardViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B84341841DB03944002D6CFE /* NotificationsViewController */,
 				B8EE8A851C9A68DE00FE2276 /* SettingsViewController */,
 				B849E09A1C5D4675001A281B /* ErrorViewController */,
 				B8408C491C58576000449BEA /* UserViewController */,
@@ -1254,6 +1347,9 @@
 				B866DFBF1C0B5F9200BF8A79 /* LocationApiHelper.swift */,
 				B866DFC11C0BC22A00BF8A79 /* ChatApiHelper.swift */,
 				B866DFC31C0D22D100BF8A79 /* RoomApiHelper.swift */,
+				B825F21A1DAE5EBF00E8693D /* BetaApiHelper.swift */,
+				B825F21E1DAFA8B200E8693D /* InfoApi.swift */,
+				B843418D1DB03CE6002D6CFE /* NotificationApiHelper.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -1263,6 +1359,8 @@
 			children = (
 				B8EE8A861C9A690C00FE2276 /* DisableGPSViewController.swift */,
 				B8EE8A871C9A690C00FE2276 /* DisableGPSViewController.xib */,
+				B825F2121DAE5CC400E8693D /* BetaInviteViewController.swift */,
+				B825F2131DAE5CC400E8693D /* BetaInviteViewController.xib */,
 			);
 			name = SettingsViewController;
 			sourceTree = "<group>";
@@ -1284,37 +1382,25 @@
 			name = GroupDescription;
 			sourceTree = "<group>";
 		};
-		CEFA435EA322FF036A6DBA3E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				91601974A0D837B391AABADD /* Pods.debug.xcconfig */,
-				CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B8792A251BEB15CE00BE05ED /* OwlOrbit Prod */ = {
+		B8792A251BEB15CE00BE05ED /* OwlOrbit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit Prod" */;
+			buildConfigurationList = B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit" */;
 			buildPhases = (
-				2A255307CDFB5246ABC95317 /* Check Pods Manifest.lock */,
 				B891A9FE1D0B912100E88EEF /* ShellScript */,
 				B8792A221BEB15CE00BE05ED /* Sources */,
 				B8792A231BEB15CE00BE05ED /* Frameworks */,
 				B8792A241BEB15CE00BE05ED /* Resources */,
-				870206B63A65ECEAB9F1045A /* Embed Pods Frameworks */,
-				A8165F553BEF927171B1B40D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "OwlOrbit Prod";
+			name = OwlOrbit;
 			productName = Sift;
-			productReference = B8792A261BEB15CE00BE05ED /* OwlOrbit Prod.app */;
+			productReference = B8792A261BEB15CE00BE05ED /* OwlOrbit.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B8792A3C1BEB15CE00BE05ED /* OwlOrbitTests */ = {
@@ -1358,12 +1444,9 @@
 			buildConfigurationList = B891A9541D0B905700E88EEF /* Build configuration list for PBXNativeTarget "OwlOrbit Docker" */;
 			buildPhases = (
 				B891A9FD1D0B90F500E88EEF /* Run Script */,
-				B891A8B61D0B905700E88EEF /* Check Pods Manifest.lock */,
 				B891A8B71D0B905700E88EEF /* Sources */,
 				B891A91A1D0B905700E88EEF /* Frameworks */,
 				B891A9211D0B905700E88EEF /* Resources */,
-				B891A9521D0B905700E88EEF /* Embed Pods Frameworks */,
-				B891A9531D0B905700E88EEF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1379,12 +1462,9 @@
 			buildConfigurationList = B891A9F81D0B90A500E88EEF /* Build configuration list for PBXNativeTarget "OwlOrbit Local" */;
 			buildPhases = (
 				B891A9FF1D0B912C00E88EEF /* ShellScript */,
-				B891A95A1D0B90A500E88EEF /* Check Pods Manifest.lock */,
 				B891A95B1D0B90A500E88EEF /* Sources */,
 				B891A9BE1D0B90A500E88EEF /* Frameworks */,
 				B891A9C51D0B90A500E88EEF /* Resources */,
-				B891A9F61D0B90A500E88EEF /* Embed Pods Frameworks */,
-				B891A9F71D0B90A500E88EEF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1443,7 +1523,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B8792A251BEB15CE00BE05ED /* OwlOrbit Prod */,
+				B8792A251BEB15CE00BE05ED /* OwlOrbit */,
 				B891A8B51D0B905700E88EEF /* OwlOrbit Docker */,
 				B891A9591D0B90A500E88EEF /* OwlOrbit Local */,
 				B8792A3C1BEB15CE00BE05ED /* OwlOrbitTests */,
@@ -1457,6 +1537,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E88CDC1DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib in Resources */,
 				B849E09E1C5D46A2001A281B /* EnableLocationViewController.xib in Resources */,
 				B8068B641C20F95D00EE00CA /* FriendRequestViewController.xib in Resources */,
 				B81DD78B1DA8858300893DBD /* MeetupListTableViewCell.xib in Resources */,
@@ -1464,12 +1545,14 @@
 				B8B80EF91BF4102500CF4BB3 /* UICustomTabBarController.xib in Resources */,
 				B8BAD25C1BF17F6C00DC7F60 /* ChatThreadViewController.xib in Resources */,
 				B870CEE51BFAF48100F47929 /* RegistrationNextView.xib in Resources */,
+				B8E88CD41DB57FA1003F0A48 /* AddUserToRoomViewController.xib in Resources */,
 				B8F5129A1C61CD76007DCFD5 /* UserDiscoverTableViewCell.xib in Resources */,
 				B870CEC71BF5AF3800F47929 /* RegisterBasicInfoViewController.xib in Resources */,
 				B8C8679E1D024F82008CDED1 /* MyMessageChatTableViewCell.xib in Resources */,
 				B8F512A91C6966D8007DCFD5 /* GroupNameTableViewCell.xib in Resources */,
 				B8F512A41C696565007DCFD5 /* GroupSettingsStep1ViewController.xib in Resources */,
 				B8792A371BEB15CE00BE05ED /* LaunchScreen.storyboard in Resources */,
+				B825F2171DAE5CC400E8693D /* BetaInviteViewController.xib in Resources */,
 				B863BED01C56E5E500C8BA01 /* ChatMapInstructionsViewController.xib in Resources */,
 				B8792A341BEB15CE00BE05ED /* Assets.xcassets in Resources */,
 				B866DFD01C0E812600BF8A79 /* ChatMapKeyboardView.xib in Resources */,
@@ -1477,7 +1560,7 @@
 				B8EE8A891C9A690C00FE2276 /* DisableGPSViewController.xib in Resources */,
 				B8F512AD1C6966EC007DCFD5 /* GroupDescriptionTableViewCell.xib in Resources */,
 				B866DFD41C0EBA1900BF8A79 /* ProfileImageUploadViewController.xib in Resources */,
-				B8333F281C89327000626B72 /* UserSingleWriteTableViewCell.xib in Resources */,
+				B825F1FF1DA94B8300E8693D /* UserAnnotationView.xib in Resources */,
 				B81DD77F1DA74B8B00893DBD /* UserListTableViewCell.xib in Resources */,
 				B821E72B1C6D6C4200EF9018 /* ManageRequestsViewController.xib in Resources */,
 				B8C867A21D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib in Resources */,
@@ -1486,11 +1569,14 @@
 				B8068B6E1C22364400EE00CA /* ProfileSettingImageUploadViewController.xib in Resources */,
 				B8F512951C61C8F5007DCFD5 /* AddGroupViewController.xib in Resources */,
 				B863BED41C56E93000C8BA01 /* MapInstructionsTableViewCell.xib in Resources */,
+				B825F2271DAFACD500E8693D /* RegistrationBetaTableViewCell.xib in Resources */,
 				B8F512B51C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib in Resources */,
 				B8068B731C22379200EE00CA /* UserLogoutTableViewCell.xib in Resources */,
+				B825F20F1DAE5B2400E8693D /* UserBetaTableViewCell.xib in Resources */,
 				B866DFBC1C0A8A8D00BF8A79 /* UserSearchPendingHeaderView.xib in Resources */,
 				B8E4E7D21BFC40E600995964 /* ReadMessageTableViewCell.xib in Resources */,
 				B866DFB21C061CA000BF8A79 /* UserSearchTableViewCell.xib in Resources */,
+				B843419B1DB07AFA002D6CFE /* NotificationTableViewCell.xib in Resources */,
 				B8B80F051BF452A500CF4BB3 /* SettingsViewController.xib in Resources */,
 				B8F512B11C6966FC007DCFD5 /* GroupIsPublicTableViewCell.xib in Resources */,
 				B870CED11BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.xib in Resources */,
@@ -1502,6 +1588,7 @@
 				B8BC486A1C284827006A345E /* ChatTextMessageViewController.xib in Resources */,
 				B892D65F1C1A45700091F128 /* PreloadHomeViewController.xib in Resources */,
 				B84F07811C6E42C600D42FEB /* AddMeetupView.xib in Resources */,
+				B843418A1DB03A05002D6CFE /* NotificationsViewController.xib in Resources */,
 				B8BAD26A1BF1869C00DC7F60 /* DashboardViewController.xib in Resources */,
 				B8F512A01C681217007DCFD5 /* UserGroupSelectTableViewCell.xib in Resources */,
 				B8068B691C2129E300EE00CA /* UserProfileSearchTableViewCell.xib in Resources */,
@@ -1536,12 +1623,14 @@
 				B891A9241D0B905700E88EEF /* UICustomTabBarController.xib in Resources */,
 				B891A9251D0B905700E88EEF /* ChatThreadViewController.xib in Resources */,
 				B891A9261D0B905700E88EEF /* RegistrationNextView.xib in Resources */,
+				B8E88CD51DB57FA1003F0A48 /* AddUserToRoomViewController.xib in Resources */,
 				B891A9271D0B905700E88EEF /* UserDiscoverTableViewCell.xib in Resources */,
 				B891A9281D0B905700E88EEF /* RegisterBasicInfoViewController.xib in Resources */,
 				B891A9291D0B905700E88EEF /* MyMessageChatTableViewCell.xib in Resources */,
 				B891A92A1D0B905700E88EEF /* GroupNameTableViewCell.xib in Resources */,
 				B891A92B1D0B905700E88EEF /* GroupSettingsStep1ViewController.xib in Resources */,
 				B891A92C1D0B905700E88EEF /* LaunchScreen.storyboard in Resources */,
+				B825F2181DAE5CC400E8693D /* BetaInviteViewController.xib in Resources */,
 				B891A92D1D0B905700E88EEF /* ChatMapInstructionsViewController.xib in Resources */,
 				B891A92E1D0B905700E88EEF /* Assets.xcassets in Resources */,
 				B891A92F1D0B905700E88EEF /* ChatMapKeyboardView.xib in Resources */,
@@ -1549,20 +1638,24 @@
 				B891A9311D0B905700E88EEF /* DisableGPSViewController.xib in Resources */,
 				B891A9321D0B905700E88EEF /* GroupDescriptionTableViewCell.xib in Resources */,
 				B891A9331D0B905700E88EEF /* ProfileImageUploadViewController.xib in Resources */,
-				B891A9341D0B905700E88EEF /* UserSingleWriteTableViewCell.xib in Resources */,
+				B825F2001DA94B8300E8693D /* UserAnnotationView.xib in Resources */,
 				B81DD7801DA74B8B00893DBD /* UserListTableViewCell.xib in Resources */,
 				B891A9351D0B905700E88EEF /* ManageRequestsViewController.xib in Resources */,
 				B891A9361D0B905700E88EEF /* OtherMessageChatTableViewCell.xib in Resources */,
 				B891A9371D0B905700E88EEF /* RegisterViewController.xib in Resources */,
 				B891A9381D0B905700E88EEF /* ResetPasswordViewController.xib in Resources */,
+				B8E88CDD1DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib in Resources */,
 				B891A9391D0B905700E88EEF /* ProfileSettingImageUploadViewController.xib in Resources */,
 				B891A93A1D0B905700E88EEF /* AddGroupViewController.xib in Resources */,
 				B891A93B1D0B905700E88EEF /* MapInstructionsTableViewCell.xib in Resources */,
+				B825F2281DAFACD500E8693D /* RegistrationBetaTableViewCell.xib in Resources */,
 				B891A93C1D0B905700E88EEF /* GroupIsFriendsOnlyTableViewCell.xib in Resources */,
 				B891A93D1D0B905700E88EEF /* UserLogoutTableViewCell.xib in Resources */,
+				B825F2101DAE5B2400E8693D /* UserBetaTableViewCell.xib in Resources */,
 				B891A93E1D0B905700E88EEF /* UserSearchPendingHeaderView.xib in Resources */,
 				B891A93F1D0B905700E88EEF /* ReadMessageTableViewCell.xib in Resources */,
 				B891A9401D0B905700E88EEF /* UserSearchTableViewCell.xib in Resources */,
+				B843419C1DB07AFA002D6CFE /* NotificationTableViewCell.xib in Resources */,
 				B891A9411D0B905700E88EEF /* SettingsViewController.xib in Resources */,
 				B891A9421D0B905700E88EEF /* GroupIsPublicTableViewCell.xib in Resources */,
 				B891A9431D0B905700E88EEF /* RegistrationBasicInfoValueTableViewCell.xib in Resources */,
@@ -1574,6 +1667,7 @@
 				B891A9491D0B905700E88EEF /* ChatTextMessageViewController.xib in Resources */,
 				B891A94A1D0B905700E88EEF /* PreloadHomeViewController.xib in Resources */,
 				B891A94B1D0B905700E88EEF /* AddMeetupView.xib in Resources */,
+				B843418B1DB03A05002D6CFE /* NotificationsViewController.xib in Resources */,
 				B891A94C1D0B905700E88EEF /* DashboardViewController.xib in Resources */,
 				B891A94D1D0B905700E88EEF /* UserGroupSelectTableViewCell.xib in Resources */,
 				B891A94E1D0B905700E88EEF /* UserProfileSearchTableViewCell.xib in Resources */,
@@ -1594,12 +1688,14 @@
 				B891A9C81D0B90A500E88EEF /* UICustomTabBarController.xib in Resources */,
 				B891A9C91D0B90A500E88EEF /* ChatThreadViewController.xib in Resources */,
 				B891A9CA1D0B90A500E88EEF /* RegistrationNextView.xib in Resources */,
+				B8E88CD61DB57FA1003F0A48 /* AddUserToRoomViewController.xib in Resources */,
 				B891A9CB1D0B90A500E88EEF /* UserDiscoverTableViewCell.xib in Resources */,
 				B891A9CC1D0B90A500E88EEF /* RegisterBasicInfoViewController.xib in Resources */,
 				B891A9CD1D0B90A500E88EEF /* MyMessageChatTableViewCell.xib in Resources */,
 				B891A9CE1D0B90A500E88EEF /* GroupNameTableViewCell.xib in Resources */,
 				B891A9CF1D0B90A500E88EEF /* GroupSettingsStep1ViewController.xib in Resources */,
 				B891A9D01D0B90A500E88EEF /* LaunchScreen.storyboard in Resources */,
+				B825F2191DAE5CC400E8693D /* BetaInviteViewController.xib in Resources */,
 				B891A9D11D0B90A500E88EEF /* ChatMapInstructionsViewController.xib in Resources */,
 				B891A9D21D0B90A500E88EEF /* Assets.xcassets in Resources */,
 				B891A9D31D0B90A500E88EEF /* ChatMapKeyboardView.xib in Resources */,
@@ -1607,20 +1703,24 @@
 				B891A9D51D0B90A500E88EEF /* DisableGPSViewController.xib in Resources */,
 				B891A9D61D0B90A500E88EEF /* GroupDescriptionTableViewCell.xib in Resources */,
 				B891A9D71D0B90A500E88EEF /* ProfileImageUploadViewController.xib in Resources */,
-				B891A9D81D0B90A500E88EEF /* UserSingleWriteTableViewCell.xib in Resources */,
+				B825F2011DA94B8300E8693D /* UserAnnotationView.xib in Resources */,
 				B81DD7811DA74B8B00893DBD /* UserListTableViewCell.xib in Resources */,
 				B891A9D91D0B90A500E88EEF /* ManageRequestsViewController.xib in Resources */,
 				B891A9DA1D0B90A500E88EEF /* OtherMessageChatTableViewCell.xib in Resources */,
 				B891A9DB1D0B90A500E88EEF /* RegisterViewController.xib in Resources */,
 				B891A9DC1D0B90A500E88EEF /* ResetPasswordViewController.xib in Resources */,
+				B8E88CDE1DB580D4003F0A48 /* UserSingleWriteTableViewCell.xib in Resources */,
 				B891A9DD1D0B90A500E88EEF /* ProfileSettingImageUploadViewController.xib in Resources */,
 				B891A9DE1D0B90A500E88EEF /* AddGroupViewController.xib in Resources */,
 				B891A9DF1D0B90A500E88EEF /* MapInstructionsTableViewCell.xib in Resources */,
+				B825F2291DAFACD500E8693D /* RegistrationBetaTableViewCell.xib in Resources */,
 				B891A9E01D0B90A500E88EEF /* GroupIsFriendsOnlyTableViewCell.xib in Resources */,
 				B891A9E11D0B90A500E88EEF /* UserLogoutTableViewCell.xib in Resources */,
+				B825F2111DAE5B2400E8693D /* UserBetaTableViewCell.xib in Resources */,
 				B891A9E21D0B90A500E88EEF /* UserSearchPendingHeaderView.xib in Resources */,
 				B891A9E31D0B90A500E88EEF /* ReadMessageTableViewCell.xib in Resources */,
 				B891A9E41D0B90A500E88EEF /* UserSearchTableViewCell.xib in Resources */,
+				B843419D1DB07AFA002D6CFE /* NotificationTableViewCell.xib in Resources */,
 				B891A9E51D0B90A500E88EEF /* SettingsViewController.xib in Resources */,
 				B891A9E61D0B90A500E88EEF /* GroupIsPublicTableViewCell.xib in Resources */,
 				B891A9E71D0B90A500E88EEF /* RegistrationBasicInfoValueTableViewCell.xib in Resources */,
@@ -1632,6 +1732,7 @@
 				B891A9ED1D0B90A500E88EEF /* ChatTextMessageViewController.xib in Resources */,
 				B891A9EE1D0B90A500E88EEF /* PreloadHomeViewController.xib in Resources */,
 				B891A9EF1D0B90A500E88EEF /* AddMeetupView.xib in Resources */,
+				B843418C1DB03A05002D6CFE /* NotificationsViewController.xib in Resources */,
 				B891A9F01D0B90A500E88EEF /* DashboardViewController.xib in Resources */,
 				B891A9F11D0B90A500E88EEF /* UserGroupSelectTableViewCell.xib in Resources */,
 				B891A9F21D0B90A500E88EEF /* UserProfileSearchTableViewCell.xib in Resources */,
@@ -1644,141 +1745,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2A255307CDFB5246ABC95317 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		870206B63A65ECEAB9F1045A /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit Prod/Pods-OwlOrbit Prod-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A8165F553BEF927171B1B40D /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit Prod/Pods-OwlOrbit Prod-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B891A8B61D0B905700E88EEF /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B891A9521D0B905700E88EEF /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B891A9531D0B905700E88EEF /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B891A95A1D0B90A500E88EEF /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B891A9F61D0B90A500E88EEF /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B891A9F71D0B90A500E88EEF /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OwlOrbit/Pods-OwlOrbit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B891A9FD1D0B90F500E88EEF /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1826,6 +1792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B825F2241DAFACD500E8693D /* RegistrationBetaTableViewCell.swift in Sources */,
 				B8F512A31C696565007DCFD5 /* GroupSettingsStep1ViewController.swift in Sources */,
 				B863BECF1C56E5E500C8BA01 /* ChatMapInstructionsViewController.swift in Sources */,
 				B815AA2D1C1E8DAC0082E136 /* GenericUserManagedModel.swift in Sources */,
@@ -1834,6 +1801,7 @@
 				B8F512B81C696726007DCFD5 /* GroupCountTableViewCell.swift in Sources */,
 				B8D8DD581C82869D00942FDB /* NotificationHelper.swift in Sources */,
 				B870CEBE1BF5752300F47929 /* ResetPasswordViewController.swift in Sources */,
+				B825F21B1DAE5EBF00E8693D /* BetaApiHelper.swift in Sources */,
 				B81CAB6C1C78F21A007B5131 /* ImageManipulate.m in Sources */,
 				B81DD7831DA7C1C900893DBD /* UserLocationPointAnnotation.swift in Sources */,
 				B870CEC21BF5755800F47929 /* RegisterViewController.swift in Sources */,
@@ -1849,10 +1817,12 @@
 				B8CF9D531C3F4B6400E3898B /* UserManagedModel.swift in Sources */,
 				B866DFC41C0D22D100BF8A79 /* RoomApiHelper.swift in Sources */,
 				B892D6611C1A4FD70091F128 /* FullScreenLoaderHelper.swift in Sources */,
+				B843419F1DB100BF002D6CFE /* DashboardRoomModel.swift in Sources */,
 				B8F512991C61CD76007DCFD5 /* UserDiscoverTableViewCell.swift in Sources */,
 				B870CED01BF99EFA00F47929 /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
 				B8333F2A1C8D219100626B72 /* FileHelper.swift in Sources */,
 				B81CAB681C76A976007B5131 /* MainMapViewController.swift in Sources */,
+				B84341A71DB2A73E002D6CFE /* String+Trim.swift in Sources */,
 				B87654631C03F53F00190B9B /* WriteMessageViewController.swift in Sources */,
 				B8E4E7DB1BFD4F5F00995964 /* FormValidateHelper.swift in Sources */,
 				B8068B631C20F95D00EE00CA /* FriendRequestViewController.swift in Sources */,
@@ -1866,14 +1836,19 @@
 				B8E4E7E31BFEB92000995964 /* PersonalUserModel.swift in Sources */,
 				B895A2AF1C55781400B2A08D /* AnnotationButton.swift in Sources */,
 				B866DFAD1C0579A000BF8A79 /* GenericUserModel.swift in Sources */,
+				B84341921DB062F5002D6CFE /* NotificationModel.swift in Sources */,
 				B892D65A1C19051B0091F128 /* LoginKeyboardPrevView.swift in Sources */,
 				B89F3AD31C5AF6D4008BFFA1 /* LocationHelper.swift in Sources */,
 				B8B80EF81BF4102500CF4BB3 /* UICustomTabBarController.swift in Sources */,
+				B825F20C1DAE5B2400E8693D /* UserBetaTableViewCell.swift in Sources */,
 				B866DFBE1C0A92B000BF8A79 /* UserSearchPendingHeaderView.swift in Sources */,
 				B8068B681C2129E300EE00CA /* UserProfileSearchTableViewCell.swift in Sources */,
 				B8BAD2571BF1794A00DC7F60 /* LoginViewController.swift in Sources */,
+				B84341981DB07AFA002D6CFE /* NotificationTableViewCell.swift in Sources */,
+				B825F2141DAE5CC400E8693D /* BetaInviteViewController.swift in Sources */,
 				B89F3AD11C59D863008BFFA1 /* NSBundle+Version.swift in Sources */,
 				B866DFD71C0FC80700BF8A79 /* ImageHelper.swift in Sources */,
+				B84341A31DB101B7002D6CFE /* DashboardUserModel.swift in Sources */,
 				B84F077F1C6E421E00D42FEB /* AddMeetupView.swift in Sources */,
 				B83C60EC1C768A8A00A30260 /* MapRadialViewController.swift in Sources */,
 				B83C60F11C768F9A00A30260 /* UIColor+helpers.swift in Sources */,
@@ -1892,6 +1867,8 @@
 				B8BAD25B1BF17F6C00DC7F60 /* ChatThreadViewController.swift in Sources */,
 				B821E7261C6C4D5A00EF9018 /* CustomMeetupPin.swift in Sources */,
 				B88213361C17F99E00E9469C /* LocationModel.swift in Sources */,
+				B8E88CD11DB57FA1003F0A48 /* AddUserToRoomViewController.swift in Sources */,
+				B8E88CD91DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift in Sources */,
 				B8EE8A881C9A690C00FE2276 /* DisableGPSViewController.swift in Sources */,
 				B81CAB701C7909DB007B5131 /* LeaveRoomHelper.swift in Sources */,
 				B8E4E7D51BFD488700995964 /* UserApiHelper.swift in Sources */,
@@ -1906,16 +1883,18 @@
 				B866DFCE1C0E811C00BF8A79 /* ChatMapKeyboardView.swift in Sources */,
 				B815AA291C1E19020082E136 /* RoomAttributeManagedModel.swift in Sources */,
 				B83C60DE1C72755B00A30260 /* MeetupButton.swift in Sources */,
+				B825F1FC1DA94B8300E8693D /* UserAnnotationView.swift in Sources */,
+				B84341871DB03A05002D6CFE /* NotificationsViewController.swift in Sources */,
 				B8F512B01C6966FC007DCFD5 /* GroupIsPublicTableViewCell.swift in Sources */,
 				B827320C1C7A48C50020C060 /* CustomFindAddressPin.swift in Sources */,
 				B8792A321BEB15CE00BE05ED /* Sift.xcdatamodeld in Sources */,
 				B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */,
+				B843418E1DB03CE6002D6CFE /* NotificationApiHelper.swift in Sources */,
 				B8E4E7D91BFD4CEC00995964 /* AlertHelper.swift in Sources */,
 				B8E4E7DD1BFD51F700995964 /* RegistrationSubmitKeyboardView.swift in Sources */,
 				B8BC48691C284827006A345E /* ChatTextMessageViewController.swift in Sources */,
 				B849E09D1C5D46A2001A281B /* EnableLocationViewController.swift in Sources */,
 				B8C8679D1D024F82008CDED1 /* MyMessageChatTableViewCell.swift in Sources */,
-				B8333F271C89327000626B72 /* UserSingleWriteTableViewCell.swift in Sources */,
 				B821E72A1C6D6C4200EF9018 /* ManageRequestsViewController.swift in Sources */,
 				B8E4E7E11BFD80CE00995964 /* ProjectConstants.swift in Sources */,
 				B8CAA4921C1134F900EC2752 /* MessageCoreModel.swift in Sources */,
@@ -1924,6 +1903,7 @@
 				B870CEC61BF5AF3800F47929 /* RegisterBasicInfoViewController.swift in Sources */,
 				B8B80F041BF452A500CF4BB3 /* SettingsViewController.swift in Sources */,
 				B821E7231C6AC60100EF9018 /* CreateGroupManager.swift in Sources */,
+				B825F21F1DAFA8B200E8693D /* InfoApi.swift in Sources */,
 				B8CAA4901C11343100EC2752 /* MessageModel.swift in Sources */,
 				B8F512941C61C8F5007DCFD5 /* AddGroupViewController.swift in Sources */,
 				B8C867961CFBF38A008CDED1 /* RoomUsersModel.swift in Sources */,
@@ -1952,6 +1932,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B825F2251DAFACD500E8693D /* RegistrationBetaTableViewCell.swift in Sources */,
 				B891A8B81D0B905700E88EEF /* GroupSettingsStep1ViewController.swift in Sources */,
 				B891A8B91D0B905700E88EEF /* ChatMapInstructionsViewController.swift in Sources */,
 				B891A8BA1D0B905700E88EEF /* GenericUserManagedModel.swift in Sources */,
@@ -1960,6 +1941,7 @@
 				B891A8BD1D0B905700E88EEF /* GroupCountTableViewCell.swift in Sources */,
 				B891A8BE1D0B905700E88EEF /* NotificationHelper.swift in Sources */,
 				B891A8BF1D0B905700E88EEF /* ResetPasswordViewController.swift in Sources */,
+				B825F21C1DAE5EBF00E8693D /* BetaApiHelper.swift in Sources */,
 				B891A8C01D0B905700E88EEF /* ImageManipulate.m in Sources */,
 				B81DD7841DA7C1C900893DBD /* UserLocationPointAnnotation.swift in Sources */,
 				B891A8C11D0B905700E88EEF /* RegisterViewController.swift in Sources */,
@@ -1975,10 +1957,12 @@
 				B891A8CA1D0B905700E88EEF /* UserManagedModel.swift in Sources */,
 				B891A8CB1D0B905700E88EEF /* RoomApiHelper.swift in Sources */,
 				B891A8CC1D0B905700E88EEF /* FullScreenLoaderHelper.swift in Sources */,
+				B84341A01DB100BF002D6CFE /* DashboardRoomModel.swift in Sources */,
 				B891A8CD1D0B905700E88EEF /* UserDiscoverTableViewCell.swift in Sources */,
 				B891A8CE1D0B905700E88EEF /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
 				B891A8CF1D0B905700E88EEF /* FileHelper.swift in Sources */,
 				B891A8D01D0B905700E88EEF /* MainMapViewController.swift in Sources */,
+				B84341A81DB2A73E002D6CFE /* String+Trim.swift in Sources */,
 				B891A8D11D0B905700E88EEF /* WriteMessageViewController.swift in Sources */,
 				B891A8D21D0B905700E88EEF /* FormValidateHelper.swift in Sources */,
 				B891A8D31D0B905700E88EEF /* FriendRequestViewController.swift in Sources */,
@@ -1988,18 +1972,24 @@
 				B891A8D51D0B905700E88EEF /* GroupNameTableViewCell.swift in Sources */,
 				B891A8D61D0B905700E88EEF /* DynamicPersonalData.swift in Sources */,
 				B891A8D71D0B905700E88EEF /* UserProfileViewController.swift in Sources */,
+				B8E88CDA1DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift in Sources */,
 				B891A8D81D0B905700E88EEF /* CoreDataHelper.swift in Sources */,
 				B891A8D91D0B905700E88EEF /* PersonalUserModel.swift in Sources */,
 				B891A8DA1D0B905700E88EEF /* AnnotationButton.swift in Sources */,
 				B891A8DB1D0B905700E88EEF /* GenericUserModel.swift in Sources */,
+				B84341931DB062F5002D6CFE /* NotificationModel.swift in Sources */,
 				B891A8DC1D0B905700E88EEF /* LoginKeyboardPrevView.swift in Sources */,
 				B891A8DD1D0B905700E88EEF /* LocationHelper.swift in Sources */,
 				B891A8DE1D0B905700E88EEF /* UICustomTabBarController.swift in Sources */,
+				B825F20D1DAE5B2400E8693D /* UserBetaTableViewCell.swift in Sources */,
 				B891A8DF1D0B905700E88EEF /* UserSearchPendingHeaderView.swift in Sources */,
 				B891A8E01D0B905700E88EEF /* UserProfileSearchTableViewCell.swift in Sources */,
 				B891A8E11D0B905700E88EEF /* LoginViewController.swift in Sources */,
+				B84341991DB07AFA002D6CFE /* NotificationTableViewCell.swift in Sources */,
+				B825F2151DAE5CC400E8693D /* BetaInviteViewController.swift in Sources */,
 				B891A8E21D0B905700E88EEF /* NSBundle+Version.swift in Sources */,
 				B891A8E31D0B905700E88EEF /* ImageHelper.swift in Sources */,
+				B84341A41DB101B7002D6CFE /* DashboardUserModel.swift in Sources */,
 				B891A8E41D0B905700E88EEF /* AddMeetupView.swift in Sources */,
 				B891A8E51D0B905700E88EEF /* MapRadialViewController.swift in Sources */,
 				B891A8E61D0B905700E88EEF /* UIColor+helpers.swift in Sources */,
@@ -2018,6 +2008,7 @@
 				B891A8F31D0B905700E88EEF /* ChatThreadViewController.swift in Sources */,
 				B891A8F41D0B905700E88EEF /* CustomMeetupPin.swift in Sources */,
 				B891A8F51D0B905700E88EEF /* LocationModel.swift in Sources */,
+				B8E88CD21DB57FA1003F0A48 /* AddUserToRoomViewController.swift in Sources */,
 				B891A8F61D0B905700E88EEF /* DisableGPSViewController.swift in Sources */,
 				B891A8F71D0B905700E88EEF /* LeaveRoomHelper.swift in Sources */,
 				B891A8F81D0B905700E88EEF /* UserApiHelper.swift in Sources */,
@@ -2032,16 +2023,18 @@
 				B891A9011D0B905700E88EEF /* ChatMapKeyboardView.swift in Sources */,
 				B891A9021D0B905700E88EEF /* RoomAttributeManagedModel.swift in Sources */,
 				B891A9031D0B905700E88EEF /* MeetupButton.swift in Sources */,
+				B825F1FD1DA94B8300E8693D /* UserAnnotationView.swift in Sources */,
+				B84341881DB03A05002D6CFE /* NotificationsViewController.swift in Sources */,
 				B891A9041D0B905700E88EEF /* GroupIsPublicTableViewCell.swift in Sources */,
 				B891A9051D0B905700E88EEF /* CustomFindAddressPin.swift in Sources */,
 				B891A9061D0B905700E88EEF /* Sift.xcdatamodeld in Sources */,
 				B891A9071D0B905700E88EEF /* NSDate+NVTimeAgo.m in Sources */,
+				B843418F1DB03CE6002D6CFE /* NotificationApiHelper.swift in Sources */,
 				B891A9081D0B905700E88EEF /* AlertHelper.swift in Sources */,
 				B891A9091D0B905700E88EEF /* RegistrationSubmitKeyboardView.swift in Sources */,
 				B891A90A1D0B905700E88EEF /* ChatTextMessageViewController.swift in Sources */,
 				B891A90B1D0B905700E88EEF /* EnableLocationViewController.swift in Sources */,
 				B891A90C1D0B905700E88EEF /* MyMessageChatTableViewCell.swift in Sources */,
-				B891A90D1D0B905700E88EEF /* UserSingleWriteTableViewCell.swift in Sources */,
 				B891A90E1D0B905700E88EEF /* ManageRequestsViewController.swift in Sources */,
 				B891A90F1D0B905700E88EEF /* ProjectConstants.swift in Sources */,
 				B891A9101D0B905700E88EEF /* MessageCoreModel.swift in Sources */,
@@ -2050,6 +2043,7 @@
 				B891A9121D0B905700E88EEF /* RegisterBasicInfoViewController.swift in Sources */,
 				B891A9131D0B905700E88EEF /* SettingsViewController.swift in Sources */,
 				B891A9141D0B905700E88EEF /* CreateGroupManager.swift in Sources */,
+				B825F2201DAFA8B300E8693D /* InfoApi.swift in Sources */,
 				B891A9151D0B905700E88EEF /* MessageModel.swift in Sources */,
 				B891A9161D0B905700E88EEF /* AddGroupViewController.swift in Sources */,
 				B891A9171D0B905700E88EEF /* RoomUsersModel.swift in Sources */,
@@ -2062,6 +2056,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B825F2261DAFACD500E8693D /* RegistrationBetaTableViewCell.swift in Sources */,
 				B891A95C1D0B90A500E88EEF /* GroupSettingsStep1ViewController.swift in Sources */,
 				B891A95D1D0B90A500E88EEF /* ChatMapInstructionsViewController.swift in Sources */,
 				B891A95E1D0B90A500E88EEF /* GenericUserManagedModel.swift in Sources */,
@@ -2070,6 +2065,7 @@
 				B891A9611D0B90A500E88EEF /* GroupCountTableViewCell.swift in Sources */,
 				B891A9621D0B90A500E88EEF /* NotificationHelper.swift in Sources */,
 				B891A9631D0B90A500E88EEF /* ResetPasswordViewController.swift in Sources */,
+				B825F21D1DAE5EBF00E8693D /* BetaApiHelper.swift in Sources */,
 				B891A9641D0B90A500E88EEF /* ImageManipulate.m in Sources */,
 				B81DD7851DA7C1C900893DBD /* UserLocationPointAnnotation.swift in Sources */,
 				B891A9651D0B90A500E88EEF /* RegisterViewController.swift in Sources */,
@@ -2085,10 +2081,12 @@
 				B891A96E1D0B90A500E88EEF /* UserManagedModel.swift in Sources */,
 				B891A96F1D0B90A500E88EEF /* RoomApiHelper.swift in Sources */,
 				B891A9701D0B90A500E88EEF /* FullScreenLoaderHelper.swift in Sources */,
+				B84341A11DB100BF002D6CFE /* DashboardRoomModel.swift in Sources */,
 				B891A9711D0B90A500E88EEF /* UserDiscoverTableViewCell.swift in Sources */,
 				B891A9721D0B90A500E88EEF /* RegistrationBasicInfoValueTableViewCell.swift in Sources */,
 				B891A9731D0B90A500E88EEF /* FileHelper.swift in Sources */,
 				B891A9741D0B90A500E88EEF /* MainMapViewController.swift in Sources */,
+				B84341A91DB2A73E002D6CFE /* String+Trim.swift in Sources */,
 				B891A9751D0B90A500E88EEF /* WriteMessageViewController.swift in Sources */,
 				B891A9761D0B90A500E88EEF /* FormValidateHelper.swift in Sources */,
 				B891A9771D0B90A500E88EEF /* FriendRequestViewController.swift in Sources */,
@@ -2098,18 +2096,24 @@
 				B891A9791D0B90A500E88EEF /* GroupNameTableViewCell.swift in Sources */,
 				B891A97A1D0B90A500E88EEF /* DynamicPersonalData.swift in Sources */,
 				B891A97B1D0B90A500E88EEF /* UserProfileViewController.swift in Sources */,
+				B8E88CDB1DB580D4003F0A48 /* UserSingleWriteTableViewCell.swift in Sources */,
 				B891A97C1D0B90A500E88EEF /* CoreDataHelper.swift in Sources */,
 				B891A97D1D0B90A500E88EEF /* PersonalUserModel.swift in Sources */,
 				B891A97E1D0B90A500E88EEF /* AnnotationButton.swift in Sources */,
 				B891A97F1D0B90A500E88EEF /* GenericUserModel.swift in Sources */,
+				B84341941DB062F5002D6CFE /* NotificationModel.swift in Sources */,
 				B891A9801D0B90A500E88EEF /* LoginKeyboardPrevView.swift in Sources */,
 				B891A9811D0B90A500E88EEF /* LocationHelper.swift in Sources */,
 				B891A9821D0B90A500E88EEF /* UICustomTabBarController.swift in Sources */,
+				B825F20E1DAE5B2400E8693D /* UserBetaTableViewCell.swift in Sources */,
 				B891A9831D0B90A500E88EEF /* UserSearchPendingHeaderView.swift in Sources */,
 				B891A9841D0B90A500E88EEF /* UserProfileSearchTableViewCell.swift in Sources */,
 				B891A9851D0B90A500E88EEF /* LoginViewController.swift in Sources */,
+				B843419A1DB07AFA002D6CFE /* NotificationTableViewCell.swift in Sources */,
+				B825F2161DAE5CC400E8693D /* BetaInviteViewController.swift in Sources */,
 				B891A9861D0B90A500E88EEF /* NSBundle+Version.swift in Sources */,
 				B891A9871D0B90A500E88EEF /* ImageHelper.swift in Sources */,
+				B84341A51DB101B7002D6CFE /* DashboardUserModel.swift in Sources */,
 				B891A9881D0B90A500E88EEF /* AddMeetupView.swift in Sources */,
 				B891A9891D0B90A500E88EEF /* MapRadialViewController.swift in Sources */,
 				B891A98A1D0B90A500E88EEF /* UIColor+helpers.swift in Sources */,
@@ -2128,6 +2132,7 @@
 				B891A9971D0B90A500E88EEF /* ChatThreadViewController.swift in Sources */,
 				B891A9981D0B90A500E88EEF /* CustomMeetupPin.swift in Sources */,
 				B891A9991D0B90A500E88EEF /* LocationModel.swift in Sources */,
+				B8E88CD31DB57FA1003F0A48 /* AddUserToRoomViewController.swift in Sources */,
 				B891A99A1D0B90A500E88EEF /* DisableGPSViewController.swift in Sources */,
 				B891A99B1D0B90A500E88EEF /* LeaveRoomHelper.swift in Sources */,
 				B891A99C1D0B90A500E88EEF /* UserApiHelper.swift in Sources */,
@@ -2142,16 +2147,18 @@
 				B891A9A51D0B90A500E88EEF /* ChatMapKeyboardView.swift in Sources */,
 				B891A9A61D0B90A500E88EEF /* RoomAttributeManagedModel.swift in Sources */,
 				B891A9A71D0B90A500E88EEF /* MeetupButton.swift in Sources */,
+				B825F1FE1DA94B8300E8693D /* UserAnnotationView.swift in Sources */,
+				B84341891DB03A05002D6CFE /* NotificationsViewController.swift in Sources */,
 				B891A9A81D0B90A500E88EEF /* GroupIsPublicTableViewCell.swift in Sources */,
 				B891A9A91D0B90A500E88EEF /* CustomFindAddressPin.swift in Sources */,
 				B891A9AA1D0B90A500E88EEF /* Sift.xcdatamodeld in Sources */,
 				B891A9AB1D0B90A500E88EEF /* NSDate+NVTimeAgo.m in Sources */,
+				B84341901DB03CE6002D6CFE /* NotificationApiHelper.swift in Sources */,
 				B891A9AC1D0B90A500E88EEF /* AlertHelper.swift in Sources */,
 				B891A9AD1D0B90A500E88EEF /* RegistrationSubmitKeyboardView.swift in Sources */,
 				B891A9AE1D0B90A500E88EEF /* ChatTextMessageViewController.swift in Sources */,
 				B891A9AF1D0B90A500E88EEF /* EnableLocationViewController.swift in Sources */,
 				B891A9B01D0B90A500E88EEF /* MyMessageChatTableViewCell.swift in Sources */,
-				B891A9B11D0B90A500E88EEF /* UserSingleWriteTableViewCell.swift in Sources */,
 				B891A9B21D0B90A500E88EEF /* ManageRequestsViewController.swift in Sources */,
 				B891A9B31D0B90A500E88EEF /* ProjectConstants.swift in Sources */,
 				B891A9B41D0B90A500E88EEF /* MessageCoreModel.swift in Sources */,
@@ -2160,6 +2167,7 @@
 				B891A9B61D0B90A500E88EEF /* RegisterBasicInfoViewController.swift in Sources */,
 				B891A9B71D0B90A500E88EEF /* SettingsViewController.swift in Sources */,
 				B891A9B81D0B90A500E88EEF /* CreateGroupManager.swift in Sources */,
+				B825F2211DAFA8B300E8693D /* InfoApi.swift in Sources */,
 				B891A9B91D0B90A500E88EEF /* MessageModel.swift in Sources */,
 				B891A9BA1D0B90A500E88EEF /* AddGroupViewController.swift in Sources */,
 				B891A9BB1D0B90A500E88EEF /* RoomUsersModel.swift in Sources */,
@@ -2173,12 +2181,12 @@
 /* Begin PBXTargetDependency section */
 		B8792A3F1BEB15CE00BE05ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B8792A251BEB15CE00BE05ED /* OwlOrbit Prod */;
+			target = B8792A251BEB15CE00BE05ED /* OwlOrbit */;
 			targetProxy = B8792A3E1BEB15CE00BE05ED /* PBXContainerItemProxy */;
 		};
 		B8792A4A1BEB15CE00BE05ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B8792A251BEB15CE00BE05ED /* OwlOrbit Prod */;
+			target = B8792A251BEB15CE00BE05ED /* OwlOrbit */;
 			targetProxy = B8792A491BEB15CE00BE05ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2280,7 +2288,6 @@
 		};
 		B8792A521BEB15CE00BE05ED /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91601974A0D837B391AABADD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2304,7 +2311,6 @@
 		};
 		B8792A531BEB15CE00BE05ED /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2375,7 +2381,6 @@
 		};
 		B891A9551D0B905700E88EEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91601974A0D837B391AABADD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2399,7 +2404,6 @@
 		};
 		B891A9561D0B905700E88EEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2422,7 +2426,6 @@
 		};
 		B891A9F91D0B90A500E88EEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91601974A0D837B391AABADD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2446,7 +2449,6 @@
 		};
 		B891A9FA1D0B90A500E88EEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CB8EA66DDDFFE4703014D83B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2479,7 +2481,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit Prod" */ = {
+		B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8792A521BEB15CE00BE05ED /* Debug */,

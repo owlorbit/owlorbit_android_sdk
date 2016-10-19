@@ -33,9 +33,14 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
         self.tableView.registerNib(UINib(nibName: "UserProfileSearchTableViewCell", bundle:nil), forCellReuseIdentifier: "UserProfileSearchTableViewCell")
 
         self.tableView.registerNib(UINib(nibName: "UserLogoutTableViewCell", bundle:nil), forCellReuseIdentifier: "UserLogoutTableViewCell")
+        
+        self.tableView.registerNib(UINib(nibName: "UserBetaTableViewCell", bundle:nil), forCellReuseIdentifier: "UserBetaTableViewCell")
+        
+        //UserBetaTableViewCell
 
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         data.addObject(user)
+        data.addObject("BETA_INVITE")
         data.addObject("LOGOUT")
         initTableViewSettings()
     }
@@ -117,10 +122,15 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
       
         if let str = data[indexPath.row] as? String {
             
-            print("cover: \(indexPath.row)")
-            var cell:UserLogoutTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserLogoutTableViewCell")! as! UserLogoutTableViewCell
-            
-            return cell!
+            if(str == "BETA_INVITE"){
+                var cell:UserBetaTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserBetaTableViewCell")! as! UserBetaTableViewCell
+                
+                return cell!
+            }else{
+                var cell:UserLogoutTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserLogoutTableViewCell")! as! UserLogoutTableViewCell
+                
+                return cell!
+            }
         }else{
             var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
             var cell:UserProfileSearchTableViewCell? = tableView.dequeueReusableCellWithIdentifier("UserProfileSearchTableViewCell")! as! UserProfileSearchTableViewCell
@@ -137,17 +147,25 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
         //get all user ids..?
         
         if let str = data[indexPath.row] as? String {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.setupLoggedOutViewController()
-            //navigationController?.popToRootViewControllerAnimated(true)
+            
+            if(str == "BETA_INVITE"){
+                //BetaInviteViewController                
+                let vc = BetaInviteViewController(nibName: "BetaInviteViewController", bundle: nil)
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true )
+                
+            }else if (str == "LOGOUT"){
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.setupLoggedOutViewController()
+            }
         }else{
-        
             let vc = ProfileSettingImageUploadViewController(nibName: "ProfileSettingImageUploadViewController", bundle: nil)
             vc.hidesBottomBarWhenPushed = true
             vc.delegate = self;
             navigationController?.pushViewController(vc, animated: true )
         }
 
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 

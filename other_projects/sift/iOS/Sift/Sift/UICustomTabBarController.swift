@@ -57,7 +57,15 @@ class UICustomTabBarController: UITabBarController, UITabBarControllerDelegate {
             image: settingsIcon,
             tag: 4);
 
-        let controllers = [homeNavController, friendRequestNavController, manageRequestsNavController, settingsNavController]
+        let notificationsViewController = NotificationsViewController()
+        var notificationsIcon : UIImage = UIImage(named:"notification-icon")!
+        var notificationsNavController = UINavigationController(rootViewController: notificationsViewController)
+        notificationsNavController.tabBarItem = UITabBarItem(
+            title: "Notifications",
+            image: notificationsIcon,
+            tag: 5);
+
+        let controllers = [homeNavController, friendRequestNavController, manageRequestsNavController, settingsNavController, notificationsNavController]
         self.viewControllers = controllers
         
         self.delegate = self;

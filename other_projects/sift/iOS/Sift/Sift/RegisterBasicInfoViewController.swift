@@ -8,15 +8,16 @@
 
 import UIKit
 
-class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDelegate {
+class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDelegate, RegistrationBasicInfoWitheBetaValueDelegate {
 
     @IBOutlet weak var btnBack: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    var data:NSMutableArray = [1];
+    var data:NSMutableArray = [];
     
     var firstName:String = "";
     var lastName:String = "";
-    var registrationUser:RegistrationUser=RegistrationUser();
+    var registrationUser:RegistrationUser = RegistrationUser();
+    var enableOnlyBetaInvite:Bool = false;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +28,45 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
         view.addGestureRecognizer(dismissTap)
 
         self.tableView.registerNib(UINib(nibName: "RegistrationBasicInfoValueTableViewCell", bundle: nil), forCellReuseIdentifier: "RegistrationBasicInfoValueTableViewCell")
+
+        self.tableView.registerNib(UINib(nibName: "RegistrationBetaTableViewCell", bundle: nil), forCellReuseIdentifier: "RegistrationBetaTableViewCell")
+
         self.tableView.backgroundColor = UIColor.clearColor();
         
+        getInfo()
         // Do any additional setup after loading the view.
     }
+    
+    func getInfo(){
+        
+        FullScreenLoaderHelper.startLoader()
+        
+        
+        var delayInSeconds:Float = 0.5;
+        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW),  Int64(  0.5 * Double(NSEC_PER_SEC)  ))
+        dispatch_after(time, dispatch_get_main_queue()) {
+
+            InfoApiHelper.getServerInfo({
+                (JSON) in
+
+                FullScreenLoaderHelper.removeLoader()
+                if(JSON["enable_only_beta_invite"].boolValue){
+                    self.enableOnlyBetaInvite = true;
+                }else{
+                    self.enableOnlyBetaInvite = false;
+                }
+                self.data = [1];
+                self.tableView.reloadData()
+                
+                }, error:{
+                    (message) in
+                    FullScreenLoaderHelper.removeLoader()
+                    self.data = [1];
+                    self.tableView.reloadData()
+                }
+            )}
+    }
+    
     
     @IBAction func btnBackClick(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)        
@@ -42,6 +78,9 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if(self.enableOnlyBetaInvite){
+            return RegistrationBetaTableViewCell.cellHeight()
+        }
         return RegistrationBasicInfoValueTableViewCell.cellHeight()
     }
     
@@ -58,6 +97,30 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
         super.viewWillDisappear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
+    
+    func submitRegistration(firstName:String, lastName:String, betaCode:String){
+        
+        registrationUser.firstName = firstName;
+        registrationUser.lastName = lastName;
+        registrationUser.betaCode = betaCode;
+
+        UserApiHelper.createUser(registrationUser, resultJSON: {
+            (JSON) in
+            
+            PersonalUserModel.insertFromRegistration(self.registrationUser, serverReturnedData: JSON)
+            self.navigationController!.popToRootViewControllerAnimated(true)
+            
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.setupLoggedInViewController()
+            }, error:{
+                (Error) in
+                AlertHelper.createPopupMessage("\(Error)", title: "")
+            }
+            
+        );
+    }
+    
 
     func submitRegistration(firstName:String, lastName:String){
 
@@ -89,9 +152,19 @@ class RegisterBasicInfoViewController: UIViewController, RegistrationBasicInfoDe
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("RegistrationBasicInfoValueTableViewCell") as! RegistrationBasicInfoValueTableViewCell
-        cell.delegate = self
-        cell.populate()
-        return cell
+        
+        if(self.enableOnlyBetaInvite){
+            
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("RegistrationBetaTableViewCell") as! RegistrationBetaTableViewCell
+            cell.delegate = self
+            cell.populate()
+            return cell
+            
+        }else{
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("RegistrationBasicInfoValueTableViewCell") as! RegistrationBasicInfoValueTableViewCell
+            cell.delegate = self
+            cell.populate()
+            return cell
+        }
     }
 }

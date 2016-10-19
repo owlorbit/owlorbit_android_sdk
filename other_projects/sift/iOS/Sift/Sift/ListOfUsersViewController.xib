@@ -5,9 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListOfUsersViewController" customModule="OwlOrbit_Docker" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListOfUsersViewController" customModule="OwlOrbit" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="5kh-Wq-hsh" id="daj-Zo-XTs"/>
+                <outlet property="topConstraint" destination="cBQ-ve-3vy" id="ReJ-O8-UgX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -41,12 +42,12 @@
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="1bh-VO-EGb"/>
-                            <exclude reference="DkF-Y3-r3r"/>
-                            <exclude reference="ppH-di-AqI"/>
                             <exclude reference="87b-Dr-mTI"/>
+                            <exclude reference="DkF-Y3-r3r"/>
                             <exclude reference="ZBg-qw-qCx"/>
                             <exclude reference="aQG-hz-ELz"/>
                             <exclude reference="p34-uf-w3L"/>
+                            <exclude reference="ppH-di-AqI"/>
                         </mask>
                     </variation>
                     <connections>
@@ -58,12 +59,18 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="9F8-Hr-ZF3" secondAttribute="trailing" constant="8" id="8Nv-HA-Nfi"/>
                 <constraint firstAttribute="trailing" secondItem="5kh-Wq-hsh" secondAttribute="trailing" id="Ubn-Uh-tFv"/>
+                <constraint firstItem="5kh-Wq-hsh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="cBQ-ve-3vy"/>
                 <constraint firstAttribute="bottom" secondItem="9F8-Hr-ZF3" secondAttribute="bottom" constant="8" id="k0l-yi-eFB"/>
                 <constraint firstItem="5kh-Wq-hsh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mox-4P-597"/>
                 <constraint firstItem="5kh-Wq-hsh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="plC-4d-Gor"/>
                 <constraint firstAttribute="bottom" secondItem="5kh-Wq-hsh" secondAttribute="bottom" id="pyk-6I-rw5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="plC-4d-Gor"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>

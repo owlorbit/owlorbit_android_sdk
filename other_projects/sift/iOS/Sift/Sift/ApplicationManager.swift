@@ -19,6 +19,8 @@ class ApplicationManager: NSObject {
     
     static var parseDeviceId:String = ""
     
+    static var oneSignalDeviceId:String = ""
+    
     static let locationHelper = LocationHelper()
     static let userData = DynamicPersonData()
     static let downloader = ImageDownloader()

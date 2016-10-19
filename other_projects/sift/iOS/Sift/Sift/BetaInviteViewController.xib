@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BetaInviteViewController" customModule="OwlOrbit" customModuleProvider="target">
+            <connections>
+                <outlet property="lblBetaCode" destination="lTg-Ph-eCx" id="bgX-48-ypt"/>
+                <outlet property="lblInviteCount" destination="xzb-8e-FcD" id="Oix-Do-1HP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beta Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTg-Ph-eCx">
+                    <rect key="frame" x="8" y="236" width="304" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="KYC-tK-6kQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have 10 invites left." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzb-8e-FcD">
+                    <rect key="frame" x="8" y="276" width="304" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="3aK-gq-DJQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="xzb-8e-FcD" firstAttribute="top" secondItem="lTg-Ph-eCx" secondAttribute="bottom" constant="8" id="1bT-hO-46w"/>
+                <constraint firstAttribute="trailing" secondItem="xzb-8e-FcD" secondAttribute="trailing" constant="8" id="3Mz-OC-Gi1"/>
+                <constraint firstItem="lTg-Ph-eCx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9nS-Sl-erx"/>
+                <constraint firstItem="lTg-Ph-eCx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="KRJ-4m-IXy"/>
+                <constraint firstItem="lTg-Ph-eCx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Kcn-ZO-6QW"/>
+                <constraint firstItem="lTg-Ph-eCx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OLy-re-Lbw"/>
+                <constraint firstItem="xzb-8e-FcD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="piY-4s-g4A"/>
+                <constraint firstItem="lTg-Ph-eCx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="236" id="qtI-2F-v1c"/>
+                <constraint firstAttribute="trailing" secondItem="lTg-Ph-eCx" secondAttribute="trailing" constant="8" id="vcf-Ju-Lga"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="OLy-re-Lbw"/>
+                    <exclude reference="qtI-2F-v1c"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

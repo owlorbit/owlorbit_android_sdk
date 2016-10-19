@@ -90,7 +90,43 @@ class LoginViewController: UIViewController, LoginDelegate {
 
                     //TODO SWITCH THE COMMENTED OUT
                     //if !ApplicationManager.parseDeviceId.isEmpty {
-                    if !ApplicationManager.parseDeviceId.isEmpty && !ApplicationManager.isTesting {
+                    //
+                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    appDelegate.setupLoggedInViewController()
+                    FullScreenLoaderHelper.removeLoader();
+                    
+
+                    OneSignal.IdsAvailable({ (userId, pushToken) in
+                        
+                        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+                        
+                        print("UserId:%@", userId);
+                        ApplicationManager.oneSignalDeviceId = userId
+                        UserApiHelper.enablePushNotification(userId, resultJSON: {
+                            (JSON) in
+                            
+                            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                            appDelegate.setupLoggedInViewController()
+                            
+                            }, error:{
+                                (errStr) in
+                                FullScreenLoaderHelper.removeLoader();
+                                AlertHelper.createPopupMessage("Try again later...", title: "Login Error")
+                                print("ze error \(errStr)")
+                        });
+                        
+                        
+                        /*if (pushToken != nil) {
+                            print("Sending Test Noification to this device now");
+                            OneSignal.postNotification(["contents": ["en": "Test Message"], "include_player_ids": [userId]]);
+                        }*/
+                    });
+
+                    
+                    
+                    //ApplicationManager.parseDeviceId
+                    //ApplicationManager.parseDeviceId
+                    /*if !ApplicationManager.parseDeviceId.isEmpty && !ApplicationManager.isTesting {
                         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
                         UserApiHelper.enablePushNotification(ApplicationManager.parseDeviceId, resultJSON: {
                             (JSON) in
@@ -103,16 +139,16 @@ class LoginViewController: UIViewController, LoginDelegate {
                                 FullScreenLoaderHelper.removeLoader();
                                 AlertHelper.createPopupMessage("Try again later...", title: "Login Error")
                                 print("ze error \(errStr)")
-                        });
+                        });*/
                         
                         
                         
                         
                         
-                    }else{
+                    /*}else{
                         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                         appDelegate.setupLoggedInViewController()
-                    }
+                    }*/
                 }else{
                     if(JSON["message"].string != ""){
                         AlertHelper.createPopupMessage(JSON["message"].string!.removeHtml()!, title: "Login Error")

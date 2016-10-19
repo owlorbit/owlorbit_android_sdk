@@ -17,7 +17,12 @@ class UserApiHelper{
     class func createUser(user:RegistrationUser, resultJSON:(JSON) -> Void, error:(String)->Void) -> Void {
 
         var url:String = ProjectConstants.ApiBaseUrl.value + "/user/add"
-        let data = ["email": user.email, "first_name" : user.firstName, "last_name" : user.lastName, "phone_number":user.phoneNumber, "password" : user.password]
+        var data:[String:AnyObject];
+        if(user.betaCode == ""){
+            data = ["email": user.email, "first_name" : user.firstName, "last_name" : user.lastName, "phone_number":user.phoneNumber, "password" : user.password]
+        }else{
+            data = ["email": user.email, "first_name" : user.firstName, "last_name" : user.lastName, "phone_number":user.phoneNumber, "password" : user.password, "beta_code" : user.betaCode]
+        }
 
         Alamofire.request(.POST, url, parameters: data, encoding: .URL)
         .responseJSON { response in
@@ -470,6 +475,59 @@ class UserApiHelper{
         var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
         var url:String = ProjectConstants.ApiBaseUrl.value + "/friend/all"
         let data = ["publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+        
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
+    
+    class func friendsNotInRoom(roomId:String, resultJSON:(JSON) -> Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/user/get_all_friends_not_in_room/" +  user.userId
+        let data = ["roomId" : roomId, "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
+        
+        Alamofire.request(.POST, url, parameters: data, encoding: .URL)
+            .responseJSON { response in
+                
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    let json = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                    print("Failure Response: \(json)")
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    let post = JSON(value)
+                    if(post["hasFailed"].isEmpty){
+                        //send succesful
+                        resultJSON(post)
+                    }
+                }
+        }
+    }
+    
+    
+    class func friendsNotInRoomWithSearch(roomId:String, term:String, resultJSON:(JSON) -> Void) -> Void {
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var url:String = ProjectConstants.ApiBaseUrl.value + "/user/global_search_not_in_room/" + term +  "/" + user.userId
+        let data = ["roomId":roomId, "publicKey" : user.publicKey, "encryptedSession": user.encryptedSession, "sessionHash": user.sessionHash]
         
         Alamofire.request(.POST, url, parameters: data, encoding: .URL)
             .responseJSON { response in

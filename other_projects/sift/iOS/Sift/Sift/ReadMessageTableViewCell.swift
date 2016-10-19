@@ -21,6 +21,86 @@ class ReadMessageTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func populateRoomData(room:DashboardRoomModel, users:NSMutableArray){
+        self.lblRoomTitle.text = room.roomName
+        
+        if(room.lastDisplayName != "" && room.lastMessage != "") {
+            lblLastMsg.text = room.lastDisplayName + ": " + room.lastMessage
+        }else{
+            lblLastMsg.text = ("No messages sent yet!");
+        }
+
+        if(room.lastMessageTimestamp != "") {
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.timeZone = NSTimeZone(abbreviation: "EST")
+            var dateConverted:NSDate = dateFormatter.dateFromString(room.lastMessageTimestamp)!
+            var timeago:String = NSDate.mysqlDatetimeFormattedAsTimeAgo(dateFormatter.stringFromDate(dateConverted))
+            self.lblDate.text = timeago
+        }else{
+            self.lblDate.text = ""
+        }
+        
+        
+        var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
+        var setUserId:String = "";
+        
+        
+        var allUsers:String = "";
+        var usersInRoom:NSMutableArray = getAllUsersInRoom(room.roomId, users: users)
+        
+        if(usersInRoom.count > 0) {
+            for usr in usersInRoom as! [DashboardUserModel] {
+                if(usr.userId != user.userId){
+                    allUsers += usr.firstName + ", ";
+                    setUserId = usr.userId
+                }
+            }
+        }
+        
+        if(room.roomName == ""){
+
+            allUsers = allUsers.trim();
+            if(allUsers.characters.last! == ","){
+               allUsers = allUsers.substringToIndex(allUsers.endIndex.predecessor())
+            }
+            lblRoomTitle.text = allUsers;
+        }
+        
+        
+        var avatarString:String = "";
+        if(room.avatarOriginal == ""){
+            avatarString = "/uploads/profile_imgs/" + setUserId + ".png";
+        }else{
+            if(room.avatarOriginal.containsString("/" + user.userId + ".png")){
+                avatarString = "/uploads/profile_imgs/" + setUserId + ".png";
+            }else{
+                avatarString = room.avatarOriginal;
+            }
+        }
+
+        let profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + avatarString
+        let URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+        
+        ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
+            if let image = response.result.value {
+                self.imgAvatar.image = image.roundImage()
+            }
+        }
+    }
+    
+    func getAllUsersInRoom(roomId:String, users:NSMutableArray) -> NSMutableArray{
+        var listOfUsers:NSMutableArray = NSMutableArray()
+        
+        for usr in users as! [DashboardUserModel] {
+            if(usr.roomId == roomId){
+                listOfUsers.addObject(usr)
+            }
+        }
+
+        return listOfUsers
+    }
 
     func populate(roomData:RoomManagedModel){
 

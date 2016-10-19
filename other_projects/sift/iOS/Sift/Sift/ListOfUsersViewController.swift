@@ -12,6 +12,7 @@ import SwiftyJSON
 protocol UsersInRoomDelegate {
     func updateLocations(userList:NSMutableArray, isHidden:Bool)
     func clickUser(userLocationModel:UserLocationModel)
+    func launchAddUser()
 }
 
 class ListOfUsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UserListTableViewCellDelegate {
@@ -23,9 +24,9 @@ class ListOfUsersViewController: UIViewController, UITableViewDelegate, UITableV
     
     var data:NSMutableArray = []
     var meetupLocations:NSMutableArray = []
-    var userLocations:NSMutableArray = NSMutableArray()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,10 @@ class ListOfUsersViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         //self.tableView.cancels
 
+    }
+    
+    func setUpdatedConstraint(){
+        topConstraint.constant = 64
     }
     
     func initUsers(){
@@ -120,6 +125,9 @@ class ListOfUsersViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }else{
                 //then meetup points...
+                
+                
+                
             }
         }
         
@@ -173,7 +181,7 @@ class ListOfUsersViewController: UIViewController, UITableViewDelegate, UITableV
                 var userLocation:UserLocationModel;
                 userLocation = data[indexPath.row] as! UserLocationModel
                 cell?.populate(userLocation)
-                //cell?.delegate = self;
+                cell?.delegate = self;
                 
                 return cell!
             }
@@ -196,6 +204,6 @@ class ListOfUsersViewController: UIViewController, UITableViewDelegate, UITableV
     */
 
     @IBAction func btnAddUserClick(sender: AnyObject) {
-        AlertHelper.createPopupMessage("awef", title: "laaa")
+        delegate!.launchAddUser()
     }
 }

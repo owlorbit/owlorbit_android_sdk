@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="OwlOrbit" customModuleProvider="target">
@@ -41,12 +41,12 @@
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="1af-X3-EJf"/>
-                            <exclude reference="eOB-V7-fhX"/>
-                            <exclude reference="Rhs-pT-ugm"/>
                             <exclude reference="DgB-Wx-baO"/>
-                            <exclude reference="P9W-Pw-q8X"/>
-                            <exclude reference="xUr-zS-LKO"/>
                             <exclude reference="ML1-OH-9Uo"/>
+                            <exclude reference="P9W-Pw-q8X"/>
+                            <exclude reference="Rhs-pT-ugm"/>
+                            <exclude reference="eOB-V7-fhX"/>
+                            <exclude reference="xUr-zS-LKO"/>
                         </mask>
                     </variation>
                     <connections>

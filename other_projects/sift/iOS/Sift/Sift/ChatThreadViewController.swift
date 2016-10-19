@@ -42,6 +42,15 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
     @IBOutlet weak var btnVisibility: UIButton!
     @IBOutlet weak var viewGrey: UIView!
     @IBOutlet weak var bottomTxtConstraint: NSLayoutConstraint!
+    
+    
+    
+    
+    @IBOutlet weak var btnZoom: UIButton!
+    @IBOutlet weak var btnRoute: UIButton!
+    @IBOutlet weak var btnEmail: UIButton!
+    @IBOutlet weak var btnPhone: UIButton!
+    
     var chatRoomTitle:String = "";
     var roomId:String = ""
     let downloader = ImageDownloader()
@@ -65,6 +74,7 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
     var routeSteps = [MKRouteStep]()
 
     var prevUserCount:Int = 0
+    var firstLoadScreen:Bool = true
     var progressOptions = BusyNavigationBarOptions()
     let notificationManager = LNRNotificationManager()
     
@@ -83,13 +93,9 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.menuSide = .Right
-        self.sideViewController = ListOfUsersViewController(nibName: "ListOfUsersViewController", bundle: nil)
-        
-        var listOfUsersVC:ListOfUsersViewController  = (self.sideViewController as! ListOfUsersViewController)
-        listOfUsersVC.roomId = self.roomId
-        listOfUsersVC.delegate = self
-        listOfUsersVC.initUsers()
+        firstLoadScreen = true;
+
+                
         UIApplication.sharedApplication().statusBarStyle = .LightContent
 
         //UIViewController(nibName: "AddMeetupView", bundle: nil)
@@ -113,6 +119,9 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         mapView.showsUserLocation = true;
         mapView.zoomEnabled = true;
 
+        
+        setSelectedUserActions(true)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
 
@@ -149,6 +158,27 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
 
         zoomToCurrentLocation()
         enableMapViewTracking()
+    }
+    
+    func launchAddUser(){
+        var viewController:AddUserToRoomViewController = AddUserToRoomViewController();
+        viewController.roomId = self.roomId;
+        self.navigationController!.pushViewController(viewController, animated: true)
+    }
+    
+    func setSelectedUserActions(hidden:Bool){
+        btnZoom.hidden = hidden;
+        btnRoute.hidden = hidden;
+        btnEmail.hidden = hidden;
+        btnPhone.hidden = hidden;
+    }
+    
+    
+    func setSelectedMeetup(hidden:Bool){
+        btnZoom.hidden = hidden;
+        btnRoute.hidden = hidden;
+        btnEmail.hidden = true;
+        btnPhone.hidden = true;
     }
     
     func btnUserClick(sender: AnyObject){
@@ -198,7 +228,6 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
 
     func updateLocations(userList:NSMutableArray, isHidden:Bool){
         
-        
         if(!TEMP_VISIBLE_LOCK){
             
             if(isHidden){
@@ -228,11 +257,14 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
             }
         }
         
+        var personCount = 0;
+        var meetupCount = 0;
         for obj in userList {
             if let userLocation = obj as? UserLocationModel{
              
                 
                 if(userLocation.isPerson){
+                    personCount++;
                     var userPointAnnotation:UserLocationPointAnnotation? = getAnnotationByDeviceIdAndUserId(userLocation.deviceId, userId: userLocation.userId)
                     if(userPointAnnotation != nil){
                         userPointAnnotation!.coordinate = userLocation.coordinate!
@@ -254,10 +286,45 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
                         userPoint.userLocationModel = userLocation
                         self.addLocationUser(userLocation)
                     }
+                }else{
+                    meetupCount++
+                    //meetup points...
+                    let meetupId:String! = userLocation.meetupId
+                    let userId:String! = userLocation.userId
+                    let longitude:Double! = userLocation.longitude
+                    let latitude:Double! = userLocation.latitude
+                    
+                    var meetupTitle:String! = userLocation.meetupTitle
+                    var meetupSubtitle:String! = userLocation.subTitle
+                    
+                    var userPointAnnotation:CustomMeetupPin? = getAnnotationByMeetupId(userLocation.meetupId)
+
+                    if (userPointAnnotation != nil){
+                        userPointAnnotation!.coordinate = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+                        userPointAnnotation!.title = meetupTitle
+                        userPointAnnotation!.subtitle = meetupSubtitle
+                    }else{
+                        let annotation = CustomMeetupPin()
+                        annotation.id = meetupId
+                        
+                        annotation.coordinate = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+                        annotation.title = meetupTitle
+                        annotation.subtitle = meetupSubtitle
+                        annotation.userId = userId
+                        
+                        self.annotations.addObject(annotation)
+                        self.mapView.addAnnotation(annotation)
+                    }
                 }
             }
         }
         
+        
+        if(firstLoadScreen && (mapView.annotations.count - meetupCount) > personCount){
+            
+           firstLoadScreen = false
+           mapView.showAnnotations(mapView.annotations, animated: true)
+        }
         
         self.RETRIEVE_LOCATION_LOCK = false
     }
@@ -268,20 +335,19 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
             container.isSideViewControllerPresented = false
         }
         
+        
+        var region:MKCoordinateRegion = MKCoordinateRegion();
+        region.center.latitude = userLocationModel.coordinate!.latitude;
+        region.center.longitude = userLocationModel.coordinate!.longitude;
+        
+        region.span.latitudeDelta = spanX;
+        region.span.longitudeDelta = spanY;
+        mapView.setRegion(region, animated: true)
+        
         if(userLocationModel.isPerson){
-            //loop through all annotations.
-            
-            var region:MKCoordinateRegion = MKCoordinateRegion();
-            
-            
-            region.center.latitude = userLocationModel.coordinate!.latitude;
-            region.center.longitude = userLocationModel.coordinate!.longitude;
-            
-            region.span.latitudeDelta = spanX;
-            region.span.longitudeDelta = spanY;
-            mapView.setRegion(region, animated: true)
             self.mapView.selectAnnotation(getAnnotationByDeviceIdAndUserId(userLocationModel.deviceId, userId: userLocationModel.userId)!, animated: false)
-      
+        }else{
+            self.mapView.selectAnnotation(getAnnotationByMeetupId(userLocationModel.meetupId)!, animated: false)
         }
         //AlertHelper.createPopupMessage("ahh yeah no contexts", title: "god dammit.")
         
@@ -487,14 +553,12 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         self.addMeetupView!.frame = infoFrame
         mainWindow.addSubview(self.addMeetupView!)
     }
-    
-    
+
     func addMeetupFromAddress(customFindAddressPin:CustomFindAddressPin, title:String, subtitle:String, global:Bool){
         
         self.addMeetupView?.txtTitle.text = ""
-        
         hideMeetUp()
-        
+
         LocationApiHelper.createMeetup(title, subtitle: subtitle, isGlobal: global, roomId: self.roomId, longitude: String(customFindAddressPin.coordinate.longitude), latitude: String(customFindAddressPin.coordinate.latitude), resultJSON: {
             (JSON) in
             var meetupId:String! = JSON["meetup_id"].int?.stringValue
@@ -928,6 +992,22 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         return nil;
     }
     
+    
+    func getAnnotationByMeetupId(meetupId:String)->CustomMeetupPin?{
+
+        
+        for val in self.annotations{
+            
+            if val is CustomMeetupPin{
+                //var userPointAnnotation:UserLocationPointAnnotation = val as! UserLocationPointAnnotation
+                if(meetupId == (val as! CustomMeetupPin).id){
+                    return val as! CustomMeetupPin
+                }
+            }
+        }
+        return nil;
+    }
+    
 
     //make device id eventually...
     func getAnnotationByUserId(userId:String)->UserPointAnnotation?{
@@ -981,15 +1061,14 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
             self.downloader.downloadImage(URLRequest: URLRequest) { response in
                 if let image = response.result.value {
                     userModel.avatarImg = image.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
-                    print ("user has been updated")
+                    self.annotations.addObject(userPoint)
+                    self.mapView.addAnnotation(userPoint)
                 }
             }
             
             
             
             
-            self.annotations.addObject(userPoint)
-            self.mapView.addAnnotation(userPoint)
         }
     }
     
@@ -1170,7 +1249,7 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
                 }
 
                 isYourUserLoaded = true;
-                anView?.addGestureRecognizer(tapGesture!)
+                //anView?.addGestureRecognizer(tapGesture!)
 
                 return anView
             }
@@ -1208,7 +1287,7 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
                 }
 
                 
-                pinAnnotationView.addGestureRecognizer(tapGesture!)
+                ///pinAnnotationView.addGestureRecognizer(tapGesture!)
 
                 return pinAnnotationView
             } else if annotation is CustomFindAddressPin{
@@ -1233,24 +1312,36 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
             
             //these are non-you annotations..
             let reuseId = "pinAvatarImg"
+        
+        
+        
             var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+        
+        
             let userPointAnnotation:UserLocationPointAnnotation = annotation as! UserLocationPointAnnotation;
 
             if pinView == nil {
                 pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+
                 pinView!.image = userPointAnnotation.userLocationModel.avatarImg.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
+              
 
                 //pinView!.image = UIImage(named:"owl_orbit")?.resizedImageToFitInSize(CGSize(width: 40, height: 40), scaleIfSmaller: true);
             } else {
                 pinView!.annotation = annotation
             }
         
+        
+        
+        
             if(!CLLocationCoordinate2DIsValid(userPointAnnotation.coordinate)){
                 return nil;
             }
 
             pinView!.canShowCallout = true
+        
 
+        /*
             let button : AnnotationButton = AnnotationButton(type: UIButtonType.ContactAdd) as! AnnotationButton
             button.setImage(UIImage(named: "right_arrow_map"), forState: UIControlState.Normal)
             button.frame = CGRectMake(10, 0, 25, 25)
@@ -1267,21 +1358,94 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
             leftButton.userPointAnnotation = userPointAnnotation
             leftButton.addTarget(self, action: "leftButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
             pinView!.leftCalloutAccessoryView = leftButton
-            pinView!.addGestureRecognizer(tapGesture!)
+ */
+            //pinView!.addGestureRecognizer(tapGesture!)
         
             return pinView
     }
     
-    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+    
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
         
+        setSelectedUserActions(true)
+    }
+    
+    func clearCallouts(){
+        do {
+            /*for annotation in self.mapView.annotations as [MKAnnotation] {
+                var val:MKAnnotationView = self.mapView.viewForAnnotation(annotation)!
+                    for subviews: UIView in val.subviews {
+                        subviews.removeFromSuperview()
+                    }
+            }*/
+        }catch{
+        }
+    }
+    
+    func calloutTapped(sender: UIButton) {
+        AlertHelper.createPopupMessage("zz", title: "11 22 33")
+    }
+    
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view:MKAnnotationView!) {
+        clearCallouts()
         prevSelected = view
-        
         mapView.setCenterCoordinate(view.annotation!.coordinate, animated: true)
         
         
-        //[mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
+        if(prevSelected?.annotation is MKUserLocation){
+            
+        }else if(prevSelected?.annotation is CustomMeetupPin){
+            setSelectedMeetup(false)
+            
+            if let image = UIImage(named: "zoom_icon") {
+                btnZoom.setImage(image, forState: .Normal)
+            }
+        }else if(prevSelected?.annotation is CustomFindAddressPin){
+        }else{
+            setSelectedUserActions(false)
+            
+            LOCK_TOGGLE = false
+            (self as! MapRadialViewController).displayViews()            
+            
+            let userPointAnnotation:UserLocationPointAnnotation = view.annotation as! UserLocationPointAnnotation;
+            
+            
+            var profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + "/uploads/profile_imgs/" + userPointAnnotation.userLocationModel.userId + ".png"
+            
+            var URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+            self.downloader.downloadImage(URLRequest: URLRequest) { response in
+                if let image = response.result.value {
+                    
+                    self.btnZoom.setImage(image.roundImage(), forState: .Normal)
+                    //userData.originalAvatar = image.resizedImageToFitInSize(CGSizeMake(45, 45), scaleIfSmaller: true).roundImage()
+                    //userData.avatarImg = userData.originalAvatar
+                    
+                    //FileHelper.saveRoundImage(userData.avatarImg, fileName:  (userData.userId + "-round.png") )
+                }
+            }
 
-        
+           
+            
+            
+            
+            /*var userAnnotationView:UserAnnotationView = NSBundle.mainBundle().loadNibNamed("UserAnnotationView", owner: self, options: nil)[0] as! UserAnnotationView
+            
+            userAnnotationView.initialize()
+            
+            let userPointAnnotation:UserLocationPointAnnotation = view.annotation as! UserLocationPointAnnotation;
+            
+            //userAnnotationView.btnZoom.addTarget(self, action: #selector(self.calloutTapped), forControlEvents: .TouchUpInside)
+
+            
+            userAnnotationView.lblTitle.text = userPointAnnotation.userLocationModel.firstName.capitalizedString + " " + userPointAnnotation.userLocationModel.lastName.capitalizedString
+            
+            userAnnotationView.frame = CGRectMake(0, 0, 240, 133)
+            view.addSubview(userAnnotationView)
+            userAnnotationView.center = CGPointMake(userAnnotationView.bounds.size.width*0.1, -userAnnotationView.bounds.size.height*0.5)
+            */
+        }
+
+        //[mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
         //self.mapView.deselectAnnotation(view.annotation, animated: false)
         
         /*

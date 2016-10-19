@@ -20,6 +20,7 @@ PODS:
   - JSQSystemSoundPlayer (2.0.1)
   - LNRSimpleNotifications (0.3.0)
   - MBProgressHUD (0.9.1)
+  - OneSignal (1.13.3)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
   - PureLayout (3.0.1)
@@ -51,10 +52,11 @@ DEPENDENCIES:
   - JSQMessagesViewController
   - LNRSimpleNotifications (~> 0.3.0)
   - MBProgressHUD
+  - OneSignal (~> 1.13.3)
   - Parse
   - RNCryptor
   - SDWebImage
-  - SidebarOverlay
+  - SidebarOverlay (~> 3.1.0)
   - SwiftDate (~> 2.0)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - TPKeyboardAvoiding
@@ -89,6 +91,7 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   LNRSimpleNotifications: f8f99020ef6c0e4b46633d11e47c286c6f86700e
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
