@@ -95,6 +95,15 @@ class ProfileSettingImageUploadViewController: UIViewController, DZNEmptyDataSet
     func onImageCropViewTapped(imageCropView: ImageCropView) {
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: NSStringFromClass(self.classForCoder))
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
     func selectImage(){
 
         let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
@@ -140,9 +149,6 @@ class ProfileSettingImageUploadViewController: UIViewController, DZNEmptyDataSet
         }
         
         presentViewController(controller, animated: true, completion: nil)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
     }
 
     override func didReceiveMemoryWarning() {

@@ -4,14 +4,37 @@ PODS:
     - Alamofire (~> 3.5)
   - ALThreeCircleSpinner (1.0.2)
   - ASImageResize (1.0.3)
-  - Bolts/Tasks (1.6.0)
+  - Bolts/Tasks (1.8.4)
   - BusyNavigationBar (1.1.0)
   - CKCircleMenuView (0.1.6)
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
   - CTAssetsPickerController (3.2.1):
     - PureLayout (~> 3.0.0)
   - DGElasticPullToRefresh (1.0.3)
   - DZNEmptyDataSet (1.7.2)
   - ESPullToRefresh (1.0.5)
+  - Fabric (1.6.10)
+  - FirebaseAnalytics (3.4.4):
+    - FirebaseCore (~> 3.4)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+  - FirebaseCore (3.4.3):
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleUtilities (~> 1.2)
+  - FirebaseInstanceID (1.0.8)
+  - Google/Analytics (3.0.3):
+    - Google/Core
+    - GoogleAnalytics (~> 3.12)
+  - Google/Core (3.0.3):
+    - FirebaseAnalytics (~> 3.2)
+  - GoogleAnalytics (3.17.0)
+  - GoogleInterchangeUtilities (1.2.2):
+    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleSymbolUtilities (1.1.2)
+  - GoogleUtilities (1.3.2):
+    - GoogleSymbolUtilities (~> 1.1)
   - IHKeyboardAvoiding (2.5)
   - IHKeyboardDismissing (1.1)
   - ImageCropView (1.0.1)
@@ -22,8 +45,8 @@ PODS:
   - LNRSimpleNotifications (0.3.0)
   - MBProgressHUD (0.9.1)
   - OneSignal (2.1.16)
-  - Parse (1.12.0):
-    - Bolts/Tasks (~> 1.5)
+  - Parse (1.14.2):
+    - Bolts/Tasks (~> 1.8)
   - PureLayout (3.0.1)
   - RNCryptor (4.0.0)
   - SDWebImage (3.7.3):
@@ -43,10 +66,13 @@ DEPENDENCIES:
   - ASImageResize
   - BusyNavigationBar
   - CKCircleMenuView
+  - Crashlytics
   - CTAssetsPickerController (~> 3.2.0)
   - DGElasticPullToRefresh (~> 1.0.3)
   - DZNEmptyDataSet
   - ESPullToRefresh (~> 1.0.5)
+  - Fabric
+  - Google/Analytics
   - IHKeyboardAvoiding
   - IHKeyboardDismissing
   - ImageCropView (~> 1.0)
@@ -79,13 +105,23 @@ SPEC CHECKSUMS:
   AlamofireImage: 2d34936e5201270bb17a316a786e90e83b4a249d
   ALThreeCircleSpinner: 8bdd4e0d3d8a715b6fec50022911189bb63323af
   ASImageResize: c8ae8a2a7c57cbffbc39d756bc896f8384f0ca40
-  Bolts: f52a250053bb517ca874523c3913776359ab3def
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   BusyNavigationBar: cde4cbb450b58448204d5ab87f2dce07b4f0d7e1
   CKCircleMenuView: c73335207c5b4f57f532c272c17aeb2adeb77106
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   CTAssetsPickerController: 629e3c452efe92627b6386f572fc4e2f31533880
   DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   ESPullToRefresh: 03154f0eff5e4519970f23176c338ece51a955e0
+  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
+  FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
+  FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
+  FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
+  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
+  GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
+  GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   IHKeyboardAvoiding: 8f14fed93405dd2c44ce070a26f780d9e477538c
   IHKeyboardDismissing: 7c23d41da51ca22f6a1091b3cf852821a2461ac9
   ImageCropView: cbe42a5c4c31677e3d7167f7fd00c63c30d20acf
@@ -95,7 +131,7 @@ SPEC CHECKSUMS:
   LNRSimpleNotifications: f8f99020ef6c0e4b46633d11e47c286c6f86700e
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   OneSignal: 7a4272f857d3005949f83a373868c5c98d02f203
-  Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+  Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   RNCryptor: 59d6483908115af5c12b884db23392024e52a5fe
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84

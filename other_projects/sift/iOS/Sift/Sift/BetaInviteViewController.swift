@@ -37,6 +37,15 @@ class BetaInviteViewController: UIViewController {
     }
     
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: NSStringFromClass(self.classForCoder))
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
+    
     func btnShareClick(sender: AnyObject){
         
         if(betaCode == ""){

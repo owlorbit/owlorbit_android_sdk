@@ -90,6 +90,13 @@ class NotificationsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.tableView.reloadData()
+                
+        super.viewWillAppear(animated)
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: NSStringFromClass(self.classForCoder))
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    
    
     }
 

@@ -5,7 +5,7 @@ use_frameworks!
 
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
     pod 'BusyNavigationBar'
-
+    pod 'Parse'
     pod 'Alamofire'
     pod 'AlamofireImage'
     pod 'CTAssetsPickerController',  '~> 3.2.0'
@@ -16,13 +16,17 @@ use_frameworks!
     pod 'ImageCropView', '~> 1.0'
     pod 'JSQMessagesViewController'
     pod "SwiftDate", "~> 2.0"
-    pod 'Parse'
     pod 'CKCircleMenuView'
     pod 'LNRSimpleNotifications', '~> 0.3.0'
     pod 'DGElasticPullToRefresh', '~> 1.0.3'
     pod 'SidebarOverlay', '~> 3.1.0'
     pod 'OneSignal', '~> 2.1.15'
 
+    pod 'Google/Analytics'
+
+
+pod 'Fabric'
+pod 'Crashlytics'
 
 pod 'SDWebImage'
 pod 'UITextView+Placeholder'

@@ -47,13 +47,15 @@ class NotificationTableViewCell: UITableViewCell {
         }
         
         let profileImageUrl:String = ProjectConstants.ApiBaseUrl.value + url
-        print("next lvl \(profileImageUrl)")
         let URLRequest = NSMutableURLRequest(URL: NSURL(string: profileImageUrl)!)
+        self.imgAvatar.layer.masksToBounds = true
+        self.imgAvatar.layer.cornerRadius = self.imgAvatar.frame.size.height/2
         
         ApplicationManager.downloader.downloadImage(URLRequest: URLRequest) { response in
             
             if let image = response.result.value {
-                self.imgAvatar.image = image.roundImage()                
+                //self.imgAvatar.image = image.roundImage()
+                self.imgAvatar.image = image
             }
         }
 

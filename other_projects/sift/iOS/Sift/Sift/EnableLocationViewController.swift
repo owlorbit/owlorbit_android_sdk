@@ -25,6 +25,14 @@ class EnableLocationViewController: UIViewController {
         //let gesture = UITapGestureRecognizer(target: self, action: "someAction:")
         //self.myView.addGestureRecognizer(gesture)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: NSStringFromClass(self.classForCoder))
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
 
     func launchSettings(sender:UITapGestureRecognizer){
         UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0722F0AA6437092E780EA065 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
+		B8024EDA1DBD152100EE164C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8024ED91DBD152100EE164C /* GoogleService-Info.plist */; };
+		B8024EDB1DBD152100EE164C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8024ED91DBD152100EE164C /* GoogleService-Info.plist */; };
+		B8024EDC1DBD152100EE164C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8024ED91DBD152100EE164C /* GoogleService-Info.plist */; };
 		B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */; };
 		B804C6D01C17BB0D0076F81B /* UserPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */; };
 		B8068B631C20F95D00EE00CA /* FriendRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B611C20F95D00EE00CA /* FriendRequestViewController.swift */; };
@@ -570,6 +573,7 @@
 		88A799ED5D0EB3BE49557001 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8024ED71DB978FF00EE164C /* OwlOrbit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OwlOrbit.entitlements; sourceTree = "<group>"; };
+		B8024ED91DBD152100EE164C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B804C6CC1C16A4920076F81B /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
 		B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPointAnnotation.swift; sourceTree = "<group>"; };
@@ -1156,6 +1160,7 @@
 				A47F75AA7BBF8E4E58BD0708 /* Frameworks */,
 				B891A9581D0B905700E88EEF /* OwlOrbit copy-Info.plist */,
 				B891A9FC1D0B90A500E88EEF /* OwlOrbit copy copy-Info.plist */,
+				B8024ED91DBD152100EE164C /* GoogleService-Info.plist */,
 				121F6EC6EC0D581270279F19 /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -1412,6 +1417,7 @@
 				B8792A241BEB15CE00BE05ED /* Resources */,
 				F1B409FA0F7C06AE7F938CD9 /* Embed Pods Frameworks */,
 				587A350F4F31DF3FFFD7856D /* Copy Pods Resources */,
+				B8024ED81DBD117C00EE164C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1581,6 +1587,7 @@
 				B866DFD41C0EBA1900BF8A79 /* ProfileImageUploadViewController.xib in Resources */,
 				B825F1FF1DA94B8300E8693D /* UserAnnotationView.xib in Resources */,
 				B81DD77F1DA74B8B00893DBD /* UserListTableViewCell.xib in Resources */,
+				B8024EDA1DBD152100EE164C /* GoogleService-Info.plist in Resources */,
 				B821E72B1C6D6C4200EF9018 /* ManageRequestsViewController.xib in Resources */,
 				B8C867A21D024FB9008CDED1 /* OtherMessageChatTableViewCell.xib in Resources */,
 				B870CEC31BF5755800F47929 /* RegisterViewController.xib in Resources */,
@@ -1660,6 +1667,7 @@
 				B825F2001DA94B8300E8693D /* UserAnnotationView.xib in Resources */,
 				B81DD7801DA74B8B00893DBD /* UserListTableViewCell.xib in Resources */,
 				B891A9351D0B905700E88EEF /* ManageRequestsViewController.xib in Resources */,
+				B8024EDB1DBD152100EE164C /* GoogleService-Info.plist in Resources */,
 				B891A9361D0B905700E88EEF /* OtherMessageChatTableViewCell.xib in Resources */,
 				B891A9371D0B905700E88EEF /* RegisterViewController.xib in Resources */,
 				B891A9381D0B905700E88EEF /* ResetPasswordViewController.xib in Resources */,
@@ -1725,6 +1733,7 @@
 				B825F2011DA94B8300E8693D /* UserAnnotationView.xib in Resources */,
 				B81DD7811DA74B8B00893DBD /* UserListTableViewCell.xib in Resources */,
 				B891A9D91D0B90A500E88EEF /* ManageRequestsViewController.xib in Resources */,
+				B8024EDC1DBD152100EE164C /* GoogleService-Info.plist in Resources */,
 				B891A9DA1D0B90A500E88EEF /* OtherMessageChatTableViewCell.xib in Resources */,
 				B891A9DB1D0B90A500E88EEF /* RegisterViewController.xib in Resources */,
 				B891A9DC1D0B90A500E88EEF /* ResetPasswordViewController.xib in Resources */,
@@ -1793,6 +1802,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B8024ED81DBD117C00EE164C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/Fabric/run ef0bc59f19b2f0888765067b4c466e2fb8751ae5 8f0b3645ae046126cf6771adc0f2daede90a00f18a58c8591cccec59d080fb73";
 		};
 		B891A9FD1D0B90F500E88EEF /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;

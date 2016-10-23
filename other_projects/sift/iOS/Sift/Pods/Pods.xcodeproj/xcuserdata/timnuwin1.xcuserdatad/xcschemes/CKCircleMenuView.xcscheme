@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '627F38D2337CAE13C3B1E5F1'
+               BlueprintIdentifier = 'D1A7016BF7E4492BC5E876E9'
                BlueprintName = 'CKCircleMenuView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'CKCircleMenuView.framework'>

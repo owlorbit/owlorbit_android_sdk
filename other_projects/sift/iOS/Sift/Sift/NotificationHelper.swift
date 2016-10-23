@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import Parse
 
 import JSQMessagesViewController
 import SwiftDate

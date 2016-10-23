@@ -19,6 +19,8 @@ import LNRSimpleNotifications
 import AudioToolbox
 
 import OneSignal
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -77,6 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         /*OneSignal.initWithLaunchOptions(launchOptions, appId: "6593a224-cbe7-4bf1-988d-430cec831bbf", handleNotificationReceived:nil, handleNotificationAction:nil, settings: [kOSSettingsKeyInFocusDisplayOption: OSNotificationDisplayType.None.rawValue, kOSSettingsKeyAutoPrompt: false])*/
         
+        
+        Fabric.with([Crashlytics.self])
+        
         OneSignal.initWithLaunchOptions(launchOptions, appId: "6593a224-cbe7-4bf1-988d-430cec831bbf", handleNotificationReceived:{ (result) in
             
                 // This block gets called when the user reacts to a notification received
@@ -133,6 +138,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 //also run in the bg to check the password...
             }
         }
+        
+        
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        // Optional: configure GAI options.
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true  // report uncaught exceptions
+        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
 
         return true
     }
@@ -143,8 +159,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var deviceStr:String = deviceToken.description.stringByReplacingOccurrencesOfString("<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "").stringByReplacingOccurrencesOfString(" ", withString: "")
         
         ApplicationManager.parseDeviceId = deviceStr
-        installation.setDeviceTokenFromData(deviceToken)
-        installation.saveInBackground()
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

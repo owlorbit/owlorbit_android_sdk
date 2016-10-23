@@ -68,12 +68,13 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
     
     func initTableViewSettings(){
        
+        /*
         tableView.es_addPullToRefresh(handler:{
             [weak self] in
             // refresh code
             self?.txtSearch.text = ""
-            self?.loadLists()
-        })
+            //self?.loadLists()
+        })*/
         
     }
     
@@ -132,7 +133,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         //friendsRequestedByYou
         
         userArrayList = []
-        self.tableView.es_stopPullToRefresh(completion: true)
+        //self.tableView.es_stopPullToRefresh(completion: true)
         self.tableView.reloadData()
     }
 
