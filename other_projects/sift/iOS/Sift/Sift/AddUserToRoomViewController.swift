@@ -131,6 +131,8 @@ class AddUserToRoomViewController: UIViewController, DZNEmptyDataSetSource, DZNE
     
     
     func initTableViewSettings(){
+        
+        /*
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
         loadingView.tintColor = UIColor.whiteColor()
@@ -142,7 +144,13 @@ class AddUserToRoomViewController: UIViewController, DZNEmptyDataSetSource, DZNE
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        */
         
+        tableView.es_addPullToRefresh(handler:{
+            [weak self] in
+            // refresh code
+            self?.loadLists()
+        })
     }
     
     deinit {
@@ -235,7 +243,7 @@ class AddUserToRoomViewController: UIViewController, DZNEmptyDataSetSource, DZNE
             }
 
             self.tableView.reloadData()
-            self.tableView.dg_stopLoading()
+            self.tableView.es_stopPullToRefresh(completion: true)
             ApplicationManager.NOTIFICATION_LOCK_PUSH = false;
             
         });

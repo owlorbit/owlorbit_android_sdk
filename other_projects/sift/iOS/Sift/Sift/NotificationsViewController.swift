@@ -53,6 +53,7 @@ class NotificationsViewController: UIViewController {
                     self.data.addObject(notification)
                 }
                 self.tableView.reloadData()
+                self.tableView.es_stopPullToRefresh(completion: true)
             }, error:{
             (String, errorCode) in
                 print("error \(String)")
@@ -60,6 +61,8 @@ class NotificationsViewController: UIViewController {
     }
     
     func initTableViewSettings(){
+        
+        /*
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
         loadingView.tintColor = ProjectConstants.AppColors.PRIMARY
@@ -67,7 +70,13 @@ class NotificationsViewController: UIViewController {
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)*/
+        
+        tableView.es_addPullToRefresh(handler:{
+            [weak self] in
+            // refresh code
+            self!.loadNotifications()
+        })
         
     }
     

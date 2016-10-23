@@ -11,7 +11,7 @@ extension UIFont {
     func withTraits(traits:UIFontDescriptorSymbolicTraits...) -> UIFont {
         let descriptor = self.fontDescriptor()
             .fontDescriptorWithSymbolicTraits(UIFontDescriptorSymbolicTraits(traits))
-        return UIFont(descriptor: descriptor, size: 14)
+        return UIFont(descriptor: descriptor!, size: 14)
     }
     
     func italic() -> UIFont {

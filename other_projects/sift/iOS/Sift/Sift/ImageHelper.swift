@@ -52,7 +52,7 @@ class ImageHelper: NSObject {
         }
         
         var cropSquare = CGRectMake(x, y, edge, edge)
-        var imageRef = CGImageCreateWithImageInRect(image.CGImage, cropSquare);
+        var imageRef = CGImageCreateWithImageInRect(image.CGImage!, cropSquare);
         
         return UIImage(CGImage: imageRef!, scale: UIScreen.mainScreen().scale, orientation: image.imageOrientation)
     }
@@ -80,6 +80,6 @@ class ImageHelper: NSObject {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage
+        return newImage!
     }
 }

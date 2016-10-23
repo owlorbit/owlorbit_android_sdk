@@ -67,18 +67,13 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
     }
     
     func initTableViewSettings(){
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        
-        loadingView.tintColor = UIColor.whiteColor()
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            // Add your logic here
-            // Do not forget to call dg_stopLoading() at the end
-            //okay...
+       
+        tableView.es_addPullToRefresh(handler:{
+            [weak self] in
+            // refresh code
             self?.txtSearch.text = ""
             self?.loadLists()
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        })
         
     }
     
@@ -137,6 +132,7 @@ class FriendRequestViewController: UIViewController, DZNEmptyDataSetSource, DZNE
         //friendsRequestedByYou
         
         userArrayList = []
+        self.tableView.es_stopPullToRefresh(completion: true)
         self.tableView.reloadData()
     }
 

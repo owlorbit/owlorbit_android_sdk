@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0722F0AA6437092E780EA065 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */; };
 		B804C6CE1C16A4920076F81B /* NSDate+NVTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */; };
 		B804C6D01C17BB0D0076F81B /* UserPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */; };
 		B8068B631C20F95D00EE00CA /* FriendRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8068B611C20F95D00EE00CA /* FriendRequestViewController.swift */; };
@@ -566,7 +567,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		88A799ED5D0EB3BE49557001 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		ABE5CCF1EE3877D825EA2BA4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8024ED71DB978FF00EE164C /* OwlOrbit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OwlOrbit.entitlements; sourceTree = "<group>"; };
 		B804C6CC1C16A4920076F81B /* NSDate+NVTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NVTimeAgo.h"; sourceTree = "<group>"; };
 		B804C6CD1C16A4920076F81B /* NSDate+NVTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NVTimeAgo.m"; sourceTree = "<group>"; };
 		B804C6CF1C17BB0D0076F81B /* UserPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPointAnnotation.swift; sourceTree = "<group>"; };
@@ -766,6 +769,7 @@
 		B8F512B31C696710007DCFD5 /* GroupIsFriendsOnlyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupIsFriendsOnlyTableViewCell.xib; sourceTree = "<group>"; };
 		B8F512B61C696726007DCFD5 /* GroupCountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCountTableViewCell.swift; sourceTree = "<group>"; };
 		B8F512B71C696726007DCFD5 /* GroupCountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCountTableViewCell.xib; sourceTree = "<group>"; };
+		F98C2B233D3F2B556B55B19E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -777,6 +781,7 @@
 				B8BC48651C284363006A345E /* AudioToolbox.framework in Frameworks */,
 				B8BC48481C250C67006A345E /* QuartzCore.framework in Frameworks */,
 				B8B80F011BF4182C00CF4BB3 /* MapKit.framework in Frameworks */,
+				0722F0AA6437092E780EA065 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,6 +824,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		121F6EC6EC0D581270279F19 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F98C2B233D3F2B556B55B19E /* Pods.debug.xcconfig */,
+				88A799ED5D0EB3BE49557001 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A47F75AA7BBF8E4E58BD0708 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1134,6 +1148,7 @@
 		B8792A1D1BEB15CD00BE05ED = {
 			isa = PBXGroup;
 			children = (
+				B8024ED71DB978FF00EE164C /* OwlOrbit.entitlements */,
 				B8792A281BEB15CE00BE05ED /* Owl Orbit */,
 				B8792A401BEB15CE00BE05ED /* SiftTests */,
 				B8792A4B1BEB15CE00BE05ED /* SiftUITests */,
@@ -1141,6 +1156,7 @@
 				A47F75AA7BBF8E4E58BD0708 /* Frameworks */,
 				B891A9581D0B905700E88EEF /* OwlOrbit copy-Info.plist */,
 				B891A9FC1D0B90A500E88EEF /* OwlOrbit copy copy-Info.plist */,
+				121F6EC6EC0D581270279F19 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1389,10 +1405,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8792A511BEB15CE00BE05ED /* Build configuration list for PBXNativeTarget "OwlOrbit" */;
 			buildPhases = (
+				345C37E4FAE525957097B371 /* Check Pods Manifest.lock */,
 				B891A9FE1D0B912100E88EEF /* ShellScript */,
 				B8792A221BEB15CE00BE05ED /* Sources */,
 				B8792A231BEB15CE00BE05ED /* Frameworks */,
 				B8792A241BEB15CE00BE05ED /* Resources */,
+				F1B409FA0F7C06AE7F938CD9 /* Embed Pods Frameworks */,
+				587A350F4F31DF3FFFD7856D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1745,6 +1764,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		345C37E4FAE525957097B371 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		587A350F4F31DF3FFFD7856D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B891A9FD1D0B90F500E88EEF /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1784,6 +1833,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./presettings-local.sh";
+		};
+		F1B409FA0F7C06AE7F938CD9 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2288,9 +2352,11 @@
 		};
 		B8792A521BEB15CE00BE05ED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F98C2B233D3F2B556B55B19E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = OwlOrbit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -2305,15 +2371,18 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sift/Sift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		B8792A531BEB15CE00BE05ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88A799ED5D0EB3BE49557001 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = OwlOrbit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -2327,6 +2396,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sift/Sift-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

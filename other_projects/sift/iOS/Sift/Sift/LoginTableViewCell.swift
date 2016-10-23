@@ -53,11 +53,11 @@ class LoginTableViewCell: UITableViewCell, LoginKeyboardPrevDelegate, Registrati
             txtPassword.text = user.password
         }
 
-        loginKeyboardPrevView = NSBundle.mainBundle().loadNibNamed("LoginKeyboardPrevView", owner: self, options:nil)[0] as! LoginKeyboardPrevView
+        loginKeyboardPrevView = NSBundle.mainBundle().loadNibNamed("LoginKeyboardPrevView", owner: self, options:nil)![0] as! LoginKeyboardPrevView
         loginKeyboardPrevView?.delegate = self
         txtPassword.inputAccessoryView = loginKeyboardPrevView
 
-        loginKeyboardNextView = NSBundle.mainBundle().loadNibNamed("RegistrationNextView", owner: self, options:nil)[0] as! RegistrationNextView
+        loginKeyboardNextView = NSBundle.mainBundle().loadNibNamed("RegistrationNextView", owner: self, options:nil)![0] as! RegistrationNextView
         loginKeyboardNextView?.delegate = self
         
         txtEmail.inputAccessoryView = loginKeyboardNextView;

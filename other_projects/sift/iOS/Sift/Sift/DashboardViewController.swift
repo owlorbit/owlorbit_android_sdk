@@ -16,6 +16,8 @@ import AlamofireImage.Swift
 import QuartzCore
 import DGElasticPullToRefresh
 
+import OneSignal
+import ESPullToRefresh
 
 class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MapRadialViewControllerDelegate
 {
@@ -42,11 +44,6 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         var createNewBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "createNewBtnClick:")
         ApplicationManager.isLoggedIn = true;
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
-        if(appDelegate.pendingNotification != nil){
-            NotificationHelper.createPopupMessage(appDelegate, userInfo: appDelegate.pendingNotification!, applicationState: .Background)
-        }
         //createNewBtn.tintColor = UIColor(red:255.0/255.0, green:193.0/255.0, blue:73.0/255.0, alpha:1.0)
 
         self.navigationItem.rightBarButtonItem = createNewBtn
@@ -81,10 +78,12 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         initDownloadProfile()
         initTableViewSettings()
     }
+
     
     func initPushNotifications(){
         OneSignal.IdsAvailable({ (userId, pushToken) in
             
+            print("UserId:%@", userId);
             var user:PersonalUserModel = PersonalUserModel.get()[0] as PersonalUserModel;
             ApplicationManager.oneSignalDeviceId = userId
             UserApiHelper.enablePushNotification(userId, resultJSON: {
@@ -100,26 +99,18 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     func initTableViewSettings(){
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        
-        loadingView.tintColor = UIColor.whiteColor()
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            // Add your logic here
-            // Do not forget to call dg_stopLoading() at the end
-            //okay...
-            //self?.getRoomsFromManagedObjects()
+
+        tableView.es_addPullToRefresh(handler:{
+            [weak self] in
+            // refresh code
+            self?.tableView.es_stopLoadingMore()
             self?.initRooms();
-            
-            }, loadingView: loadingView)
-        
-        tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
-        
+        })
     }
     
     deinit {
         if(tableView != nil){
-            tableView.dg_removePullToRefresh()
+            //tableView.dg_removePullToRefresh()
         }
     }
 
@@ -257,7 +248,8 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
 
         RoomApiHelper.getAllUsersInRoom({
             (JSON) in
-                self.tableView.dg_stopLoading()
+            
+                self.tableView.es_stopPullToRefresh(completion: true)
                 self.users.removeAllObjects()
                 self.rooms.removeAllObjects()
                 for (key,subJson):(String, SwiftyJSON.JSON) in JSON["rooms"] {
@@ -313,6 +305,12 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
             self.loadProfileImage()
         }
         
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if(appDelegate.pendingNotification != nil){
+            NotificationHelper.createPopupMessage(appDelegate, userInfo: appDelegate.pendingNotification!, applicationState: .Background)
+        }
+
         //getRoomsFromManagedObjects();
     }
     

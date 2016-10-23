@@ -63,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             notificationManager.notificationSound = mySound
         }
 
-        
         let configuration = ParseClientConfiguration {
             $0.applicationId = "mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN"
             $0.clientKey = "fURuXJR5xjG7p2B7AqdKANUJVwb9pko4y4n3zi7o"
@@ -74,7 +73,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         Parse.setApplicationId("mmuRcbOhsjLPCFPv81ZO8HWVhn1YcIb8F93e05ZN",
             clientKey: "fURuXJR5xjG7p2B7AqdKANUJVwb9pko4y4n3zi7o")
          */
-        OneSignal.initWithLaunchOptions(launchOptions, appId: "6593a224-cbe7-4bf1-988d-430cec831bbf")
+        //OneSignal.initWithLaunchOptions(launchOptions, appId: "6593a224-cbe7-4bf1-988d-430cec831bbf")
+        
+        /*OneSignal.initWithLaunchOptions(launchOptions, appId: "6593a224-cbe7-4bf1-988d-430cec831bbf", handleNotificationReceived:nil, handleNotificationAction:nil, settings: [kOSSettingsKeyInFocusDisplayOption: OSNotificationDisplayType.None.rawValue, kOSSettingsKeyAutoPrompt: false])*/
+        
+        OneSignal.initWithLaunchOptions(launchOptions, appId: "6593a224-cbe7-4bf1-988d-430cec831bbf", handleNotificationReceived:{ (result) in
+            
+                // This block gets called when the user reacts to a notification received
+                let payload = result.payload
+                self.processPushNotification(payload.additionalData, applicationState: application.applicationState)
+            }, handleNotificationAction:{
+                (result) in
+
+                self.processJumpPushNotification(result.notification.payload.additionalData, applicationState: application.applicationState)
+            }, settings: [kOSSettingsKeyInFocusDisplayOption: OSNotificationDisplayType.None.rawValue, kOSSettingsKeyAutoPrompt: false])
+        
 
         if application.applicationState != UIApplicationState.Background {
 
@@ -142,7 +155,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print("hello world 222: \(userInfo)")
+    }
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
         if application.applicationState == .Inactive {
             NSLog("Inactive")
             //Show the view with the content of the push            
@@ -192,8 +209,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func processPushNotification(userInfo: [NSObject : AnyObject], applicationState: UIApplicationState){
         //first check to see if message is already in coredata...
-        //this is only handling if the app is minimized or closed...
+        //this is only handling if the app is minimized or closed...                
         NotificationHelper.createPopupMessage(self, userInfo:userInfo, applicationState:applicationState)
+    }
+    
+    func processJumpPushNotification(userInfo: [NSObject : AnyObject], applicationState: UIApplicationState){
+        //first check to see if message is already in coredata...
+        //this is only handling if the app is minimized or closed...
+        NotificationHelper.createJumpPopupMessage(self, userInfo:userInfo, applicationState:applicationState)
     }
 
     func sendLocations(){

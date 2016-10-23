@@ -60,6 +60,8 @@ class ManageRequestsViewController: UIViewController, DZNEmptyDataSetSource, DZN
         }
         
         func initTableViewSettings(){
+            
+            /*
             let loadingView = DGElasticPullToRefreshLoadingViewCircle()
             
             loadingView.tintColor = UIColor.whiteColor()
@@ -72,7 +74,13 @@ class ManageRequestsViewController: UIViewController, DZNEmptyDataSetSource, DZN
                 }, loadingView: loadingView)
             tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
             tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+            */
             
+            tableView.es_addPullToRefresh(handler:{
+                [weak self] in
+                
+                self?.loadLists()
+            })
         }
         
         deinit {
@@ -156,7 +164,7 @@ class ManageRequestsViewController: UIViewController, DZNEmptyDataSetSource, DZN
                 }
                 self.tableView.reloadData()
                 
-                self.tableView.dg_stopLoading()
+                self.tableView.es_stopPullToRefresh(completion: true)
             });
             
         }

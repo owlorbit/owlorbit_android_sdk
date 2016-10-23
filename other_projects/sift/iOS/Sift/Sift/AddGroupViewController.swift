@@ -68,17 +68,12 @@ class AddGroupViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     }
     
     func initTableViewSettings(){
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        
-        loadingView.tintColor = UIColor.whiteColor()
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            // Add your logic here
-            // Do not forget to call dg_stopLoading() at the end
-            //okay...
+
+        tableView.es_addPullToRefresh(handler:{
+            [weak self] in
+            // refresh code
             self?.loadLists()
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        })
         
     }
     
@@ -149,7 +144,7 @@ class AddGroupViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
             }
             
             self.tableView.reloadData()
-            self.tableView.dg_stopLoading()
+            self.tableView.es_stopPullToRefresh(completion: true)
             
         });
     }

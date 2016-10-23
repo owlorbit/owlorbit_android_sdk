@@ -121,20 +121,15 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
 
         
         setSelectedUserActions(true)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
 
-        chatMapKeyboard = NSBundle.mainBundle().loadNibNamed("ChatMapKeyboardView", owner: self, options:nil)[0] as! ChatMapKeyboardView
+        chatMapKeyboard = NSBundle.mainBundle().loadNibNamed("ChatMapKeyboardView", owner: self, options:nil)![0] as! ChatMapKeyboardView
 
         chatMapKeyboard!.delegate = self
         self.mapView.delegate = self;
-        //self.txtChatView.inputAccessoryView = chatMapKeyboard
         chatMapKeyboard!.btnSend.enabled = false;
         chatMapKeyboard!.btnSend.alpha = 0;
-        
-        //self.txtChatView.placeholder = "Enter text..."
-        //self.txtChatView.placeholderColor = UIColor.lightGrayColor()
         self.txtChatView.delegate = self
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -146,16 +141,11 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
             self.profileImage = self.profileImage.roundImage()
         }
 
-        //retrieveUsers()
         initAddMeetup()
         addMapViewOnClick()
-        //loadProfileImg()
-        //initLocations()
         initLoadingBar()
         
         initMapNotifications()
-        //hideInstructions()
-
         zoomToCurrentLocation()
         enableMapViewTracking()
     }
@@ -172,7 +162,6 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         btnEmail.hidden = hidden;
         btnPhone.hidden = hidden;
     }
-    
     
     func setSelectedMeetup(hidden:Bool){
         btnZoom.hidden = hidden;
@@ -261,8 +250,7 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         var meetupCount = 0;
         for obj in userList {
             if let userLocation = obj as? UserLocationModel{
-             
-                
+   
                 if(userLocation.isPerson){
                     personCount++;
                     var userPointAnnotation:UserLocationPointAnnotation? = getAnnotationByDeviceIdAndUserId(userLocation.deviceId, userId: userLocation.userId)
@@ -1583,14 +1571,14 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         typealias fucking = CGInterpolationQuality
         
         // Set the quality level to use when rescaling
-        CGContextSetInterpolationQuality(context, fucking.High)
+        CGContextSetInterpolationQuality(context!, fucking.High)
         let flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, newSize.height)
         
-        CGContextConcatCTM(context, flipVertical)
+        CGContextConcatCTM(context!, flipVertical)
         // Draw into the context; this scales the image
-        CGContextDrawImage(context, newRect, imageRef)
+        CGContextDrawImage(context!, newRect, imageRef!)
         
-        let newImageRef = CGBitmapContextCreateImage(context)! as CGImage
+        let newImageRef = CGBitmapContextCreateImage(context!)! as CGImage
         let newImage = UIImage(CGImage: newImageRef)
         
         // Get the resized image from the context and a UIImage
@@ -1612,7 +1600,7 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
         var roundedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return roundedImage
+        return roundedImage!
     }
 
     override func viewDidDisappear(animated: Bool) {
@@ -1638,8 +1626,14 @@ class ChatThreadViewController: SOContainerViewController, CLLocationManagerDele
             self.PREV_WAS_LOCKED = false
             
             UIView.animateWithDuration(0.5, animations: {() -> Void in
-                self.searchContainerConstraintTop.constant = -150;
-                self.bottomTxtConstraint.constant = -240
+                
+                if(self.searchContainerConstraintTop != nil){
+                    self.searchContainerConstraintTop.constant = -150;
+                }
+                
+                if(self.bottomTxtConstraint != nil){
+                    self.bottomTxtConstraint.constant = -240
+                }
                 self.LOCK_TOGGLE = false
                 self.view.layoutIfNeeded()
             })

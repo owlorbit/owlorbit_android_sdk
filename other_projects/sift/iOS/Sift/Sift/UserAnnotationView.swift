@@ -27,14 +27,15 @@ class UserAnnotationView: MKAnnotationView {
         // Drawing code
     }
     */
-    
+    /*
     override init (frame : CGRect) {
         super.init(frame : frame)
-    }
+    }*/
     
+    /*
     convenience init () {
         self.init(frame:CGRect.zero)
-    }
+    }*/
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -75,7 +76,7 @@ class UserAnnotationView: MKAnnotationView {
     
     
     public static func initView()->UserAnnotationView{
-        var view:UserAnnotationView = NSBundle.mainBundle().loadNibNamed("UserAnnotationView", owner: self, options: nil)[0] as! UserAnnotationView
+        var view:UserAnnotationView = NSBundle.mainBundle().loadNibNamed("UserAnnotationView", owner: self, options: nil)![0] as! UserAnnotationView
         
         //var dismissTap = UITapGestureRecognizer(target: view, action: Selector("dismissViewElements:"))
         //view.addGestureRecognizer(dismissTap)

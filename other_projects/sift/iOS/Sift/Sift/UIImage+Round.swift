@@ -21,6 +21,6 @@ extension UIImage
 
         let finalImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return finalImage
+        return finalImage!
     }
 }

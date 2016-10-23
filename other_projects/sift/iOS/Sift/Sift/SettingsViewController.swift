@@ -46,14 +46,15 @@ class SettingsViewController: UIViewController, ProfileSettingsDelegate {
     }
     
     func initTableViewSettings(){
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        
+        /*let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         
         loadingView.tintColor = ProjectConstants.AppColors.PRIMARY
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(ProjectConstants.AppColors.PRIMARY)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)*/
         
     }
     

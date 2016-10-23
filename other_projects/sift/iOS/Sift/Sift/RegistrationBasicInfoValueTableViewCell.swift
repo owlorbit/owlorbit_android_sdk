@@ -38,10 +38,10 @@ class RegistrationBasicInfoValueTableViewCell: UITableViewCell, RegistrationNext
     
     func populate(){
 
-        keyboardNextView = NSBundle.mainBundle().loadNibNamed("RegistrationNextView", owner: self, options:nil)[0] as! RegistrationNextView
+        keyboardNextView = NSBundle.mainBundle().loadNibNamed("RegistrationNextView", owner: self, options:nil)![0] as! RegistrationNextView
         keyboardNextView?.delegate = self
         
-        registrationSubmitKeyboardView = NSBundle.mainBundle().loadNibNamed("RegistrationSubmitKeyboardView", owner: self, options:nil)[0] as! RegistrationSubmitKeyboardView
+        registrationSubmitKeyboardView = NSBundle.mainBundle().loadNibNamed("RegistrationSubmitKeyboardView", owner: self, options:nil)![0] as! RegistrationSubmitKeyboardView
         registrationSubmitKeyboardView?.delegate = self
         
         txtFirstName.inputAccessoryView = keyboardNextView

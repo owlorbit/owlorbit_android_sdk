@@ -27,7 +27,6 @@ class MapRadialViewController: ChatThreadViewController {
         super.viewDidLoad()
         
         initToggleViews()
-        
         self.menuSide = .Right
         self.sideViewController = ListOfUsersViewController(nibName: "ListOfUsersViewController", bundle: nil)
         var listOfUsersVC:ListOfUsersViewController  = (self.sideViewController as! ListOfUsersViewController)
@@ -289,9 +288,6 @@ class MapRadialViewController: ChatThreadViewController {
     
     func toggleViews() {
         
-        //@IBOutlet weak var topConstraint: NSLayoutConstraint!        
-        (self.sideViewController as! ListOfUsersViewController).setUpdatedConstraint()
-        
         if(txtChatView.isFirstResponder() || txtSearch.isFirstResponder()){
             self.PREV_WAS_LOCKED = true
             self.dismissKeyboard()
@@ -329,7 +325,7 @@ class MapRadialViewController: ChatThreadViewController {
                     self.navigationController!.navigationBar.translucent = true;
                     self.navigationController!.navigationBar.hidden = true;
                     UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
-                    
+                    (self.sideViewController as! ListOfUsersViewController).setUpdatedConstraint()
                     
                     UIView.animateWithDuration(0.5, animations: {() -> Void in
                         self.searchContainerConstraintTop.constant = -150;

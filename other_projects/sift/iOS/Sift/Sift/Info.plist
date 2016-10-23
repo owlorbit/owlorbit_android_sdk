@@ -30,7 +30,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>38</string>
+	<string>43</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MKDirectionsApplicationSupportedModes</key>
@@ -47,6 +47,8 @@
 	<string>Please allow access for sending location when app is closed.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please allow access for sending location when app is minimized.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used for Photo Authorization</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

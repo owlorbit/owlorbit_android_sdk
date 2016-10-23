@@ -86,7 +86,7 @@ class AddMeetupView: UIView {
     }
 
     public static func initView()->AddMeetupView{
-        var view:AddMeetupView = NSBundle.mainBundle().loadNibNamed("AddMeetupView", owner: self, options: nil)[0] as! AddMeetupView
+        var view:AddMeetupView = NSBundle.mainBundle().loadNibNamed("AddMeetupView", owner: self, options: nil)![0] as! AddMeetupView
         
         var dismissTap = UITapGestureRecognizer(target: view, action: Selector("dismissViewElements:"))
         view.addGestureRecognizer(dismissTap)
