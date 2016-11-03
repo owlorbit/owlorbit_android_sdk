@@ -71,14 +71,33 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         initRooms();
         initProfile();
 
-        /*if(!hasProfileImage()){
-            loadProfileImage()
-        }*/
-
         initDownloadProfile()
         initTableViewSettings()
     }
+    
+    func initInitialShare(){
+        //if first load...
 
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if(appDelegate.isAppAlreadyLaunchedOnce()){
+            return;
+        }
+        
+        let alert = UIAlertController(title: "I'm Talon You", message: "Owlorbit is more useful with friends!", preferredStyle: UIAlertControllerStyle.Alert)
+
+        alert.addAction(UIAlertAction(title: "Invite", style: .Default, handler: { action in
+            let vc = BetaInviteViewController(nibName: "BetaInviteViewController", bundle: nil)
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true )
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { action in
+            print("Cancel")
+        }))
+
+        self.presentViewController(alert, animated: true, completion: nil)
+   
+    }
     
     func initPushNotifications(){
         OneSignal.IdsAvailable({ (userId, pushToken) in
@@ -302,9 +321,11 @@ class DashboardViewController: UIViewController, DZNEmptyDataSetSource, DZNEmpty
         super.viewDidAppear(animated)
 
         if(!self.hasProfileImage()){
-            self.loadProfileImage()
+            //self.loadProfileImage()
+        }else{
+            initInitialShare()
         }
-        
+
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         if(appDelegate.pendingNotification != nil){

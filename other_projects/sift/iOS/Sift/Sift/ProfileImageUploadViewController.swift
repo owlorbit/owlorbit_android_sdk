@@ -22,7 +22,6 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgCropView: ImageCropView!
-    var controller:ImagePickerSheetController = ImagePickerSheetController(mediaType: .Image)
     
     var delegate:ProfileDelegate?;
 
@@ -38,14 +37,83 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
         self.title = "Profile Image"
 
         initLoadImagePicker()
-        selectImage()
+        //checkPermissionFirst()
+        
+    }
+    
+    func checkPermissionFirst(){
+        
+        if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ==  AVAuthorizationStatus.Authorized && PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.Authorized{
+            selectImage()
+        }else{
+            
+            
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted :Bool) -> Void in
+                if granted == true{
+                    // User granted
+                    
+                    if(PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.Authorized){
+                        self.selectImage()
+                    }else{
+                        PHPhotoLibrary.requestAuthorization({(status:PHAuthorizationStatus) in
+                            switch status{
+                            case .Authorized:
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    self.selectImage()
+                                })
+                                break
+                            case .Denied:
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    
+                                    let alert = UIAlertController(title: "Error", message: "Profile picture is required! Photos has to be enabled.", preferredStyle: UIAlertControllerStyle.Alert)
+                                    
+                                    alert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { action in
+                                        
+                                        UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                                    }))
+                                    
+                                    alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { action in
+                                        
+                                    }))
+                                    
+                                    self.presentViewController(alert, animated: true, completion: nil)
+                                    
+                                    
+                                })
+                                break
+                            default:
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    print("Default")
+                                })
+                                break
+                            }
+                        })
+                    }
+                }else{
+
+                    let alert = UIAlertController(title: "Error", message: "Profile picture is required! Camera has to be enabled.", preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { action in
+                        
+                        UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                    }))
+                    
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { action in
+                        
+                    }))
+                    
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+            });
+        }
+        
     }
     
     func buttonMethod() {
     }
     
     func btnSelectImg(){
-        selectImage()
+        checkPermissionFirst()
     }
     
     func initLoadImagePicker(){
@@ -105,52 +173,59 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
     
     func selectImage(){
 
-        let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
-            let controller = UIImagePickerController()
-            controller.delegate = self
-            var sourceType = source
-            if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
-                sourceType = .PhotoLibrary
-                print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
-            }
-            controller.sourceType = sourceType
+        do {
+            //check if user has permission
             
-            self.presentViewController(controller, animated: true, completion: nil)
-        }
-
-        controller = ImagePickerSheetController(mediaType: .Image)
-        controller.maximumSelection = 1;
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take a Selfie", comment: "Action Title"), secondaryTitle: NSLocalizedString("Select Image", comment: "Action Title"), handler: { _ in
-            presentImagePickerController(.Camera)
-            
-            print("this was picked..")
-            
-            }, secondaryHandler: { _, numberOfPhotos in
-                print("Comment \(numberOfPhotos) photos")
-                print("Send \(self.controller.selectedImageAssets)")
-                
-                if(self.controller.selectedImageAssets.count > 0){
-                    self.imgCropView.setup(ImageHelper.getAssetThumbnail(self.controller.selectedImageAssets[0], widthHeight: 620.0), tapDelegate: self)
-                    self.imgCropView.display()
-                    self.imgCropView.editable = true
-                    self.navigationItem.rightBarButtonItem?.enabled = true
+            var controller:ImagePickerSheetController = ImagePickerSheetController(mediaType: .Image)
+            let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
+                let controller = UIImagePickerController()
+                controller.delegate = self
+                var sourceType = source
+                if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
+                    sourceType = .PhotoLibrary
+                    print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
                 }
-        }))
+                controller.sourceType = sourceType
+                
+                self.presentViewController(controller, animated: true, completion: nil)
+            }
         
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: NSLocalizedString("Cancel", comment: "Action Title"), handler: { _ in
-            presentImagePickerController(.PhotoLibrary)
-                print("photo picker..")
-            }, secondaryHandler: { _, numberOfPhotos in
-                self.navigationItem.rightBarButtonItem?.enabled = false
-        }))
-        
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            controller.modalPresentationStyle = .Popover
-            controller.popoverPresentationController?.sourceView = view
-            controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
-        }
+            //self.controller = ImagePickerSheetController(mediaType: .Image)
+            controller.maximumSelection = 1;
+            controller.addAction(ImagePickerAction(title: NSLocalizedString("Take a Selfie", comment: "Action Title"), secondaryTitle: NSLocalizedString("Select Image", comment: "Action Title"), handler: { _ in
+                presentImagePickerController(.Camera)
+                
+                print("this was picked..")
+                
+                }, secondaryHandler: { _, numberOfPhotos in
+                    print("Comment \(numberOfPhotos) photos")
+                    print("Send \(controller.selectedImageAssets)")
+                    
+                    if(controller.selectedImageAssets.count > 0){
+                        self.imgCropView.setup(ImageHelper.getAssetThumbnail(controller.selectedImageAssets[0], widthHeight: 620.0), tapDelegate: self)
+                        self.imgCropView.display()
+                        self.imgCropView.editable = true
+                        self.navigationItem.rightBarButtonItem?.enabled = true
+                    }
+            }))
+            
+            controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: NSLocalizedString("Cancel", comment: "Action Title"), handler: { _ in
+                presentImagePickerController(.PhotoLibrary)
+                    print("photo picker..")
+                }, secondaryHandler: { _, numberOfPhotos in
+                    self.navigationItem.rightBarButtonItem?.enabled = false
+            }))
+            
+            if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+                controller.modalPresentationStyle = .Popover
+                controller.popoverPresentationController?.sourceView = view
+                controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
+            }
 
-        presentViewController(controller, animated: true, completion: nil)
+            presentViewController(controller, animated: true, completion: nil)
+        } catch {
+            AlertHelper.createPopupMessage("Photos are required for ALL users", title: "Error")
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -167,7 +242,7 @@ class ProfileImageUploadViewController: UIViewController, DZNEmptyDataSetSource,
         super.viewWillDisappear(animated)
         
         //how do i hide this fucker...
-        controller.dismissViewControllerAnimated(false, completion: nil)
+        //controller.dismissViewControllerAnimated(false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

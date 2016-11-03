@@ -118,9 +118,22 @@ class AddUserToRoomViewController: UIViewController, DZNEmptyDataSetSource, DZNE
             RoomApiHelper.addNewUsers(roomId, userIds: selectedUserArrayList, resultJSON: {
                 (JSON) in
                         //send user back..
+                
+                let alertController = UIAlertController(title: "", message: "User was invited!", preferredStyle: .Alert)
+                
+                // Create the actions
+                let okAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default) {
+                    UIAlertAction in
+
                     if let navController = self.navigationController {
                         navController.popViewControllerAnimated(true)
                     }
+                }
+                // Add the actions
+                alertController.addAction(okAction)
+                // Present the controller
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
                 }, error: {
                     (Error) in
                     AlertHelper.createPopupMessage("\(Error)", title: "")

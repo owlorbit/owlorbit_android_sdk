@@ -115,14 +115,14 @@ class ProfileSettingImageUploadViewController: UIViewController, DZNEmptyDataSet
                 print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
             }
             controller.sourceType = sourceType
-            
             self.presentViewController(controller, animated: true, completion: nil)
         }
         
         let controller = ImagePickerSheetController(mediaType: .Image)
         controller.maximumSelection = 1;
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take a Selfie", comment: "Action Title"), secondaryTitle: NSLocalizedString("Select Image", comment: "Action Title"), handler: { _ in
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take a Selfie", comment: "Action Title"), secondaryTitle: NSLocalizedString("Select Image", comment: "Action Title"), handler: { _ in            
             presentImagePickerController(.Camera)
+            
             }, secondaryHandler: { _, numberOfPhotos in
                 print("Comment \(numberOfPhotos) photos")
                 print("Send \(controller.selectedImageAssets)")
@@ -150,7 +150,7 @@ class ProfileSettingImageUploadViewController: UIViewController, DZNEmptyDataSet
         
         presentViewController(controller, animated: true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

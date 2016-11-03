@@ -6,6 +6,6 @@
 #setup link...
 
 #ln -s /usr/share/nginx/html /html
-#docker exec -it sift bash 
+#docker exec -it sift bash
 
 docker cp ./ sift:html

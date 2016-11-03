@@ -161,6 +161,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         ApplicationManager.parseDeviceId = deviceStr
     }
     
+    
+    func isAppAlreadyLaunchedOnce()->Bool{
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let isAppAlreadyLaunchedOnce = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
+            print("App already launched : \(isAppAlreadyLaunchedOnce)")
+            return true
+        }else{
+            defaults.setBool(true, forKey: "isAppAlreadyLaunchedOnce")
+            print("App launched first time")
+            return false
+        }
+    }
+    
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         if error.code == 3010 {
             print("Push notifications are not supported in the iOS Simulator.")
@@ -335,24 +349,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
                 if(!ApplicationManager.messageRecentlySent){
                     ApplicationManager.messageRecentlySent = true
+
+                    let state = UIApplication.sharedApplication().applicationState
+                    if state == .Background {
+
+                        //turn it down temporarily..
+                        print("background zztim: \(longitude) - \(latitude)")
+                        //let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                        //self.locationManager.stopUpdatingLocation()
+                        //self.locationManager.stopMonitoringSignificantLocationChanges()
+                        
+                        LocationApiHelper.sendLocation(longitude, latitude: latitude, resultJSON:{
+                            (JSON) in
+                            print(JSON)
+                            var messageRecentTimer = NSTimer.scheduledTimerWithTimeInterval(25.0, target: self, selector: "updateBackgroundMessageTimer:", userInfo: nil, repeats: false)
+                            }, error:{
+                                (String) in
+                                print(String)
+                                ApplicationManager.messageRecentlySent = false
+                            }
+                        );
+                        
+                    }else{
                     
-                    print("zztim: \(longitude) - \(latitude)")
-                    LocationApiHelper.sendLocation(longitude, latitude: latitude, resultJSON:{
-                        (JSON) in
-                        print(JSON)
-                        var messageRecentTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "updateMessageTimer:", userInfo: nil, repeats: false)
-                        }, error:{
-                            (String) in
-                            
-                            print(String)
-                            ApplicationManager.messageRecentlySent = false
-                        }
-                    );
+                        print("normal foreground zztim: \(longitude) - \(latitude)")
+                        LocationApiHelper.sendLocation(longitude, latitude: latitude, resultJSON:{
+                            (JSON) in
+                            print(JSON)
+                            var messageRecentTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "updateMessageTimer:", userInfo: nil, repeats: false)
+                            }, error:{
+                                (String) in
+                                
+                                print(String)
+                                ApplicationManager.messageRecentlySent = false
+                            }
+                        );
+                        
+                    }
+                    
                 }
         }
         
         //if UIApplication.sharedApplication().applicationState == .Active
     }
+    
+    func updateBackgroundMessageTimer(timer:NSTimer){
+        NSLog("App is background still sending...")
+
+        //locationManager.startUpdatingLocation()
+        //locationManager.startMonitoringSignificantLocationChanges()
+        
+        ApplicationManager.messageRecentlySent = false
+        timer.invalidate()
+    }
+    
     
     func updateMessageTimer(timer: NSTimer) {
         NSLog("App is still sending...")
@@ -436,7 +486,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-       
+        
+        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

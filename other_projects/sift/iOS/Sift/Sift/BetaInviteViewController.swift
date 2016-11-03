@@ -61,13 +61,13 @@ class BetaInviteViewController: UIViewController {
                 (_) in
                 self.shareWithFacebook()
             }
-            let threeAction = UIAlertAction(title: "Email", style: .Default) { (_) in
+            let threeAction = UIAlertAction(title: "Other Apps", style: .Default) { (_) in
                 self.shareWithEmail()
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
             
             alert.addAction(oneAction)
-            alert.addAction(twoAction)
+            //alert.addAction(twoAction)
             alert.addAction(threeAction)
             alert.addAction(cancelAction)
 
