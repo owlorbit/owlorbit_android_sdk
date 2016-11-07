@@ -32,7 +32,7 @@ define(['app','jquery'], function(App, $) {
 					    dataType: "json",
 					    success: function(data){
 					    	if(data.successful){
-								//location.reload();						
+								location.reload();						
 							}else{
 								$("#errorMsg").hide();
 								$("#errorMsg").html(data.message);
