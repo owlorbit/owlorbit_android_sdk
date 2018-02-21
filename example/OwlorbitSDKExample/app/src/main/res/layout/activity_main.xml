@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dinomitesoft.owlorbit.owlorbitsdkexample.MainActivity">
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+         />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/webview">
+
+        <LinearLayout
+            android:id="@+id/infowindow_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Actions"
+                />
+
+            <Button
+                android:id="@+id/btnDoesUserExist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Does User Exist"
+                />
+
+            <Button
+                android:id="@+id/btnAddUserToDomain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add User to Domain"
+                />
+
+            <Button
+                android:id="@+id/btnListAllUsers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List all Users"
+                />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Room Actions"
+                />
+
+            <Button
+                android:id="@+id/btnGetRoomsInDomain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get Rooms in Domain"
+                />
+
+            <Button
+                android:id="@+id/btnGetRoomsByEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get Rooms by User"
+                />
+
+            <Button
+                android:id="@+id/btnJoinRoomByEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Join Room by Email"
+                />
+
+            <Button
+                android:id="@+id/btnCreateRoom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Room"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location Actions"
+                />
+
+            <Button
+                android:id="@+id/btnListAllLocations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List all locations in domain"
+                />
+
+            <Button
+                android:id="@+id/btnListAllLocationsByEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List all locations of User"
+                />
+
+            <Button
+                android:id="@+id/btnListAllUsersInRoom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List all locations in Room"
+                />
+
+            <Button
+                android:id="@+id/btnAddUserLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add User Location"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Group Actions"
+                />
+
+            <Button
+                android:id="@+id/btnListAllGroups"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All Groups"
+                />
+
+            <Button
+                android:id="@+id/btnCreateGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Group"
+                />
+
+            <Button
+                android:id="@+id/btnUpdateGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update Group"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meetup Actions"
+                />
+
+            <Button
+                android:id="@+id/btnListAllMeetUps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List all Meetups in Room"
+                />
+
+            <Button
+                android:id="@+id/btnListAllMeetUpsByEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List all Meetups by email"
+                />
+
+            <Button
+                android:id="@+id/btnAddMeetupPoint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Meetup Point"
+                />
+
+            <Button
+                android:id="@+id/btnUpdateMeetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update Meetup Point"
+                />
+
+            <Button
+                android:id="@+id/btnDisableMeetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disable Meetup Point"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Message Actions"
+                />
+
+            <Button
+                android:id="@+id/btnListMessages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List Messages"
+                />
+
+            <Button
+                android:id="@+id/btnSendMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Message"
+                />
+
+            <Button
+                android:id="@+id/btnSendMessageFromEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Message from Email"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Message Template Actions"
+                />
+
+            <Button
+                android:id="@+id/btnMessageListTemplates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List all message templates"
+                />
+
+            <Button
+                android:id="@+id/btnCreateMessageTemplate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Message Template"
+                />
+
+            <Button
+                android:id="@+id/btnUpdateMessageTemplate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update Message Template"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Polling Templates"
+                />
+
+            <Button
+                android:id="@+id/btnListAllRunningPolls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List all Running Polls"
+                />
+
+            <Button
+                android:id="@+id/btnPollGetChoicesById"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get Poll Choices by Id"
+                />
+
+            <Button
+                android:id="@+id/btnGetPollResponses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get Poll Responses by Poll Choice Id"
+                />
+
+            <Button
+                android:id="@+id/btnCreatePoll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Poll"
+                />
+
+            <Button
+                android:id="@+id/btnSendPollResponse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Poll Response"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
