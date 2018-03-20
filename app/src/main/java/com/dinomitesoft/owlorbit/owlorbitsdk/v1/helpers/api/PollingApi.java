@@ -53,6 +53,11 @@ public class PollingApi {
         public void error(String response);
     }
 
+    public interface CancelPollDelegate {
+        public void success(BaseApiResponseModel response);
+        public void error(String response);
+    }
+
     public interface PollingService {
         @FormUrlEncoded
         @POST(API_VERSION + "/polling/get_all_running")
@@ -87,11 +92,40 @@ public class PollingApi {
         @FormUrlEncoded
         @POST(API_VERSION + "/polling/create")
         Call<CreatePollModel> create(@Field("choices[]") ArrayList<String> choices,
+                                     @Field("question") String question,
+                                     @Field("sendUtc") String sendUtc,
+                                     @Field("groupId") int groupId,
+                                     @Field("manualLocationEnabled") int manualLocationEnabled,
+                                     @Field("publicKey") String publicKey,
+                                     @Field("encryptedSession") String encryptedSession,
+                                     @Field("sessionHash") String sessionHash);
+
+
+        @FormUrlEncoded
+        @POST(API_VERSION + "/polling/create")
+        Call<CreatePollModel> create(@Field("choices[]") ArrayList<String> choices,
                                                @Field("question") String question,
                                                @Field("manualLocationEnabled") int manualLocationEnabled,
                                                @Field("publicKey") String publicKey,
                                                @Field("encryptedSession") String encryptedSession,
                                                @Field("sessionHash") String sessionHash);
+
+        @FormUrlEncoded
+        @POST(API_VERSION + "/polling/create")
+        Call<CreatePollModel> create(@Field("choices[]") ArrayList<String> choices,
+                                     @Field("question") String question,
+                                     @Field("sendUtc") String sendUtc,
+                                     @Field("manualLocationEnabled") int manualLocationEnabled,
+                                     @Field("publicKey") String publicKey,
+                                     @Field("encryptedSession") String encryptedSession,
+                                     @Field("sessionHash") String sessionHash);
+
+        @FormUrlEncoded
+        @POST(API_VERSION + "/polling/cancel")
+        Call<BaseApiResponseModel> cancel(@Field("pollingId") int pollingId,
+                                                      @Field("publicKey") String publicKey,
+                                                      @Field("encryptedSession") String encryptedSession,
+                                                      @Field("sessionHash") String sessionHash);
 
         @FormUrlEncoded
         @POST(API_VERSION + "/polling/submit_choice")
@@ -140,6 +174,24 @@ public class PollingApi {
         });
     }
 
+    public static void create(ArrayList<String> choices, String question, String sendUtc, int groupId, int manualLocationEnabled, final CreatePollDelegate delegate){
+        PollingService api = ApiClientHelper.getRetroFit().create(PollingService.class);
+        Call<CreatePollModel> myCall = api.create(choices, question, sendUtc, groupId, manualLocationEnabled, ApiSharedHelper.getInstance().getPublicKey(),
+                ApiSharedHelper.getInstance().getEncryptedSession(), ApiSharedHelper.getInstance().getSessionHash());
+        myCall.enqueue(new Callback<CreatePollModel>() {
+
+            @Override
+            public void onResponse(Response<CreatePollModel> response, Retrofit retrofit) {
+                delegate.success(response.body());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                delegate.error(t.getMessage());
+            }
+        });
+    }
+
     public static void create(ArrayList<String> choices, String question, int manualLocationEnabled, final CreatePollDelegate delegate){
         PollingService api = ApiClientHelper.getRetroFit().create(PollingService.class);
         Call<CreatePollModel> myCall = api.create(choices, question, manualLocationEnabled, ApiSharedHelper.getInstance().getPublicKey(),
@@ -148,6 +200,42 @@ public class PollingApi {
 
             @Override
             public void onResponse(Response<CreatePollModel> response, Retrofit retrofit) {
+                delegate.success(response.body());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                delegate.error(t.getMessage());
+            }
+        });
+    }
+
+    public static void create(ArrayList<String> choices, String question, String sendUtc, int manualLocationEnabled, final CreatePollDelegate delegate){
+        PollingService api = ApiClientHelper.getRetroFit().create(PollingService.class);
+        Call<CreatePollModel> myCall = api.create(choices, question, sendUtc, manualLocationEnabled, ApiSharedHelper.getInstance().getPublicKey(),
+                ApiSharedHelper.getInstance().getEncryptedSession(), ApiSharedHelper.getInstance().getSessionHash());
+        myCall.enqueue(new Callback<CreatePollModel>() {
+
+            @Override
+            public void onResponse(Response<CreatePollModel> response, Retrofit retrofit) {
+                delegate.success(response.body());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                delegate.error(t.getMessage());
+            }
+        });
+    }
+
+    public static void cancelPoll(int pollingChoiceId, final CancelPollDelegate delegate){
+        PollingService api = ApiClientHelper.getRetroFit().create(PollingService.class);
+        Call<BaseApiResponseModel> myCall = api.cancel(pollingChoiceId, ApiSharedHelper.getInstance().getPublicKey(),
+                ApiSharedHelper.getInstance().getEncryptedSession(), ApiSharedHelper.getInstance().getSessionHash());
+        myCall.enqueue(new Callback<BaseApiResponseModel>() {
+
+            @Override
+            public void onResponse(Response<BaseApiResponseModel> response, Retrofit retrofit) {
                 delegate.success(response.body());
             }
 

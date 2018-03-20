@@ -185,8 +185,20 @@ public class OwlorbitApi {
         PollingApi.create(choices, question, groupId, manualLocationEnabled, delegate);
     }
 
+    public void createPoll(ArrayList<String> choices, String question, String sendUtc, int groupId, int manualLocationEnabled, final PollingApi.CreatePollDelegate delegate) {
+        PollingApi.create(choices, question, sendUtc, groupId, manualLocationEnabled, delegate);
+    }
+
     public void createPoll(ArrayList<String> choices, String question, int manualLocationEnabled, final PollingApi.CreatePollDelegate delegate) {
         PollingApi.create(choices, question, manualLocationEnabled, delegate);
+    }
+
+    public void createPoll(ArrayList<String> choices, String question, String sendUtc, int manualLocationEnabled, final PollingApi.CreatePollDelegate delegate) {
+        PollingApi.create(choices, question, sendUtc, manualLocationEnabled, delegate);
+    }
+
+    public void cancelPoll(int pollingId, final PollingApi.CancelPollDelegate delegate) {
+        PollingApi.cancelPoll(pollingId, delegate);
     }
 
     public void submitPollChoice(int pollingId, String email, int choiceId, final PollingApi.SendPollDelegate delegate) {

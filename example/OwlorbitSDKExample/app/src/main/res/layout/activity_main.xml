@@ -280,6 +280,20 @@
                 />
 
             <Button
+                android:id="@+id/btnCreateFuturePoll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Future Poll"
+                />
+
+            <Button
+                android:id="@+id/btnCancelPoll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel Poll"
+                />
+
+            <Button
                 android:id="@+id/btnSendPollResponse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

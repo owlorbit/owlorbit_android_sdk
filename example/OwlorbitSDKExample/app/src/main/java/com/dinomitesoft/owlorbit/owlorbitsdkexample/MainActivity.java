@@ -683,6 +683,50 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @OnClick(R.id.btnCreateFuturePoll)
+    void btnCreateFuturePoll() {
+
+        ArrayList<String> choices = new ArrayList<String>();
+        choices.add("Yes");
+        choices.add("No");
+
+        webview.loadDataWithBaseURL("", "Loading...", "text/html", "UTF-8", "");
+        owlorbit.getApi().createPoll(choices, "Test Poll (Android SDK)", "2521402136000", 13, 0,  new PollingApi.CreatePollDelegate() {
+
+            @Override
+            public void success(CreatePollModel response) {
+                Gson gson = new Gson();
+                String json = gson.toJson(response);
+                webview.loadDataWithBaseURL("", json, "text/html", "UTF-8", "");
+            }
+
+            @Override
+            public void error(String response) {
+                webview.loadDataWithBaseURL("", response, "text/html", "UTF-8", "");
+            }
+        });
+    }
+
+    @OnClick(R.id.btnCancelPoll)
+    void btnCancelPoll() {
+
+        webview.loadDataWithBaseURL("", "Loading...", "text/html", "UTF-8", "");
+        owlorbit.getApi().cancelPoll(46, new PollingApi.CancelPollDelegate() {
+
+            @Override
+            public void success(BaseApiResponseModel response) {
+                Gson gson = new Gson();
+                String json = gson.toJson(response);
+                webview.loadDataWithBaseURL("", json, "text/html", "UTF-8", "");
+            }
+
+            @Override
+            public void error(String response) {
+                webview.loadDataWithBaseURL("", response, "text/html", "UTF-8", "");
+            }
+        });
+    }
+
     @OnClick(R.id.btnSendPollResponse)
     void btnSendPollResponse() {
 
